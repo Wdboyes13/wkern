@@ -9,7 +9,7 @@ GRUBMK=i686-elf-grub-mkrescue
 QEMU=qemu-system-i386
 endif
 
-CCFLAGS := -ffreestanding -I. -DARCH_$(ARCH)
+CCFLAGS := -ffreestanding -I. -DARCH_$(ARCH) -O2 -fno-pie -nostdlib
 LDFLAGS := -T link.ld
 GITREM := origin main
 MSG := -m "Updated $(shell date)"
