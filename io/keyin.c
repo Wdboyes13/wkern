@@ -1,3 +1,4 @@
+#include <global.h>
 #include <io/keyin.h>
 #include <io/outb.h>
 #include <io/printer.h>
@@ -42,20 +43,32 @@ unsigned char kgetkey() {
 }
 
 void kgetstr(char *str, int length) {
-    for (int i = 0; i < length; i++) {
+    int i = 0;
+
+    while (i < length - 1) {
         unsigned char key = 0;
         while (!(key = kgetkey()))
             ;
+
         if (key == '\n') {
             str[i] = '\0';
             kputchar('\n');
             return;
         }
 
-        str[i] = key;
+        if (key == '\b' || key == 0x7F) { // 0x7F is DEL on some layouts
+            if (i > 0) {
+                i--;
+                str[i] = '\0';
+                kputchar_backspace();
+            }
+            continue;
+        }
+        str[i++] = key;
         kputchar(key);
         ZZZ(30);
     }
+
     str[length - 1] = '\0';
 }
 void kflush() {

@@ -1,4 +1,5 @@
 #include <err/panic.h>
+#include <img.h>
 #include <io/keyin.h>
 #include <io/printer.h>
 #include <types/nums.h>
@@ -27,7 +28,8 @@ void kernel_main() {
         panic("Invalid age input!");
     }
     if (iage >= 13) {
-        kprintf("Welcome buddy, your old enough!\n");
+        kprintf("Welcome buddy, your old enough!\n\n");
+        draw_smile();
     } else {
         panic("Underage user");
     }

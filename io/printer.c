@@ -29,6 +29,19 @@ void kputchar(char c) {
     }
 }
 
+void kputchar_backspace() {
+    if (col > 0) {
+        col--;
+    } else if (row > 0) {
+        row--;
+        col = 79;
+    }
+
+    int offset = row * 80 + col;
+    vmem[offset * 2] = ' ';      // clear the character
+    vmem[offset * 2 + 1] = 0x07; // normal attribute
+}
+
 void kprintf(const char *msg) {
     for (int i = 0; msg[i] != 0; i++) {
         kputchar(msg[i]);
