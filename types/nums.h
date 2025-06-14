@@ -1,4 +1,5 @@
 #pragma once
-typedef unsigned char  uint8_t;
-typedef unsigned short uint16_t;
-typedef unsigned int   uint32_t;
+typedef unsigned char  kuint8_t;
+typedef unsigned short kuint16_t;
+typedef unsigned int   kuint32_t;
+void kitoa(unsigned int num, char* buf);

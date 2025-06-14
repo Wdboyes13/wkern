@@ -1,14 +1,29 @@
+ARCH=X86
+
+ifeq ($(ARCH),X86)
 CC=i686-elf-gcc
 LD=i686-elf-ld
 AS=i686-elf-as
+STRIP=i686-elf-strip
 GRUBMK=i686-elf-grub-mkrescue
+QEMU=qemu-system-i386
+endif
 
-CCFLAGS := -ffreestanding
+CCFLAGS := -ffreestanding -I. -DARCH_$(ARCH)
 LDFLAGS := -T link.ld
+GITREM := origin main
+MSG := -m "Updated $(shell date)"
 
-SRCS := $(wildcard *.c)
-ASSRCS := boot.s 
-OBJS := $(patsubst %.c, %.o, $(SRCS)) boot.o
+ASSRCS := $(wildcard *.s) \
+		  $(wildcard *.S)
+
+SRCS := $(wildcard *.c) \
+		$(wildcard types/*.c) \
+		$(wildcard io/*.c)
+
+OBJS := $(patsubst %.c, %.o, $(SRCS)) \
+		$(patsubst %.s, %.o, $(ASSRCS))
+
 
 TARGET=kernel.bin
 ISO=mykern.iso 
@@ -23,6 +38,7 @@ $(ISO): $(TARGET)
 
 $(TARGET): $(OBJS)
 	$(LD) $(LDFLAGS) -o $@ $^
+	$(STRIP) $@
 
 %.o: %.c
 	$(CC) $(CCFLAGS) -c $< -o $@
@@ -34,6 +50,11 @@ clean:
 	rm -f $(TARGET) $(OBJS) $(ISO)
 
 test:
-	qemu-system-i386 -cdrom $(ISO)
+	$(QEMU) -cdrom $(ISO)
+
+git:
+	git add .
+	git commit $(MSG)
+	git push $(GITREM)
 
 .PHONY: clean all test
