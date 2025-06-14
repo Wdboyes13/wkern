@@ -1,6 +1,6 @@
 #include <io/printer.h>
 #include <types/nums.h>
-void kernel_main(){
+void kernel_main() {
     kcfp();
     kprintf("Hello from kernel!\n");
     kprintf("This is a newline!!!\n");

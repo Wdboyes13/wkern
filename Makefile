@@ -11,6 +11,7 @@ endif
 
 CCFLAGS := -ffreestanding -I. -DARCH_$(ARCH) -O2 -fno-pie -nostdlib
 LDFLAGS := -T link.ld
+
 GITREM := origin main
 MSG := -m "Updated $(shell date)"
 
@@ -24,12 +25,16 @@ SRCS := $(wildcard *.c) \
 OBJS := $(patsubst %.c, %.o, $(SRCS)) \
 		$(patsubst %.s, %.o, $(ASSRCS))
 
+HEADS := $(wildcard *.h) \
+		 $(wildcard types/*.h) \
+		 $(wildcard io/*.h)
+
 SILENCE := > /dev/null 2>&1
 
 TARGET=kernel.bin
 ISO=mykern.iso 
 
-all: $(ISO)
+all: fmt $(ISO)
 
 $(ISO): $(TARGET)
 	cp $(TARGET) iso/boot/$(TARGET)
@@ -57,5 +62,8 @@ git:
 	git add .
 	git commit $(MSG)
 	git push $(GITREM)
+
+fmt:
+	clang-format -i $(HEADS) $(SRCS)
 
 .PHONY: clean all test
