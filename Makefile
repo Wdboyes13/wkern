@@ -55,7 +55,7 @@ $(TARGET): $(OBJS)
 	$(AS) $< -o $@
 
 clean:
-	rm -f $(TARGET) $(OBJS) $(ISO) iso/$(TARGET)
+	rm -f $(TARGET) $(OBJS) $(ISO) iso/boot/$(TARGET)
 
 test:
 	$(QEMU) -cdrom $(ISO)
