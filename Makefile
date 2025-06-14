@@ -2,7 +2,8 @@ include Make/files.mk
 include Make/flags.mk
 include Make/tools.mk
 
-SILENCE := > /dev/null 2>&1
+SILENCE := 1>/dev/null
+SILENCEALL := >/dev/null 2>&1
 
 TARGET=kernel.bin
 ISO=mykern.iso 
@@ -18,7 +19,7 @@ $(ISO): $(TARGET)
 	@cp grub/grub.cfg iso/boot/grub/grub.cfg
 
 	@echo "[GRUBMK] $@"
-	@$(GRUBMK) -o $@ iso $(SILENCE)
+	@$(GRUBMK) -o $@ iso $(SILENCEALL)
 
 $(TARGET): $(OBJS)
 	@echo "[LD] $@"
@@ -44,8 +45,8 @@ test:
 
 git:
 	git add .
-	git commit $(MSG)
-	git push $(GITREM)
+	git commit $(MSG) $(SILENCE)
+	git push $(GITREM) $(SILENCE)
 
 fmt:
 	@echo "[FMT]"
