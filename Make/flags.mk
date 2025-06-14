@@ -1,5 +1,5 @@
 include Make/tools.mk
-CCFLAGS := -ffreestanding -I. -DARCH_$(ARCH) -D$(MACH) -O2 -fno-pie -nostdlib
+CCFLAGS := -ffreestanding -I. -DARCH_$(ARCH) -D$(MACH) -fno-pie -nostdlib
 LDFLAGS := -T link.ld
 
 

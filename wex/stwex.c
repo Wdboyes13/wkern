@@ -1,3 +1,4 @@
+#include <io/printer.h>
 #include <wex/chkst.h>
 #include <wex/exec.h>
 #include <wex/rdfv.h>

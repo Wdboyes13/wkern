@@ -24,8 +24,8 @@ $(ISO): $(TARGET)
 $(TARGET): $(OBJS)
 	@echo "[LD] $@"
 	@$(LD) $(LDFLAGS) -o $@ $^
-	@echo "[STRIP] $@"
-	@$(STRIP) $@
+	# @echo "[STRIP] $@"
+	# @$(STRIP) $@
 
 %.o: %.c
 	@echo "[CC] $<"

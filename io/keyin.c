@@ -1,6 +1,6 @@
 #include <global.h>
+#include <io/asm.h>
 #include <io/keyin.h>
-#include <io/outb.h>
 #include <io/printer.h>
 #include <utils/ksleep.h>
 unsigned char scancode_to_ascii(unsigned char scancode) {

@@ -22,10 +22,15 @@ void exec(unsigned char *exec, int *FVALS) {
 #ifdef VMQEMU
         qemu_shutdown();
 #endif
-        if (exec[i] == 0x0D && exec[i + 1] == 0x00) {
-            i++;
-            ZZZ(1000);
-            i++;
-        }
+    }
+    if (exec[i] == 0x0D && exec[i + 1] == 0x00) {
+        i++;
+        ZZZ(1000);
+        i++;
+    }
+    if (exec[i] == 0x01 && exec[i + 1] == 0x00) {
+        i++;
+        kcfp();
+        i++;
     }
 }

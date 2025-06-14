@@ -1,5 +1,5 @@
 ASSRCS := $(wildcard *.s) \
-		  $(wildcard *.S)
+		  $(wildcard idt/*.s)
 
 SRCS := $(wildcard *.c) \
 		$(wildcard types/*.c) \
@@ -7,10 +7,13 @@ SRCS := $(wildcard *.c) \
 		$(wildcard utils/*.c) \
 		$(wildcard err/*.c) \
 		$(wildcard qemu/*.c) \
-		$(wildcard wex/*.c)
+		$(wildcard wex/*.c) \
+		$(wildcard mem/*.c) \
+		$(wildcard idt/*.c)
 
-OBJS := $(patsubst %.c, %.o, $(SRCS)) \
-		$(patsubst %.s, %.o, $(ASSRCS))
+OBJS := $(patsubst %.s, %.o, $(ASSRCS)) \
+		$(patsubst %.c, %.o, $(SRCS))
+		
 
 HEADS := $(wildcard *.h) \
 		 $(wildcard types/*.h) \
@@ -18,4 +21,6 @@ HEADS := $(wildcard *.h) \
 		 $(wildcard utils/*.h) \
 		 $(wildcard err/*.h) \
 		 $(wildcard qemu/*.h) \
-		 $(wildcard wex/*.h)
+		 $(wildcard wex/*.h) \
+		 $(wildcard mem/*.h) \
+		 $(wildcard idt/*.h)

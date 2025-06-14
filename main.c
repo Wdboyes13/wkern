@@ -1,4 +1,7 @@
 #include <err/panic.h>
+#include <err/tf.h>
+#include <idt/idtirq.h>
+#include <io/asm.h>
 #include <io/keyin.h>
 #include <io/printer.h>
 #include <types/nums.h>
@@ -8,9 +11,25 @@
 #include <wex/stwex.h>
 #include <wex/testexec.h>
 void kernel_main() {
-    kcfp();
-    kprintf("Hello form WKern!\n");
+    // pic_remap();
 
+    // idt_init();
+
+    // setup_idt();
+
+    // idt_load();
+
+    // cli();
+
+    // pit_init(100);
+
+    // sti();
+    // kprintf("After STI - interrupts enabled\n");
+
+    kcfp();
+    kprintf("kcfp done\n");
+
+    kprintf("\nHello form WKern!\n");
     kprintf("Enter your name: ");
     char name[20];
     kgetstr(name, 19);
@@ -21,22 +40,11 @@ void kernel_main() {
 
     ZZZ(50);
     kflush();
-    kprintf("Enter your age: ");
-    char age[5];
-    kgetstr(age, 5);
-    kputchar('\n');
-    int iage = katoi(age);
-    if (iage == 0 && age[0] != '0') {
-        panic("Invalid age input!");
-    }
-    if (iage >= 13) {
-        kprintf("Welcome buddy, your old enough!\n\n");
-        draw_smile();
-        runwex(execr());
-    } else {
-        panic("Underage user");
-    }
+    kprintf("Welcome!\n\n");
+    draw_smile();
     ZZZ(1000);
+    kprintf("CTIWT");
+    runwex(execr());
 #ifdef VMQEMU
 #include <qemu/shutdown.h>
     qemu_shutdown();

@@ -6,6 +6,8 @@ void kcfp() {
         vmem[i * 2] = ' ';
         vmem[i * 2 + 1] = 0x0F;
     }
+    col = 0;
+    row = 0;
 }
 
 void kputchar(char c) {
