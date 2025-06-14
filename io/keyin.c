@@ -54,7 +54,12 @@ void kgetstr(char *str, int length) {
 
         str[i] = key;
         kputchar(key);
-        ZZZ(100);
+        ZZZ(30);
     }
     str[length - 1] = '\0';
+}
+void kflush() {
+    while (inb(0x64) & 0x01) {
+        inb(0x60);
+    }
 }

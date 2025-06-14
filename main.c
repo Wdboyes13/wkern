@@ -1,15 +1,13 @@
+#include <err/panic.h>
 #include <io/keyin.h>
 #include <io/printer.h>
 #include <types/nums.h>
+#include <utils/katoi.h>
+#include <utils/ksleep.h>
 void kernel_main() {
     kcfp();
-    kprintf("Hello from kernel!\n");
-    kprintf("This is a newline!!!\n");
-    kuint32_t var = (kuint32_t)69420;
-    char num[10];
-    kitoa(var, num);
-    kprintf(num);
-    kputchar('\n');
+    kprintf("Hello form WKern!\n");
+
     kprintf("Enter your name: ");
     char name[20];
     kgetstr(name, 19);
@@ -17,4 +15,20 @@ void kernel_main() {
     kprintf("Hello, ");
     kprintf(name);
     kprintf("!\n");
+
+    ZZZ(100);
+    kflush();
+    kprintf("Enter your age: ");
+    char age[5];
+    kgetstr(age, 5);
+    kputchar('\n');
+    int iage = katoi(age);
+    if (iage == 0 && age[0] != '0') {
+        panic("Invalid age input!");
+    }
+    if (iage >= 13) {
+        kprintf("Welcome buddy, your old enough!\n");
+    } else {
+        panic("Underage user");
+    }
 }
