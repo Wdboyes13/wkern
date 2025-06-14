@@ -24,6 +24,7 @@ SRCS := $(wildcard *.c) \
 OBJS := $(patsubst %.c, %.o, $(SRCS)) \
 		$(patsubst %.s, %.o, $(ASSRCS))
 
+SILENCE := > /dev/null 2>&1
 
 TARGET=kernel.bin
 ISO=mykern.iso 
@@ -34,7 +35,7 @@ $(ISO): $(TARGET)
 	cp $(TARGET) iso/boot/$(TARGET)
 	cp grub/grub.cfg iso/boot/grub/grub.cfg
 
-	$(GRUBMK) -o $@ iso
+	$(GRUBMK) -o $@ iso $(SILENCE)
 
 $(TARGET): $(OBJS)
 	$(LD) $(LDFLAGS) -o $@ $^
