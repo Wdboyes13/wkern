@@ -6,4 +6,9 @@ void outb(unsigned short port, unsigned char value) {
 unsigned char inb(unsigned short port) {
     unsigned char ret;
     __asm__ volatile("inb %1, %0" : "=a"(ret) : "Nd"(port));
+    return ret;
+}
+
+void outw(unsigned short port, unsigned short value) {
+    __asm__ volatile("outw %0, %1" : : "a"(value), "Nd"(port));
 }

@@ -1,5 +1,5 @@
 ARCH=X86
-
+MACH=VMQEMU
 ifeq ($(ARCH),X86)
 CC=i686-elf-gcc
 LD=i686-elf-ld
@@ -9,8 +9,9 @@ GRUBMK=i686-elf-grub-mkrescue
 QEMU=qemu-system-i386
 endif
 
-CCFLAGS := -ffreestanding -I. -DARCH_$(ARCH) -O2 -fno-pie -nostdlib
+CCFLAGS := -ffreestanding -I. -DARCH_$(ARCH) -D$(MACH) -O2 -fno-pie -nostdlib
 LDFLAGS := -T link.ld
+
 
 GITREM := origin main
 MSG := -m "Updated $(shell date)"
@@ -22,7 +23,8 @@ SRCS := $(wildcard *.c) \
 		$(wildcard types/*.c) \
 		$(wildcard io/*.c) \
 		$(wildcard utils/*.c) \
-		$(wildcard err/*.c)
+		$(wildcard err/*.c) \
+		$(wildcard qemu/*.c)
 
 OBJS := $(patsubst %.c, %.o, $(SRCS)) \
 		$(patsubst %.s, %.o, $(ASSRCS))
@@ -31,7 +33,8 @@ HEADS := $(wildcard *.h) \
 		 $(wildcard types/*.h) \
 		 $(wildcard io/*.h) \
 		 $(wildcard utils/*.h) \
-		 $(wildcard err/*.h)
+		 $(wildcard err/*.h) \
+		 $(wildcard qemu/*.h)
 
 SILENCE := > /dev/null 2>&1
 
@@ -60,7 +63,7 @@ clean:
 	rm -f $(TARGET) $(OBJS) $(ISO) iso/boot/$(TARGET)
 
 test:
-	$(QEMU) -cdrom $(ISO)
+	$(QEMU) -cdrom $(ISO) -machine q35
 
 git:
 	git add .

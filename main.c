@@ -1,8 +1,8 @@
 #include <err/panic.h>
-#include <img.h>
 #include <io/keyin.h>
 #include <io/printer.h>
 #include <types/nums.h>
+#include <utils/img.h>
 #include <utils/katoi.h>
 #include <utils/ksleep.h>
 void kernel_main() {
@@ -17,7 +17,7 @@ void kernel_main() {
     kprintf(name);
     kprintf("!\n");
 
-    ZZZ(100);
+    ZZZ(50);
     kflush();
     kprintf("Enter your age: ");
     char age[5];
@@ -33,4 +33,9 @@ void kernel_main() {
     } else {
         panic("Underage user");
     }
+    ZZZ(1000);
+#ifdef VMQEMU
+#include <qemu/shutdown.h>
+    qemu_shutdown();
+#endif
 }
