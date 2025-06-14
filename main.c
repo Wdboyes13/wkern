@@ -1,3 +1,4 @@
+#include <io/keyin.h>
 #include <io/printer.h>
 #include <types/nums.h>
 void kernel_main() {
@@ -8,4 +9,12 @@ void kernel_main() {
     char num[10];
     kitoa(var, num);
     kprintf(num);
+    kputchar('\n');
+    kprintf("Enter your name: ");
+    char name[20];
+    kgetstr(name, 19);
+    kputchar('\n');
+    kprintf("Hello, ");
+    kprintf(name);
+    kprintf("!\n");
 }

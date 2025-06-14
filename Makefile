@@ -20,14 +20,16 @@ ASSRCS := $(wildcard *.s) \
 
 SRCS := $(wildcard *.c) \
 		$(wildcard types/*.c) \
-		$(wildcard io/*.c)
+		$(wildcard io/*.c) \
+		$(wildcard utils/*.c)
 
 OBJS := $(patsubst %.c, %.o, $(SRCS)) \
 		$(patsubst %.s, %.o, $(ASSRCS))
 
 HEADS := $(wildcard *.h) \
 		 $(wildcard types/*.h) \
-		 $(wildcard io/*.h)
+		 $(wildcard io/*.h) \
+		 $(wildcard utils/*.h)
 
 SILENCE := > /dev/null 2>&1
 
