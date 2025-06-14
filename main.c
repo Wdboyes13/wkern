@@ -5,6 +5,8 @@
 #include <utils/img.h>
 #include <utils/katoi.h>
 #include <utils/ksleep.h>
+#include <wex/stwex.h>
+#include <wex/testexec.h>
 void kernel_main() {
     kcfp();
     kprintf("Hello form WKern!\n");
@@ -30,6 +32,7 @@ void kernel_main() {
     if (iage >= 13) {
         kprintf("Welcome buddy, your old enough!\n\n");
         draw_smile();
+        runwex(execr());
     } else {
         panic("Underage user");
     }

@@ -24,7 +24,8 @@ SRCS := $(wildcard *.c) \
 		$(wildcard io/*.c) \
 		$(wildcard utils/*.c) \
 		$(wildcard err/*.c) \
-		$(wildcard qemu/*.c)
+		$(wildcard qemu/*.c) \
+		$(wildcard wex/*.c)
 
 OBJS := $(patsubst %.c, %.o, $(SRCS)) \
 		$(patsubst %.s, %.o, $(ASSRCS))
@@ -34,36 +35,48 @@ HEADS := $(wildcard *.h) \
 		 $(wildcard io/*.h) \
 		 $(wildcard utils/*.h) \
 		 $(wildcard err/*.h) \
-		 $(wildcard qemu/*.h)
+		 $(wildcard qemu/*.h) \
+		 $(wildcard wex/*.h)
 
 SILENCE := > /dev/null 2>&1
 
 TARGET=kernel.bin
 ISO=mykern.iso 
 
+CLNTARGS := $(TARGET) $(OBJS) $(ISO) iso/boot/$(TARGET)
+
 all: fmt $(ISO)
 
 $(ISO): $(TARGET)
-	cp $(TARGET) iso/boot/$(TARGET)
-	cp grub/grub.cfg iso/boot/grub/grub.cfg
+	@echo "[CP]"
+	@cp $(TARGET) iso/boot/$(TARGET)
+	@echo "[CP]"
+	@cp grub/grub.cfg iso/boot/grub/grub.cfg
 
-	$(GRUBMK) -o $@ iso $(SILENCE)
+	@echo "[GRUBMK] $@"
+	@$(GRUBMK) -o $@ iso $(SILENCE)
 
 $(TARGET): $(OBJS)
-	$(LD) $(LDFLAGS) -o $@ $^
-	$(STRIP) $@
+	@echo "[LD] $@"
+	@$(LD) $(LDFLAGS) -o $@ $^
+	@echo "[STRIP] $@"
+	@$(STRIP) $@
 
 %.o: %.c
-	$(CC) $(CCFLAGS) -c $< -o $@
+	@echo "[CC] $<"
+	@$(CC) $(CCFLAGS) -c $< -o $@
 
 %.o: %.s 
-	$(AS) $< -o $@
+	@echo "[AS] $<"
+	@$(AS) $< -o $@
 
 clean:
-	rm -f $(TARGET) $(OBJS) $(ISO) iso/boot/$(TARGET)
+	@echo "[RM] $(CLNTARGS)"
+	@rm -f $(CLNTARGS)
 
 test:
-	$(QEMU) -cdrom $(ISO) -machine q35
+	@echo "[QEMU]"
+	@$(QEMU) -cdrom $(ISO) -machine q35
 
 git:
 	git add .
@@ -71,6 +84,7 @@ git:
 	git push $(GITREM)
 
 fmt:
-	clang-format -i $(HEADS) $(SRCS)
+	@echo "[FMT]"
+	@clang-format -i $(HEADS) $(SRCS)
 
 .PHONY: clean all test
