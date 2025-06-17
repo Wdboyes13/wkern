@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "*.dbclient-js": "javascript",
+        "*.s": "arm",
+        "kstrcmp.h": "c",
+        "shutdown.h": "c"
+    }
+}

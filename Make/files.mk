@@ -9,10 +9,14 @@ SRCS := $(wildcard *.c) \
 		$(wildcard qemu/*.c) \
 		$(wildcard wex/*.c) \
 		$(wildcard mem/*.c) \
-		$(wildcard idt/*.c)
+		$(wildcard idt/*.c) \
+		$(wildcard KShell/*.c)
+
+NASMSRCS := $(wildcard *.asm)
 
 OBJS := $(patsubst %.s, %.o, $(ASSRCS)) \
-		$(patsubst %.c, %.o, $(SRCS))
+		$(patsubst %.c, %.o, $(SRCS)) \
+		$(patsubst %.asm, %.o, $(NASMSRCS))
 		
 
 HEADS := $(wildcard *.h) \
@@ -23,4 +27,5 @@ HEADS := $(wildcard *.h) \
 		 $(wildcard qemu/*.h) \
 		 $(wildcard wex/*.h) \
 		 $(wildcard mem/*.h) \
-		 $(wildcard idt/*.h)
+		 $(wildcard idt/*.h) \
+		 $(wildcard KShell/*.h)

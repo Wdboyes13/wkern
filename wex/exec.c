@@ -1,36 +1,64 @@
 #include <io/printer.h>
 #include <utils/ksleep.h>
 #include <wex/exec.h>
+#include <wex/st.h>
 #ifdef VMQEMU
 #include <qemu/shutdown.h>
 #endif
-void exec(unsigned char *exec, int *FVALS) {
-    int i = FVALS[0];
-    kprintf("Executing WEX\n");
-    if (exec[i] == 0x0A) { // print
-        kprintf("Printing from WEX\n");
-        i++; // move to start of string
-        while (exec[i] != 0x00) {
-            kputchar(exec[i]);
-            i++;
-        }
-        i++; // move past 0x00
-    }
 
-    if (exec[i] == 0x0C && exec[i + 1] == 0x00) { // shutdown
-        kprintf("Shitting down from WEX\n");
+extern unsigned char smt[];
+
+void exec(unsigned char *exec, int *FVALS) {
+    kprintf("Interpreting executable before execution");
+    int entry = exec[0];
+    int symtbl_len = exec[1];
+    int pc = entry;
+    while (exec[pc] != 0xFF) {
+        unsigned char opcode = exec[pc++];
+
+        if (opcode == 0x00) { // CALL
+            unsigned char sym_id = exec[pc++];
+            if (sym_id >= symtbl_len) {
+                kprintf("Invalid symbol ID");
+                break;
+            }
+
+            unsigned char op = smt[sym_id]; // Look up actual opcode
+
+            switch (op) {
+            case 0x0A: { // Write (print)
+                while (exec[pc] != 0x00) {
+                    kputchar(exec[pc++]);
+                }
+                pc++; // Skip 0x00
+                break;
+            }
+            case 0x0B: {
+                // Optional: implement read
+                break;
+            }
+            case 0x0C: { // Shutdown
 #ifdef VMQEMU
-        qemu_shutdown();
+                qemu_shutdown();
 #endif
-    }
-    if (exec[i] == 0x0D && exec[i + 1] == 0x00) {
-        i++;
-        ZZZ(1000);
-        i++;
-    }
-    if (exec[i] == 0x01 && exec[i + 1] == 0x00) {
-        i++;
-        kcfp();
-        i++;
+                break;
+            }
+            case 0x0D: {
+                ZZZ(1000);
+                break;
+            }
+            case 0x01: {
+                kcfp();
+                break;
+            }
+            default: {
+                kprintf("Unknown opcode");
+                break;
+            }
+            }
+        } else {
+            kprintf("Invalid instruction byte\n");
+            break;
+        }
     }
 }

@@ -33,11 +33,12 @@ unsigned char scancode_to_ascii(unsigned char scancode) {
 }
 
 unsigned char kgetkey() {
-    unsigned char sccode = inb(0x60);
     while (1) {
-        sccode = inb(0x60);
-        if (!(sccode & 0x80)) {
-            return scancode_to_ascii(sccode);
+        if (inb(0x64) & 0x01) { // Status register: Output buffer full
+            unsigned char sccode = inb(0x60);
+            if (!(sccode & 0x80)) { // If it's a key press (not release)
+                return scancode_to_ascii(sccode);
+            }
         }
     }
 }

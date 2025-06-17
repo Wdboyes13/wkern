@@ -1,3 +1,4 @@
+#include <KShell/shell.h>
 #include <err/panic.h>
 #include <err/tf.h>
 #include <idt/idtirq.h>
@@ -27,8 +28,6 @@ void kernel_main() {
     // kprintf("After STI - interrupts enabled\n");
 
     kcfp();
-    kprintf("kcfp done\n");
-
     kprintf("\nHello form WKern!\n");
     kprintf("Enter your name: ");
     char name[20];
@@ -40,11 +39,8 @@ void kernel_main() {
 
     ZZZ(50);
     kflush();
-    kprintf("Welcome!\n\n");
-    draw_smile();
-    ZZZ(1000);
-    kprintf("CTIWT");
-    runwex(execr());
+    kprintf("Welcome!\n\nStarting SH\n");
+    sh();
 #ifdef VMQEMU
 #include <qemu/shutdown.h>
     qemu_shutdown();

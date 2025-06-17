@@ -6,26 +6,34 @@ SILENCE := 1>/dev/null
 SILENCEALL := >/dev/null 2>&1
 
 TARGET=kernel.bin
+ELF = kernel.elf
 ISO=mykern.iso 
 
-CLNTARGS := $(TARGET) $(OBJS) $(ISO) iso/boot/$(TARGET)
+CLNTARGS := $(TARGET) $(OBJS) $(ISO) iso/boot/$(TARGET) $(ELF)
 
 all: fmt $(ISO)
 
 $(ISO): $(TARGET)
 	@echo "[CP]"
-	@cp $(TARGET) iso/boot/$(TARGET)
+	@cp $(ELF) iso/boot/$(ELF)
 	@echo "[CP]"
 	@cp grub/grub.cfg iso/boot/grub/grub.cfg
 
 	@echo "[GRUBMK] $@"
-	@$(GRUBMK) -o $@ iso $(SILENCEALL)
+	@$(GRUBMK) -o $@ iso
 
-$(TARGET): $(OBJS)
+kernel.elf: $(OBJS)
 	@echo "[LD] $@"
 	@$(LD) $(LDFLAGS) -o $@ $^
-	# @echo "[STRIP] $@"
-	# @$(STRIP) $@
+
+kernel.bin: kernel.elf
+	@echo "[OBJCOPY $@]"
+	@$(OBJCOPY) -O binary \
+		-j .multiboot \
+		-j .text \
+		-j .rodata \
+		-j .data \
+		$< $@
 
 %.o: %.c
 	@echo "[CC] $<"
@@ -34,6 +42,10 @@ $(TARGET): $(OBJS)
 %.o: %.s 
 	@echo "[AS] $<"
 	@$(AS) $< -o $@
+
+%.o: %.asm
+	@echo "[NASM] $<"
+	@nasm -f elf32 -g -F dwarf $< -o $@
 
 clean:
 	@echo "[RM] $(CLNTARGS)"
