@@ -1,0 +1,6 @@
+1.  IDT/GDT - DONE
+2. Filesystem (FAT16)
+3. File I/O
+3. Terminal IDE
+
+Obviously more to come, but these are my current goals
