@@ -5,6 +5,7 @@
 #include <io/asm.h>
 #include <io/keyin.h>
 #include <io/printer.h>
+#include <ldints.h>
 #include <types/nums.h>
 #include <utils/img.h>
 #include <utils/katoi.h>
@@ -12,20 +13,15 @@
 #include <wex/stwex.h>
 #include <wex/testexec.h>
 void kernel_main() {
-    // pic_remap();
+    all_idt();
+
+    //_picr();
+    // mask_all_irqs();
 
     // idt_init();
-
     // setup_idt();
-
-    // idt_load();
-
-    // cli();
-
+    // ldints();
     // pit_init(100);
-
-    // sti();
-    // kprintf("After STI - interrupts enabled\n");
 
     kcfp();
     kprintf("\nHello form WKern!\n");

@@ -3,6 +3,9 @@
         "*.dbclient-js": "javascript",
         "*.s": "arm",
         "kstrcmp.h": "c",
-        "shutdown.h": "c"
+        "shutdown.h": "c",
+        "nums.h": "c",
+        "idtirq.h": "c",
+        "printer.h": "c"
     }
 }

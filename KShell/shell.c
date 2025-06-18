@@ -23,17 +23,21 @@ void sh() {
             } else {
                 kprintf("\nNot Equal");
             }
-        } else if (kstrcmp(cmd, "sdn") == 0) {
+        } else if (kstrcmp(cmd, "shutdown") == 0) {
 #ifdef VMQEMU
 #include <qemu/shutdown.h>
             qemu_shutdown();
 #endif
-        } else if (kstrcmp(cmd, "hlp") == 0) {
-            kprintf("\nsdn - shutdown");
-            kprintf("\nhlp - help");
+        } else if (kstrcmp(cmd, "help") == 0) {
+            kprintf("\nshutdown - shutdown system");
+            kprintf("\nhelp - list command");
             kprintf("\ncmp - compare strings");
+            kprintf("\nclear - clear screen");
+            kprintf("\ntst - Test a WEX Executable");
         } else if (kstrcmp(cmd, "tst") == 0) {
             runwex(execr());
+        } else if (kstrcmp(cmd, "clear") == 0) {
+            kcfp();
         }
     }
 }

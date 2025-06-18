@@ -32,15 +32,26 @@ unsigned char scancode_to_ascii(unsigned char scancode) {
     return keymap[scancode];
 }
 
-unsigned char kgetkey() {
-    while (1) {
-        if (inb(0x64) & 0x01) { // Status register: Output buffer full
-            unsigned char sccode = inb(0x60);
-            if (!(sccode & 0x80)) { // If it's a key press (not release)
-                return scancode_to_ascii(sccode);
-            }
-        }
+volatile char keybuf[256];
+volatile int buf_head = 0;
+volatile int buf_tail = 0;
+
+void irq1_handler_c(void) {
+    unsigned char sc = inb(0x60);
+    if (!(sc & 0x80)) {
+        keybuf[buf_head++] = scancode_to_ascii(sc);
+        if (buf_head == 256)
+            buf_head = 0;
     }
+}
+
+char kgetkey() {
+    while (buf_tail == buf_head)
+        ; // wait for key
+    char ch = keybuf[buf_tail++];
+    if (buf_tail == 256)
+        buf_tail = 0;
+    return ch;
 }
 
 void kgetstr(char *str, int length) {
@@ -67,7 +78,6 @@ void kgetstr(char *str, int length) {
         }
         str[i++] = key;
         kputchar(key);
-        ZZZ(30);
     }
 
     str[length - 1] = '\0';

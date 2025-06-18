@@ -1,0 +1,11 @@
+Note: These attempts were isolated and run one at a time - disabling the last before trying the next
+
+Loading hanging handler BEFORE the PIT handler - Still Boot-Loop
+Not loading IRQ0 handler at all but loading hanging handler - Boot Loop
+Never setting up PIT but enabling STI - Boot-Loop
+Masking ALL IRQs before calling STI - Boot-Loop
+Calling INT $3 immediatly after STI - Boot-Loop
+Removing tick counter ++ - Boot-Loop
+Dummy Handler - Boot-Loop
+Not initializing the PIT and disabling all handlers as well as masking all IRQs - Gets passed STI and actually executes 2 print functions, but when it reaches get input, bootloop (input likely unrelated)
+Same but with dummy handler - Exact same result

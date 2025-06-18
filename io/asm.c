@@ -15,8 +15,4 @@ inline void outw(kuint16_t port, kuint16_t val) {
 }
 
 inline void cli() { __asm__ volatile("cli"); }
-inline void sti() {
-    outb(0x21, inb(0x21) | 0x01);
-    __asm__ volatile("sti; nop; nop; nop");
-    outb(0x21, inb(0x21) & ~0x01);
-}
+inline void sti() { __asm__ volatile("sti; nop; nop; nop"); }

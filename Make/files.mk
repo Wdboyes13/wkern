@@ -1,31 +1,40 @@
-ASSRCS := $(wildcard *.s) \
-		  $(wildcard idt/*.s)
+SRCS := KShell/kshcmp.c \
+		KShell/shell.c \
+		err/panic.c \
+		err/tf.c \
+		idt/idt.c \
+		idt/irq0.c \
+		idt/masker.c \
+		io/asm.c \
+		io/keyin.c \
+		io/printer.c \
+		ldints-c.c \
+		main.c \
+		mem/memset.c \
+		qemu/shutdown.c \
+		types/nums.c \
+		utils/img.c \
+		utils/katoi.c \
+		utils/ksleep.c \
+		utils/kstrcmp.c \
+		wex/chkst.c \
+		wex/exec.c \
+		wex/rdfv.c \
+		wex/stwex.c \
+		wex/testexec.c \
+		idt/gdt.c
 
-SRCS := $(wildcard *.c) \
-		$(wildcard types/*.c) \
-		$(wildcard io/*.c) \
-		$(wildcard utils/*.c) \
-		$(wildcard err/*.c) \
-		$(wildcard qemu/*.c) \
-		$(wildcard wex/*.c) \
-		$(wildcard mem/*.c) \
-		$(wildcard idt/*.c) \
-		$(wildcard KShell/*.c)
+NASMSRCS := boot.asm \
+			idt/handlers/gdtf.asm \
+			idt/handlers/good_handler.asm \
+			idt/handlers/goodasm.asm \
+			idt/handlers/irq0a.asm \
+			idt/handlers/irq1a.asm \
+			idt/picr.asm \
+			ldints.asm \
+			utils/sdn.asm \
+			utils/shutdown.asm
 
-NASMSRCS := $(wildcard *.asm)
-
-OBJS := $(patsubst %.s, %.o, $(ASSRCS)) \
-		$(patsubst %.c, %.o, $(SRCS)) \
+OBJS := $(patsubst %.c, %.o, $(SRCS)) \
 		$(patsubst %.asm, %.o, $(NASMSRCS))
 		
-
-HEADS := $(wildcard *.h) \
-		 $(wildcard types/*.h) \
-		 $(wildcard io/*.h) \
-		 $(wildcard utils/*.h) \
-		 $(wildcard err/*.h) \
-		 $(wildcard qemu/*.h) \
-		 $(wildcard wex/*.h) \
-		 $(wildcard mem/*.h) \
-		 $(wildcard idt/*.h) \
-		 $(wildcard KShell/*.h)

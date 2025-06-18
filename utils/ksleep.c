@@ -1,14 +1,9 @@
+#include <idt/idtirq.h>
 #include <io/asm.h> // for outb(port, val)
 #include <io/printer.h>
 #include <types/nums.h>
 #include <utils/ksleep.h>
-void ZZZ(int ms) {
-    for (int i = 0; i < ms * 1000; i++) {
-        for (volatile int j = 0; j < 1000; j++) {
-            __asm__ volatile("nop");
-        }
-    }
-}
+void ZZZ(int ms) { ms_sleep(ms); }
 // PIT ports
 #define PIT_CHANNEL0 0x40
 #define PIT_COMMAND 0x43

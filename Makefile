@@ -39,10 +39,6 @@ kernel.bin: kernel.elf
 	@echo "[CC] $<"
 	@$(CC) $(CCFLAGS) -c $< -o $@
 
-%.o: %.s 
-	@echo "[AS] $<"
-	@$(AS) $< -o $@
-
 %.o: %.asm
 	@echo "[NASM] $<"
 	@nasm -f elf32 -g -F dwarf $< -o $@
@@ -53,7 +49,7 @@ clean:
 
 test:
 	@echo "[QEMU]"
-	@$(QEMU) -cdrom $(ISO) -machine q35
+	@$(QEMU) -cdrom $(ISO) -machine q35 -gdb tcp::1234 -d int
 
 git:
 	git add .

@@ -7,6 +7,10 @@ SECTIONS {
         KEEP(*(.multiboot))
     }
 
+    .trampoline 0x7C00 : {
+        *(.trampoline)
+    }
+
     .text : {
         *(.text)
     }
@@ -23,4 +27,5 @@ SECTIONS {
         *(COMMON)
         *(.bss)
     }
+
 }
