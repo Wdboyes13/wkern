@@ -1,0 +1,39 @@
+WEX - Wills EXexutable
+An Executable Format I made
+
+Format
+
+First byte is the Entry Point Address
+Second byte is the Symbol table size
+Next is the symbol table
+After verifying the symbols it jumps to Entry Point
+Begins Execution
+0xFF - End Execution
+
+Call Format
+
+0x00 - Prefix 'CALL'
+Data functions also end with 0x00
+
+Actual instructions are marked directly after the 0x00 Prefix
+Instructions are the index in the Symbol Table the symbol is at
+Symbol Table is an array and works like a C array
+For example if Table[2] = 0x0D (SLEEP), then the instruction call would be 0x02
+
+Text data is encoded in ASCII Bytes
+
+example
+Execuable that prints hello
+
+{
+    0x02, 0x01,     Entry point at index 2, symbol table size = 1
+    0x0A,           Write
+    0x00, 0x00, 'H', 'E', 'L', 'L', 'O', 0x00
+    ^       ^- Index 0 (0x0A, Write)  ^   ^- End Write
+    |- Null Delimiter / 'CALL'        |- ASCII Character Bytes
+    0xFF             End Execution
+}
+
+I am currently thinking of designing a high level language
+designed around this Format, which will have an IDE in the Kernel
+But i'd have to setup FAT16 or another FS first

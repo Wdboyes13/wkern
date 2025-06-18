@@ -5,7 +5,6 @@
 #include <io/asm.h>
 #include <io/keyin.h>
 #include <io/printer.h>
-#include <ldints.h>
 #include <types/nums.h>
 #include <utils/img.h>
 #include <utils/katoi.h>
@@ -14,14 +13,6 @@
 #include <wex/testexec.h>
 void kernel_main() {
     all_idt();
-
-    //_picr();
-    // mask_all_irqs();
-
-    // idt_init();
-    // setup_idt();
-    // ldints();
-    // pit_init(100);
 
     kcfp();
     kprintf("\nHello form WKern!\n");
