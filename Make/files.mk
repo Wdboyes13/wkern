@@ -25,7 +25,9 @@ SRCS := KShell/shell.c \
 		fileio/MBR.c \
 		idt/handlers/atairq.c \
 		fileio/irqflags.c \
-		fileio/fat16_mnt.c
+		fileio/fat16_mnt.c \
+		fileio/read/ls.c \
+		fileio/read/printconts.c
 
 NASMSRCS := boot.asm \
 			idt/handlers/gdtf.asm \
@@ -40,4 +42,5 @@ NASMSRCS := boot.asm \
 
 OBJS := $(patsubst %.asm, objs/%.o, $(NASMSRCS)) \
 		$(patsubst %.c, objs/%.o, $(SRCS))
-		
+
+DEPFILES := $(patsubst %.o, %.o.d, $(OBJS))

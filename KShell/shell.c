@@ -1,3 +1,5 @@
+#include <fileio/fat16.h>
+#include <global.h>
 #include <io/keyin.h>
 #include <io/printer.h>
 #include <utils/kstrcmp.h>
@@ -34,10 +36,20 @@ void sh() {
             kprintf("\ncmp - compare strings");
             kprintf("\nclear - clear screen");
             kprintf("\ntst - Test a WEX Executable");
+            kprintf("\nls - List Files in Mounted FAT16");
+            kprintf("\nread - Read File Contents from Cluster (512 Bytes)");
+            kprintf("\nuser - List Username");
         } else if (kstrcmp(cmd, "tst") == 0) {
             runwex(execr());
         } else if (kstrcmp(cmd, "clear") == 0) {
             kcfp();
+        } else if (kstrcmp(cmd, "ls") == 0) {
+            fat16_ls();
+        } else if (kstrcmp(cmd, "read") == 0) {
+            fileconts();
+        } else if (kstrcmp(cmd, "user") == 0) {
+            kputchar('\n');
+            kprintf(name);
         }
     }
 }

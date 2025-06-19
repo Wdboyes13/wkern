@@ -8,24 +8,24 @@
 #include <io/printer.h>
 #include <types/nums.h>
 #include <utils/ksleep.h>
+
+char name[20];
+
 void kernel_main() {
 
     all_idt();
 
-    // kcfp();
-
-    kuint32_t lba = find_fat16_partition();
-    kprint_hex(lba);
+    // kuint32_t lba = find_fat16_partition();
+    // kprint_hex(lba);
     // if (!lba) {
     //    panic("No FAT16 partition found");
     // }
-    // if (!fat16_mount(lba)) {
-    //     panic("Failed to mount FAT16 volume");
-    // }
-
+    if (!fat16_mount(0)) {
+        panic("Failed to mount FAT16 volume");
+    }
+    kcfp();
     kprintf("\nHello form WKern!\n");
     kprintf("Enter your name: ");
-    char name[20];
     kgetstr(name, 19);
     kputchar('\n');
     kprintf("Hello, ");

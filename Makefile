@@ -9,7 +9,7 @@ TARGET=kernel.bin
 ELF = kernel.elf
 ISO=mykern.iso 
 
-CLNTARGS := $(TARGET) $(OBJS) $(ISO) iso/boot/$(TARGET) $(ELF)
+CLNTARGS := $(TARGET) $(OBJS) $(ISO) iso/boot/$(TARGET) $(ELF) $(DEPFILES)
 
 all: fmt comptests $(ISO)
 
@@ -23,11 +23,11 @@ $(ISO): $(TARGET)
 	@cp grub/grub.cfg iso/boot/grub/grub.cfg
 
 	@echo "[GRUBMK] $@"
-	@$(GRUBMK) -o $@ iso
+	@$(GRUBMK) -o $@ iso $(SILENCEALL)
 
 kernel.elf: $(OBJS)
 	@echo "[LD] $@"
-	@echo "[OBJS TO LINK] $^"
+#	@echo "[OBJS TO LINK] $^"
 	@$(LD) $(LDFLAGS) -o $@ $^
 
 kernel.bin: kernel.elf
@@ -41,7 +41,7 @@ kernel.bin: kernel.elf
 
 objs/%.o: %.c
 	@echo "[CC] $<"
-	@$(CC) $(CCFLAGS) -c $< -o $@
+	@$(CC) $(CCFLAGS) -c $< -o $@ -MF $@.d
 
 objs/%.o: %.asm
 	@echo "[NASM] $<"

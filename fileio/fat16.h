@@ -2,9 +2,9 @@
 
 #include <global.h>
 #include <types/nums.h>
-
+void fat16_ls();
 kuint32_t fat16_mount(kuint32_t partition_lba);
-
+void fileconts();
 struct PKG FAT16_BPB {
     kuint8_t  jmp[3];
     kuint8_t  oem[8];
@@ -41,3 +41,6 @@ struct FAT16_Info {
     kuint16_t sectors_per_fat;
     kuint16_t reserved_sectors; // ← Add this field
 };
+
+
+extern struct FAT16_Info fat16;

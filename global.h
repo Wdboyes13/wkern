@@ -8,3 +8,5 @@ static int col = 0;
 
 #define ATTR(x) __attribute__((x))
 #define PKG ATTR(packed)
+
+extern char name[20];
