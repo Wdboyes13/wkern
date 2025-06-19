@@ -5,16 +5,7 @@ include Make/tools.mk
 SILENCE := 1>/dev/null
 SILENCEALL := >/dev/null 2>&1
 
-TARGET=kernel.bin
-ELF = kernel.elf
-ISO=mykern.iso 
-
-CLNTARGS := $(TARGET) $(OBJS) $(ISO) iso/boot/$(TARGET) $(ELF) $(DEPFILES)
-
 all: fmt comptests $(ISO)
-
-mbtest:
-	./multiboot-check.sh
 
 $(ISO): $(TARGET)
 	@echo "[CP]"
@@ -25,12 +16,12 @@ $(ISO): $(TARGET)
 	@echo "[GRUBMK] $@"
 	@$(GRUBMK) -o $@ iso $(SILENCEALL)
 
-kernel.elf: $(OBJS)
+$(ELF): $(OBJS)
 	@echo "[LD] $@"
 #	@echo "[OBJS TO LINK] $^"
 	@$(LD) $(LDFLAGS) -o $@ $^
 
-kernel.bin: kernel.elf
+$(TARGET): $(ELF)
 	@echo "[OBJCOPY $@]"
 	@$(OBJCOPY) -O binary \
 		-j .multiboot \
@@ -47,31 +38,6 @@ objs/%.o: %.asm
 	@echo "[NASM] $<"
 	@$(NASM) -f elf32 -g -F dwarf $< -o $@
 
-clean:
-	@echo "[RM] $(CLNTARGS)"
-	@rm -f $(CLNTARGS)
+.PHONY: all
 
-test:
-	@echo "[QEMU]"
-	@qemu-system-i386 \
-		-machine pc,accel=tcg \
-		-drive file=mykern.iso,format=raw,media=cdrom,if=ide,index=2 \
-		-drive file=fat16.img,format=raw,if=ide,index=0 \
-		-boot d \
-		-gdb tcp::1234 \
-		-monitor stdio \
-		-qmp tcp:localhost:4444,server,nowait \
-		-no-reboot -no-shutdown
-git: clean
-	git add .
-	git commit $(MSG) $(SILENCE)
-	git push $(GITREM) $(SILENCE)
-
-fmt:
-	@echo "[FMT]"
-	@clang-format -i $(HEADS) $(SRCS)
-
-comptests:
-	cd tsts && ./tstall.sh $(NASM) $(CC)
-
-.PHONY: clean all test git fmt comptests
+include Make/fakes.mk

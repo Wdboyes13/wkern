@@ -1,51 +1,57 @@
-SRCS := KShell/shell.c \
-		err/panic.c \
-		err/tf.c \
-		idt/idt.c \
-		idt/handlers/irq0.c \
-		idt/masker.c \
-		io/asm.c \
-		io/keyin.c \
-		io/printer.c \
-		main.c \
-		mem/memset.c \
-		qemu/shutdown.c \
-		types/nums.c \
-		utils/img.c \
-		utils/katoi.c \
-		utils/ksleep.c \
-		utils/kstrcmp.c \
-		wex/chkst.c \
-		wex/exec.c \
-		wex/rdfv.c \
-		wex/stwex.c \
-		wex/testexec.c \
-		idt/gdt.c \
-		fileio/ATA.c \
-		fileio/MBR.c \
-		idt/handlers/atairq.c \
-		fileio/irqflags.c \
-		fileio/fat16_mnt.c \
-		fileio/read/ls.c \
-		fileio/read/printconts.c \
-		fileio/read/mkfile.c \
-		KShell/kcmp.c \
-		mem/memcpy.c \
-		mem/memcmp.c \
-		fileio/read/rmfile.c
+SRCS := src/KShell/shell.c \
+		src/err/panic.c \
+		src/err/tf.c \
+		src/idt/idt.c \
+		src/idt/handlers/irq0.c \
+		src/idt/masker.c \
+		src/io/asm.c \
+		src/io/keyin.c \
+		src/io/printer.c \
+		src/main.c \
+		src/mem/memset.c \
+		src/qemu/shutdown.c \
+		src/types/nums.c \
+		src/utils/img.c \
+		src/utils/katoi.c \
+		src/utils/ksleep.c \
+		src/utils/kstrcmp.c \
+		src/wex/chkst.c \
+		src/wex/exec.c \
+		src/wex/rdfv.c \
+		src/wex/stwex.c \
+		src/wex/testexec.c \
+		src/idt/gdt.c \
+		src/fileio/ATA.c \
+		src/fileio/MBR.c \
+		src/idt/handlers/atairq.c \
+		src/fileio/irqflags.c \
+		src/fileio/fat16_mnt.c \
+		src/fileio/read/ls.c \
+		src/fileio/read/printconts.c \
+		src/fileio/read/mkfile.c \
+		src/KShell/kcmp.c \
+		src/mem/memcpy.c \
+		src/mem/memcmp.c \
+		src/fileio/read/rmfile.c
 
-NASMSRCS := boot.asm \
-			idt/handlers/gdtf.asm \
-			idt/handlers/goodasm.asm \
-			idt/handlers/irq0a.asm \
-			idt/handlers/irq1a.asm \
-			idt/picr.asm \
-			utils/sdn.asm \
-			utils/shutdown.asm \
-			idt/handlers/irq14.asm \
-			idt/handlers/irq15.asm 
+NASMSRCS := src/boot.asm \
+			src/idt/handlers/gdtf.asm \
+			src/idt/handlers/goodasm.asm \
+			src/idt/handlers/irq0a.asm \
+			src/idt/handlers/irq1a.asm \
+			src/idt/picr.asm \
+			src/utils/sdn.asm \
+			src/utils/shutdown.asm \
+			src/idt/handlers/irq14.asm \
+			src/idt/handlers/irq15.asm 
 
 OBJS := $(patsubst %.asm, objs/%.o, $(NASMSRCS)) \
 		$(patsubst %.c, objs/%.o, $(SRCS))
 
 DEPFILES := $(patsubst %.o, %.o.d, $(OBJS))
+
+TARGET=kernel.bin
+ELF = kernel.elf
+ISO=mykern.iso 
+
+CLNTARGS := $(TARGET) $(OBJS) $(ISO) iso/boot/$(TARGET) $(ELF) $(DEPFILES)
