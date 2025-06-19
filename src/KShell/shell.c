@@ -29,6 +29,8 @@ void sh() {
             kprintf("\nuser - List Username");
             kprintf("\nmkfile - Make a new file");
             kprintf("\nrm - Remove a file");
+            kprintf("\nsetname - Set Username");
+            kprintf("\nwrite - Write to a File");
         } else if (kstrcmp(cmd, "tst") == 0) {
             runwex(execr());
         } else if (kstrcmp(cmd, "clear") == 0) {
@@ -44,11 +46,13 @@ void sh() {
             char filename[9];
             char filext[4];
             kprintf("Enter Filename 7 Letters Max (Without Extension): ");
-            kgetstr(filename, 8);
+            kgetstr(filename, 9);
             kflush();
+            kputchar('\n');
             kprintf("Enter File Extension: ");
-            kgetstr(filext, 3);
+            kgetstr(filext, 4);
             kflush();
+            kputchar('\n');
             mkfile(filename, filext);
         } else if (kstrcmp(cmd, "rm") == 0) {
             char filename[9];
@@ -56,10 +60,37 @@ void sh() {
             kprintf("Enter Filename 7 Letters Max (Without Extension): ");
             kgetstr(filename, 9);
             kflush();
+            kputchar('\n');
             kprintf("Enter File Extension: ");
             kgetstr(filext, 4);
             kflush();
+            kputchar('\n');
             fat16_remove_file(filename, filext);
+        } else if (kstrcmp(cmd, "setname") == 0) {
+            kprintf("Enter your name: ");
+            kgetstr(name, 19);
+            kputchar('\n');
+        } else if (kstrcmp(cmd, "write") == 0) {
+            char filename[9];
+            char ext[4];
+            char data[500];
+
+            kprintf("Enter Filename (Without Extension): ");
+            kgetstr(filename, 9);
+            kflush();
+            kputchar('\n');
+
+            kprintf("Enter File Extension: ");
+            kgetstr(ext, 4);
+            kflush();
+
+            kprintf("Start Writing Data");
+            kputchar('\n');
+            kgetstr(data, 500);
+            kflush();
+            writefile(filename, ext, data, sizeof(data));
+        } else {
+            kprintf("\nUnknown Command - Try `help`\n");
         }
     }
 }

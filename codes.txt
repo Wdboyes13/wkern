@@ -1,6 +1,0 @@
-CC - Green
-LD - Yellow
-ISO Stuff - Magenta
-Test - Blue
-Format - Cyan
-NASM - Red

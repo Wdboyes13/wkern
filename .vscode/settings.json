@@ -21,6 +21,7 @@
         "stwex.h": "c",
         "util.h": "c",
         "kmem.h": "c",
-        "kio.h": "c"
+        "kio.h": "c",
+        "stdint.h": "c"
     }
 }

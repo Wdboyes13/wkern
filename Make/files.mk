@@ -1,6 +1,6 @@
-SRCS 		:= src/fileio/irqflags.c src/fileio/read/printconts.c \
-			src/fileio/read/ls.c src/fileio/read/mkfile.c \
-			src/fileio/read/rmfile.c src/fileio/ATA.c \
+SRCS 		:= src/fileio/irqflags.c src/fileio/ops/printconts.c \
+			src/fileio/ops/ls.c src/fileio/ops/mkfile.c \
+			src/fileio/ops/rmfile.c src/fileio/ATA.c \
 			src/fileio/MBR.c src/fileio/fat16_mnt.c \
 			src/err/tf.c src/err/panic.c \
 			src/wex/testexec.c src/wex/wexent.c \
@@ -11,7 +11,8 @@ SRCS 		:= src/fileio/irqflags.c src/fileio/read/printconts.c \
 			src/idt/gdt.c src/idt/idt.c \
 			src/idt/handlers/irq0.c src/idt/masker.c \
 			src/main.c src/qemu/shutdown.c \
-			src/mem/memutil.c src/KShell/shell.c
+			src/mem/memutil.c src/KShell/shell.c \
+			src/fileio/ops/write.c
 
 NASMSRCS 	:=src/boot.asm \
 			src/idt/handlers/gdtf.asm \

@@ -1,0 +1,75 @@
+.
+├── KShell
+│   ├── shell.c - Kernel Shell Code
+│   └── shell.h - Header so that main can access it
+├── Make
+│   ├── files.mk - Makefile including variables with filenames
+│   ├── flags.mk - Command flags
+│   └── tools.mk - Tools Lists
+├── Makefile - Main Makefile with Build System
+├── Map.txt - This File
+├── boot.asm - Multiboot header and entry point
+├── err
+│   ├── panic.c - Kernel Panic Code
+│   ├── panic.h - Kernel Panic Header
+│   ├── tf.c - Forced Triple Faault Code
+│   └── tf.h - Forced Triple Fault Header
+├── global.h - Some global variables
+├── grub
+│   └── grub.cfg - GRUB Config
+├── idt
+│   ├── gdt.c - Grand Descriptor Table C Code
+│   ├── handlers
+│   │   ├── gdtf.asm - Grand Descriptor Table ASM Function
+│   │   ├── goodasm.asm - ISR3 ASM Handler 
+│   │   ├── irq0a.asm - IRQ0 (PIT) ASM Handler
+│   │   └── irq1a.asm - IRQ1 (Keyboard Interrupt) ASM Handler
+│   ├── idt.c - Main IDT/GDT Setup Code
+│   ├── idtirq.h - Giant Header containing ALL GDT/IRQ Declarations
+│   ├── irq0.c - IRQ0 C Handler
+│   ├── masker.c - IRQ Masking
+│   └── picr.asm - PIC Remap ASM Function
+├── io
+│   ├── asm.c - C Interface for some ASM Calls
+│   ├── asm.h - Headers for ASM Calls
+│   ├── keyin.c - Keyboard Input Functions
+│   ├── keyin.h - Keyboard Input Header
+│   ├── printer.c - Text output Code
+│   └── printer.h - Text output Header
+├── link.ld - Linker Script
+├── main.c - Main Kernel Code
+├── mem
+│   ├── memset.c - memset C Function Code
+│   └── memset.h - memset C Function Header
+├── qemu
+│   ├── shutdown.c - Shutdown Code
+│   └── shutdown.h - Shutdown Header
+├── types
+│   ├── nums.c - Number Types Code
+│   └── nums.h - Number Types Header
+├── utils
+│   ├── img.c - Prints a happy face
+│   ├── img.h - Header for the function 
+│   ├── katoi.c - Kernel-Space itoa/atoi Code
+│   ├── katoi.h - Kernel-Space itoa/atoi Header
+│   ├── ksleep.c - Sleep Functions
+│   ├── ksleep.h - Sleep Functions Header
+│   ├── kstrcmp.c - Kernel-Space STRCMP Code
+│   ├── kstrcmp.h - Kernel-Space STRCMP Header
+│   ├── sdn.asm - Real-Mode Jump Shutdown ASM Function
+│   ├── shutd.h - Real-Moode Jump Shutdown C Header
+│   └── shutdown.asm - The actual code that jumps to sdn.asm
+└── wex
+    ├── chkst.c - WEX Check SymTable
+    ├── chkst.h - Header for WEX Check SymTable
+    ├── exec.c - WEX Exection Code
+    ├── exec.h - WEX Exection Header
+    ├── rdfv.c - File to read first Values
+    ├── rdfv.h - Header for reading first Values
+    ├── st.h - ABI Symbol Table
+    ├── stwex.c - Entry point to begin WEX Execution
+    ├── stwex.h - Header
+    ├── testexec.c - A Test Executable
+    └── testexec.h - Header to access test Executable
+
+16 directories, 69 files

@@ -2,12 +2,6 @@
 #include <global.h>
 #include <types/nums.h>
 
-void fat16_ls();
-kuint32_t fat16_mount(kuint32_t partition_lba);
-void fileconts();
-void mkfile(const char *filename, const char *ext);
-void fat16_remove_file(const char *filename, const char *ext);
-
 struct PKG FAT16_BPB {
     kuint8_t jmp[3];
     kuint8_t oem[8];
@@ -59,3 +53,11 @@ extern volatile kuint8_t irq14stat;
 extern volatile kuint8_t irq15stat;
 
 kuint32_t find_fat16_partition();
+
+void writefile(const char *filename, const char *ext, const char *data,
+               kuint32_t size);
+void fat16_ls();
+kuint32_t fat16_mount(kuint32_t partition_lba);
+void fileconts();
+void mkfile(const char *filename, const char *ext);
+void fat16_remove_file(const char *filename, const char *ext);

@@ -1,0 +1,30 @@
+# WKern  
+**This is a kernel/OS I'm working on**  
+
+__The specs of the machine are very important__  
+__Since I dont have the energy to port it to working on other machines__  
+
+__DO NOT INSTALL ON A REAL PC PLS__  
+
+## Tools
+
+- NASM Assembler  
+- qemu-system-i386  
+- GNU Make  
+- i686-elf-gcc Cross Compiler  
+- i686-elf-ld Cross Linker  
+- i686-elf-grub-mkrescue - For making the ISO __(E-Mail william@weelam.ca if you want me to build it for you)__  
+  
+>[!NOTE]  
+>The CC/GRUB/LD Can be replaced if you have a Compiler that is the same  
+>It MUST be for x86 not x86_64  
+>To change it edit Make/tools.mk  
+
+
+## To Run
+
+```sh
+./mkdisk.sh       # This creates the disk that the OS will use
+make              # This will run ALL Compilation and Tests
+make test         # This will run QEMU Using the required config
+```
