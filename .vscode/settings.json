@@ -8,6 +8,14 @@
         "idtirq.h": "c",
         "printer.h": "c",
         "global.h": "c",
-        "irqflags.h": "c"
+        "irqflags.h": "c",
+        "bitset": "c",
+        "algorithm": "c",
+        "flat_map": "c",
+        "flat_set": "c",
+        "format": "c",
+        "memcpy.h": "c",
+        "rmfile": "cpp",
+        "ata.h": "c"
     }
 }

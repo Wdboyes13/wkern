@@ -1,2 +1,5 @@
 CompileFlags:
-    Add: [-I/Users/william/coding/wkern]
+    Add:
+      - -I/Users/william/coding/wkern
+      - -ffreestanding
+      - -nostdlib

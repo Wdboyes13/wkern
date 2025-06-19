@@ -1,3 +1,4 @@
+#include <KShell/shell.h>
 #include <fileio/fat16.h>
 #include <global.h>
 #include <io/keyin.h>
@@ -5,6 +6,7 @@
 #include <utils/kstrcmp.h>
 #include <wex/stwex.h>
 #include <wex/testexec.h>
+
 void sh() {
     while (1) {
         char cmd[16];
@@ -12,19 +14,7 @@ void sh() {
         kgetstr(cmd, sizeof(cmd));
         kflush();
         if (kstrcmp(cmd, "cmp") == 0) {
-            kprintf("\nSTR1>");
-            char str1[256];
-            kgetstr(str1, sizeof(str1));
-            kflush();
-            kprintf("\nSTR2>");
-            char str2[256];
-            kgetstr(str2, sizeof(str2));
-            kflush();
-            if (kstrcmp(str1, str2) == 0) {
-                kprintf("\nEqual");
-            } else {
-                kprintf("\nNot Equal");
-            }
+            kcmp();
         } else if (kstrcmp(cmd, "shutdown") == 0) {
 #ifdef VMQEMU
 #include <qemu/shutdown.h>
@@ -50,6 +40,26 @@ void sh() {
         } else if (kstrcmp(cmd, "user") == 0) {
             kputchar('\n');
             kprintf(name);
+        } else if (kstrcmp(cmd, "mkfile") == 0) {
+            char filename[9];
+            char filext[4];
+            kprintf("Enter Filename 7 Letters Max (Without Extension): ");
+            kgetstr(filename, 8);
+            kflush();
+            kprintf("Enter File Extension: ");
+            kgetstr(filext, 3);
+            kflush();
+            mkfile(filename, filext);
+        } else if (kstrcmp(cmd, "rm") == 0) {
+            char filename[9];
+            char filext[4];
+            kprintf("Enter Filename 7 Letters Max (Without Extension): ");
+            kgetstr(filename, 9);
+            kflush();
+            kprintf("Enter File Extension: ");
+            kgetstr(filext, 4);
+            kflush();
+            fat16_remove_file(filename, filext);
         }
     }
 }

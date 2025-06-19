@@ -5,6 +5,27 @@
 struct FAT16_Info fat16;
 static kuint8_t fat16_sector[512];
 
+kuint32_t fat16_total_clusters(struct FAT16_Info *fat) {
+    // Use 32-bit total sectors if 16-bit is zero
+    kuint32_t total_sectors = fat->total_sectors_16 != 0
+                                  ? fat->total_sectors_16
+                                  : fat->total_sectors_32;
+
+    // Root directory size in sectors
+    kuint32_t root_dir_sectors =
+        ((fat->root_entry_count * 32) + (fat->bytes_per_sector - 1)) /
+        fat->bytes_per_sector;
+
+    // Data sectors = total - reserved - (number of FATs × size of each FAT) -
+    // root dir
+    kuint32_t data_sectors = total_sectors - fat->reserved_sectors -
+                             (fat->num_fats * fat->sectors_per_fat) -
+                             root_dir_sectors;
+
+    // Cluster count = how many clusters fit in data region
+    return data_sectors / fat->sectors_per_cluster;
+}
+
 kuint32_t fat16_mount(kuint32_t partition_lba) {
     ata_read_sector(partition_lba, fat16_sector);
 
@@ -22,6 +43,9 @@ kuint32_t fat16_mount(kuint32_t partition_lba) {
     fat16.root_entry_count = bpb->root_entry_count;
     fat16.sectors_per_fat = bpb->sectors_per_fat;
 
+    fat16.total_sectors_16 = bpb->total_sectors_short;
+    fat16.total_sectors_32 = bpb->total_sectors_long;
+
     fat16.fat_start_lba = partition_lba + bpb->reserved_sectors;
 
     kuint32_t root_dir_sectors =
@@ -31,6 +55,8 @@ kuint32_t fat16_mount(kuint32_t partition_lba) {
     fat16.root_dir_start_lba =
         fat16.fat_start_lba + (bpb->num_fats * bpb->sectors_per_fat);
     fat16.data_start_lba = fat16.root_dir_start_lba + root_dir_sectors;
+
+    fat16.total_cluster = fat16_total_clusters(&fat16);
 
     kprintf("FAT16 Mount Success:\n");
     kprintf(" FAT LBA: ");

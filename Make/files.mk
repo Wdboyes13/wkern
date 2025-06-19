@@ -27,7 +27,12 @@ SRCS := KShell/shell.c \
 		fileio/irqflags.c \
 		fileio/fat16_mnt.c \
 		fileio/read/ls.c \
-		fileio/read/printconts.c
+		fileio/read/printconts.c \
+		fileio/read/mkfile.c \
+		KShell/kcmp.c \
+		mem/memcpy.c \
+		mem/memcmp.c \
+		fileio/read/rmfile.c
 
 NASMSRCS := boot.asm \
 			idt/handlers/gdtf.asm \

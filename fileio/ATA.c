@@ -24,6 +24,8 @@
 #define ATA_SR_DRQ 0x08
 #define ATA_SR_ERR 0x01
 
+#define ATA_WRITE_CMD 0x30
+
 void ata_poll() {
     for (int i = 0; i < 4; i++)
         inb(ATA_CTRL); // 400ns delay
@@ -56,16 +58,37 @@ void ata_read_sector(kuint32_t lba, kuint8_t *buffer) {
 
     kuint8_t status = inb(ATA_STATUS);
     kuint8_t err = inb(ATA_ERROR);
-    kprintf("Status after command: ");
-    kprint_hex(status);
-    kputchar('\n');
-    kprintf("Error: ");
-    kprint_hex(err);
-    kputchar('\n');
 
     for (int i = 0; i < 256; i++) {
         kuint16_t data = inw(ATA_DATA);
         buffer[i * 2] = (kuint8_t)(data & 0xFF);
         buffer[i * 2 + 1] = (kuint8_t)(data >> 8);
     }
+}
+
+void ata_write_sector(kuint32_t lba, const kuint8_t *buffer) {
+    outb(ATA_CTRL, 0x00); // enable IRQs
+
+    outb(ATA_IO_BASE + 6, 0xE0 | ((lba >> 24) & 0x0F)); // drive + LBA mode
+    outb(ATA_IO_BASE + 2, 1);                           // sector count
+    outb(ATA_IO_BASE + 3, (kuint8_t)(lba));             // LBA low
+    outb(ATA_IO_BASE + 4, (kuint8_t)(lba >> 8));        // LBA mid
+    outb(ATA_IO_BASE + 5, (kuint8_t)(lba >> 16));       // LBA high
+
+    outb(ATA_IO_BASE + 7, ATA_WRITE_CMD); // send write command
+
+    // wait for drive to be ready
+    while (!(inb(ATA_IO_BASE + 7) & 0x08))
+        ; // DRQ
+
+    // write data
+    for (int i = 0; i < 256; i++) {
+        kuint16_t word = ((kuint16_t)buffer[i * 2 + 1] << 8) | buffer[i * 2];
+        outw(ATA_IO_BASE, word);
+    }
+
+    // Flush cache
+    outb(ATA_IO_BASE + 7, 0xE7); // flush command
+    while (inb(ATA_IO_BASE + 7) & 0x80)
+        ; // wait for BSY to clear
 }

@@ -25,8 +25,14 @@ void fat16_ls() {
         for (kuint32_t j = 0; j < entries_per_sector; j++) {
             kuint8_t *entry = &sector[j * 32];
 
-            if (entry[0] == 0x00)
-                return; // no more entries
+            if (entry[0] == 0x00) {
+                // If it's the *first* entry in this sector, we're at the end of
+                // the directory
+                if (j == 0)
+                    return;
+                else
+                    continue;
+            }
 
             if (entry[0] == 0xE5)
                 continue; // deleted entry
