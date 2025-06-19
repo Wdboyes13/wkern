@@ -2,10 +2,7 @@ include Make/files.mk
 include Make/flags.mk
 include Make/tools.mk
 
-SILENCE := 1>/dev/null
-SILENCEALL := >/dev/null 2>&1
-
-all: fmt comptests $(ISO)
+all: fmt comptests $(ISO) mbtest
 
 $(ISO): $(TARGET)
 	@echo "[CP]"
@@ -22,12 +19,7 @@ $(ELF): $(OBJS)
 
 $(TARGET): $(ELF)
 	@echo "[OBJCOPY $@]"
-	@$(OBJCOPY) -O binary \
-		-j .multiboot \
-		-j .text \
-		-j .rodata \
-		-j .data \
-		$< $@
+	@$(OBJCOPY) $(OBJCFLAGS) $< $@
 
 objs/%.o: %.c
 	@echo "[CC] $<"
@@ -35,7 +27,7 @@ objs/%.o: %.c
 
 objs/%.o: %.asm
 	@echo "[NASM] $<"
-	@$(NASM) -f elf32 -g -F dwarf $< -o $@
+	@$(NASM) $(NASMFLAGS) $< -o $@
 
 .PHONY: all
 

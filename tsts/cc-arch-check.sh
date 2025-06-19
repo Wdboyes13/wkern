@@ -4,3 +4,5 @@ if [ $ARCH = 1 ]; then
     echo "Invalid Compiler Architecture"
     exit 1
 fi
+
+rm arch.o

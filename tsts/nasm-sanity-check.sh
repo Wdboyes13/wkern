@@ -6,9 +6,11 @@ if [ isnasm = 1 ]; then
    exit 1
 fi
    
-$NASM ~/coding/wkern/tsts/nasm-tst.asm
+$NASM nasm-tst.asm
 nasmworks=$?
 if [ nasmworks = 1 ]; then
    echo "NASM Assembler Broken"
    exit 1
 fi
+
+rm nasm-tst

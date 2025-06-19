@@ -30,6 +30,6 @@ comptests:
 	cd tsts && ./tstall.sh $(NASM) $(CC)
 
 mbtest:
-	./multiboot-check.sh
+	./tsts/multiboot-check.sh
 
 .PHONY: clean test git fmt comptests
