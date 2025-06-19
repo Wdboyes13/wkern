@@ -11,15 +11,16 @@ void kernel_main() {
 
     all_idt();
 
-    // kuint32_t lba = find_fat16_partition();
-    // kprint_hex(lba);
-    // if (!lba) {
-    //    panic("No FAT16 partition found");
-    // }
+    kuint32_t lba = find_fat16_partition();
+    kprint_hex(lba);
+    if (!lba) {
+        lba = 0;
+    }
 
-    if (!fat16_mount(0)) {
+    if (!fat16_mount(lba)) {
         panic("Failed to mount FAT16 volume");
     }
+
     kcfp();
 
     kprintf("\nHello form WKern!\n");

@@ -12,7 +12,7 @@ void sh() {
         kgetstr(cmd, sizeof(cmd));
         kflush();
         if (kstrcmp(cmd, "cmp") == 0) {
-            kcmp();
+            kshcmp();
         } else if (kstrcmp(cmd, "shutdown") == 0) {
 #ifdef VMQEMU
 #include <qemu/shutdown.h>
@@ -27,6 +27,8 @@ void sh() {
             kprintf("\nls - List Files in Mounted FAT16");
             kprintf("\nread - Read File Contents from Cluster (512 Bytes)");
             kprintf("\nuser - List Username");
+            kprintf("\nmkfile - Make a new file");
+            kprintf("\nrm - Remove a file");
         } else if (kstrcmp(cmd, "tst") == 0) {
             runwex(execr());
         } else if (kstrcmp(cmd, "clear") == 0) {

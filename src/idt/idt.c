@@ -23,10 +23,6 @@ extern void idt_load(void);
 
 #define KERNEL_CODE_SEGMENT 0x08 // Usually your GDT code segment
 
-void isr3_handler(void) { kputchar('!'); }
-
-extern void isr3_stub(void);
-
 void debug_print_idt_entry(int i) {
     kuint32_t base = (idt[i].base_hi << 16) | idt[i].base_lo;
     kprintf("IDT[");
@@ -58,10 +54,6 @@ void all_idt() {
     kprintf("Setting IDT Limit + Base\n");
     idt_ptrn.limit = (sizeof(struct idt_entry) * IDT_ENTRIES) - 1;
     idt_ptrn.base = (kuintptr_t)idt;
-
-    kprintf("Setting up IDT gate 3\n");
-    idt_set_gate(3, (kuintptr_t)isr3_stub, KERNEL_CODE_SEGMENT, 0x8E);
-    debug_print_idt_entry(3);
 
     kprintf("Setting up IDT gate 32 (IRQ0)\n");
     idt_set_gate(32, (kuintptr_t)irq0_handler, KERNEL_CODE_SEGMENT, 0x8E);
@@ -102,9 +94,6 @@ void all_idt() {
 
     kprintf("Enabling interrupts");
     __asm__ volatile("sti");
-
-    kprintf("Calling test INT\n");
-    __asm__ volatile("int $3");
 
     pit_init(100);
 }
