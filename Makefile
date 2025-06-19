@@ -11,7 +11,10 @@ ISO=mykern.iso
 
 CLNTARGS := $(TARGET) $(OBJS) $(ISO) iso/boot/$(TARGET) $(ELF)
 
-all: fmt $(ISO)
+all: fmt comptests $(ISO)
+
+mbtest:
+	./multiboot-check.sh
 
 $(ISO): $(TARGET)
 	@echo "[CP]"
@@ -42,7 +45,7 @@ objs/%.o: %.c
 
 objs/%.o: %.asm
 	@echo "[NASM] $<"
-	@nasm -f elf32 -g -F dwarf $< -o $@
+	@$(NASM) -f elf32 -g -F dwarf $< -o $@
 
 clean:
 	@echo "[RM] $(CLNTARGS)"
@@ -68,4 +71,7 @@ fmt:
 	@echo "[FMT]"
 	@clang-format -i $(HEADS) $(SRCS)
 
-.PHONY: clean all test git fmt
+comptests:
+	cd tsts && ./tstall.sh $(NASM) $(CC)
+
+.PHONY: clean all test git fmt comptests

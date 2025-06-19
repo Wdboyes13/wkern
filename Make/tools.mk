@@ -7,4 +7,5 @@ STRIP=i686-elf-strip
 GRUBMK=i686-elf-grub-mkrescue
 QEMU=qemu-system-i386
 OBJCOPY=i686-elf-objcopy
+NASM=nasm
 endif

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <types/nums.h> // put includes at the top
+#include <global.h>
 
 /*
 ===================
@@ -34,7 +35,7 @@ struct idt_entry {
     kuint8_t always0;
     kuint8_t flags; // Flags (present, ring level, type)
     kuint16_t base_hi;
-} __attribute__((packed));
+} PKG;
 
 struct gdt_entry {
     kuint16_t limit_low;      // Lower 16 bits of limit
@@ -43,14 +44,14 @@ struct gdt_entry {
     kuint8_t  access;         // Access flags
     kuint8_t  granularity;    // Granularity flags + upper 4 bits of limit
     kuint8_t  base_high;      // Last 8 bits of base
-} __attribute__((packed));
+} PKG;
 
 struct gdt_ptr {
     kuint16_t limit;
     kuint32_t base;
-} __attribute__((packed));
+} PKG;
 
-struct __attribute__((packed)) idt_ptr {
+struct PKG idt_ptr {
     kuint16_t limit;
     kuint32_t base;
 };

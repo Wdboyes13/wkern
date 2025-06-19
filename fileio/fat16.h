@@ -1,10 +1,11 @@
 #pragma once
 
+#include <global.h>
 #include <types/nums.h>
 
 kuint32_t fat16_mount(kuint32_t partition_lba);
 
-struct __attribute__((packed)) FAT16_BPB {
+struct PKG FAT16_BPB {
     kuint8_t  jmp[3];
     kuint8_t  oem[8];
     kuint16_t bytes_per_sector;

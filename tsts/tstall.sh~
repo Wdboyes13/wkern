@@ -1,0 +1,3 @@
+set -euxo pipefail
+./nasm-sanity-check.sh
+./cc-arch-check.sh

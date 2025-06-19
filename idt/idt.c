@@ -1,4 +1,5 @@
 #include "utils/ksleep.h"
+#include <global.h>
 #include <idt/idtirq.h>
 #include <io/asm.h>
 #include <io/keyin.h>
@@ -89,7 +90,7 @@ void all_idt() {
     struct {
         kuint16_t limit;
         kuint32_t base;
-    } __attribute__((packed)) gdtr;
+    } PKG gdtr;
 
     __asm__ volatile("sgdt %0" : "=m"(gdtr));
 

@@ -1,4 +1,5 @@
 #include <fileio/ATA.h>
+#include <global.h>
 #include <io/printer.h>
 #include <types/nums.h>
 
@@ -6,7 +7,7 @@
 #define FAT16_TYPE1 0x04
 #define FAT16_TYPE2 0x06
 
-struct __attribute__((packed)) PartitionEntry {
+struct PKG PartitionEntry {
     kuint8_t status;
     kuint8_t chs_first[3];
     kuint8_t type;
@@ -15,7 +16,7 @@ struct __attribute__((packed)) PartitionEntry {
     kuint32_t total_sectors;
 };
 
-struct __attribute__((packed)) MBR {
+struct PKG MBR {
     kuint8_t bootstrap[446];
     struct PartitionEntry partitions[4];
     kuint16_t signature;
