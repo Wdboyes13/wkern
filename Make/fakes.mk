@@ -28,4 +28,12 @@ comptests:
 mbtest:
 	./tsts/multiboot-check.sh
 
-.PHONY: clean test git comptests
+
+fmt_heads=$(patsubst src/%,/Users/william/coding/wkern/src/%, $(HEADS))
+fmt_srcs=$(patsubst src/%,/Users/william/coding/wkern/src/%, $(SRCS))
+fmt:
+	@echo "[FMT]"
+	@clang-format -i $(fmt_heads) $(fmt_srcs)
+
+
+.PHONY: clean test git comptests fmt

@@ -10,19 +10,18 @@ SRCS :=src/KShell/shell.c src/err/panic.c \
 		src/wex/exec.c src/wex/rdfv.c \
 		src/wex/stwex.c src/wex/testexec.c \
 		src/idt/gdt.c src/fileio/ATA.c \
-		src/fileio/MBR.c \
+		src/fileio/MBR.c src/fileio/read/rmfile.c \
 		src/fileio/irqflags.c src/fileio/fat16_mnt.c \
 		src/fileio/read/ls.c src/fileio/read/printconts.c \
 		src/fileio/read/mkfile.c src/KShell/kcmp.c \
-		src/mem/memcpy.c src/mem/memcmp.c \
-		src/fileio/read/rmfile.c
+		src/mem/memcpy.c src/mem/memcmp.c
 
 NASMSRCS := src/boot.asm \
 			src/idt/handlers/gdtf.asm \
 			src/idt/handlers/goodasm.asm \
 			src/idt/handlers/irq0a.asm \
 			src/idt/handlers/irq1a.asm \
-			src/idt/picr.asm \
+			src/idt/picr.asm
 
 OBJS := $(patsubst %.asm, objs/%.o, $(NASMSRCS)) \
 		$(patsubst %.c, objs/%.o, $(SRCS))
@@ -33,7 +32,7 @@ TARGET=kernel.bin
 ELF = kernel.elf
 ISO=mykern.iso 
 
-CLNTARGS := $(TARGET) $(OBJS) $(ISO) iso/boot/$(TARGET) $(ELF)
+CLNTARGS := $(TARGET) $(OBJS) $(ISO) iso/boot/$(TARGET) $(ELF) iso/boot/$(ELF)
 
 
 HEADS := src/types/nums.h src/fileio/fileio.h \
