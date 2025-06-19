@@ -7,7 +7,10 @@ __Since I dont have the energy to port it to working on other machines__
 __DO NOT INSTALL ON A REAL PC PLS__  
 
 ## Tools
-
+  
+- `dd` For Making a new disk  
+- A macOS or Linux Computer/VM  
+- `mkfs.fat` Tool - From `dosfstools`
 - NASM Assembler  
 - qemu-system-i386  
 - GNU Make  
