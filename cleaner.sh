@@ -27,12 +27,3 @@ rm -f **/*~
 
 # CLEAN OBJS
 rm -f **/*.o
-
-# Output all unused functions
-i686-elf-nm -C --defined-only kernel.elf | grep ' T ' > defined.txt
-i686-elf-nm -C kernel.elf | grep ' U ' > referenced.txt
-
-cut -d ' ' -f 3 defined.txt | sort > defs.txt
-cut -d ' ' -f 3 referenced.txt | sort > refs.txt
-
-comm -23 defs.txt refs.txt > unused_funcs.txt

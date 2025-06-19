@@ -1,4 +1,4 @@
-ISMULTIBOOT=$(xxd -l 16 kernel.bin | grep "02b0 ad1b" | echo $?)
+ISMULTIBOOT=$(i686-elf-grub-file --is-x86-multiboot kernel.elf | echo $?)
 
 if [ $ISMULTIBOOT = 1 ]; then
     echo "Multiboot Header Invalid"

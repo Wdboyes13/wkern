@@ -1,16 +1,15 @@
 NASM=$1
-$NASM -v | grep "NASM"
-isnasm=$?
+isnasm=$($NASM -v | grep "NASM" | echo $?)
 if [ isnasm = 1 ]; then
    echo "Assembler is NOT NASM"
    exit 1
 fi
    
-$NASM nasm-tst.asm
+$NASM /Users/william/coding/wkern/tsts/nasm-tst.asm
 nasmworks=$?
 if [ nasmworks = 1 ]; then
    echo "NASM Assembler Broken"
    exit 1
 fi
 
-rm nasm-tst
+rm /Users/william/coding/wkern/tsts/nasm-tst
