@@ -1,6 +1,5 @@
-#include <fileio/ATA.h>
-#include <fileio/fat16.h>
-#include <io/printer.h>
+#include <fileio/fileio.h>
+#include <io/kio.h>
 
 struct FAT16_Info fat16;
 static kuint8_t fat16_sector[512];

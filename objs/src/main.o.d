@@ -1,16 +1,12 @@
-objs/src/main.o: src/main.c src/KShell/shell.h src/err/panic.h \
- src/fileio/ATA.h src/types/nums.h src/fileio/MBR.h src/fileio/fat16.h \
- src/global.h src/idt/idtirq.h src/io/keyin.h src/io/printer.h \
- src/utils/ksleep.h src/qemu/shutdown.h
+objs/src/main.o: src/main.c src/KShell/shell.h src/err/kerror.h \
+ src/fileio/fileio.h src/global.h src/types/nums.h src/idt/idtirq.h \
+ src/io/kio.h src/utils/util.h src/qemu/shutdown.h
 src/KShell/shell.h:
-src/err/panic.h:
-src/fileio/ATA.h:
-src/types/nums.h:
-src/fileio/MBR.h:
-src/fileio/fat16.h:
+src/err/kerror.h:
+src/fileio/fileio.h:
 src/global.h:
+src/types/nums.h:
 src/idt/idtirq.h:
-src/io/keyin.h:
-src/io/printer.h:
-src/utils/ksleep.h:
+src/io/kio.h:
+src/utils/util.h:
 src/qemu/shutdown.h:

@@ -1,5 +1,5 @@
-objs/src/utils/img.o: src/utils/img.c src/io/printer.h src/types/nums.h \
- src/utils/img.h
-src/io/printer.h:
+objs/src/utils/img.o: src/utils/img.c src/io/kio.h src/types/nums.h \
+ src/utils/util.h
+src/io/kio.h:
 src/types/nums.h:
-src/utils/img.h:
+src/utils/util.h:

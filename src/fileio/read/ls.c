@@ -1,6 +1,5 @@
-#include <fileio/ATA.h>
-#include <fileio/fat16.h>
-#include <io/printer.h>
+#include <fileio/fileio.h>
+#include <io/kio.h>
 #include <types/nums.h>
 void fat16_ls() {
     kuint32_t entries_per_sector = fat16.bytes_per_sector / 32; // <-- fix here!

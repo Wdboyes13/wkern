@@ -1,8 +1,5 @@
-#include <io/printer.h>
-#include <wex/chkst.h>
-#include <wex/exec.h>
-#include <wex/rdfv.h>
-#include <wex/st.h>
+#include <io/kio.h>
+#include <wex/stdwex.h>
 void runwex(unsigned char *wexexecu) {
     int *FVALS = read_vals(wexexecu);
     int STS = FVALS[1];

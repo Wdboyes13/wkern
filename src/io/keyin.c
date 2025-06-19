@@ -1,8 +1,5 @@
 #include <global.h>
-#include <io/asm.h>
-#include <io/keyin.h>
-#include <io/printer.h>
-#include <utils/ksleep.h>
+#include <io/kio.h>
 unsigned char scancode_to_ascii(unsigned char scancode) {
     static const unsigned char keymap[256] = {
         0,   27,  '1', '2', '3', '4', '5',  '6', // 0x00 - 0x07

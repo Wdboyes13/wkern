@@ -1,7 +1,7 @@
 #pragma once
 
-#include <types/nums.h> // put includes at the top
 #include <global.h>
+#include <types/nums.h> // put includes at the top
 
 /*
 ===================
@@ -20,9 +20,7 @@ void all_idt();
 // PIC remap
 extern void _picr(void);
 
-
-
-/* 
+/*
 ==================
 ---- STRUCTS -----
 ==================
@@ -38,12 +36,12 @@ struct idt_entry {
 } PKG;
 
 struct gdt_entry {
-    kuint16_t limit_low;      // Lower 16 bits of limit
-    kuint16_t base_low;       // Lower 16 bits of base
-    kuint8_t  base_middle;    // Next 8 bits of base
-    kuint8_t  access;         // Access flags
-    kuint8_t  granularity;    // Granularity flags + upper 4 bits of limit
-    kuint8_t  base_high;      // Last 8 bits of base
+    kuint16_t limit_low;  // Lower 16 bits of limit
+    kuint16_t base_low;   // Lower 16 bits of base
+    kuint8_t base_middle; // Next 8 bits of base
+    kuint8_t access;      // Access flags
+    kuint8_t granularity; // Granularity flags + upper 4 bits of limit
+    kuint8_t base_high;   // Last 8 bits of base
 } PKG;
 
 struct gdt_ptr {
@@ -56,7 +54,6 @@ struct PKG idt_ptr {
     kuint32_t base;
 };
 
-
 /*
 ===================
 -- GDT FUNCTIONS --
@@ -64,9 +61,8 @@ struct PKG idt_ptr {
 */
 void gdt_install();
 extern void gdt_flush(kuint32_t);
-void gdt_set_gate(int num, kuint32_t base, kuint32_t limit, kuint8_t access, kuint8_t gran);
-
-
+void gdt_set_gate(int num, kuint32_t base, kuint32_t limit, kuint8_t access,
+                  kuint8_t gran);
 
 /*
 ============
@@ -77,7 +73,6 @@ extern struct idt_ptr idt_ptrn;
 #define IDT_ENTRIES 256
 extern struct idt_entry idt[IDT_ENTRIES];
 void ms_sleep(unsigned int ms);
-
 
 // ----- HANDLERS ----- //
 

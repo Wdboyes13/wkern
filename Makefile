@@ -29,6 +29,12 @@ objs/%.o: %.asm
 	@echo "[NASM] $<"
 	@$(NASM) $(NASMFLAGS) $< -o $@
 
-.PHONY: all
+fmt_heads=$(patsubst src/%,/Users/william/coding/wkern/src/%, $(HEADS))
+fmt_srcs=$(patsubst src/%,/Users/william/coding/wkern/src/%, $(SRCS))
+fmt:
+	@echo "[FMT]"
+	@clang-format -i $(fmt_heads) $(fmt_srcs)
+
+.PHONY: all fmt
 
 include Make/fakes.mk

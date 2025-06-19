@@ -1,7 +1,6 @@
 #include <KShell/shell.h>
-#include <io/keyin.h>
-#include <io/printer.h>
-#include <utils/kstrcmp.h>
+#include <io/kio.h>
+#include <utils/util.h>
 
 void kcmp() {
 

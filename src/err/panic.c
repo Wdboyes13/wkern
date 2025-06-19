@@ -1,4 +1,4 @@
-#include <io/printer.h>
+#include <io/kio.h>
 __attribute__((noreturn)) void panic(const char *msg) {
     kprintf("\n\n** KERNEL PANIC **\n");
     kprintf("Message: ");

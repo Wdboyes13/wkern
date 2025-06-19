@@ -1,9 +1,7 @@
-#include <fileio/ATA.h>
-#include <fileio/fat16.h>
-#include <io/keyin.h>
-#include <io/printer.h>
+#include <fileio/fileio.h>
+#include <io/kio.h>
 #include <types/nums.h>
-#include <utils/katoi.h>
+#include <utils/util.h>
 
 void fileconts() {
     char cluster_ascii[20];

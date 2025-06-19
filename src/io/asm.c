@@ -1,4 +1,4 @@
-#include <io/asm.h>
+#include <io/kio.h>
 #include <types/nums.h>
 inline void outb(kuint16_t port, kuint8_t val) {
     __asm__ volatile("outb %0, %1" : : "a"(val), "Nd"(port));

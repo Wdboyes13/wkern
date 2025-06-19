@@ -1,11 +1,9 @@
 #include <KShell/shell.h>
-#include <fileio/fat16.h>
+#include <fileio/fileio.h>
 #include <global.h>
-#include <io/keyin.h>
-#include <io/printer.h>
-#include <utils/kstrcmp.h>
-#include <wex/stwex.h>
-#include <wex/testexec.h>
+#include <io/kio.h>
+#include <utils/util.h>
+#include <wex/stdwex.h>
 
 void sh() {
     while (1) {

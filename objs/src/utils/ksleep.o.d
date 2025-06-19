@@ -1,9 +1,7 @@
-objs/src/utils/ksleep.o: src/utils/ksleep.c src/idt/idtirq.h \
- src/types/nums.h src/global.h src/io/asm.h src/io/printer.h \
- src/utils/ksleep.h
+objs/src/utils/ksleep.o: src/utils/ksleep.c src/idt/idtirq.h src/global.h \
+ src/types/nums.h src/io/kio.h src/utils/util.h
 src/idt/idtirq.h:
-src/types/nums.h:
 src/global.h:
-src/io/asm.h:
-src/io/printer.h:
-src/utils/ksleep.h:
+src/types/nums.h:
+src/io/kio.h:
+src/utils/util.h:

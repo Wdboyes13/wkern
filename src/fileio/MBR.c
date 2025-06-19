@@ -1,6 +1,6 @@
-#include <fileio/ATA.h>
+#include <fileio/fileio.h>
 #include <global.h>
-#include <io/printer.h>
+#include <io/kio.h>
 #include <types/nums.h>
 
 #define SECTOR_SIZE 512

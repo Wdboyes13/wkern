@@ -1,6 +1,6 @@
-objs/src/fileio/MBR.o: src/fileio/MBR.c src/fileio/ATA.h src/types/nums.h \
- src/global.h src/io/printer.h
-src/fileio/ATA.h:
-src/types/nums.h:
+objs/src/fileio/MBR.o: src/fileio/MBR.c src/fileio/fileio.h src/global.h \
+ src/types/nums.h src/io/kio.h
+src/fileio/fileio.h:
 src/global.h:
-src/io/printer.h:
+src/types/nums.h:
+src/io/kio.h:

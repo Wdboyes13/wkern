@@ -1,4 +1,4 @@
-#include <utils/kstrcmp.h>
+#include <utils/util.h>
 int kstrcmp(const char *a, const char *b) {
     while (*a && (*a == *b)) {
         a++;

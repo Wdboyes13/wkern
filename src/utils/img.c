@@ -1,5 +1,5 @@
-#include <io/printer.h>
-#include <utils/img.h>
+#include <io/kio.h>
+#include <utils/util.h>
 void draw_smile() {
     kputchar(0xDB);
     kprintf("        ");

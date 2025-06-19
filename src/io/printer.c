@@ -1,5 +1,5 @@
-
-#include "global.h"
+#include <global.h>
+#include <io/kio.h>
 #include <types/nums.h>
 void kcfp() {
     for (int i = 0; i < 80 * 25; i++) {

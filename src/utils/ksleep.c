@@ -1,8 +1,7 @@
 #include <idt/idtirq.h>
-#include <io/asm.h> // for outb(port, val)
-#include <io/printer.h>
+#include <io/kio.h>
 #include <types/nums.h>
-#include <utils/ksleep.h>
+#include <utils/util.h>
 void ZZZ(int ms) { ms_sleep(ms); }
 // PIT ports
 #define PIT_CHANNEL0 0x40

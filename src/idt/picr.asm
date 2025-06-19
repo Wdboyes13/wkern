@@ -32,12 +32,11 @@ _picr:
     mov dx, 0xA1
     out dx, al
 
-    ; Unmask all
-    mov al, 0xFC  ; mask everything except IRQ0, IRQ1
-    mov dx, 0x21
-    out dx, al
-    mov al, 0xC0  ; mask everything except IRQ14, IRQ15
-    mov dx, 0xA1
-    out dx, al
+    ; Unmask only IRQ0 and IRQ1 (mask 0xFC = 11111100b)
+    mov al, 0xFC
+    out 0x21, al      ; Master PIC
+
+    mov al, 0xFF
+    out 0xA1, al      ; Slave PIC (mask all)
 
     ret

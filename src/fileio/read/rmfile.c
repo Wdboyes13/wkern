@@ -1,8 +1,6 @@
-#include <fileio/ATA.h>
-#include <fileio/fat16.h>
-#include <io/printer.h>
-#include <mem/memcmp.h>
-#include <mem/memcpy.h>
+#include <fileio/fileio.h>
+#include <io/kio.h>
+#include <mem/kmem.h>
 #include <types/nums.h>
 
 void fat16_remove_file(const char *filename, const char *ext) {

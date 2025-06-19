@@ -1,6 +1,5 @@
 #include <idt/idtirq.h>
-#include <io/asm.h> // for outb
-#include <io/printer.h>
+#include <io/kio.h>
 #include <types/nums.h>
 #define PIC1_DATA 0x21
 #define PIC2_DATA 0xA1

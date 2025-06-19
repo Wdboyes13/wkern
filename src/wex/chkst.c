@@ -1,6 +1,4 @@
-#include <wex/chkst.h>
-#include <wex/rdfv.h>
-#include <wex/st.h>
+#include <wex/stdwex.h>
 // Check if every symbol in `smt` exists in `st`
 int chkwex(const unsigned char *smt, int smt_len, const unsigned char *st,
            int st_len) {

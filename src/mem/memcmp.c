@@ -1,4 +1,4 @@
-#include <mem/memcmp.h>
+#include <mem/kmem.h>
 #include <types/nums.h>
 int kmemcmp(const void *a, const void *b, size_t n) {
     const unsigned char *p1 = (const unsigned char *)a;

@@ -1,4 +1,4 @@
-#include <io/printer.h>
+#include <io/kio.h>
 __attribute__((noreturn)) void triple_fault() {
     kprintf("Triple Fault Triggered");
     __asm__ volatile("lidt (0)");  // Load an invalid IDT

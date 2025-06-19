@@ -24,7 +24,7 @@ fi
 ack -l "${ack_args[@]}" "$OLD" | while read -r file; do
   echo "Refactoring '$OLD' -> '$NEW' in $file"
   if [ "$USE_REGEX" = true ]; then
-    perl -i.bak -pe "s/$OLD/$NEW/g" "$file"
+    perl -i.bak -pe "s~$OLD~$NEW~g" "$file"
   else
     perl -i.bak -pe "s/\Q$OLD\E/$NEW/g" "$file"
   fi

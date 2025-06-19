@@ -1,12 +1,9 @@
-#include "utils/ksleep.h"
 #include <global.h>
 #include <idt/idtirq.h>
-#include <io/asm.h>
-#include <io/keyin.h>
-#include <io/printer.h>
-#include <mem/memset.h>
+#include <io/kio.h>
+#include <mem/kmem.h>
 #include <types/nums.h>
-#include <utils/katoi.h>
+#include <utils/util.h>
 
 struct idt_entry idt[IDT_ENTRIES];
 struct idt_ptr idt_ptrn __attribute__((aligned(16)));
@@ -73,14 +70,6 @@ void all_idt() {
     kprintf("Setting up IDT gate 33 (IRQ1)\n");
     idt_set_gate(33, (kuintptr_t)irq1_handler, 0x08, 0x8E);
     debug_print_idt_entry(33);
-
-    extern void irq14_handler();
-    extern void irq15_handler();
-
-    idt_set_gate(46, (kuintptr_t)irq14_handler, 0x08, 0x8E); // IRQ14
-    debug_print_idt_entry(46);
-    idt_set_gate(47, (kuintptr_t)irq15_handler, 0x08, 0x8E); // IRQ15
-    debug_print_idt_entry(47);
 
     kprintf("Disabling interrupts\n");
     __asm__ volatile("cli");

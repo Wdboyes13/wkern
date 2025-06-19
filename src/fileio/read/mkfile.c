@@ -1,7 +1,6 @@
-#include <fileio/ATA.h>
-#include <fileio/fat16.h>
-#include <io/printer.h>
-#include <mem/memcpy.h>
+#include <fileio/fileio.h>
+#include <io/kio.h>
+#include <mem/kmem.h>
 #include <types/nums.h>
 void mkfile(const char *filename, const char *ext) {
     int free = -1;

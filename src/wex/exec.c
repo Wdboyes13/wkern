@@ -1,7 +1,6 @@
-#include <io/printer.h>
-#include <utils/ksleep.h>
-#include <wex/exec.h>
-#include <wex/st.h>
+#include <io/kio.h>
+#include <utils/util.h>
+#include <wex/stdwex.h>
 #ifdef VMQEMU
 #include <qemu/shutdown.h>
 #endif

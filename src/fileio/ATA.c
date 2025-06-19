@@ -1,8 +1,7 @@
-#include <err/panic.h>
-#include <fileio/irqflags.h>
-#include <io/asm.h>
-#include <io/printer.h>
-#include <utils/ksleep.h>
+#include <err/kerror.h>
+#include <fileio/fileio.h>
+#include <io/kio.h>
+#include <utils/util.h>
 
 #define ATA_IO_BASE 0x1F0
 #define ATA_CTRL 0x3F6

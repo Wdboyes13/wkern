@@ -1,6 +1,5 @@
 #include <idt/idtirq.h>
-#include <io/asm.h>
-#include <io/printer.h>
+#include <io/kio.h>
 #include <types/nums.h>
 volatile kuint32_t tick_count = 0;
 

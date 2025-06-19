@@ -5,7 +5,7 @@
             "includePath": [
                 "${default}",
                 "${workspaceFolder}",
-                "/Users/william/coding/wkern"
+                "/Users/william/coding/wkern/src"
             ],
             "defines": [],
             "compilerPath": "/opt/homebrew/bin/i686-elf-gcc",

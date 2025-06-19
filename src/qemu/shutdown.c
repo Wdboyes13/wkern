@@ -1,7 +1,6 @@
-#include <err/tf.h>
-#include <io/asm.h>
-#include <io/printer.h>
-#include <utils/ksleep.h>
+#include <err/kerror.h>
+#include <io/kio.h>
+#include <utils/util.h>
 __attribute__((noreturn)) void qemu_shutdown() {
     kprintf("\nShutting Down...\n");
     ZZZ(200);

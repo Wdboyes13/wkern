@@ -1,8 +1,5 @@
-objs/src/wex/stwex.o: src/wex/stwex.c src/io/printer.h src/types/nums.h \
- src/wex/chkst.h src/wex/exec.h src/wex/rdfv.h src/wex/st.h
-src/io/printer.h:
+objs/src/wex/stwex.o: src/wex/stwex.c src/io/kio.h src/types/nums.h \
+ src/wex/stdwex.h
+src/io/kio.h:
 src/types/nums.h:
-src/wex/chkst.h:
-src/wex/exec.h:
-src/wex/rdfv.h:
-src/wex/st.h:
+src/wex/stdwex.h:

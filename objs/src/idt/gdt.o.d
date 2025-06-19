@@ -1,5 +1,5 @@
-objs/src/idt/gdt.o: src/idt/gdt.c src/idt/idtirq.h src/types/nums.h \
- src/global.h
+objs/src/idt/gdt.o: src/idt/gdt.c src/idt/idtirq.h src/global.h \
+ src/types/nums.h
 src/idt/idtirq.h:
-src/types/nums.h:
 src/global.h:
+src/types/nums.h:

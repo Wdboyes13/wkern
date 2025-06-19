@@ -1,14 +1,11 @@
 #include <KShell/shell.h>
-#include <err/panic.h>
-#include <fileio/ATA.h>
-#include <fileio/MBR.h>
-#include <fileio/fat16.h>
+#include <err/kerror.h>
+#include <fileio/fileio.h>
 #include <global.h>
 #include <idt/idtirq.h>
-#include <io/keyin.h>
-#include <io/printer.h>
+#include <io/kio.h>
 #include <types/nums.h>
-#include <utils/ksleep.h>
+#include <utils/util.h>
 char name[20];
 
 void kernel_main() {

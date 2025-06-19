@@ -1,10 +1,8 @@
 objs/src/fileio/read/printconts.o: src/fileio/read/printconts.c \
- src/fileio/ATA.h src/types/nums.h src/fileio/fat16.h src/global.h \
- src/io/keyin.h src/io/printer.h src/utils/katoi.h
-src/fileio/ATA.h:
-src/types/nums.h:
-src/fileio/fat16.h:
+ src/fileio/fileio.h src/global.h src/types/nums.h src/io/kio.h \
+ src/utils/util.h
+src/fileio/fileio.h:
 src/global.h:
-src/io/keyin.h:
-src/io/printer.h:
-src/utils/katoi.h:
+src/types/nums.h:
+src/io/kio.h:
+src/utils/util.h:

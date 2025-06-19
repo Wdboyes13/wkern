@@ -16,6 +16,11 @@
         "format": "c",
         "memcpy.h": "c",
         "rmfile": "cpp",
-        "ata.h": "c"
+        "ata.h": "c",
+        "stdutil.h": "c",
+        "stwex.h": "c",
+        "util.h": "c",
+        "kmem.h": "c",
+        "kio.h": "c"
     }
 }

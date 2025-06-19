@@ -22,14 +22,10 @@ git: clean
 	git commit $(MSG) $(SILENCE)
 	git push $(GITREM) $(SILENCE)
 
-fmt:
-	@echo "[FMT]"
-	@clang-format -i $(HEADS) $(SRCS)
-
 comptests:
 	cd tsts && ./tstall.sh $(NASM) $(CC)
 
 mbtest:
 	./tsts/multiboot-check.sh
 
-.PHONY: clean test git fmt comptests
+.PHONY: clean test git comptests
