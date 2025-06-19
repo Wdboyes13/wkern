@@ -1,14 +1,12 @@
-SRCS := KShell/kshcmp.c \
-		KShell/shell.c \
+SRCS := KShell/shell.c \
 		err/panic.c \
 		err/tf.c \
 		idt/idt.c \
-		idt/irq0.c \
+		idt/handlers/irq0.c \
 		idt/masker.c \
 		io/asm.c \
 		io/keyin.c \
 		io/printer.c \
-		ldints-c.c \
 		main.c \
 		mem/memset.c \
 		qemu/shutdown.c \
@@ -22,19 +20,24 @@ SRCS := KShell/kshcmp.c \
 		wex/rdfv.c \
 		wex/stwex.c \
 		wex/testexec.c \
-		idt/gdt.c
+		idt/gdt.c \
+		fileio/ATA.c \
+		fileio/MBR.c \
+		idt/handlers/atairq.c \
+		fileio/irqflags.c \
+		fileio/fat16_mnt.c
 
 NASMSRCS := boot.asm \
 			idt/handlers/gdtf.asm \
-			idt/handlers/good_handler.asm \
 			idt/handlers/goodasm.asm \
 			idt/handlers/irq0a.asm \
 			idt/handlers/irq1a.asm \
 			idt/picr.asm \
-			ldints.asm \
 			utils/sdn.asm \
-			utils/shutdown.asm
+			utils/shutdown.asm \
+			idt/handlers/irq14.asm \
+			idt/handlers/irq15.asm 
 
-OBJS := $(patsubst %.c, %.o, $(SRCS)) \
-		$(patsubst %.asm, %.o, $(NASMSRCS))
+OBJS := $(patsubst %.asm, objs/%.o, $(NASMSRCS)) \
+		$(patsubst %.c, objs/%.o, $(SRCS))
 		

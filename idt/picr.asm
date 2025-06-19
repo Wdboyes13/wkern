@@ -33,9 +33,10 @@ _picr:
     out dx, al
 
     ; Unmask all
-    mov al, 0x00
+    mov al, 0xFC  ; mask everything except IRQ0, IRQ1
     mov dx, 0x21
     out dx, al
+    mov al, 0xC0  ; mask everything except IRQ14, IRQ15
     mov dx, 0xA1
     out dx, al
 

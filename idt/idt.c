@@ -47,6 +47,13 @@ void all_idt() {
     kprintf("Calling PIC Remap\n");
     _picr();
 
+    mask_all_irqs();
+
+    unmask_irq(1);
+    unmask_irq(0);
+    unmask_irq(14);
+    unmask_irq(15);
+
     kprintf("Setting IDT to 0x00\n");
     kmemset(&idt, 0, sizeof(struct idt_entry) * IDT_ENTRIES); // 🧼 clear first!
 
@@ -65,6 +72,14 @@ void all_idt() {
     kprintf("Setting up IDT gate 33 (IRQ1)\n");
     idt_set_gate(33, (kuintptr_t)irq1_handler, 0x08, 0x8E);
     debug_print_idt_entry(33);
+
+    extern void irq14_handler();
+    extern void irq15_handler();
+
+    idt_set_gate(46, (kuintptr_t)irq14_handler, 0x08, 0x8E); // IRQ14
+    debug_print_idt_entry(46);
+    idt_set_gate(47, (kuintptr_t)irq15_handler, 0x08, 0x8E); // IRQ15
+    debug_print_idt_entry(47);
 
     kprintf("Disabling interrupts\n");
     __asm__ volatile("cli");

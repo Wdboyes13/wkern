@@ -24,6 +24,7 @@ $(ISO): $(TARGET)
 
 kernel.elf: $(OBJS)
 	@echo "[LD] $@"
+	@echo "[OBJS TO LINK] $^"
 	@$(LD) $(LDFLAGS) -o $@ $^
 
 kernel.bin: kernel.elf
@@ -35,11 +36,11 @@ kernel.bin: kernel.elf
 		-j .data \
 		$< $@
 
-%.o: %.c
+objs/%.o: %.c
 	@echo "[CC] $<"
 	@$(CC) $(CCFLAGS) -c $< -o $@
 
-%.o: %.asm
+objs/%.o: %.asm
 	@echo "[NASM] $<"
 	@nasm -f elf32 -g -F dwarf $< -o $@
 
@@ -49,9 +50,16 @@ clean:
 
 test:
 	@echo "[QEMU]"
-	@$(QEMU) -cdrom $(ISO) -machine q35 -gdb tcp::1234 -d int
-
-git:
+	@qemu-system-i386 \
+		-machine pc,accel=tcg \
+		-drive file=mykern.iso,format=raw,media=cdrom,if=ide,index=2 \
+		-drive file=fat16.img,format=raw,if=ide,index=0 \
+		-boot d \
+		-gdb tcp::1234 \
+		-monitor stdio \
+		-qmp tcp:localhost:4444,server,nowait \
+		-no-reboot -no-shutdown
+git: clean
 	git add .
 	git commit $(MSG) $(SILENCE)
 	git push $(GITREM) $(SILENCE)

@@ -1,20 +1,28 @@
 #include <KShell/shell.h>
 #include <err/panic.h>
-#include <err/tf.h>
+#include <fileio/MBR.h>
+#include <fileio/fat16.h>
+#include <global.h>
 #include <idt/idtirq.h>
-#include <io/asm.h>
 #include <io/keyin.h>
 #include <io/printer.h>
 #include <types/nums.h>
-#include <utils/img.h>
-#include <utils/katoi.h>
 #include <utils/ksleep.h>
-#include <wex/stwex.h>
-#include <wex/testexec.h>
 void kernel_main() {
+
     all_idt();
 
-    kcfp();
+    // kcfp();
+
+    kuint32_t lba = find_fat16_partition();
+    kprint_hex(lba);
+    // if (!lba) {
+    //    panic("No FAT16 partition found");
+    // }
+    // if (!fat16_mount(lba)) {
+    //     panic("Failed to mount FAT16 volume");
+    // }
+
     kprintf("\nHello form WKern!\n");
     kprintf("Enter your name: ");
     char name[20];
