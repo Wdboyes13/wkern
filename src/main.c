@@ -1,11 +1,10 @@
 #include <KShell/shell.h>
 #include <err/kerror.h>
 #include <fileio/fileio.h>
-#include <global.h>
 #include <idt/idtirq.h>
 #include <io/kio.h>
-#include <types/nums.h>
 #include <utils/util.h>
+
 char name[20];
 
 void kernel_main() {
@@ -35,8 +34,4 @@ void kernel_main() {
     kflush();
     kprintf("Welcome!\n\nStarting SH\n");
     sh();
-#ifdef VMQEMU
-#include <qemu/shutdown.h>
-    qemu_shutdown();
-#endif
 }
