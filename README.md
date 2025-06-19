@@ -9,14 +9,14 @@ __DO NOT INSTALL ON A REAL PC PLS__
 ## Tools
   
 - `dd` For Making a new disk  
-- A macOS or Linux Computer/VM  
+- __A macOS or Linux Computer/VM__  
 - `mkfs.fat` Tool - From `dosfstools`
-- NASM Assembler  
-- qemu-system-i386  
-- GNU Make  
-- i686-elf-gcc Cross Compiler  
-- i686-elf-ld Cross Linker  
-- i686-elf-grub-mkrescue - For making the ISO __(E-Mail william@weelam.ca if you want me to build it for you)__  
+- NASM Assembler  (`nasm`)
+- `qemu-system-i386` 
+- GNU Make  (`make`)
+- `i686-elf-gcc` Cross Compiler  
+- `i686-elf-ld` Cross Linker  
+- `i686-elf-grub-mkrescue` - For making the ISO __(E-Mail william@weelam.ca if you want me to build it for you)__  
   
 >[!NOTE]  
 >The CC/GRUB/LD Can be replaced if you have a Compiler that is the same  
