@@ -18,7 +18,6 @@ $(ISO): $(TARGET)
 
 $(ELF): $(OBJS)
 	@echo "[LD] $@"
-#	@echo "[OBJS TO LINK] $^"
 	@$(LD) $(LDFLAGS) -o $@ $^
 
 $(TARGET): $(ELF)
