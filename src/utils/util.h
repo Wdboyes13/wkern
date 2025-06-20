@@ -13,3 +13,5 @@ int katoi_auto(const char *str);
 void kitoa(unsigned int num, char *buf);
 
 void draw_smile();
+
+kuint32_t kmstrlen(const char *str);

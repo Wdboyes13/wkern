@@ -10,3 +10,5 @@ static int col = 0;
 #define PKG ATTR(packed)
 
 extern char name[20];
+
+#define NULL ((void *)0)

@@ -40,9 +40,6 @@ void ata_poll() {
 
 void ata_read_sector(kuint32_t lba, kuint8_t *buffer) {
     irq14stat = 0;
-    kprintf("Reading sector ");
-    kprint_hex(lba);
-    kputchar('\n');
     outb(0x3F6, 0x00); // clear SRST, enable IRQs
     outb(ATA_DRIVE, 0xE0 | ((lba >> 24) & 0x0F));
     for (int i = 0; i < 4; i++)

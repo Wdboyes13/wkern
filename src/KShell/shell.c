@@ -38,14 +38,24 @@ void sh() {
         } else if (kstrcmp(cmd, "ls") == 0) {
             fat16_ls();
         } else if (kstrcmp(cmd, "read") == 0) {
-            fileconts();
+            char filename[9];
+            char filext[4];
+            kprintf("\nEnter Filename 7 Letters Max (Without Extension): ");
+            kgetstr(filename, 9);
+            kflush();
+            kputchar('\n');
+            kprintf("Enter File Extension: ");
+            kgetstr(filext, 4);
+            kflush();
+            kputchar('\n');
+            fileconts(filename, filext);
         } else if (kstrcmp(cmd, "user") == 0) {
             kputchar('\n');
             kprintf(name);
         } else if (kstrcmp(cmd, "mkfile") == 0) {
             char filename[9];
             char filext[4];
-            kprintf("Enter Filename 7 Letters Max (Without Extension): ");
+            kprintf("\nEnter Filename 7 Letters Max (Without Extension): ");
             kgetstr(filename, 9);
             kflush();
             kputchar('\n');
@@ -57,7 +67,7 @@ void sh() {
         } else if (kstrcmp(cmd, "rm") == 0) {
             char filename[9];
             char filext[4];
-            kprintf("Enter Filename 7 Letters Max (Without Extension): ");
+            kprintf("\nEnter Filename 7 Letters Max (Without Extension): ");
             kgetstr(filename, 9);
             kflush();
             kputchar('\n');
@@ -73,9 +83,9 @@ void sh() {
         } else if (kstrcmp(cmd, "write") == 0) {
             char filename[9];
             char ext[4];
-            char data[500];
+            char data[510];
 
-            kprintf("Enter Filename (Without Extension): ");
+            kprintf("\nEnter Filename (Without Extension): ");
             kgetstr(filename, 9);
             kflush();
             kputchar('\n');
@@ -89,6 +99,18 @@ void sh() {
             kputchar('\n');
             kgetstr(data, 500);
             kflush();
+
+            int len = 0;
+            while (len < 510 && data[len] != '\0') {
+                len++;
+            }
+            if (len + 2 < 510) {
+                data[len] = '\r';     // Carriage Return
+                data[len + 1] = '\n'; // Line Feed
+                data[len + 2] =
+                    '\0'; // Null terminate (optional, if your strings use it)
+            }
+
             writefile(filename, ext, data, sizeof(data));
         } else {
             kprintf("\nUnknown Command - Try `help`\n");

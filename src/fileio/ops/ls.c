@@ -2,7 +2,7 @@
 #include <io/kio.h>
 #include <types/nums.h>
 void fat16_ls() {
-    kuint32_t entries_per_sector = fat16.bytes_per_sector / 32; // <-- fix here!
+    kuint32_t entries_per_sector = fat16.bytes_per_sector / 32;
     kputchar('\n');
     kprint_hex(entries_per_sector);
     kputchar('\n');

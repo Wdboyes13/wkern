@@ -12,7 +12,7 @@ SRCS 		:= src/fileio/irqflags.c src/fileio/ops/printconts.c \
 			src/idt/handlers/irq0.c src/idt/masker.c \
 			src/main.c src/qemu/shutdown.c \
 			src/mem/memutil.c src/KShell/shell.c \
-			src/fileio/ops/write.c
+			src/fileio/ops/write.c src/fileio/ops/others.c
 
 NASMSRCS 	:=src/boot.asm \
 			src/idt/handlers/gdtf.asm \

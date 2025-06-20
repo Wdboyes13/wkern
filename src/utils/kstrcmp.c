@@ -24,3 +24,10 @@ void kshcmp() {
         kprintf("\nNot Equal");
     }
 }
+
+kuint32_t kmstrlen(const char *str) {
+    kuint32_t len = 0;
+    while (str[len])
+        len++;
+    return len;
+}
