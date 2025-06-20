@@ -29,6 +29,8 @@ objs/%.o: %.asm
 	@echo "$(RED)[NASM] $<$(CLEAR)"
 	@$(NASM) $(NASMFLAGS) $< -o $@
 
+-include $(DEPFILES)
+
 .PHONY: all
 
 include Make/fakes.mk

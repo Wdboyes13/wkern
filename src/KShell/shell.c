@@ -83,6 +83,7 @@ void sh() {
             kprintf("Enter File Extension: ");
             kgetstr(ext, 4);
             kflush();
+            kputchar('\n');
 
             kprintf("Start Writing Data");
             kputchar('\n');
