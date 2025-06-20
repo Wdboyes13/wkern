@@ -7,3 +7,4 @@ irq1_handler:
     out 0x20, al
     popa
     iretd
+    

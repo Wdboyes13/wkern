@@ -17,3 +17,4 @@ irq0_handler:
     popa
 
     iret                    ; Return from interrupt
+    

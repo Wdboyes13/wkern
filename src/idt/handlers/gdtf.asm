@@ -13,3 +13,4 @@ gdt_flush:
     jmp 0x08:flush_cs
 flush_cs:
     ret
+    

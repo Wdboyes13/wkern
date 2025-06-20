@@ -40,3 +40,4 @@ _picr:
     out 0xA1, al      ; Slave PIC (mask all)
 
     ret
+    
