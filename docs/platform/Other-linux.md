@@ -6,12 +6,9 @@
   
 ## Installation
 ```sh
-brew install i686-elf-binutils
-brew install i686-elf-gcc
-brew install i686-elf-grub
-brew install make
+brew install i686-elf-binutils i686-elf-gcc i686-elf-grub
+brew install make dosfstools nasm qemu
 export PATH="/opt/homebrew/opt/make/libexec/gnubin:$PATH"
-brew install nasm
-brew install dosfstools
-brew install qemu
+  
+# Then proceed to building . . .
 ```
