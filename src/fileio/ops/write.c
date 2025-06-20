@@ -19,7 +19,7 @@ void writefile(const char *filename, const char *ext, const char *data,
 
             if (entry[0] != 0x00 && entry[0] != 0xE5 &&
                 kmemcmp(entry + 0x00, filename, 8) == 0 &&
-                kmemcmp(entry + 0x08, ext, 2) == 0) {
+                kmemcmp(entry + 0x08, ext, 3) == 0) {
                 kuint16_t clust = entry[0x1A] | (entry[0x1B] << 8);
                 if (clust < 2) {
                     kprintf("Invalid Cluster\n");
