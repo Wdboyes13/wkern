@@ -61,8 +61,3 @@ kuint32_t fat16_mount(kuint32_t partition_lba);
 void fileconts(const char *filename, const char *ext);
 void mkfile(const char *filename, const char *ext);
 void fat16_remove_file(const char *filename, const char *ext);
-
-kuint8_t *fat16_find_entry(const char *filename, const char *ext,
-                           kuint8_t *out_sector);
-int fat16_match_entry(const kuint8_t *entry, const char *fname,
-                      const char *ext);
