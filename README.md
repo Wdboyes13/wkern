@@ -7,7 +7,7 @@ __Since I dont have the energy to port it to working on other machines__
 __DO NOT INSTALL ON A REAL PC PLS__  
 
 ## Tools
-  
+__For Platform-Specific Info on installing these go to docs/platform/ And Select your OS__   
 - `dd` For Making a new disk  
 - __A macOS or Linux Computer/VM__  
 - `mkfs.fat` Tool - From `dosfstools`
@@ -16,7 +16,7 @@ __DO NOT INSTALL ON A REAL PC PLS__
 - GNU Make  (`make`)
 - `i686-elf-gcc` Cross Compiler  
 - `i686-elf-ld` Cross Linker  
-- `i686-elf-grub-mkrescue` - For making the ISO __(E-Mail william@weelam.ca if you want me to build it for you)__  
+- `i686-elf-grub-mkrescue` - For making the ISO __(E-Mail william@weelam.ca if you want me to build it for you)__   
   
 >[!NOTE]  
 >The CC/GRUB/LD Can be replaced if you have a Compiler that is the same  
