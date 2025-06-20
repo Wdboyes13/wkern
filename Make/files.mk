@@ -1,18 +1,18 @@
 SRCS 		:= src/fileio/irqflags.c src/fileio/ops/printconts.c \
 			src/fileio/ops/ls.c src/fileio/ops/mkfile.c \
-			src/fileio/ops/rmfile.c src/fileio/ATA.c \
-			src/fileio/MBR.c src/fileio/fat16_mnt.c \
+			src/fileio/ops/rmfile.c src/fileio/ops/write.c \
+			src/fileio/ATA.c src/fileio/fat16_mnt.c \
+			src/fileio/MBR.c src/mem/memutil.c \
 			src/err/tf.c src/err/panic.c \
 			src/wex/testexec.c src/wex/wexent.c \
 			src/wex/wexexec.c src/io/keyin.c \
 			src/io/printer.c src/io/asm.c \
-			src/utils/kstrcmp.c src/utils/ksleep.c \
+			src/utils/strings.c src/utils/ksleep.c \
 			src/utils/numtools.c src/utils/img.c \
-			src/idt/gdt.c src/idt/idt.c \
+			src/idt/gdt.c src/idt/idt.c src/idt/pit.c \
 			src/idt/handlers/irq0.c src/idt/masker.c \
 			src/main.c src/qemu/shutdown.c \
-			src/mem/memutil.c src/KShell/shell.c \
-			src/fileio/ops/write.c
+			src/KShell/shell.c \
 
 NASMSRCS 	:=src/boot.asm \
 			src/idt/handlers/gdtf.asm \
