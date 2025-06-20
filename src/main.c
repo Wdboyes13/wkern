@@ -31,8 +31,8 @@ void kernel_main() {
     kprintf(name);
     kprintf("!\n");
 
-    ZZZ(50);
     kflush();
-    kprintf("Welcome!\n\nStarting SH\n");
+    kprintf("Welcome!\n\nStarting...\n");
+    ZZZ(50);
     sh();
 }

@@ -3,11 +3,6 @@
 #include <types/nums.h>
 void fat16_ls() {
     kuint32_t entries_per_sector = fat16.bytes_per_sector / 32;
-    kputchar('\n');
-    kprint_hex(entries_per_sector);
-    kputchar('\n');
-    kprint_hex(fat16.bytes_per_sector);
-    kputchar('\n');
     kuint32_t root_dir_sectors =
         ((fat16.root_entry_count * 32) + (fat16.bytes_per_sector - 1)) /
         fat16.bytes_per_sector;
