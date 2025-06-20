@@ -7,7 +7,7 @@ __Since I dont have the energy to port it to working on other machines__
 __DO NOT INSTALL ON A REAL PC PLS__  
 
 ## Tools
-__For Platform-Specific Info on installing these go to docs/platform/ And Select your OS__   
+__For Platform-Specific Info on installing these go to [docs/platform/](/docs/platform/) And Select your OS__   
 - `dd` For Making a new disk  
 - __A macOS or Linux Computer/VM__  
 - `mkfs.fat` Tool - From `dosfstools`
