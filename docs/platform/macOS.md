@@ -1,7 +1,7 @@
 # macOS Toolset installation guide  
   
 ## Prerequesites: 
-- Homebrew Package Manager (`brew`) from [brew.sh](brew.sh)  
+- Homebrew Package Manager (`brew`) from [brew.sh](https://brew.sh)  
 - Access to terminal  
   
 ## Installation
