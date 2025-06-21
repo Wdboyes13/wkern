@@ -16,14 +16,6 @@ git: clean
 	git push $(GITREM) $(SILENCE)
 
 
-comptests:
-	@echo "$(BLUE)[EXEC TEST] cc-arch$(CLEAR)"
-	@./tsts/cc-arch-check.sh $(CC)
-
-	@echo "$(BLUE)[EXEC TEST] nasm-test$(CLEAR)"
-	@./tsts/nasm-sanity-check.sh $(NASM)
-
-
 mbtest:
 	@echo "$(BLUE)[EXEC TEST] multiboot-check$(CLEAR)"
 	@./tsts/multiboot-check.sh
@@ -33,5 +25,12 @@ fmt:
 	@echo "$(CYAN)[FMT]$(CLEAR)"
 	@clang-format -i $(FMTHEADS) $(FMTSRCS)
 
+didconf:
+	@if [ -f ranconf ]; then \
+		echo "Already Ran Configure"; \
+	else \
+		echo "Running Configure"; \
+		./configure.sh; \
+	fi
 
-.PHONY: clean test git comptests fmt
+.PHONY: clean test git comptests fmt didconf

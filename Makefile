@@ -2,7 +2,7 @@ include Make/files.mk
 include Make/flags.mk
 include Make/tools.mk
 
-all: fmt comptests $(ISO) mbtest
+all: didconf fmt $(ISO) mbtest
 
 $(ISO): $(ELF)
 	@$(SAY) "$(MAGENTA)[CP]$(CLEAR)"

@@ -1,6 +1,6 @@
 #include <io/kio.h>
 #include <types/nums.h>
-#ifndef __clang__  // We do this to make ClangD shutup
+#ifndef __clang__ // We do this to make ClangD shutup
 inline void outb(u16 port, u8 val) {
     __asm__ volatile("outb %0, %1" : : "a"(val), "Nd"(port));
 }
