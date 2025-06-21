@@ -9,7 +9,7 @@
 char name[20];
 int row = 0;
 int col = 0;
-kbool capson = false;
+bool capson = false;
 void kernel_main() {
 
     all_idt();

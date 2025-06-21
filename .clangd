@@ -4,3 +4,5 @@ CompileFlags:
       - -std=c99
       - -x
       - c
+      - -nostdlib
+      - -ffreestanding

@@ -5,7 +5,7 @@
 static volatile char *vmem = (volatile char *)0xb8000; // x86 vmem address
 extern int row;
 extern int col;
-extern kbool capson;
+extern bool capson;
 
 #define ATTR(x) __attribute__((x))
 #define PKG ATTR(packed)
