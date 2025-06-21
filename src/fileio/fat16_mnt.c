@@ -6,9 +6,8 @@ static u8 fat16_sector[512];
 
 u32 fat16_total_clusters(struct FAT16_Info *fat) {
     // Use 32-bit total sectors if 16-bit is zero
-    u32 total_sectors = fat->total_sectors_16 != 0
-                                  ? fat->total_sectors_16
-                                  : fat->total_sectors_32;
+    u32 total_sectors = fat->total_sectors_16 != 0 ? fat->total_sectors_16
+                                                   : fat->total_sectors_32;
 
     // Root directory size in sectors
     u32 root_dir_sectors =
@@ -18,8 +17,8 @@ u32 fat16_total_clusters(struct FAT16_Info *fat) {
     // Data sectors = total - reserved - (number of FATs × size of each FAT) -
     // root dir
     u32 data_sectors = total_sectors - fat->reserved_sectors -
-                             (fat->num_fats * fat->sectors_per_fat) -
-                             root_dir_sectors;
+                       (fat->num_fats * fat->sectors_per_fat) -
+                       root_dir_sectors;
 
     // Cluster count = how many clusters fit in data region
     return data_sectors / fat->sectors_per_cluster;

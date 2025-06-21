@@ -25,7 +25,7 @@ void fileconts(const char *filename, const char *ext) {
                     return;
                 }
                 u32 lba = fat16.data_start_lba +
-                                ((clust - 2) * fat16.sectors_per_cluster);
+                          ((clust - 2) * fat16.sectors_per_cluster);
 
                 u8 data[512] = {0};
                 ata_read_sector(lba, data);

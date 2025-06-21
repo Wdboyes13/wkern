@@ -67,9 +67,9 @@ void ata_write_sector(u32 lba, const u8 *buffer) {
 
     outb(ATA_IO_BASE + 6, 0xE0 | ((lba >> 24) & 0x0F)); // drive + LBA mode
     outb(ATA_IO_BASE + 2, 1);                           // sector count
-    outb(ATA_IO_BASE + 3, (u8)(lba));             // LBA low
-    outb(ATA_IO_BASE + 4, (u8)(lba >> 8));        // LBA mid
-    outb(ATA_IO_BASE + 5, (u8)(lba >> 16));       // LBA high
+    outb(ATA_IO_BASE + 3, (u8)(lba));                   // LBA low
+    outb(ATA_IO_BASE + 4, (u8)(lba >> 8));              // LBA mid
+    outb(ATA_IO_BASE + 5, (u8)(lba >> 16));             // LBA high
 
     outb(ATA_IO_BASE + 7, ATA_WRITE_CMD); // send write command
 

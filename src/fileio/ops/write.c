@@ -26,9 +26,8 @@ void writefile(const char *filename, const char *ext, const char *data,
                     return;
                 }
 
-                u32 data_sector =
-                    fat16.data_start_lba +
-                    ((clust - 2) * fat16.sectors_per_cluster);
+                u32 data_sector = fat16.data_start_lba +
+                                  ((clust - 2) * fat16.sectors_per_cluster);
 
                 u8 writebuf[512] = {0};
                 kmemcpy(writebuf, data, size < 512 ? size : 512);

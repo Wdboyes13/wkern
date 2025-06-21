@@ -61,8 +61,7 @@ struct PKG idt_ptr {
 */
 void gdt_install();
 extern void gdt_flush(u32);
-void gdt_set_gate(int num, u32 base, u32 limit, u8 access,
-                  u8 gran);
+void gdt_set_gate(int num, u32 base, u32 limit, u8 access, u8 gran);
 
 /*
 ============

@@ -12,7 +12,7 @@
 #define PIT_FREQ 1193182 // base frequency in Hz
 // Setup PIT for a given frequency (e.g., 100 Hz)
 void pit_init(u32 freq) {
-    kuint16_t divisor = (u16)(PIT_FREQ / freq);
+    u16 divisor = (u16)(PIT_FREQ / freq);
     kprintf("Divisor Set\n");
     // Send command byte: channel 0, access mode lo/hi, mode 3, binary mode
     outb(PIT_COMMAND, PIT_ACCESS_LOHI | PIT_MODE3);

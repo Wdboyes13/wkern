@@ -4,16 +4,16 @@
 #include <types/nums.h>
 
 void fat16_remove_file(const char *filename, const char *ext) {
-    kuint32_t entries_per_sector = fat16.bytes_per_sector / 32;
-    kuint32_t root_dir_sectors =
+    u32 entries_per_sector = fat16.bytes_per_sector / 32;
+    u32 root_dir_sectors =
         ((fat16.root_entry_count * 32) + fat16.bytes_per_sector - 1) /
         fat16.bytes_per_sector;
-    kuint8_t sector[512];
+    u8 sector[512];
 
-    for (kuint32_t i = 0; i < root_dir_sectors; i++) {
+    for (u32 i = 0; i < root_dir_sectors; i++) {
         ata_read_sector(fat16.root_dir_start_lba + i, sector);
-        for (kuint32_t j = 0; j < entries_per_sector; j++) {
-            kuint8_t *entry = &sector[j * 32];
+        for (u32 j = 0; j < entries_per_sector; j++) {
+            u8 *entry = &sector[j * 32];
 
             if (entry[0] == 0x00)
                 return; // no more entries
@@ -32,18 +32,17 @@ void fat16_remove_file(const char *filename, const char *ext) {
                 ata_write_sector(fat16.root_dir_start_lba + i, sector);
 
                 // Free FAT clusters
-                kuint16_t cluster = entry[26] | (entry[27] << 8);
+                u16 cluster = entry[26] | (entry[27] << 8);
                 while (cluster >= 0x0002 && cluster <= 0xFFEF) {
-                    kuint32_t fat_offset = cluster * 2;
-                    kuint32_t fat_sector =
-                        fat16.fat_start_lba + (fat_offset / 512);
-                    kuint32_t fat_index = fat_offset % 512;
+                    u32 fat_offset = cluster * 2;
+                    u32 fat_sector = fat16.fat_start_lba + (fat_offset / 512);
+                    u32 fat_index = fat_offset % 512;
 
-                    kuint8_t fatbuf[512];
+                    u8 fatbuf[512];
                     ata_read_sector(fat_sector, fatbuf);
 
                     // Read next cluster in chain
-                    kuint16_t next_cluster =
+                    u16 next_cluster =
                         fatbuf[fat_index] | (fatbuf[fat_index + 1] << 8);
 
                     // Clear current cluster in FAT

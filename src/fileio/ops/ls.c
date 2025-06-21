@@ -34,7 +34,7 @@ void fat16_ls() {
             // Decode little endian explicitly
             u16 cluster = entry[26] | (entry[27] << 8);
             u32 size = entry[28] | (entry[29] << 8) | (entry[30] << 16) |
-                             (entry[31] << 24);
+                       (entry[31] << 24);
 
             kprintf("File: ");
             for (int i = 0; i < 8; i++) {
