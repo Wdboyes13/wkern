@@ -2,6 +2,11 @@
 set -euo pipefail
 trap 'rm -f tmp.c tmp.asm tmp.o disk.img' EXIT
 
+if [ -f conf.mk ] && [ "${1:-}" != "--reconfigure" ]; then
+    echo "Already configured. Run with --reconfigure to force."
+    exit 0
+fi
+
 check_tool() {
     tool="$1"
     echo "Checking for $tool"
@@ -15,28 +20,24 @@ check_tool() {
 }
 
 check_ld_flag() {
-    echo "Checking for LD Flag $*"
+    echo "Checking for LD Flag \"$*\""
     echo 'int main() { return 0; }' > tmp.c
     i686-elf-gcc -c tmp.c -o tmp.o
     if i686-elf-ld "$@" -o /dev/null tmp.o >/dev/null 2>&1; then
         echo "Yes"
-        rm -f tmp.o tmp.c
     else
         echo "No"
-        rm -f tmp.o tmp.c
         exit 1
     fi
 }
 
 check_cc_flag() {
-    echo "Checking for CC Flag $*"
+    echo "Checking for CC Flag \"$*\""
     echo "int main() { return 0; }" > tmp.c
     if i686-elf-gcc "$@" -c tmp.c -o /dev/null >/dev/null 2>&1; then
         echo "Yes"
-        rm -f tmp.c
     else
         echo "No"
-        rm -f tmp.c
         exit 1
     fi
 }
@@ -59,11 +60,9 @@ dd if=/dev/zero of=disk.img bs=1M count=64 >/dev/null 2>&1
 mkfs.msdos disk.img -F 16 >/dev/null 2>&1
 if [ $? -ne 0 ]; then
     echo "No"
-    rm -f disk.img
     exit 1
 else
     echo "Yes"
-    rm -f disk.img
 fi
 
 echo "Checking if NASM works"
@@ -76,11 +75,9 @@ EOF
 nasm tmp.asm -o /dev/null >/dev/null 2>&1
 if [ $? -ne 0 ]; then
     echo "No"
-    rm -f tmp.asm
     exit 1
 else
     echo "Yes"
-    rm -f tmp.asm
 fi
 
 printf "\n"
