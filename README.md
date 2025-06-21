@@ -32,3 +32,7 @@ __For Platform-Specific Info on installing these go to [docs/platform/](/docs/pl
 make              # This will run ALL Compilation and Tests
 make test         # This will run QEMU Using the required config
 ```
+
+## This project is licensed under the GNU General Public License v3
+## For more info, see [`LICENSE`](/LICENSE)
+## Or for the File Header [`FileHeader`](/FileHeader)

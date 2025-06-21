@@ -1,4 +1,3 @@
-/*
 WKern - A Bare Metal OS / Kernel I am making (For Fun)
 Copyright (C) 2025  Wdboyes13
 
@@ -14,20 +13,3 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
-*/
-
-#pragma once
-
-#include <types/bool.h>
-#include <types/nums.h>
-static volatile char *vmem = (volatile char *)0xb8000; // x86 vmem address
-extern int row;
-extern int col;
-extern bool capson;
-
-#define ATTR(x) __attribute__((x))
-#define PKG ATTR(packed)
-
-extern char name[20];
-
-#define NULL ((void *)0)
