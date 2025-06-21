@@ -105,17 +105,7 @@ echo "CONFIGURED:=1" > conf.mk
 
 if [ ! -d "./objs" ]; then
     echo "Creating build directory"
-    mkdir -p ./objs/src
-    mkdir -p ./objs/src/err
-    mkdir -p ./objs/src/fileio/ops
-    mkdir -p ./objs/src/idt/handlers
-    mkdir -p ./objs/src/io
-    mkdir -p ./objs/src/KShell
-    mkdir -p ./objs/src/mem
-    mkdir -p ./objs/src/qemu
-    mkdir -p ./objs/src/types
-    mkdir -p ./objs/src/utils
-    mkdir -p ./objs/src/wex
+    find src -type d -exec mkdir -p objs/{} \;
 fi
 
 echo 'Configured - run `make` to start build'
