@@ -22,6 +22,7 @@
         "util.h": "c",
         "kmem.h": "c",
         "kio.h": "c",
-        "stdint.h": "c"
+        "stdint.h": "c",
+        "fileio.h": "c"
     }
 }

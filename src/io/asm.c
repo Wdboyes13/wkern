@@ -1,3 +1,4 @@
+#ifndef __clang__ // We do this to make ClangD shutup
 #include <io/kio.h>
 #include <types/nums.h>
 inline void outb(u16 port, u8 val) {
@@ -22,3 +23,4 @@ inline u16 inw(u16 port) {
 
 inline void cli() { __asm__ volatile("cli"); }
 inline void sti() { __asm__ volatile("sti; nop; nop; nop"); }
+#endif
