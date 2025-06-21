@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
-trap 'rm -f tmp.c tmp.asm tmp.o' EXIT
+trap 'rm -f tmp.c tmp.asm tmp.o disk.img' EXIT
 
 check_tool() {
     tool="$1"
@@ -50,6 +50,19 @@ check_tool "i686-elf-gcc"
 check_tool "i686-elf-ld"
 check_tool "i686-elf-grub-mkrescue"
 check_tool "qemu-system-i386"
+check_tool "dd"
+
+echo "Checking if mkfs.msdos works"
+dd if=/dev/zero of=disk.img bs=1M count=64 >/dev/null 2>&1
+mkfs.msdos disk.img -F 16 >/dev/null 2>&1
+if [ $? -ne 0 ]; then
+    echo "No"
+    rm -f disk.img
+    exit 1
+else
+    echo "Yes"
+    rm -f disk.img
+fi
 
 echo "Checking if NASM works"
 cat > tmp.asm <<EOF
