@@ -25,8 +25,8 @@ void kshcmp() {
     }
 }
 
-kuint32_t kmstrlen(const char *str) {
-    kuint32_t len = 0;
+u32 kmstrlen(const char *str) {
+    u32 len = 0;
     while (str[len])
         len++;
     return len;

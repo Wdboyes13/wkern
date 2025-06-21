@@ -1,7 +1,7 @@
 #include <idt/idtirq.h>
 #include <io/kio.h>
 #include <types/nums.h>
-volatile kuint32_t tick_count = 0;
+volatile u32 tick_count = 0;
 
 void irq0_handler_c() {
     tick_count++;

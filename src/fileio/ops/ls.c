@@ -2,22 +2,22 @@
 #include <io/kio.h>
 #include <types/nums.h>
 void fat16_ls() {
-    kuint32_t entries_per_sector = fat16.bytes_per_sector / 32;
-    kuint32_t root_dir_sectors =
+    u32 entries_per_sector = fat16.bytes_per_sector / 32;
+    u32 root_dir_sectors =
         ((fat16.root_entry_count * 32) + (fat16.bytes_per_sector - 1)) /
         fat16.bytes_per_sector;
 
-    kuint8_t sector[512];
+    u8 sector[512];
 
-    for (kuint32_t i = 0; i < root_dir_sectors; i++) {
+    for (u32 i = 0; i < root_dir_sectors; i++) {
         ata_read_sector(fat16.root_dir_start_lba + i, sector);
         kprintf("Sector ");
         kprint_hex(i);
         kprintf(" First byte: ");
         kprint_hex(sector[0]);
         kputchar('\n');
-        for (kuint32_t j = 0; j < entries_per_sector; j++) {
-            kuint8_t *entry = &sector[j * 32];
+        for (u32 j = 0; j < entries_per_sector; j++) {
+            u8 *entry = &sector[j * 32];
 
             if (entry[0] == 0x00) {
                 // If it's the *first* entry in this sector, we're at the end of
@@ -32,8 +32,8 @@ void fat16_ls() {
                 continue; // deleted entry
 
             // Decode little endian explicitly
-            kuint16_t cluster = entry[26] | (entry[27] << 8);
-            kuint32_t size = entry[28] | (entry[29] << 8) | (entry[30] << 16) |
+            u16 cluster = entry[26] | (entry[27] << 8);
+            u32 size = entry[28] | (entry[29] << 8) | (entry[30] << 16) |
                              (entry[31] << 24);
 
             kprintf("File: ");

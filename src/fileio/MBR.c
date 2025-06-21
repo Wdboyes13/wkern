@@ -8,23 +8,23 @@
 #define FAT16_TYPE2 0x06
 
 struct PKG PartitionEntry {
-    kuint8_t status;
-    kuint8_t chs_first[3];
-    kuint8_t type;
-    kuint8_t chs_last[3];
-    kuint32_t lba_first_sector;
-    kuint32_t total_sectors;
+    u8 status;
+    u8 chs_first[3];
+    u8 type;
+    u8 chs_last[3];
+    u32 lba_first_sector;
+    u32 total_sectors;
 };
 
 struct PKG MBR {
-    kuint8_t bootstrap[446];
+    u8 bootstrap[446];
     struct PartitionEntry partitions[4];
-    kuint16_t signature;
+    u16 signature;
 };
 
-kuint8_t sector[SECTOR_SIZE];
+u8 sector[SECTOR_SIZE];
 
-kuint32_t find_fat16_partition() {
+u32 find_fat16_partition() {
     ata_read_sector(0, sector);
     kprintf("Read ATA Sector\n");
     struct MBR *mbr = (struct MBR *)sector;
@@ -45,7 +45,7 @@ kuint32_t find_fat16_partition() {
         kprintf("Partition dump: ");
         kprint_hex(i);
         for (int b = 0; b < sizeof(struct PartitionEntry); b++) {
-            kprint_hex(((kuint8_t *)part)[b]);
+            kprint_hex(((u8 *)part)[b]);
             kputchar(' ');
         }
         kputchar('\n');

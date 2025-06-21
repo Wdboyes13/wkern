@@ -31,7 +31,7 @@ mbtest:
 
 fmt:
 	@echo "$(CYAN)[FMT]$(CLEAR)"
-	@clang-format -i $(fmt_heads) $(fmt_srcs)
+	@clang-format -i $(FMTHEADS) $(FMTSRCS)
 
 
 .PHONY: clean test git comptests fmt

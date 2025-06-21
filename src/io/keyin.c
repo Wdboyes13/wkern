@@ -35,8 +35,15 @@ volatile int buf_tail = 0;
 
 void irq1_handler_c(void) {
     unsigned char sc = inb(0x60);
+    unsigned char ascii = scancode_to_ascii(sc);
     if (!(sc & 0x80)) {
-        keybuf[buf_head++] = scancode_to_ascii(sc);
+        if (sc == 0x3A) {
+            capson = !capson;
+            return;
+        }
+        if (capson && ascii <= 'z' && ascii >= 'a')
+            ascii -= 32;
+        keybuf[buf_head++] = ascii;
         if (buf_head == 256)
             buf_head = 0;
     }
@@ -79,6 +86,7 @@ void kgetstr(char *str, int length) {
 
     str[length - 1] = '\0';
 }
+
 void kflush() {
     while (inb(0x64) & 0x01) {
         inb(0x60);

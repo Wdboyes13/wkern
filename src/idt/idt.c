@@ -8,7 +8,7 @@
 struct idt_entry idt[IDT_ENTRIES];
 struct idt_ptr idt_ptrn __attribute__((aligned(16)));
 // Function to set an IDT gate
-void idt_set_gate(kuint8_t num, kuint32_t base, kuint16_t sel, kuint8_t flags) {
+void idt_set_gate(u8 num, u32 base, u16 sel, u8 flags) {
     idt[num].base_lo = base & 0xFFFF;
     idt[num].sel = sel;
     idt[num].always0 = 0;
@@ -24,7 +24,7 @@ extern void idt_load(void);
 #define KERNEL_CODE_SEGMENT 0x08 // Usually your GDT code segment
 
 void debug_print_idt_entry(int i) {
-    kuint32_t base = (idt[i].base_hi << 16) | idt[i].base_lo;
+    u32 base = (idt[i].base_hi << 16) | idt[i].base_lo;
     kprintf("IDT[");
     char buf[25];
     kitoa(i, buf);
@@ -53,14 +53,14 @@ void all_idt() {
 
     kprintf("Setting IDT Limit + Base\n");
     idt_ptrn.limit = (sizeof(struct idt_entry) * IDT_ENTRIES) - 1;
-    idt_ptrn.base = (kuintptr_t)idt;
+    idt_ptrn.base = (uptr)idt;
 
     kprintf("Setting up IDT gate 32 (IRQ0)\n");
-    idt_set_gate(32, (kuintptr_t)irq0_handler, KERNEL_CODE_SEGMENT, 0x8E);
+    idt_set_gate(32, (uptr)irq0_handler, KERNEL_CODE_SEGMENT, 0x8E);
     debug_print_idt_entry(32);
 
     kprintf("Setting up IDT gate 33 (IRQ1)\n");
-    idt_set_gate(33, (kuintptr_t)irq1_handler, 0x08, 0x8E);
+    idt_set_gate(33, (uptr)irq1_handler, KERNEL_CODE_SEGMENT, 0x8E);
     debug_print_idt_entry(33);
 
     kprintf("Disabling interrupts\n");
@@ -69,8 +69,8 @@ void all_idt() {
     // DEBUG STUFF
 
     struct {
-        kuint16_t limit;
-        kuint32_t base;
+        u16 limit;
+        u32 base;
     } PKG gdtr;
 
     __asm__ volatile("sgdt %0" : "=m"(gdtr));

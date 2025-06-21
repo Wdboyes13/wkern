@@ -23,4 +23,3 @@ _start:
     cli
     hlt
     jmp .hang
-    

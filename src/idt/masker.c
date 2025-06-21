@@ -10,10 +10,10 @@ void mask_all_irqs(void) {
     outb(PIC2_DATA, 0xFF); // Mask all IRQs on slave PIC
 }
 
-void unmask_irq(kuint8_t irq) {
+void unmask_irq(u8 irq) {
     kprintf("Unmasking IRQ\n");
-    kuint16_t port;
-    kuint8_t value;
+    u16 port;
+    u8 value;
 
     if (irq < 8) {
         port = 0x21;

@@ -1,3 +1,4 @@
 CompileFlags:
     Add:
       - -I/Users/william/coding/wkern/src
+      - -std=c99

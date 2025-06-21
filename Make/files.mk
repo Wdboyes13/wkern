@@ -26,6 +26,7 @@ OBJS 		:= $(patsubst %.asm, objs/%.o, $(NASMSRCS)) \
 DEPFILES 	:= $(patsubst %.o, %.o.d, $(OBJS))
 
 ELF 		= kernel.elf
+ELFTARG		= iso/boot/$(ELF)
 ISO			= mykern.iso 
 
 CLNTARGS 	:= $(TARGET) $(OBJS) $(ISO) $(ELF) iso/boot/$(ELF)
@@ -38,5 +39,10 @@ HEADS 		:= src/types/nums.h src/fileio/fileio.h \
 			   src/qemu/shutdown.h src/mem/kmem.h \
 			   src/KShell/shell.h
 
-fmt_heads	= $(patsubst src/%,/Users/william/coding/wkern/src/%, $(HEADS))
-fmt_srcs	= $(patsubst src/%,/Users/william/coding/wkern/src/%, $(SRCS))
+FMTHEADS	= $(patsubst src/%,/Users/william/coding/wkern/src/%, $(HEADS))
+FMTSRCS		= $(patsubst src/%,/Users/william/coding/wkern/src/%, $(SRCS))
+
+LS			= link.ld
+
+GRUBCFG		= grub/grub.cfg
+GRUBCFGPATH = iso/boot/grub/grub.cfg

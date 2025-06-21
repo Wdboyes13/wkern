@@ -10,5 +10,6 @@ GRUBMK		= i686-elf-grub-mkrescue
 QEMU		= qemu-system-i386
 OBJCOPY		= i686-elf-objcopy
 NASM		= nasm
-
+SAY 		= echo
+CPY			= cp
 endif

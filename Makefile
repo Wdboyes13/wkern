@@ -5,28 +5,27 @@ include Make/tools.mk
 all: fmt comptests $(ISO) mbtest
 
 $(ISO): $(ELF)
-	@echo "$(MAGENTA)[CP]$(CLEAR)"
-	@cp $(ELF) iso/boot/$(ELF)
+	@$(SAY) "$(MAGENTA)[CP]$(CLEAR)"
+	@$(CPY) $(ELF) $(ELFTARG)
 
-	@echo "$(MAGENTA)[CP]$(CLEAR)"
-	@cp grub/grub.cfg iso/boot/grub/grub.cfg
-
-	@echo "$(MAGENTA)[GRUBMK] $@$(CLEAR)"
+	@$(SAY) "$(MAGENTA)[CP]$(CLEAR)"
+	@$(CPY)  $(GRUBCFG) $(GRUBCFGPATH)
+	@$(SAY) "$(MAGENTA)[GRUBMK] $@$(CLEAR)"
 	@$(GRUBMK) -o $@ iso $(SILENCEALL)
 
 
 $(ELF): $(OBJS)
-	@echo "$(YELLOW)[LD] $@$(CLEAR)"
-	@$(LD) $(LDFLAGS) -o $@ $^
+	@$(SAY) "$(YELLOW)[LD] $@$(CLEAR)"
+	@$(LD) $(LDFLAGS) -T $(LS) -o $@ $^
 
 
 objs/%.o: %.c
-	@echo "$(GREEN)[CC] $<$(CLEAR)"
+	@$(SAY) "$(GREEN)[CC] $<$(CLEAR)"
 	@$(CC) $(CCFLAGS) -c $< -o $@ -MF $@.d
 
 
 objs/%.o: %.asm
-	@echo "$(RED)[NASM] $<$(CLEAR)"
+	@$(SAY) "$(RED)[NASM] $<$(CLEAR)"
 	@$(NASM) $(NASMFLAGS) $< -o $@
 
 -include $(DEPFILES)

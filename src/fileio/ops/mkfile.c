@@ -5,20 +5,20 @@
 void mkfile(const char *filename, const char *ext) {
     int free = -1;
     int sector_to_write = -1;
-    kuint32_t entries_per_sector = fat16.bytes_per_sector / 32;
-    kuint32_t root_dir_sectors =
+    u32 entries_per_sector = fat16.bytes_per_sector / 32;
+    u32 root_dir_sectors =
         ((fat16.root_entry_count * 32) + (fat16.bytes_per_sector - 1)) /
         fat16.bytes_per_sector;
 
-    kuint8_t sector[512];
-    kuint16_t clust = 0;
-    kuint32_t siz = 0; // For new files size is zero
+    u8 sector[512];
+    u16 clust = 0;
+    u32 siz = 0; // For new files size is zero
 
     // Find free root directory entry
-    for (kuint32_t i = 0; i < root_dir_sectors; i++) {
+    for (u32 i = 0; i < root_dir_sectors; i++) {
         ata_read_sector(fat16.root_dir_start_lba + i, sector);
-        for (kuint32_t j = 0; j < entries_per_sector; j++) {
-            kuint8_t *entry = &sector[j * 32];
+        for (u32 j = 0; j < entries_per_sector; j++) {
+            u8 *entry = &sector[j * 32];
             if (entry[0] == 0x00 || entry[0] == 0xE5) {
                 free = j;
                 sector_to_write = i;
@@ -34,12 +34,12 @@ found_free_entry:
     }
 
     // Find free cluster
-    for (kuint16_t c = 2; c < fat16.total_cluster; c++) {
-        kuint32_t fat_offset = c * 2;
-        kuint32_t fat_sector = fat16.fat_start_lba + (fat_offset / 512);
-        kuint32_t fat_index = fat_offset % 512;
+    for (u16 c = 2; c < fat16.total_cluster; c++) {
+        u32 fat_offset = c * 2;
+        u32 fat_sector = fat16.fat_start_lba + (fat_offset / 512);
+        u32 fat_index = fat_offset % 512;
 
-        kuint8_t fatbuf[512];
+        u8 fatbuf[512];
         ata_read_sector(fat_sector, fatbuf);
 
         if (fatbuf[fat_index] == 0x00 && fatbuf[fat_index + 1] == 0x00) {
@@ -59,7 +59,7 @@ found_free_entry:
     // Now write the root directory entry
     ata_read_sector(fat16.root_dir_start_lba + sector_to_write,
                     sector); // Re-read sector for safety
-    kuint8_t *entry = &sector[free * 32];
+    u8 *entry = &sector[free * 32];
 
     // Clear entry bytes (optional but good practice)
     for (int i = 0; i < 32; i++) {

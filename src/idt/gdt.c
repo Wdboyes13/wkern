@@ -2,8 +2,8 @@
 struct gdt_entry gdt[3];
 struct gdt_ptr gp;
 
-void gdt_set_gate(int num, kuint32_t base, kuint32_t limit, kuint8_t access,
-                  kuint8_t gran) {
+void gdt_set_gate(int num, u32 base, u32 limit, u8 access,
+                  u8 gran) {
     gdt[num].base_low = (base & 0xFFFF);
     gdt[num].base_middle = (base >> 16) & 0xFF;
     gdt[num].base_high = (base >> 24) & 0xFF;
@@ -17,11 +17,11 @@ void gdt_set_gate(int num, kuint32_t base, kuint32_t limit, kuint8_t access,
 
 void gdt_install() {
     gp.limit = (sizeof(struct gdt_entry) * 3) - 1;
-    gp.base = (kuintptr_t)&gdt;
+    gp.base = (uptr)&gdt;
 
     gdt_set_gate(0, 0, 0, 0, 0);
     gdt_set_gate(1, 0, 0xFFFFF, 0x9A, 0xCF);
     gdt_set_gate(2, 0, 0xFFFFF, 0x92, 0xCF);
 
-    gdt_flush((kuintptr_t)&gp);
+    gdt_flush((uptr)&gp);
 }

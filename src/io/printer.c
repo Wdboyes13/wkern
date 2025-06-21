@@ -31,27 +31,6 @@ void kputchar(char c) {
     }
 }
 
-void kputchar2(char c) {
-    if (c == '\n') {
-        col = 0;
-        row++;
-    } else {
-        int index = (row * 80 + col) * 2;
-        vmem[index] = c;
-        vmem[index + 1] = 0x07;
-        col++;
-        if (col >= 80) {
-            col = 0;
-            row++;
-        }
-    }
-
-    if (row >= 25) {
-        kcfp();
-        row = 0;
-    }
-}
-
 void kputchar_backspace() {
     if (col > 0) {
         col--;
@@ -71,7 +50,7 @@ void kprintf(const char *msg) {
     }
 }
 
-void kprint_hex(kuint32_t num) {
+void kprint_hex(u32 num) {
     char buf[11] = "0x00000000";
     const char *hex = "0123456789ABCDEF";
     for (int i = 0; i < 8; i++) {

@@ -1,8 +1,9 @@
 include Make/tools.mk
 CCFLAGS 		:= -ffreestanding -I./src -DARCH_$(ARCH) -D$(MACH) -fno-pie -nostdlib \
-					-m32 -O2 -fno-omit-frame-pointer -g -MMD -MP
+					-m32 -O2 -fno-omit-frame-pointer -g -MMD -MP -std=c99
 					
-LDFLAGS 		:= -m elf_i386 -T link.ld -n  --oformat elf32-i386
+LDFLAGS 		:= -m elf_i386 -n  --oformat elf32-i386
+
 NASMFLAGS 		:= -f elf32 -g -F dwarf
 
 

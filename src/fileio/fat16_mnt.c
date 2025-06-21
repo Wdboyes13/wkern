@@ -2,22 +2,22 @@
 #include <io/kio.h>
 
 struct FAT16_Info fat16;
-static kuint8_t fat16_sector[512];
+static u8 fat16_sector[512];
 
-kuint32_t fat16_total_clusters(struct FAT16_Info *fat) {
+u32 fat16_total_clusters(struct FAT16_Info *fat) {
     // Use 32-bit total sectors if 16-bit is zero
-    kuint32_t total_sectors = fat->total_sectors_16 != 0
+    u32 total_sectors = fat->total_sectors_16 != 0
                                   ? fat->total_sectors_16
                                   : fat->total_sectors_32;
 
     // Root directory size in sectors
-    kuint32_t root_dir_sectors =
+    u32 root_dir_sectors =
         ((fat->root_entry_count * 32) + (fat->bytes_per_sector - 1)) /
         fat->bytes_per_sector;
 
     // Data sectors = total - reserved - (number of FATs × size of each FAT) -
     // root dir
-    kuint32_t data_sectors = total_sectors - fat->reserved_sectors -
+    u32 data_sectors = total_sectors - fat->reserved_sectors -
                              (fat->num_fats * fat->sectors_per_fat) -
                              root_dir_sectors;
 
@@ -25,12 +25,12 @@ kuint32_t fat16_total_clusters(struct FAT16_Info *fat) {
     return data_sectors / fat->sectors_per_cluster;
 }
 
-kuint32_t fat16_mount(kuint32_t partition_lba) {
+u32 fat16_mount(u32 partition_lba) {
     ata_read_sector(partition_lba, fat16_sector);
 
     struct FAT16_BPB *bpb = (struct FAT16_BPB *)fat16_sector;
 
-    if (*(kuint16_t *)&fat16_sector[510] != 0xAA55) {
+    if (*(u16 *)&fat16_sector[510] != 0xAA55) {
         kprintf("Invalid FAT16 boot sector signature\n");
         return 0;
     }
@@ -47,7 +47,7 @@ kuint32_t fat16_mount(kuint32_t partition_lba) {
 
     fat16.fat_start_lba = partition_lba + bpb->reserved_sectors;
 
-    kuint32_t root_dir_sectors =
+    u32 root_dir_sectors =
         ((bpb->root_entry_count * 32) + (bpb->bytes_per_sector - 1)) /
         bpb->bytes_per_sector;
 

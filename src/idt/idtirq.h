@@ -10,9 +10,9 @@
 */
 void setup_idt(void);
 void idt_init(void);
-void idt_set_gate(kuint8_t num, kuint32_t base, kuint16_t sel, kuint8_t flags);
+void idt_set_gate(u8 num, u32 base, u16 sel, u8 flags);
 void mask_all_irqs(void);
-void unmask_irq(kuint8_t irq);
+void unmask_irq(u8 irq);
 void debug_print_idt_entry(int i);
 
 void all_idt();
@@ -28,30 +28,30 @@ extern void _picr(void);
 
 // IDT Entry structure (packed to prevent compiler padding)
 struct idt_entry {
-    kuint16_t base_lo;
-    kuint16_t sel; // Kernel code segment selector
-    kuint8_t always0;
-    kuint8_t flags; // Flags (present, ring level, type)
-    kuint16_t base_hi;
+    u16 base_lo;
+    u16 sel; // Kernel code segment selector
+    u8 always0;
+    u8 flags; // Flags (present, ring level, type)
+    u16 base_hi;
 } PKG;
 
 struct gdt_entry {
-    kuint16_t limit_low;  // Lower 16 bits of limit
-    kuint16_t base_low;   // Lower 16 bits of base
-    kuint8_t base_middle; // Next 8 bits of base
-    kuint8_t access;      // Access flags
-    kuint8_t granularity; // Granularity flags + upper 4 bits of limit
-    kuint8_t base_high;   // Last 8 bits of base
+    u16 limit_low;  // Lower 16 bits of limit
+    u16 base_low;   // Lower 16 bits of base
+    u8 base_middle; // Next 8 bits of base
+    u8 access;      // Access flags
+    u8 granularity; // Granularity flags + upper 4 bits of limit
+    u8 base_high;   // Last 8 bits of base
 } PKG;
 
 struct gdt_ptr {
-    kuint16_t limit;
-    kuint32_t base;
+    u16 limit;
+    u32 base;
 } PKG;
 
 struct PKG idt_ptr {
-    kuint16_t limit;
-    kuint32_t base;
+    u16 limit;
+    u32 base;
 };
 
 /*
@@ -60,9 +60,9 @@ struct PKG idt_ptr {
 ===================
 */
 void gdt_install();
-extern void gdt_flush(kuint32_t);
-void gdt_set_gate(int num, kuint32_t base, kuint32_t limit, kuint8_t access,
-                  kuint8_t gran);
+extern void gdt_flush(u32);
+void gdt_set_gate(int num, u32 base, u32 limit, u8 access,
+                  u8 gran);
 
 /*
 ============
