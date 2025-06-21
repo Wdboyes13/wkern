@@ -61,7 +61,7 @@ void exec(unsigned char *exec, int *FVALS) {
                 break;
             }
             case 0x0D: {
-                ZZZ(1000);
+                ZZZ(100);
                 break;
             }
             case 0x01: {

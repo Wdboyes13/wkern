@@ -113,5 +113,5 @@ void all_idt() {
     kprintf("Enabling interrupts");
     __asm__ volatile("sti");
 
-    pit_init(1194);
+    pit_init(119);
 }

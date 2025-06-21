@@ -54,6 +54,6 @@ void kernel_main() {
 
     kflush();
     kprintf("Welcome!\n\nStarting...\n");
-    ZZZ(50);
+    ZZZ(5);
     sh();
 }
