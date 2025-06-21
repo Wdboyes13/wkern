@@ -4,9 +4,10 @@
 __The specs of the machine are very important__  
 __Since I dont have the energy to port it to working on other machines__  
 
-__DO NOT INSTALL ON A REAL PC PLS__  
+__THIS WILL ONLY WORK IN THE PRESET QEMU VM CONFIG__  
 
 ## Tools
+__Make sure to run the script to check these with `./configure.sh`__  
 __For Platform-Specific Info on installing these go to [docs/platform/](/docs/platform/) And Select your OS__   
 - `dd` For Making a new disk  
 - __A macOS or Linux Computer/VM__  
