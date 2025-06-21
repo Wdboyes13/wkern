@@ -25,12 +25,4 @@ fmt:
 	@echo "$(CYAN)[FMT]$(CLEAR)"
 	@clang-format -i $(FMTHEADS) $(FMTSRCS)
 
-didconf:
-	@if [ -f ranconf ]; then \
-		echo "Already Ran Configure"; \
-	else \
-		echo "Running Configure"; \
-		./configure.sh; \
-	fi
-
 .PHONY: clean test git comptests fmt didconf

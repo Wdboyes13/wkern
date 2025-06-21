@@ -2,6 +2,11 @@ include Make/files.mk
 include Make/flags.mk
 include Make/tools.mk
 
+include conf.mk
+ifeq ($(CONFIGURED),)
+$(error Run `./configure.sh` first)
+endif
+
 all: didconf fmt $(ISO) mbtest
 
 $(ISO): $(ELF)

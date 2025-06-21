@@ -52,6 +52,8 @@ check_tool "i686-elf-grub-mkrescue"
 check_tool "qemu-system-i386"
 check_tool "dd"
 
+printf "\n"
+
 echo "Checking if mkfs.msdos works"
 dd if=/dev/zero of=disk.img bs=1M count=64 >/dev/null 2>&1
 mkfs.msdos disk.img -F 16 >/dev/null 2>&1
@@ -81,6 +83,7 @@ else
     rm -f tmp.asm
 fi
 
+printf "\n"
 echo "Checking for compiler flags"
 printf "\n"
 check_cc_flag "-ffreestanding"
@@ -91,6 +94,7 @@ check_cc_flag "-O2"
 check_cc_flag "-fno-omit-frame-pointer"
 check_cc_flag "-std=c99"
 check_cc_flag "-g"
+printf "\n"
 
 echo "Checking for linker flags"
 printf "\n"
@@ -99,4 +103,4 @@ check_ld_flag "-n"
 check_ld_flag "--oformat=elf32-i386"
 printf "\n"
 
-echo "1" > ranconf
+echo "CONFIGURED:=1" > conf.mk
