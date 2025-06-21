@@ -4,7 +4,7 @@
 __The specs of the machine are very important__  
 __Since I dont have the energy to port it to working on other machines__  
 
-__THIS WILL ONLY WORK IN THE PRESET QEMU VM CONFIG__  
+__THIS WILL ONLY WORK IN THE PRESET QEMU VM CONFIG RUN WITH `make test`__  
 
 ## Tools
 __Make sure to run the script to check these with `./configure.sh`__  
