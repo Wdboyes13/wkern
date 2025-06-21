@@ -29,7 +29,7 @@ ELF 		= kernel.elf
 ELFTARG		= iso/boot/$(ELF)
 ISO			= mykern.iso 
 
-CLNTARGS 	:= $(TARGET) $(OBJS) $(ISO) $(ELF) iso/boot/$(ELF) conf.mk
+CLNTARGS 	:= $(TARGET) $(OBJS) $(ISO) $(ELF) iso/boot/$(ELF)
 
 
 HEADS 		:= src/types/nums.h src/fileio/fileio.h \
