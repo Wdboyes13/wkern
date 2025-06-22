@@ -1,2 +1,4 @@
 *.img
-conf.mk
+didconf
+**/.DS_Store
+.vscode
