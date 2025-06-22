@@ -23,7 +23,6 @@ $(ELF): $(OBJS)
 	@$(SAY) "$(YELLOW)[LD] $@$(CLEAR)"
 	@$(LD) $(LDFLAGS) -T $(LS) -o $@ $^
 
-
 objs/%.o: %.c
 	@$(SAY) "$(GREEN)[CC] $<$(CLEAR)"
 	@$(CC) $(CCFLAGS) -c $< -o $@ -MF $@.d

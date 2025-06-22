@@ -17,7 +17,7 @@ no()  {
     echo -e "\033[30;41m NO  \033[0m]"
 }
 
-if [ -f conf.mk ] && [ "${1:-}" != "--reconfigure" ]; then
+if [ -f didconf ] && [ "${1:-}" != "--reconfigure" ]; then
     echo "${RED}Already configured. Run with --reconfigure to force.${CLEAR}"
     exit 0
 fi
@@ -119,7 +119,7 @@ check_ld_flag "-n"
 check_ld_flag "--oformat=elf32-i386"
 printf "\n"
 
-echo "CONFIGURED:=1" > conf.mk
+echo "Y" > didconf
 
 
 if [ ! -d "./objs" ]; then
@@ -127,4 +127,4 @@ if [ ! -d "./objs" ]; then
     find src -type d -exec mkdir -p objs/{} \;
 fi
 
-echo 'Configured - run `make` to start build'
+echo 'Configured - run `./build.py` to start build'
