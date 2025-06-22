@@ -65,23 +65,28 @@ void all_idt() {
     unmask_irq(0);
 
     kprintf("Setting IDT to 0x00\n");
-    kmemset(&idt, 0, sizeof(struct idt_entry) * IDT_ENTRIES); // Setting the current IDT (Interrupt Descriptor Table) to 0
+    kmemset(&idt, 0,
+            sizeof(struct idt_entry) *
+                IDT_ENTRIES); // Setting the current IDT (Interrupt Descriptor
+                              // Table) to 0
 
     kprintf("Setting IDT Limit + Base\n");
-    idt_ptrn.limit = (sizeof(struct idt_entry) * IDT_ENTRIES) - 1; // Set the limit of the IDT
+    idt_ptrn.limit = (sizeof(struct idt_entry) * IDT_ENTRIES) -
+                     1;        // Set the limit of the IDT
     idt_ptrn.base = (uptr)idt; // Set the base of the IDT
 
     kprintf("Setting up IDT gate 32 (IRQ0)\n");
-    idt_set_gate(32, (uptr)irq0_handler, KERNEL_CODE_SEGMENT, 0x8E); // Load IRQ0 Handler into IDT Entry 32
+    idt_set_gate(32, (uptr)irq0_handler, KERNEL_CODE_SEGMENT,
+                 0x8E); // Load IRQ0 Handler into IDT Entry 32
     debug_print_idt_entry(32);
 
     kprintf("Setting up IDT gate 33 (IRQ1)\n");
-    idt_set_gate(33, (uptr)irq1_handler, KERNEL_CODE_SEGMENT, 0x8E); // Load IRQ1 Handler into IDT Entry 33
+    idt_set_gate(33, (uptr)irq1_handler, KERNEL_CODE_SEGMENT,
+                 0x8E); // Load IRQ1 Handler into IDT Entry 33
     debug_print_idt_entry(33);
 
     kprintf("Disabling interrupts\n");
     __asm__ volatile("cli"); // Disable CPU Interrupts so the CPU doesnt reset
-
 
     struct {
         u16 limit;
@@ -104,12 +109,13 @@ void all_idt() {
     kprint_hex(idt_ptrn.limit);
     kputchar('\n');
 
-
     kprintf("Loading IDT\n");
-    __asm__ volatile("lidt %[idt]" ::[idt] "m"(idt_ptrn) : "memory"); // Load the new IDT
+    __asm__ volatile("lidt %[idt]" ::[idt] "m"(idt_ptrn)
+                     : "memory"); // Load the new IDT
 
     kprintf("Enabling interrupts");
     __asm__ volatile("sti"); // Reenable CPU Interrupts
 
-    pit_init(119); // Start the PIT (Programmable Interval Timer) at Frequency of 119 (10ms/tick)
+    pit_init(119); // Start the PIT (Programmable Interval Timer) at Frequency
+                   // of 119 (10ms/tick)
 }
