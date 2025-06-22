@@ -3,7 +3,8 @@
 
 __The specs of the machine are very important__  
 __Since I dont have the energy to port it to working on other machines__  
-
+  
+__(E-Mail william@mail.weelam.ca if you want me to build it for you)__
 __THIS WILL ONLY WORK IN THE PRESET QEMU VM CONFIG RUN WITH `make test`__  
 
 ## Tools
@@ -17,7 +18,7 @@ __For Platform-Specific Info on installing these go to [docs/platform/](/docs/pl
 - GNU Make  (`make`)
 - `i686-elf-gcc` Cross Compiler  
 - `i686-elf-ld` Cross Linker  
-- `i686-elf-grub-mkrescue` - For making the ISO __(E-Mail william@weelam.ca if you want me to build it for you)__   
+- `i686-elf-grub-mkrescue` - For making the ISO     
   
 >[!NOTE]  
 >The CC/GRUB/LD Can be replaced if you have a Compiler that is the same  
@@ -29,8 +30,9 @@ __For Platform-Specific Info on installing these go to [docs/platform/](/docs/pl
 
 ```sh
 ./mkdisk.sh       # This creates the disk that the OS will use
-make              # This will run ALL Compilation and Tests
-make test         # This will run QEMU Using the required config
+./build.py -test  # This will run tests
+./build.py        # This will run ALL Compilation
+./build.py -run   # This will run QEMU Using the required config
 ```
 
 ## This project is licensed under the GNU General Public License v3
