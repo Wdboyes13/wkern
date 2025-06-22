@@ -17,7 +17,14 @@ def clean():
             os.remove(file)
         except FileNotFoundError:
             pass
-
+    try:
+         shutil.rmtree("__pycache__")
+    except FileNotFoundError:
+         pass
+    try:
+         shutil.rmtree("bfiles/__pycache__")
+    except FileNotFoundError:
+         pass
 def main():
     if (len(sys.argv) == 1):
         if os.path.isfile('./didconf'):
