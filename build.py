@@ -47,7 +47,7 @@ def main():
           print(f"Check exited with code {e.returncode}")
           sys.exit(1)
     elif (sys.argv[1] == "-loc"):
-         subprocess.run(["tokei"])
+         subprocess.run(["tokei", "--num-format=commas", "-C"])
 
 if __name__ == "__main__":
     main()
