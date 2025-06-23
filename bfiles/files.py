@@ -29,6 +29,9 @@ SRCS = [
     "src/main.c",
     "src/qemu/shutdown.c",
     "src/KShell/shell.c",
+    "src/KShell/shellhelp.c",
+    "src/KShell/filecmds.c",
+    "src/mem/alloc.c",
 ]
 
 NASMSRCS = [
@@ -59,6 +62,6 @@ HEADS = ["src/types/nums.h", "src/fileio/fileio.h",
 			   "src/wex/stdwex.h", "src/io/kio.h",
 			   "src/utils/util.h", "src/idt/idtirq.h",
 			   "src/qemu/shutdown.h", "src/mem/kmem.h",
-			   "src/KShell/shell.h"]
+			   "src/KShell/shell.h", "src/KShell/filecmds.h",]
 
 CLEANTARGS = [*OBJS, ISO, OUTARG, OUT, GRUBCFGTARG, "didconf"]

@@ -23,3 +23,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 int kmemcmp(const void *a, const void *b, size_t n);
 void *kmemcpy(void *dest, const void *src, unsigned int count);
 void kmemset(void *ptr, unsigned char value, unsigned int num);
+
+void *kmalloc(size_t size);
+void kheap_init();
+void kfree(void *ptr);

@@ -22,6 +22,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include <global.h>
 #include <idt/idtirq.h>
 #include <io/kio.h>
+#include <mem/kmem.h>
 #include <types/bool.h>
 #include <utils/util.h>
 char name[20];
@@ -29,18 +30,18 @@ int row = 0;
 int col = 0;
 bool capson = false;
 void kernel_main() {
+    all_idt(); // Do all IDT/GDT Setup
 
-    all_idt();
-
-    u32 lba = find_fat16_partition();
-    kprint_hex(lba);
-    if (!lba) {
-        lba = 0;
+    u32 lba = find_fat16_partition(); // Look for a FAT16 Partition on ATA
+    kprint_hex(lba);                  // Print LBA Address
+    if (!lba) {                       // If an ATA FAT16 Partition was not found
+        lba = 0;                      // Set LBA To 0 (Superfloppy)
+    }
+    if (!fat16_mount(lba)) {                   // Try mounting
+        panic("Failed to mount FAT16 volume"); // If mount fails panic
     }
 
-    if (!fat16_mount(lba)) {
-        panic("Failed to mount FAT16 volume");
-    }
+    kheap_init(); // Initialize Heap
 
     kcfp();
 
