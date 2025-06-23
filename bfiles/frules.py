@@ -16,7 +16,7 @@ def git():
 
 def run():
     os.chdir(Path(__file__).resolve().parents[1])
-    subprocess.Popen([QEMU, *QEMUFLAGS])
+    subprocess.run([QEMU, *QEMUFLAGS])
 
 def chkm():
     os.chdir(Path(__file__).resolve().parents[1])
