@@ -23,6 +23,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 void writefile(const char *filename, const char *ext, const char *data,
                u32 size) {
+    kprintf("Writing");
     u32 entries_per_sector = fat16.bytes_per_sector / 32;
     u32 root_dir_sectors =
         ((fat16.root_entry_count * 32) + (fat16.bytes_per_sector - 1)) /
@@ -32,13 +33,20 @@ void writefile(const char *filename, const char *ext, const char *data,
 
     for (u32 i = 0; i < root_dir_sectors; i++) {
         ata_read_sector(fat16.root_dir_start_lba + i, sector);
+        kprintf("Checking for file\n");
         for (u32 j = 0; j < entries_per_sector; j++) {
             u8 *entry = &sector[j * 32];
 
+            char name_pad[8];
+            char ext_pad[3];
+            padname(filename, name_pad, 8);
+            padname(ext, ext_pad, 3);
+
             if (entry[0] != 0x00 && entry[0] != 0xE5 &&
-                kmemcmp(entry + 0x00, filename, 8) == 0 &&
-                kmemcmp(entry + 0x08, ext, 3) == 0) {
+                kmemcmp(entry + 0x00, name_pad, 8) == 0 &&
+                kmemcmp(entry + 0x08, ext_pad, 3) == 0) {
                 u16 clust = entry[0x1A] | (entry[0x1B] << 8);
+                kprintf("Found File\n");
                 if (clust < 2) {
                     kprintf("Invalid Cluster\n");
                     return;
@@ -51,6 +59,9 @@ void writefile(const char *filename, const char *ext, const char *data,
                 kmemcpy(writebuf, data, size < 512 ? size : 512);
                 ata_write_sector(data_sector, writebuf);
 
+                kprintf("Size: ");
+                kprint_hex(size);
+                kputchar('\n');
                 entry[0x1C] = size & 0xFF;
                 entry[0x1D] = (size >> 8) & 0xFF;
                 entry[0x1E] = (size >> 16) & 0xFF;

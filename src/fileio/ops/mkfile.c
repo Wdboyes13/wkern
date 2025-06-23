@@ -84,9 +84,12 @@ found_free_entry:
         entry[i] = 0x00;
     }
 
-    kmemcpy(entry + 0x00, filename, 8); // File Name
-    kmemcpy(entry + 0x08, ext, 3);      // File Extension
-    entry[0x0B] = 0x20;                 // Attribute: Archive
+    char name_pad[8], ext_pad[3];
+    padname(filename, name_pad, 8);
+    padname(ext, ext_pad, 3);
+    kmemcpy(entry + 0x00, name_pad, 8);
+    kmemcpy(entry + 0x08, ext_pad, 3);
+    entry[0x0B] = 0x20; // Attribute: Archive
 
     // Time and Date (optional, set 0 here)
     entry[0x0E] = 0;

@@ -30,7 +30,8 @@ def main():
         if os.path.isfile('./didconf'):
             build()
         else:
-            print("Run ./configure.sh first - or ./build.py -test !")
+            subprocess.run(["./configure.sh"])
+            build()
     elif (sys.argv[1] == "-clean"):
             clean()
     elif (sys.argv[1] == "-git"):

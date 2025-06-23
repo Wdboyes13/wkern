@@ -27,43 +27,48 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 void sh() {
     while (1) {
-        char *cmd = kmalloc(128);
-        kprintf("\nSH> ");
-        kgetstr(cmd, 127);
-        kflush();
-        if (kstrcmp(cmd, "cmp") == 0) {
-            kshcmp();
-        } else if (kstrcmp(cmd, "shutdown") == 0) {
+        char *cmd = (char *)kmalloc(128);
+        if (!cmd) {
+            kprintf("Malloc Failed");
+            kfree(cmd);
+        } else {
+            kprintf("\nSH> ");
+            kgetstr(cmd, 127);
+            kflush();
+            if (kstrcmp(cmd, "cmp") == 0) {
+                kshcmp();
+            } else if (kstrcmp(cmd, "shutdown") == 0) {
 #ifdef VMQEMU
 #include <qemu/shutdown.h>
-            qemu_shutdown();
+                qemu_shutdown();
 #endif
-        } else if (kstrcmp(cmd, "help") == 0) {
-            help();
-        } else if (kstrcmp(cmd, "tst") == 0) {
-            runwex(execr());
-        } else if (kstrcmp(cmd, "clear") == 0) {
-            kcfp();
-        } else if (kstrcmp(cmd, "ls") == 0) {
-            fat16_ls();
-        } else if (kstrcmp(cmd, "read") == 0) {
-            readf();
-        } else if (kstrcmp(cmd, "user") == 0) {
-            kputchar('\n');
-            kprintf(name);
-        } else if (kstrcmp(cmd, "mkfile") == 0) {
-            mkf();
-        } else if (kstrcmp(cmd, "rm") == 0) {
-            rm();
-        } else if (kstrcmp(cmd, "setname") == 0) {
-            kprintf("Enter your name: ");
-            kgetstr(name, 19);
-            kputchar('\n');
-        } else if (kstrcmp(cmd, "write") == 0) {
-            writef();
-        } else {
-            kprintf("\nUnknown Command - Try `help`\n");
+            } else if (kstrcmp(cmd, "help") == 0) {
+                help();
+            } else if (kstrcmp(cmd, "tst") == 0) {
+                runwex(execr());
+            } else if (kstrcmp(cmd, "clear") == 0) {
+                kcfp();
+            } else if (kstrcmp(cmd, "ls") == 0) {
+                fat16_ls();
+            } else if (kstrcmp(cmd, "read") == 0) {
+                readf();
+            } else if (kstrcmp(cmd, "user") == 0) {
+                kputchar('\n');
+                kprintf(name);
+            } else if (kstrcmp(cmd, "mkfile") == 0) {
+                mkf();
+            } else if (kstrcmp(cmd, "rm") == 0) {
+                rm();
+            } else if (kstrcmp(cmd, "setname") == 0) {
+                kprintf("Enter your name: ");
+                kgetstr(name, 19);
+                kputchar('\n');
+            } else if (kstrcmp(cmd, "write") == 0) {
+                writef();
+            } else {
+                kprintf("\nUnknown Command - Try `help`\n");
+            }
+            kfree(cmd);
         }
-        kfree(cmd);
     }
 }

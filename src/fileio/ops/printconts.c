@@ -34,9 +34,14 @@ void fileconts(const char *filename, const char *ext) {
         ata_read_sector(fat16.root_dir_start_lba + i, sector);
         for (u32 j = 0; j < entries_per_sector; j++) {
             u8 *entry = &sector[j * 32];
+            char name_pad[8];
+            char ext_pad[3];
+            padname(filename, name_pad, 8);
+            padname(ext, ext_pad, 3);
+
             if (entry[0] != 0x00 && entry[0] != 0xE5 &&
-                kmemcmp(entry + 0x00, filename, 8) == 0 &&
-                kmemcmp(entry + 0x08, ext, 3) == 0) {
+                kmemcmp(entry + 0x00, name_pad, 8) == 0 &&
+                kmemcmp(entry + 0x08, ext_pad, 3) == 0) {
                 u16 clust = entry[0x1A] | (entry[0x1B] << 8);
                 if (clust < 2) {
                     kprintf("Invalid Cluster\n");
@@ -48,10 +53,9 @@ void fileconts(const char *filename, const char *ext) {
                 u8 data[512] = {0};
                 ata_read_sector(lba, data);
                 for (int i = 0; i < 512; i++) {
-                    if (data[i] == '\r' && data[i + 1] == '\n') {
-                        break; // CRLF = end of message
+                    if (data[i] == 0x1A) {
+                        break; // 0x1A = EOF
                     }
-
                     if (data[i] == 0x20) {
                         kputchar(' ');
                     } else if (data[i] <= 0x40 || data[i] >= 0x7B) {

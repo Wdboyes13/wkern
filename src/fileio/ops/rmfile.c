@@ -39,10 +39,14 @@ void fat16_remove_file(const char *filename, const char *ext) {
             if (entry[0] == 0xE5)
                 continue; // already deleted
 
-            // Check filename and extension match (make sure you pad and compare
-            // exactly 8 and 3 bytes)
-            if (kmemcmp(entry, filename, 8) == 0 &&
-                kmemcmp(entry + 8, ext, 3) == 0) {
+            char name_pad[8];
+            char ext_pad[3];
+            padname(filename, name_pad, 8);
+            padname(ext, ext_pad, 3);
+
+            // Check filename and extension match
+            if (kmemcmp(entry, name_pad, 8) == 0 &&
+                kmemcmp(entry + 8, ext_pad, 3) == 0) {
                 // Mark entry as deleted
                 entry[0] = 0xE5;
 

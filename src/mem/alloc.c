@@ -20,9 +20,20 @@ void kheap_init() {
 }
 
 void *kmalloc(size_t size) {
+    size = (size + 7) & ~7; // Align to 8 bytes
     block_t *curr = free_list;
     while (curr) {
         if (curr->free && curr->size >= size) {
+            if (curr->size >= size + sizeof(block_t) + 8) {
+                // Split the block
+                block_t *new_block = (block_t *)((char *)(curr + 1) + size);
+                new_block->size = curr->size - size - sizeof(block_t);
+                new_block->next = curr->next;
+                new_block->free = 1;
+
+                curr->size = size;
+                curr->next = new_block;
+            }
             curr->free = 0;
             return (void *)(curr + 1);
         }

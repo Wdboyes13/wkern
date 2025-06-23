@@ -1,5 +1,6 @@
 #include <fileio/fileio.h>
 #include <io/kio.h>
+#include <mem/kmem.h>
 void rm() {
     char filename[9];
     char filext[4];
@@ -29,10 +30,14 @@ void mkf() {
 }
 
 void writef() {
-    char filename[9];
-    char ext[4];
-    char data[510];
-
+    char filename[9] = {0};
+    char ext[4] = {0};
+    char *data = (char *)kmalloc(512);
+    if (!data) {
+        kprintf("\nMalloc Failed!\n");
+        kfree(data);
+        return;
+    }
     kprintf("\nEnter Filename (Without Extension): ");
     kgetstr(filename, 9);
     kflush();
@@ -43,23 +48,24 @@ void writef() {
     kflush();
     kputchar('\n');
 
-    kprintf("Start Writing Data");
-    kputchar('\n');
-    kgetstr(data, 500);
+    kprintf("Start Writing Data:\n");
+    kgetstr(data, 500); // only read 500 max
     kflush();
 
     int len = 0;
-    while (len < 510 && data[len] != '\0') {
+    while (len < 500 && data[len] != '\0') {
         len++;
     }
-    if (len + 2 < 510) {
-        data[len] = '\r';     // Carriage Return
-        data[len + 1] = '\n'; // Line Feed
-        data[len + 2] =
-            '\0'; // Null terminate (optional, if your strings use it)
+
+    // Add EOF marker
+    if (len + 5 < 512) {
+        data[len] = 0x1A;
+        len++;
+        data[len] = '\0'; // Optional if your writer handles C-strings
     }
 
-    writefile(filename, ext, data, sizeof(data));
+    writefile(filename, ext, data, len + 1); // Use actual size
+    kfree(data);
 }
 
 void readf() {

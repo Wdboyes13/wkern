@@ -79,3 +79,15 @@ u32 fat16_mount(u32 partition_lba);
 void fileconts(const char *filename, const char *ext);
 void mkfile(const char *filename, const char *ext);
 void fat16_remove_file(const char *filename, const char *ext);
+
+static inline void padname(const char *src, char *dest, int len) {
+    int i = 0;
+    while (i < len && src[i] != '\0') {
+        char ch = src[i];
+        dest[i] = (ch >= 'a' && ch <= 'z') ? (ch - 32) : ch; // Uppercase
+        i++;
+    }
+    while (i < len) {
+        dest[i++] = ' '; // Space-pad
+    }
+}
