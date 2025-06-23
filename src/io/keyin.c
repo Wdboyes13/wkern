@@ -51,19 +51,87 @@ volatile char keybuf[256];
 volatile int buf_head = 0;
 volatile int buf_tail = 0;
 
+unsigned char keytoshift(unsigned char ascii) {
+    if (ascii >= 'a' && ascii <= 'z')
+        return ascii - 32; // 'a' to 'A'
+
+    switch (ascii) {
+    case '1':
+        return '!';
+    case '2':
+        return '@';
+    case '3':
+        return '#';
+    case '4':
+        return '$';
+    case '5':
+        return '%';
+    case '6':
+        return '^';
+    case '7':
+        return '&';
+    case '8':
+        return '*';
+    case '9':
+        return '(';
+    case '0':
+        return ')';
+    case '-':
+        return '_';
+    case '=':
+        return '+';
+    case '[':
+        return '{';
+    case ']':
+        return '}';
+    case '\\':
+        return '|';
+    case ';':
+        return ':';
+    case '\'':
+        return '"';
+    case ',':
+        return '<';
+    case '.':
+        return '>';
+    case '/':
+        return '?';
+    case '`':
+        return '~';
+    default:
+        return ascii; // default if no shift mapping exists
+    }
+}
+
 void irq1_handler_c(void) {
     unsigned char sc = inb(0x60);
-    unsigned char ascii = scancode_to_ascii(sc);
-    if (!(sc & 0x80)) {
+
+    if (!(sc & 0x80)) { // Key press (not release)
         if (sc == 0x3A) {
             capson = !capson;
             return;
         }
-        if (capson && ascii <= 'z' && ascii >= 'a')
+
+        if (sc == 0x2A || sc == 0x36) {
+            shift = 1;
+            return;
+        }
+
+        unsigned char ascii = scancode_to_ascii(sc);
+
+        if (shift)
+            ascii = keytoshift(ascii);
+        if (capson && ascii >= 'a' && ascii <= 'z')
             ascii -= 32;
+
         keybuf[buf_head++] = ascii;
         if (buf_head == 256)
             buf_head = 0;
+    } else {
+        // Key release
+        if (sc == 0xAA || sc == 0xB6) {
+            shift = 0;
+        }
     }
 }
 

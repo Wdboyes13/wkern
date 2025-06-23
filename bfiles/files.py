@@ -32,6 +32,8 @@ SRCS = [
     "src/KShell/shellhelp.c",
     "src/KShell/filecmds.c",
     "src/mem/alloc.c",
+    "src/KShell/regexcmd.c",
+    "src/slre/slre.c"
 ]
 
 NASMSRCS = [
@@ -39,7 +41,7 @@ NASMSRCS = [
     "src/idt/handlers/gdtf.asm",
     "src/idt/handlers/irq0a.asm",
     "src/idt/handlers/irq1a.asm",
-    "src/idt/picr.asm",
+    "src/idt/picr.asm"
 ]
 
 OBJS = []

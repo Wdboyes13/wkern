@@ -29,6 +29,7 @@ char name[20];
 int row = 0;
 int col = 0;
 bool capson = false;
+bool shift = false;
 void kernel_main() {
     all_idt(); // Do all IDT/GDT Setup
 

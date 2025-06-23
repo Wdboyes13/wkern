@@ -16,6 +16,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+#include <global.h>
 #include <io/kio.h>
 #include <utils/util.h>
 int kstrcmp(const char *a, const char *b) {
@@ -48,4 +49,49 @@ u32 kmstrlen(const char *str) {
     while (str[len])
         len++;
     return len;
+}
+
+char *kstrchr(const char *str, int c) {
+    while (*str) {
+        if (*str == (char)c) {
+            return (char *)str;
+        }
+        str++;
+    }
+    if ((char)c == '\0') {
+        return (char *)str;
+    }
+    return NULL;
+}
+
+int ktolower(int c) {
+    if (c >= 'A' && c <= 'Z') {
+        return c + ('a' - 'A'); // Shift from uppercase to lowercase
+    }
+    return c; // Not uppercase, just return as is
+}
+
+// Check if the char is a digit (0-9)
+int kisdigit(int c) { return (c >= '0' && c <= '9'); }
+
+int kisspace(int c) {
+    return (c == ' ' ||  // space
+            c == '\t' || // horizontal tab
+            c == '\n' || // newline
+            c == '\v' || // vertical tab
+            c == '\f' || // form feed
+            c == '\r');  // carriage return
+}
+
+size_t kstrlen(const char *str) {
+    size_t len = 0;
+    while (str[len] != '\0') {
+        len++;
+    }
+    return len;
+}
+
+int kisxdigit(int c) {
+    return (c >= '0' && c <= '9') || (c >= 'a' && c <= 'f') ||
+           (c >= 'A' && c <= 'F');
 }

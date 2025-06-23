@@ -2,3 +2,4 @@
 didconf
 **/.DS_Store
 .vscode
+src/slre

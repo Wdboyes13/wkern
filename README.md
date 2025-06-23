@@ -26,9 +26,14 @@ __For Platform-Specific Info on installing these go to [docs/platform/](/docs/pl
 >To change it edit Make/tools.mk  
 
 
+>[!NOTE]  
+> If you would like regex (Currently required)  
+> Please check out My fork of [slre](https://github.com/Wdboyes13/slre)  
+  
 ## To Run
 
 ```sh
+git clone --depth 1 https://github.com/Wdboyes13/slre src/slre
 ./mkdisk.sh       # This creates the disk that the OS will use
 ./build.py -test  # This will run tests
 ./build.py        # This will run ALL Compilation

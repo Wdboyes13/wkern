@@ -65,6 +65,8 @@ void sh() {
                 kputchar('\n');
             } else if (kstrcmp(cmd, "write") == 0) {
                 writef();
+            } else if (kstrcmp(cmd, "regex") == 0) {
+                regexc();
             } else {
                 kprintf("\nUnknown Command - Try `help`\n");
             }

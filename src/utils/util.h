@@ -22,6 +22,12 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 int kstrcmp(const char *a, const char *b);
 void kshcmp();
+char *kstrchr(const char *str, int c);
+int ktolower(int c);
+int kisdigit(int c);
+int kisspace(int c);
+int kisxdigit(int c);
+size_t kstrlen(const char *str);
 
 void ZZZ(int ms);
 void pit_init(u32 freq);
