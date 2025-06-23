@@ -33,15 +33,16 @@ void fileconts(const char *filename, const char *ext) {
     for (u32 i = 0; i < root_dir_sectors; i++) {
         ata_read_sector(fat16.root_dir_start_lba + i, sector);
         for (u32 j = 0; j < entries_per_sector; j++) {
+            // Padding entries to be exactly 8 and 3, and upercased (blame msft for FAT16)
             u8 *entry = &sector[j * 32];
             char name_pad[8];
             char ext_pad[3];
             padname(filename, name_pad, 8);
             padname(ext, ext_pad, 3);
 
-            if (entry[0] != 0x00 && entry[0] != 0xE5 &&
-                kmemcmp(entry + 0x00, name_pad, 8) == 0 &&
-                kmemcmp(entry + 0x08, ext_pad, 3) == 0) {
+            if (entry[0] != 0x00 && entry[0] != 0xE5 && // Check if entry is not deleted & exists
+                kmemcmp(entry + 0x00, name_pad, 8) == 0 && // Compare name
+                kmemcmp(entry + 0x08, ext_pad, 3) == 0) { // Compare ext
                 u16 clust = entry[0x1A] | (entry[0x1B] << 8);
                 if (clust < 2) {
                     kprintf("Invalid Cluster\n");
@@ -51,15 +52,15 @@ void fileconts(const char *filename, const char *ext) {
                           ((clust - 2) * fat16.sectors_per_cluster);
 
                 u8 data[512] = {0};
-                ata_read_sector(lba, data);
+                ata_read_sector(lba, data); // Read data in the FAT16 Sector
                 for (int i = 0; i < 512; i++) {
                     if (data[i] == 0x1A) {
                         break; // 0x1A = EOF
                     }
                     if (data[i] == 0x20) {
-                        kputchar(' ');
+                        kputchar(' '); // ASCII Space
                     } else if (data[i] <= 0x40 || data[i] >= 0x7B) {
-                        kputchar('.');
+                        kputchar('.'); // Print a '.' for unreadable text
                     } else {
                         kputchar(data[i]);
                     }

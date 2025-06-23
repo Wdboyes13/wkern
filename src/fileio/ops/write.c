@@ -56,18 +56,18 @@ void writefile(const char *filename, const char *ext, const char *data,
                                   ((clust - 2) * fat16.sectors_per_cluster);
 
                 u8 writebuf[512] = {0};
-                kmemcpy(writebuf, data, size < 512 ? size : 512);
-                ata_write_sector(data_sector, writebuf);
+                kmemcpy(writebuf, data, size < 512 ? size : 512); // memcpy data into buffer to write
+                ata_write_sector(data_sector, writebuf); // write data to sector
 
                 kprintf("Size: ");
-                kprint_hex(size);
+                kprint_hex(size); // Print size written
                 kputchar('\n');
-                entry[0x1C] = size & 0xFF;
+                entry[0x1C] = size & 0xFF; // Update entries
                 entry[0x1D] = (size >> 8) & 0xFF;
                 entry[0x1E] = (size >> 16) & 0xFF;
                 entry[0x1F] = (size >> 24) & 0xFF;
 
-                ata_write_sector(fat16.root_dir_start_lba + i, sector);
+                ata_write_sector(fat16.root_dir_start_lba + i, sector); // Write updated entries
 
                 kprintf("Wrote to file");
                 return;
