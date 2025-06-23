@@ -10,11 +10,12 @@ def build():
     compilec()
     link()
     iso()
+    chkm()
 
 def clean():
     for file in CLEANTARGS:
         try:
-            os.remove(file)
+            os.remove(file) 
         except FileNotFoundError:
             pass
     try:

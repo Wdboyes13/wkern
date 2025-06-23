@@ -17,3 +17,10 @@ def git():
 def run():
     os.chdir(Path(__file__).resolve().parents[1])
     subprocess.Popen([QEMU, *QEMUFLAGS])
+
+def chkm():
+    os.chdir(Path(__file__).resolve().parents[1])
+    try:
+        subprocess.run(["i686-elf-grub-file", "--is-x86-multiboot", "kernel.elf"], check=True)
+    except subprocess.CalledProcessError:
+        print("Invalid multiboot header")
