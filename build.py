@@ -25,6 +25,7 @@ def clean():
          shutil.rmtree("bfiles/__pycache__")
     except FileNotFoundError:
          pass
+    
 def main():
     if (len(sys.argv) == 1):
         if os.path.isfile('./didconf'):
@@ -40,7 +41,13 @@ def main():
     elif (sys.argv[1] == "-run"):
             run()
     elif (sys.argv[1] == "-test"):
-        subprocess.run(["./configure.sh"])
+        try:
+          subprocess.run(["./configure.sh"], check=True)
+        except subprocess.CalledProcessError as e:
+          print(f"Check exited with code {e.returncode}")
+          sys.exit(1)
+    elif (sys.argv[1] == "-loc"):
+         subprocess.run(["tokei"])
 
 if __name__ == "__main__":
     main()
