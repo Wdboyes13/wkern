@@ -1,6 +1,6 @@
 # WKern  
 **This is a kernel/OS I'm working on**  
-
+**For Current Lines GO TO [loc.md](/loc.md)**  
 __The specs of the machine are very important__  
 __Since I dont have the energy to port it to working on other machines__  
   
