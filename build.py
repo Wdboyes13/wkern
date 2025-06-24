@@ -49,6 +49,9 @@ def main():
           sys.exit(1)
     elif (sys.argv[1] == "-loc"):
          subprocess.run(["tokei", "--num-format=commas", "-C"])
+    elif (sys.argv[1] == "-mkd"):
+         subprocess.run(["dd", "if=/dev/zero", "of=fat16.img", "bs=1M", "count=64"])
+         subprocess.run(["mkfs.fat", "-F", "16", "fat16.img"])
 
 if __name__ == "__main__":
     main()

@@ -10,33 +10,14 @@ __THIS WILL ONLY WORK IN THE PRESET QEMU VM CONFIG RUN WITH `make test`__
 ## Tools
 __Make sure to run the script to check these with `./configure.sh`__  
 __For Platform-Specific Info on installing these go to [docs/platform/](/docs/platform/) And Select your OS__   
-- `dd` For Making a new disk  
-- __A macOS or Linux Computer/VM__  
-- `mkfs.fat` Tool - From `dosfstools`
-- NASM Assembler  (`nasm`)
-- `qemu-system-i386` 
-- GNU Make  (`make`)
-- `i686-elf-gcc` Cross Compiler  
-- `i686-elf-ld` Cross Linker  
-- `i686-elf-grub-mkrescue` - For making the ISO     
-  
->[!NOTE]  
->The CC/GRUB/LD Can be replaced if you have a Compiler that is the same  
->It MUST be for x86 not x86_64  
->To change it edit Make/tools.mk  
+__For the new list of requirements, check [RequiredTools.txt](/RequiredTools.txt)__  
 
-
->[!NOTE]  
-> If you would like regex (Currently required)  
-> Please check out My fork of [slre](https://github.com/Wdboyes13/slre)  
-  
 ## To Run
 
 ```sh
-git clone --depth 1 https://github.com/Wdboyes13/slre src/slre
-./mkdisk.sh       # This creates the disk that the OS will use
-./build.py -test  # This will run tests
-./build.py        # This will run ALL Compilation
+git clone --depth 1 https://github.com/Wdboyes13/slre src/slre # Do to fun times with licensing, SLRE Regex needs to be cloned separatly
+./build.py -mkd   # This creates the disk that the OS will use
+./build.py        # This will run ALL Compilation and Tests
 ./build.py -run   # This will run QEMU Using the required config
 ```
 

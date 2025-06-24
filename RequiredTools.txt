@@ -1,0 +1,13 @@
+- A macOS, Linux, or similar UNIX-Like Computer/VM
+
+- `dd` - For Making a new disk 
+- `mkfs.fat` - From `dosfstools` - For formatting that disk 
+
+- Python3 - For build system
+
+- `nasm` - Assembler
+- `i686-elf-gcc` - Compiler  
+- `i686-elf-ld` - Linker  
+
+- `qemu-system-i386` - VM For running
+- `i686-elf-grub-mkrescue` - For making the ISO   
