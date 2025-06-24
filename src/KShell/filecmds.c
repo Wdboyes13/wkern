@@ -39,7 +39,7 @@ void writef(const char *argv[], int argc) { // write [filename] [ext]
         kprintf("Not enough args\nUsage: write [filename] [ext]");
         return;
     }
-    char *data = (char *)kmalloc(512);
+    char *data = (char *)kmalloc(512, 8);
     if (!data) {
         kprintf("\nMalloc Failed!\n");
         kfree(data);

@@ -22,12 +22,13 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include <global.h>
 #include <io/kio.h>
 #include <mem/kmem.h>
+#include <net/virtnet.h>
 #include <utils/util.h>
 #include <wex/stdwex.h>
 
 void sh() {
     while (1) {
-        char *cmd = (char *)kmalloc(128);
+        char *cmd = (char *)kmalloc(128, 8);
         if (!cmd) {
             kprintf("Malloc Failed");
             kfree(cmd);
@@ -70,6 +71,8 @@ void sh() {
                 writef((const char **)argv, argc);
             } else if (kstrcmp(argv[0], "regex") == 0) {
                 regexc();
+            } else if (kstrcmp(argv[0], "recvpack") == 0) {
+                net_stq(iob);
             } else {
                 kprintf("\nUnknown Command - Try `help`\n");
             }

@@ -39,8 +39,6 @@ extern void idt_load(void);
 
 // Initialize the IDT table (call this from your kernel init)
 
-#define KERNEL_CODE_SEGMENT 0x08 // Usually your GDT code segment
-
 void debug_print_idt_entry(int i) {
     u32 base = (idt[i].base_hi << 16) | idt[i].base_lo;
     char buf[25];

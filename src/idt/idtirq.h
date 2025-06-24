@@ -21,6 +21,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include <global.h>
 #include <types/nums.h> // put includes at the top
 
+#define KERNEL_CODE_SEGMENT 0x08 // Usually your GDT code segment
+
 /*
 ===================
 -- IDT FUNCTIONS --
@@ -97,3 +99,4 @@ void irq0_handler_c(void);      // C handler called from asm IRQ0 stub
 extern void irq0_handler(void); // Assembly IRQ0 stub (global in asm)
 extern void good_handler(void);
 extern void irq1_handler(void);
+void virtnet_irq_handler();

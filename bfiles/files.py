@@ -34,7 +34,9 @@ SRCS = [
     "src/mem/alloc.c",
     "src/KShell/regexcmd.c",
     "src/slre/slre.c",
-    "src/pci/scconfig.c"
+    "src/pci/scconfig.c",
+    "src/net/virtio.c",
+    "src/idt/handlers/virtnetirq.c"
 ]
 
 NASMSRCS = [
@@ -42,6 +44,7 @@ NASMSRCS = [
     "src/idt/handlers/gdtf.asm",
     "src/idt/handlers/irq0a.asm",
     "src/idt/handlers/irq1a.asm",
+    "src/idt/handlers/virtirq.asm",
     "src/idt/picr.asm"
 ]
 

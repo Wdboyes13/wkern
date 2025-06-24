@@ -24,7 +24,7 @@ typedef struct block {
 } block_t;
 
 #define HEAP_START ((char *)0x100000)
-#define HEAP_SIZE (64 * 1024)
+#define HEAP_SIZE (512 * 1024)
 
 static char *heap = HEAP_START;
 static block_t *free_list = NULL;
@@ -36,8 +36,8 @@ void kheap_init() {
     free_list->free = 1;
 }
 
-void *kmalloc(size_t size) {
-    size = (size + 7) & ~7; // Align to 8 bytes
+void *kmalloc(size_t size, size_t align) {
+    size = (size + align - 1) & ~(align - 1);
     block_t *curr = free_list;
     while (curr) {
         if (curr->free && curr->size >= size) {

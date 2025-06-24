@@ -23,14 +23,17 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include <idt/idtirq.h>
 #include <io/kio.h>
 #include <mem/kmem.h>
+#include <net/virtnet.h>
 #include <pci/pci.h>
 #include <types/bool.h>
 #include <utils/util.h>
+
 char *name;
 int row = 0;
 int col = 0;
 bool capson = false;
 bool shift = false;
+u32 iob = 0;
 void kernel_main() {
     all_idt(); // Do all IDT/GDT Setup
 
@@ -46,9 +49,7 @@ void kernel_main() {
     kheap_init(); // Initialize Heap
 
     kcfp();
-
-    find_virtionet_dev();
-
+    virtnet_setup();
     kprintf("\nHello form WKern!\n");
     kprintf("Enter your name: ");
     kgetstr(name, 19);

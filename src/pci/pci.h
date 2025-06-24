@@ -18,5 +18,14 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 #pragma once
 #include <types/nums.h>
-void find_virtionet_dev();
+
+#define PCI_INTERRUPT_LINE 0x3C
+
+extern u32 bar0;
+extern u8 virtio_bus;
+extern u8 virtio_slot;
+extern u8 virtio_func;
+extern u8 virtio_irq;
+
+u32 find_virtionet_dev();
 u32 pci_config_read(u8 bus, u8 slot, u8 func, u8 offset);

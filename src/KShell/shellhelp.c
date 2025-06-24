@@ -21,7 +21,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include <utils/util.h>
 void help() {
     kprintf("Page 1 or 2 ? ");
-    char *opt = (char *)kmalloc(10);
+    char *opt = (char *)kmalloc(10, 8);
     if (!opt) {
         kprintf("There was a mistake created, known as a Malloc Failure");
         return;
@@ -34,6 +34,7 @@ void help() {
         kprintf("\nclear - clear screen");
         kprintf("\nsetname - Set Username");
         kprintf("\nuser - List Username");
+        kprintf("\nrecvpack - Receive a network packet");
     } else if (kstrcmp(opt, "2") == 0) {
         kprintf("\ntst - Test a WEX Executable");
         kprintf("\nls - List Files in Mounted FAT16");
@@ -41,6 +42,7 @@ void help() {
         kprintf("\nmkfile - Make a new file");
         kprintf("\nrm - Remove a file");
         kprintf("\nwrite - Write to a File");
+        kprintf("\nregex - Use POSIX ERE Regex");
     }
     kfree(opt);
 }

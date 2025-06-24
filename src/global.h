@@ -30,5 +30,5 @@ extern bool shift;
 #define PKG ATTR(packed)
 
 extern char *name;
-
+extern u32 iob;
 #define NULL ((void *)0)

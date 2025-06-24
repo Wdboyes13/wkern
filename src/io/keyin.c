@@ -123,7 +123,8 @@ void irq1_handler_c(void) {
             ascii = keytoshift(ascii);
         if (capson && ascii >= 'a' && ascii <= 'z')
             ascii -= 32;
-
+        if (ascii == 0 || ascii > 127)
+            return;
         keybuf[buf_head++] = ascii;
         if (buf_head == 256)
             buf_head = 0;
