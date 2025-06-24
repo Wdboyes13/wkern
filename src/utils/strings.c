@@ -95,3 +95,30 @@ int kisxdigit(int c) {
     return (c >= '0' && c <= '9') || (c >= 'a' && c <= 'f') ||
            (c >= 'A' && c <= 'F');
 }
+
+int split(char *input, char **argv, int max_args) {
+    int argc = 0;
+
+    while (*input && argc < max_args) {
+        // Skip leading spaces
+        while (*input == ' ')
+            input++;
+
+        if (*input == '\0')
+            break;
+
+        // Mark the beginning of the argument
+        argv[argc++] = input;
+
+        // Find the end of the argument
+        while (*input && *input != ' ')
+            input++;
+
+        if (*input == ' ') {
+            *input = '\0'; // Null-terminate the string
+            input++;       // Move to the next character
+        }
+    }
+
+    return argc;
+}

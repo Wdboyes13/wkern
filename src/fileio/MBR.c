@@ -54,14 +54,9 @@ u32 find_fat16_partition() {
     }
     for (int i = 0; i < 4; i++) {
         struct PartitionEntry *part = &mbr->partitions[i];
-        kprintf("Partition type: 0x");
-        kprint_hex(i);
-        kprint_hex(part->type);
-        kprintf(", LBA start: ");
-        kprint_hex(part->lba_first_sector);
-        kputchar('\n');
-        kprintf("Partition dump: ");
-        kprint_hex(i);
+        kprintf("Partition type: 0x%x %x\n", i, part->type);
+        kprintf(", LBA start: %x\n", part->lba_first_sector);
+        kprintf("Partition dump: %x", i);
         for (int b = 0; b < sizeof(struct PartitionEntry); b++) {
             kprint_hex(((u8 *)part)[b]);
             kputchar(' ');

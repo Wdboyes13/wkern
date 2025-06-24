@@ -19,6 +19,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include <global.h>
 #include <io/kio.h>
 #include <types/nums.h>
+#include <types/vargs.h>
 void kcfp() {
     for (int i = 0; i < 80 * 25; i++) {
         vmem[i * 2] = ' ';
@@ -62,12 +63,6 @@ void kputchar_backspace() {
     vmem[offset * 2 + 1] = 0x07; // normal attribute
 }
 
-void kprintf(const char *msg) {
-    for (int i = 0; msg[i] != 0; i++) {
-        kputchar(msg[i]);
-    }
-}
-
 void kprint_hex(u32 num) {
     char buf[11] = "0x00000000";
     const char *hex = "0123456789ABCDEF";
@@ -75,4 +70,75 @@ void kprint_hex(u32 num) {
         buf[9 - i] = hex[(num >> (i * 4)) & 0xF];
     }
     kprintf(buf);
+}
+
+void kprint_dec(int num) {
+    char buf[12]; // enough for -2^31
+    int i = 0;
+    if (num == 0) {
+        kputchar('0');
+        return;
+    }
+    if (num < 0) {
+        kputchar('-');
+        num = -num;
+    }
+    while (num > 0) {
+        buf[i++] = '0' + (num % 10);
+        num /= 10;
+    }
+    while (i--)
+        kputchar(buf[i]);
+}
+
+void kprint_str(const char *str) {
+    while (*str) {
+        kputchar(*str++);
+    }
+}
+
+void kprintf(const char *fmt, ...) {
+    va_list args;
+    va_start(args, fmt);
+
+    while (*fmt) {
+        if (*fmt == '%') {
+            fmt++;
+            switch (*fmt) {
+            case 'c': {
+                char c = (char)va_arg(args, int);
+                kputchar(c);
+                break;
+            }
+            case 's': {
+                const char *s = va_arg(args, const char *);
+                kprint_str(s);
+                break;
+            }
+            case 'd': {
+                int num = va_arg(args, int);
+                kprint_dec(num);
+                break;
+            }
+            case 'x': {
+                u32 hex = va_arg(args, u32);
+                kprint_hex(hex);
+                break;
+            }
+            case '%': {
+                kputchar('%');
+                break;
+            }
+            default:
+                kputchar('%');
+                kputchar(*fmt);
+                break;
+            }
+        } else {
+            kputchar(*fmt);
+        }
+        fmt++;
+    }
+
+    va_end(args);
 }

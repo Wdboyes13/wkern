@@ -35,37 +35,40 @@ void sh() {
             kprintf("\nSH> ");
             kgetstr(cmd, 127);
             kflush();
-            if (kstrcmp(cmd, "cmp") == 0) {
+            char *argv[8];
+            int argc = split(cmd, argv, 8);
+            if (kstrcmp(argv[0], "cmp") == 0) {
                 kshcmp();
-            } else if (kstrcmp(cmd, "shutdown") == 0) {
+            } else if (kstrcmp(argv[0], "shutdown") == 0) {
 #ifdef VMQEMU
 #include <qemu/shutdown.h>
                 qemu_shutdown();
 #endif
-            } else if (kstrcmp(cmd, "help") == 0) {
+            } else if (kstrcmp(argv[0], "help") == 0) {
                 help();
-            } else if (kstrcmp(cmd, "tst") == 0) {
+            } else if (kstrcmp(argv[0], "tst") == 0) {
                 runwex(execr());
-            } else if (kstrcmp(cmd, "clear") == 0) {
+            } else if (kstrcmp(argv[0], "clear") == 0) {
                 kcfp();
-            } else if (kstrcmp(cmd, "ls") == 0) {
+            } else if (kstrcmp(argv[0], "ls") == 0) {
                 fat16_ls();
-            } else if (kstrcmp(cmd, "read") == 0) {
-                readf();
-            } else if (kstrcmp(cmd, "user") == 0) {
-                kputchar('\n');
-                kprintf(name);
-            } else if (kstrcmp(cmd, "mkfile") == 0) {
-                mkf();
-            } else if (kstrcmp(cmd, "rm") == 0) {
-                rm();
-            } else if (kstrcmp(cmd, "setname") == 0) {
-                kprintf("Enter your name: ");
-                kgetstr(name, 19);
-                kputchar('\n');
-            } else if (kstrcmp(cmd, "write") == 0) {
-                writef();
-            } else if (kstrcmp(cmd, "regex") == 0) {
+            } else if (kstrcmp(argv[0], "read") == 0) {
+                readf((const char **)argv, argc);
+            } else if (kstrcmp(argv[0], "user") == 0) {
+                kprintf("\nUsername: %s", name);
+            } else if (kstrcmp(argv[0], "mkfile") == 0) {
+                mkf((const char **)argv, argc);
+            } else if (kstrcmp(argv[0], "rm") == 0) {
+                rm((const char **)argv, argc);
+            } else if (kstrcmp(argv[0], "setname") == 0) {
+                if (argc < 2) {
+                    kprintf("Not enough args\nUsage: setname [New Name]");
+                    continue;
+                }
+                name = argv[1];
+            } else if (kstrcmp(argv[0], "write") == 0) {
+                writef((const char **)argv, argc);
+            } else if (kstrcmp(argv[0], "regex") == 0) {
                 regexc();
             } else {
                 kprintf("\nUnknown Command - Try `help`\n");

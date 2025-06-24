@@ -61,9 +61,7 @@ void writefile(const char *filename, const char *ext, const char *data,
                                    : 512); // memcpy data into buffer to write
                 ata_write_sector(data_sector, writebuf); // write data to sector
 
-                kprintf("Size: ");
-                kprint_hex(size); // Print size written
-                kputchar('\n');
+                kprintf("Size: %x\n", size);
                 entry[0x1C] = size & 0xFF; // Update entries
                 entry[0x1D] = (size >> 8) & 0xFF;
                 entry[0x1E] = (size >> 16) & 0xFF;

@@ -57,14 +57,12 @@ void fileconts(const char *filename, const char *ext) {
                 ata_read_sector(lba, data); // Read data in the FAT16 Sector
                 for (int i = 0; i < 512; i++) {
                     if (data[i] == 0x1A) {
-                        break; // 0x1A = EOF
+                        break; // EOF
                     }
-                    if (data[i] == 0x20) {
-                        kputchar(' '); // ASCII Space
-                    } else if (data[i] <= 0x40 || data[i] >= 0x7B) {
-                        kputchar('.'); // Print a '.' for unreadable text
+                    if (data[i] >= 0x20 && data[i] <= 0x7E) {
+                        kputchar(data[i]); // printable ASCII
                     } else {
-                        kputchar(data[i]);
+                        kputchar('.'); // non-printable gets a dot
                     }
                 }
                 kputchar('\n');

@@ -43,13 +43,9 @@ extern void idt_load(void);
 
 void debug_print_idt_entry(int i) {
     u32 base = (idt[i].base_hi << 16) | idt[i].base_lo;
-    kprintf("IDT[");
     char buf[25];
     kitoa(i, buf);
-    kprintf(buf);
-    kprintf("] = ");
-    kprint_hex(base);
-    kprintf("\n");
+    kprintf("IDT[%s] = %x\n", buf, base);
 }
 
 void all_idt() {
@@ -97,17 +93,8 @@ void all_idt() {
 
     // DEBUG STUFF
 
-    kprintf("GDT base = ");
-    kprint_hex(gdtr.base);
-    kprintf(", limit = ");
-    kprint_hex(gdtr.limit);
-    kputchar('\n');
-
-    kprintf("IDT base = ");
-    kprint_hex(idt_ptrn.base);
-    kprintf(", limit = ");
-    kprint_hex(idt_ptrn.limit);
-    kputchar('\n');
+    kprintf("GDT base = %x, limit = %x\n", gdtr.base, gdtr.limit);
+    kprintf("IDT base = %x, limit = %x\n", idt_ptrn.base, idt_ptrn.limit);
 
     kprintf("Loading IDT\n");
     __asm__ volatile("lidt %[idt]" ::[idt] "m"(idt_ptrn)

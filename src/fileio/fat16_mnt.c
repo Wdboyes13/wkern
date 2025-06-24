@@ -75,15 +75,9 @@ u32 fat16_mount(u32 partition_lba) {
     fat16.total_cluster = fat16_total_clusters(&fat16);
 
     kprintf("FAT16 Mount Success:\n");
-    kprintf(" FAT LBA: ");
-    kprint_hex(fat16.fat_start_lba);
-    kputchar('\n');
-    kprintf(" Root Dir LBA: ");
-    kprint_hex(fat16.root_dir_start_lba);
-    kputchar('\n');
-    kprintf(" Data LBA: ");
-    kprint_hex(fat16.data_start_lba);
-    kputchar('\n');
+    kprintf(" FAT LBA: %x\n", fat16.fat_start_lba);
+    kprintf(" Root Dir LBA: %x\n", fat16.root_dir_start_lba);
+    kprintf(" Data LBA: %x\n", fat16.data_start_lba);
 
     return 1;
 }

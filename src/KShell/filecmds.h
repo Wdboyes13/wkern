@@ -16,7 +16,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 #pragma once
-void rm();
-void mkf();
-void writef();
-void readf();
+void rm(const char *argv[], int argc);
+void mkf(const char *argv[], int argc);
+void writef(const char *argv[], int argc);
+void readf(const char *argv[], int argc);

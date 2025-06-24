@@ -18,53 +18,33 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include <fileio/fileio.h>
 #include <io/kio.h>
 #include <mem/kmem.h>
-void rm() {
-    char filename[9];
-    char filext[4];
-    kprintf("\nEnter Filename 7 Letters Max (Without Extension): ");
-    kgetstr(filename, 9);
-    kflush();
-    kputchar('\n');
-    kprintf("Enter File Extension: ");
-    kgetstr(filext, 4);
-    kflush();
-    kputchar('\n');
-    fat16_remove_file(filename, filext);
+void rm(const char *argv[], int argc) { // rm [filename] [ext]
+    if (argc < 3) {
+        kprintf("Not enough args\nUsage: rm [filename] [ext]");
+        return;
+    }
+    fat16_remove_file(argv[1], argv[2]);
 }
 
-void mkf() {
-    char filename[9];
-    char filext[4];
-    kprintf("\nEnter Filename 7 Letters Max (Without Extension): ");
-    kgetstr(filename, 9);
-    kflush();
-    kputchar('\n');
-    kprintf("Enter File Extension: ");
-    kgetstr(filext, 4);
-    kflush();
-    kputchar('\n');
-    mkfile(filename, filext);
+void mkf(const char *argv[], int argc) { // mkfile [filename] [ext]
+    if (argc < 3) {
+        kprintf("Not enough args\nUsage: mkfile [filename] [ext]");
+        return;
+    }
+    mkfile(argv[1], argv[2]);
 }
 
-void writef() {
-    char filename[9] = {0};
-    char ext[4] = {0};
+void writef(const char *argv[], int argc) { // write [filename] [ext]
+    if (argc < 3) {
+        kprintf("Not enough args\nUsage: write [filename] [ext]");
+        return;
+    }
     char *data = (char *)kmalloc(512);
     if (!data) {
         kprintf("\nMalloc Failed!\n");
         kfree(data);
         return;
     }
-    kprintf("\nEnter Filename (Without Extension): ");
-    kgetstr(filename, 9);
-    kflush();
-    kputchar('\n');
-
-    kprintf("Enter File Extension: ");
-    kgetstr(ext, 4);
-    kflush();
-    kputchar('\n');
-
     kprintf("Start Writing Data:\n");
     kgetstr(data, 500); // only read 500 max
     kflush();
@@ -81,20 +61,14 @@ void writef() {
         data[len] = '\0'; // Optional if your writer handles C-strings
     }
 
-    writefile(filename, ext, data, len + 1); // Use actual size
+    writefile(argv[1], argv[2], data, len + 1); // Use actual size
     kfree(data);
 }
 
-void readf() {
-    char filename[9];
-    char filext[4];
-    kprintf("\nEnter Filename 7 Letters Max (Without Extension): ");
-    kgetstr(filename, 9);
-    kflush();
-    kputchar('\n');
-    kprintf("Enter File Extension: ");
-    kgetstr(filext, 4);
-    kflush();
-    kputchar('\n');
-    fileconts(filename, filext);
+void readf(const char *argv[], int argc) { // read [filename] [ext]
+    if (argc < 3) {
+        kprintf("Not enough args\nUsage: read [filename] [ext]");
+        return;
+    }
+    fileconts(argv[1], argv[2]);
 }

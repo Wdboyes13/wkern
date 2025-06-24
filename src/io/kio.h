@@ -18,7 +18,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #pragma once
 #include <types/nums.h>
-void kprintf(const char *msg);
+void kprintf(const char *fmt, ...);
 void kputchar(char c);
 void kcfp();
 void kputchar_backspace();

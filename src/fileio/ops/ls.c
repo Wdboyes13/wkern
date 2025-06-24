@@ -29,11 +29,7 @@ void fat16_ls() {
 
     for (u32 i = 0; i < root_dir_sectors; i++) {
         ata_read_sector(fat16.root_dir_start_lba + i, sector);
-        kprintf("Sector ");
-        kprint_hex(i);
-        kprintf(" First byte: ");
-        kprint_hex(sector[0]);
-        kputchar('\n');
+        kprintf("Sector %x First Byte: %x\n", i, sector[0]);
         for (u32 j = 0; j < entries_per_sector; j++) {
             u8 *entry = &sector[j * 32];
 
@@ -69,11 +65,7 @@ void fat16_ls() {
                     break;
                 }
             }
-            kprintf(" | Cluster: ");
-            kprint_hex(cluster);
-            kprintf(" | Size: ");
-            kprint_hex(size);
-            kputchar('\n');
+            kprintf(" | Cluster: %x | Size: %x\n", cluster, size);
         }
     }
 }

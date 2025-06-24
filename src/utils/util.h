@@ -28,6 +28,7 @@ int kisdigit(int c);
 int kisspace(int c);
 int kisxdigit(int c);
 size_t kstrlen(const char *str);
+int split(char *input, char **argv, int max_args);
 
 void ZZZ(int ms);
 void pit_init(u32 freq);

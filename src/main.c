@@ -26,7 +26,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include <pci/pci.h>
 #include <types/bool.h>
 #include <utils/util.h>
-char name[20];
+char *name;
 int row = 0;
 int col = 0;
 bool capson = false;
@@ -53,9 +53,8 @@ void kernel_main() {
     kprintf("Enter your name: ");
     kgetstr(name, 19);
     kputchar('\n');
-    kprintf("Hello, ");
-    kprintf(name);
-    kprintf("!\n");
+
+    kprintf("Hello, %s\n", name);
 
     kflush();
     kprintf("Welcome!\n\nStarting...\n");

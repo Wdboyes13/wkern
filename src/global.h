@@ -29,6 +29,6 @@ extern bool shift;
 #define ATTR(x) __attribute__((x))
 #define PKG ATTR(packed)
 
-extern char name[20];
+extern char *name;
 
 #define NULL ((void *)0)

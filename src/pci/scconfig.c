@@ -11,21 +11,6 @@ u32 pci_config_read(u8 bus, u8 slot, u8 func, u8 offset) {
     return inl(PCI_CONFIG_DATA);
 }
 
-void printdevinfo(u8 bus, u8 slot, u8 func, u16 dev, u16 vendor) {
-    kprintf("Vendor: ");
-    kprint_hex(vendor);
-    kputchar('\n');
-    kprintf("Found VirtIO Device at ");
-    kprint_hex(bus);
-    kputchar(':');
-    kprint_hex(slot);
-    kputchar('.');
-    kprint_hex(func);
-    kprintf(" Device ID: ");
-    kprint_hex(dev);
-    kputchar('\n');
-}
-
 void find_virtionet_dev() {
     for (u8 bus = 0; bus < 255; bus++) {
         for (u8 slot = 0; slot < 32; slot++) {
@@ -41,16 +26,8 @@ void find_virtionet_dev() {
                     (pci_config_read(bus, slot, func, 0x08) >> 0) & 0xFF;
 
                 if (vendor == 0x1AF4 && dev == 0x1000 && revid == 0x00) {
-                    printdevinfo(bus, slot, func, dev, vendor);
-
-                    kprintf("Bar 0: ");
-                    kprint_hex(bar0);
-                    kprintf(" I/O Base: ");
-                    kprint_hex(iob);
-                    kputchar('\n');
-                    kprintf("RevID: ");
-                    kprint_hex(revid);
-                    kputchar('\n');
+                    kprintf("VirtIO at %x:%x.%x BAR0=%x IO=%x Rev=%x\n", bus,
+                            slot, func, bar0, iob, revid);
 
                     // 1. Reset device
                     outb(VIRTIO_REG(0x12), 0x00);
