@@ -3,10 +3,8 @@ fat16.img
 docs
 *.md
 LICENSE
-.clangd
 .clang-format
 .vscode
 objs
 iso
-src/slre
 *.txt
