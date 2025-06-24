@@ -9,3 +9,4 @@ LICENSE
 objs
 iso
 src/slre
+*.txt

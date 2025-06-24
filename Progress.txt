@@ -1,0 +1,12 @@
+Shell
+Input
+Output
+FAT16
+File I/O
+ATA
+Format String Printf
+Executables (almost)
+IDT/GDT/IRQ
+PIT
+Memory Allocator
+POSIX ERE (Extended Regex)
