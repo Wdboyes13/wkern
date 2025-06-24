@@ -33,7 +33,8 @@ SRCS = [
     "src/KShell/filecmds.c",
     "src/mem/alloc.c",
     "src/KShell/regexcmd.c",
-    "src/slre/slre.c"
+    "src/slre/slre.c",
+    "src/pci/scconfig.c"
 ]
 
 NASMSRCS = [
@@ -64,6 +65,8 @@ HEADS = ["src/types/nums.h", "src/fileio/fileio.h",
 			   "src/wex/stdwex.h", "src/io/kio.h",
 			   "src/utils/util.h", "src/idt/idtirq.h",
 			   "src/qemu/shutdown.h", "src/mem/kmem.h",
-			   "src/KShell/shell.h", "src/KShell/filecmds.h",]
+			   "src/KShell/shell.h", "src/KShell/filecmds.h",
+               "src/pci/pci.h"
+               ]
 
 CLEANTARGS = [*OBJS, ISO, OUTARG, OUT, GRUBCFGTARG, "didconf"]

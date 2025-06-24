@@ -41,4 +41,15 @@ inline u16 inw(u16 port) {
 
 inline void cli() { __asm__ volatile("cli"); }
 inline void sti() { __asm__ volatile("sti; nop; nop; nop"); }
+
+inline void outl(u16 port, u32 val) {
+    __asm__ volatile("outl %0, %1" : : "a"(val), "Nd"(port));
+}
+
+inline u32 inl(u16 port) {
+    u32 ret;
+    __asm__ volatile("inl %1, %0" : "=a"(ret) : "Nd"(port));
+    return ret;
+}
+
 #endif

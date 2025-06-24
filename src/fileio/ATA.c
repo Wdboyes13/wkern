@@ -21,28 +21,6 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include <io/kio.h>
 #include <utils/util.h>
 
-#define ATA_IO_BASE 0x1F0
-#define ATA_CTRL 0x3F6
-#define ATA_STATUS (ATA_IO_BASE + 7)
-#define ATA_COMMAND (ATA_IO_BASE + 7)
-#define ATA_DRIVE (ATA_IO_BASE + 6)
-
-#define ATA_ERROR (ATA_IO_BASE + 1)
-#define ATA_SECCNT (ATA_IO_BASE + 2)
-#define ATA_LBA_LOW (ATA_IO_BASE + 3)
-#define ATA_LBA_MID (ATA_IO_BASE + 4)
-#define ATA_LBA_HI (ATA_IO_BASE + 5)
-
-#define ATA_DATA (ATA_IO_BASE + 0)
-
-#define ATA_CMD_READ_SECTORS 0x20
-
-#define ATA_SR_BSY 0x80
-#define ATA_SR_DRQ 0x08
-#define ATA_SR_ERR 0x01
-
-#define ATA_WRITE_CMD 0x30
-
 void ata_poll() {
     for (int i = 0; i < 4; i++)
         inb(ATA_CTRL); // 400ns delay

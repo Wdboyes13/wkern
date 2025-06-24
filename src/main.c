@@ -23,6 +23,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include <idt/idtirq.h>
 #include <io/kio.h>
 #include <mem/kmem.h>
+#include <pci/pci.h>
 #include <types/bool.h>
 #include <utils/util.h>
 char name[20];
@@ -45,6 +46,8 @@ void kernel_main() {
     kheap_init(); // Initialize Heap
 
     kcfp();
+
+    find_virtionet_dev();
 
     kprintf("\nHello form WKern!\n");
     kprintf("Enter your name: ");

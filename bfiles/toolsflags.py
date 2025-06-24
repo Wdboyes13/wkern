@@ -17,4 +17,5 @@ QEMUFLAGS = ["-machine", "pc,accel=tcg",
 				   "-drive", "file=mykern.iso,format=raw,media=cdrom,if=ide,index=2",
 				   "-drive", "file=fat16.img,format=raw,if=ide,index=0",
 				   "-boot", "d", "-gdb", "tcp::1234", "-monitor", "stdio",
-				   "-qmp", "tcp:localhost:4444,server,nowait"]
+				   "-qmp", "tcp:localhost:4444,server,nowait", 
+                   "-netdev", "user,id=n1", "-device", "virtio-net-pci,netdev=n1"]
