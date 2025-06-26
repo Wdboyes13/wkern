@@ -16,7 +16,7 @@ __For the new list of requirements, check [RequiredTools.txt](/RequiredTools.txt
 ## To Run
 
 ```sh
-git clone --depth 1 https://github.com/Wdboyes13/slre src/slre # Do to fun times with licensing, SLRE Regex needs to be cloned separatly
+git clone --depth 1 https://github.com/Wdboyes13/slre src/slre # Regex Lib
 ./build.py -mkd   # This creates the disk that the OS will use
 ./build.py        # This will run ALL Compilation and Tests
 ./build.py -run   # This will run QEMU Using the required config
