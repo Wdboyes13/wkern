@@ -24,7 +24,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 void regexc() {
     char regexp[100];
-    char *res = (char *)kmalloc(300);
+    char *res = (char *)kmalloc(300, 8);
 
     if (!res) {
         kprintf("Malloc failed!\n");

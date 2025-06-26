@@ -31,7 +31,6 @@ size_t kstrlen(const char *str);
 int split(char *input, char **argv, int max_args);
 
 void ZZZ(int ms);
-void pit_init(u32 freq);
 
 int katoi(const char *str);
 int katoi_auto(const char *str);

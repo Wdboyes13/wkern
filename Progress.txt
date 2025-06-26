@@ -10,3 +10,4 @@ IDT/GDT/IRQ
 PIT
 Memory Allocator
 POSIX ERE (Extended Regex)
+Partial PCI

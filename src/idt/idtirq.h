@@ -92,6 +92,7 @@ extern struct idt_ptr idt_ptrn;
 #define IDT_ENTRIES 256
 extern struct idt_entry idt[IDT_ENTRIES];
 void ms_sleep(unsigned int ms);
+void pit_init(u32 freq);
 
 // ----- HANDLERS ----- //
 
