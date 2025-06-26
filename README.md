@@ -1,4 +1,5 @@
 # WKern  
+## Developed with ❤️ in Canada 🇨🇦
 **This is a kernel/OS I'm working on**  
 **For Current Lines GO TO [loc.md](/loc.md)**  
 __The specs of the machine are very important__  
