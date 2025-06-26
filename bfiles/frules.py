@@ -10,6 +10,7 @@ def fmt():
 
 def git():
     os.chdir(Path(__file__).resolve().parents[1])
+    subprocess.run(["./loc.sh"])
     subprocess.run(["git", "add", "."])
     subprocess.run(["git", "commit", "-m", "Updated at: " + datetime.now().strftime("%H:%M:%S")])
     subprocess.run(["git", "push", "origin", "main"])
