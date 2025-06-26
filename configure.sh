@@ -127,4 +127,8 @@ if [ ! -d "./objs" ]; then
     find src -type d -exec mkdir -p objs/{} \;
 fi
 
+if [ ! -d "./src/slre" ]; then
+    git clone --depth 1 https://github.com/Wdboyes13/slre src/slre
+fi
+
 echo 'Configured - run `./build.py` to start build'
