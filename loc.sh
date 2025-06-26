@@ -54,6 +54,6 @@ printf " %-12s %5d %10d %10d\n" "Total" "$total_files" "$total_chars" "$total_li
 echo "==========================================="
 
 cat > loc.md <<EOF
-# Total Lines
+# Total Lines: $total_lines
 ![Lines Pie Chart](https://quickchart.io/chart?bkg=white&c=%7B%22type%22%3A%22pie%22%2C%22data%22%3A%7B%22labels%22%3A%5B%22Assembly%22%2C%22C%22%2C%22C%20Header%22%2C%22LD%20Script%22%2C%22Python%22%2C%22Shell%20Script%22%5D%2C%22datasets%22%3A%5B%7B%22label%22%3A%22Lines%22%2C%22data%22%3A%5B$asm_lines%2C$c_lines%2C$h_lines%2C$ld_lines%2C$py_lines%2C$sh_lines%5D%7D%5D%7D%7D)
 EOF
