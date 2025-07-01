@@ -21,7 +21,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include <mem/kmem.h>
 #include <types/nums.h>
 
-void fat16_remove_file(const char *filename, const char *ext) {
+void Fat16RemoveFile(const char *filename, const char *ext) {
     u32 entries_per_sector = fat16.bytes_per_sector / 32;
     u32 root_dir_sectors =
         ((fat16.root_entry_count * 32) + fat16.bytes_per_sector - 1) /

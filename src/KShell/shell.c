@@ -26,7 +26,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include <utils/util.h>
 #include <wex/stdwex.h>
 
-void sh() {
+void Sh() {
     while (1) {
         char *cmd = (char *)Kmalloc(128, 8);
         if (!cmd) {

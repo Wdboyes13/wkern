@@ -42,7 +42,7 @@ struct PKG MBR {
 
 u8 sector[SECTOR_SIZE];
 
-u32 find_fat16_partition() {
+u32 FindFat16Partition() {
     AtaReadSector(0, sector);
     Kprintf("Read ATA Sector\n");
     struct MBR *mbr = (struct MBR *)sector;

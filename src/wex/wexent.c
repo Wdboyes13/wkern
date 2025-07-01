@@ -52,7 +52,7 @@ int chKwex(const unsigned char *smt, int smt_len, const unsigned char *st,
     return 0; // All symbols valid
 }
 
-void runwex(unsigned char *wexexecu) {
+void Runwex(unsigned char *wexexecu) {
     int *fvals = read_vals(wexexecu);
     int sts = fvals[1];
     unsigned char st[sts];

@@ -17,7 +17,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 #include <idt/idtirq.h>
-#include <io/Kio.h>
+#include <io/kio.h>
 #include <types/nums.h>
 #include <utils/util.h>
 void ZZZ(int ms) { MsSleep(ms); }

@@ -103,7 +103,7 @@ void VirtnetInit(u32 iob) {
     Kprintf("NetworK up\n");
 }
 
-void net_stq(u32 iob) {
+void NetStq(u32 iob) {
     // u8 isr = inb(iob + 0x13);
     // if (!(isr & 0x1))
     //     return; // no pacKets
@@ -134,7 +134,7 @@ void net_stq(u32 iob) {
     Outw(iob + VIRTIO_PCI_QUEUE_NOTIFY, 0);
 }
 
-void virtnet_setup() {
+void VirtnetSetup() {
     iob = FindVirtionetDev();
     virtio_irq = PciConfigRead(virtio_bus, virtio_slot, virtio_func,
                                PCI_INTERRUPT_LINE) &

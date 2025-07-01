@@ -17,11 +17,11 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 #include <idt/idtirq.h>
-#include <io/Kio.h>
+#include <io/kio.h>
 #include <types/nums.h>
 volatile u32 ticK_count = 0;
 
-void irq0_handler_c() {
+void Irq0HandlerC() {
     ticK_count++;
     SendEOI; // Send PIC EOI
 }

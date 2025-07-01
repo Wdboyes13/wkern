@@ -26,7 +26,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 struct IdtEntry idt[IDT_ENTRIES];
 struct IdtPtr idt_ptrn __attribute__((aligned(16)));
 // Function to set an IDT gate
-void idt_set_gate(u8 num, u32 base, u16 sel, u8 flags) {
+void IdtSetGate(u8 num, u32 base, u16 sel, u8 flags) {
     idt[num].base_lo = base & 0xFFFF;
     idt[num].sel = sel;
     idt[num].always0 = 0;
@@ -46,7 +46,7 @@ void debug_print_idt_entry(int i) {
     Kprintf("IDT[%s] = %x\n", buf, base);
 }
 
-void all_idt() {
+void AllIdt() {
 
     GdtInstall(); // Install the GDT (Grand Descriptor Table)
 
@@ -70,13 +70,13 @@ void all_idt() {
     idt_ptrn.base = (uptr)idt;                       // Set the base of the IDT
 
     Kprintf("Setting up IDT gate 32 (IRQ0)\n");
-    idt_set_gate(32, (uptr)Irq0Handler, KERNEL_CODE_SEGMENT,
-                 0x8E); // Load IRQ0 Handler into IDT Entry 32
+    IdtSetGate(32, (uptr)Irq0Handler, KERNEL_CODE_SEGMENT,
+               0x8E); // Load IRQ0 Handler into IDT Entry 32
     debug_print_idt_entry(32);
 
     Kprintf("Setting up IDT gate 33 (IRQ1)\n");
-    idt_set_gate(33, (uptr)Irq1Handler, KERNEL_CODE_SEGMENT,
-                 0x8E); // Load IRQ1 Handler into IDT Entry 33
+    IdtSetGate(33, (uptr)Irq1Handler, KERNEL_CODE_SEGMENT,
+               0x8E); // Load IRQ1 Handler into IDT Entry 33
     debug_print_idt_entry(33);
 
     // idt_set_gate(0, (uptr)virtnet_handler, KERNEL_CODE_SEGMENT, 0x8E);

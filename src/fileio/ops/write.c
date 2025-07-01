@@ -21,7 +21,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include <mem/kmem.h>
 #include <types/nums.h>
 
-void writefile(const char *filename, const char *ext, const char *data,
+void Writefile(const char *filename, const char *ext, const char *data,
                u32 size) {
     Kprintf("Writing");
     u32 entries_per_sector = fat16.bytes_per_sector / 32;

@@ -141,7 +141,7 @@ void Irq1HandlerC(void) {
     }
 }
 
-char KgetKey() {
+char Kgetkey() {
     while (buf_tail == buf_head) {
         ; // wait for Key
     }
@@ -157,7 +157,7 @@ void Kgetstr(char *str, int length) {
 
     while (i < length - 1) {
         unsigned char Key = 0;
-        while (!(Key = KgetKey())) {
+        while (!(Key = Kgetkey())) {
             ;
         }
 

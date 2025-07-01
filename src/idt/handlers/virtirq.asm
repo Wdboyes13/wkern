@@ -1,5 +1,5 @@
 global virtirq
-extern virtnet_irq_handler
+extern VirtnetIrqHandler
 VirtnetHandler:
     cli                 ; Disable interrupts
     pusha               ; Push all general-purpose registers
@@ -14,7 +14,7 @@ VirtnetHandler:
     mov fs, ax
     mov gs, ax
 
-    call virtnet_irq_handler
+    call VirtnetIrqHandler
     
     pop gs
     pop fs

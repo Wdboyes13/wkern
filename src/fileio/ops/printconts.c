@@ -17,12 +17,12 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 #include <fileio/fileio.h>
-#include <io/Kio.h>
-#include <mem/Kmem.h>
+#include <io/kio.h>
+#include <mem/kmem.h>
 #include <types/nums.h>
 #include <utils/util.h>
 
-void fileconts(const char *filename, const char *ext) {
+void Fileconts(const char *filename, const char *ext) {
     u32 entries_per_sector = fat16.bytes_per_sector / 32;
     u32 root_dir_sectors =
         ((fat16.root_entry_count * 32) + (fat16.bytes_per_sector - 1)) /

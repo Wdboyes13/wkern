@@ -16,8 +16,8 @@
 ; along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-global gdt_flush
-gdt_flush:
+global GdtFlush
+GdtFlush:
     mov eax, [esp + 4]
     lgdt [eax]
 

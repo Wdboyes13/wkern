@@ -15,10 +15,10 @@
 ; You should have received a copy of the GNU General Public License
 ; along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-global irq0_handler
-extern irq0_handler_c
+global Irq0Handler
+extern Irq0HandlerC 
 section .text
-irq0_handler:
+Irq0Handler:
     pusha                   ; Save general-purpose registers
     push ds
     push es
@@ -27,7 +27,7 @@ irq0_handler:
     mov ds, ax
     mov es, ax
 
-    call irq0_handler_c     ; Call C handler (must be extern in C)
+    call Irq0HandlerC     ; Call C handler (must be extern in C)
 
     pop es
     pop ds

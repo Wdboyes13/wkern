@@ -23,7 +23,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include <qemu/shutdown.h>
 #endif
 
-void exec(unsigned char *exec, int *FVALS) {
+void Exec(unsigned char *exec, int *FVALS) {
     Kprintf("Interpreting executable before execution");
     int entry = exec[0];
     int symtbl_len = exec[1];

@@ -15,8 +15,8 @@
 ; You should have received a copy of the GNU General Public License
 ; along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-global irq1_handler
-extern irq1_handler_c
+global Irq1Handler
+extern Irq1HandlerC
 
 Irq1Handler:
     cli                 ; Disable interrupts
@@ -32,7 +32,7 @@ Irq1Handler:
     mov fs, ax
     mov gs, ax
 
-    call irq1_handler_c
+    call Irq1HandlerC
 
     pop gs
     pop fs

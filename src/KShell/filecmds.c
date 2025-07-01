@@ -26,7 +26,7 @@ void Rm(const char *argv[], int argc) { // rm [filename] [ext]
     Fat16RemoveFile(argv[1], argv[2]);
 }
 
-void MKf(const char *argv[], int argc) { // mKfile [filename] [ext]
+void Mkf(const char *argv[], int argc) { // mKfile [filename] [ext]
     if (argc < 3) {
         Kprintf("Not enough args\nUsage: mKfile [filename] [ext]");
         return;

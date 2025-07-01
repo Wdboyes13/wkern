@@ -17,7 +17,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 #include <global.h>
-#include <io/Kio.h>
+#include <io/kio.h>
 #include <utils/util.h>
 int Kstrcmp(const char *a, const char *b) {
     while (*a && (*a == *b)) {
@@ -97,7 +97,7 @@ int Kisxdigit(int c) {
            (c >= 'A' && c <= 'F');
 }
 
-int split(char *input, char **argv, int max_args) {
+int Split(char *input, char **argv, int max_args) {
     int argc = 0;
 
     while (*input && argc < max_args) {

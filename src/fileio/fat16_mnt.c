@@ -42,7 +42,7 @@ u32 Fat16TotalClusters(struct FaT16Info *fat) {
     return data_sectors / fat->sectors_per_cluster;
 }
 
-u32 fat16_mount(u32 partition_lba) {
+u32 Fat16Mount(u32 partition_lba) {
     AtaReadSector(partition_lba, fat16_sector);
 
     struct FaT16Bpb *bpb = (struct FaT16Bpb *)fat16_sector;

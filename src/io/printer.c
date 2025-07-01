@@ -50,7 +50,7 @@ void Kputchar(char c) {
     }
 }
 
-void Kputcharbackspace() {
+void KputcharBackspace() {
     if (col > 0) {
         col--;
     } else if (row > 0) {

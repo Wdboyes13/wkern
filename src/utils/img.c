@@ -16,7 +16,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-#include <io/Kio.h>
+#include <io/kio.h>
 #include <utils/util.h>
 void draw_smile() {
     Kputchar(0xDB);
