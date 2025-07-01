@@ -17,5 +17,5 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 #pragma once
-void panic(const char *msg);
-void triple_fault();
+void Panic(const char *msg);
+void TripleFault();

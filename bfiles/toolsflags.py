@@ -7,7 +7,7 @@ QEMU = "qemu-system-i386"
 
 # Flags
 CCFLAGS = ["-ffreestanding", "-I./src", "-DARCH_X86", "-DVMQEMU", "-fno-pie", "-nostdlib",
-           "-m32", "-O2", "-g", "-fno-omit-frame-pointer", "-std=c99"]
+           "-m32", "-O2", "-g", "-fno-omit-frame-pointer", "-std=c99", "-Wall", "-Wextra"]
 
 LDFLAGS = ["-melf_i386", "-n", "--oformat=elf32-i386"]
 

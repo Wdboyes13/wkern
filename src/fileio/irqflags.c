@@ -1,5 +1,5 @@
 /*
-WKern - A Bare Metal OS / Kernel I am making (For Fun)
+WKern - A Bare Metal OS / Kernel I am maKing (For Fun)
 Copyright (C) 2025  Wdboyes13
 
 This program is free software: you can redistribute it and/or modify
@@ -18,6 +18,6 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #include <types/nums.h>
 
-// Global kernel IRQ flags
+// Global Kernel IRQ flags
 volatile u8 irq14stat = 0;
 volatile u8 irq15stat = 0;

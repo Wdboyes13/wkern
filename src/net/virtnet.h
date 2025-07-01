@@ -36,18 +36,18 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #define VIRTIO_STATUS_DRIVER      2
 #define VIRTIO_STATUS_DRIVER_OK   4
 
-typedef struct virtq_desc{
+typedef struct VirtqDesc {
     uptr addr;
     u32 len;
     u16 flags;
     u16 next;
 } PKG virtq_desc;
-typedef struct virtq_avail{
+typedef struct VirtqAvail {
     u16 flags;
     u16 idx;
     u16 ring[];
 } PKG virtq_avail;
-typedef struct virtq_used{
+typedef struct VirtqUsed {
     u16 idx;
     u16 flags;
     struct {
@@ -56,8 +56,7 @@ typedef struct virtq_used{
     } ring[];
 } PKG virtq_used;
 
-
-void net_stq(u32 iob);
-void virtnet_init(u32 iob);
-void virtnet_negotiate(u32 iob);
-void virtnet_setup();
+void NetStq(u32 iob);
+void VirtnetInit(u32 iob);
+void VirtnetNegotiate(u32 iob);
+void VirtnetSetup();

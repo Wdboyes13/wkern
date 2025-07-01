@@ -1,5 +1,5 @@
 /*
-WKern - A Bare Metal OS / Kernel I am making (For Fun)
+WKern - A Bare Metal OS / Kernel I am maKing (For Fun)
 Copyright (C) 2025  Wdboyes13
 
 This program is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 #include <utils/util.h>
-int katoi(const char *str) {
+int Katoi(const char *str) {
     int result = 0;
     int sign = 1;
     int i = 0;
@@ -31,43 +31,42 @@ int katoi(const char *str) {
         i++;
     }
     while (str[i] >= '0' && str[i] <= '9') {
-        result = result * 10 + (str[i] - '0');
+        result = (result * 10) + (str[i] - '0');
         i++;
     }
 
     return result * sign;
 }
 
-int katoi_auto(const char *str) {
+int Katoi_auto(const char *str) {
     if (str[0] == '0' && (str[1] == 'x' || str[1] == 'X')) {
         // Hex string
         int val = 0;
-        str += 2; // skip "0x"
+        str += 2; // sKip "0x"
         while (*str) {
             val *= 16;
-            if (*str >= '0' && *str <= '9')
+            if (*str >= '0' && *str <= '9') {
                 val += *str - '0';
-            else if (*str >= 'a' && *str <= 'f')
+            } else if (*str >= 'a' && *str <= 'f') {
                 val += *str - 'a' + 10;
-            else if (*str >= 'A' && *str <= 'F')
+            } else if (*str >= 'A' && *str <= 'F') {
                 val += *str - 'A' + 10;
-            else
+            } else {
                 break;
+            }
             str++;
         }
         return val;
-    } else {
-        // Decimal fallback
-        return katoi(str);
-    }
+    } // Decimal fallbacK
+    return Katoi(str);
 }
 
-void kitoa(unsigned int num, char *buf) {
+void Kitoa(unsigned int num, char *buf) {
     int i = 0;
     if (num == 0) {
         buf[i++] = '0';
     } else {
-        // Convert digits backwards
+        // Convert digits bacKwards
         while (num > 0) {
             buf[i++] = '0' + (num % 10);
             num /= 10;

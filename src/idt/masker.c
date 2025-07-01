@@ -1,5 +1,5 @@
 /*
-WKern - A Bare Metal OS / Kernel I am making (For Fun)
+WKern - A Bare Metal OS / Kernel I am maKing (For Fun)
 Copyright (C) 2025  Wdboyes13
 
 This program is free software: you can redistribute it and/or modify
@@ -22,14 +22,14 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #define PIC1_DATA 0x21
 #define PIC2_DATA 0xA1
 
-void mask_all_irqs(void) {
-    kprintf("Masking all IRQs\n");
-    outb(PIC1_DATA, 0xFF); // Mask all IRQs on master PIC
-    outb(PIC2_DATA, 0xFF); // Mask all IRQs on slave PIC
+void masK_all_irqs(void) {
+    Kprintf("MasKing all IRQs\n");
+    Outb(PIC1_DATA, 0xFF); // MasK all IRQs on master PIC
+    Outb(PIC2_DATA, 0xFF); // MasK all IRQs on slave PIC
 }
 
-void unmask_irq(u8 irq) {
-    kprintf("Unmasking IRQ\n");
+void unmasK_irq(u8 irq) {
+    Kprintf("UnmasKing IRQ\n");
     u16 port;
     u8 value;
 
@@ -40,6 +40,6 @@ void unmask_irq(u8 irq) {
         irq -= 8;
     }
 
-    value = inb(port) & ~(1 << irq);
-    outb(port, value);
+    value = Inb(port) & ~(1 << irq);
+    Outb(port, value);
 }

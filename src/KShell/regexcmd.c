@@ -1,5 +1,5 @@
 /*
-WKern - A Bare Metal OS / Kernel I am making (For Fun)
+WKern - A Bare Metal OS / Kernel I am maKing (For Fun)
 Copyright (C) 2025  Wdboyes13
 
 This program is free software: you can redistribute it and/or modify
@@ -22,40 +22,40 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include <slre/slre.h>
 #include <utils/util.h>
 
-void regexc() {
+void Regexc() {
     char regexp[100];
-    char *res = (char *)kmalloc(300, 8);
+    char *res = (char *)Kmalloc(300, 8);
 
     if (!res) {
-        kprintf("Malloc failed!\n");
+        Kprintf("Malloc failed!\n");
         return;
     }
 
-    kprintf("Enter regex expression: ");
-    kgetstr(regexp, 99);
+    Kprintf("Enter regex expression: ");
+    Kgetstr(regexp, 99);
 
-    kprintf("Enter text: ");
-    kgetstr(res, 299);
+    Kprintf("Enter text: ");
+    Kgetstr(res, 299);
 
     // Allocate space for capture groups (we'll use 1 group here)
     struct slre_cap caps[1];
 
-    int matched = slre_match(regexp, res, kstrlen(res), caps, 1, 0);
+    int matched = slre_match(regexp, res, Kstrlen(res), caps, 1, 0);
     if (matched > 0) {
-        kprintf("Match! Matched ");
-        kprint_hex(matched);
-        kputchar('\n');
+        Kprintf("Match! Matched ");
+        KprintHex(matched);
+        Kputchar('\n');
 
         // Print matched substring
         int len = caps[0].len;
-        kprintf("Matched text: ");
+        Kprintf("Matched text: ");
         for (int i = 0; i < len; i++) {
-            kputchar(caps[0].ptr[i]);
+            Kputchar(caps[0].ptr[i]);
         }
-        kputchar('\n');
+        Kputchar('\n');
     } else {
-        kprintf("No match.\n");
+        Kprintf("No match.\n");
     }
 
-    kfree(res);
+    Kfree(res);
 }

@@ -1,5 +1,5 @@
 /*
-WKern - A Bare Metal OS / Kernel I am making (For Fun)
+WKern - A Bare Metal OS / Kernel I am maKing (For Fun)
 Copyright (C) 2025  Wdboyes13
 
 This program is free software: you can redistribute it and/or modify
@@ -23,10 +23,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include <qemu/shutdown.h>
 #endif
 
-extern unsigned char smt[];
-
 void exec(unsigned char *exec, int *FVALS) {
-    kprintf("Interpreting executable before execution");
+    Kprintf("Interpreting executable before execution");
     int entry = exec[0];
     int symtbl_len = exec[1];
     int pc = entry;
@@ -36,18 +34,18 @@ void exec(unsigned char *exec, int *FVALS) {
         if (opcode == 0x00) { // CALL
             unsigned char sym_id = exec[pc++];
             if (sym_id >= symtbl_len) {
-                kprintf("Invalid symbol ID");
+                Kprintf("Invalid symbol ID");
                 break;
             }
 
-            unsigned char op = smt[sym_id]; // Look up actual opcode
+            unsigned char op = smt[sym_id]; // LooK up actual opcode
 
             switch (op) {
             case 0x0A: { // Write (print)
                 while (exec[pc] != 0x00) {
-                    kputchar(exec[pc++]);
+                    Kputchar(exec[pc++]);
                 }
-                pc++; // Skip 0x00
+                pc++; // SKip 0x00
                 break;
             }
             case 0x0B: {
@@ -56,7 +54,7 @@ void exec(unsigned char *exec, int *FVALS) {
             }
             case 0x0C: { // Shutdown
 #ifdef VMQEMU
-                qemu_shutdown();
+                QemuShutdown();
 #endif
                 break;
             }
@@ -65,16 +63,16 @@ void exec(unsigned char *exec, int *FVALS) {
                 break;
             }
             case 0x01: {
-                kcfp();
+                Kcfp();
                 break;
             }
             default: {
-                kprintf("Unknown opcode");
+                Kprintf("UnKnown opcode");
                 break;
             }
             }
         } else {
-            kprintf("Invalid instruction byte\n");
+            Kprintf("Invalid instruction byte\n");
             break;
         }
     }

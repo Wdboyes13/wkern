@@ -1,5 +1,5 @@
 /*
-WKern - A Bare Metal OS / Kernel I am making (For Fun)
+WKern - A Bare Metal OS / Kernel I am maKing (For Fun)
 Copyright (C) 2025  Wdboyes13
 
 This program is free software: you can redistribute it and/or modify
@@ -21,21 +21,21 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 // Read First Values
 // Reads 0x00 - 0x09
-int *read_vals(unsigned char *exec) {
-    static int EPA;
-    static int STS;
-    static int FVALS[2];
+int *read_vals(const unsigned char *exec) {
+    static int epa;
+    static int sts;
+    static int fvals[2];
 
-    EPA = exec[0];
-    STS = exec[1];
-    FVALS[0] = EPA;
-    FVALS[1] = STS;
+    epa = exec[0];
+    sts = exec[1];
+    fvals[0] = epa;
+    fvals[1] = sts;
 
-    return FVALS;
+    return fvals;
 }
 
-// Check if every symbol in `smt` exists in `st`
-int chkwex(const unsigned char *smt, int smt_len, const unsigned char *st,
+// ChecK if every symbol in `smt` exists in `st`
+int chKwex(const unsigned char *smt, int smt_len, const unsigned char *st,
            int st_len) {
     for (int i = 0; i < smt_len; i++) {
         int valid = 0;
@@ -53,12 +53,12 @@ int chkwex(const unsigned char *smt, int smt_len, const unsigned char *st,
 }
 
 void runwex(unsigned char *wexexecu) {
-    int *FVALS = read_vals(wexexecu);
-    int STS = FVALS[1];
-    unsigned char ST[STS];
-    for (int i = 0; i < STS; i++) {
-        ST[i] = wexexecu[i + 2];
+    int *fvals = read_vals(wexexecu);
+    int sts = fvals[1];
+    unsigned char st[sts];
+    for (int i = 0; i < sts; i++) {
+        st[i] = wexexecu[i + 2];
     }
-    chkwex(ST, STS, smt, 5);
-    exec(wexexecu, FVALS);
+    chKwex(st, sts, smt, 5);
+    Exec(wexexecu, fvals);
 }

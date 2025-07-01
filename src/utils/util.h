@@ -20,22 +20,22 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #include <types/nums.h>
 
-int kstrcmp(const char *a, const char *b);
-void kshcmp();
-char *kstrchr(const char *str, int c);
-int ktolower(int c);
-int kisdigit(int c);
-int kisspace(int c);
-int kisxdigit(int c);
-size_t kstrlen(const char *str);
-int split(char *input, char **argv, int max_args);
+int Kstrcmp(const char *a, const char *b);
+void Kshcmp();
+char *Kstrchr(const char *str, int c);
+int Ktolower(int c);
+int Kisdigit(int c);
+int Kisspace(int c);
+int Kisxdigit(int c);
+size_t Kstrlen(const char *str);
+int Split(char *input, char **argv, int max_args);
 
 void ZZZ(int ms);
 
-int katoi(const char *str);
-int katoi_auto(const char *str);
-void kitoa(unsigned int num, char *buf);
+int Katoi(const char *str);
+int KatoiAuto(const char *str);
+void Kitoa(unsigned int num, char *buf);
 
-void draw_smile();
+void DrawSmile();
 
-u32 kmstrlen(const char *str);
+u32 Kmstrlen(const char *str);

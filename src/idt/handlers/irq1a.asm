@@ -18,7 +18,7 @@
 global irq1_handler
 extern irq1_handler_c
 
-irq1_handler:
+Irq1Handler:
     cli                 ; Disable interrupts
     pusha               ; Push all general-purpose registers
     push ds

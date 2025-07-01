@@ -24,10 +24,10 @@ static unsigned char smt[] = {
     0x0D, // Sleep 1
     0x01  // Clear Screen
 };
-unsigned char *execr();
-void runwex(unsigned char *wexexecu);
-int *read_vals(unsigned char *exec);
-int chkwex(const unsigned char *smt, int smt_len, const unsigned char *st,
+unsigned char *Execr();
+void Runwex(unsigned char *wexexecu);
+int *ReadVals(const unsigned char *exec);
+int Chkwex(const unsigned char *smt, int smt_len, const unsigned char *st,
            int st_len);
 
-void exec(unsigned char *exec, int *FVALS);
+void Exec(unsigned char *exec, int *FVALS);

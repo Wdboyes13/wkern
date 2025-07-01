@@ -1,5 +1,5 @@
 /*
-WKern - A Bare Metal OS / Kernel I am making (For Fun)
+WKern - A Bare Metal OS / Kernel I am maKing (For Fun)
 Copyright (C) 2025  Wdboyes13
 
 This program is free software: you can redistribute it and/or modify
@@ -17,14 +17,15 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 #include <io/kio.h>
-__attribute__((noreturn)) void panic(const char *msg) {
-    kprintf("\n\n** KERNEL PANIC **\n");
-    kprintf("Message: ");
-    kprintf(msg);
-    kputchar('\n');
-    kprintf("System Halted");
+__attribute__((noreturn)) void Panic(const char *msg) {
+    Kprintf("\n\n** KERNEL PANIC **\n");
+    Kprintf("Message: ");
+    Kprintf(msg);
+    Kputchar('\n');
+    Kprintf("System Halted");
 
-    for (;;)
+    for (;;) {
         __asm__ volatile("cli\n"
                          "hlt");
+    };
 }

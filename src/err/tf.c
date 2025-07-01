@@ -1,5 +1,5 @@
 /*
-WKern - A Bare Metal OS / Kernel I am making (For Fun)
+WKern - A Bare Metal OS / Kernel I am maKing (For Fun)
 Copyright (C) 2025  Wdboyes13
 
 This program is free software: you can redistribute it and/or modify
@@ -17,8 +17,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 #include <io/kio.h>
-__attribute__((noreturn)) void triple_fault() {
-    kprintf("Triple Fault Triggered");
+__attribute__((noreturn)) void TripleFault() {
+    Kprintf("Triple Fault Triggered");
     __asm__ volatile("lidt (0)");  // Load an invalid IDT
     __asm__ volatile("int $0x03"); // Cause interrupt = triple fault = CPU reset
     __builtin_unreachable();

@@ -1,0 +1,202 @@
+[
+  {
+    "directory": "/Users/william/coding/wkern",
+    "command": "clang -ffreestanding -I./src -DARCH_X86 -DVMQEMU -fno-pie -nostdlib -m32 -O2 -g -fno-omit-frame-pointer -std=c99 -c src/main.c -o src/main.c.o",
+    "file": "/Users/william/coding/wkern/src/main.c"
+  },
+  {
+    "directory": "/Users/william/coding/wkern",
+    "command": "clang -ffreestanding -I./src -DARCH_X86 -DVMQEMU -fno-pie -nostdlib -m32 -O2 -g -fno-omit-frame-pointer -std=c99 -c src/pci/scconfig.c -o src/pci/scconfig.c.o",
+    "file": "/Users/william/coding/wkern/src/pci/scconfig.c"
+  },
+  {
+    "directory": "/Users/william/coding/wkern",
+    "command": "clang -ffreestanding -I./src -DARCH_X86 -DVMQEMU -fno-pie -nostdlib -m32 -O2 -g -fno-omit-frame-pointer -std=c99 -c src/net/virtio.c -o src/net/virtio.c.o",
+    "file": "/Users/william/coding/wkern/src/net/virtio.c"
+  },
+  {
+    "directory": "/Users/william/coding/wkern",
+    "command": "clang -ffreestanding -I./src -DARCH_X86 -DVMQEMU -fno-pie -nostdlib -m32 -O2 -g -fno-omit-frame-pointer -std=c99 -c src/net/addr.c -o src/net/addr.c.o",
+    "file": "/Users/william/coding/wkern/src/net/addr.c"
+  },
+  {
+    "directory": "/Users/william/coding/wkern",
+    "command": "clang -ffreestanding -I./src -DARCH_X86 -DVMQEMU -fno-pie -nostdlib -m32 -O2 -g -fno-omit-frame-pointer -std=c99 -c src/fileio/irqflags.c -o src/fileio/irqflags.c.o",
+    "file": "/Users/william/coding/wkern/src/fileio/irqflags.c"
+  },
+  {
+    "directory": "/Users/william/coding/wkern",
+    "command": "clang -ffreestanding -I./src -DARCH_X86 -DVMQEMU -fno-pie -nostdlib -m32 -O2 -g -fno-omit-frame-pointer -std=c99 -c src/fileio/ATA.c -o src/fileio/ATA.c.o",
+    "file": "/Users/william/coding/wkern/src/fileio/ATA.c"
+  },
+  {
+    "directory": "/Users/william/coding/wkern",
+    "command": "clang -ffreestanding -I./src -DARCH_X86 -DVMQEMU -fno-pie -nostdlib -m32 -O2 -g -fno-omit-frame-pointer -std=c99 -c src/fileio/MBR.c -o src/fileio/MBR.c.o",
+    "file": "/Users/william/coding/wkern/src/fileio/MBR.c"
+  },
+  {
+    "directory": "/Users/william/coding/wkern",
+    "command": "clang -ffreestanding -I./src -DARCH_X86 -DVMQEMU -fno-pie -nostdlib -m32 -O2 -g -fno-omit-frame-pointer -std=c99 -c src/fileio/fat16_mnt.c -o src/fileio/fat16_mnt.c.o",
+    "file": "/Users/william/coding/wkern/src/fileio/fat16_mnt.c"
+  },
+  {
+    "directory": "/Users/william/coding/wkern",
+    "command": "clang -ffreestanding -I./src -DARCH_X86 -DVMQEMU -fno-pie -nostdlib -m32 -O2 -g -fno-omit-frame-pointer -std=c99 -c src/fileio/ops/printconts.c -o src/fileio/ops/printconts.c.o",
+    "file": "/Users/william/coding/wkern/src/fileio/ops/printconts.c"
+  },
+  {
+    "directory": "/Users/william/coding/wkern",
+    "command": "clang -ffreestanding -I./src -DARCH_X86 -DVMQEMU -fno-pie -nostdlib -m32 -O2 -g -fno-omit-frame-pointer -std=c99 -c src/fileio/ops/ls.c -o src/fileio/ops/ls.c.o",
+    "file": "/Users/william/coding/wkern/src/fileio/ops/ls.c"
+  },
+  {
+    "directory": "/Users/william/coding/wkern",
+    "command": "clang -ffreestanding -I./src -DARCH_X86 -DVMQEMU -fno-pie -nostdlib -m32 -O2 -g -fno-omit-frame-pointer -std=c99 -c src/fileio/ops/mkfile.c -o src/fileio/ops/mkfile.c.o",
+    "file": "/Users/william/coding/wkern/src/fileio/ops/mkfile.c"
+  },
+  {
+    "directory": "/Users/william/coding/wkern",
+    "command": "clang -ffreestanding -I./src -DARCH_X86 -DVMQEMU -fno-pie -nostdlib -m32 -O2 -g -fno-omit-frame-pointer -std=c99 -c src/fileio/ops/rmfile.c -o src/fileio/ops/rmfile.c.o",
+    "file": "/Users/william/coding/wkern/src/fileio/ops/rmfile.c"
+  },
+  {
+    "directory": "/Users/william/coding/wkern",
+    "command": "clang -ffreestanding -I./src -DARCH_X86 -DVMQEMU -fno-pie -nostdlib -m32 -O2 -g -fno-omit-frame-pointer -std=c99 -c src/fileio/ops/write.c -o src/fileio/ops/write.c.o",
+    "file": "/Users/william/coding/wkern/src/fileio/ops/write.c"
+  },
+  {
+    "directory": "/Users/william/coding/wkern",
+    "command": "clang -ffreestanding -I./src -DARCH_X86 -DVMQEMU -fno-pie -nostdlib -m32 -O2 -g -fno-omit-frame-pointer -std=c99 -c src/err/tf.c -o src/err/tf.c.o",
+    "file": "/Users/william/coding/wkern/src/err/tf.c"
+  },
+  {
+    "directory": "/Users/william/coding/wkern",
+    "command": "clang -ffreestanding -I./src -DARCH_X86 -DVMQEMU -fno-pie -nostdlib -m32 -O2 -g -fno-omit-frame-pointer -std=c99 -c src/err/panic.c -o src/err/panic.c.o",
+    "file": "/Users/william/coding/wkern/src/err/panic.c"
+  },
+  {
+    "directory": "/Users/william/coding/wkern",
+    "command": "clang -ffreestanding -I./src -DARCH_X86 -DVMQEMU -fno-pie -nostdlib -m32 -O2 -g -fno-omit-frame-pointer -std=c99 -c src/wex/testexec.c -o src/wex/testexec.c.o",
+    "file": "/Users/william/coding/wkern/src/wex/testexec.c"
+  },
+  {
+    "directory": "/Users/william/coding/wkern",
+    "command": "clang -ffreestanding -I./src -DARCH_X86 -DVMQEMU -fno-pie -nostdlib -m32 -O2 -g -fno-omit-frame-pointer -std=c99 -c src/wex/wexent.c -o src/wex/wexent.c.o",
+    "file": "/Users/william/coding/wkern/src/wex/wexent.c"
+  },
+  {
+    "directory": "/Users/william/coding/wkern",
+    "command": "clang -ffreestanding -I./src -DARCH_X86 -DVMQEMU -fno-pie -nostdlib -m32 -O2 -g -fno-omit-frame-pointer -std=c99 -c src/wex/wexexec.c -o src/wex/wexexec.c.o",
+    "file": "/Users/william/coding/wkern/src/wex/wexexec.c"
+  },
+  {
+    "directory": "/Users/william/coding/wkern",
+    "command": "clang -ffreestanding -I./src -DARCH_X86 -DVMQEMU -fno-pie -nostdlib -m32 -O2 -g -fno-omit-frame-pointer -std=c99 -c src/io/keyin.c -o src/io/keyin.c.o",
+    "file": "/Users/william/coding/wkern/src/io/keyin.c"
+  },
+  {
+    "directory": "/Users/william/coding/wkern",
+    "command": "clang -ffreestanding -I./src -DARCH_X86 -DVMQEMU -fno-pie -nostdlib -m32 -O2 -g -fno-omit-frame-pointer -std=c99 -c src/io/printer.c -o src/io/printer.c.o",
+    "file": "/Users/william/coding/wkern/src/io/printer.c"
+  },
+  {
+    "directory": "/Users/william/coding/wkern",
+    "command": "clang -ffreestanding -I./src -DARCH_X86 -DVMQEMU -fno-pie -nostdlib -m32 -O2 -g -fno-omit-frame-pointer -std=c99 -c src/io/asm.c -o src/io/asm.c.o",
+    "file": "/Users/william/coding/wkern/src/io/asm.c"
+  },
+  {
+    "directory": "/Users/william/coding/wkern",
+    "command": "clang -ffreestanding -I./src -DARCH_X86 -DVMQEMU -fno-pie -nostdlib -m32 -O2 -g -fno-omit-frame-pointer -std=c99 -c src/utils/ksleep.c -o src/utils/ksleep.c.o",
+    "file": "/Users/william/coding/wkern/src/utils/ksleep.c"
+  },
+  {
+    "directory": "/Users/william/coding/wkern",
+    "command": "clang -ffreestanding -I./src -DARCH_X86 -DVMQEMU -fno-pie -nostdlib -m32 -O2 -g -fno-omit-frame-pointer -std=c99 -c src/utils/strings.c -o src/utils/strings.c.o",
+    "file": "/Users/william/coding/wkern/src/utils/strings.c"
+  },
+  {
+    "directory": "/Users/william/coding/wkern",
+    "command": "clang -ffreestanding -I./src -DARCH_X86 -DVMQEMU -fno-pie -nostdlib -m32 -O2 -g -fno-omit-frame-pointer -std=c99 -c src/utils/numtools.c -o src/utils/numtools.c.o",
+    "file": "/Users/william/coding/wkern/src/utils/numtools.c"
+  },
+  {
+    "directory": "/Users/william/coding/wkern",
+    "command": "clang -ffreestanding -I./src -DARCH_X86 -DVMQEMU -fno-pie -nostdlib -m32 -O2 -g -fno-omit-frame-pointer -std=c99 -c src/utils/img.c -o src/utils/img.c.o",
+    "file": "/Users/william/coding/wkern/src/utils/img.c"
+  },
+  {
+    "directory": "/Users/william/coding/wkern",
+    "command": "clang -ffreestanding -I./src -DARCH_X86 -DVMQEMU -fno-pie -nostdlib -m32 -O2 -g -fno-omit-frame-pointer -std=c99 -c src/idt/gdt.c -o src/idt/gdt.c.o",
+    "file": "/Users/william/coding/wkern/src/idt/gdt.c"
+  },
+  {
+    "directory": "/Users/william/coding/wkern",
+    "command": "clang -ffreestanding -I./src -DARCH_X86 -DVMQEMU -fno-pie -nostdlib -m32 -O2 -g -fno-omit-frame-pointer -std=c99 -c src/idt/idt.c -o src/idt/idt.c.o",
+    "file": "/Users/william/coding/wkern/src/idt/idt.c"
+  },
+  {
+    "directory": "/Users/william/coding/wkern",
+    "command": "clang -ffreestanding -I./src -DARCH_X86 -DVMQEMU -fno-pie -nostdlib -m32 -O2 -g -fno-omit-frame-pointer -std=c99 -c src/idt/pit.c -o src/idt/pit.c.o",
+    "file": "/Users/william/coding/wkern/src/idt/pit.c"
+  },
+  {
+    "directory": "/Users/william/coding/wkern",
+    "command": "clang -ffreestanding -I./src -DARCH_X86 -DVMQEMU -fno-pie -nostdlib -m32 -O2 -g -fno-omit-frame-pointer -std=c99 -c src/idt/masker.c -o src/idt/masker.c.o",
+    "file": "/Users/william/coding/wkern/src/idt/masker.c"
+  },
+  {
+    "directory": "/Users/william/coding/wkern",
+    "command": "clang -ffreestanding -I./src -DARCH_X86 -DVMQEMU -fno-pie -nostdlib -m32 -O2 -g -fno-omit-frame-pointer -std=c99 -c src/idt/handlers/irq0.c -o src/idt/handlers/irq0.c.o",
+    "file": "/Users/william/coding/wkern/src/idt/handlers/irq0.c"
+  },
+  {
+    "directory": "/Users/william/coding/wkern",
+    "command": "clang -ffreestanding -I./src -DARCH_X86 -DVMQEMU -fno-pie -nostdlib -m32 -O2 -g -fno-omit-frame-pointer -std=c99 -c src/idt/handlers/virtnetirq.c -o src/idt/handlers/virtnetirq.c.o",
+    "file": "/Users/william/coding/wkern/src/idt/handlers/virtnetirq.c"
+  },
+  {
+    "directory": "/Users/william/coding/wkern",
+    "command": "clang -ffreestanding -I./src -DARCH_X86 -DVMQEMU -fno-pie -nostdlib -m32 -O2 -g -fno-omit-frame-pointer -std=c99 -c src/qemu/shutdown.c -o src/qemu/shutdown.c.o",
+    "file": "/Users/william/coding/wkern/src/qemu/shutdown.c"
+  },
+  {
+    "directory": "/Users/william/coding/wkern",
+    "command": "clang -ffreestanding -I./src -DARCH_X86 -DVMQEMU -fno-pie -nostdlib -m32 -O2 -g -fno-omit-frame-pointer -std=c99 -c src/slre/slre.c -o src/slre/slre.c.o",
+    "file": "/Users/william/coding/wkern/src/slre/slre.c"
+  },
+  {
+    "directory": "/Users/william/coding/wkern",
+    "command": "clang -ffreestanding -I./src -DARCH_X86 -DVMQEMU -fno-pie -nostdlib -m32 -O2 -g -fno-omit-frame-pointer -std=c99 -c src/slre/unit_test.c -o src/slre/unit_test.c.o",
+    "file": "/Users/william/coding/wkern/src/slre/unit_test.c"
+  },
+  {
+    "directory": "/Users/william/coding/wkern",
+    "command": "clang -ffreestanding -I./src -DARCH_X86 -DVMQEMU -fno-pie -nostdlib -m32 -O2 -g -fno-omit-frame-pointer -std=c99 -c src/mem/alloc.c -o src/mem/alloc.c.o",
+    "file": "/Users/william/coding/wkern/src/mem/alloc.c"
+  },
+  {
+    "directory": "/Users/william/coding/wkern",
+    "command": "clang -ffreestanding -I./src -DARCH_X86 -DVMQEMU -fno-pie -nostdlib -m32 -O2 -g -fno-omit-frame-pointer -std=c99 -c src/mem/memutil.c -o src/mem/memutil.c.o",
+    "file": "/Users/william/coding/wkern/src/mem/memutil.c"
+  },
+  {
+    "directory": "/Users/william/coding/wkern",
+    "command": "clang -ffreestanding -I./src -DARCH_X86 -DVMQEMU -fno-pie -nostdlib -m32 -O2 -g -fno-omit-frame-pointer -std=c99 -c src/KShell/filecmds.c -o src/KShell/filecmds.c.o",
+    "file": "/Users/william/coding/wkern/src/KShell/filecmds.c"
+  },
+  {
+    "directory": "/Users/william/coding/wkern",
+    "command": "clang -ffreestanding -I./src -DARCH_X86 -DVMQEMU -fno-pie -nostdlib -m32 -O2 -g -fno-omit-frame-pointer -std=c99 -c src/KShell/shellhelp.c -o src/KShell/shellhelp.c.o",
+    "file": "/Users/william/coding/wkern/src/KShell/shellhelp.c"
+  },
+  {
+    "directory": "/Users/william/coding/wkern",
+    "command": "clang -ffreestanding -I./src -DARCH_X86 -DVMQEMU -fno-pie -nostdlib -m32 -O2 -g -fno-omit-frame-pointer -std=c99 -c src/KShell/regexcmd.c -o src/KShell/regexcmd.c.o",
+    "file": "/Users/william/coding/wkern/src/KShell/regexcmd.c"
+  },
+  {
+    "directory": "/Users/william/coding/wkern",
+    "command": "clang -ffreestanding -I./src -DARCH_X86 -DVMQEMU -fno-pie -nostdlib -m32 -O2 -g -fno-omit-frame-pointer -std=c99 -c src/KShell/shell.c -o src/KShell/shell.c.o",
+    "file": "/Users/william/coding/wkern/src/KShell/shell.c"
+  }
+]

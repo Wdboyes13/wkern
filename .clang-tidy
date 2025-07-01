@@ -1,0 +1,30 @@
+Checks: >
+  clang-analyzer-*,
+  bugprone-*,
+  performance-*,
+  readability-*, 
+  portability-*,
+  -clang-analyzer-optin.cplusplus.VirtualCall, 
+  -clang-analyzer-osx*,
+  -clang-analyzer-security.insecureAPI.strcpy, # if you're not using libc
+  -modernize-*,        # you're not modernizing in kernelspace, you’re surviving
+  -cppcoreguidelines-*,
+  -google-*,
+  -hicpp-*,
+  -llvm-header-guard,  # might be noisy if you don't use LLVM-style headers
+  -misc-non-private-member-variables-in-classes # for POD-style structs
+  C-readability-magic-numbers
+
+WarningsAsErrors: ''
+HeaderFilterRegex: '.*'
+FormatStyle: file
+
+CheckOptions:
+  - key: readability-identifier-naming.VariableCase
+    value: lower_case
+  - key: readability-identifier-naming.FunctionCase
+    value: CamelCase
+  - key: readability-identifier-naming.ClassCase
+    value: CamelCase
+  - key: readability-identifier-naming.NamespaceCase
+    value: lower_case

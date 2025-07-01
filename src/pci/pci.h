@@ -27,5 +27,5 @@ extern u8 virtio_slot;
 extern u8 virtio_func;
 extern u8 virtio_irq;
 
-u32 find_virtionet_dev();
-u32 pci_config_read(u8 bus, u8 slot, u8 func, u8 offset);
+u32 FindVirtionetDev();
+u32 PciConfigRead(u8 bus, u8 slot, u8 func, u8 offset);

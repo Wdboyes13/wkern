@@ -30,11 +30,11 @@ kernel_stack_top:
 
 section .text
 global _start
-extern kernel_main
+extern KernelMain
 
 _start:
     mov esp, kernel_stack_top
-    call kernel_main
+    call KernelMain
 
 .hang:
     cli

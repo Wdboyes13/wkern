@@ -1,5 +1,5 @@
 /*
-WKern - A Bare Metal OS / Kernel I am making (For Fun)
+WKern - A Bare Metal OS / Kernel I am maKing (For Fun)
 Copyright (C) 2025  Wdboyes13
 
 This program is free software: you can redistribute it and/or modify
@@ -17,39 +17,39 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 #include <global.h>
 #include <types/nums.h>
-typedef struct block {
+typedef struct BlocK {
     size_t size;
-    struct block *next;
+    struct BlocK *next;
     int free;
-} block_t;
+} blocK_t;
 
 #define HEAP_START ((char *)0x100000)
 #define HEAP_SIZE (512 * 1024)
 
 static char *heap = HEAP_START;
-static block_t *free_list = NULL;
+static blocK_t *free_list = NULL;
 
-void kheap_init() {
-    free_list = (block_t *)heap;
-    free_list->size = HEAP_SIZE - sizeof(block_t);
+void KheapInit() {
+    free_list = (blocK_t *)heap;
+    free_list->size = HEAP_SIZE - sizeof(blocK_t);
     free_list->next = NULL;
     free_list->free = 1;
 }
 
-void *kmalloc(size_t size, size_t align) {
+void *Kmalloc(size_t size, size_t align) {
     size = (size + align - 1) & ~(align - 1);
-    block_t *curr = free_list;
+    blocK_t *curr = free_list;
     while (curr) {
         if (curr->free && curr->size >= size) {
-            if (curr->size >= size + sizeof(block_t) + 8) {
-                // Split the block
-                block_t *new_block = (block_t *)((char *)(curr + 1) + size);
-                new_block->size = curr->size - size - sizeof(block_t);
-                new_block->next = curr->next;
-                new_block->free = 1;
+            if (curr->size >= size + sizeof(blocK_t) + 8) {
+                // Split the blocK
+                blocK_t *new_blocK = (blocK_t *)((char *)(curr + 1) + size);
+                new_blocK->size = curr->size - size - sizeof(blocK_t);
+                new_blocK->next = curr->next;
+                new_blocK->free = 1;
 
                 curr->size = size;
-                curr->next = new_block;
+                curr->next = new_blocK;
             }
             curr->free = 0;
             return (void *)(curr + 1);
@@ -59,9 +59,10 @@ void *kmalloc(size_t size, size_t align) {
     return NULL;
 }
 
-void kfree(void *ptr) {
-    if (!ptr)
+void Kfree(void *ptr) {
+    if (!ptr) {
         return;
-    block_t *block = (block_t *)ptr - 1;
-    block->free = 1;
+    }
+    blocK_t *blocK = (blocK_t *)ptr - 1;
+    blocK->free = 1;
 }

@@ -1,5 +1,5 @@
 /*
-WKern - A Bare Metal OS / Kernel I am making (For Fun)
+WKern - A Bare Metal OS / Kernel I am maKing (For Fun)
 Copyright (C) 2025  Wdboyes13
 
 This program is free software: you can redistribute it and/or modify
@@ -20,7 +20,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include <io/kio.h>
 #include <mem/kmem.h>
 #include <types/nums.h>
-void mkfile(const char *filename, const char *ext) {
+void Mkfile(const char *filename, const char *ext) {
     int free = -1;
     int sector_to_write = -1;
     u32 entries_per_sector = fat16.bytes_per_sector / 32;
@@ -34,20 +34,20 @@ void mkfile(const char *filename, const char *ext) {
 
     // Find free root directory entry
     for (u32 i = 0; i < root_dir_sectors; i++) {
-        ata_read_sector(fat16.root_dir_start_lba + i, sector);
+        AtaReadSector(fat16.root_dir_start_lba + i, sector);
         for (u32 j = 0; j < entries_per_sector; j++) {
             u8 *entry = &sector[j * 32];
             if (entry[0] == 0x00 || entry[0] == 0xE5) {
                 free = j;
                 sector_to_write = i;
-                goto found_free_entry; // break out of both loops ASAP
+                goto found_free_entry; // breaK out of both loops ASAP
             }
         }
     }
 
 found_free_entry:
     if (free == -1 || sector_to_write == -1) {
-        kprintf("No free root directory entry found!\n");
+        Kprintf("No free root directory entry found!\n");
         return;
     }
 
@@ -58,25 +58,25 @@ found_free_entry:
         u32 fat_index = fat_offset % 512;
 
         u8 fatbuf[512];
-        ata_read_sector(fat_sector, fatbuf);
+        AtaReadSector(fat_sector, fatbuf);
 
         if (fatbuf[fat_index] == 0x00 && fatbuf[fat_index + 1] == 0x00) {
             clust = c;
             fatbuf[fat_index] = 0xFF;
             fatbuf[fat_index + 1] = 0xFF;
-            ata_write_sector(fat_sector, fatbuf);
+            AtaWriteSector(fat_sector, fatbuf);
             break;
         }
     }
 
     if (clust == 0) {
-        kprintf("No free cluster found!\n");
+        Kprintf("No free cluster found!\n");
         return;
     }
 
     // Now write the root directory entry
-    ata_read_sector(fat16.root_dir_start_lba + sector_to_write,
-                    sector); // Re-read sector for safety
+    AtaReadSector(fat16.root_dir_start_lba + sector_to_write,
+                  sector); // Re-read sector for safety
     u8 *entry = &sector[free * 32];
 
     // Clear entry bytes (optional but good practice)
@@ -84,11 +84,12 @@ found_free_entry:
         entry[i] = 0x00;
     }
 
-    char name_pad[8], ext_pad[3];
-    padname(filename, name_pad, 8);
-    padname(ext, ext_pad, 3);
-    kmemcpy(entry + 0x00, name_pad, 8);
-    kmemcpy(entry + 0x08, ext_pad, 3);
+    char name_pad[8];
+    char ext_pad[3];
+    Padname(filename, name_pad, 8);
+    Padname(ext, ext_pad, 3);
+    Kmemcpy(entry + 0x00, name_pad, 8);
+    Kmemcpy(entry + 0x08, ext_pad, 3);
     entry[0x0B] = 0x20; // Attribute: Archive
 
     // Time and Date (optional, set 0 here)
@@ -107,6 +108,6 @@ found_free_entry:
     entry[0x1E] = 0;
     entry[0x1F] = 0;
 
-    ata_write_sector(fat16.root_dir_start_lba + sector_to_write, sector);
-    kprintf("File entry written successfully.\n");
+    AtaWriteSector(fat16.root_dir_start_lba + sector_to_write, sector);
+    Kprintf("File entry written successfully.\n");
 }

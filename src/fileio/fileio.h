@@ -42,7 +42,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #define ATA_WRITE_CMD 0x30
 
-struct PKG FAT16_BPB {
+struct PKG FaT16Bpb {
     u8 jmp[3];
     u8 oem[8];
     u16 bytes_per_sector;
@@ -66,7 +66,7 @@ struct PKG FAT16_BPB {
     u8 fs_type[8];
 };
 
-struct FAT16_Info {
+struct FaT16Info {
     u32 fat_start_lba;
     u32 root_dir_start_lba;
     u32 data_start_lba;
@@ -83,26 +83,25 @@ struct FAT16_Info {
     u32 total_cluster;
 };
 
-extern struct FAT16_Info fat16;
+extern struct FaT16Info fat16;
 
-static void ata_wait();
-void ata_read_sector(u32 lba, u8 *buffer);
-void ata_write_sector(u32 lba, const u8 *buffer);
+void AtaReadSector(u32 lba, u8 *buffer);
+void AtaWriteSector(u32 lba, const u8 *buffer);
 
 extern volatile u8 irq14stat;
 extern volatile u8 irq15stat;
 
-u32 find_fat16_partition();
+u32 FindFat16Partition();
 
-void writefile(const char *filename, const char *ext, const char *data,
+void Writefile(const char *filename, const char *ext, const char *data,
                u32 size);
-void fat16_ls();
-u32 fat16_mount(u32 partition_lba);
-void fileconts(const char *filename, const char *ext);
-void mkfile(const char *filename, const char *ext);
-void fat16_remove_file(const char *filename, const char *ext);
+void Fat16Ls();
+u32 Fat16Mount(u32 partition_lba);
+void Fileconts(const char *filename, const char *ext);
+void Mkfile(const char *filename, const char *ext);
+void Fat16RemoveFile(const char *filename, const char *ext);
 
-static inline void padname(const char *src, char *dest, int len) {
+static inline void Padname(const char *src, char *dest, int len) {
     int i = 0;
     while (i < len && src[i] != '\0') {
         char ch = src[i];

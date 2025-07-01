@@ -1,5 +1,5 @@
 /*
-WKern - A Bare Metal OS / Kernel I am making (For Fun)
+WKern - A Bare Metal OS / Kernel I am maKing (For Fun)
 Copyright (C) 2025  Wdboyes13
 
 This program is free software: you can redistribute it and/or modify
@@ -16,27 +16,27 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-#include <io/kio.h>
+#include <io/Kio.h>
 #include <utils/util.h>
 void draw_smile() {
-    kputchar(0xDB);
-    kprintf("        ");
-    kputchar(0xDB);
-    kputchar('\n');
-    kputchar('\n');
-    kputchar(0xDB);
-    kprintf("        ");
-    kputchar(0xDB);
-    kputchar('\n');
-    kputchar(' ');
-    kputchar(0xDB);
-    kputchar(0xDB);
-    kputchar(0xDB);
-    kputchar(0xDB);
-    kputchar(0xDB);
-    kputchar(0xDB);
-    kputchar(0xDB);
-    kputchar(0xDB);
-    kputchar(' ');
-    kputchar('\n');
+    Kputchar(0xDB);
+    Kprintf("        ");
+    Kputchar(0xDB);
+    Kputchar('\n');
+    Kputchar('\n');
+    Kputchar(0xDB);
+    Kprintf("        ");
+    Kputchar(0xDB);
+    Kputchar('\n');
+    Kputchar(' ');
+    Kputchar(0xDB);
+    Kputchar(0xDB);
+    Kputchar(0xDB);
+    Kputchar(0xDB);
+    Kputchar(0xDB);
+    Kputchar(0xDB);
+    Kputchar(0xDB);
+    Kputchar(0xDB);
+    Kputchar(' ');
+    Kputchar('\n');
 }

@@ -1,5 +1,5 @@
 /*
-WKern - A Bare Metal OS / Kernel I am making (For Fun)
+WKern - A Bare Metal OS / Kernel I am maKing (For Fun)
 Copyright (C) 2025  Wdboyes13
 
 This program is free software: you can redistribute it and/or modify
@@ -17,18 +17,18 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 #include <idt/idtirq.h>
-#include <io/kio.h>
+#include <io/Kio.h>
 #include <types/nums.h>
-volatile u32 tick_count = 0;
+volatile u32 ticK_count = 0;
 
 void irq0_handler_c() {
-    tick_count++;
-    outb(0x20, 0x20); // PIC EOI
+    ticK_count++;
+    SendEOI; // Send PIC EOI
 }
 
-void ms_sleep(unsigned int ms) {
-    unsigned int start = tick_count;
-    while ((tick_count - start) < ms) {
+void MsSleep(unsigned int milliseconds) {
+    unsigned int start = ticK_count;
+    while ((ticK_count - start) < milliseconds) {
         __asm__ volatile("hlt");
     }
 }

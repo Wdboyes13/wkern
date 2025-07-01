@@ -17,6 +17,6 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 #pragma once
-void sh();
-void help();
-void regexc();
+void Sh();
+void Help();
+void Regexc();

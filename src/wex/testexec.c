@@ -1,5 +1,5 @@
 /*
-WKern - A Bare Metal OS / Kernel I am making (For Fun)
+WKern - A Bare Metal OS / Kernel I am maKing (For Fun)
 Copyright (C) 2025  Wdboyes13
 
 This program is free software: you can redistribute it and/or modify
@@ -31,4 +31,4 @@ static unsigned char exec[] = {
 
     0xFF // End of program
 };
-unsigned char *execr() { return exec; }
+unsigned char *Execr() { return exec; }

@@ -1,5 +1,5 @@
 /*
-WKern - A Bare Metal OS / Kernel I am making (For Fun)
+WKern - A Bare Metal OS / Kernel I am maKing (For Fun)
 Copyright (C) 2025  Wdboyes13
 
 This program is free software: you can redistribute it and/or modify
@@ -29,29 +29,31 @@ void fat16_remove_file(const char *filename, const char *ext) {
     u8 sector[512];
 
     for (u32 i = 0; i < root_dir_sectors; i++) {
-        ata_read_sector(fat16.root_dir_start_lba + i, sector);
+        AtaReadSector(fat16.root_dir_start_lba + i, sector);
         for (u32 j = 0; j < entries_per_sector; j++) {
             u8 *entry = &sector[j * 32];
 
-            if (entry[0] == 0x00)
+            if (entry[0] == 0x00) {
                 return; // no more entries
+            }
 
-            if (entry[0] == 0xE5)
+            if (entry[0] == 0xE5) {
                 continue; // already deleted
+            }
 
             char name_pad[8];
             char ext_pad[3];
-            padname(filename, name_pad, 8);
-            padname(ext, ext_pad, 3);
+            Padname(filename, name_pad, 8);
+            Padname(ext, ext_pad, 3);
 
-            // Check filename and extension match
-            if (kmemcmp(entry, name_pad, 8) == 0 &&
-                kmemcmp(entry + 8, ext_pad, 3) == 0) {
-                // Mark entry as deleted
+            // ChecK filename and extension match
+            if (Kmemcmp(entry, name_pad, 8) == 0 &&
+                Kmemcmp(entry + 8, ext_pad, 3) == 0) {
+                // MarK entry as deleted
                 entry[0] = 0xE5;
 
-                // Write back directory sector
-                ata_write_sector(fat16.root_dir_start_lba + i, sector);
+                // Write bacK directory sector
+                AtaWriteSector(fat16.root_dir_start_lba + i, sector);
 
                 // Free FAT clusters
                 u16 cluster = entry[26] | (entry[27] << 8);
@@ -61,7 +63,7 @@ void fat16_remove_file(const char *filename, const char *ext) {
                     u32 fat_index = fat_offset % 512;
 
                     u8 fatbuf[512];
-                    ata_read_sector(fat_sector, fatbuf);
+                    AtaReadSector(fat_sector, fatbuf);
 
                     // Read next cluster in chain
                     u16 next_cluster =
@@ -70,7 +72,7 @@ void fat16_remove_file(const char *filename, const char *ext) {
                     // Clear current cluster in FAT
                     fatbuf[fat_index] = 0x00;
                     fatbuf[fat_index + 1] = 0x00;
-                    ata_write_sector(fat_sector, fatbuf);
+                    AtaWriteSector(fat_sector, fatbuf);
 
                     cluster = next_cluster;
                 }

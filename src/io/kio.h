@@ -18,20 +18,20 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #pragma once
 #include <types/nums.h>
-void kprintf(const char *fmt, ...);
-void kputchar(char c);
-void kcfp();
-void kputchar_backspace();
-void kprint_hex(u32 num);
-char kgetkey();
-unsigned char scancode_to_ascii(unsigned char scancode);
-void kgetstr(char *str, int length);
-void kflush();
-void outb(u16 port, u8 value);
-u8 inb(u16 port);
-void outw(u16 port, u16 value);
-u16 inw(u16 port);
-void cli();
-void sti();
-void outl(u16 port, u32 val);
-u32 inl(u16 port);
+void Kprintf(const char *fmt, ...);
+void Kputchar(char c);
+void Kcfp();
+void KputcharBackspace();
+void KprintHex(u32 num);
+char Kgetkey();
+unsigned char ScancodeToAscii(unsigned char scancode);
+void Kgetstr(char *str, int length);
+void Kflush();
+void Outb(u16 port, u8 value);
+u8 Inb(u16 port);
+void Outw(u16 port, u16 value);
+u16 Inw(u16 port);
+void Cli();
+void Sti();
+void Outl(u16 port, u32 val);
+u32 Inl(u16 port);

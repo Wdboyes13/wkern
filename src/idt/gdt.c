@@ -1,5 +1,5 @@
 /*
-WKern - A Bare Metal OS / Kernel I am making (For Fun)
+WKern - A Bare Metal OS / Kernel I am maKing (For Fun)
 Copyright (C) 2025  Wdboyes13
 
 This program is free software: you can redistribute it and/or modify
@@ -17,10 +17,10 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 #include <idt/idtirq.h>
-struct gdt_entry gdt[3];
-struct gdt_ptr gp;
+struct GdtEntry gdt[3];
+struct GdtPtr gp;
 
-void gdt_set_gate(int num, u32 base, u32 limit, u8 access, u8 gran) {
+void GdtSetGate(int num, u32 base, u32 limit, u8 access, u8 gran) {
     gdt[num].base_low = (base & 0xFFFF);
     gdt[num].base_middle = (base >> 16) & 0xFF;
     gdt[num].base_high = (base >> 24) & 0xFF;
@@ -32,13 +32,13 @@ void gdt_set_gate(int num, u32 base, u32 limit, u8 access, u8 gran) {
     gdt[num].access = access;
 }
 
-void gdt_install() {
-    gp.limit = (sizeof(struct gdt_entry) * 3) - 1;
+void GdtInstall() {
+    gp.limit = (sizeof(struct GdtEntry) * 3) - 1;
     gp.base = (uptr)&gdt;
 
-    gdt_set_gate(0, 0, 0, 0, 0);
-    gdt_set_gate(1, 0, 0xFFFFF, 0x9A, 0xCF);
-    gdt_set_gate(2, 0, 0xFFFFF, 0x92, 0xCF);
+    GdtSetGate(0, 0, 0, 0, 0);
+    GdtSetGate(1, 0, 0xFFFFF, 0x9A, 0xCF);
+    GdtSetGate(2, 0, 0xFFFFF, 0x92, 0xCF);
 
-    gdt_flush((uptr)&gp);
+    GdtFlush((uptr)&gp);
 }

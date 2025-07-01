@@ -1,5 +1,5 @@
 /*
-WKern - A Bare Metal OS / Kernel I am making (For Fun)
+WKern - A Bare Metal OS / Kernel I am maKing (For Fun)
 Copyright (C) 2025  Wdboyes13
 
 This program is free software: you can redistribute it and/or modify
@@ -20,16 +20,16 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include <io/kio.h>
 #include <types/nums.h>
 #include <types/vargs.h>
-void kcfp() {
+void Kcfp() {
     for (int i = 0; i < 80 * 25; i++) {
         vmem[i * 2] = ' ';
-        vmem[i * 2 + 1] = 0x0F;
+        vmem[(i * 2) + 1] = 0x0F;
     }
     col = 0;
     row = 0;
 }
 
-void kputchar(char c) {
+void Kputchar(char c) {
     if (c == '\n') {
         col = 0;
         row++;
@@ -45,12 +45,12 @@ void kputchar(char c) {
     }
 
     if (row >= 25) {
-        kcfp();
+        Kcfp();
         row = 0;
     }
 }
 
-void kputchar_backspace() {
+void Kputcharbackspace() {
     if (col > 0) {
         col--;
     } else if (row > 0) {
@@ -58,46 +58,47 @@ void kputchar_backspace() {
         col = 79;
     }
 
-    int offset = row * 80 + col;
-    vmem[offset * 2] = ' ';      // clear the character
-    vmem[offset * 2 + 1] = 0x07; // normal attribute
+    int offset = (row * 80) + col;
+    vmem[offset * 2] = ' ';        // clear the character
+    vmem[(offset * 2) + 1] = 0x07; // normal attribute
 }
 
-void kprint_hex(u32 num) {
+void KprintHex(u32 num) {
     char buf[11] = "0x00000000";
     const char *hex = "0123456789ABCDEF";
     for (int i = 0; i < 8; i++) {
         buf[9 - i] = hex[(num >> (i * 4)) & 0xF];
     }
-    kprintf(buf);
+    Kprintf(buf);
 }
 
-void kprint_dec(int num) {
+void KprintDec(int num) {
     char buf[12]; // enough for -2^31
     int i = 0;
     if (num == 0) {
-        kputchar('0');
+        Kputchar('0');
         return;
     }
     if (num < 0) {
-        kputchar('-');
+        Kputchar('-');
         num = -num;
     }
     while (num > 0) {
         buf[i++] = '0' + (num % 10);
         num /= 10;
     }
-    while (i--)
-        kputchar(buf[i]);
-}
-
-void kprint_str(const char *str) {
-    while (*str) {
-        kputchar(*str++);
+    while (i--) {
+        Kputchar(buf[i]);
     }
 }
 
-void kprintf(const char *fmt, ...) {
+void KprintStr(const char *str) {
+    while (*str) {
+        Kputchar(*str++);
+    }
+}
+
+void Kprintf(const char *fmt, ...) {
     va_list args;
     va_start(args, fmt);
 
@@ -106,36 +107,36 @@ void kprintf(const char *fmt, ...) {
             fmt++;
             switch (*fmt) {
             case 'c': {
-                char c = (char)va_arg(args, int);
-                kputchar(c);
+                char pchar = (char)va_arg(args, int);
+                Kputchar(pchar);
                 break;
             }
             case 's': {
-                const char *s = va_arg(args, const char *);
-                kprint_str(s);
+                const char *pstr = va_arg(args, const char *);
+                KprintStr(pstr);
                 break;
             }
             case 'd': {
                 int num = va_arg(args, int);
-                kprint_dec(num);
+                KprintDec(num);
                 break;
             }
             case 'x': {
                 u32 hex = va_arg(args, u32);
-                kprint_hex(hex);
+                KprintHex(hex);
                 break;
             }
             case '%': {
-                kputchar('%');
+                Kputchar('%');
                 break;
             }
             default:
-                kputchar('%');
-                kputchar(*fmt);
+                Kputchar('%');
+                Kputchar(*fmt);
                 break;
             }
         } else {
-            kputchar(*fmt);
+            Kputchar(*fmt);
         }
         fmt++;
     }

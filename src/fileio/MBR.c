@@ -1,5 +1,5 @@
 /*
-WKern - A Bare Metal OS / Kernel I am making (For Fun)
+WKern - A Bare Metal OS / Kernel I am maKing (For Fun)
 Copyright (C) 2025  Wdboyes13
 
 This program is free software: you can redistribute it and/or modify
@@ -43,25 +43,25 @@ struct PKG MBR {
 u8 sector[SECTOR_SIZE];
 
 u32 find_fat16_partition() {
-    ata_read_sector(0, sector);
-    kprintf("Read ATA Sector\n");
+    AtaReadSector(0, sector);
+    Kprintf("Read ATA Sector\n");
     struct MBR *mbr = (struct MBR *)sector;
 
     if (mbr->signature != 0xAA55) {
         return 0;
-    } else {
-        kprintf("Valid MBR Signature 0xAA55 Detected\n");
     }
+    Kprintf("Valid MBR Signature 0xAA55 Detected\n");
+
     for (int i = 0; i < 4; i++) {
         struct PartitionEntry *part = &mbr->partitions[i];
-        kprintf("Partition type: 0x%x %x\n", i, part->type);
-        kprintf(", LBA start: %x\n", part->lba_first_sector);
-        kprintf("Partition dump: %x", i);
+        Kprintf("Partition type: 0x%x %x\n", i, part->type);
+        Kprintf(", LBA start: %x\n", part->lba_first_sector);
+        Kprintf("Partition dump: %x", i);
         for (int b = 0; b < sizeof(struct PartitionEntry); b++) {
-            kprint_hex(((u8 *)part)[b]);
-            kputchar(' ');
+            KprintHex(((u8 *)part)[b]);
+            Kputchar(' ');
         }
-        kputchar('\n');
+        Kputchar('\n');
 
         if (part->type == FAT16_TYPE1 || part->type == FAT16_TYPE2) {
             return part->lba_first_sector;

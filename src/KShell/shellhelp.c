@@ -1,5 +1,5 @@
 /*
-WKern - A Bare Metal OS / Kernel I am making (For Fun)
+WKern - A Bare Metal OS / Kernel I am maKing (For Fun)
 Copyright (C) 2025  Wdboyes13
 
 This program is free software: you can redistribute it and/or modify
@@ -20,29 +20,29 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include <mem/kmem.h>
 #include <utils/util.h>
 void help() {
-    kprintf("Page 1 or 2 ? ");
-    char *opt = (char *)kmalloc(10, 8);
+    Kprintf("Page 1 or 2 ? ");
+    char *opt = (char *)Kmalloc(10, 8);
     if (!opt) {
-        kprintf("There was a mistake created, known as a Malloc Failure");
+        Kprintf("There was a mistaKe created, Known as a Malloc Failure");
         return;
     }
-    kgetstr(opt, 10);
-    if (kstrcmp(opt, "1") == 0) {
-        kprintf("\nshutdown - shutdown system");
-        kprintf("\nhelp - list command");
-        kprintf("\ncmp - compare strings");
-        kprintf("\nclear - clear screen");
-        kprintf("\nsetname - Set Username");
-        kprintf("\nuser - List Username");
-        kprintf("\nrecvpack - Receive a network packet");
-    } else if (kstrcmp(opt, "2") == 0) {
-        kprintf("\ntst - Test a WEX Executable");
-        kprintf("\nls - List Files in Mounted FAT16");
-        kprintf("\nread - Read File Contents from Cluster (512 Bytes)");
-        kprintf("\nmkfile - Make a new file");
-        kprintf("\nrm - Remove a file");
-        kprintf("\nwrite - Write to a File");
-        kprintf("\nregex - Use POSIX ERE Regex");
+    Kgetstr(opt, 10);
+    if (Kstrcmp(opt, "1") == 0) {
+        Kprintf("\nshutdown - shutdown system");
+        Kprintf("\nhelp - list command");
+        Kprintf("\ncmp - compare strings");
+        Kprintf("\nclear - clear screen");
+        Kprintf("\nsetname - Set Username");
+        Kprintf("\nuser - List Username");
+        Kprintf("\nrecvpacK - Receive a networK pacKet");
+    } else if (Kstrcmp(opt, "2") == 0) {
+        Kprintf("\ntst - Test a WEX Executable");
+        Kprintf("\nls - List Files in Mounted FAT16");
+        Kprintf("\nread - Read File Contents from Cluster (512 Bytes)");
+        Kprintf("\nmKfile - MaKe a new file");
+        Kprintf("\nrm - Remove a file");
+        Kprintf("\nwrite - Write to a File");
+        Kprintf("\nregex - Use POSIX ERE Regex");
     }
-    kfree(opt);
+    Kfree(opt);
 }

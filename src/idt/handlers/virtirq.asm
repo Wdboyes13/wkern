@@ -1,6 +1,6 @@
 global virtirq
 extern virtnet_irq_handler
-irq1_handler:
+VirtnetHandler:
     cli                 ; Disable interrupts
     pusha               ; Push all general-purpose registers
     push ds

@@ -20,10 +20,10 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #include <types/nums.h>
 
-int kmemcmp(const void *a, const void *b, size_t n);
-void *kmemcpy(void *dest, const void *src, unsigned int count);
-void kmemset(void *ptr, unsigned char value, unsigned int num);
+int Kmemcmp(const void *a, const void *b, size_t n);
+void *Kmemcpy(void *dest, const void *src, unsigned int count);
+void Kmemset(void *ptr, unsigned char value, unsigned int num);
 
-void *kmalloc(size_t size, size_t align);
-void kheap_init();
-void kfree(void *ptr);
+void *Kmalloc(size_t size, size_t align);
+void KheapInit();
+void Kfree(void *ptr);

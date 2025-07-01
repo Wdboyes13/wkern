@@ -1,5 +1,5 @@
 /*
-WKern - A Bare Metal OS / Kernel I am making (For Fun)
+WKern - A Bare Metal OS / Kernel I am maKing (For Fun)
 Copyright (C) 2025  Wdboyes13
 
 This program is free software: you can redistribute it and/or modify
@@ -19,10 +19,10 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include <fileio/fileio.h>
 #include <io/kio.h>
 
-struct FAT16_Info fat16;
+struct FaT16Info fat16;
 static u8 fat16_sector[512];
 
-u32 fat16_total_clusters(struct FAT16_Info *fat) {
+u32 Fat16TotalClusters(struct FaT16Info *fat) {
     // Use 32-bit total sectors if 16-bit is zero
     u32 total_sectors = fat->total_sectors_16 != 0 ? fat->total_sectors_16
                                                    : fat->total_sectors_32;
@@ -43,12 +43,12 @@ u32 fat16_total_clusters(struct FAT16_Info *fat) {
 }
 
 u32 fat16_mount(u32 partition_lba) {
-    ata_read_sector(partition_lba, fat16_sector);
+    AtaReadSector(partition_lba, fat16_sector);
 
-    struct FAT16_BPB *bpb = (struct FAT16_BPB *)fat16_sector;
+    struct FaT16Bpb *bpb = (struct FaT16Bpb *)fat16_sector;
 
     if (*(u16 *)&fat16_sector[510] != 0xAA55) {
-        kprintf("Invalid FAT16 boot sector signature\n");
+        Kprintf("Invalid FAT16 boot sector signature\n");
         return 0;
     }
 
@@ -72,12 +72,12 @@ u32 fat16_mount(u32 partition_lba) {
         fat16.fat_start_lba + (bpb->num_fats * bpb->sectors_per_fat);
     fat16.data_start_lba = fat16.root_dir_start_lba + root_dir_sectors;
 
-    fat16.total_cluster = fat16_total_clusters(&fat16);
+    fat16.total_cluster = Fat16TotalClusters(&fat16);
 
-    kprintf("FAT16 Mount Success:\n");
-    kprintf(" FAT LBA: %x\n", fat16.fat_start_lba);
-    kprintf(" Root Dir LBA: %x\n", fat16.root_dir_start_lba);
-    kprintf(" Data LBA: %x\n", fat16.data_start_lba);
+    Kprintf("FAT16 Mount Success:\n");
+    Kprintf(" FAT LBA: %x\n", fat16.fat_start_lba);
+    Kprintf(" Root Dir LBA: %x\n", fat16.root_dir_start_lba);
+    Kprintf(" Data LBA: %x\n", fat16.data_start_lba);
 
     return 1;
 }

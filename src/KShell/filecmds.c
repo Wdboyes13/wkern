@@ -1,5 +1,5 @@
 /*
-WKern - A Bare Metal OS / Kernel I am making (For Fun)
+WKern - A Bare Metal OS / Kernel I am maKing (For Fun)
 Copyright (C) 2025  Wdboyes13
 
 This program is free software: you can redistribute it and/or modify
@@ -18,57 +18,57 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include <fileio/fileio.h>
 #include <io/kio.h>
 #include <mem/kmem.h>
-void rm(const char *argv[], int argc) { // rm [filename] [ext]
+void Rm(const char *argv[], int argc) { // rm [filename] [ext]
     if (argc < 3) {
-        kprintf("Not enough args\nUsage: rm [filename] [ext]");
+        Kprintf("Not enough args\nUsage: rm [filename] [ext]");
         return;
     }
-    fat16_remove_file(argv[1], argv[2]);
+    Fat16RemoveFile(argv[1], argv[2]);
 }
 
-void mkf(const char *argv[], int argc) { // mkfile [filename] [ext]
+void MKf(const char *argv[], int argc) { // mKfile [filename] [ext]
     if (argc < 3) {
-        kprintf("Not enough args\nUsage: mkfile [filename] [ext]");
+        Kprintf("Not enough args\nUsage: mKfile [filename] [ext]");
         return;
     }
-    mkfile(argv[1], argv[2]);
+    Mkfile(argv[1], argv[2]);
 }
 
-void writef(const char *argv[], int argc) { // write [filename] [ext]
+void Writef(const char *argv[], int argc) { // write [filename] [ext]
     if (argc < 3) {
-        kprintf("Not enough args\nUsage: write [filename] [ext]");
+        Kprintf("Not enough args\nUsage: write [filename] [ext]");
         return;
     }
-    char *data = (char *)kmalloc(512, 8);
+    char *data = (char *)Kmalloc(512, 8);
     if (!data) {
-        kprintf("\nMalloc Failed!\n");
-        kfree(data);
+        Kprintf("\nMalloc Failed!\n");
+        Kfree(data);
         return;
     }
-    kprintf("Start Writing Data:\n");
-    kgetstr(data, 500); // only read 500 max
-    kflush();
+    Kprintf("Start Writing Data:\n");
+    Kgetstr(data, 500); // only read 500 max
+    Kflush();
 
     int len = 0;
     while (len < 500 && data[len] != '\0') {
         len++;
     }
 
-    // Add EOF marker
+    // Add EOF marKer
     if (len + 5 < 512) {
         data[len] = 0x1A;
         len++;
         data[len] = '\0'; // Optional if your writer handles C-strings
     }
 
-    writefile(argv[1], argv[2], data, len + 1); // Use actual size
-    kfree(data);
+    Writefile(argv[1], argv[2], data, len + 1); // Use actual size
+    Kfree(data);
 }
 
-void readf(const char *argv[], int argc) { // read [filename] [ext]
+void Readf(const char *argv[], int argc) { // read [filename] [ext]
     if (argc < 3) {
-        kprintf("Not enough args\nUsage: read [filename] [ext]");
+        Kprintf("Not enough args\nUsage: read [filename] [ext]");
         return;
     }
-    fileconts(argv[1], argv[2]);
+    Fileconts(argv[1], argv[2]);
 }

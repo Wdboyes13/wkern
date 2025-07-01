@@ -1,5 +1,5 @@
 /*
-WKern - A Bare Metal OS / Kernel I am making (For Fun)
+WKern - A Bare Metal OS / Kernel I am maKing (For Fun)
 Copyright (C) 2025  Wdboyes13
 
 This program is free software: you can redistribute it and/or modify
@@ -29,16 +29,16 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 // PIT frequency and divisor
 #define PIT_FREQ 1193182 // base frequency in Hz
 // Setup PIT for a given frequency (e.g., 100 Hz)
-void pit_init(u32 freq) {
+void PitInit(u32 freq) {
     u16 divisor = (u16)(PIT_FREQ / freq);
-    kprintf("Divisor Set\n");
+    Kprintf("Divisor Set\n");
     // Send command byte: channel 0, access mode lo/hi, mode 3, binary mode
-    outb(PIT_COMMAND, PIT_ACCESS_LOHI | PIT_MODE3);
-    kprintf("Command Byte Sent\n");
+    Outb(PIT_COMMAND, PIT_ACCESS_LOHI | PIT_MODE3);
+    Kprintf("Command Byte Sent\n");
     // Send divisor low byte
-    outb(PIT_CHANNEL0, divisor & 0xFF);
-    kprintf("Low byte sent\n");
+    Outb(PIT_CHANNEL0, divisor & 0xFF);
+    Kprintf("Low byte sent\n");
     // Send divisor high byte
-    outb(PIT_CHANNEL0, (divisor >> 8) & 0xFF);
-    kprintf("High byte sent\n");
+    Outb(PIT_CHANNEL0, (divisor >> 8) & 0xFF);
+    Kprintf("High byte sent\n");
 }

@@ -1,5 +1,5 @@
 /*
-WKern - A Bare Metal OS / Kernel I am making (For Fun)
+WKern - A Bare Metal OS / Kernel I am maKing (For Fun)
 Copyright (C) 2025  Wdboyes13
 
 This program is free software: you can redistribute it and/or modify
@@ -28,55 +28,58 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 void sh() {
     while (1) {
-        char *cmd = (char *)kmalloc(128, 8);
+        char *cmd = (char *)Kmalloc(128, 8);
         if (!cmd) {
-            kprintf("Malloc Failed");
-            kfree(cmd);
+            Kprintf("Malloc Failed");
+            Kfree(cmd);
         } else {
-            kprintf("\nSH> ");
-            kgetstr(cmd, 127);
-            kflush();
+            Kprintf("\nSH> ");
+            Kgetstr(cmd, 127);
+            Kflush();
             char *argv[8];
-            int argc = split(cmd, argv, 8);
-            if (kstrcmp(argv[0], "cmp") == 0) {
-                kshcmp();
-            } else if (kstrcmp(argv[0], "shutdown") == 0) {
+            int argc = Split(cmd, argv, 8);
+            if (Kstrcmp(argv[0], "cmp") == 0) {
+                Kshcmp();
+            } else if (Kstrcmp(argv[0], "shutdown") == 0) {
 #ifdef VMQEMU
 #include <qemu/shutdown.h>
-                qemu_shutdown();
+                QemuShutdown();
 #endif
-            } else if (kstrcmp(argv[0], "help") == 0) {
-                help();
-            } else if (kstrcmp(argv[0], "tst") == 0) {
-                runwex(execr());
-            } else if (kstrcmp(argv[0], "clear") == 0) {
-                kcfp();
-            } else if (kstrcmp(argv[0], "ls") == 0) {
-                fat16_ls();
-            } else if (kstrcmp(argv[0], "read") == 0) {
-                readf((const char **)argv, argc);
-            } else if (kstrcmp(argv[0], "user") == 0) {
-                kprintf("\nUsername: %s", name);
-            } else if (kstrcmp(argv[0], "mkfile") == 0) {
-                mkf((const char **)argv, argc);
-            } else if (kstrcmp(argv[0], "rm") == 0) {
-                rm((const char **)argv, argc);
-            } else if (kstrcmp(argv[0], "setname") == 0) {
+            } else if (Kstrcmp(argv[0], "help") == 0) {
+                Help();
+            } else if (Kstrcmp(argv[0], "tst") == 0) {
+                Runwex(Execr());
+            } else if (Kstrcmp(argv[0], "clear") == 0) {
+                Kcfp();
+            } else if (Kstrcmp(argv[0], "ls") == 0) {
+                Fat16Ls();
+            } else if (Kstrcmp(argv[0], "read") == 0) {
+                Readf((const char **)argv, argc);
+            } else if (Kstrcmp(argv[0], "user") == 0) {
+                Kprintf("\nUsername: %s", name);
+            } else if (Kstrcmp(argv[0], "mKfile") == 0) {
+                Mkf((const char **)argv, argc);
+            } else if (Kstrcmp(argv[0], "rm") == 0) {
+                Rm((const char **)argv, argc);
+            } else if (Kstrcmp(argv[0], "setname") == 0) {
                 if (argc < 2) {
-                    kprintf("Not enough args\nUsage: setname [New Name]");
+                    Kprintf("Not enough args\nUsage: setname [New Name]");
                     continue;
                 }
                 name = argv[1];
-            } else if (kstrcmp(argv[0], "write") == 0) {
-                writef((const char **)argv, argc);
-            } else if (kstrcmp(argv[0], "regex") == 0) {
-                regexc();
-            } else if (kstrcmp(argv[0], "recvpack") == 0) {
-                net_stq(iob);
+            } else if (Kstrcmp(argv[0], "write") == 0) {
+                Writef((const char **)argv, argc);
+            } else if (Kstrcmp(argv[0], "regex") == 0) {
+                Regexc();
+            } else if (Kstrcmp(argv[0], "recvpacK") == 0) {
+                unsigned char Key = 0;
+                while (!(Key = Kgetkey()) && Key == 'a') {
+                    NetStq(iob);
+                }
             } else {
-                kprintf("\nUnknown Command - Try `help`\n");
+                Kprintf("\nUnKnown Command - Try `help`\n");
             }
-            kfree(cmd);
+            Kfree(cmd);
         }
     }
 }
