@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['kernel_5fcode_5fsegment_0',['KERNEL_CODE_SEGMENT',['../d3/de1/idtirq_8h.html#a6e6d7d33347e967d8e08331768d7613d',1,'idtirq.h']]]
+  ['max_5frx_5fdescs_0',['MAX_RX_DESCS',['../dd/db0/virtnet_8h.html#a0a12e0addadc80362d4d4c9b8cd9a783',1,'virtnet.h']]]
 ];
