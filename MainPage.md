@@ -22,6 +22,6 @@ __For the new list of requirements, check [RequiredTools.txt](https://github.com
 ./build.py -run   # This will run QEMU Using the required config
 ```
 
-## This project is licensed under the GNU General Public License v3
-## For more info, see [`LICENSE`](https://github.com/Wdboyes13/wkern/blob/main/LICENSE)
-## Or for the File Header [`FileHeader`](https://github.com/Wdboyes13/wkern/blob/main/FileHeader)
+### This project is licensed under the GNU General Public License v3
+### For more info, see [`LICENSE`](https://github.com/Wdboyes13/wkern/blob/main/LICENSE)
+### Or for the File Header [`FileHeader`](https://github.com/Wdboyes13/wkern/blob/main/FileHeader)
