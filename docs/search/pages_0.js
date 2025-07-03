@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['usage_3a_0',['Usage:',['../df/d8c/build_8py.html#autotoc_md0',1,'']]]
+  ['canada_20🇨🇦_0',['Developed with ❤️ in Canada 🇨🇦',['../index.html',1,'']]]
 ];

@@ -25,6 +25,7 @@
 var NAVTREE =
 [
   [ "WKern", "index.html", [
+    [ "Developed with ❤️ in Canada 🇨🇦", "index.html", "index" ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [

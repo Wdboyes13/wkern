@@ -22,5 +22,7 @@ var searchData=
   ['pitinit_19',['PitInit',['../d3/de1/idtirq_8h.html#afead828821eca13b3f89e621010367c2',1,'PitInit(u32 freq):&#160;pit.c'],['../d6/dbf/pit_8c.html#afead828821eca13b3f89e621010367c2',1,'PitInit(u32 freq):&#160;pit.c']]],
   ['pkg_20',['PKG',['../d2/d49/global_8h.html#a49f62b08b10c70ccf16f10ae9cd4add6',1,'PKG:&#160;global.h'],['../d3/de1/idtirq_8h.html#a49f62b08b10c70ccf16f10ae9cd4add6',1,'PKG:&#160;idtirq.h']]],
   ['printconts_2ec_21',['printconts.c',['../d2/db0/printconts_8c.html',1,'']]],
-  ['printer_2ec_22',['printer.c',['../d0/d16/printer_8c.html',1,'']]]
+  ['printer_2ec_22',['printer.c',['../d0/d16/printer_8c.html',1,'']]],
+  ['project_20is_20licensed_20under_20the_20gnu_20general_20public_20license_20v3_23',['This project is licensed under the GNU General Public License v3',['../index.html#autotoc_md4',1,'']]],
+  ['public_20license_20v3_24',['This project is licensed under the GNU General Public License v3',['../index.html#autotoc_md4',1,'']]]
 ];
