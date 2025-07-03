@@ -6,7 +6,7 @@ __Full Documentation at [weelam.ca/wkern](https://weelam.ca/wkern)__
 __The specs of the machine are very important__  
 __Since I dont have the energy to port it to working on other machines__  
   
-__(E-Mail william@mail.weelam.ca if you want me to build it for you)__
+__(E-Mail william@mail.weelam.ca if you want me to build it for you)__  
 __THIS WILL ONLY WORK IN THE PRESET QEMU VM CONFIG RUN WITH `make test`__  
 
 ## Tools
