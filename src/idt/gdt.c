@@ -25,7 +25,7 @@ struct GdtPtr gp;
 
 /**
  * @brief Set a GDT entry (descriptor)
- * 
+ *
  * @param num Index of the GDT entry to set
  * @param base Base address for the segment
  * @param limit Limit of the segment
@@ -46,7 +46,7 @@ void GdtSetGate(int num, u32 base, u32 limit, u8 access, u8 gran) {
 
 /**
  * @brief Initialize and load the Global Descriptor Table (GDT)
- * 
+ *
  * - Sets up three GDT entries:
  *   - Null segment
  *   - Code segment (executable, readable)

@@ -25,95 +25,95 @@
 \DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00021}00021\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{kmem_8h}{mem/kmem.h}}>}}
 \DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00022}00022\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{nums_8h}{types/nums.h}}>}}
 \DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00023}00023\ }
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00040}\mbox{\hyperlink{fileio_8h_a0955c984a7b27de3da315eefeb4db734}{00040}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{mkfile_8c_a0955c984a7b27de3da315eefeb4db734}{Mkfile}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *filename,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *ext)\ \{}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00041}00041\ \ \ \ \ \textcolor{keywordtype}{int}\ free\ =\ -\/1;}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00042}00042\ \ \ \ \ \textcolor{keywordtype}{int}\ sector\_to\_write\ =\ -\/1;}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00043}00043\ \ \ \ \ \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ entries\_per\_sector\ =\ \mbox{\hyperlink{fat16__mnt_8c_a666a93dce54663bac1b67500b58cbb48}{fat16}}.bytes\_per\_sector\ /\ 32;}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00044}00044\ \ \ \ \ \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ root\_dir\_sectors\ =}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00045}00045\ \ \ \ \ \ \ \ \ ((\mbox{\hyperlink{fat16__mnt_8c_a666a93dce54663bac1b67500b58cbb48}{fat16}}.root\_entry\_count\ *\ 32)\ +\ (\mbox{\hyperlink{fat16__mnt_8c_a666a93dce54663bac1b67500b58cbb48}{fat16}}.bytes\_per\_sector\ -\/\ 1))\ /}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00046}00046\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{fat16__mnt_8c_a666a93dce54663bac1b67500b58cbb48}{fat16}}.bytes\_per\_sector;}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00047}00047\ }
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00048}00048\ \ \ \ \ \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ \mbox{\hyperlink{_m_b_r_8c_a64cdbe42e79baf07e056213647a512a0}{sector}}[512];}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00049}00049\ \ \ \ \ \mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}\ clust\ =\ 0;}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00050}00050\ }
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00051}00051\ \ \ \ \ \textcolor{comment}{//\ Find\ free\ root\ directory\ entry}}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00052}00052\ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ i\ =\ 0;\ i\ <\ root\_dir\_sectors;\ i++)\ \{}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00053}00053\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_a_t_a_8c_a6c22a78fa6a488041bb15afa10a26137}{AtaReadSector}}(\mbox{\hyperlink{fat16__mnt_8c_a666a93dce54663bac1b67500b58cbb48}{fat16}}.root\_dir\_start\_lba\ +\ i,\ \mbox{\hyperlink{_m_b_r_8c_a64cdbe42e79baf07e056213647a512a0}{sector}});}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00054}00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ j\ =\ 0;\ j\ <\ entries\_per\_sector;\ j++)\ \{}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ *entry\ =\ \&\mbox{\hyperlink{_m_b_r_8c_a64cdbe42e79baf07e056213647a512a0}{sector}}[j\ *\ 32];}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (entry[0]\ ==\ 0x00\ ||\ entry[0]\ ==\ 0xE5)\ \{}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ free\ =\ j;}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sector\_to\_write\ =\ i;}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{goto}\ found\_free\_entry;\ \textcolor{comment}{//\ breaK\ out\ of\ both\ loops\ ASAP}}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00061}00061\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00062}00062\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00063}00063\ }
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00064}00064\ found\_free\_entry:}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00065}00065\ \ \ \ \ \textcolor{keywordflow}{if}\ (free\ ==\ -\/1\ ||\ sector\_to\_write\ ==\ -\/1)\ \{}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00066}00066\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{stringliteral}{"{}No\ free\ root\ directory\ entry\ found!\(\backslash\)n"{}});}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00067}00067\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00068}00068\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00069}00069\ }
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00070}00070\ \ \ \ \ \textcolor{comment}{//\ Find\ free\ cluster}}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00071}00071\ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}\ c\ =\ 2;\ c\ <\ \mbox{\hyperlink{fat16__mnt_8c_a666a93dce54663bac1b67500b58cbb48}{fat16}}.total\_cluster;\ c++)\ \{}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00072}00072\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ fat\_offset\ =\ c\ *\ 2;}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00073}00073\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ fat\_sector\ =\ \mbox{\hyperlink{fat16__mnt_8c_a666a93dce54663bac1b67500b58cbb48}{fat16}}.fat\_start\_lba\ +\ (fat\_offset\ /\ 512);}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00074}00074\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ fat\_index\ =\ fat\_offset\ \%\ 512;}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00075}00075\ }
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00076}00076\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ fatbuf[512];}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00077}00077\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_a_t_a_8c_a6c22a78fa6a488041bb15afa10a26137}{AtaReadSector}}(fat\_sector,\ fatbuf);}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00078}00078\ }
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00079}00079\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (fatbuf[fat\_index]\ ==\ 0x00\ \&\&\ fatbuf[fat\_index\ +\ 1]\ ==\ 0x00)\ \{}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ clust\ =\ c;}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ fatbuf[fat\_index]\ =\ 0xFF;}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ fatbuf[fat\_index\ +\ 1]\ =\ 0xFF;}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_a_t_a_8c_a42403de508595b74b8ce384c2026a1d5}{AtaWriteSector}}(fat\_sector,\ fatbuf);}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00085}00085\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00086}00086\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00087}00087\ }
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00088}00088\ \ \ \ \ \textcolor{keywordflow}{if}\ (clust\ ==\ 0)\ \{}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00089}00089\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{stringliteral}{"{}No\ free\ cluster\ found!\(\backslash\)n"{}});}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00090}00090\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00091}00091\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00092}00092\ }
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00093}00093\ \ \ \ \ \textcolor{comment}{//\ Now\ write\ the\ root\ directory\ entry}}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00094}00094\ \ \ \ \ \mbox{\hyperlink{_a_t_a_8c_a6c22a78fa6a488041bb15afa10a26137}{AtaReadSector}}(\mbox{\hyperlink{fat16__mnt_8c_a666a93dce54663bac1b67500b58cbb48}{fat16}}.root\_dir\_start\_lba\ +\ sector\_to\_write,}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_m_b_r_8c_a64cdbe42e79baf07e056213647a512a0}{sector}});\ \textcolor{comment}{//\ Re-\/read\ sector\ for\ safety}}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00096}00096\ \ \ \ \ \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ *entry\ =\ \&\mbox{\hyperlink{_m_b_r_8c_a64cdbe42e79baf07e056213647a512a0}{sector}}[free\ *\ 32];}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00097}00097\ }
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00098}00098\ \ \ \ \ \textcolor{comment}{//\ Clear\ entry\ bytes\ (optional\ but\ good\ practice)}}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00099}00099\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 32;\ i++)\ \{}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00100}00100\ \ \ \ \ \ \ \ \ entry[i]\ =\ 0x00;}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00101}00101\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00102}00102\ }
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00103}00103\ \ \ \ \ \textcolor{keywordtype}{char}\ name\_pad[8];}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00104}00104\ \ \ \ \ \textcolor{keywordtype}{char}\ ext\_pad[3];}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00105}00105\ \ \ \ \ Padname(filename,\ name\_pad,\ 8);}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00106}00106\ \ \ \ \ Padname(ext,\ ext\_pad,\ 3);}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00107}00107\ \ \ \ \ \mbox{\hyperlink{kmem_8h_ad7db4b63d50e1827f134b3e0867d2b05}{Kmemcpy}}(entry\ +\ 0x00,\ name\_pad,\ 8);}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00108}00108\ \ \ \ \ \mbox{\hyperlink{kmem_8h_ad7db4b63d50e1827f134b3e0867d2b05}{Kmemcpy}}(entry\ +\ 0x08,\ ext\_pad,\ 3);}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00109}00109\ \ \ \ \ entry[0x0B]\ =\ 0x20;\ \textcolor{comment}{//\ Attribute:\ Archive}}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00110}00110\ }
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00111}00111\ \ \ \ \ \textcolor{comment}{//\ Time\ and\ Date\ (optional,\ set\ 0\ here)}}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00112}00112\ \ \ \ \ entry[0x0E]\ =\ 0;}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00113}00113\ \ \ \ \ entry[0x0F]\ =\ 0;}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00114}00114\ \ \ \ \ entry[0x10]\ =\ 0;}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00115}00115\ \ \ \ \ entry[0x11]\ =\ 0;}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00116}00116\ }
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00117}00117\ \ \ \ \ \textcolor{comment}{//\ First\ cluster\ (little\ endian)}}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00118}00118\ \ \ \ \ entry[0x1A]\ =\ clust\ \&\ 0xFF;}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00119}00119\ \ \ \ \ entry[0x1B]\ =\ (clust\ >>\ 8)\ \&\ 0xFF;}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00120}00120\ }
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00121}00121\ \ \ \ \ \textcolor{comment}{//\ File\ size\ =\ 0\ for\ new\ file}}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00122}00122\ \ \ \ \ entry[0x1C]\ =\ 0;}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00123}00123\ \ \ \ \ entry[0x1D]\ =\ 0;}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00124}00124\ \ \ \ \ entry[0x1E]\ =\ 0;}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00125}00125\ \ \ \ \ entry[0x1F]\ =\ 0;}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00126}00126\ }
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00127}00127\ \ \ \ \ \mbox{\hyperlink{_a_t_a_8c_a42403de508595b74b8ce384c2026a1d5}{AtaWriteSector}}(\mbox{\hyperlink{fat16__mnt_8c_a666a93dce54663bac1b67500b58cbb48}{fat16}}.root\_dir\_start\_lba\ +\ sector\_to\_write,\ \mbox{\hyperlink{_m_b_r_8c_a64cdbe42e79baf07e056213647a512a0}{sector}});}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00128}00128\ \ \ \ \ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{stringliteral}{"{}File\ entry\ written\ successfully.\(\backslash\)n"{}});}
-\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00129}00129\ \}}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00041}\mbox{\hyperlink{fileio_8h_a0955c984a7b27de3da315eefeb4db734}{00041}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{mkfile_8c_a0955c984a7b27de3da315eefeb4db734}{Mkfile}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *filename,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *ext)\ \{}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00042}00042\ \ \ \ \ \textcolor{keywordtype}{int}\ free\ =\ -\/1;}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00043}00043\ \ \ \ \ \textcolor{keywordtype}{int}\ sector\_to\_write\ =\ -\/1;}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00044}00044\ \ \ \ \ \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ entries\_per\_sector\ =\ \mbox{\hyperlink{fat16__mnt_8c_a666a93dce54663bac1b67500b58cbb48}{fat16}}.bytes\_per\_sector\ /\ 32;}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00045}00045\ \ \ \ \ \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ root\_dir\_sectors\ =}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00046}00046\ \ \ \ \ \ \ \ \ ((\mbox{\hyperlink{fat16__mnt_8c_a666a93dce54663bac1b67500b58cbb48}{fat16}}.root\_entry\_count\ *\ 32)\ +\ (\mbox{\hyperlink{fat16__mnt_8c_a666a93dce54663bac1b67500b58cbb48}{fat16}}.bytes\_per\_sector\ -\/\ 1))\ /}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00047}00047\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{fat16__mnt_8c_a666a93dce54663bac1b67500b58cbb48}{fat16}}.bytes\_per\_sector;}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00049}00049\ \ \ \ \ \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ \mbox{\hyperlink{_m_b_r_8c_a64cdbe42e79baf07e056213647a512a0}{sector}}[512];}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00050}00050\ \ \ \ \ \mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}\ clust\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00052}00052\ \ \ \ \ \textcolor{comment}{//\ Find\ free\ root\ directory\ entry}}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00053}00053\ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ i\ =\ 0;\ i\ <\ root\_dir\_sectors;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00054}00054\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_a_t_a_8c_a6c22a78fa6a488041bb15afa10a26137}{AtaReadSector}}(\mbox{\hyperlink{fat16__mnt_8c_a666a93dce54663bac1b67500b58cbb48}{fat16}}.root\_dir\_start\_lba\ +\ i,\ \mbox{\hyperlink{_m_b_r_8c_a64cdbe42e79baf07e056213647a512a0}{sector}});}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00055}00055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ j\ =\ 0;\ j\ <\ entries\_per\_sector;\ j++)\ \{}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ *entry\ =\ \&\mbox{\hyperlink{_m_b_r_8c_a64cdbe42e79baf07e056213647a512a0}{sector}}[j\ *\ 32];}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (entry[0]\ ==\ 0x00\ ||\ entry[0]\ ==\ 0xE5)\ \{}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ free\ =\ j;}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sector\_to\_write\ =\ i;}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{goto}\ found\_free\_entry;\ \textcolor{comment}{//\ breaK\ out\ of\ both\ loops\ ASAP}}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00062}00062\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00063}00063\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00065}00065\ found\_free\_entry:}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00066}00066\ \ \ \ \ \textcolor{keywordflow}{if}\ (free\ ==\ -\/1\ ||\ sector\_to\_write\ ==\ -\/1)\ \{}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00067}00067\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{stringliteral}{"{}No\ free\ root\ directory\ entry\ found!\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00068}00068\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00069}00069\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00071}00071\ \ \ \ \ \textcolor{comment}{//\ Find\ free\ cluster}}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00072}00072\ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}\ c\ =\ 2;\ c\ <\ \mbox{\hyperlink{fat16__mnt_8c_a666a93dce54663bac1b67500b58cbb48}{fat16}}.total\_cluster;\ c++)\ \{}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00073}00073\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ fat\_offset\ =\ c\ *\ 2;}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00074}00074\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ fat\_sector\ =\ \mbox{\hyperlink{fat16__mnt_8c_a666a93dce54663bac1b67500b58cbb48}{fat16}}.fat\_start\_lba\ +\ (fat\_offset\ /\ 512);}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00075}00075\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ fat\_index\ =\ fat\_offset\ \%\ 512;}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00077}00077\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ fatbuf[512];}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00078}00078\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_a_t_a_8c_a6c22a78fa6a488041bb15afa10a26137}{AtaReadSector}}(fat\_sector,\ fatbuf);}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00080}00080\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (fatbuf[fat\_index]\ ==\ 0x00\ \&\&\ fatbuf[fat\_index\ +\ 1]\ ==\ 0x00)\ \{}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ clust\ =\ c;}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ fatbuf[fat\_index]\ =\ 0xFF;}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ fatbuf[fat\_index\ +\ 1]\ =\ 0xFF;}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_a_t_a_8c_a42403de508595b74b8ce384c2026a1d5}{AtaWriteSector}}(fat\_sector,\ fatbuf);}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00086}00086\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00087}00087\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00089}00089\ \ \ \ \ \textcolor{keywordflow}{if}\ (clust\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00090}00090\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{stringliteral}{"{}No\ free\ cluster\ found!\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00091}00091\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00092}00092\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00094}00094\ \ \ \ \ \textcolor{comment}{//\ Now\ write\ the\ root\ directory\ entry}}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00095}00095\ \ \ \ \ \mbox{\hyperlink{_a_t_a_8c_a6c22a78fa6a488041bb15afa10a26137}{AtaReadSector}}(\mbox{\hyperlink{fat16__mnt_8c_a666a93dce54663bac1b67500b58cbb48}{fat16}}.root\_dir\_start\_lba\ +\ sector\_to\_write,}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_m_b_r_8c_a64cdbe42e79baf07e056213647a512a0}{sector}});\ \textcolor{comment}{//\ Re-\/read\ sector\ for\ safety}}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00097}00097\ \ \ \ \ \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ *entry\ =\ \&\mbox{\hyperlink{_m_b_r_8c_a64cdbe42e79baf07e056213647a512a0}{sector}}[free\ *\ 32];}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00099}00099\ \ \ \ \ \textcolor{comment}{//\ Clear\ entry\ bytes\ (optional\ but\ good\ practice)}}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00100}00100\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 32;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00101}00101\ \ \ \ \ \ \ \ \ entry[i]\ =\ 0x00;}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00102}00102\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00104}00104\ \ \ \ \ \textcolor{keywordtype}{char}\ name\_pad[8];}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00105}00105\ \ \ \ \ \textcolor{keywordtype}{char}\ ext\_pad[3];}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00106}00106\ \ \ \ \ Padname(filename,\ name\_pad,\ 8);}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00107}00107\ \ \ \ \ Padname(ext,\ ext\_pad,\ 3);}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00108}00108\ \ \ \ \ \mbox{\hyperlink{kmem_8h_ad7db4b63d50e1827f134b3e0867d2b05}{Kmemcpy}}(entry\ +\ 0x00,\ name\_pad,\ 8);}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00109}00109\ \ \ \ \ \mbox{\hyperlink{kmem_8h_ad7db4b63d50e1827f134b3e0867d2b05}{Kmemcpy}}(entry\ +\ 0x08,\ ext\_pad,\ 3);}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00110}00110\ \ \ \ \ entry[0x0B]\ =\ 0x20;\ \textcolor{comment}{//\ Attribute:\ Archive}}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00112}00112\ \ \ \ \ \textcolor{comment}{//\ Time\ and\ Date\ (optional,\ set\ 0\ here)}}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00113}00113\ \ \ \ \ entry[0x0E]\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00114}00114\ \ \ \ \ entry[0x0F]\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00115}00115\ \ \ \ \ entry[0x10]\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00116}00116\ \ \ \ \ entry[0x11]\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00118}00118\ \ \ \ \ \textcolor{comment}{//\ First\ cluster\ (little\ endian)}}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00119}00119\ \ \ \ \ entry[0x1A]\ =\ clust\ \&\ 0xFF;}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00120}00120\ \ \ \ \ entry[0x1B]\ =\ (clust\ >>\ 8)\ \&\ 0xFF;}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00122}00122\ \ \ \ \ \textcolor{comment}{//\ File\ size\ =\ 0\ for\ new\ file}}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00123}00123\ \ \ \ \ entry[0x1C]\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00124}00124\ \ \ \ \ entry[0x1D]\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00125}00125\ \ \ \ \ entry[0x1E]\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00126}00126\ \ \ \ \ entry[0x1F]\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00128}00128\ \ \ \ \ \mbox{\hyperlink{_a_t_a_8c_a42403de508595b74b8ce384c2026a1d5}{AtaWriteSector}}(\mbox{\hyperlink{fat16__mnt_8c_a666a93dce54663bac1b67500b58cbb48}{fat16}}.root\_dir\_start\_lba\ +\ sector\_to\_write,\ \mbox{\hyperlink{_m_b_r_8c_a64cdbe42e79baf07e056213647a512a0}{sector}});}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00129}00129\ \ \ \ \ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{stringliteral}{"{}File\ entry\ written\ successfully.\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{mkfile_8c_source_l00130}00130\ \}}
 
 \end{DoxyCode}

@@ -35,12 +35,12 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
  * @brief Represents a single partition entry in the MBR partition table.
  */
 struct PKG PartitionEntry {
-    u8 status;                /**< Bootable flag: 0x80 = bootable, 0x00 = non-bootable */
-    u8 chs_first[3];          /**< CHS address of first absolute sector in partition */
-    u8 type;                  /**< Partition type (e.g., FAT16 types 0x04, 0x06) */
-    u8 chs_last[3];           /**< CHS address of last absolute sector in partition */
-    u32 lba_first_sector;     /**< LBA of first absolute sector in partition */
-    u32 total_sectors;        /**< Total sectors in partition */
+    u8 status;       /**< Bootable flag: 0x80 = bootable, 0x00 = non-bootable */
+    u8 chs_first[3]; /**< CHS address of first absolute sector in partition */
+    u8 type;         /**< Partition type (e.g., FAT16 types 0x04, 0x06) */
+    u8 chs_last[3];  /**< CHS address of last absolute sector in partition */
+    u32 lba_first_sector; /**< LBA of first absolute sector in partition */
+    u32 total_sectors;    /**< Total sectors in partition */
 };
 
 /**
@@ -48,9 +48,9 @@ struct PKG PartitionEntry {
  * @brief Master Boot Record structure layout.
  */
 struct PKG MBR {
-    u8 bootstrap[446];              /**< Bootstrap code area */
+    u8 bootstrap[446];                   /**< Bootstrap code area */
     struct PartitionEntry partitions[4]; /**< Partition table entries */
-    u16 signature;                  /**< Signature bytes, must be 0xAA55 */
+    u16 signature;                       /**< Signature bytes, must be 0xAA55 */
 };
 
 /// Buffer for reading sectors
@@ -60,7 +60,7 @@ u8 sector[SECTOR_SIZE];
  * @brief Finds the LBA start of the first FAT16 partition in the MBR.
  *
  * Reads the MBR sector, verifies the signature, then scans all partitions
- * for a FAT16 type (0x04 or 0x06).  
+ * for a FAT16 type (0x04 or 0x06).
  *
  * Prints debug info about partitions to kernel log.
  *

@@ -30,7 +30,7 @@ void Kmemset(void *ptr, unsigned char value, unsigned int num) {
     }
 }
 /**
- * @brief Copy memory 
+ * @brief Copy memory
  * @param void* dest - Pointer to memory destination
  * @param void* src - Pointer to source memory
  * @param u32 count - Amount of bytes to be copied
@@ -52,9 +52,9 @@ void *Kmemcpy(void *dest, const void *src, unsigned int count) {
  * @param a Pointer to the first memory area.
  * @param b Pointer to the second memory area.
  * @param n Number of bytes to compare.
- * @return An integer less than, equal to, or greater than zero if the first differing byte in `a`
- *         is found to be less than, equal to, or greater than the corresponding byte in `b`.
- *         Returns 0 if all `n` bytes are equal.
+ * @return An integer less than, equal to, or greater than zero if the first
+ * differing byte in `a` is found to be less than, equal to, or greater than the
+ * corresponding byte in `b`. Returns 0 if all `n` bytes are equal.
  */
 int Kmemcmp(const void *a, const void *b, size_t n) {
     const unsigned char *p1 = (const unsigned char *)a;

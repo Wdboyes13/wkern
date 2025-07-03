@@ -42,55 +42,55 @@
 \DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00048}00048\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00049}00049\ \}}
 \DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00050}00050\ }
-\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00063}\mbox{\hyperlink{_a_t_a_8c_a6c22a78fa6a488041bb15afa10a26137}{00063}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_a_t_a_8c_a6c22a78fa6a488041bb15afa10a26137}{AtaReadSector}}(\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ lba,\ \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ *buffer)\ \{}
-\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00064}00064\ \ \ \ \ \mbox{\hyperlink{fileio_8h_a5373399b54661f02f43e4bb33da332f8}{irq14stat}}\ =\ 0;}
-\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00065}00065\ \ \ \ \ \mbox{\hyperlink{asm_8c_a05cb092cfc45a43dd91cff50d681af1a}{Outb}}(0x3F6,\ 0x00);\ \textcolor{comment}{//\ clear\ SRST,\ enable\ IRQs}}
-\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00066}00066\ \ \ \ \ \mbox{\hyperlink{asm_8c_a05cb092cfc45a43dd91cff50d681af1a}{Outb}}(\mbox{\hyperlink{fileio_8h_aa9ede1f736f86805a4aa00df9543b32f}{ATA\_DRIVE}},\ 0xE0\ |\ ((lba\ >>\ 24)\ \&\ 0x0F));}
-\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00067}00067\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 4;\ i++)\ \{}
-\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00068}00068\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{asm_8c_a6ab29a59b425f205c9da3550dcc76605}{Inb}}(0x3F6);}
-\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00069}00069\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00070}00070\ \ \ \ \ \mbox{\hyperlink{asm_8c_a05cb092cfc45a43dd91cff50d681af1a}{Outb}}(\mbox{\hyperlink{fileio_8h_a115159b2812d6643bbb67dc53b54f668}{ATA\_SECCNT}},\ 1);}
-\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00071}00071\ \ \ \ \ \mbox{\hyperlink{asm_8c_a05cb092cfc45a43dd91cff50d681af1a}{Outb}}(\mbox{\hyperlink{fileio_8h_a69742c7774d4d316420ea9505c7956cb}{ATA\_LBA\_LOW}},\ lba\ \&\ 0xFF);}
-\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00072}00072\ \ \ \ \ \mbox{\hyperlink{asm_8c_a05cb092cfc45a43dd91cff50d681af1a}{Outb}}(\mbox{\hyperlink{fileio_8h_a9fb63653dd2f522e806f711034a5b11f}{ATA\_LBA\_MID}},\ (lba\ >>\ 8)\ \&\ 0xFF);}
-\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00073}00073\ \ \ \ \ \mbox{\hyperlink{asm_8c_a05cb092cfc45a43dd91cff50d681af1a}{Outb}}(\mbox{\hyperlink{fileio_8h_ad7d110cd7a30fd360237bee7c8104712}{ATA\_LBA\_HI}},\ (lba\ >>\ 16)\ \&\ 0xFF);}
-\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00074}00074\ \ \ \ \ \mbox{\hyperlink{asm_8c_a05cb092cfc45a43dd91cff50d681af1a}{Outb}}(\mbox{\hyperlink{fileio_8h_a7762d2c130e593e92b3c3b521e5779f2}{ATA\_COMMAND}},\ \mbox{\hyperlink{fileio_8h_a758719f1c34c94f00f41e5cda9b26564}{ATA\_CMD\_READ\_SECTORS}});}
-\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00075}00075\ }
-\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00076}00076\ \ \ \ \ \mbox{\hyperlink{_a_t_a_8c_a1900b48862fde060e2793d5d113cf6f4}{AtaPoll}}();}
+\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00065}\mbox{\hyperlink{_a_t_a_8c_a6c22a78fa6a488041bb15afa10a26137}{00065}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_a_t_a_8c_a6c22a78fa6a488041bb15afa10a26137}{AtaReadSector}}(\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ lba,\ \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ *buffer)\ \{}
+\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00066}00066\ \ \ \ \ \mbox{\hyperlink{fileio_8h_a5373399b54661f02f43e4bb33da332f8}{irq14stat}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00067}00067\ \ \ \ \ \mbox{\hyperlink{asm_8c_a05cb092cfc45a43dd91cff50d681af1a}{Outb}}(0x3F6,\ 0x00);\ \textcolor{comment}{//\ clear\ SRST,\ enable\ IRQs}}
+\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00068}00068\ \ \ \ \ \mbox{\hyperlink{asm_8c_a05cb092cfc45a43dd91cff50d681af1a}{Outb}}(\mbox{\hyperlink{fileio_8h_aa9ede1f736f86805a4aa00df9543b32f}{ATA\_DRIVE}},\ 0xE0\ |\ ((lba\ >>\ 24)\ \&\ 0x0F));}
+\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00069}00069\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 4;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00070}00070\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{asm_8c_a6ab29a59b425f205c9da3550dcc76605}{Inb}}(0x3F6);}
+\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00071}00071\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00072}00072\ \ \ \ \ \mbox{\hyperlink{asm_8c_a05cb092cfc45a43dd91cff50d681af1a}{Outb}}(\mbox{\hyperlink{fileio_8h_a115159b2812d6643bbb67dc53b54f668}{ATA\_SECCNT}},\ 1);}
+\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00073}00073\ \ \ \ \ \mbox{\hyperlink{asm_8c_a05cb092cfc45a43dd91cff50d681af1a}{Outb}}(\mbox{\hyperlink{fileio_8h_a69742c7774d4d316420ea9505c7956cb}{ATA\_LBA\_LOW}},\ lba\ \&\ 0xFF);}
+\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00074}00074\ \ \ \ \ \mbox{\hyperlink{asm_8c_a05cb092cfc45a43dd91cff50d681af1a}{Outb}}(\mbox{\hyperlink{fileio_8h_a9fb63653dd2f522e806f711034a5b11f}{ATA\_LBA\_MID}},\ (lba\ >>\ 8)\ \&\ 0xFF);}
+\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00075}00075\ \ \ \ \ \mbox{\hyperlink{asm_8c_a05cb092cfc45a43dd91cff50d681af1a}{Outb}}(\mbox{\hyperlink{fileio_8h_ad7d110cd7a30fd360237bee7c8104712}{ATA\_LBA\_HI}},\ (lba\ >>\ 16)\ \&\ 0xFF);}
+\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00076}00076\ \ \ \ \ \mbox{\hyperlink{asm_8c_a05cb092cfc45a43dd91cff50d681af1a}{Outb}}(\mbox{\hyperlink{fileio_8h_a7762d2c130e593e92b3c3b521e5779f2}{ATA\_COMMAND}},\ \mbox{\hyperlink{fileio_8h_a758719f1c34c94f00f41e5cda9b26564}{ATA\_CMD\_READ\_SECTORS}});}
 \DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00077}00077\ }
-\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00078}00078\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 256;\ i++)\ \{}
-\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00079}00079\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}\ data\ =\ \mbox{\hyperlink{asm_8c_a6b6b4e5a56d03f0833e7cc9bb922bf52}{Inw}}(\mbox{\hyperlink{fileio_8h_a10441946900b59df8e0c67d69a1379f0}{ATA\_DATA}});}
-\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00080}00080\ \ \ \ \ \ \ \ \ buffer[i\ *\ 2]\ =\ (\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}})(data\ \&\ 0xFF);}
-\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00081}00081\ \ \ \ \ \ \ \ \ buffer[(i\ *\ 2)\ +\ 1]\ =\ (\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}})(data\ >>\ 8);}
-\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00082}00082\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00083}00083\ \}}
-\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00084}00084\ }
-\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00097}\mbox{\hyperlink{_a_t_a_8c_a42403de508595b74b8ce384c2026a1d5}{00097}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_a_t_a_8c_a42403de508595b74b8ce384c2026a1d5}{AtaWriteSector}}(\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ lba,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ *buffer)\ \{}
-\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00098}00098\ \ \ \ \ \mbox{\hyperlink{asm_8c_a05cb092cfc45a43dd91cff50d681af1a}{Outb}}(\mbox{\hyperlink{fileio_8h_a53e44ff7073c479a20fc321cb6147a32}{ATA\_CTRL}},\ 0x00);\ \textcolor{comment}{//\ enable\ IRQs}}
-\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00099}00099\ }
-\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00100}00100\ \ \ \ \ \mbox{\hyperlink{asm_8c_a05cb092cfc45a43dd91cff50d681af1a}{Outb}}(\mbox{\hyperlink{fileio_8h_a7fad301214cc3b41f0dd60aaaaf9f3fc}{ATA\_IO\_BASE}}\ +\ 6,\ 0xE0\ |\ ((lba\ >>\ 24)\ \&\ 0x0F));\ \textcolor{comment}{//\ drive\ +\ LBA\ mode}}
-\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00101}00101\ \ \ \ \ \mbox{\hyperlink{asm_8c_a05cb092cfc45a43dd91cff50d681af1a}{Outb}}(\mbox{\hyperlink{fileio_8h_a7fad301214cc3b41f0dd60aaaaf9f3fc}{ATA\_IO\_BASE}}\ +\ 2,\ 1);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ sector\ count}}
-\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00102}00102\ \ \ \ \ \mbox{\hyperlink{asm_8c_a05cb092cfc45a43dd91cff50d681af1a}{Outb}}(\mbox{\hyperlink{fileio_8h_a7fad301214cc3b41f0dd60aaaaf9f3fc}{ATA\_IO\_BASE}}\ +\ 3,\ (\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}})(lba));\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ LBA\ low}}
-\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00103}00103\ \ \ \ \ \mbox{\hyperlink{asm_8c_a05cb092cfc45a43dd91cff50d681af1a}{Outb}}(\mbox{\hyperlink{fileio_8h_a7fad301214cc3b41f0dd60aaaaf9f3fc}{ATA\_IO\_BASE}}\ +\ 4,\ (\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}})(lba\ >>\ 8));\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ LBA\ mid}}
-\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00104}00104\ \ \ \ \ \mbox{\hyperlink{asm_8c_a05cb092cfc45a43dd91cff50d681af1a}{Outb}}(\mbox{\hyperlink{fileio_8h_a7fad301214cc3b41f0dd60aaaaf9f3fc}{ATA\_IO\_BASE}}\ +\ 5,\ (\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}})(lba\ >>\ 16));\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ LBA\ high}}
-\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00105}00105\ }
-\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00106}00106\ \ \ \ \ \mbox{\hyperlink{asm_8c_a05cb092cfc45a43dd91cff50d681af1a}{Outb}}(\mbox{\hyperlink{fileio_8h_a7fad301214cc3b41f0dd60aaaaf9f3fc}{ATA\_IO\_BASE}}\ +\ 7,\ \mbox{\hyperlink{fileio_8h_ae1b5097423101f551088fac3ea671aec}{ATA\_WRITE\_CMD}});\ \textcolor{comment}{//\ send\ write\ command}}
-\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00107}00107\ }
-\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00108}00108\ \ \ \ \ \textcolor{comment}{//\ wait\ for\ drive\ to\ be\ ready}}
-\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00109}00109\ \ \ \ \ \textcolor{keywordflow}{while}\ (!(\mbox{\hyperlink{asm_8c_a6ab29a59b425f205c9da3550dcc76605}{Inb}}(\mbox{\hyperlink{fileio_8h_a7fad301214cc3b41f0dd60aaaaf9f3fc}{ATA\_IO\_BASE}}\ +\ 7)\ \&\ 0x08))\ \{}
-\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00110}00110\ \ \ \ \ \ \ \ \ ;\ \textcolor{comment}{//\ DRQ}}
-\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00111}00111\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00112}00112\ }
-\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00113}00113\ \ \ \ \ \textcolor{comment}{//\ write\ data}}
-\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00114}00114\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 256;\ i++)\ \{}
-\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00115}00115\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}\ word\ =\ ((\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}})buffer[(i\ *\ 2)\ +\ 1]\ <<\ 8)\ |\ buffer[i\ *\ 2];}
-\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00116}00116\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{asm_8c_a1248185712c4933aa9216a5d2cdc5736}{Outw}}(\mbox{\hyperlink{fileio_8h_a7fad301214cc3b41f0dd60aaaaf9f3fc}{ATA\_IO\_BASE}},\ word);}
-\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00117}00117\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00118}00118\ }
-\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00119}00119\ \ \ \ \ \textcolor{comment}{//\ Flush\ cache}}
-\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00120}00120\ \ \ \ \ \mbox{\hyperlink{asm_8c_a05cb092cfc45a43dd91cff50d681af1a}{Outb}}(\mbox{\hyperlink{fileio_8h_a7fad301214cc3b41f0dd60aaaaf9f3fc}{ATA\_IO\_BASE}}\ +\ 7,\ 0xE7);\ \textcolor{comment}{//\ flush\ command}}
-\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00121}00121\ \ \ \ \ \textcolor{keywordflow}{while}\ (\mbox{\hyperlink{asm_8c_a6ab29a59b425f205c9da3550dcc76605}{Inb}}(\mbox{\hyperlink{fileio_8h_a7fad301214cc3b41f0dd60aaaaf9f3fc}{ATA\_IO\_BASE}}\ +\ 7)\ \&\ 0x80)\ \{}
-\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00122}00122\ \ \ \ \ \ \ \ \ ;\ \textcolor{comment}{//\ wait\ for\ BSY\ to\ clear}}
-\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00123}00123\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00124}00124\ \}}
+\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00078}00078\ \ \ \ \ \mbox{\hyperlink{_a_t_a_8c_a1900b48862fde060e2793d5d113cf6f4}{AtaPoll}}();}
+\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00080}00080\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 256;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00081}00081\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}\ data\ =\ \mbox{\hyperlink{asm_8c_a6b6b4e5a56d03f0833e7cc9bb922bf52}{Inw}}(\mbox{\hyperlink{fileio_8h_a10441946900b59df8e0c67d69a1379f0}{ATA\_DATA}});}
+\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00082}00082\ \ \ \ \ \ \ \ \ buffer[i\ *\ 2]\ =\ (\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}})(data\ \&\ 0xFF);}
+\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00083}00083\ \ \ \ \ \ \ \ \ buffer[(i\ *\ 2)\ +\ 1]\ =\ (\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}})(data\ >>\ 8);}
+\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00084}00084\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00085}00085\ \}}
+\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00100}\mbox{\hyperlink{_a_t_a_8c_a42403de508595b74b8ce384c2026a1d5}{00100}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_a_t_a_8c_a42403de508595b74b8ce384c2026a1d5}{AtaWriteSector}}(\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ lba,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ *buffer)\ \{}
+\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00101}00101\ \ \ \ \ \mbox{\hyperlink{asm_8c_a05cb092cfc45a43dd91cff50d681af1a}{Outb}}(\mbox{\hyperlink{fileio_8h_a53e44ff7073c479a20fc321cb6147a32}{ATA\_CTRL}},\ 0x00);\ \textcolor{comment}{//\ enable\ IRQs}}
+\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00102}00102\ }
+\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00103}00103\ \ \ \ \ \mbox{\hyperlink{asm_8c_a05cb092cfc45a43dd91cff50d681af1a}{Outb}}(\mbox{\hyperlink{fileio_8h_a7fad301214cc3b41f0dd60aaaaf9f3fc}{ATA\_IO\_BASE}}\ +\ 6,\ 0xE0\ |\ ((lba\ >>\ 24)\ \&\ 0x0F));\ \textcolor{comment}{//\ drive\ +\ LBA\ mode}}
+\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00104}00104\ \ \ \ \ \mbox{\hyperlink{asm_8c_a05cb092cfc45a43dd91cff50d681af1a}{Outb}}(\mbox{\hyperlink{fileio_8h_a7fad301214cc3b41f0dd60aaaaf9f3fc}{ATA\_IO\_BASE}}\ +\ 2,\ 1);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ sector\ count}}
+\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00105}00105\ \ \ \ \ \mbox{\hyperlink{asm_8c_a05cb092cfc45a43dd91cff50d681af1a}{Outb}}(\mbox{\hyperlink{fileio_8h_a7fad301214cc3b41f0dd60aaaaf9f3fc}{ATA\_IO\_BASE}}\ +\ 3,\ (\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}})(lba));\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ LBA\ low}}
+\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00106}00106\ \ \ \ \ \mbox{\hyperlink{asm_8c_a05cb092cfc45a43dd91cff50d681af1a}{Outb}}(\mbox{\hyperlink{fileio_8h_a7fad301214cc3b41f0dd60aaaaf9f3fc}{ATA\_IO\_BASE}}\ +\ 4,\ (\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}})(lba\ >>\ 8));\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ LBA\ mid}}
+\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00107}00107\ \ \ \ \ \mbox{\hyperlink{asm_8c_a05cb092cfc45a43dd91cff50d681af1a}{Outb}}(\mbox{\hyperlink{fileio_8h_a7fad301214cc3b41f0dd60aaaaf9f3fc}{ATA\_IO\_BASE}}\ +\ 5,\ (\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}})(lba\ >>\ 16));\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ LBA\ high}}
+\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00109}00109\ \ \ \ \ \mbox{\hyperlink{asm_8c_a05cb092cfc45a43dd91cff50d681af1a}{Outb}}(\mbox{\hyperlink{fileio_8h_a7fad301214cc3b41f0dd60aaaaf9f3fc}{ATA\_IO\_BASE}}\ +\ 7,\ \mbox{\hyperlink{fileio_8h_ae1b5097423101f551088fac3ea671aec}{ATA\_WRITE\_CMD}});\ \textcolor{comment}{//\ send\ write\ command}}
+\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00110}00110\ }
+\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00111}00111\ \ \ \ \ \textcolor{comment}{//\ wait\ for\ drive\ to\ be\ ready}}
+\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00112}00112\ \ \ \ \ \textcolor{keywordflow}{while}\ (!(\mbox{\hyperlink{asm_8c_a6ab29a59b425f205c9da3550dcc76605}{Inb}}(\mbox{\hyperlink{fileio_8h_a7fad301214cc3b41f0dd60aaaaf9f3fc}{ATA\_IO\_BASE}}\ +\ 7)\ \&\ 0x08))\ \{}
+\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00113}00113\ \ \ \ \ \ \ \ \ ;\ \textcolor{comment}{//\ DRQ}}
+\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00114}00114\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00116}00116\ \ \ \ \ \textcolor{comment}{//\ write\ data}}
+\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00117}00117\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 256;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00118}00118\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}\ word\ =\ ((\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}})buffer[(i\ *\ 2)\ +\ 1]\ <<\ 8)\ |\ buffer[i\ *\ 2];}
+\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00119}00119\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{asm_8c_a1248185712c4933aa9216a5d2cdc5736}{Outw}}(\mbox{\hyperlink{fileio_8h_a7fad301214cc3b41f0dd60aaaaf9f3fc}{ATA\_IO\_BASE}},\ word);}
+\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00120}00120\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00122}00122\ \ \ \ \ \textcolor{comment}{//\ Flush\ cache}}
+\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00123}00123\ \ \ \ \ \mbox{\hyperlink{asm_8c_a05cb092cfc45a43dd91cff50d681af1a}{Outb}}(\mbox{\hyperlink{fileio_8h_a7fad301214cc3b41f0dd60aaaaf9f3fc}{ATA\_IO\_BASE}}\ +\ 7,\ 0xE7);\ \textcolor{comment}{//\ flush\ command}}
+\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00124}00124\ \ \ \ \ \textcolor{keywordflow}{while}\ (\mbox{\hyperlink{asm_8c_a6ab29a59b425f205c9da3550dcc76605}{Inb}}(\mbox{\hyperlink{fileio_8h_a7fad301214cc3b41f0dd60aaaaf9f3fc}{ATA\_IO\_BASE}}\ +\ 7)\ \&\ 0x80)\ \{}
+\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00125}00125\ \ \ \ \ \ \ \ \ ;\ \textcolor{comment}{//\ wait\ for\ BSY\ to\ clear}}
+\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00126}00126\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_a_t_a_8c_source_l00127}00127\ \}}
 
 \end{DoxyCode}

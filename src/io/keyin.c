@@ -20,7 +20,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
  * @file keyboard.c
  * @brief PS/2 Keyboard input handling for WKern
  *
- * Handles scancode translation, buffering, and character input from a standard PS/2 keyboard.
+ * Handles scancode translation, buffering, and character input from a standard
+ * PS/2 keyboard.
  */
 
 #include <global.h>
@@ -58,7 +59,6 @@ unsigned char scancode_to_ascii(unsigned char scancode) {
     return Keymap[scancode];
 }
 
-
 /// Circular buffer storing incoming keystrokes.
 volatile char Keybuf[256];
 /// Head index for Keybuf
@@ -68,7 +68,8 @@ volatile int buf_tail = 0;
 
 /// @brief Converts an ASCII character to its shifted equivalent.
 /// @param ascii The base character
-/// @return Shifted version of the input character, or the same character if no shift mapping exists.
+/// @return Shifted version of the input character, or the same character if no
+/// shift mapping exists.
 unsigned char Keytoshift(unsigned char ascii) {
     if (ascii >= 'a' && ascii <= 'z') {
         return ascii - 32; // 'a' to 'A'
@@ -121,7 +122,6 @@ unsigned char Keytoshift(unsigned char ascii) {
         return ascii; // default if no shift mapping exists
     }
 }
-
 
 /// @brief IRQ handler for PS/2 keyboard (IRQ1).
 ///

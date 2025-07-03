@@ -24,9 +24,9 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 /**
  * @brief Write data to an existing file in the FAT16 filesystem.
  *
- * Searches for the file specified by filename and extension in the FAT16 root directory.
- * If found, writes up to 512 bytes of data to the file's first cluster sector and
- * updates the file size in the directory entry.
+ * Searches for the file specified by filename and extension in the FAT16 root
+ * directory. If found, writes up to 512 bytes of data to the file's first
+ * cluster sector and updates the file size in the directory entry.
  *
  * @param filename The 8-character filename (without extension).
  * @param ext The 3-character file extension.
@@ -35,7 +35,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
  * @note This function only writes to the first cluster of the file.
  *       Writing beyond the first cluster or appending is not handled.
- * @note Assumes the global `fat16` structure is properly initialized and accessible.
+ * @note Assumes the global `fat16` structure is properly initialized and
+ * accessible.
  */
 void Writefile(const char *filename, const char *ext, const char *data,
                u32 size) {

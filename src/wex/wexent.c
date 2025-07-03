@@ -24,7 +24,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 /**
  * @brief Read First Values of WEX Executable
  * @param exec - Executable in hexadecimal array format
- * @return Integer array containing executable data - ret[0]=Entry Point ret[1]=Symbol Table Size
+ * @return Integer array containing executable data - ret[0]=Entry Point
+ * ret[1]=Symbol Table Size
  */
 int *read_vals(const unsigned char *exec) {
     static int epa;

@@ -1,8 +1,7 @@
-# WKern  
 ## Developed with ❤️ in Canada 🇨🇦
 **This is a kernel/OS I'm working on**  
-**For Current Lines GO TO [loc.md](/loc.md)**  
-__Full Documentation at [weelam.ca/wkern](https://weelam.ca/wkern)__
+**For Current Lines GO TO [loc.md](https://github.com/Wdboyes13/wkern/blob/main/loc.md)**  
+__Code at [github.com/Wdboyes13/wkern](https://github.com/Wdboyes13/wkern)__
 __The specs of the machine are very important__  
 __Since I dont have the energy to port it to working on other machines__  
   
@@ -11,8 +10,8 @@ __THIS WILL ONLY WORK IN THE PRESET QEMU VM CONFIG RUN WITH `make test`__
 
 ## Tools
 __Make sure to run the script to check these with `./configure.py`__  
-__For Platform-Specific Info on installing these go to [docs2/platform/](/docs2/platform/) And Select your OS__   
-__For the new list of requirements, check [RequiredTools.txt](/RequiredTools.txt)__  
+__For Platform-Specific Info on installing these go to [docs2/platform/](https://github.com/Wdboyes13/wkern/blob/main/docs2/platform) And Select your OS__   
+__For the new list of requirements, check [RequiredTools.txt](https://github.com/Wdboyes13/wkern/blob/main/RequiredTools.txt)__  
 
 ## To Run
 
@@ -23,5 +22,5 @@ __For the new list of requirements, check [RequiredTools.txt](/RequiredTools.txt
 ```
 
 ## This project is licensed under the GNU General Public License v3
-## For more info, see [`LICENSE`](/LICENSE)
-## Or for the File Header [`FileHeader`](/FileHeader)
+## For more info, see [`LICENSE`](https://github.com/Wdboyes13/wkern/blob/main/LICENSE)
+## Or for the File Header [`FileHeader`](https://github.com/Wdboyes13/wkern/blob/main/FileHeader)

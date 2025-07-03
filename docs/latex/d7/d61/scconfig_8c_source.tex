@@ -33,56 +33,56 @@
 \DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00029}00029\ }
 \DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00030}\mbox{\hyperlink{pci_8h_a717e3980f4282bd63092f48cae7e5eb5}{00030}}\ \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ \mbox{\hyperlink{pci_8h_a717e3980f4282bd63092f48cae7e5eb5}{bar0}}\ =\ 0;}
 \DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00031}00031\ }
-\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00047}\mbox{\hyperlink{pci_8h_abe1adaa5db5e07c01ec1f3f1f9eae94c}{00047}}\ \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ \mbox{\hyperlink{scconfig_8c_abe1adaa5db5e07c01ec1f3f1f9eae94c}{PciConfigRead}}(\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ bus,\ \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ slot,\ \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ func,\ \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ offset)\ \{}
-\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00048}00048\ \ \ \ \ \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ addr\ =}
-\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00049}00049\ \ \ \ \ \ \ \ \ (1U\ <<\ 31)\ |\ (bus\ <<\ 16)\ |\ (slot\ <<\ 11)\ |\ (func\ <<\ 8)\ |\ (offset\ \&\ 0xFC);}
-\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00050}00050\ \ \ \ \ \mbox{\hyperlink{asm_8c_ac44a237fa7c9a407408a37f35e0c1e5a}{Outl}}(\mbox{\hyperlink{scconfig_8c_aaa58db8af2d00af66c78624104e1016b}{PCI\_CONFIG\_ADDRESS}},\ addr);}
-\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00051}00051\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{asm_8c_a4701486394643faf28232bc4aa510bd3}{Inl}}(\mbox{\hyperlink{scconfig_8c_ad1fedcf5fe37518ccc1ddfcb880d1b01}{PCI\_CONFIG\_DATA}});}
-\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00052}00052\ \}}
-\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00053}00053\ }
-\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00058}\mbox{\hyperlink{pci_8h_a883c8b3048c3f301827e97c80b28d3a8}{00058}}\ \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ \mbox{\hyperlink{scconfig_8c_a883c8b3048c3f301827e97c80b28d3a8}{FindVirtionetDev}}()\ \{}
-\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00059}00059\ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ bus\ =\ 0;\ bus\ <\ 255;\ bus++)\ \{}
-\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00060}00060\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ slot\ =\ 0;\ slot\ <\ 32;\ slot++)\ \{}
-\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ func\ =\ 0;\ func\ <\ 8;\ func++)\ \{}
-\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}\ vendor\ =\ \mbox{\hyperlink{scconfig_8c_abe1adaa5db5e07c01ec1f3f1f9eae94c}{PciConfigRead}}(bus,\ slot,\ func,\ 0x00)\ \&\ 0xFFFF;}
-\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (vendor\ ==\ 0xFFFF)\ \{}
-\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
-\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}\ dev\ =\ (\mbox{\hyperlink{scconfig_8c_abe1adaa5db5e07c01ec1f3f1f9eae94c}{PciConfigRead}}(bus,\ slot,\ func,\ 0x00)\ >>\ 16)\ \&\ 0xFFFF;}
-\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{pci_8h_a717e3980f4282bd63092f48cae7e5eb5}{bar0}}\ =\ \mbox{\hyperlink{scconfig_8c_abe1adaa5db5e07c01ec1f3f1f9eae94c}{PciConfigRead}}(bus,\ slot,\ func,\ 0x10);}
-\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ \mbox{\hyperlink{global_8h_a1948e96711d16f6cd2d551c5c3b121c5}{iob}}\ =\ \mbox{\hyperlink{pci_8h_a717e3980f4282bd63092f48cae7e5eb5}{bar0}}\ \&\ \string~0xF;}
-\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ revid\ =\ (\mbox{\hyperlink{scconfig_8c_abe1adaa5db5e07c01ec1f3f1f9eae94c}{PciConfigRead}}(bus,\ slot,\ func,\ 0x08)\ >>\ 0)\ \&\ 0xFF;}
-\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00070}00070\ }
-\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (vendor\ ==\ 0x1AF4\ \&\&\ dev\ ==\ 0x1000\ \&\&\ revid\ ==\ 0x00)\ \{}
-\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{pci_8h_a57db71c6ae5abbd1f05ce9d01ed08337}{virtio\_bus}}\ =\ bus;}
-\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{pci_8h_a5709937fc03efadd8a08088e85f7f04b}{virtio\_slot}}\ =\ slot;}
-\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{pci_8h_ab0352d3fdab78f951342adc725531590}{virtio\_func}}\ =\ func;}
-\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{stringliteral}{"{}VirtIO\ at\ \%x:\%x.\%x\ BAR0=\%x\ IO=\%x\ Rev=\%x\(\backslash\)n"{}},\ bus,}
-\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ slot,\ func,\ \mbox{\hyperlink{pci_8h_a717e3980f4282bd63092f48cae7e5eb5}{bar0}},\ \mbox{\hyperlink{global_8h_a1948e96711d16f6cd2d551c5c3b121c5}{iob}},\ revid);}
-\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00077}00077\ }
-\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 1.\ Reset\ device}}
-\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{asm_8c_a05cb092cfc45a43dd91cff50d681af1a}{Outb}}(\mbox{\hyperlink{scconfig_8c_a1113fb316ca3e5cf5f85e7e68409b1c8}{VIRTIO\_REG}}(0x12),\ 0x00);}
-\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00080}00080\ }
-\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 2.\ Set\ ACKNOWLEDGE\ and\ DRIVER\ status\ bits}}
-\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{asm_8c_a05cb092cfc45a43dd91cff50d681af1a}{Outb}}(\mbox{\hyperlink{scconfig_8c_a1113fb316ca3e5cf5f85e7e68409b1c8}{VIRTIO\_REG}}(0x12),\ 0x01);\ \textcolor{comment}{//\ AcKnowledge}}
-\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{asm_8c_a05cb092cfc45a43dd91cff50d681af1a}{Outb}}(\mbox{\hyperlink{scconfig_8c_a1113fb316ca3e5cf5f85e7e68409b1c8}{VIRTIO\_REG}}(0x12),\ 0x03);\ \textcolor{comment}{//\ AcKnowledge\ |\ Driver}}
-\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00084}00084\ }
-\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 3.\ Read\ device\ features}}
-\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ features\ =\ \mbox{\hyperlink{asm_8c_a4701486394643faf28232bc4aa510bd3}{Inl}}(\mbox{\hyperlink{scconfig_8c_a1113fb316ca3e5cf5f85e7e68409b1c8}{VIRTIO\_REG}}(0x00));}
-\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Optionally\ masK\ features\ here}}
-\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00088}00088\ }
-\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 4.\ Write\ accepted\ features}}
-\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{asm_8c_ac44a237fa7c9a407408a37f35e0c1e5a}{Outl}}(\mbox{\hyperlink{scconfig_8c_a1113fb316ca3e5cf5f85e7e68409b1c8}{VIRTIO\_REG}}(0x04),\ features);\ \textcolor{comment}{//\ For\ now,\ accept\ all}}
-\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00091}00091\ }
-\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 5.\ Set\ DRIVER\_OK\ bit}}
-\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{asm_8c_a05cb092cfc45a43dd91cff50d681af1a}{Outb}}(\mbox{\hyperlink{scconfig_8c_a1113fb316ca3e5cf5f85e7e68409b1c8}{VIRTIO\_REG}}(0x12),}
-\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x07);\ \textcolor{comment}{//\ AcKnowledge\ |\ Driver\ |\ Features\ OK}}
-\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{global_8h_a1948e96711d16f6cd2d551c5c3b121c5}{iob}};}
-\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00098}00098\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00099}00099\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00100}00100\ \ \ \ \ \textcolor{keywordflow}{return}\ (\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}})(\mbox{\hyperlink{nums_8h_acd24f51b7ace8f85b1b20c947ba1c904}{uptr}})\mbox{\hyperlink{global_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
-\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00101}00101\ \}}
+\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00048}\mbox{\hyperlink{pci_8h_abe1adaa5db5e07c01ec1f3f1f9eae94c}{00048}}\ \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ \mbox{\hyperlink{scconfig_8c_abe1adaa5db5e07c01ec1f3f1f9eae94c}{PciConfigRead}}(\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ bus,\ \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ slot,\ \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ func,\ \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ offset)\ \{}
+\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00049}00049\ \ \ \ \ \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ addr\ =}
+\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00050}00050\ \ \ \ \ \ \ \ \ (1U\ <<\ 31)\ |\ (bus\ <<\ 16)\ |\ (slot\ <<\ 11)\ |\ (func\ <<\ 8)\ |\ (offset\ \&\ 0xFC);}
+\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00051}00051\ \ \ \ \ \mbox{\hyperlink{asm_8c_ac44a237fa7c9a407408a37f35e0c1e5a}{Outl}}(\mbox{\hyperlink{scconfig_8c_aaa58db8af2d00af66c78624104e1016b}{PCI\_CONFIG\_ADDRESS}},\ addr);}
+\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00052}00052\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{asm_8c_a4701486394643faf28232bc4aa510bd3}{Inl}}(\mbox{\hyperlink{scconfig_8c_ad1fedcf5fe37518ccc1ddfcb880d1b01}{PCI\_CONFIG\_DATA}});}
+\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00053}00053\ \}}
+\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00059}\mbox{\hyperlink{pci_8h_a883c8b3048c3f301827e97c80b28d3a8}{00059}}\ \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ \mbox{\hyperlink{scconfig_8c_a883c8b3048c3f301827e97c80b28d3a8}{FindVirtionetDev}}()\ \{}
+\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00060}00060\ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ bus\ =\ 0;\ bus\ <\ 255;\ bus++)\ \{}
+\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00061}00061\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ slot\ =\ 0;\ slot\ <\ 32;\ slot++)\ \{}
+\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ func\ =\ 0;\ func\ <\ 8;\ func++)\ \{}
+\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}\ vendor\ =\ \mbox{\hyperlink{scconfig_8c_abe1adaa5db5e07c01ec1f3f1f9eae94c}{PciConfigRead}}(bus,\ slot,\ func,\ 0x00)\ \&\ 0xFFFF;}
+\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (vendor\ ==\ 0xFFFF)\ \{}
+\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}\ dev\ =\ (\mbox{\hyperlink{scconfig_8c_abe1adaa5db5e07c01ec1f3f1f9eae94c}{PciConfigRead}}(bus,\ slot,\ func,\ 0x00)\ >>\ 16)\ \&\ 0xFFFF;}
+\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{pci_8h_a717e3980f4282bd63092f48cae7e5eb5}{bar0}}\ =\ \mbox{\hyperlink{scconfig_8c_abe1adaa5db5e07c01ec1f3f1f9eae94c}{PciConfigRead}}(bus,\ slot,\ func,\ 0x10);}
+\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ \mbox{\hyperlink{global_8h_a1948e96711d16f6cd2d551c5c3b121c5}{iob}}\ =\ \mbox{\hyperlink{pci_8h_a717e3980f4282bd63092f48cae7e5eb5}{bar0}}\ \&\ \string~0xF;}
+\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ revid\ =\ (\mbox{\hyperlink{scconfig_8c_abe1adaa5db5e07c01ec1f3f1f9eae94c}{PciConfigRead}}(bus,\ slot,\ func,\ 0x08)\ >>\ 0)\ \&\ 0xFF;}
+\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (vendor\ ==\ 0x1AF4\ \&\&\ dev\ ==\ 0x1000\ \&\&\ revid\ ==\ 0x00)\ \{}
+\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{pci_8h_a57db71c6ae5abbd1f05ce9d01ed08337}{virtio\_bus}}\ =\ bus;}
+\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{pci_8h_a5709937fc03efadd8a08088e85f7f04b}{virtio\_slot}}\ =\ slot;}
+\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{pci_8h_ab0352d3fdab78f951342adc725531590}{virtio\_func}}\ =\ func;}
+\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{stringliteral}{"{}VirtIO\ at\ \%x:\%x.\%x\ BAR0=\%x\ IO=\%x\ Rev=\%x\(\backslash\)n"{}},\ bus,}
+\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ slot,\ func,\ \mbox{\hyperlink{pci_8h_a717e3980f4282bd63092f48cae7e5eb5}{bar0}},\ \mbox{\hyperlink{global_8h_a1948e96711d16f6cd2d551c5c3b121c5}{iob}},\ revid);}
+\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 1.\ Reset\ device}}
+\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{asm_8c_a05cb092cfc45a43dd91cff50d681af1a}{Outb}}(\mbox{\hyperlink{scconfig_8c_a1113fb316ca3e5cf5f85e7e68409b1c8}{VIRTIO\_REG}}(0x12),\ 0x00);}
+\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 2.\ Set\ ACKNOWLEDGE\ and\ DRIVER\ status\ bits}}
+\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{asm_8c_a05cb092cfc45a43dd91cff50d681af1a}{Outb}}(\mbox{\hyperlink{scconfig_8c_a1113fb316ca3e5cf5f85e7e68409b1c8}{VIRTIO\_REG}}(0x12),\ 0x01);\ \textcolor{comment}{//\ AcKnowledge}}
+\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{asm_8c_a05cb092cfc45a43dd91cff50d681af1a}{Outb}}(\mbox{\hyperlink{scconfig_8c_a1113fb316ca3e5cf5f85e7e68409b1c8}{VIRTIO\_REG}}(0x12),\ 0x03);\ \textcolor{comment}{//\ AcKnowledge\ |\ Driver}}
+\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 3.\ Read\ device\ features}}
+\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ features\ =\ \mbox{\hyperlink{asm_8c_a4701486394643faf28232bc4aa510bd3}{Inl}}(\mbox{\hyperlink{scconfig_8c_a1113fb316ca3e5cf5f85e7e68409b1c8}{VIRTIO\_REG}}(0x00));}
+\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Optionally\ masK\ features\ here}}
+\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 4.\ Write\ accepted\ features}}
+\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{asm_8c_ac44a237fa7c9a407408a37f35e0c1e5a}{Outl}}(\mbox{\hyperlink{scconfig_8c_a1113fb316ca3e5cf5f85e7e68409b1c8}{VIRTIO\_REG}}(0x04),\ features);\ \textcolor{comment}{//\ For\ now,\ accept\ all}}
+\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 5.\ Set\ DRIVER\_OK\ bit}}
+\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{asm_8c_a05cb092cfc45a43dd91cff50d681af1a}{Outb}}(\mbox{\hyperlink{scconfig_8c_a1113fb316ca3e5cf5f85e7e68409b1c8}{VIRTIO\_REG}}(0x12),}
+\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x07);\ \textcolor{comment}{//\ AcKnowledge\ |\ Driver\ |\ Features\ OK}}
+\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{global_8h_a1948e96711d16f6cd2d551c5c3b121c5}{iob}};}
+\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00099}00099\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00100}00100\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00101}00101\ \ \ \ \ \textcolor{keywordflow}{return}\ (\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}})(\mbox{\hyperlink{nums_8h_acd24f51b7ace8f85b1b20c947ba1c904}{uptr}})\mbox{\hyperlink{global_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{\Hypertarget{scconfig_8c_source_l00102}00102\ \}}
 
 \end{DoxyCode}

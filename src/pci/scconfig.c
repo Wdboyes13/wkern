@@ -36,8 +36,9 @@ u32 bar0 = 0;
  * PCI bus, slot (device), function, and offset, and reads the corresponding
  * 32-bit value from the PCI configuration space using I/O ports.
  *
- * The offset must be aligned to a 4-byte boundary (i.e., bits 1 and 0 are masked out).
- * 
+ * The offset must be aligned to a 4-byte boundary (i.e., bits 1 and 0 are
+ * masked out).
+ *
  * @param bus    PCI bus number (0–255).
  * @param slot   PCI device number (0–31).
  * @param func   PCI function number (0–7).

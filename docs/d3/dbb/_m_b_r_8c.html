@@ -197,8 +197,7 @@ Variables</h2></td></tr>
 
 <p>Finds the LBA start of the first FAT16 partition in the <a class="el" href="../../de/dae/struct_m_b_r.html" title="Master Boot Record structure layout.">MBR</a>. </p>
 <p>Finds the FAT16 partition on disk.</p>
-<p>Reads the <a class="el" href="../../de/dae/struct_m_b_r.html" title="Master Boot Record structure layout.">MBR</a> sector, verifies the signature, then scans all partitions for a FAT16 type (0x04 or 0x06). <br  />
-</p>
+<p>Reads the <a class="el" href="../../de/dae/struct_m_b_r.html" title="Master Boot Record structure layout.">MBR</a> sector, verifies the signature, then scans all partitions for a FAT16 type (0x04 or 0x06).</p>
 <p>Prints debug info about partitions to kernel log.</p>
 <dl class="section return"><dt>Returns</dt><dd>LBA of the FAT16 partition start or 0 if none found or invalid <a class="el" href="../../de/dae/struct_m_b_r.html" title="Master Boot Record structure layout.">MBR</a>. </dd></dl>
 <p>&lt; Invalid <a class="el" href="../../de/dae/struct_m_b_r.html" title="Master Boot Record structure layout.">MBR</a> signature</p>

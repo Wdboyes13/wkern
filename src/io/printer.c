@@ -34,9 +34,9 @@ void Kcfp() {
     row = 0;
 }
 
-
 /**
- * @brief Outputs a single character to the screen at the current cursor position.
+ * @brief Outputs a single character to the screen at the current cursor
+ * position.
  *
  * Supports newline ('\n') to move cursor to the next line.
  * Advances cursor position and scrolls screen if necessary.
@@ -65,7 +65,8 @@ void Kputchar(char c) {
 }
 
 /**
- * @brief Handles backspace keypress by moving the cursor back and clearing the character.
+ * @brief Handles backspace keypress by moving the cursor back and clearing the
+ * character.
  */
 void KputcharBackspace() {
     if (col > 0) {
@@ -81,7 +82,8 @@ void KputcharBackspace() {
 }
 
 /**
- * @brief Prints a 32-bit unsigned integer in hexadecimal format prefixed with "0x".
+ * @brief Prints a 32-bit unsigned integer in hexadecimal format prefixed with
+ * "0x".
  *
  * Example output: 0xDEADBEEF
  *
@@ -122,7 +124,6 @@ void KprintDec(int num) {
         Kputchar(buf[i]);
     }
 }
-
 
 /**
  * @brief Prints a null-terminated string to the screen.

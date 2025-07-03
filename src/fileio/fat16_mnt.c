@@ -31,8 +31,8 @@ static u8 fat16_sector[512];
  * @param fat Pointer to a FaT16Info struct representing the FAT16 filesystem.
  * @return Number of clusters available in the data region.
  *
- * This calculates clusters by subtracting reserved, FAT, and root directory sectors
- * from the total sectors and dividing by sectors per cluster.
+ * This calculates clusters by subtracting reserved, FAT, and root directory
+ * sectors from the total sectors and dividing by sectors per cluster.
  */
 u32 Fat16TotalClusters(struct FaT16Info *fat) {
     // Use 32-bit total sectors if 16-bit is zero (fat16 magic)

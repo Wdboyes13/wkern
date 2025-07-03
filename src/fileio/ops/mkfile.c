@@ -26,14 +26,15 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
  * This function searches for a free root directory entry and a free cluster,
  * then creates a new directory entry for the specified filename and extension.
- * It initializes the directory entry with default attributes and zero file size.
+ * It initializes the directory entry with default attributes and zero file
+ * size.
  *
  * @param filename The 8-character filename (without extension).
  * @param ext The 3-character file extension.
  *
  * @note The function assumes FAT16 filesystem data is accessible through
  *       the global `fat16` structure.
- * 
+ *
  * @warning If no free directory entry or cluster is available, the function
  *          prints an error message and returns without creating the file.
  */

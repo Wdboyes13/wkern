@@ -49,13 +49,15 @@ void AtaPoll() {
 }
 
 /**
- * @brief Read a single 512-byte sector from the ATA device using LBA addressing.
+ * @brief Read a single 512-byte sector from the ATA device using LBA
+ * addressing.
  *
- * Sends commands to the ATA device to read one sector specified by the logical block address (LBA).
- * The read sector data is stored in the provided buffer.
+ * Sends commands to the ATA device to read one sector specified by the logical
+ * block address (LBA). The read sector data is stored in the provided buffer.
  *
  * @param lba The logical block address of the sector to read.
- * @param buffer Pointer to a 512-byte buffer where the read data will be stored.
+ * @param buffer Pointer to a 512-byte buffer where the read data will be
+ * stored.
  *
  * @note Assumes the buffer is valid and large enough for one sector.
  * @note Interrupts and device control signals are managed internally.
@@ -85,14 +87,15 @@ void AtaReadSector(u32 lba, u8 *buffer) {
 /**
  * @brief Write a single 512-byte sector to the ATA device using LBA addressing.
  *
- * Sends commands to the ATA device to write one sector specified by the logical block address (LBA).
- * The data to write is taken from the provided buffer.
+ * Sends commands to the ATA device to write one sector specified by the logical
+ * block address (LBA). The data to write is taken from the provided buffer.
  *
  * @param lba The logical block address of the sector to write.
  * @param buffer Pointer to a 512-byte buffer containing the data to write.
  *
  * @note Assumes the buffer is valid and contains at least one sector of data.
- * @note This function blocks until the write completes and the cache is flushed.
+ * @note This function blocks until the write completes and the cache is
+ * flushed.
  */
 void AtaWriteSector(u32 lba, const u8 *buffer) {
     Outb(ATA_CTRL, 0x00); // enable IRQs

@@ -24,7 +24,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
  * Usage: `rm [filename] [ext]`
  *
- * @param argv Array of arguments. argv[1] is the filename, argv[2] is the extension.
+ * @param argv Array of arguments. argv[1] is the filename, argv[2] is the
+ * extension.
  * @param argc Number of arguments.
  */
 void Rm(const char *argv[], int argc) { // rm [filename] [ext]
@@ -40,7 +41,8 @@ void Rm(const char *argv[], int argc) { // rm [filename] [ext]
  *
  * Usage: `mKfile [filename] [ext]`
  *
- * @param argv Array of arguments. argv[1] is the filename, argv[2] is the extension.
+ * @param argv Array of arguments. argv[1] is the filename, argv[2] is the
+ * extension.
  * @param argc Number of arguments.
  */
 void Mkf(const char *argv[], int argc) { // mKfile [filename] [ext]
@@ -59,7 +61,8 @@ void Mkf(const char *argv[], int argc) { // mKfile [filename] [ext]
  *
  * Usage: `write [filename] [ext]`
  *
- * @param argv Array of arguments. argv[1] is the filename, argv[2] is the extension.
+ * @param argv Array of arguments. argv[1] is the filename, argv[2] is the
+ * extension.
  * @param argc Number of arguments.
  */
 void Writef(const char *argv[], int argc) { // write [filename] [ext]
@@ -93,13 +96,13 @@ void Writef(const char *argv[], int argc) { // write [filename] [ext]
     Kfree(data);
 }
 
-
 /**
  * @brief Read and display contents of a file from the FAT16 filesystem.
  *
  * Usage: `read [filename] [ext]`
  *
- * @param argv Array of arguments. argv[1] is the filename, argv[2] is the extension.
+ * @param argv Array of arguments. argv[1] is the filename, argv[2] is the
+ * extension.
  * @param argc Number of arguments.
  */
 void Readf(const char *argv[], int argc) { // read [filename] [ext]

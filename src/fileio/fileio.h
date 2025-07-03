@@ -79,28 +79,30 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
  * Matches the FAT16 boot sector layout.
  */
 struct PKG FaT16Bpb {
-    u8 jmp[3];                 /**< Jump instruction to boot code */
-    u8 oem[8];                 /**< OEM Name */
-    u16 bytes_per_sector;      /**< Bytes per sector */
-    u8 sectors_per_cluster;    /**< Sectors per cluster */
-    u16 reserved_sectors;      /**< Reserved sectors before FAT */
-    u8 num_fats;               /**< Number of FAT tables */
-    u16 root_entry_count;      /**< Max root directory entries */
-    u16 total_sectors_short;   /**< Total sectors (if zero, use total_sectors_long) */
-    u8 media_descriptor;       /**< Media descriptor byte */
-    u16 sectors_per_fat;       /**< Sectors per FAT */
-    u16 sectors_per_track;     /**< Sectors per track (for BIOS) */
-    u16 num_heads;             /**< Number of heads (for BIOS) */
-    u32 hidden_sectors;        /**< Hidden sectors before partition */
-    u32 total_sectors_long;    /**< Total sectors (if total_sectors_short is zero) */
+    u8 jmp[3];               /**< Jump instruction to boot code */
+    u8 oem[8];               /**< OEM Name */
+    u16 bytes_per_sector;    /**< Bytes per sector */
+    u8 sectors_per_cluster;  /**< Sectors per cluster */
+    u16 reserved_sectors;    /**< Reserved sectors before FAT */
+    u8 num_fats;             /**< Number of FAT tables */
+    u16 root_entry_count;    /**< Max root directory entries */
+    u16 total_sectors_short; /**< Total sectors (if zero, use
+                                total_sectors_long) */
+    u8 media_descriptor;     /**< Media descriptor byte */
+    u16 sectors_per_fat;     /**< Sectors per FAT */
+    u16 sectors_per_track;   /**< Sectors per track (for BIOS) */
+    u16 num_heads;           /**< Number of heads (for BIOS) */
+    u32 hidden_sectors;      /**< Hidden sectors before partition */
+    u32 total_sectors_long;  /**< Total sectors (if total_sectors_short is zero)
+                              */
 
     // Extended BPB fields
-    u8 drive_number;           /**< Physical drive number */
-    u8 reserved1;              /**< Reserved */
-    u8 boot_signature;         /**< Extended boot signature (0x29 means valid) */
-    u32 volume_id;             /**< Volume serial number */
-    u8 volume_label[11];       /**< Volume label string */
-    u8 fs_type[8];             /**< Filesystem type string (e.g., "FAT16   ") */
+    u8 drive_number;     /**< Physical drive number */
+    u8 reserved1;        /**< Reserved */
+    u8 boot_signature;   /**< Extended boot signature (0x29 means valid) */
+    u32 volume_id;       /**< Volume serial number */
+    u8 volume_label[11]; /**< Volume label string */
+    u8 fs_type[8];       /**< Filesystem type string (e.g., "FAT16   ") */
 };
 
 /**
@@ -110,20 +112,20 @@ struct PKG FaT16Bpb {
  * Populated after mounting the FAT16 partition.
  */
 struct FaT16Info {
-    u32 fat_start_lba;         /**< LBA start of FAT tables */
-    u32 root_dir_start_lba;    /**< LBA start of root directory */
-    u32 data_start_lba;        /**< LBA start of data region */
+    u32 fat_start_lba;      /**< LBA start of FAT tables */
+    u32 root_dir_start_lba; /**< LBA start of root directory */
+    u32 data_start_lba;     /**< LBA start of data region */
 
-    u16 root_entry_count;      /**< Max root entries */
-    u16 bytes_per_sector;      /**< Bytes per sector */
-    u8 sectors_per_cluster;    /**< Sectors per cluster */
-    u8 num_fats;               /**< Number of FAT tables */
-    u16 sectors_per_fat;       /**< Sectors per FAT */
+    u16 root_entry_count;   /**< Max root entries */
+    u16 bytes_per_sector;   /**< Bytes per sector */
+    u8 sectors_per_cluster; /**< Sectors per cluster */
+    u8 num_fats;            /**< Number of FAT tables */
+    u16 sectors_per_fat;    /**< Sectors per FAT */
 
-    u16 reserved_sectors;      /**< Reserved sectors count */
-    u16 total_sectors_16;      /**< Total sectors (16-bit) */
-    u32 total_sectors_32;      /**< Total sectors (32-bit) */
-    u32 total_cluster;         /**< Total data clusters */
+    u16 reserved_sectors; /**< Reserved sectors count */
+    u16 total_sectors_16; /**< Total sectors (16-bit) */
+    u32 total_sectors_32; /**< Total sectors (32-bit) */
+    u32 total_cluster;    /**< Total data clusters */
 };
 
 /// Global FAT16 filesystem info struct
@@ -139,7 +141,8 @@ void AtaReadSector(u32 lba, u8 *buffer);
 /**
  * @brief Writes a 512-byte sector to ATA disk from buffer.
  * @param lba Logical block address of sector.
- * @param buffer Pointer to buffer containing data to write (must be >= 512 bytes).
+ * @param buffer Pointer to buffer containing data to write (must be >= 512
+ * bytes).
  */
 void AtaWriteSector(u32 lba, const u8 *buffer);
 
@@ -160,7 +163,8 @@ u32 FindFat16Partition(void);
  * @param data Pointer to data buffer to write.
  * @param size Size of data to write in bytes.
  */
-void Writefile(const char *filename, const char *ext, const char *data, u32 size);
+void Writefile(const char *filename, const char *ext, const char *data,
+               u32 size);
 
 /**
  * @brief Lists files in the FAT16 root directory.

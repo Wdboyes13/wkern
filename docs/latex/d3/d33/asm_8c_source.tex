@@ -22,49 +22,43 @@
 \DoxyCodeLine{\Hypertarget{asm_8c_source_l00018}00018\ }
 \DoxyCodeLine{\Hypertarget{asm_8c_source_l00019}00019\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{kio_8h}{io/kio.h}}>}}
 \DoxyCodeLine{\Hypertarget{asm_8c_source_l00020}00020\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{nums_8h}{types/nums.h}}>}}
-\DoxyCodeLine{\Hypertarget{asm_8c_source_l00021}00021\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{kio_8h}{io/kio.h}}>}}
-\DoxyCodeLine{\Hypertarget{asm_8c_source_l00022}00022\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{nums_8h}{types/nums.h}}>}}
+\DoxyCodeLine{\Hypertarget{asm_8c_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{asm_8c_source_l00022}00022\ \textcolor{preprocessor}{\#ifndef\ \_\_clang\_\_\ }\textcolor{comment}{//\ We\ do\ this\ to\ maKe\ ClangD\ shutup}}
 \DoxyCodeLine{\Hypertarget{asm_8c_source_l00023}00023\ }
-\DoxyCodeLine{\Hypertarget{asm_8c_source_l00024}00024\ \textcolor{preprocessor}{\#ifndef\ \_\_clang\_\_\ }\textcolor{comment}{//\ We\ do\ this\ to\ maKe\ ClangD\ shutup}}
-\DoxyCodeLine{\Hypertarget{asm_8c_source_l00025}00025\ }
-\DoxyCodeLine{\Hypertarget{asm_8c_source_l00032}\mbox{\hyperlink{asm_8c_a05cb092cfc45a43dd91cff50d681af1a}{00032}}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{asm_8c_a05cb092cfc45a43dd91cff50d681af1a}{Outb}}(\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}\ port,\ \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ val)\ \{}
-\DoxyCodeLine{\Hypertarget{asm_8c_source_l00033}00033\ \ \ \ \ \_\_asm\_\_\ \textcolor{keyword}{volatile}(\textcolor{stringliteral}{"{}outb\ \%0,\ \%1"{}}\ :\ :\ \textcolor{stringliteral}{"{}a"{}}(val),\ \textcolor{stringliteral}{"{}Nd"{}}(port));}
-\DoxyCodeLine{\Hypertarget{asm_8c_source_l00034}00034\ \}}
-\DoxyCodeLine{\Hypertarget{asm_8c_source_l00035}00035\ }
-\DoxyCodeLine{\Hypertarget{asm_8c_source_l00042}\mbox{\hyperlink{asm_8c_a6ab29a59b425f205c9da3550dcc76605}{00042}}\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ \mbox{\hyperlink{asm_8c_a6ab29a59b425f205c9da3550dcc76605}{Inb}}(\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}\ port)\ \{}
-\DoxyCodeLine{\Hypertarget{asm_8c_source_l00043}00043\ \ \ \ \ \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ ret;}
-\DoxyCodeLine{\Hypertarget{asm_8c_source_l00044}00044\ \ \ \ \ \_\_asm\_\_\ \textcolor{keyword}{volatile}(\textcolor{stringliteral}{"{}inb\ \%1,\ \%0"{}}\ :\ \textcolor{stringliteral}{"{}=a"{}}(ret)\ :\ \textcolor{stringliteral}{"{}Nd"{}}(port));}
-\DoxyCodeLine{\Hypertarget{asm_8c_source_l00045}00045\ \ \ \ \ \textcolor{keywordflow}{return}\ ret;}
-\DoxyCodeLine{\Hypertarget{asm_8c_source_l00046}00046\ \}}
-\DoxyCodeLine{\Hypertarget{asm_8c_source_l00047}00047\ }
-\DoxyCodeLine{\Hypertarget{asm_8c_source_l00054}\mbox{\hyperlink{asm_8c_a1248185712c4933aa9216a5d2cdc5736}{00054}}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{asm_8c_a1248185712c4933aa9216a5d2cdc5736}{Outw}}(\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}\ port,\ \mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}\ val)\ \{}
-\DoxyCodeLine{\Hypertarget{asm_8c_source_l00055}00055\ \ \ \ \ \_\_asm\_\_\ \textcolor{keyword}{volatile}(\textcolor{stringliteral}{"{}outw\ \%0,\ \%1"{}}\ :\ :\ \textcolor{stringliteral}{"{}a"{}}(val),\ \textcolor{stringliteral}{"{}Nd"{}}(port));}
-\DoxyCodeLine{\Hypertarget{asm_8c_source_l00056}00056\ \}}
-\DoxyCodeLine{\Hypertarget{asm_8c_source_l00057}00057\ }
-\DoxyCodeLine{\Hypertarget{asm_8c_source_l00064}\mbox{\hyperlink{asm_8c_a6b6b4e5a56d03f0833e7cc9bb922bf52}{00064}}\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}\ \mbox{\hyperlink{asm_8c_a6b6b4e5a56d03f0833e7cc9bb922bf52}{Inw}}(\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}\ port)\ \{}
-\DoxyCodeLine{\Hypertarget{asm_8c_source_l00065}00065\ \ \ \ \ \mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}\ ret;}
-\DoxyCodeLine{\Hypertarget{asm_8c_source_l00066}00066\ \ \ \ \ \_\_asm\_\_\ \textcolor{keyword}{volatile}(\textcolor{stringliteral}{"{}inw\ \%1,\ \%0"{}}\ :\ \textcolor{stringliteral}{"{}=a"{}}(ret)\ :\ \textcolor{stringliteral}{"{}Nd"{}}(port));}
-\DoxyCodeLine{\Hypertarget{asm_8c_source_l00067}00067\ \ \ \ \ \textcolor{keywordflow}{return}\ ret;}
-\DoxyCodeLine{\Hypertarget{asm_8c_source_l00068}00068\ \}}
-\DoxyCodeLine{\Hypertarget{asm_8c_source_l00069}00069\ }
-\DoxyCodeLine{\Hypertarget{asm_8c_source_l00076}\mbox{\hyperlink{asm_8c_ac44a237fa7c9a407408a37f35e0c1e5a}{00076}}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{asm_8c_ac44a237fa7c9a407408a37f35e0c1e5a}{Outl}}(\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}\ port,\ \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ val)\ \{}
-\DoxyCodeLine{\Hypertarget{asm_8c_source_l00077}00077\ \ \ \ \ \_\_asm\_\_\ \textcolor{keyword}{volatile}(\textcolor{stringliteral}{"{}outl\ \%0,\ \%1"{}}\ :\ :\ \textcolor{stringliteral}{"{}a"{}}(val),\ \textcolor{stringliteral}{"{}Nd"{}}(port));}
-\DoxyCodeLine{\Hypertarget{asm_8c_source_l00078}00078\ \}}
-\DoxyCodeLine{\Hypertarget{asm_8c_source_l00079}00079\ }
-\DoxyCodeLine{\Hypertarget{asm_8c_source_l00086}\mbox{\hyperlink{asm_8c_a4701486394643faf28232bc4aa510bd3}{00086}}\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ \mbox{\hyperlink{asm_8c_a4701486394643faf28232bc4aa510bd3}{Inl}}(\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}\ port)\ \{}
-\DoxyCodeLine{\Hypertarget{asm_8c_source_l00087}00087\ \ \ \ \ \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ ret;}
-\DoxyCodeLine{\Hypertarget{asm_8c_source_l00088}00088\ \ \ \ \ \_\_asm\_\_\ \textcolor{keyword}{volatile}(\textcolor{stringliteral}{"{}inl\ \%1,\ \%0"{}}\ :\ \textcolor{stringliteral}{"{}=a"{}}(ret)\ :\ \textcolor{stringliteral}{"{}Nd"{}}(port));}
-\DoxyCodeLine{\Hypertarget{asm_8c_source_l00089}00089\ \ \ \ \ \textcolor{keywordflow}{return}\ ret;}
-\DoxyCodeLine{\Hypertarget{asm_8c_source_l00090}00090\ \}}
-\DoxyCodeLine{\Hypertarget{asm_8c_source_l00091}00091\ }
-\DoxyCodeLine{\Hypertarget{asm_8c_source_l00098}\mbox{\hyperlink{asm_8c_af3dc28e772ca97ae14e85743ee082fe0}{00098}}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{asm_8c_af3dc28e772ca97ae14e85743ee082fe0}{Cli}}()\ \{}
-\DoxyCodeLine{\Hypertarget{asm_8c_source_l00099}00099\ \ \ \ \ \_\_asm\_\_\ \textcolor{keyword}{volatile}(\textcolor{stringliteral}{"{}cli"{}});}
-\DoxyCodeLine{\Hypertarget{asm_8c_source_l00100}00100\ \}}
-\DoxyCodeLine{\Hypertarget{asm_8c_source_l00101}00101\ }
-\DoxyCodeLine{\Hypertarget{asm_8c_source_l00108}\mbox{\hyperlink{asm_8c_ab26ee10caca0d97da59e9439433660cc}{00108}}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{asm_8c_ab26ee10caca0d97da59e9439433660cc}{Sti}}()\ \{}
-\DoxyCodeLine{\Hypertarget{asm_8c_source_l00109}00109\ \ \ \ \ \_\_asm\_\_\ \textcolor{keyword}{volatile}(\textcolor{stringliteral}{"{}sti;\ nop;\ nop;\ nop"{}});}
-\DoxyCodeLine{\Hypertarget{asm_8c_source_l00110}00110\ \}}
-\DoxyCodeLine{\Hypertarget{asm_8c_source_l00111}00111\ }
-\DoxyCodeLine{\Hypertarget{asm_8c_source_l00112}00112\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{asm_8c_source_l00030}\mbox{\hyperlink{asm_8c_a05cb092cfc45a43dd91cff50d681af1a}{00030}}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{asm_8c_a05cb092cfc45a43dd91cff50d681af1a}{Outb}}(\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}\ port,\ \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ val)\ \{}
+\DoxyCodeLine{\Hypertarget{asm_8c_source_l00031}00031\ \ \ \ \ \_\_asm\_\_\ \textcolor{keyword}{volatile}(\textcolor{stringliteral}{"{}outb\ \%0,\ \%1"{}}\ :\ :\ \textcolor{stringliteral}{"{}a"{}}(val),\ \textcolor{stringliteral}{"{}Nd"{}}(port));}
+\DoxyCodeLine{\Hypertarget{asm_8c_source_l00032}00032\ \}}
+\DoxyCodeLine{\Hypertarget{asm_8c_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{asm_8c_source_l00040}\mbox{\hyperlink{asm_8c_a6ab29a59b425f205c9da3550dcc76605}{00040}}\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ \mbox{\hyperlink{asm_8c_a6ab29a59b425f205c9da3550dcc76605}{Inb}}(\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}\ port)\ \{}
+\DoxyCodeLine{\Hypertarget{asm_8c_source_l00041}00041\ \ \ \ \ \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ ret;}
+\DoxyCodeLine{\Hypertarget{asm_8c_source_l00042}00042\ \ \ \ \ \_\_asm\_\_\ \textcolor{keyword}{volatile}(\textcolor{stringliteral}{"{}inb\ \%1,\ \%0"{}}\ :\ \textcolor{stringliteral}{"{}=a"{}}(ret)\ :\ \textcolor{stringliteral}{"{}Nd"{}}(port));}
+\DoxyCodeLine{\Hypertarget{asm_8c_source_l00043}00043\ \ \ \ \ \textcolor{keywordflow}{return}\ ret;}
+\DoxyCodeLine{\Hypertarget{asm_8c_source_l00044}00044\ \}}
+\DoxyCodeLine{\Hypertarget{asm_8c_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{asm_8c_source_l00052}\mbox{\hyperlink{asm_8c_a1248185712c4933aa9216a5d2cdc5736}{00052}}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{asm_8c_a1248185712c4933aa9216a5d2cdc5736}{Outw}}(\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}\ port,\ \mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}\ val)\ \{}
+\DoxyCodeLine{\Hypertarget{asm_8c_source_l00053}00053\ \ \ \ \ \_\_asm\_\_\ \textcolor{keyword}{volatile}(\textcolor{stringliteral}{"{}outw\ \%0,\ \%1"{}}\ :\ :\ \textcolor{stringliteral}{"{}a"{}}(val),\ \textcolor{stringliteral}{"{}Nd"{}}(port));}
+\DoxyCodeLine{\Hypertarget{asm_8c_source_l00054}00054\ \}}
+\DoxyCodeLine{\Hypertarget{asm_8c_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{asm_8c_source_l00062}\mbox{\hyperlink{asm_8c_a6b6b4e5a56d03f0833e7cc9bb922bf52}{00062}}\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}\ \mbox{\hyperlink{asm_8c_a6b6b4e5a56d03f0833e7cc9bb922bf52}{Inw}}(\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}\ port)\ \{}
+\DoxyCodeLine{\Hypertarget{asm_8c_source_l00063}00063\ \ \ \ \ \mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}\ ret;}
+\DoxyCodeLine{\Hypertarget{asm_8c_source_l00064}00064\ \ \ \ \ \_\_asm\_\_\ \textcolor{keyword}{volatile}(\textcolor{stringliteral}{"{}inw\ \%1,\ \%0"{}}\ :\ \textcolor{stringliteral}{"{}=a"{}}(ret)\ :\ \textcolor{stringliteral}{"{}Nd"{}}(port));}
+\DoxyCodeLine{\Hypertarget{asm_8c_source_l00065}00065\ \ \ \ \ \textcolor{keywordflow}{return}\ ret;}
+\DoxyCodeLine{\Hypertarget{asm_8c_source_l00066}00066\ \}}
+\DoxyCodeLine{\Hypertarget{asm_8c_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{asm_8c_source_l00074}\mbox{\hyperlink{asm_8c_ac44a237fa7c9a407408a37f35e0c1e5a}{00074}}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{asm_8c_ac44a237fa7c9a407408a37f35e0c1e5a}{Outl}}(\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}\ port,\ \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ val)\ \{}
+\DoxyCodeLine{\Hypertarget{asm_8c_source_l00075}00075\ \ \ \ \ \_\_asm\_\_\ \textcolor{keyword}{volatile}(\textcolor{stringliteral}{"{}outl\ \%0,\ \%1"{}}\ :\ :\ \textcolor{stringliteral}{"{}a"{}}(val),\ \textcolor{stringliteral}{"{}Nd"{}}(port));}
+\DoxyCodeLine{\Hypertarget{asm_8c_source_l00076}00076\ \}}
+\DoxyCodeLine{\Hypertarget{asm_8c_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{asm_8c_source_l00084}\mbox{\hyperlink{asm_8c_a4701486394643faf28232bc4aa510bd3}{00084}}\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ \mbox{\hyperlink{asm_8c_a4701486394643faf28232bc4aa510bd3}{Inl}}(\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}\ port)\ \{}
+\DoxyCodeLine{\Hypertarget{asm_8c_source_l00085}00085\ \ \ \ \ \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ ret;}
+\DoxyCodeLine{\Hypertarget{asm_8c_source_l00086}00086\ \ \ \ \ \_\_asm\_\_\ \textcolor{keyword}{volatile}(\textcolor{stringliteral}{"{}inl\ \%1,\ \%0"{}}\ :\ \textcolor{stringliteral}{"{}=a"{}}(ret)\ :\ \textcolor{stringliteral}{"{}Nd"{}}(port));}
+\DoxyCodeLine{\Hypertarget{asm_8c_source_l00087}00087\ \ \ \ \ \textcolor{keywordflow}{return}\ ret;}
+\DoxyCodeLine{\Hypertarget{asm_8c_source_l00088}00088\ \}}
+\DoxyCodeLine{\Hypertarget{asm_8c_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{asm_8c_source_l00096}\mbox{\hyperlink{asm_8c_af3dc28e772ca97ae14e85743ee082fe0}{00096}}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{asm_8c_af3dc28e772ca97ae14e85743ee082fe0}{Cli}}()\ \{\ \_\_asm\_\_\ \textcolor{keyword}{volatile}(\textcolor{stringliteral}{"{}cli"{}});\ \}}
+\DoxyCodeLine{\Hypertarget{asm_8c_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{asm_8c_source_l00104}\mbox{\hyperlink{asm_8c_ab26ee10caca0d97da59e9439433660cc}{00104}}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{asm_8c_ab26ee10caca0d97da59e9439433660cc}{Sti}}()\ \{\ \_\_asm\_\_\ \textcolor{keyword}{volatile}(\textcolor{stringliteral}{"{}sti;\ nop;\ nop;\ nop"{}});\ \}}
+\DoxyCodeLine{\Hypertarget{asm_8c_source_l00105}00105\ }
+\DoxyCodeLine{\Hypertarget{asm_8c_source_l00106}00106\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

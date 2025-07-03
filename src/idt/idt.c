@@ -31,7 +31,7 @@ struct IdtPtr idt_ptrn __attribute__((aligned(16)));
 
 /**
  * @brief Set an IDT gate (entry) at given index
- * 
+ *
  * @param num Index of the IDT entry to set
  * @param base Address of the interrupt handler function
  * @param sel Code segment selector in GDT
@@ -50,7 +50,7 @@ extern void IdtLoad(void);
 
 /**
  * @brief Debug function to print an IDT entry's handler address
- * 
+ *
  * @param i Index of the IDT entry to print
  */
 void debug_print_idt_entry(int i) {
@@ -62,7 +62,7 @@ void debug_print_idt_entry(int i) {
 
 /**
  * @brief Initialize and load the Interrupt Descriptor Table (IDT)
- * 
+ *
  * - Installs GDT
  * - Remaps PIC interrupts
  * - Masks all IRQs, then unmasks IRQ 0 and 1
@@ -84,12 +84,13 @@ void AllIdt() {
 
     Kprintf("Setting IDT to 0x00\n");
     Kmemset(&idt, 0,
-            sizeof(struct IdtEntry) * IDT_ENTRIES); /**< Clear the IDT entries */
+            sizeof(struct IdtEntry) *
+                IDT_ENTRIES); /**< Clear the IDT entries */
 
     Kprintf("Setting IDT Limit + Base\n");
     idt_ptrn.limit =
         (sizeof(struct IdtEntry) * IDT_ENTRIES) - 1; /**< Set IDT limit */
-    idt_ptrn.base = (uptr)idt;                       /**< Set IDT base address */
+    idt_ptrn.base = (uptr)idt; /**< Set IDT base address */
 
     Kprintf("Setting up IDT gate 32 (IRQ0)\n");
     IdtSetGate(32, (uptr)Irq0Handler, KERNEL_CODE_SEGMENT,
@@ -121,5 +122,6 @@ void AllIdt() {
     Kprintf("Enabling interrupts");
     __asm__ volatile("sti"); /**< Re-enable CPU interrupts */
 
-    PitInit(PIT_FREQ); /**< Initialize PIT with base frequency (e.g., 1193182 Hz) */
+    PitInit(
+        PIT_FREQ); /**< Initialize PIT with base frequency (e.g., 1193182 Hz) */
 }

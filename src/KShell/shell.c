@@ -26,17 +26,15 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include <utils/util.h>
 #include <wex/stdwex.h>
 
-
 /**
  * @brief Command function pointer type.
- * 
+ *
  * All shell commands must follow this function signature.
- * 
+ *
  * @param argv Argument list
  * @param argc Argument count
  */
 typedef void (*CommandFunc)(const char *argv[], int argc);
-
 
 /**
  * @brief Represents an individual shell command.
@@ -45,8 +43,6 @@ typedef struct {
     const char *name;
     CommandFunc func;
 } CommandEntry;
-
-
 
 /// @brief Compares two strings using the internal shell comparison function.
 void CmdCmp(const char *argv[], int argc) { Kshcmp(); }
@@ -93,10 +89,9 @@ void CmdShutdown(const char *argv[], int argc) {
 #endif
 }
 
-
 /**
  * @brief Sets the username used in the shell.
- * 
+ *
  * @param argv [0] = "setname", [1] = new name
  * @param argc Must be >= 2
  */
@@ -108,27 +103,25 @@ void CmdSetName(const char *argv[], int argc) {
     name = argv[1];
 }
 
-
 /**
  * @brief Array of all available shell commands.
  */
 CommandEntry commands[] = {
-    { "cmp",     CmdCmp },
-    { "help",    CmdHelp },
-    { "tst",     CmdTst },
-    { "clear",   CmdClear },
-    { "ls",      CmdLs },
-    { "read",    Readf },
-    { "user",    CmdUser },
-    { "mKfile",  Mkf },
-    { "rm",      Rm },
-    { "write",   Writef },
-    { "regex",   CmdRegex },
-    { "recvpacK",CmdRecvPack },
-    { "shutdown",CmdShutdown },
-    { "setname", CmdSetName },
+    {"cmp", CmdCmp},
+    {"help", CmdHelp},
+    {"tst", CmdTst},
+    {"clear", CmdClear},
+    {"ls", CmdLs},
+    {"read", Readf},
+    {"user", CmdUser},
+    {"mKfile", Mkf},
+    {"rm", Rm},
+    {"write", Writef},
+    {"regex", CmdRegex},
+    {"recvpacK", CmdRecvPack},
+    {"shutdown", CmdShutdown},
+    {"setname", CmdSetName},
 };
-
 
 /**
  * @brief Number of commands available in the shell.
@@ -143,9 +136,9 @@ CommandEntry commands[] = {
  * - Tokenizes input into arguments
  * - Looks up matching command in the command table
  * - Executes the corresponding command
- * 
+ *
  * On failure, prints an unknown command message.
- * 
+ *
  * @note This loop never exits.
  */
 void Sh() {

@@ -22,7 +22,6 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include <types/nums.h>
 #include <utils/util.h>
 
-
 /**
  * @brief Display the contents of a file in the FAT16 filesystem.
  *

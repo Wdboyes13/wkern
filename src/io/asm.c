@@ -18,8 +18,6 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #include <io/kio.h>
 #include <types/nums.h>
-#include <io/kio.h>
-#include <types/nums.h>
 
 #ifndef __clang__ // We do this to maKe ClangD shutup
 
@@ -95,9 +93,7 @@ inline u32 Inl(u16 port) {
  * This is often used before critical sections to prevent
  * preemption by interrupt handlers.
  */
-inline void Cli() {
-    __asm__ volatile("cli");
-}
+inline void Cli() { __asm__ volatile("cli"); }
 
 /**
  * @brief Enable CPU interrupts (set interrupt flag).
@@ -105,8 +101,6 @@ inline void Cli() {
  * This is used after a critical section to re-enable interrupts.
  * NOPs are added for minor instruction delay.
  */
-inline void Sti() {
-    __asm__ volatile("sti; nop; nop; nop");
-}
+inline void Sti() { __asm__ volatile("sti; nop; nop; nop"); }
 
 #endif

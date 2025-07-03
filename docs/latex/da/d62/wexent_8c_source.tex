@@ -25,45 +25,45 @@
 \DoxyCodeLine{\Hypertarget{wexent_8c_source_l00021}00021\ }
 \DoxyCodeLine{\Hypertarget{wexent_8c_source_l00022}00022\ \textcolor{comment}{//\ Read\ First\ Values}}
 \DoxyCodeLine{\Hypertarget{wexent_8c_source_l00023}00023\ \textcolor{comment}{//\ Reads\ 0x00\ -\/\ 0x09}}
-\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00029}\mbox{\hyperlink{wexent_8c_af38e9ba38e713a6cca62d43f00e53358}{00029}}\ \textcolor{keywordtype}{int}\ *\mbox{\hyperlink{wexent_8c_af38e9ba38e713a6cca62d43f00e53358}{read\_vals}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *exec)\ \{}
-\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00030}00030\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ epa;}
-\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00031}00031\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ sts;}
-\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00032}00032\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ fvals[2];}
-\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00033}00033\ }
-\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00034}00034\ \ \ \ \ epa\ =\ exec[0];}
-\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00035}00035\ \ \ \ \ sts\ =\ exec[1];}
-\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00036}00036\ \ \ \ \ fvals[0]\ =\ epa;}
-\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00037}00037\ \ \ \ \ fvals[1]\ =\ sts;}
-\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00038}00038\ }
-\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00039}00039\ \ \ \ \ \textcolor{keywordflow}{return}\ fvals;}
-\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00040}00040\ \}}
-\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00041}00041\ }
-\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00050}\mbox{\hyperlink{wexent_8c_a3b403bcf289074dcba2e6c6249697db0}{00050}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{wexent_8c_a3b403bcf289074dcba2e6c6249697db0}{chKwex}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *smt,\ \textcolor{keywordtype}{int}\ smt\_len,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *st,}
-\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ st\_len)\ \{}
-\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00052}00052\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ smt\_len;\ i++)\ \{}
-\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00053}00053\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ valid\ =\ 0;}
-\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00054}00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ st\_len;\ j++)\ \{}
-\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (smt[i]\ ==\ st[j])\ \{}
-\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ valid\ =\ 1;}
-\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
-\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00059}00059\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00060}00060\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!valid)\ \{}
-\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;\ \textcolor{comment}{//\ Invalid\ symbol\ found}}
-\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00062}00062\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00063}00063\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00064}00064\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;\ \textcolor{comment}{//\ All\ symbols\ valid}}
-\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00065}00065\ \}}
-\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00066}00066\ }
-\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00072}\mbox{\hyperlink{stdwex_8h_a3b9a19febd250f2acf9d382f635b8fc2}{00072}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{wexent_8c_a3b9a19febd250f2acf9d382f635b8fc2}{Runwex}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *wexexecu)\ \{}
-\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00073}00073\ \ \ \ \ \textcolor{keywordtype}{int}\ *fvals\ =\ \mbox{\hyperlink{wexent_8c_af38e9ba38e713a6cca62d43f00e53358}{read\_vals}}(wexexecu);}
-\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00074}00074\ \ \ \ \ \textcolor{keywordtype}{int}\ sts\ =\ fvals[1];}
-\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00075}00075\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ st[sts];}
-\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00076}00076\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ sts;\ i++)\ \{}
-\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00077}00077\ \ \ \ \ \ \ \ \ st[i]\ =\ wexexecu[i\ +\ 2];}
-\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00078}00078\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00079}00079\ \ \ \ \ \mbox{\hyperlink{wexent_8c_a3b403bcf289074dcba2e6c6249697db0}{chKwex}}(st,\ sts,\ smt,\ 5);}
-\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00080}00080\ \ \ \ \ \mbox{\hyperlink{stdwex_8h_a184a248ba7a02430f4ee68bfbc5cd48a}{Exec}}(wexexecu);}
-\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00081}00081\ \}}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00030}\mbox{\hyperlink{wexent_8c_af38e9ba38e713a6cca62d43f00e53358}{00030}}\ \textcolor{keywordtype}{int}\ *\mbox{\hyperlink{wexent_8c_af38e9ba38e713a6cca62d43f00e53358}{read\_vals}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *exec)\ \{}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00031}00031\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ epa;}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00032}00032\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ sts;}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00033}00033\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ fvals[2];}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00035}00035\ \ \ \ \ epa\ =\ exec[0];}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00036}00036\ \ \ \ \ sts\ =\ exec[1];}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00037}00037\ \ \ \ \ fvals[0]\ =\ epa;}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00038}00038\ \ \ \ \ fvals[1]\ =\ sts;}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00040}00040\ \ \ \ \ \textcolor{keywordflow}{return}\ fvals;}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00041}00041\ \}}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00051}\mbox{\hyperlink{wexent_8c_a3b403bcf289074dcba2e6c6249697db0}{00051}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{wexent_8c_a3b403bcf289074dcba2e6c6249697db0}{chKwex}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *smt,\ \textcolor{keywordtype}{int}\ smt\_len,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *st,}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ st\_len)\ \{}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00053}00053\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ smt\_len;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00054}00054\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ valid\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00055}00055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ st\_len;\ j++)\ \{}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (smt[i]\ ==\ st[j])\ \{}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ valid\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00060}00060\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00061}00061\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!valid)\ \{}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;\ \textcolor{comment}{//\ Invalid\ symbol\ found}}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00063}00063\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00064}00064\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00065}00065\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;\ \textcolor{comment}{//\ All\ symbols\ valid}}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00066}00066\ \}}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00073}\mbox{\hyperlink{stdwex_8h_a3b9a19febd250f2acf9d382f635b8fc2}{00073}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{wexent_8c_a3b9a19febd250f2acf9d382f635b8fc2}{Runwex}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *wexexecu)\ \{}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00074}00074\ \ \ \ \ \textcolor{keywordtype}{int}\ *fvals\ =\ \mbox{\hyperlink{wexent_8c_af38e9ba38e713a6cca62d43f00e53358}{read\_vals}}(wexexecu);}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00075}00075\ \ \ \ \ \textcolor{keywordtype}{int}\ sts\ =\ fvals[1];}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00076}00076\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ st[sts];}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00077}00077\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ sts;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00078}00078\ \ \ \ \ \ \ \ \ st[i]\ =\ wexexecu[i\ +\ 2];}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00079}00079\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00080}00080\ \ \ \ \ \mbox{\hyperlink{wexent_8c_a3b403bcf289074dcba2e6c6249697db0}{chKwex}}(st,\ sts,\ smt,\ 5);}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00081}00081\ \ \ \ \ \mbox{\hyperlink{stdwex_8h_a184a248ba7a02430f4ee68bfbc5cd48a}{Exec}}(wexexecu);}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00082}00082\ \}}
 
 \end{DoxyCode}

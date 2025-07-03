@@ -20,10 +20,10 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include <io/kio.h>
 #include <utils/util.h>
 /** @brief Compare Strings - Similar to standard libc strcmp
-* @param a - First string to compare
-* @param b - Second string to compare
-* @return Integer - 0 if match
-*/
+ * @param a - First string to compare
+ * @param b - Second string to compare
+ * @return Integer - 0 if match
+ */
 int Kstrcmp(const char *a, const char *b) {
     while (*a && (*a == *b)) {
         a++;
@@ -102,8 +102,8 @@ int Kisdigit(int c) { return (c >= '0' && c <= '9'); }
 /**
  * @brief Check if character is whitespace
  * @param c - Character to check
- * @return 1 if whitespace, 0 if not 
-*/
+ * @return 1 if whitespace, 0 if not
+ */
 int Kisspace(int c) {
     return (c == ' ' ||  // space
             c == '\t' || // horizontal tab

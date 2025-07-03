@@ -504,7 +504,7 @@ Variables</h2></td></tr>
 <dd>
 Interrupts and device control signals are managed internally. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d1/d30/_a_t_a_8c_source.html#l00063">63</a> of file <a class="el" href="../../d1/d30/_a_t_a_8c_source.html">ATA.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d1/d30/_a_t_a_8c_source.html#l00065">65</a> of file <a class="el" href="../../d1/d30/_a_t_a_8c_source.html">ATA.c</a>.</p>
 
 </div>
 </div>
@@ -548,7 +548,7 @@ Interrupts and device control signals are managed internally. </dd></dl>
 <dd>
 This function blocks until the write completes and the cache is flushed. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d1/d30/_a_t_a_8c_source.html#l00097">97</a> of file <a class="el" href="../../d1/d30/_a_t_a_8c_source.html">ATA.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d1/d30/_a_t_a_8c_source.html#l00100">100</a> of file <a class="el" href="../../d1/d30/_a_t_a_8c_source.html">ATA.c</a>.</p>
 
 </div>
 </div>
@@ -699,7 +699,7 @@ This function blocks until the write completes and the cache is flushed. </dd></
 </dl>
 <dl class="section note"><dt>Note</dt><dd>The function assumes the FAT16 filesystem structure is accessible through the global <span class="tt">fat16</span> variable. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d2/db0/printconts_8c_source.html#l00041">41</a> of file <a class="el" href="../../d2/db0/printconts_8c_source.html">printconts.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d2/db0/printconts_8c_source.html#l00040">40</a> of file <a class="el" href="../../d2/db0/printconts_8c_source.html">printconts.c</a>.</p>
 
 </div>
 </div>
@@ -721,8 +721,7 @@ This function blocks until the write completes and the cache is flushed. </dd></
 <p>Finds the FAT16 partition on disk. </p>
 <dl class="section return"><dt>Returns</dt><dd>LBA of FAT16 partition start.</dd></dl>
 <p>Finds the FAT16 partition on disk.</p>
-<p>Reads the <a class="el" href="../../de/dae/struct_m_b_r.html" title="Master Boot Record structure layout.">MBR</a> sector, verifies the signature, then scans all partitions for a FAT16 type (0x04 or 0x06). <br  />
-</p>
+<p>Reads the <a class="el" href="../../de/dae/struct_m_b_r.html" title="Master Boot Record structure layout.">MBR</a> sector, verifies the signature, then scans all partitions for a FAT16 type (0x04 or 0x06).</p>
 <p>Prints debug info about partitions to kernel log.</p>
 <dl class="section return"><dt>Returns</dt><dd>LBA of the FAT16 partition start or 0 if none found or invalid <a class="el" href="../../de/dae/struct_m_b_r.html" title="Master Boot Record structure layout.">MBR</a>. </dd></dl>
 <p>&lt; Invalid <a class="el" href="../../de/dae/struct_m_b_r.html" title="Master Boot Record structure layout.">MBR</a> signature</p>
@@ -772,7 +771,7 @@ This function blocks until the write completes and the cache is flushed. </dd></
 <dl class="section note"><dt>Note</dt><dd>The function assumes FAT16 filesystem data is accessible through the global <span class="tt">fat16</span> structure.</dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>If no free directory entry or cluster is available, the function prints an error message and returns without creating the file. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d6/d1f/mkfile_8c_source.html#l00040">40</a> of file <a class="el" href="../../d6/d1f/mkfile_8c_source.html">mkfile.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d6/d1f/mkfile_8c_source.html#l00041">41</a> of file <a class="el" href="../../d6/d1f/mkfile_8c_source.html">mkfile.c</a>.</p>
 
 </div>
 </div>
@@ -830,7 +829,7 @@ This function blocks until the write completes and the cache is flushed. </dd></
 <dd>
 Assumes the global <span class="tt">fat16</span> structure is properly initialized and accessible. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d1/d9b/write_8c_source.html#l00040">40</a> of file <a class="el" href="../../d1/d9b/write_8c_source.html">write.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d1/d9b/write_8c_source.html#l00041">41</a> of file <a class="el" href="../../d1/d9b/write_8c_source.html">write.c</a>.</p>
 
 </div>
 </div>
