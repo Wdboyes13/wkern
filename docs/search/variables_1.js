@@ -10,7 +10,10 @@ var searchData=
   ['blue_7',['BLUE',['../dc/d9d/namespaceconfigure.html#ac2cc9d7c72ef0117a607ba78569a3119',1,'configure']]],
   ['boot_5fsignature_8',['boot_signature',['../d0/db2/struct_fa_t16_bpb.html#ac9c63a4b527cf0ed34b6bfacc8935605',1,'FaT16Bpb']]],
   ['bootstrap_9',['bootstrap',['../de/dae/struct_m_b_r.html#af09cbcfefd6e4dbb9cf53b48f96f5f72',1,'MBR']]],
-  ['buf_5fhead_10',['buf_head',['../d9/d38/keyin_8c.html#ab760d5dea27771423987fed76ab2dc64',1,'keyin.c']]],
-  ['buf_5ftail_11',['buf_tail',['../d9/d38/keyin_8c.html#ac22757a37be5e7f9ed76e8d617bf448d',1,'keyin.c']]],
-  ['bytes_5fper_5fsector_12',['bytes_per_sector',['../d0/db2/struct_fa_t16_bpb.html#a93b94eecdb219f0e9dfe2bb495879fa8',1,'FaT16Bpb::bytes_per_sector'],['../d2/d9d/struct_fa_t16_info.html#ab133d3ed349ae42a97263a14295091f8',1,'FaT16Info::bytes_per_sector']]]
+  ['bracket_5findex_10',['bracket_index',['../d1/dae/structbranch.html#a0007342459cd5c8b55d61b4236fba136',1,'branch']]],
+  ['brackets_11',['brackets',['../d6/d65/structregex__info.html#ab4330a8a5c68eae2a3edaac507577484',1,'regex_info']]],
+  ['branches_12',['branches',['../de/d82/structbracket__pair.html#ab34eb7377a268ac7d8acb9edef0f3f15',1,'bracket_pair::branches'],['../d6/d65/structregex__info.html#ad89dc14885d7d57d7057dece85366c6b',1,'regex_info::branches']]],
+  ['buf_5fhead_13',['buf_head',['../d9/d38/keyin_8c.html#ab760d5dea27771423987fed76ab2dc64',1,'keyin.c']]],
+  ['buf_5ftail_14',['buf_tail',['../d9/d38/keyin_8c.html#ac22757a37be5e7f9ed76e8d617bf448d',1,'keyin.c']]],
+  ['bytes_5fper_5fsector_15',['bytes_per_sector',['../d0/db2/struct_fa_t16_bpb.html#a93b94eecdb219f0e9dfe2bb495879fa8',1,'FaT16Bpb::bytes_per_sector'],['../d2/d9d/struct_fa_t16_info.html#ab133d3ed349ae42a97263a14295091f8',1,'FaT16Info::bytes_per_sector']]]
 ];

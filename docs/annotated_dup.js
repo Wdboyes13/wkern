@@ -1,6 +1,8 @@
 var annotated_dup =
 [
     [ "BlocK", "d9/da1/struct_bloc_k.html", "d9/da1/struct_bloc_k" ],
+    [ "bracket_pair", "de/d82/structbracket__pair.html", "de/d82/structbracket__pair" ],
+    [ "branch", "d1/dae/structbranch.html", "d1/dae/structbranch" ],
     [ "CommandEntry", "db/d1a/struct_command_entry.html", "db/d1a/struct_command_entry" ],
     [ "FaT16Bpb", "d0/db2/struct_fa_t16_bpb.html", "d0/db2/struct_fa_t16_bpb" ],
     [ "FaT16Info", "d2/d9d/struct_fa_t16_info.html", "d2/d9d/struct_fa_t16_info" ],
@@ -11,6 +13,8 @@ var annotated_dup =
     [ "MBR", "de/dae/struct_m_b_r.html", "de/dae/struct_m_b_r" ],
     [ "net_config_t", "d0/dd7/structnet__config__t.html", "d0/dd7/structnet__config__t" ],
     [ "PartitionEntry", "d1/dc9/struct_partition_entry.html", "d1/dc9/struct_partition_entry" ],
+    [ "regex_info", "d6/d65/structregex__info.html", "d6/d65/structregex__info" ],
+    [ "slre_cap", "d7/d37/structslre__cap.html", "d7/d37/structslre__cap" ],
     [ "VirtqAvail", "d2/dc9/struct_virtq_avail.html", "d2/dc9/struct_virtq_avail" ],
     [ "VirtqDesc", "d8/db0/struct_virtq_desc.html", "d8/db0/struct_virtq_desc" ],
     [ "VirtqUsed", "da/d71/struct_virtq_used.html", "da/d71/struct_virtq_used" ]
