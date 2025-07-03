@@ -1,14 +1,20 @@
 var searchData=
 [
-  ['sector_5fsize_0',['SECTOR_SIZE',['../d3/dbb/_m_b_r_8c.html#aa35bad1e92008da628f27b2f6bb270aa',1,'MBR.c']]],
-  ['sendeoi_1',['SendEOI',['../d3/de1/idtirq_8h.html#a752a45c7e0bffa22a9761b00da4bc929',1,'idtirq.h']]],
-  ['slre_5fcaps_5farray_5ftoo_5fsmall_2',['SLRE_CAPS_ARRAY_TOO_SMALL',['../d5/d4d/slre_8h.html#a12c87649d7981cbb7e1151a09d2c7ce8',1,'slre.h']]],
-  ['slre_5finternal_5ferror_3',['SLRE_INTERNAL_ERROR',['../d5/d4d/slre_8h.html#ad3dd61bbf7902ad3b25ae73d4b7352b9',1,'slre.h']]],
-  ['slre_5finvalid_5fcharacter_5fset_4',['SLRE_INVALID_CHARACTER_SET',['../d5/d4d/slre_8h.html#a812e904192af7921f843216404dbde92',1,'slre.h']]],
-  ['slre_5finvalid_5fmetacharacter_5',['SLRE_INVALID_METACHARACTER',['../d5/d4d/slre_8h.html#a4a2dc5244c47f733635ec291be916e44',1,'slre.h']]],
-  ['slre_5fno_5fmatch_6',['SLRE_NO_MATCH',['../d5/d4d/slre_8h.html#a6cc2f1e22312454dfcec330b2ddc87d5',1,'slre.h']]],
-  ['slre_5ftoo_5fmany_5fbrackets_7',['SLRE_TOO_MANY_BRACKETS',['../d5/d4d/slre_8h.html#aea7be3c48ee16f13f56890ff1694bb60',1,'slre.h']]],
-  ['slre_5ftoo_5fmany_5fbranches_8',['SLRE_TOO_MANY_BRANCHES',['../d5/d4d/slre_8h.html#ac256989cda0010af8aa16cb03735f6d4',1,'slre.h']]],
-  ['slre_5funbalanced_5fbrackets_9',['SLRE_UNBALANCED_BRACKETS',['../d5/d4d/slre_8h.html#a3253db1a1583737c5799109b576104b3',1,'slre.h']]],
-  ['slre_5funexpected_5fquantifier_10',['SLRE_UNEXPECTED_QUANTIFIER',['../d5/d4d/slre_8h.html#a30cb7abab74152e6435dc9564312f8c7',1,'slre.h']]]
+  ['va_5farg_0',['va_arg',['../d2/d16/vargs_8h.html#a81ebe6ea6253b0c6618e29de70fe10eb',1,'vargs.h']]],
+  ['va_5fend_1',['va_end',['../d2/d16/vargs_8h.html#acd9b3b9085ec072324c5fdac2b40304e',1,'vargs.h']]],
+  ['va_5fstart_2',['va_start',['../d2/d16/vargs_8h.html#a21b6f5a5ae4d31322e903ce806063eee',1,'vargs.h']]],
+  ['virtio_5fmax_5fsafe_5fqsize_3',['VIRTIO_MAX_SAFE_QSIZE',['../dd/db0/virtnet_8h.html#adf8c02c03a75eab8cd46eab675d2cfe9',1,'virtnet.h']]],
+  ['virtio_5fpci_5fguest_5ffeatures_4',['VIRTIO_PCI_GUEST_FEATURES',['../dd/db0/virtnet_8h.html#abdf67004c291b824a55710d156657bff',1,'virtnet.h']]],
+  ['virtio_5fpci_5fhost_5ffeatures_5',['VIRTIO_PCI_HOST_FEATURES',['../dd/db0/virtnet_8h.html#a748be558a64703b72c49cbdb09206377',1,'virtnet.h']]],
+  ['virtio_5fpci_5fqueue_5fnotify_6',['VIRTIO_PCI_QUEUE_NOTIFY',['../dd/db0/virtnet_8h.html#ab74682e1d290db867c20b37da873e911',1,'virtnet.h']]],
+  ['virtio_5fpci_5fqueue_5fnum_7',['VIRTIO_PCI_QUEUE_NUM',['../dd/db0/virtnet_8h.html#a11fe3e062e61ca606c2bcf3a9657ee37',1,'virtnet.h']]],
+  ['virtio_5fpci_5fqueue_5fpfn_8',['VIRTIO_PCI_QUEUE_PFN',['../dd/db0/virtnet_8h.html#ae21cd780c77c11772cafa85c8235fd4f',1,'virtnet.h']]],
+  ['virtio_5fpci_5fqueue_5fsel_9',['VIRTIO_PCI_QUEUE_SEL',['../dd/db0/virtnet_8h.html#a75e15963fc1528bb7d2097e04ebfa9b5',1,'virtnet.h']]],
+  ['virtio_5fpci_5fstatus_10',['VIRTIO_PCI_STATUS',['../dd/db0/virtnet_8h.html#a909a442ef89fc0455d724c8f844904d3',1,'virtnet.h']]],
+  ['virtio_5freg_11',['VIRTIO_REG',['../d7/d61/scconfig_8c.html#a1113fb316ca3e5cf5f85e7e68409b1c8',1,'scconfig.c']]],
+  ['virtio_5fstatus_5facknowledge_12',['VIRTIO_STATUS_ACKNOWLEDGE',['../dd/db0/virtnet_8h.html#a72eed47d6f482df3984b7dcfdb0fdb3f',1,'virtnet.h']]],
+  ['virtio_5fstatus_5fdriver_13',['VIRTIO_STATUS_DRIVER',['../dd/db0/virtnet_8h.html#a6c3f5e16ae3e2e7389fd772eb909cad5',1,'virtnet.h']]],
+  ['virtio_5fstatus_5fdriver_5fok_14',['VIRTIO_STATUS_DRIVER_OK',['../dd/db0/virtnet_8h.html#a046788d73fd31ecc5c35c50a962e5ee3',1,'virtnet.h']]],
+  ['virtq_5fdesc_5ff_5fnext_15',['VIRTQ_DESC_F_NEXT',['../dd/db0/virtnet_8h.html#a20e010fee3553a39ff6af7a5cc2837c2',1,'virtnet.h']]],
+  ['virtq_5fdesc_5ff_5fwrite_16',['VIRTQ_DESC_F_WRITE',['../dd/db0/virtnet_8h.html#a208ab0e95f24325454621095b80fcf27',1,'virtnet.h']]]
 ];

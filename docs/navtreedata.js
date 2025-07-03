@@ -25,18 +25,6 @@
 var NAVTREE =
 [
   [ "WKern", "index.html", [
-    [ "api", "dd/d15/md_src_2slre_2docs_2api.html", null ],
-    [ "examples", "d6/dff/md_src_2slre_2docs_2examples.html", null ],
-    [ "find-urls", "d7/d85/md_src_2slre_2docs_2find-urls.html", null ],
-    [ "intro", "d2/dfb/md_src_2slre_2docs_2intro.html", null ],
-    [ "license", "d6/d11/md_src_2slre_2docs_2license.html", null ],
-    [ "overview", "d9/d01/md_src_2slre_2docs_2overview.html", null ],
-    [ "parse-http-request", "db/db6/md_src_2slre_2docs_2parse-http-request.html", null ],
-    [ "syntax", "dd/dc6/md_src_2slre_2docs_2syntax.html", null ],
-    [ "SLRE: Super Light Regular Expression library", "d8/da0/md_src_2slre_2_old-_r_e_a_d_m_e.html", [
-      [ "Contributions", "d8/da0/md_src_2slre_2_old-_r_e_a_d_m_e.html#autotoc_md16", null ],
-      [ "Licensing", "d8/da0/md_src_2slre_2_old-_r_e_a_d_m_e.html#autotoc_md17", null ]
-    ] ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -71,8 +59,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"d5/d4d/slre_8h.html#ac256989cda0010af8aa16cb03735f6d4",
-"dc/d73/stdwex_8h.html#a184a248ba7a02430f4ee68bfbc5cd48a"
+"d5/ddb/kio_8h.html#ac44a237fa7c9a407408a37f35e0c1e5a",
+"dc/d9d/namespaceconfigure.html#a88018bc97fcfa75642c06e68d189a69b"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

@@ -23,7 +23,7 @@
 \DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00019}00019\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{global_8h}{global.h}}>}}
 \DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00020}00020\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{kio_8h}{io/kio.h}}>}}
 \DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00021}00021\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{kmem_8h}{mem/kmem.h}}>}}
-\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00022}00022\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{slre_8h}{slre/slre.h}}>}}
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00022}00022\ \textcolor{preprocessor}{\#include\ <slre/slre.h>}}
 \DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00023}00023\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{util_8h}{utils/util.h}}>}}
 \DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00024}00024\ }
 \DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00028}\mbox{\hyperlink{regexcmd_8c_ac01d2ca072ff1771f9562ec56acbf9a7}{00028}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{regexcmd_8c_ac01d2ca072ff1771f9562ec56acbf9a7}{Regexc}}()\ \{}
@@ -42,19 +42,19 @@
 \DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00041}00041\ \ \ \ \ \mbox{\hyperlink{keyin_8c_a31cf36db330251ce379e7dc5dc735ee0}{Kgetstr}}(res,\ 299);}
 \DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00042}00042\ }
 \DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00043}00043\ \ \ \ \ \textcolor{comment}{//\ Allocate\ space\ for\ capture\ groups\ (we'll\ use\ 1\ group\ here)}}
-\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00044}00044\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structslre__cap}{slre\_cap}}\ caps[1];}
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00044}00044\ \ \ \ \ \textcolor{keyword}{struct\ }slre\_cap\ caps[1];}
 \DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00045}00045\ }
-\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00046}00046\ \ \ \ \ \textcolor{keywordtype}{int}\ matched\ =\ \mbox{\hyperlink{slre_8c_a047572f338575539f6e29895250c6c92}{slre\_match}}(regexp,\ res,\ \mbox{\hyperlink{strings_8c_af7d57c5338df07ca5f8480473539d7fd}{Kstrlen}}(res),\ caps,\ 1,\ 0);}
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00046}00046\ \ \ \ \ \textcolor{keywordtype}{int}\ matched\ =\ slre\_match(regexp,\ res,\ \mbox{\hyperlink{strings_8c_af7d57c5338df07ca5f8480473539d7fd}{Kstrlen}}(res),\ caps,\ 1,\ 0);}
 \DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00047}00047\ \ \ \ \ \textcolor{keywordflow}{if}\ (matched\ >\ 0)\ \{}
 \DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00048}00048\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{stringliteral}{"{}Match!\ Matched\ "{}});}
 \DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00049}00049\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kio_8h_adff30c0a071f02dbf33d53ecef9535ed}{KprintHex}}(matched);}
 \DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00050}00050\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kio_8h_af05ef766e47691675bd907cbd362e7c5}{Kputchar}}(\textcolor{charliteral}{'\(\backslash\)n'});}
 \DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00051}00051\ }
 \DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00052}00052\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Print\ matched\ substring}}
-\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00053}00053\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structslre__cap_ac804caf49ff0effb42a2518820e01661}{len}}\ =\ caps[0].\mbox{\hyperlink{structslre__cap_ac804caf49ff0effb42a2518820e01661}{len}};}
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00053}00053\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ len\ =\ caps[0].len;}
 \DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00054}00054\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{stringliteral}{"{}Matched\ text:\ "{}});}
-\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00055}00055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{structslre__cap_ac804caf49ff0effb42a2518820e01661}{len}};\ i++)\ \{}
-\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kio_8h_af05ef766e47691675bd907cbd362e7c5}{Kputchar}}(caps[0].\mbox{\hyperlink{structslre__cap_a2c527cad75b185ebf7da086064cc1ee8}{ptr}}[i]);}
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00055}00055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ len;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kio_8h_af05ef766e47691675bd907cbd362e7c5}{Kputchar}}(caps[0].ptr[i]);}
 \DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00057}00057\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00058}00058\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kio_8h_af05ef766e47691675bd907cbd362e7c5}{Kputchar}}(\textcolor{charliteral}{'\(\backslash\)n'});}
 \DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00059}00059\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}

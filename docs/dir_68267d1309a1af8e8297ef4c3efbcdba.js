@@ -9,7 +9,6 @@ var dir_68267d1309a1af8e8297ef4c3efbcdba =
     [ "net", "dir_c72b25b75abe208498b36a3e44a3726c.html", "dir_c72b25b75abe208498b36a3e44a3726c" ],
     [ "pci", "dir_2120eca1115e8a1ce17064e96286248c.html", "dir_2120eca1115e8a1ce17064e96286248c" ],
     [ "qemu", "dir_435ceb9de98d3639211ab12ce0b61c78.html", "dir_435ceb9de98d3639211ab12ce0b61c78" ],
-    [ "slre", "dir_e906b09f2a1243a9798dc5b752c580a0.html", "dir_e906b09f2a1243a9798dc5b752c580a0" ],
     [ "types", "dir_0c0c9fa8a58db41e576adc3ce68c5ee9.html", "dir_0c0c9fa8a58db41e576adc3ce68c5ee9" ],
     [ "utils", "dir_313caf1132e152dd9b58bea13a4052ca.html", "dir_313caf1132e152dd9b58bea13a4052ca" ],
     [ "wex", "dir_f3ceedcd4899539ddf3211cf2f3d8d5b.html", "dir_f3ceedcd4899539ddf3211cf2f3d8d5b" ],
