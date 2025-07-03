@@ -1,0 +1,132 @@
+\doxysection{src/main.c File Reference}
+\hypertarget{main_8c}{}\label{main_8c}\index{src/main.c@{src/main.c}}
+{\ttfamily \#include $<$KShell/shell.\+h$>$}\newline
+{\ttfamily \#include $<$err/kerror.\+h$>$}\newline
+{\ttfamily \#include $<$fileio/fileio.\+h$>$}\newline
+{\ttfamily \#include $<$global.\+h$>$}\newline
+{\ttfamily \#include $<$idt/idtirq.\+h$>$}\newline
+{\ttfamily \#include $<$io/kio.\+h$>$}\newline
+{\ttfamily \#include $<$mem/kmem.\+h$>$}\newline
+{\ttfamily \#include $<$net/virtnet.\+h$>$}\newline
+{\ttfamily \#include $<$pci/pci.\+h$>$}\newline
+{\ttfamily \#include $<$types/bool.\+h$>$}\newline
+{\ttfamily \#include $<$utils/util.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{main_8c_adcf37d5384304e430d484ca81b39f805}{Kernel\+Main}} ()
+\begin{DoxyCompactList}\small\item\em Kernel entry point. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{main_8c_a5ac083a645d964373f022d03df4849c8}{name}}
+\item 
+int \mbox{\hyperlink{main_8c_af1d3cff2e4538e23400e260bae3dadad}{row}} = 0
+\item 
+int \mbox{\hyperlink{main_8c_afb52e720f5f0c483db5861f9e42e924e}{col}} = 0
+\item 
+\mbox{\hyperlink{bool_8h_af6a258d8f3ee5206d682d799316314b1}{bool}} \mbox{\hyperlink{main_8c_a2b30266941861e389096f125809faf0d}{capson}} = \mbox{\hyperlink{bool_8h_af6a258d8f3ee5206d682d799316314b1ae9de385ef6fe9bf3360d1038396b884c}{false}}
+\item 
+\mbox{\hyperlink{bool_8h_af6a258d8f3ee5206d682d799316314b1}{bool}} \mbox{\hyperlink{main_8c_ace78b37abb3d96740735fd8eb41235e6}{shift}} = \mbox{\hyperlink{bool_8h_af6a258d8f3ee5206d682d799316314b1ae9de385ef6fe9bf3360d1038396b884c}{false}}
+\item 
+\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} \mbox{\hyperlink{main_8c_a1948e96711d16f6cd2d551c5c3b121c5}{iob}} = 0
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{main_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{main_8c_adcf37d5384304e430d484ca81b39f805}\index{main.c@{main.c}!KernelMain@{KernelMain}}
+\index{KernelMain@{KernelMain}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{KernelMain()}{KernelMain()}}
+{\footnotesize\ttfamily \label{main_8c_adcf37d5384304e430d484ca81b39f805} 
+void Kernel\+Main (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Kernel entry point. 
+
+
+\begin{DoxyItemize}
+\item Sets up GDT (Grand Descriptor Table)
+\item Sets up IDT (Interrupt Descriptor Table)
+\item Sets up PIT (Programmable Interval Timer) at 10ms per tick
+\item Finds FAT16 Partition on ATA Device
+\item Mounts FAT16 Partition
+\item Initializes Memory Heap
+\item Clears screen
+\item Does Virtual Network setup
+\item Does login
+\item Starts shell \begin{DoxyReturn}{Returns}
+Void -\/ Should never return 
+\end{DoxyReturn}
+
+\end{DoxyItemize}
+
+Definition at line \mbox{\hyperlink{main_8c_source_l00051}{51}} of file \mbox{\hyperlink{main_8c_source}{main.\+c}}.
+
+
+
+\label{doc-var-members}
+\Hypertarget{main_8c_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{main_8c_a2b30266941861e389096f125809faf0d}\index{main.c@{main.c}!capson@{capson}}
+\index{capson@{capson}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{capson}{capson}}
+{\footnotesize\ttfamily \label{main_8c_a2b30266941861e389096f125809faf0d} 
+\mbox{\hyperlink{bool_8h_af6a258d8f3ee5206d682d799316314b1}{bool}} capson = \mbox{\hyperlink{bool_8h_af6a258d8f3ee5206d682d799316314b1ae9de385ef6fe9bf3360d1038396b884c}{false}}}
+
+
+
+Definition at line \mbox{\hyperlink{main_8c_source_l00034}{34}} of file \mbox{\hyperlink{main_8c_source}{main.\+c}}.
+
+\Hypertarget{main_8c_afb52e720f5f0c483db5861f9e42e924e}\index{main.c@{main.c}!col@{col}}
+\index{col@{col}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{col}{col}}
+{\footnotesize\ttfamily \label{main_8c_afb52e720f5f0c483db5861f9e42e924e} 
+int col = 0}
+
+
+
+Definition at line \mbox{\hyperlink{main_8c_source_l00033}{33}} of file \mbox{\hyperlink{main_8c_source}{main.\+c}}.
+
+\Hypertarget{main_8c_a1948e96711d16f6cd2d551c5c3b121c5}\index{main.c@{main.c}!iob@{iob}}
+\index{iob@{iob}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{iob}{iob}}
+{\footnotesize\ttfamily \label{main_8c_a1948e96711d16f6cd2d551c5c3b121c5} 
+\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} iob = 0}
+
+
+
+Definition at line \mbox{\hyperlink{main_8c_source_l00036}{36}} of file \mbox{\hyperlink{main_8c_source}{main.\+c}}.
+
+\Hypertarget{main_8c_a5ac083a645d964373f022d03df4849c8}\index{main.c@{main.c}!name@{name}}
+\index{name@{name}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily \label{main_8c_a5ac083a645d964373f022d03df4849c8} 
+char\texorpdfstring{$\ast$}{*} name}
+
+
+
+Definition at line \mbox{\hyperlink{main_8c_source_l00031}{31}} of file \mbox{\hyperlink{main_8c_source}{main.\+c}}.
+
+\Hypertarget{main_8c_af1d3cff2e4538e23400e260bae3dadad}\index{main.c@{main.c}!row@{row}}
+\index{row@{row}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{row}{row}}
+{\footnotesize\ttfamily \label{main_8c_af1d3cff2e4538e23400e260bae3dadad} 
+int row = 0}
+
+
+
+Definition at line \mbox{\hyperlink{main_8c_source_l00032}{32}} of file \mbox{\hyperlink{main_8c_source}{main.\+c}}.
+
+\Hypertarget{main_8c_ace78b37abb3d96740735fd8eb41235e6}\index{main.c@{main.c}!shift@{shift}}
+\index{shift@{shift}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{shift}{shift}}
+{\footnotesize\ttfamily \label{main_8c_ace78b37abb3d96740735fd8eb41235e6} 
+\mbox{\hyperlink{bool_8h_af6a258d8f3ee5206d682d799316314b1}{bool}} shift = \mbox{\hyperlink{bool_8h_af6a258d8f3ee5206d682d799316314b1ae9de385ef6fe9bf3360d1038396b884c}{false}}}
+
+
+
+Definition at line \mbox{\hyperlink{main_8c_source_l00035}{35}} of file \mbox{\hyperlink{main_8c_source}{main.\+c}}.
+

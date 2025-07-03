@@ -1,0 +1,68 @@
+\doxysection{virtnet.\+h}
+\hypertarget{virtnet_8h_source}{}\label{virtnet_8h_source}\index{src/net/virtnet.h@{src/net/virtnet.h}}
+\mbox{\hyperlink{virtnet_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00002}00002\ \textcolor{comment}{WKern\ -\/\ A\ Bare\ Metal\ OS\ /\ Kernel\ I\ am\ making\ (For\ Fun)}}
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00003}00003\ \textcolor{comment}{Copyright\ (C)\ 2025\ \ Wdboyes13}}
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00004}00004\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00005}00005\ \textcolor{comment}{This\ program\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00006}00006\ \textcolor{comment}{it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00007}00007\ \textcolor{comment}{the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00008}00008\ \textcolor{comment}{any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00009}00009\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00010}00010\ \textcolor{comment}{This\ program\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00011}00011\ \textcolor{comment}{but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00012}00012\ \textcolor{comment}{MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00013}00013\ \textcolor{comment}{GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00014}00014\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00015}00015\ \textcolor{comment}{You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00016}00016\ \textcolor{comment}{along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00017}00017\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00019}00019\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00020}00020\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{nums_8h}{types/nums.h}}>}}
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00021}00021\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{global_8h}{global.h}}>}}
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00023}\mbox{\hyperlink{virtnet_8h_a75e15963fc1528bb7d2097e04ebfa9b5}{00023}}\ \textcolor{preprocessor}{\#define\ VIRTIO\_PCI\_QUEUE\_SEL\ 0x0E}}
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00024}\mbox{\hyperlink{virtnet_8h_a11fe3e062e61ca606c2bcf3a9657ee37}{00024}}\ \textcolor{preprocessor}{\#define\ VIRTIO\_PCI\_QUEUE\_NUM\ 0x0C}}
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00025}\mbox{\hyperlink{virtnet_8h_ae21cd780c77c11772cafa85c8235fd4f}{00025}}\ \textcolor{preprocessor}{\#define\ VIRTIO\_PCI\_QUEUE\_PFN\ 0x08}}
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00026}\mbox{\hyperlink{virtnet_8h_ab74682e1d290db867c20b37da873e911}{00026}}\ \textcolor{preprocessor}{\#define\ VIRTIO\_PCI\_QUEUE\_NOTIFY\ 0x10}}
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00027}\mbox{\hyperlink{virtnet_8h_a20e010fee3553a39ff6af7a5cc2837c2}{00027}}\ \textcolor{preprocessor}{\#define\ VIRTQ\_DESC\_F\_NEXT\ 1}}
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00028}\mbox{\hyperlink{virtnet_8h_a208ab0e95f24325454621095b80fcf27}{00028}}\ \textcolor{preprocessor}{\#define\ VIRTQ\_DESC\_F\_WRITE\ 2}}
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00029}\mbox{\hyperlink{virtnet_8h_adf8c02c03a75eab8cd46eab675d2cfe9}{00029}}\ \textcolor{preprocessor}{\#define\ VIRTIO\_MAX\_SAFE\_QSIZE\ 16}}
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00030}\mbox{\hyperlink{virtnet_8h_a0a12e0addadc80362d4d4c9b8cd9a783}{00030}}\ \textcolor{preprocessor}{\#define\ MAX\_RX\_DESCS\ VIRTIO\_MAX\_SAFE\_QSIZE}}
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00031}\mbox{\hyperlink{virtnet_8h_a748be558a64703b72c49cbdb09206377}{00031}}\ \textcolor{preprocessor}{\#define\ VIRTIO\_PCI\_HOST\_FEATURES\ \ \ 0x00}}
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00032}\mbox{\hyperlink{virtnet_8h_abdf67004c291b824a55710d156657bff}{00032}}\ \textcolor{preprocessor}{\#define\ VIRTIO\_PCI\_GUEST\_FEATURES\ \ 0x04}}
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00033}\mbox{\hyperlink{virtnet_8h_a909a442ef89fc0455d724c8f844904d3}{00033}}\ \textcolor{preprocessor}{\#define\ VIRTIO\_PCI\_STATUS\ \ \ \ \ \ \ \ \ \ 0x12}}
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00035}\mbox{\hyperlink{virtnet_8h_a72eed47d6f482df3984b7dcfdb0fdb3f}{00035}}\ \textcolor{preprocessor}{\#define\ VIRTIO\_STATUS\_ACKNOWLEDGE\ 1}}
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00036}\mbox{\hyperlink{virtnet_8h_a6c3f5e16ae3e2e7389fd772eb909cad5}{00036}}\ \textcolor{preprocessor}{\#define\ VIRTIO\_STATUS\_DRIVER\ \ \ \ \ \ 2}}
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00037}\mbox{\hyperlink{virtnet_8h_a046788d73fd31ecc5c35c50a962e5ee3}{00037}}\ \textcolor{preprocessor}{\#define\ VIRTIO\_STATUS\_DRIVER\_OK\ \ \ 4}}
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00039}\mbox{\hyperlink{struct_virtq_desc}{00039}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_virtq_desc}{VirtqDesc}}\ \{}
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00040}\mbox{\hyperlink{struct_virtq_desc_a1d8baba137b71854d71b3af66cc6907a}{00040}}\ \ \ \ \ \mbox{\hyperlink{nums_8h_acd24f51b7ace8f85b1b20c947ba1c904}{uptr}}\ \mbox{\hyperlink{struct_virtq_desc_a1d8baba137b71854d71b3af66cc6907a}{addr}};}
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00041}\mbox{\hyperlink{struct_virtq_desc_af2e881a65ea4477cf5851d7520c7d817}{00041}}\ \ \ \ \ \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ \mbox{\hyperlink{struct_virtq_desc_af2e881a65ea4477cf5851d7520c7d817}{len}};}
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00042}\mbox{\hyperlink{struct_virtq_desc_a5ad55a6cd6fd8668c3a7520b3fef7d57}{00042}}\ \ \ \ \ \mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}\ \mbox{\hyperlink{struct_virtq_desc_a5ad55a6cd6fd8668c3a7520b3fef7d57}{flags}};}
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00043}\mbox{\hyperlink{struct_virtq_desc_ab99ca36d3f2e19f2666bdcdc437f08b7}{00043}}\ \ \ \ \ \mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}\ \mbox{\hyperlink{struct_virtq_desc_ab99ca36d3f2e19f2666bdcdc437f08b7}{next}};}
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00044}\mbox{\hyperlink{virtnet_8h_ad6ad3fd8bd40919802ad059eb2288a00}{00044}}\ \}\ \mbox{\hyperlink{global_8h_a49f62b08b10c70ccf16f10ae9cd4add6}{PKG}}\ \mbox{\hyperlink{virtnet_8h_ad6ad3fd8bd40919802ad059eb2288a00}{virtq\_desc}};}
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00045}\mbox{\hyperlink{struct_virtq_avail}{00045}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_virtq_avail}{VirtqAvail}}\ \{}
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00046}\mbox{\hyperlink{struct_virtq_avail_a1112197100480e145196224b786c4b15}{00046}}\ \ \ \ \ \mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}\ \mbox{\hyperlink{struct_virtq_avail_a1112197100480e145196224b786c4b15}{flags}};}
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00047}\mbox{\hyperlink{struct_virtq_avail_a410f842577761e07b8c034e387b75741}{00047}}\ \ \ \ \ \mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}\ \mbox{\hyperlink{struct_virtq_avail_a410f842577761e07b8c034e387b75741}{idx}};}
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00048}\mbox{\hyperlink{struct_virtq_avail_ad972a9942e2b88699ff9504c095585d1}{00048}}\ \ \ \ \ \mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}\ \mbox{\hyperlink{struct_virtq_avail_ad972a9942e2b88699ff9504c095585d1}{ring}}[];}
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00049}\mbox{\hyperlink{virtnet_8h_abf8feba96046d05e4d9dfbabd27849ca}{00049}}\ \}\ \mbox{\hyperlink{global_8h_a49f62b08b10c70ccf16f10ae9cd4add6}{PKG}}\ \mbox{\hyperlink{virtnet_8h_abf8feba96046d05e4d9dfbabd27849ca}{virtq\_avail}};}
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00050}\mbox{\hyperlink{struct_virtq_used}{00050}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_virtq_used}{VirtqUsed}}\ \{}
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00051}\mbox{\hyperlink{struct_virtq_used_a3f5fb08a932c9b9c861cedade7500a97}{00051}}\ \ \ \ \ \mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}\ \mbox{\hyperlink{struct_virtq_used_a3f5fb08a932c9b9c861cedade7500a97}{idx}};}
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00052}\mbox{\hyperlink{struct_virtq_used_a8b72e70424f76c1c21373bd59f34d6d0}{00052}}\ \ \ \ \ \mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}\ \mbox{\hyperlink{struct_virtq_used_a8b72e70424f76c1c21373bd59f34d6d0}{flags}};}
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00053}00053\ \ \ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00054}\mbox{\hyperlink{struct_virtq_used_ae2b4423700b6504da6da3f004db91f52}{00054}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ \mbox{\hyperlink{struct_virtq_used_ae2b4423700b6504da6da3f004db91f52}{id}};}
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00055}\mbox{\hyperlink{struct_virtq_used_af09c25336fbc1fc28c1963c8ba1210eb}{00055}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ \mbox{\hyperlink{struct_virtq_used_af09c25336fbc1fc28c1963c8ba1210eb}{len}};}
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00056}\mbox{\hyperlink{struct_virtq_used_ab61f51e7b7441f7c466f21856f22508a}{00056}}\ \ \ \ \ \}\ \mbox{\hyperlink{struct_virtq_used_ab61f51e7b7441f7c466f21856f22508a}{ring}}[];}
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00057}\mbox{\hyperlink{virtnet_8h_a116af74cc7fefcb8685f976a10f3d33a}{00057}}\ \}\ \mbox{\hyperlink{global_8h_a49f62b08b10c70ccf16f10ae9cd4add6}{PKG}}\ \mbox{\hyperlink{virtnet_8h_a116af74cc7fefcb8685f976a10f3d33a}{virtq\_used}};}
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00059}00059\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{virtnet_8h_a6b1c9baee3d5fa757db9be26bfe34eae}{NetStq}}(\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ \mbox{\hyperlink{global_8h_a1948e96711d16f6cd2d551c5c3b121c5}{iob}});}
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00060}00060\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{virtnet_8h_af3ec14b624bc04c89286f6487c91a83b}{VirtnetInit}}(\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ \mbox{\hyperlink{global_8h_a1948e96711d16f6cd2d551c5c3b121c5}{iob}});}
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00061}00061\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{virtnet_8h_ae39c83a0ad1233c9d2e76b7add988860}{VirtnetNegotiate}}(\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ \mbox{\hyperlink{global_8h_a1948e96711d16f6cd2d551c5c3b121c5}{iob}});}
+\DoxyCodeLine{\Hypertarget{virtnet_8h_source_l00062}00062\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{virtnet_8h_a32830a541ec636e265304d1ad827c42a}{VirtnetSetup}}();}
+
+\end{DoxyCode}

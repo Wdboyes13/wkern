@@ -1,0 +1,77 @@
+\doxysection{build.\+py}
+\hypertarget{build_8py_source}{}\label{build_8py_source}\mbox{\hyperlink{build_8py}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00001}\mbox{\hyperlink{namespacebuild}{00001}}\ \textcolor{comment}{\#!/usr/bin/env\ python3}}
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00020}00020\ \textcolor{keyword}{import}\ sys}
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00021}00021\ \textcolor{keyword}{import}\ os}
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00022}00022\ \textcolor{keyword}{from}\ \mbox{\hyperlink{namespacebfiles_1_1brules}{bfiles.brules}}\ \textcolor{keyword}{import}\ *}
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00023}00023\ \textcolor{keyword}{from}\ \mbox{\hyperlink{namespacebfiles_1_1files}{bfiles.files}}\ \textcolor{keyword}{import}\ *}
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00024}00024\ \textcolor{keyword}{from}\ \mbox{\hyperlink{namespacebfiles_1_1frules}{bfiles.frules}}\ \textcolor{keyword}{import}\ *}
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00025}00025\ \textcolor{keyword}{import}\ time}
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00038}\mbox{\hyperlink{namespacebuild_a040e3e8b77aa8911e86cfee035b5becc}{00038}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespacebuild_a040e3e8b77aa8911e86cfee035b5becc}{build}}():}
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00039}00039\ \ \ \ \ start\_time\ =\ time.time()}
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00040}00040\ \ \ \ \ fmt()}
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00041}00041\ \ \ \ \ compileasm()}
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00042}00042\ \ \ \ \ compilec()}
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00043}00043\ \ \ \ \ partial\_link()}
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00044}00044\ \ \ \ \ link()}
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00045}00045\ \ \ \ \ iso()}
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00046}00046\ \ \ \ \ chkm()}
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00047}00047\ \ \ \ \ end\_time\ =\ time.time()}
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00048}00048\ \ \ \ \ elapsed\ =\ end\_time\ -\/\ start\_time}
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00049}00049\ \ \ \ \ print(f\textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)033[36mFinished\ in\ \{elapsed:.2f\}\ seconds\(\backslash\)033[0m"{}})}
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00055}\mbox{\hyperlink{namespacebuild_ab0e8c0c3ca8972d23742e55d3e1e3c0b}{00055}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespacebuild_ab0e8c0c3ca8972d23742e55d3e1e3c0b}{clean}}():}
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00056}00056\ \ \ \ \ \textcolor{keywordflow}{for}\ file\ \textcolor{keywordflow}{in}\ CLEANTARGS:}
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00057}00057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}:}
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ os.remove(file)\ }
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00059}00059\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{except}\ FileNotFoundError:}
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{pass}}
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00061}00061\ \ \ \ \ \textcolor{keywordflow}{try}:}
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00062}00062\ \ \ \ \ \ \ \ \ \ shutil.rmtree(\textcolor{stringliteral}{"{}\_\_pycache\_\_"{}})}
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00063}00063\ \ \ \ \ \textcolor{keywordflow}{except}\ FileNotFoundError:}
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{pass}}
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00065}00065\ \ \ \ \ \textcolor{keywordflow}{try}:}
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00066}00066\ \ \ \ \ \ \ \ \ \ shutil.rmtree(\textcolor{stringliteral}{"{}bfiles/\_\_pycache\_\_"{}})}
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00067}00067\ \ \ \ \ \textcolor{keywordflow}{except}\ FileNotFoundError:}
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{pass}}
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00069}00069\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00081}\mbox{\hyperlink{namespacebuild_a02ddac46c157c229b19f2c0fd9ac24de}{00081}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespacebuild_a02ddac46c157c229b19f2c0fd9ac24de}{main}}():}
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00082}00082\ \ \ \ \ \textcolor{keywordflow}{if}\ (len(sys.argv)\ ==\ 1):}
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00083}00083\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ os.path.isfile(\textcolor{stringliteral}{'./didconf'}):}
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacebuild}{build}}()}
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00085}00085\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ subprocess.run([\textcolor{stringliteral}{"{}./configure.py"{}}])}
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacebuild}{build}}()}
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00088}00088\ \ \ \ \ \textcolor{keywordflow}{elif}\ (sys.argv[1]\ ==\ \textcolor{stringliteral}{"{}-\/clean"{}}):}
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacebuild_ab0e8c0c3ca8972d23742e55d3e1e3c0b}{clean}}()}
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00090}00090\ \ \ \ \ \textcolor{keywordflow}{elif}\ (sys.argv[1]\ ==\ \textcolor{stringliteral}{"{}-\/git"{}}):}
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacebuild_ab0e8c0c3ca8972d23742e55d3e1e3c0b}{clean}}()}
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ git()}
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00093}00093\ \ \ \ \ \textcolor{keywordflow}{elif}\ (sys.argv[1]\ ==\ \textcolor{stringliteral}{"{}-\/run"{}}):}
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ run()}
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00095}00095\ \ \ \ \ \textcolor{keywordflow}{elif}\ (sys.argv[1]\ ==\ \textcolor{stringliteral}{"{}-\/test"{}}):}
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00096}00096\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}:}
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ subprocess.run([\textcolor{stringliteral}{"{}./configure.py"{}}],\ check=\textcolor{keyword}{True})}
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00098}00098\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{except}\ subprocess.CalledProcessError\ \textcolor{keyword}{as}\ e:}
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ print(f\textcolor{stringliteral}{"{}Check\ exited\ with\ code\ \{e.returncode\}"{}})}
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ sys.exit(1)}
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00101}00101\ \ \ \ \ \textcolor{keywordflow}{elif}\ (sys.argv[1]\ ==\ \textcolor{stringliteral}{"{}-\/loc"{}}):}
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00102}00102\ \ \ \ \ \ \ \ \ \ subprocess.run([\textcolor{stringliteral}{"{}./loc.sh"{}}])}
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00103}00103\ \ \ \ \ \textcolor{keywordflow}{elif}\ (sys.argv[1]\ ==\ \textcolor{stringliteral}{"{}-\/mkd"{}}):}
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00104}00104\ \ \ \ \ \ \ \ \ \ subprocess.run([\textcolor{stringliteral}{"{}dd"{}},\ \textcolor{stringliteral}{"{}if=/dev/zero"{}},\ \textcolor{stringliteral}{"{}of=fat16.img"{}},\ \textcolor{stringliteral}{"{}bs=1M"{}},\ \textcolor{stringliteral}{"{}count=64"{}}])}
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00105}00105\ \ \ \ \ \ \ \ \ \ subprocess.run([\textcolor{stringliteral}{"{}mkfs.fat"{}},\ \textcolor{stringliteral}{"{}-\/F"{}},\ \textcolor{stringliteral}{"{}16"{}},\ \textcolor{stringliteral}{"{}fat16.img"{}}])}
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00106}00106\ }
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00108}00108\ \textcolor{comment}{\#\ ===\ Script\ entry\ point\ ===}}
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00109}00109\ \textcolor{keywordflow}{if}\ \_\_name\_\_\ ==\ \textcolor{stringliteral}{"{}\_\_main\_\_"{}}:}
+\DoxyCodeLine{\Hypertarget{build_8py_source_l00110}00110\ \ \ \ \ \mbox{\hyperlink{namespacebuild_a02ddac46c157c229b19f2c0fd9ac24de}{main}}()}
+
+\end{DoxyCode}

@@ -1,0 +1,177 @@
+\doxysection{Fa\+T16\+Info Struct Reference}
+\hypertarget{struct_fa_t16_info}{}\label{struct_fa_t16_info}\index{FaT16Info@{FaT16Info}}
+
+
+Parsed FAT16 filesystem layout and parameters.  
+
+
+
+
+{\ttfamily \#include $<$fileio.\+h$>$}
+
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} \mbox{\hyperlink{struct_fa_t16_info_a90bd58ca4b59af5358e99f3c08e21ef7}{fat\+\_\+start\+\_\+lba}}
+\item 
+\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} \mbox{\hyperlink{struct_fa_t16_info_afa718adcd55b1d6056f9961ba2e2b385}{root\+\_\+dir\+\_\+start\+\_\+lba}}
+\item 
+\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} \mbox{\hyperlink{struct_fa_t16_info_a305879a0b3abbe30255227911ce4c2da}{data\+\_\+start\+\_\+lba}}
+\item 
+\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}} \mbox{\hyperlink{struct_fa_t16_info_af1be738feaf1886f423cea7f7296657b}{root\+\_\+entry\+\_\+count}}
+\item 
+\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}} \mbox{\hyperlink{struct_fa_t16_info_ab133d3ed349ae42a97263a14295091f8}{bytes\+\_\+per\+\_\+sector}}
+\item 
+\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} \mbox{\hyperlink{struct_fa_t16_info_ad208778e43141eca7fa4e9785395b4bb}{sectors\+\_\+per\+\_\+cluster}}
+\item 
+\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} \mbox{\hyperlink{struct_fa_t16_info_a8dce18d14dc6426494b8c743102509cd}{num\+\_\+fats}}
+\item 
+\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}} \mbox{\hyperlink{struct_fa_t16_info_a5cb16e3d2b7e78537e05135f1740e405}{sectors\+\_\+per\+\_\+fat}}
+\item 
+\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}} \mbox{\hyperlink{struct_fa_t16_info_a996499f881e334ceb291e7d3cbbe9cc6}{reserved\+\_\+sectors}}
+\item 
+\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}} \mbox{\hyperlink{struct_fa_t16_info_a5a2028b5e4acedfd577cad74b62ba572}{total\+\_\+sectors\+\_\+16}}
+\item 
+\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} \mbox{\hyperlink{struct_fa_t16_info_a1012e1fb0131c06c0aa412819824bb6f}{total\+\_\+sectors\+\_\+32}}
+\item 
+\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} \mbox{\hyperlink{struct_fa_t16_info_ade832f1d29c8b18082fcb2cbc4fd7f2a}{total\+\_\+cluster}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Parsed FAT16 filesystem layout and parameters. 
+
+Populated after mounting the FAT16 partition. 
+
+Definition at line \mbox{\hyperlink{fileio_8h_source_l00112}{112}} of file \mbox{\hyperlink{fileio_8h_source}{fileio.\+h}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{struct_fa_t16_info_doc-variable-members}
+\doxysubsection{Field Documentation}
+\Hypertarget{struct_fa_t16_info_ab133d3ed349ae42a97263a14295091f8}\index{FaT16Info@{FaT16Info}!bytes\_per\_sector@{bytes\_per\_sector}}
+\index{bytes\_per\_sector@{bytes\_per\_sector}!FaT16Info@{FaT16Info}}
+\doxysubsubsection{\texorpdfstring{bytes\_per\_sector}{bytes\_per\_sector}}
+{\footnotesize\ttfamily \label{struct_fa_t16_info_ab133d3ed349ae42a97263a14295091f8} 
+\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}} Fa\+T16\+Info\+::bytes\+\_\+per\+\_\+sector}
+
+Bytes per sector 
+
+Definition at line \mbox{\hyperlink{fileio_8h_source_l00118}{118}} of file \mbox{\hyperlink{fileio_8h_source}{fileio.\+h}}.
+
+\Hypertarget{struct_fa_t16_info_a305879a0b3abbe30255227911ce4c2da}\index{FaT16Info@{FaT16Info}!data\_start\_lba@{data\_start\_lba}}
+\index{data\_start\_lba@{data\_start\_lba}!FaT16Info@{FaT16Info}}
+\doxysubsubsection{\texorpdfstring{data\_start\_lba}{data\_start\_lba}}
+{\footnotesize\ttfamily \label{struct_fa_t16_info_a305879a0b3abbe30255227911ce4c2da} 
+\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} Fa\+T16\+Info\+::data\+\_\+start\+\_\+lba}
+
+LBA start of data region 
+
+Definition at line \mbox{\hyperlink{fileio_8h_source_l00115}{115}} of file \mbox{\hyperlink{fileio_8h_source}{fileio.\+h}}.
+
+\Hypertarget{struct_fa_t16_info_a90bd58ca4b59af5358e99f3c08e21ef7}\index{FaT16Info@{FaT16Info}!fat\_start\_lba@{fat\_start\_lba}}
+\index{fat\_start\_lba@{fat\_start\_lba}!FaT16Info@{FaT16Info}}
+\doxysubsubsection{\texorpdfstring{fat\_start\_lba}{fat\_start\_lba}}
+{\footnotesize\ttfamily \label{struct_fa_t16_info_a90bd58ca4b59af5358e99f3c08e21ef7} 
+\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} Fa\+T16\+Info\+::fat\+\_\+start\+\_\+lba}
+
+LBA start of FAT tables 
+
+Definition at line \mbox{\hyperlink{fileio_8h_source_l00113}{113}} of file \mbox{\hyperlink{fileio_8h_source}{fileio.\+h}}.
+
+\Hypertarget{struct_fa_t16_info_a8dce18d14dc6426494b8c743102509cd}\index{FaT16Info@{FaT16Info}!num\_fats@{num\_fats}}
+\index{num\_fats@{num\_fats}!FaT16Info@{FaT16Info}}
+\doxysubsubsection{\texorpdfstring{num\_fats}{num\_fats}}
+{\footnotesize\ttfamily \label{struct_fa_t16_info_a8dce18d14dc6426494b8c743102509cd} 
+\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} Fa\+T16\+Info\+::num\+\_\+fats}
+
+Number of FAT tables 
+
+Definition at line \mbox{\hyperlink{fileio_8h_source_l00120}{120}} of file \mbox{\hyperlink{fileio_8h_source}{fileio.\+h}}.
+
+\Hypertarget{struct_fa_t16_info_a996499f881e334ceb291e7d3cbbe9cc6}\index{FaT16Info@{FaT16Info}!reserved\_sectors@{reserved\_sectors}}
+\index{reserved\_sectors@{reserved\_sectors}!FaT16Info@{FaT16Info}}
+\doxysubsubsection{\texorpdfstring{reserved\_sectors}{reserved\_sectors}}
+{\footnotesize\ttfamily \label{struct_fa_t16_info_a996499f881e334ceb291e7d3cbbe9cc6} 
+\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}} Fa\+T16\+Info\+::reserved\+\_\+sectors}
+
+Reserved sectors count 
+
+Definition at line \mbox{\hyperlink{fileio_8h_source_l00123}{123}} of file \mbox{\hyperlink{fileio_8h_source}{fileio.\+h}}.
+
+\Hypertarget{struct_fa_t16_info_afa718adcd55b1d6056f9961ba2e2b385}\index{FaT16Info@{FaT16Info}!root\_dir\_start\_lba@{root\_dir\_start\_lba}}
+\index{root\_dir\_start\_lba@{root\_dir\_start\_lba}!FaT16Info@{FaT16Info}}
+\doxysubsubsection{\texorpdfstring{root\_dir\_start\_lba}{root\_dir\_start\_lba}}
+{\footnotesize\ttfamily \label{struct_fa_t16_info_afa718adcd55b1d6056f9961ba2e2b385} 
+\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} Fa\+T16\+Info\+::root\+\_\+dir\+\_\+start\+\_\+lba}
+
+LBA start of root directory 
+
+Definition at line \mbox{\hyperlink{fileio_8h_source_l00114}{114}} of file \mbox{\hyperlink{fileio_8h_source}{fileio.\+h}}.
+
+\Hypertarget{struct_fa_t16_info_af1be738feaf1886f423cea7f7296657b}\index{FaT16Info@{FaT16Info}!root\_entry\_count@{root\_entry\_count}}
+\index{root\_entry\_count@{root\_entry\_count}!FaT16Info@{FaT16Info}}
+\doxysubsubsection{\texorpdfstring{root\_entry\_count}{root\_entry\_count}}
+{\footnotesize\ttfamily \label{struct_fa_t16_info_af1be738feaf1886f423cea7f7296657b} 
+\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}} Fa\+T16\+Info\+::root\+\_\+entry\+\_\+count}
+
+Max root entries 
+
+Definition at line \mbox{\hyperlink{fileio_8h_source_l00117}{117}} of file \mbox{\hyperlink{fileio_8h_source}{fileio.\+h}}.
+
+\Hypertarget{struct_fa_t16_info_ad208778e43141eca7fa4e9785395b4bb}\index{FaT16Info@{FaT16Info}!sectors\_per\_cluster@{sectors\_per\_cluster}}
+\index{sectors\_per\_cluster@{sectors\_per\_cluster}!FaT16Info@{FaT16Info}}
+\doxysubsubsection{\texorpdfstring{sectors\_per\_cluster}{sectors\_per\_cluster}}
+{\footnotesize\ttfamily \label{struct_fa_t16_info_ad208778e43141eca7fa4e9785395b4bb} 
+\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} Fa\+T16\+Info\+::sectors\+\_\+per\+\_\+cluster}
+
+Sectors per cluster 
+
+Definition at line \mbox{\hyperlink{fileio_8h_source_l00119}{119}} of file \mbox{\hyperlink{fileio_8h_source}{fileio.\+h}}.
+
+\Hypertarget{struct_fa_t16_info_a5cb16e3d2b7e78537e05135f1740e405}\index{FaT16Info@{FaT16Info}!sectors\_per\_fat@{sectors\_per\_fat}}
+\index{sectors\_per\_fat@{sectors\_per\_fat}!FaT16Info@{FaT16Info}}
+\doxysubsubsection{\texorpdfstring{sectors\_per\_fat}{sectors\_per\_fat}}
+{\footnotesize\ttfamily \label{struct_fa_t16_info_a5cb16e3d2b7e78537e05135f1740e405} 
+\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}} Fa\+T16\+Info\+::sectors\+\_\+per\+\_\+fat}
+
+Sectors per FAT 
+
+Definition at line \mbox{\hyperlink{fileio_8h_source_l00121}{121}} of file \mbox{\hyperlink{fileio_8h_source}{fileio.\+h}}.
+
+\Hypertarget{struct_fa_t16_info_ade832f1d29c8b18082fcb2cbc4fd7f2a}\index{FaT16Info@{FaT16Info}!total\_cluster@{total\_cluster}}
+\index{total\_cluster@{total\_cluster}!FaT16Info@{FaT16Info}}
+\doxysubsubsection{\texorpdfstring{total\_cluster}{total\_cluster}}
+{\footnotesize\ttfamily \label{struct_fa_t16_info_ade832f1d29c8b18082fcb2cbc4fd7f2a} 
+\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} Fa\+T16\+Info\+::total\+\_\+cluster}
+
+Total data clusters 
+
+Definition at line \mbox{\hyperlink{fileio_8h_source_l00126}{126}} of file \mbox{\hyperlink{fileio_8h_source}{fileio.\+h}}.
+
+\Hypertarget{struct_fa_t16_info_a5a2028b5e4acedfd577cad74b62ba572}\index{FaT16Info@{FaT16Info}!total\_sectors\_16@{total\_sectors\_16}}
+\index{total\_sectors\_16@{total\_sectors\_16}!FaT16Info@{FaT16Info}}
+\doxysubsubsection{\texorpdfstring{total\_sectors\_16}{total\_sectors\_16}}
+{\footnotesize\ttfamily \label{struct_fa_t16_info_a5a2028b5e4acedfd577cad74b62ba572} 
+\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}} Fa\+T16\+Info\+::total\+\_\+sectors\+\_\+16}
+
+Total sectors (16-\/bit) 
+
+Definition at line \mbox{\hyperlink{fileio_8h_source_l00124}{124}} of file \mbox{\hyperlink{fileio_8h_source}{fileio.\+h}}.
+
+\Hypertarget{struct_fa_t16_info_a1012e1fb0131c06c0aa412819824bb6f}\index{FaT16Info@{FaT16Info}!total\_sectors\_32@{total\_sectors\_32}}
+\index{total\_sectors\_32@{total\_sectors\_32}!FaT16Info@{FaT16Info}}
+\doxysubsubsection{\texorpdfstring{total\_sectors\_32}{total\_sectors\_32}}
+{\footnotesize\ttfamily \label{struct_fa_t16_info_a1012e1fb0131c06c0aa412819824bb6f} 
+\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} Fa\+T16\+Info\+::total\+\_\+sectors\+\_\+32}
+
+Total sectors (32-\/bit) 
+
+Definition at line \mbox{\hyperlink{fileio_8h_source_l00125}{125}} of file \mbox{\hyperlink{fileio_8h_source}{fileio.\+h}}.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/fileio/\mbox{\hyperlink{fileio_8h}{fileio.\+h}}\end{DoxyCompactItemize}

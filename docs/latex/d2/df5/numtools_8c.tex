@@ -1,0 +1,82 @@
+\doxysection{src/utils/numtools.c File Reference}
+\hypertarget{numtools_8c}{}\label{numtools_8c}\index{src/utils/numtools.c@{src/utils/numtools.c}}
+{\ttfamily \#include $<$utils/util.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{numtools_8c_a3f706427667de707e93be7f3bfbb6d1a}{Katoi}} (const char \texorpdfstring{$\ast$}{*}str)
+\begin{DoxyCompactList}\small\item\em Converts ASCII -\/ Integer. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{numtools_8c_af1d726b26f884effa78da3d3661d29fa}{Katoi\+\_\+auto}} (const char \texorpdfstring{$\ast$}{*}str)
+\begin{DoxyCompactList}\small\item\em Safely convert ASCII To Integer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{numtools_8c_adf3d019d31a4ab8cd9fbef5e6173f224}{Kitoa}} (unsigned int num, char \texorpdfstring{$\ast$}{*}buf)
+\begin{DoxyCompactList}\small\item\em Convert Integer to ASCII Text. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{numtools_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{numtools_8c_a3f706427667de707e93be7f3bfbb6d1a}\index{numtools.c@{numtools.c}!Katoi@{Katoi}}
+\index{Katoi@{Katoi}!numtools.c@{numtools.c}}
+\doxysubsubsection{\texorpdfstring{Katoi()}{Katoi()}}
+{\footnotesize\ttfamily \label{numtools_8c_a3f706427667de707e93be7f3bfbb6d1a} 
+int Katoi (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{str}{}\end{DoxyParamCaption})}
+
+
+
+Converts ASCII -\/ Integer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & -\/ ASCII Text \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Integer from ASCII Input 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{numtools_8c_source_l00023}{23}} of file \mbox{\hyperlink{numtools_8c_source}{numtools.\+c}}.
+
+\Hypertarget{numtools_8c_af1d726b26f884effa78da3d3661d29fa}\index{numtools.c@{numtools.c}!Katoi\_auto@{Katoi\_auto}}
+\index{Katoi\_auto@{Katoi\_auto}!numtools.c@{numtools.c}}
+\doxysubsubsection{\texorpdfstring{Katoi\_auto()}{Katoi\_auto()}}
+{\footnotesize\ttfamily \label{numtools_8c_af1d726b26f884effa78da3d3661d29fa} 
+int Katoi\+\_\+auto (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{str}{}\end{DoxyParamCaption})}
+
+
+
+Safely convert ASCII To Integer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & -\/ ASCII Text \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Integer from ASCII Input 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{numtools_8c_source_l00047}{47}} of file \mbox{\hyperlink{numtools_8c_source}{numtools.\+c}}.
+
+\Hypertarget{numtools_8c_adf3d019d31a4ab8cd9fbef5e6173f224}\index{numtools.c@{numtools.c}!Kitoa@{Kitoa}}
+\index{Kitoa@{Kitoa}!numtools.c@{numtools.c}}
+\doxysubsubsection{\texorpdfstring{Kitoa()}{Kitoa()}}
+{\footnotesize\ttfamily \label{numtools_8c_adf3d019d31a4ab8cd9fbef5e6173f224} 
+void Kitoa (\begin{DoxyParamCaption}\item[{unsigned int}]{num}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{buf}{}\end{DoxyParamCaption})}
+
+
+
+Convert Integer to ASCII Text. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em num} & -\/ Number to convert to ASCII Text \\
+\hline
+{\em buf} & -\/ Buffer which ASCII Text will be stored at \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{numtools_8c_source_l00073}{73}} of file \mbox{\hyperlink{numtools_8c_source}{numtools.\+c}}.
+

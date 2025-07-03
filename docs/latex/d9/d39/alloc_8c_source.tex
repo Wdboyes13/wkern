@@ -1,0 +1,74 @@
+\doxysection{alloc.\+c}
+\hypertarget{alloc_8c_source}{}\label{alloc_8c_source}\index{src/mem/alloc.c@{src/mem/alloc.c}}
+\mbox{\hyperlink{alloc_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00002}00002\ \textcolor{comment}{WKern\ -\/\ A\ Bare\ Metal\ OS\ /\ Kernel\ I\ am\ maKing\ (For\ Fun)}}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00003}00003\ \textcolor{comment}{Copyright\ (C)\ 2025\ \ Wdboyes13}}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00004}00004\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00005}00005\ \textcolor{comment}{This\ program\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00006}00006\ \textcolor{comment}{it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00007}00007\ \textcolor{comment}{the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00008}00008\ \textcolor{comment}{any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00009}00009\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00010}00010\ \textcolor{comment}{This\ program\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00011}00011\ \textcolor{comment}{but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00012}00012\ \textcolor{comment}{MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00013}00013\ \textcolor{comment}{GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00014}00014\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00015}00015\ \textcolor{comment}{You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00016}00016\ \textcolor{comment}{along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00017}00017\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00018}00018\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{global_8h}{global.h}}>}}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00019}00019\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{nums_8h}{types/nums.h}}>}}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00020}\mbox{\hyperlink{struct_bloc_k}{00020}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_bloc_k}{BlocK}}\ \{}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00021}\mbox{\hyperlink{struct_bloc_k_a6543fa46723588c5561867736c98f8f6}{00021}}\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{struct_bloc_k_a6543fa46723588c5561867736c98f8f6}{size}};}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00022}\mbox{\hyperlink{struct_bloc_k_a3b5898fffaa75ca3bbbf03522b7702e2}{00022}}\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_bloc_k}{BlocK}}\ *\mbox{\hyperlink{struct_bloc_k_a3b5898fffaa75ca3bbbf03522b7702e2}{next}};}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00023}\mbox{\hyperlink{struct_bloc_k_a9d61db953289cf3c146620076e5c970f}{00023}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_bloc_k_a9d61db953289cf3c146620076e5c970f}{free}};}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00024}\mbox{\hyperlink{alloc_8c_aaabf51bbcbd8956fe1b14b523b47fa46}{00024}}\ \}\ \mbox{\hyperlink{alloc_8c_aaabf51bbcbd8956fe1b14b523b47fa46}{blocK\_t}};}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00026}\mbox{\hyperlink{alloc_8c_ae9739bcecd10d5962cc10c12bf01594f}{00026}}\ \textcolor{preprocessor}{\#define\ HEAP\_START\ ((char\ *)0x100000)}}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00027}\mbox{\hyperlink{alloc_8c_a1b45302695680930829cac31d65e41e1}{00027}}\ \textcolor{preprocessor}{\#define\ HEAP\_SIZE\ (512\ *\ 1024)}}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00029}00029\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{char}\ *heap\ =\ \mbox{\hyperlink{alloc_8c_ae9739bcecd10d5962cc10c12bf01594f}{HEAP\_START}};}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00030}00030\ \textcolor{keyword}{static}\ \mbox{\hyperlink{alloc_8c_aaabf51bbcbd8956fe1b14b523b47fa46}{blocK\_t}}\ *free\_list\ =\ \mbox{\hyperlink{global_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00035}\mbox{\hyperlink{alloc_8c_a9cf27cad30fd5a703658edb187f9c4c0}{00035}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{alloc_8c_a9cf27cad30fd5a703658edb187f9c4c0}{KheapInit}}()\ \{}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00036}00036\ \ \ \ \ free\_list\ =\ (\mbox{\hyperlink{alloc_8c_aaabf51bbcbd8956fe1b14b523b47fa46}{blocK\_t}}\ *)heap;}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00037}00037\ \ \ \ \ free\_list-\/>size\ =\ \mbox{\hyperlink{alloc_8c_a1b45302695680930829cac31d65e41e1}{HEAP\_SIZE}}\ -\/\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{alloc_8c_aaabf51bbcbd8956fe1b14b523b47fa46}{blocK\_t}});}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00038}00038\ \ \ \ \ free\_list-\/>next\ =\ \mbox{\hyperlink{global_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00039}00039\ \ \ \ \ free\_list-\/>free\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00040}00040\ \}}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00048}\mbox{\hyperlink{alloc_8c_a4744507132bfe63d677abecc60769ca0}{00048}}\ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{alloc_8c_a4744507132bfe63d677abecc60769ca0}{Kmalloc}}(\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{struct_bloc_k_a6543fa46723588c5561867736c98f8f6}{size}},\ \textcolor{keywordtype}{size\_t}\ align)\ \{}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00049}00049\ \ \ \ \ \mbox{\hyperlink{struct_bloc_k_a6543fa46723588c5561867736c98f8f6}{size}}\ =\ (\mbox{\hyperlink{struct_bloc_k_a6543fa46723588c5561867736c98f8f6}{size}}\ +\ align\ -\/\ 1)\ \&\ \string~(align\ -\/\ 1);}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00050}00050\ \ \ \ \ \mbox{\hyperlink{alloc_8c_aaabf51bbcbd8956fe1b14b523b47fa46}{blocK\_t}}\ *curr\ =\ free\_list;}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00051}00051\ \ \ \ \ \textcolor{keywordflow}{while}\ (curr)\ \{}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00052}00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (curr-\/>\mbox{\hyperlink{struct_bloc_k_a9d61db953289cf3c146620076e5c970f}{free}}\ \&\&\ curr-\/>\mbox{\hyperlink{struct_bloc_k_a6543fa46723588c5561867736c98f8f6}{size}}\ >=\ \mbox{\hyperlink{struct_bloc_k_a6543fa46723588c5561867736c98f8f6}{size}})\ \{}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (curr-\/>\mbox{\hyperlink{struct_bloc_k_a6543fa46723588c5561867736c98f8f6}{size}}\ >=\ \mbox{\hyperlink{struct_bloc_k_a6543fa46723588c5561867736c98f8f6}{size}}\ +\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{alloc_8c_aaabf51bbcbd8956fe1b14b523b47fa46}{blocK\_t}})\ +\ 8)\ \{}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Split\ the\ blocK}}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{alloc_8c_aaabf51bbcbd8956fe1b14b523b47fa46}{blocK\_t}}\ *new\_blocK\ =\ (\mbox{\hyperlink{alloc_8c_aaabf51bbcbd8956fe1b14b523b47fa46}{blocK\_t}}\ *)((\textcolor{keywordtype}{char}\ *)(curr\ +\ 1)\ +\ \mbox{\hyperlink{struct_bloc_k_a6543fa46723588c5561867736c98f8f6}{size}});}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ new\_blocK-\/>\mbox{\hyperlink{struct_bloc_k_a6543fa46723588c5561867736c98f8f6}{size}}\ =\ curr-\/>\mbox{\hyperlink{struct_bloc_k_a6543fa46723588c5561867736c98f8f6}{size}}\ -\/\ \mbox{\hyperlink{struct_bloc_k_a6543fa46723588c5561867736c98f8f6}{size}}\ -\/\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{alloc_8c_aaabf51bbcbd8956fe1b14b523b47fa46}{blocK\_t}});}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ new\_blocK-\/>\mbox{\hyperlink{struct_bloc_k_a3b5898fffaa75ca3bbbf03522b7702e2}{next}}\ =\ curr-\/>\mbox{\hyperlink{struct_bloc_k_a3b5898fffaa75ca3bbbf03522b7702e2}{next}};}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ new\_blocK-\/>\mbox{\hyperlink{struct_bloc_k_a9d61db953289cf3c146620076e5c970f}{free}}\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ curr-\/>\mbox{\hyperlink{struct_bloc_k_a6543fa46723588c5561867736c98f8f6}{size}}\ =\ \mbox{\hyperlink{struct_bloc_k_a6543fa46723588c5561867736c98f8f6}{size}};}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ curr-\/>\mbox{\hyperlink{struct_bloc_k_a3b5898fffaa75ca3bbbf03522b7702e2}{next}}\ =\ new\_blocK;}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ curr-\/>\mbox{\hyperlink{struct_bloc_k_a9d61db953289cf3c146620076e5c970f}{free}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\textcolor{keywordtype}{void}\ *)(curr\ +\ 1);}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00065}00065\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00066}00066\ \ \ \ \ \ \ \ \ curr\ =\ curr-\/>\mbox{\hyperlink{struct_bloc_k_a3b5898fffaa75ca3bbbf03522b7702e2}{next}};}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00067}00067\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00068}00068\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{global_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00069}00069\ \}}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00075}\mbox{\hyperlink{alloc_8c_a51de4a944081d3a40379dafdc8cc8ba5}{00075}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{alloc_8c_a51de4a944081d3a40379dafdc8cc8ba5}{Kfree}}(\textcolor{keywordtype}{void}\ *ptr)\ \{}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00076}00076\ \ \ \ \ \textcolor{keywordflow}{if}\ (!ptr)\ \{}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00077}00077\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00078}00078\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00079}00079\ \ \ \ \ \mbox{\hyperlink{alloc_8c_aaabf51bbcbd8956fe1b14b523b47fa46}{blocK\_t}}\ *blocK\ =\ (\mbox{\hyperlink{alloc_8c_aaabf51bbcbd8956fe1b14b523b47fa46}{blocK\_t}}\ *)ptr\ -\/\ 1;}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00080}00080\ \ \ \ \ blocK-\/>\mbox{\hyperlink{struct_bloc_k_a9d61db953289cf3c146620076e5c970f}{free}}\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{alloc_8c_source_l00081}00081\ \}}
+
+\end{DoxyCode}

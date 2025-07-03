@@ -1,0 +1,426 @@
+  % Handle batch mode
+  % to overcome problems with too many open files
+  \let\mypdfximage\pdfximage\def\pdfximage{\immediate\mypdfximage}
+  \RequirePackage{iftex}
+  \ifLuaTeX
+    \directlua{pdf.setminorversion(7)}
+  \fi
+  \ifXeTeX
+    \special{pdf:minorversion 7}
+  \fi
+  \ifPDFTeX
+    \pdfminorversion=7
+  \fi
+  % Set document class depending on configuration
+  \documentclass[twoside]{book}
+  %% moved from doxygen.sty due to workaround for LaTex 2019 version and unmaintained tabu package
+  \usepackage{ifthen}
+  \ifx\requestedLaTeXdate\undefined
+    \usepackage{array}
+  \else
+    \usepackage{array}[=2016-10-06]
+  \fi
+  %%
+  % Packages required by doxygen
+  \makeatletter
+  \providecommand\IfFormatAtLeastTF{\@ifl@t@r\fmtversion}
+  % suppress package identification of infwarerr as it contains the word "warning"
+  \let\@@protected@wlog\protected@wlog
+  \def\protected@wlog#1{\wlog{package info suppressed}}
+  \RequirePackage{infwarerr}
+  \let\protected@wlog\@@protected@wlog
+  \makeatother
+  \IfFormatAtLeastTF{2016/01/01}{}{\usepackage{fixltx2e}} % for \textsubscript
+  \ifPDFTeX
+    \IfFormatAtLeastTF{2015/01/01}{\pdfsuppresswarningpagegroup=1}{}
+  \fi
+  \usepackage{doxygen}
+  \usepackage{graphicx}
+  \iftutex
+    \usepackage{fontspec}
+    \defaultfontfeatures{Ligatures={TeX}}
+    \usepackage{unicode-math}
+  \else
+    \usepackage[utf8]{inputenc}
+  \fi
+  \usepackage{makeidx}
+  \PassOptionsToPackage{warn}{textcomp}
+  \usepackage{textcomp}
+  \usepackage[nointegrals]{wasysym}
+  \usepackage{ifxetex}
+  % NLS support packages
+  % Define default fonts
+  % Font selection
+  \iftutex
+  \else
+    \usepackage[T1]{fontenc}
+  \fi
+  % set main and monospaced font
+  \usepackage[scaled=.90]{helvet}
+\usepackage{courier}
+\renewcommand{\familydefault}{\sfdefault}
+  \doxyallsectionsfont{%
+    \fontseries{bc}\selectfont%
+    \color{darkgray}%
+  }
+  \renewcommand{\DoxyLabelFont}{%
+    \fontseries{bc}\selectfont%
+    \color{darkgray}%
+  }
+  \newcommand{\+}{\discretionary{\mbox{\scriptsize$\hookleftarrow$}}{}{}}
+   % Arguments of doxygenemoji:
+   % 1) ':<text>:' form of the emoji, already LaTeX-escaped
+   % 2) file with the name of the emoji without the .png extension
+   % in case image exist use this otherwise use the ':<text>:' form
+   \newcommand{\doxygenemoji}[2]{%
+     \IfFileExists{./#2.png}{\raisebox{-0.1em}{\includegraphics[height=0.9em]{./#2.png}}}{#1}%
+   }
+  % Page & text layout
+  \usepackage{geometry}
+  \geometry{%
+    a4paper,%
+    top=2.5cm,%
+    bottom=2.5cm,%
+    left=2.5cm,%
+    right=2.5cm%
+  }
+  \usepackage{changepage}
+  % Allow a bit of overflow to go unnoticed by other means
+  \tolerance=750
+  \hfuzz=15pt
+  \hbadness=750
+  \setlength{\emergencystretch}{15pt}
+  \setlength{\parindent}{0cm}
+  \newcommand{\doxynormalparskip}{\setlength{\parskip}{3ex plus 2ex minus 2ex}}
+  \newcommand{\doxytocparskip}{\setlength{\parskip}{1ex plus 0ex minus 0ex}}
+  \doxynormalparskip
+  % Redefine paragraph/subparagraph environments, using sectsty fonts
+  \makeatletter
+  \renewcommand{\paragraph}{%
+    \@startsection{paragraph}{4}{0ex}{-1.0ex}{1.0ex}{%
+      \normalfont\normalsize\bfseries\SS@parafont%
+    }%
+  }
+  \renewcommand{\subparagraph}{%
+    \@startsection{subparagraph}{5}{0ex}{-1.0ex}{1.0ex}{%
+      \normalfont\normalsize\bfseries\SS@subparafont%
+    }%
+  }
+  \makeatother
+  \makeatletter
+  \newcommand\hrulefilll{\leavevmode\leaders\hrule\hskip 0pt plus 1filll\kern\z@}
+  \makeatother
+  % Headers & footers
+  \usepackage{fancyhdr}
+  \pagestyle{fancyplain}
+  \renewcommand{\footrulewidth}{0.4pt}
+  \fancypagestyle{fancyplain}{
+    \fancyhf{}
+    \fancyhead[LE, RO]{\bfseries\thepage}
+    \fancyhead[LO]{\bfseries\rightmark}
+    \fancyhead[RE]{\bfseries\leftmark}
+    \fancyfoot[LO, RE]{\bfseries\scriptsize Generated on Wed Jul 2 2025 18\+:11\+:43 for WKern by Doxygen }
+  }
+  \fancypagestyle{plain}{
+    \fancyhf{}
+    \fancyfoot[LO, RE]{\bfseries\scriptsize Generated on Wed Jul 2 2025 18\+:11\+:43 for WKern by Doxygen }
+    \renewcommand{\headrulewidth}{0pt}
+  }
+  \pagestyle{fancyplain}
+  \renewcommand{\chaptermark}[1]{%
+    \markboth{#1}{}%
+  }
+  \renewcommand{\sectionmark}[1]{%
+    \markright{\thesection\ #1}%
+  }
+  % ToC, LoF, LoT, bibliography, and index
+  % Indices & bibliography
+  \usepackage[numbers]{natbib}
+  \usepackage[titles]{tocloft}
+  \setcounter{tocdepth}{3}
+  \setcounter{secnumdepth}{5}
+  % creating indexes
+  \makeindex
+  \ifPDFTeX
+\usepackage{newunicodechar}
+  \makeatletter
+    \def\doxynewunicodechar#1#2{%
+    \@tempswafalse
+    \edef\nuc@tempa{\detokenize{#1}}%
+    \if\relax\nuc@tempa\relax
+      \nuc@emptyargerr
+    \else
+      \edef\@tempb{\expandafter\@car\nuc@tempa\@nil}%
+      \nuc@check
+      \if@tempswa
+        \@namedef{u8:\nuc@tempa}{#2}%
+      \fi
+    \fi
+  }
+  \makeatother
+  \doxynewunicodechar{⁻}{${}^{-}$}% Superscript minus
+  \doxynewunicodechar{²}{${}^{2}$}% Superscript two
+  \doxynewunicodechar{³}{${}^{3}$}% Superscript three
+\fi
+  % Hyperlinks
+    % Hyperlinks (required, but should be loaded last)
+    \ifPDFTeX
+      \usepackage[pdftex,pagebackref=true]{hyperref}
+    \else
+      \ifXeTeX
+        \usepackage[xetex,pagebackref=true]{hyperref}
+      \else
+        \ifLuaTeX
+          \usepackage[luatex,pagebackref=true]{hyperref}
+        \else
+          \usepackage[ps2pdf,pagebackref=true]{hyperref}
+        \fi
+      \fi
+    \fi
+    \hypersetup{%
+      colorlinks=true,%
+      linkcolor=blue,%
+      citecolor=blue,%
+      unicode,%
+      pdftitle={WKern},%
+      pdfsubject={}%
+    }
+  % Custom commands used by the header
+  % Custom commands
+  \newcommand{\clearemptydoublepage}{%
+    \newpage{\pagestyle{empty}\cleardoublepage}%
+  }
+  % caption style definition
+  \usepackage{caption}
+  \captionsetup{labelsep=space,justification=centering,font={bf},singlelinecheck=off,skip=4pt,position=top}
+  % in page table of contents
+  \IfFormatAtLeastTF{2023/05/01}{\usepackage[deeplevels]{etoc}}{\usepackage[deeplevels]{etoc_doxygen}}
+  \etocsettocstyle{\doxytocparskip}{\doxynormalparskip}
+  \etocsetlevel{subsubsubsection}{4}
+  \etocsetlevel{subsubsubsubsection}{5}
+  \etocsetlevel{subsubsubsubsubsection}{6}
+  \etocsetlevel{subsubsubsubsubsubsection}{7}
+  \etocsetlevel{paragraph}{8}
+  \etocsetlevel{subparagraph}{9}
+  % prevent numbers overlap the titles in toc
+  \renewcommand{\numberline}[1]{#1~}
+% End of preamble, now comes the document contents
+%===== C O N T E N T S =====
+\begin{document}
+  \raggedbottom
+  % Titlepage & ToC
+    % To avoid duplicate page anchors due to reuse of same numbers for
+    % the index (be it as roman numbers)
+    \hypersetup{pageanchor=false,
+                bookmarksnumbered=true,
+                pdfencoding=unicode
+               }
+  \pagenumbering{alph}
+  \begin{titlepage}
+  \vspace*{7cm}
+  \begin{center}%
+  {\Large WKern}\\
+  \vspace*{1cm}
+  {\large Generated on Wed Jul 2 2025 18\+:11\+:43 for WKern by Doxygen 1.14.0}\\
+    \vspace*{0.5cm}
+    {\small Wed Jul 2 2025 18:11:43}
+  \end{center}
+  \end{titlepage}
+  \clearemptydoublepage
+  \pagenumbering{roman}
+  \tableofcontents
+  \clearemptydoublepage
+  \pagenumbering{arabic}
+  % re-enable anchors again
+  \hypersetup{pageanchor=true}
+%--- Begin generated contents ---
+\input{dd/d15/md_src_2slre_2docs_2api}
+\input{d6/dff/md_src_2slre_2docs_2examples}
+\input{d7/d85/md_src_2slre_2docs_2find-urls}
+\input{d2/dfb/md_src_2slre_2docs_2intro}
+\input{d6/d11/md_src_2slre_2docs_2license}
+\input{d9/d01/md_src_2slre_2docs_2overview}
+\input{db/db6/md_src_2slre_2docs_2parse-http-request}
+\input{dd/dc6/md_src_2slre_2docs_2syntax}
+\input{d8/da0/md_src_2slre_2_old-_r_e_a_d_m_e}
+\chapter{Namespace Index}
+\input{namespaces}
+\chapter{Data Structure Index}
+\input{annotated}
+\chapter{File Index}
+\input{files}
+\chapter{Namespace Documentation}
+\input{d2/d76/namespacebrules}
+\input{d9/d45/namespacebuild}
+\input{dc/d9d/namespaceconfigure}
+\input{d6/d04/namespacefiles}
+\input{d0/d85/namespacefrules}
+\input{d5/d7a/namespace_generate_c_c}
+\input{d4/d2a/namespacetoolsflags}
+\chapter{Data Structure Documentation}
+\input{d9/da1/struct_bloc_k}
+\input{de/d82/structbracket__pair}
+\input{d1/dae/structbranch}
+\input{db/d1a/struct_command_entry}
+\input{d0/db2/struct_fa_t16_bpb}
+\input{d2/d9d/struct_fa_t16_info}
+\input{d8/d57/struct_gdt_entry}
+\input{d3/d57/struct_gdt_ptr}
+\input{d0/d94/struct_idt_entry}
+\input{dc/dbd/struct_idt_ptr}
+\input{de/dae/struct_m_b_r}
+\input{d0/dd7/structnet__config__t}
+\input{d1/dc9/struct_partition_entry}
+\input{d6/d65/structregex__info}
+\input{d7/d37/structslre__cap}
+\input{d2/dc9/struct_virtq_avail}
+\input{d8/db0/struct_virtq_desc}
+\input{da/d71/struct_virtq_used}
+\chapter{File Documentation}
+\input{d9/dc6/brules_8py}
+\input{d9/dc6/brules_8py_source}
+\input{da/d5a/files_8py}
+\input{da/d5a/files_8py_source}
+\input{dd/d4c/frules_8py}
+\input{dd/d4c/frules_8py_source}
+\input{d8/dfe/_generate_c_c_8py}
+\input{d8/dfe/_generate_c_c_8py_source}
+\input{dd/d4d/toolsflags_8py}
+\input{dd/d4d/toolsflags_8py_source}
+\input{df/d8c/build_8py}
+\input{df/d8c/build_8py_source}
+\input{d6/db8/configure_8py}
+\input{d6/db8/configure_8py_source}
+\input{d6/d33/kerror_8h}
+\input{d6/d33/kerror_8h_source}
+\input{d2/daf/panic_8c}
+\input{d2/daf/panic_8c_source}
+\input{d8/d98/tf_8c}
+\input{d8/d98/tf_8c_source}
+\input{d1/d30/_a_t_a_8c}
+\input{d1/d30/_a_t_a_8c_source}
+\input{dc/d3d/fat16__mnt_8c}
+\input{dc/d3d/fat16__mnt_8c_source}
+\input{dc/d74/fileio_8h}
+\input{dc/d74/fileio_8h_source}
+\input{df/dca/irqflags_8c}
+\input{df/dca/irqflags_8c_source}
+\input{d3/dbb/_m_b_r_8c}
+\input{d3/dbb/_m_b_r_8c_source}
+\input{de/d77/ls_8c}
+\input{de/d77/ls_8c_source}
+\input{d6/d1f/mkfile_8c}
+\input{d6/d1f/mkfile_8c_source}
+\input{d2/db0/printconts_8c}
+\input{d2/db0/printconts_8c_source}
+\input{d6/d30/rmfile_8c}
+\input{d6/d30/rmfile_8c_source}
+\input{d1/d9b/write_8c}
+\input{d1/d9b/write_8c_source}
+\input{d2/d49/global_8h}
+\input{d2/d49/global_8h_source}
+\input{de/d68/gdt_8c}
+\input{de/d68/gdt_8c_source}
+\input{df/d5b/irq0_8c}
+\input{df/d5b/irq0_8c_source}
+\input{d6/d72/virtnetirq_8c}
+\input{d6/d72/virtnetirq_8c_source}
+\input{d5/d05/idt_8c}
+\input{d5/d05/idt_8c_source}
+\input{d3/de1/idtirq_8h}
+\input{d3/de1/idtirq_8h_source}
+\input{d3/d6c/masker_8c}
+\input{d3/d6c/masker_8c_source}
+\input{d6/dbf/pit_8c}
+\input{d6/dbf/pit_8c_source}
+\input{d3/d33/asm_8c}
+\input{d3/d33/asm_8c_source}
+\input{d9/d38/keyin_8c}
+\input{d9/d38/keyin_8c_source}
+\input{d5/ddb/kio_8h}
+\input{d5/ddb/kio_8h_source}
+\input{d0/d16/printer_8c}
+\input{d0/d16/printer_8c_source}
+\input{dd/df6/filecmds_8c}
+\input{dd/df6/filecmds_8c_source}
+\input{da/d6c/filecmds_8h}
+\input{da/d6c/filecmds_8h_source}
+\input{d5/d74/regexcmd_8c}
+\input{d5/d74/regexcmd_8c_source}
+\input{d6/d4f/shell_8c}
+\input{d6/d4f/shell_8c_source}
+\input{df/d03/shell_8h}
+\input{df/d03/shell_8h_source}
+\input{d9/de4/shellhelp_8c}
+\input{d9/de4/shellhelp_8c_source}
+\input{d0/d29/main_8c}
+\input{d0/d29/main_8c_source}
+\input{d9/d39/alloc_8c}
+\input{d9/d39/alloc_8c_source}
+\input{d2/d12/kmem_8h}
+\input{d2/d12/kmem_8h_source}
+\input{d1/d18/memutil_8c}
+\input{d1/d18/memutil_8c_source}
+\input{d7/dab/addr_8c}
+\input{d7/dab/addr_8c_source}
+\input{dc/dce/virtio_8c}
+\input{dc/dce/virtio_8c_source}
+\input{dd/db0/virtnet_8h}
+\input{dd/db0/virtnet_8h_source}
+\input{d9/d97/pci_8h}
+\input{d9/d97/pci_8h_source}
+\input{d7/d61/scconfig_8c}
+\input{d7/d61/scconfig_8c_source}
+\input{d3/db2/shutdown_8c}
+\input{d3/db2/shutdown_8c_source}
+\input{da/d39/shutdown_8h}
+\input{da/d39/shutdown_8h_source}
+\input{d8/dc9/api_8md}
+\input{d2/d4b/examples_8md}
+\input{d8/d52/find-urls_8md}
+\input{d7/d3e/intro_8md}
+\input{d9/d6b/license_8md}
+\input{d4/d4c/overview_8md}
+\input{db/d58/parse-http-request_8md}
+\input{dd/d62/syntax_8md}
+\input{df/d77/_old-_r_e_a_d_m_e_8md}
+\input{d2/d48/slre_8c}
+\input{d2/d48/slre_8c_source}
+\input{d5/d4d/slre_8h}
+\input{d5/d4d/slre_8h_source}
+\input{da/dd5/unit__test_8c}
+\input{da/dd5/unit__test_8c_source}
+\input{d8/d77/bool_8h}
+\input{d8/d77/bool_8h_source}
+\input{dc/d69/nums_8h}
+\input{dc/d69/nums_8h_source}
+\input{d2/d16/vargs_8h}
+\input{d2/d16/vargs_8h_source}
+\input{d1/d3e/img_8c}
+\input{d1/d3e/img_8c_source}
+\input{db/d8f/ksleep_8c}
+\input{db/d8f/ksleep_8c_source}
+\input{d2/df5/numtools_8c}
+\input{d2/df5/numtools_8c_source}
+\input{d2/d48/strings_8c}
+\input{d2/d48/strings_8c_source}
+\input{d8/d3c/util_8h}
+\input{d8/d3c/util_8h_source}
+\input{dc/d73/stdwex_8h}
+\input{dc/d73/stdwex_8h_source}
+\input{d1/d4c/testexec_8c}
+\input{d1/d4c/testexec_8c_source}
+\input{da/d62/wexent_8c}
+\input{da/d62/wexent_8c_source}
+\input{d6/d27/wexexec_8c}
+\input{d6/d27/wexexec_8c_source}
+%--- End generated contents ---
+% Index
+  \backmatter
+  \newpage
+  \phantomsection
+  \clearemptydoublepage
+  \addcontentsline{toc}{chapter}{\indexname}
+  \printindex
+% Required for some languages (in combination with latexdocumentpre from the header)
+\end{document}

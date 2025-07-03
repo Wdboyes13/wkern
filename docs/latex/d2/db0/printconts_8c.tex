@@ -1,0 +1,45 @@
+\doxysection{src/fileio/ops/printconts.c File Reference}
+\hypertarget{printconts_8c}{}\label{printconts_8c}\index{src/fileio/ops/printconts.c@{src/fileio/ops/printconts.c}}
+{\ttfamily \#include $<$fileio/fileio.\+h$>$}\newline
+{\ttfamily \#include $<$io/kio.\+h$>$}\newline
+{\ttfamily \#include $<$mem/kmem.\+h$>$}\newline
+{\ttfamily \#include $<$types/nums.\+h$>$}\newline
+{\ttfamily \#include $<$utils/util.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{printconts_8c_a08e4988eb7beeffb9188674f29a975f6}{Fileconts}} (const char \texorpdfstring{$\ast$}{*}filename, const char \texorpdfstring{$\ast$}{*}ext)
+\begin{DoxyCompactList}\small\item\em Display the contents of a file in the FAT16 filesystem. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{printconts_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{printconts_8c_a08e4988eb7beeffb9188674f29a975f6}\index{printconts.c@{printconts.c}!Fileconts@{Fileconts}}
+\index{Fileconts@{Fileconts}!printconts.c@{printconts.c}}
+\doxysubsubsection{\texorpdfstring{Fileconts()}{Fileconts()}}
+{\footnotesize\ttfamily \label{printconts_8c_a08e4988eb7beeffb9188674f29a975f6} 
+void Fileconts (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{filename}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{ext}{}\end{DoxyParamCaption})}
+
+
+
+Display the contents of a file in the FAT16 filesystem. 
+
+Prints contents of a FAT16 file.
+
+This function searches the FAT16 root directory for a file matching the specified filename and extension. If found, it reads the first data cluster of the file and prints its contents as ASCII characters to the console. Non-\/printable characters are displayed as dots (\textquotesingle{}.\textquotesingle{}). The reading stops either at the end of the cluster or when a FAT16 EOF marker (0x1A) is found.
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The 8-\/character filename (without extension). \\
+\hline
+{\em ext} & The 3-\/character file extension.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+The function assumes the FAT16 filesystem structure is accessible through the global {\ttfamily fat16} variable. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{printconts_8c_source_l00041}{41}} of file \mbox{\hyperlink{printconts_8c_source}{printconts.\+c}}.
+

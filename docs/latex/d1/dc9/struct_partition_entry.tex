@@ -1,0 +1,99 @@
+\doxysection{Partition\+Entry Struct Reference}
+\hypertarget{struct_partition_entry}{}\label{struct_partition_entry}\index{PartitionEntry@{PartitionEntry}}
+
+
+Represents a single partition entry in the \doxylink{struct_m_b_r}{MBR} partition table.  
+
+
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} \mbox{\hyperlink{struct_partition_entry_ac8d01368991d9d2d46f9c6525af1cf8c}{status}}
+\item 
+\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} \mbox{\hyperlink{struct_partition_entry_abad2a389c6a992abf3e477dbbcf4273a}{chs\+\_\+first}} \mbox{[}3\mbox{]}
+\item 
+\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} \mbox{\hyperlink{struct_partition_entry_a2cb1af2fc30ac789c9e989d57d2216df}{type}}
+\item 
+\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} \mbox{\hyperlink{struct_partition_entry_af6f558369f04c73543318791ad4b7b49}{chs\+\_\+last}} \mbox{[}3\mbox{]}
+\item 
+\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} \mbox{\hyperlink{struct_partition_entry_ac54f5fe37c5eda7e5d477883dbdbd9c7}{lba\+\_\+first\+\_\+sector}}
+\item 
+\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} \mbox{\hyperlink{struct_partition_entry_ab782f7d5ecd8e90dc9240882d4f216b0}{total\+\_\+sectors}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a single partition entry in the \doxylink{struct_m_b_r}{MBR} partition table. 
+
+Definition at line \mbox{\hyperlink{_m_b_r_8c_source_l00037}{37}} of file \mbox{\hyperlink{_m_b_r_8c_source}{MBR.\+c}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{struct_partition_entry_doc-variable-members}
+\doxysubsection{Field Documentation}
+\Hypertarget{struct_partition_entry_abad2a389c6a992abf3e477dbbcf4273a}\index{PartitionEntry@{PartitionEntry}!chs\_first@{chs\_first}}
+\index{chs\_first@{chs\_first}!PartitionEntry@{PartitionEntry}}
+\doxysubsubsection{\texorpdfstring{chs\_first}{chs\_first}}
+{\footnotesize\ttfamily \label{struct_partition_entry_abad2a389c6a992abf3e477dbbcf4273a} 
+\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} Partition\+Entry\+::chs\+\_\+first\mbox{[}3\mbox{]}}
+
+CHS address of first absolute sector in partition 
+
+Definition at line \mbox{\hyperlink{_m_b_r_8c_source_l00039}{39}} of file \mbox{\hyperlink{_m_b_r_8c_source}{MBR.\+c}}.
+
+\Hypertarget{struct_partition_entry_af6f558369f04c73543318791ad4b7b49}\index{PartitionEntry@{PartitionEntry}!chs\_last@{chs\_last}}
+\index{chs\_last@{chs\_last}!PartitionEntry@{PartitionEntry}}
+\doxysubsubsection{\texorpdfstring{chs\_last}{chs\_last}}
+{\footnotesize\ttfamily \label{struct_partition_entry_af6f558369f04c73543318791ad4b7b49} 
+\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} Partition\+Entry\+::chs\+\_\+last\mbox{[}3\mbox{]}}
+
+CHS address of last absolute sector in partition 
+
+Definition at line \mbox{\hyperlink{_m_b_r_8c_source_l00041}{41}} of file \mbox{\hyperlink{_m_b_r_8c_source}{MBR.\+c}}.
+
+\Hypertarget{struct_partition_entry_ac54f5fe37c5eda7e5d477883dbdbd9c7}\index{PartitionEntry@{PartitionEntry}!lba\_first\_sector@{lba\_first\_sector}}
+\index{lba\_first\_sector@{lba\_first\_sector}!PartitionEntry@{PartitionEntry}}
+\doxysubsubsection{\texorpdfstring{lba\_first\_sector}{lba\_first\_sector}}
+{\footnotesize\ttfamily \label{struct_partition_entry_ac54f5fe37c5eda7e5d477883dbdbd9c7} 
+\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} Partition\+Entry\+::lba\+\_\+first\+\_\+sector}
+
+LBA of first absolute sector in partition 
+
+Definition at line \mbox{\hyperlink{_m_b_r_8c_source_l00042}{42}} of file \mbox{\hyperlink{_m_b_r_8c_source}{MBR.\+c}}.
+
+\Hypertarget{struct_partition_entry_ac8d01368991d9d2d46f9c6525af1cf8c}\index{PartitionEntry@{PartitionEntry}!status@{status}}
+\index{status@{status}!PartitionEntry@{PartitionEntry}}
+\doxysubsubsection{\texorpdfstring{status}{status}}
+{\footnotesize\ttfamily \label{struct_partition_entry_ac8d01368991d9d2d46f9c6525af1cf8c} 
+\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} Partition\+Entry\+::status}
+
+Bootable flag\+: 0x80 = bootable, 0x00 = non-\/bootable 
+
+Definition at line \mbox{\hyperlink{_m_b_r_8c_source_l00038}{38}} of file \mbox{\hyperlink{_m_b_r_8c_source}{MBR.\+c}}.
+
+\Hypertarget{struct_partition_entry_ab782f7d5ecd8e90dc9240882d4f216b0}\index{PartitionEntry@{PartitionEntry}!total\_sectors@{total\_sectors}}
+\index{total\_sectors@{total\_sectors}!PartitionEntry@{PartitionEntry}}
+\doxysubsubsection{\texorpdfstring{total\_sectors}{total\_sectors}}
+{\footnotesize\ttfamily \label{struct_partition_entry_ab782f7d5ecd8e90dc9240882d4f216b0} 
+\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} Partition\+Entry\+::total\+\_\+sectors}
+
+Total sectors in partition 
+
+Definition at line \mbox{\hyperlink{_m_b_r_8c_source_l00043}{43}} of file \mbox{\hyperlink{_m_b_r_8c_source}{MBR.\+c}}.
+
+\Hypertarget{struct_partition_entry_a2cb1af2fc30ac789c9e989d57d2216df}\index{PartitionEntry@{PartitionEntry}!type@{type}}
+\index{type@{type}!PartitionEntry@{PartitionEntry}}
+\doxysubsubsection{\texorpdfstring{type}{type}}
+{\footnotesize\ttfamily \label{struct_partition_entry_a2cb1af2fc30ac789c9e989d57d2216df} 
+\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} Partition\+Entry\+::type}
+
+Partition type (e.\+g., FAT16 types 0x04, 0x06) 
+
+Definition at line \mbox{\hyperlink{_m_b_r_8c_source_l00040}{40}} of file \mbox{\hyperlink{_m_b_r_8c_source}{MBR.\+c}}.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/fileio/\mbox{\hyperlink{_m_b_r_8c}{MBR.\+c}}\end{DoxyCompactItemize}

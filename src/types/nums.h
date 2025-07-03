@@ -25,13 +25,12 @@ typedef unsigned int kuint32_t;
 typedef unsigned long kuintptr_t;
 typedef unsigned int size_t;
 
-#undef kuintptr_t
-#undef kuint8_t
-#undef kuint32_t
-#undef kuint16_t
-
 // New definitions, shorter
+/// @brief 32-Bit Unsigned Int
 typedef unsigned int u32;
+/// @brief 8-Bit Unsigned Int
 typedef unsigned char u8;
+/// @brief Long Unsigned Int
 typedef unsigned long uptr;
+/// @brief 16-Bit Unsigned Int
 typedef unsigned short u16;

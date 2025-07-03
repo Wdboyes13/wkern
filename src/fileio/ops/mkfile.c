@@ -20,6 +20,23 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include <io/kio.h>
 #include <mem/kmem.h>
 #include <types/nums.h>
+
+/**
+ * @brief Create a new empty file entry in the FAT16 root directory.
+ *
+ * This function searches for a free root directory entry and a free cluster,
+ * then creates a new directory entry for the specified filename and extension.
+ * It initializes the directory entry with default attributes and zero file size.
+ *
+ * @param filename The 8-character filename (without extension).
+ * @param ext The 3-character file extension.
+ *
+ * @note The function assumes FAT16 filesystem data is accessible through
+ *       the global `fat16` structure.
+ * 
+ * @warning If no free directory entry or cluster is available, the function
+ *          prints an error message and returns without creating the file.
+ */
 void Mkfile(const char *filename, const char *ext) {
     int free = -1;
     int sector_to_write = -1;
@@ -30,7 +47,6 @@ void Mkfile(const char *filename, const char *ext) {
 
     u8 sector[512];
     u16 clust = 0;
-    u32 siz = 0; // For new files size is zero
 
     // Find free root directory entry
     for (u32 i = 0; i < root_dir_sectors; i++) {

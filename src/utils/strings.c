@@ -19,6 +19,11 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include <global.h>
 #include <io/kio.h>
 #include <utils/util.h>
+/** @brief Compare Strings - Similar to standard libc strcmp
+* @param a - First string to compare
+* @param b - Second string to compare
+* @return Integer - 0 if match
+*/
 int Kstrcmp(const char *a, const char *b) {
     while (*a && (*a == *b)) {
         a++;
@@ -27,6 +32,9 @@ int Kstrcmp(const char *a, const char *b) {
     return (unsigned char)*a - (unsigned char)*b;
 }
 
+/**
+ * @brief Interactive string comparison
+ */
 void Kshcmp() {
 
     Kprintf("\nSTR1>");
@@ -44,6 +52,11 @@ void Kshcmp() {
     }
 }
 
+/**
+ * @brief Get string length
+ * @param str - String to check length
+ * @return uint32_t (u32) - Length of passed string
+ */
 u32 Kmstrlen(const char *str) {
     u32 len = 0;
     while (str[len]) {
@@ -52,6 +65,12 @@ u32 Kmstrlen(const char *str) {
     return len;
 }
 
+/**
+ * @brief Search for character in string
+ * @param String to search
+ * @param Character to find
+ * @return Pointer to character if found, if not found NULL
+ */
 char *Kstrchr(const char *str, int c) {
     while (*str) {
         if (*str == (char)c) {
@@ -65,6 +84,11 @@ char *Kstrchr(const char *str, int c) {
     return NULL;
 }
 
+/**
+ * @brief Convert character to lowercase
+ * @param Character to convert
+ * @return Lowercase character
+ */
 int Ktolower(int c) {
     if (c >= 'A' && c <= 'Z') {
         return c + ('a' - 'A'); // Shift from uppercase to lowercase
@@ -75,6 +99,11 @@ int Ktolower(int c) {
 // ChecK if the char is a digit (0-9)
 int Kisdigit(int c) { return (c >= '0' && c <= '9'); }
 
+/**
+ * @brief Check if character is whitespace
+ * @param c - Character to check
+ * @return 1 if whitespace, 0 if not 
+*/
 int Kisspace(int c) {
     return (c == ' ' ||  // space
             c == '\t' || // horizontal tab
@@ -84,6 +113,11 @@ int Kisspace(int c) {
             c == '\r');  // carriage return
 }
 
+/**
+ * @brief Get string length
+ * @param str - String to check length
+ * @return uint32_t (u32) - Length of passed string
+ */
 size_t Kstrlen(const char *str) {
     size_t len = 0;
     while (str[len] != '\0') {
@@ -92,11 +126,23 @@ size_t Kstrlen(const char *str) {
     return len;
 }
 
+/**
+ * @brief Checks if input is a Hexadecimal Diget
+ * @param Character to check
+ * @return 1 if is hex digit, 0 if not
+ */
 int Kisxdigit(int c) {
     return (c >= '0' && c <= '9') || (c >= 'a' && c <= 'f') ||
            (c >= 'A' && c <= 'F');
 }
 
+/**
+ * @brief Split into ARGC
+ * @param char* - Input String
+ * @param char** - Argv Buffer
+ * @param - Max args
+ * @return Arguement number (argc)
+ */
 int Split(char *input, char **argv, int max_args) {
     int argc = 0;
 

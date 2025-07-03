@@ -16,8 +16,19 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+/**
+ * @file keyboard.c
+ * @brief PS/2 Keyboard input handling for WKern
+ *
+ * Handles scancode translation, buffering, and character input from a standard PS/2 keyboard.
+ */
+
 #include <global.h>
 #include <io/kio.h>
+
+/// @brief Converts a keyboard scancode to an ASCII character.
+/// @param scancode The raw scancode from keyboard hardware.
+/// @return Corresponding ASCII character, or 0 if unmapped.
 unsigned char scancode_to_ascii(unsigned char scancode) {
     static const unsigned char Keymap[256] = {
         0,   27,  '1', '2', '3', '4', '5',  '6', // 0x00 - 0x07
@@ -47,10 +58,17 @@ unsigned char scancode_to_ascii(unsigned char scancode) {
     return Keymap[scancode];
 }
 
+
+/// Circular buffer storing incoming keystrokes.
 volatile char Keybuf[256];
+/// Head index for Keybuf
 volatile int buf_head = 0;
+/// Tail index for Keybuf
 volatile int buf_tail = 0;
 
+/// @brief Converts an ASCII character to its shifted equivalent.
+/// @param ascii The base character
+/// @return Shifted version of the input character, or the same character if no shift mapping exists.
 unsigned char Keytoshift(unsigned char ascii) {
     if (ascii >= 'a' && ascii <= 'z') {
         return ascii - 32; // 'a' to 'A'
@@ -104,6 +122,11 @@ unsigned char Keytoshift(unsigned char ascii) {
     }
 }
 
+
+/// @brief IRQ handler for PS/2 keyboard (IRQ1).
+///
+/// Reads raw scancode, handles modifier keys (Shift, CapsLock),
+/// converts to ASCII, and stores in the `Keybuf` ring buffer.
 void Irq1HandlerC(void) {
     unsigned char sc = Inb(0x60);
 
@@ -141,6 +164,8 @@ void Irq1HandlerC(void) {
     }
 }
 
+/// @brief Gets the next character from the keyboard buffer (blocking).
+/// @return The next ASCII character from the input buffer.
 char Kgetkey() {
     while (buf_tail == buf_head) {
         ; // wait for Key
@@ -152,6 +177,12 @@ char Kgetkey() {
     return ch;
 }
 
+/// @brief Reads a line of input from the keyboard (blocking).
+///
+/// Handles basic line editing (Enter, Backspace, Delete).
+///
+/// @param str Destination buffer
+/// @param length Maximum buffer length (including null terminator)
 void Kgetstr(char *str, int length) {
     int i = 0;
 
@@ -182,6 +213,9 @@ void Kgetstr(char *str, int length) {
     str[length - 1] = '\0';
 }
 
+/// @brief Flushes the keyboard controller input buffer.
+///
+/// Reads and discards all unread bytes in the controller’s 0x60 port.
 void Kflush() {
     while (Inb(0x64) & 0x01) {
         Inb(0x60);

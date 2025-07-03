@@ -1,0 +1,114 @@
+\doxysection{src/net/virtio.c File Reference}
+\hypertarget{virtio_8c}{}\label{virtio_8c}\index{src/net/virtio.c@{src/net/virtio.c}}
+{\ttfamily \#include $<$idt/idtirq.\+h$>$}\newline
+{\ttfamily \#include $<$io/kio.\+h$>$}\newline
+{\ttfamily \#include $<$mem/kmem.\+h$>$}\newline
+{\ttfamily \#include $<$net/virtnet.\+h$>$}\newline
+{\ttfamily \#include $<$pci/pci.\+h$>$}\newline
+{\ttfamily \#include $<$types/nums.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{virtio_8c_ae39c83a0ad1233c9d2e76b7add988860}{Virtnet\+Negotiate}} (\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} \mbox{\hyperlink{global_8h_a1948e96711d16f6cd2d551c5c3b121c5}{iob}})
+\begin{DoxyCompactList}\small\item\em Performs device negotiation with the Virt\+IO network device. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{virtio_8c_af3ec14b624bc04c89286f6487c91a83b}{Virtnet\+Init}} (\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} \mbox{\hyperlink{global_8h_a1948e96711d16f6cd2d551c5c3b121c5}{iob}})
+\begin{DoxyCompactList}\small\item\em Initializes the Virt\+IO network queue and allocates RX buffers. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{virtio_8c_a6b1c9baee3d5fa757db9be26bfe34eae}{Net\+Stq}} (\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} \mbox{\hyperlink{global_8h_a1948e96711d16f6cd2d551c5c3b121c5}{iob}})
+\begin{DoxyCompactList}\small\item\em Processes received packets from the Virt\+IO queue. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{virtio_8c_a32830a541ec636e265304d1ad827c42a}{Virtnet\+Setup}} ()
+\begin{DoxyCompactList}\small\item\em Performs full setup of the Virt\+IO network device. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{virtio_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{virtio_8c_a6b1c9baee3d5fa757db9be26bfe34eae}\index{virtio.c@{virtio.c}!NetStq@{NetStq}}
+\index{NetStq@{NetStq}!virtio.c@{virtio.c}}
+\doxysubsubsection{\texorpdfstring{NetStq()}{NetStq()}}
+{\footnotesize\ttfamily \label{virtio_8c_a6b1c9baee3d5fa757db9be26bfe34eae} 
+void Net\+Stq (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}}]{iob}{}\end{DoxyParamCaption})}
+
+
+
+Processes received packets from the Virt\+IO queue. 
+
+Iterates over the used ring to find received packets, prints their contents in hex, and recycles the RX buffers by re-\/adding the descriptors to the avail ring.
+
+
+\begin{DoxyParams}{Parameters}
+{\em iob} & The I/O base address for the Virt\+IO device. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{virtio_8c_source_l00138}{138}} of file \mbox{\hyperlink{virtio_8c_source}{virtio.\+c}}.
+
+\Hypertarget{virtio_8c_af3ec14b624bc04c89286f6487c91a83b}\index{virtio.c@{virtio.c}!VirtnetInit@{VirtnetInit}}
+\index{VirtnetInit@{VirtnetInit}!virtio.c@{virtio.c}}
+\doxysubsubsection{\texorpdfstring{VirtnetInit()}{VirtnetInit()}}
+{\footnotesize\ttfamily \label{virtio_8c_af3ec14b624bc04c89286f6487c91a83b} 
+void Virtnet\+Init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}}]{iob}{}\end{DoxyParamCaption})}
+
+
+
+Initializes the Virt\+IO network queue and allocates RX buffers. 
+
+
+\begin{DoxyItemize}
+\item Selects RX queue 0 via PCI register.
+\item Allocates a 4 KiB block for the Virt\+IO queue and zeroes it.
+\item Determines the queue size from the device, clamping if needed.
+\item Initializes descriptor structures\+:
+\begin{DoxyItemize}
+\item {\ttfamily desc}\+: descriptors for received packets
+\item {\ttfamily avail}\+: list of available descriptors
+\item {\ttfamily used}\+: list of used descriptors from the device
+\end{DoxyItemize}
+\item Allocates individual 2 KiB RX buffers for each descriptor.
+\item Notifies the device that the queue is ready and available.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em iob} & The I/O base address for the Virt\+IO device. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{virtio_8c_source_l00078}{78}} of file \mbox{\hyperlink{virtio_8c_source}{virtio.\+c}}.
+
+\Hypertarget{virtio_8c_ae39c83a0ad1233c9d2e76b7add988860}\index{virtio.c@{virtio.c}!VirtnetNegotiate@{VirtnetNegotiate}}
+\index{VirtnetNegotiate@{VirtnetNegotiate}!virtio.c@{virtio.c}}
+\doxysubsubsection{\texorpdfstring{VirtnetNegotiate()}{VirtnetNegotiate()}}
+{\footnotesize\ttfamily \label{virtio_8c_ae39c83a0ad1233c9d2e76b7add988860} 
+void Virtnet\+Negotiate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}}]{iob}{}\end{DoxyParamCaption})}
+
+
+
+Performs device negotiation with the Virt\+IO network device. 
+
+Resets the Virt\+IO network device and negotiates feature support by writing appropriate status flags to the I/O port.
+
+
+\begin{DoxyParams}{Parameters}
+{\em iob} & The I/O base address for the Virt\+IO device. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{virtio_8c_source_l00041}{41}} of file \mbox{\hyperlink{virtio_8c_source}{virtio.\+c}}.
+
+\Hypertarget{virtio_8c_a32830a541ec636e265304d1ad827c42a}\index{virtio.c@{virtio.c}!VirtnetSetup@{VirtnetSetup}}
+\index{VirtnetSetup@{VirtnetSetup}!virtio.c@{virtio.c}}
+\doxysubsubsection{\texorpdfstring{VirtnetSetup()}{VirtnetSetup()}}
+{\footnotesize\ttfamily \label{virtio_8c_a32830a541ec636e265304d1ad827c42a} 
+void Virtnet\+Setup (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Performs full setup of the Virt\+IO network device. 
+
+Finds the Virt\+IO network device on the PCI bus, reads its IRQ, sets the interrupt handler, unmasks the IRQ, and performs negotiation and initialization. 
+
+Definition at line \mbox{\hyperlink{virtio_8c_source_l00176}{176}} of file \mbox{\hyperlink{virtio_8c_source}{virtio.\+c}}.
+

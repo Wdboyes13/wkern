@@ -21,6 +21,11 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 // Read First Values
 // Reads 0x00 - 0x09
+/**
+ * @brief Read First Values of WEX Executable
+ * @param exec - Executable in hexadecimal array format
+ * @return Integer array containing executable data - ret[0]=Entry Point ret[1]=Symbol Table Size
+ */
 int *read_vals(const unsigned char *exec) {
     static int epa;
     static int sts;
@@ -34,7 +39,14 @@ int *read_vals(const unsigned char *exec) {
     return fvals;
 }
 
-// ChecK if every symbol in `smt` exists in `st`
+/**
+ * @brief Verify symbols in executable
+ * @param SMT - Executables symbol table - Hex Array
+ * @param SMT_LEN - Executable symbol table length - int
+ * @param ST - Master Symbol Table
+ * @param ST_LEN - Master Symbol Table Length
+ * @return int - 0 if valid, 1 if invalid
+ */
 int chKwex(const unsigned char *smt, int smt_len, const unsigned char *st,
            int st_len) {
     for (int i = 0; i < smt_len; i++) {
@@ -52,6 +64,11 @@ int chKwex(const unsigned char *smt, int smt_len, const unsigned char *st,
     return 0; // All symbols valid
 }
 
+/**
+ * @brief Automatically checks and executes an executable
+ * @param WEXEXECU - WEX Executable stored as Hexadecimal Array
+ * @return Void Function - Does not return value
+ */
 void Runwex(unsigned char *wexexecu) {
     int *fvals = read_vals(wexexecu);
     int sts = fvals[1];
@@ -60,5 +77,5 @@ void Runwex(unsigned char *wexexecu) {
         st[i] = wexexecu[i + 2];
     }
     chKwex(st, sts, smt, 5);
-    Exec(wexexecu, fvals);
+    Exec(wexexecu);
 }

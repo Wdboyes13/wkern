@@ -1,0 +1,40 @@
+\doxysection{irq0.\+c}
+\hypertarget{irq0_8c_source}{}\label{irq0_8c_source}\index{src/idt/handlers/irq0.c@{src/idt/handlers/irq0.c}}
+\mbox{\hyperlink{irq0_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{irq0_8c_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{irq0_8c_source_l00002}00002\ \textcolor{comment}{WKern\ -\/\ A\ Bare\ Metal\ OS\ /\ Kernel\ I\ am\ maKing\ (For\ Fun)}}
+\DoxyCodeLine{\Hypertarget{irq0_8c_source_l00003}00003\ \textcolor{comment}{Copyright\ (C)\ 2025\ \ Wdboyes13}}
+\DoxyCodeLine{\Hypertarget{irq0_8c_source_l00004}00004\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{irq0_8c_source_l00005}00005\ \textcolor{comment}{This\ program\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{irq0_8c_source_l00006}00006\ \textcolor{comment}{it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{irq0_8c_source_l00007}00007\ \textcolor{comment}{the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{irq0_8c_source_l00008}00008\ \textcolor{comment}{any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{irq0_8c_source_l00009}00009\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{irq0_8c_source_l00010}00010\ \textcolor{comment}{This\ program\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{irq0_8c_source_l00011}00011\ \textcolor{comment}{but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{irq0_8c_source_l00012}00012\ \textcolor{comment}{MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{irq0_8c_source_l00013}00013\ \textcolor{comment}{GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{irq0_8c_source_l00014}00014\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{irq0_8c_source_l00015}00015\ \textcolor{comment}{You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{irq0_8c_source_l00016}00016\ \textcolor{comment}{along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{irq0_8c_source_l00017}00017\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{irq0_8c_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{irq0_8c_source_l00019}00019\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{idtirq_8h}{idt/idtirq.h}}>}}
+\DoxyCodeLine{\Hypertarget{irq0_8c_source_l00020}00020\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{kio_8h}{io/kio.h}}>}}
+\DoxyCodeLine{\Hypertarget{irq0_8c_source_l00021}00021\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{nums_8h}{types/nums.h}}>}}
+\DoxyCodeLine{\Hypertarget{irq0_8c_source_l00022}\mbox{\hyperlink{irq0_8c_aed075e5a610e156e4f10b74a48b94858}{00022}}\ \textcolor{keyword}{volatile}\ \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ \mbox{\hyperlink{irq0_8c_aed075e5a610e156e4f10b74a48b94858}{ticK\_count}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{irq0_8c_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{irq0_8c_source_l00024}\mbox{\hyperlink{irq0_8c_ad7320093f50cc1874b7917f9f59731a3}{00024}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{irq0_8c_ad7320093f50cc1874b7917f9f59731a3}{Irq0HandlerC}}()\ \{}
+\DoxyCodeLine{\Hypertarget{irq0_8c_source_l00025}00025\ \ \ \ \ \mbox{\hyperlink{irq0_8c_aed075e5a610e156e4f10b74a48b94858}{ticK\_count}}++;}
+\DoxyCodeLine{\Hypertarget{irq0_8c_source_l00026}00026\ \ \ \ \ \mbox{\hyperlink{idtirq_8h_a752a45c7e0bffa22a9761b00da4bc929}{SendEOI}};\ \textcolor{comment}{//\ Send\ PIC\ EOI}}
+\DoxyCodeLine{\Hypertarget{irq0_8c_source_l00027}00027\ \}}
+\DoxyCodeLine{\Hypertarget{irq0_8c_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{irq0_8c_source_l00029}\mbox{\hyperlink{irq0_8c_ae909df77f28489ccfa376a7b89c25b25}{00029}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{irq0_8c_ae909df77f28489ccfa376a7b89c25b25}{MsSleep}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ milliseconds)\ \{}
+\DoxyCodeLine{\Hypertarget{irq0_8c_source_l00030}00030\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ start\ =\ \mbox{\hyperlink{irq0_8c_aed075e5a610e156e4f10b74a48b94858}{ticK\_count}};}
+\DoxyCodeLine{\Hypertarget{irq0_8c_source_l00031}00031\ \ \ \ \ \textcolor{keywordflow}{while}\ ((\mbox{\hyperlink{irq0_8c_aed075e5a610e156e4f10b74a48b94858}{ticK\_count}}\ -\/\ start)\ <\ milliseconds)\ \{}
+\DoxyCodeLine{\Hypertarget{irq0_8c_source_l00032}00032\ \ \ \ \ \ \ \ \ \_\_asm\_\_\ \textcolor{keyword}{volatile}(\textcolor{stringliteral}{"{}hlt"{}});}
+\DoxyCodeLine{\Hypertarget{irq0_8c_source_l00033}00033\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{irq0_8c_source_l00034}00034\ \}}
+
+\end{DoxyCode}

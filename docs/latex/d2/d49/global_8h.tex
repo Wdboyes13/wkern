@@ -1,0 +1,161 @@
+\doxysection{src/global.h File Reference}
+\hypertarget{global_8h}{}\label{global_8h}\index{src/global.h@{src/global.h}}
+{\ttfamily \#include $<$types/bool.\+h$>$}\newline
+{\ttfamily \#include $<$types/nums.\+h$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{global_8h_af09a65cfd198568aea29d5ca4aa1ecf6}{ATTR}}(x)
+\begin{DoxyCompactList}\small\item\em Apply X attribute. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{global_8h_a49f62b08b10c70ccf16f10ae9cd4add6}{PKG}}~\mbox{\hyperlink{global_8h_af09a65cfd198568aea29d5ca4aa1ecf6}{ATTR}}(packed)
+\begin{DoxyCompactList}\small\item\em Add attribute packed. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{global_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}}~((void \texorpdfstring{$\ast$}{*})0)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{global_8h_acc5c9b2f93293669af4fcebb9e0b9a85}{\+\_\+\+\_\+attribute\+\_\+\+\_\+}} ((unused)) static volatile char \texorpdfstring{$\ast$}{*}vmem
+\begin{DoxyCompactList}\small\item\em x86 Video Memory Address \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{global_8h_af1d3cff2e4538e23400e260bae3dadad}{row}}
+\item 
+int \mbox{\hyperlink{global_8h_afb52e720f5f0c483db5861f9e42e924e}{col}}
+\item 
+\mbox{\hyperlink{bool_8h_af6a258d8f3ee5206d682d799316314b1}{bool}} \mbox{\hyperlink{global_8h_a2b30266941861e389096f125809faf0d}{capson}}
+\item 
+\mbox{\hyperlink{bool_8h_af6a258d8f3ee5206d682d799316314b1}{bool}} \mbox{\hyperlink{global_8h_ace78b37abb3d96740735fd8eb41235e6}{shift}}
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{global_8h_a5ac083a645d964373f022d03df4849c8}{name}}
+\item 
+\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} \mbox{\hyperlink{global_8h_a1948e96711d16f6cd2d551c5c3b121c5}{iob}}
+\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\Hypertarget{global_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{global_8h_af09a65cfd198568aea29d5ca4aa1ecf6}\index{global.h@{global.h}!ATTR@{ATTR}}
+\index{ATTR@{ATTR}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{ATTR}{ATTR}}
+{\footnotesize\ttfamily \label{global_8h_af09a65cfd198568aea29d5ca4aa1ecf6} 
+\#define ATTR(\begin{DoxyParamCaption}\item[{}]{x}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{panic_8c_a1b6824bfd4ec0404a4f875ed8db0274e}{\_\_attribute\_\_}}((x))}
+
+\end{DoxyCode}
+
+
+Apply X attribute. 
+
+
+
+Definition at line \mbox{\hyperlink{global_8h_source_l00033}{33}} of file \mbox{\hyperlink{global_8h_source}{global.\+h}}.
+
+\Hypertarget{global_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}\index{global.h@{global.h}!NULL@{NULL}}
+\index{NULL@{NULL}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{NULL}{NULL}}
+{\footnotesize\ttfamily \label{global_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4} 
+\#define NULL~((void \texorpdfstring{$\ast$}{*})0)}
+
+
+
+Definition at line \mbox{\hyperlink{global_8h_source_l00039}{39}} of file \mbox{\hyperlink{global_8h_source}{global.\+h}}.
+
+\Hypertarget{global_8h_a49f62b08b10c70ccf16f10ae9cd4add6}\index{global.h@{global.h}!PKG@{PKG}}
+\index{PKG@{PKG}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{PKG}{PKG}}
+{\footnotesize\ttfamily \label{global_8h_a49f62b08b10c70ccf16f10ae9cd4add6} 
+struct \mbox{\hyperlink{struct_gdt_ptr}{Gdt\+Ptr}} PKG~\mbox{\hyperlink{global_8h_af09a65cfd198568aea29d5ca4aa1ecf6}{ATTR}}(packed)}
+
+
+
+Add attribute packed. 
+
+
+
+Definition at line \mbox{\hyperlink{global_8h_source_l00035}{35}} of file \mbox{\hyperlink{global_8h_source}{global.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{global_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{global_8h_acc5c9b2f93293669af4fcebb9e0b9a85}\index{global.h@{global.h}!\_\_attribute\_\_@{\_\_attribute\_\_}}
+\index{\_\_attribute\_\_@{\_\_attribute\_\_}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{\_\_attribute\_\_()}{\_\_attribute\_\_()}}
+{\footnotesize\ttfamily \label{global_8h_acc5c9b2f93293669af4fcebb9e0b9a85} 
+\+\_\+\+\_\+attribute\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{(unused)}]{}{}\end{DoxyParamCaption}) volatile}
+
+
+
+x86 Video Memory Address 
+
+
+
+\label{doc-var-members}
+\Hypertarget{global_8h_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{global_8h_a2b30266941861e389096f125809faf0d}\index{global.h@{global.h}!capson@{capson}}
+\index{capson@{capson}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{capson}{capson}}
+{\footnotesize\ttfamily \label{global_8h_a2b30266941861e389096f125809faf0d} 
+\mbox{\hyperlink{bool_8h_af6a258d8f3ee5206d682d799316314b1}{bool}} capson\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{main_8c_source_l00034}{34}} of file \mbox{\hyperlink{main_8c_source}{main.\+c}}.
+
+\Hypertarget{global_8h_afb52e720f5f0c483db5861f9e42e924e}\index{global.h@{global.h}!col@{col}}
+\index{col@{col}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{col}{col}}
+{\footnotesize\ttfamily \label{global_8h_afb52e720f5f0c483db5861f9e42e924e} 
+int col\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{main_8c_source_l00033}{33}} of file \mbox{\hyperlink{main_8c_source}{main.\+c}}.
+
+\Hypertarget{global_8h_a1948e96711d16f6cd2d551c5c3b121c5}\index{global.h@{global.h}!iob@{iob}}
+\index{iob@{iob}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{iob}{iob}}
+{\footnotesize\ttfamily \label{global_8h_a1948e96711d16f6cd2d551c5c3b121c5} 
+\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} iob\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{main_8c_source_l00036}{36}} of file \mbox{\hyperlink{main_8c_source}{main.\+c}}.
+
+\Hypertarget{global_8h_a5ac083a645d964373f022d03df4849c8}\index{global.h@{global.h}!name@{name}}
+\index{name@{name}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily \label{global_8h_a5ac083a645d964373f022d03df4849c8} 
+char\texorpdfstring{$\ast$}{*} name\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{main_8c_source_l00031}{31}} of file \mbox{\hyperlink{main_8c_source}{main.\+c}}.
+
+\Hypertarget{global_8h_af1d3cff2e4538e23400e260bae3dadad}\index{global.h@{global.h}!row@{row}}
+\index{row@{row}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{row}{row}}
+{\footnotesize\ttfamily \label{global_8h_af1d3cff2e4538e23400e260bae3dadad} 
+int row\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{main_8c_source_l00032}{32}} of file \mbox{\hyperlink{main_8c_source}{main.\+c}}.
+
+\Hypertarget{global_8h_ace78b37abb3d96740735fd8eb41235e6}\index{global.h@{global.h}!shift@{shift}}
+\index{shift@{shift}!global.h@{global.h}}
+\doxysubsubsection{\texorpdfstring{shift}{shift}}
+{\footnotesize\ttfamily \label{global_8h_ace78b37abb3d96740735fd8eb41235e6} 
+\mbox{\hyperlink{bool_8h_af6a258d8f3ee5206d682d799316314b1}{bool}} shift\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{main_8c_source_l00035}{35}} of file \mbox{\hyperlink{main_8c_source}{main.\+c}}.
+

@@ -1,0 +1,114 @@
+\doxysection{idtirq.\+h}
+\hypertarget{idtirq_8h_source}{}\label{idtirq_8h_source}\index{src/idt/idtirq.h@{src/idt/idtirq.h}}
+\mbox{\hyperlink{idtirq_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00002}00002\ \textcolor{comment}{WKern\ -\/\ A\ Bare\ Metal\ OS\ /\ Kernel\ I\ am\ making\ (For\ Fun)}}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00003}00003\ \textcolor{comment}{Copyright\ (C)\ 2025\ \ Wdboyes13}}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00004}00004\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00005}00005\ \textcolor{comment}{This\ program\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00006}00006\ \textcolor{comment}{it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00007}00007\ \textcolor{comment}{the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00008}00008\ \textcolor{comment}{any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00009}00009\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00010}00010\ \textcolor{comment}{This\ program\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00011}00011\ \textcolor{comment}{but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00012}00012\ \textcolor{comment}{MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00013}00013\ \textcolor{comment}{GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00014}00014\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00015}00015\ \textcolor{comment}{You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00016}00016\ \textcolor{comment}{along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00017}00017\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00019}00019\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00021}00021\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{global_8h}{global.h}}>}}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00022}00022\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{nums_8h}{types/nums.h}}>}\ \textcolor{comment}{//\ put\ includes\ at\ the\ top}}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00024}\mbox{\hyperlink{idtirq_8h_a6e6d7d33347e967d8e08331768d7613d}{00024}}\ \textcolor{preprocessor}{\#define\ KERNEL\_CODE\_SEGMENT\ 0x08\ }\textcolor{comment}{//\ Usually\ your\ GDT\ code\ segment}}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00026}00026\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00027}00027\ \textcolor{comment}{===================}}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00028}00028\ \textcolor{comment}{-\/-\/\ IDT\ FUNCTIONS\ -\/-\/}}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00029}00029\ \textcolor{comment}{===================}}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00030}00030\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00031}\mbox{\hyperlink{idtirq_8h_aacc38a6b3280096e8274488aac111311}{00031}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{idtirq_8h_aacc38a6b3280096e8274488aac111311}{SetupIdt}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00032}\mbox{\hyperlink{idtirq_8h_a230fd9bd9c907c980e928c1cf450fab5}{00032}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{idtirq_8h_a230fd9bd9c907c980e928c1cf450fab5}{IdtInit}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00033}00033\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{idtirq_8h_af6395787910fc416ceb5c2a7cfe468c6}{IdtSetGate}}(\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ num,\ \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ base,\ \mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}\ sel,\ \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ flags);}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00034}00034\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{idtirq_8h_afff6913ea38ded1a054003f46bb86ad3}{MaskAllIrqs}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00035}00035\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{idtirq_8h_ae24aa8904e3388dccde357778b5e7e53}{UnmaskIrq}}(\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ irq);}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00036}\mbox{\hyperlink{idtirq_8h_a59acdfe8af072c5f4539c03ca149b1d5}{00036}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{idtirq_8h_a59acdfe8af072c5f4539c03ca149b1d5}{DebugPrintIdtEntry}}(\textcolor{keywordtype}{int}\ i);}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00038}00038\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{idtirq_8h_afc934f0079b12ec1cac0f6f49df28ca0}{AllIdt}}();}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00040}00040\ \textcolor{comment}{//\ PIC\ remap}}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00041}\mbox{\hyperlink{idtirq_8h_a49265dc90c23565b2cb010eb6594f431}{00041}}\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{idtirq_8h_a49265dc90c23565b2cb010eb6594f431}{\_picr}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00043}00043\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00044}00044\ \textcolor{comment}{==================}}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00045}00045\ \textcolor{comment}{-\/-\/-\/-\/\ STRUCTS\ -\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00046}00046\ \textcolor{comment}{==================}}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00047}00047\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00049}00049\ \textcolor{comment}{//\ IDT\ Entry\ structure\ (packed\ to\ prevent\ compiler\ padding)}}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00050}\mbox{\hyperlink{struct_idt_entry}{00050}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_idt_entry}{IdtEntry}}\ \{}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00051}\mbox{\hyperlink{struct_idt_entry_a38eb69d94dc79a70eb1c52c728b0b9a4}{00051}}\ \ \ \ \ \mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}\ \mbox{\hyperlink{struct_idt_entry_a38eb69d94dc79a70eb1c52c728b0b9a4}{base\_lo}};}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00052}\mbox{\hyperlink{struct_idt_entry_a0433fa09c19748c4ad49e7074d8f013c}{00052}}\ \ \ \ \ \mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}\ \mbox{\hyperlink{struct_idt_entry_a0433fa09c19748c4ad49e7074d8f013c}{sel}};\ \textcolor{comment}{//\ Kernel\ code\ segment\ selector}}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00053}\mbox{\hyperlink{struct_idt_entry_a077c9bc428b0c7edf343bad411b2eaee}{00053}}\ \ \ \ \ \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ \mbox{\hyperlink{struct_idt_entry_a077c9bc428b0c7edf343bad411b2eaee}{always0}};}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00054}\mbox{\hyperlink{struct_idt_entry_a94bb0eeb460b2f6d76d06030c65cece0}{00054}}\ \ \ \ \ \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ \mbox{\hyperlink{struct_idt_entry_a94bb0eeb460b2f6d76d06030c65cece0}{flags}};\ \textcolor{comment}{//\ Flags\ (present,\ ring\ level,\ type)}}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00055}\mbox{\hyperlink{struct_idt_entry_adfaf6874eee030ac40235ef02b61b816}{00055}}\ \ \ \ \ \mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}\ \mbox{\hyperlink{struct_idt_entry_adfaf6874eee030ac40235ef02b61b816}{base\_hi}};}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00056}\mbox{\hyperlink{idtirq_8h_a49f62b08b10c70ccf16f10ae9cd4add6}{00056}}\ \}\ \mbox{\hyperlink{global_8h_a49f62b08b10c70ccf16f10ae9cd4add6}{PKG}};}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00058}\mbox{\hyperlink{struct_gdt_entry}{00058}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_gdt_entry}{GdtEntry}}\ \{}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00059}\mbox{\hyperlink{struct_gdt_entry_ac3583d486eb39fc1da6408647ce13cee}{00059}}\ \ \ \ \ \mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}\ \mbox{\hyperlink{struct_gdt_entry_ac3583d486eb39fc1da6408647ce13cee}{limit\_low}};\ \ \textcolor{comment}{//\ Lower\ 16\ bits\ of\ limit}}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00060}\mbox{\hyperlink{struct_gdt_entry_acdc132bcbd06f2b54859820348af7d6d}{00060}}\ \ \ \ \ \mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}\ \mbox{\hyperlink{struct_gdt_entry_acdc132bcbd06f2b54859820348af7d6d}{base\_low}};\ \ \ \textcolor{comment}{//\ Lower\ 16\ bits\ of\ base}}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00061}\mbox{\hyperlink{struct_gdt_entry_a103b7e52fe0c743fc48b32e39a30f8d1}{00061}}\ \ \ \ \ \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ \mbox{\hyperlink{struct_gdt_entry_a103b7e52fe0c743fc48b32e39a30f8d1}{base\_middle}};\ \textcolor{comment}{//\ Next\ 8\ bits\ of\ base}}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00062}\mbox{\hyperlink{struct_gdt_entry_a6b28b13305016986a3b8e898737b3581}{00062}}\ \ \ \ \ \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ \mbox{\hyperlink{struct_gdt_entry_a6b28b13305016986a3b8e898737b3581}{access}};\ \ \ \ \ \ \textcolor{comment}{//\ Access\ flags}}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00063}\mbox{\hyperlink{struct_gdt_entry_a60c4d0ceee738f6b233862c78f0c195f}{00063}}\ \ \ \ \ \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ \mbox{\hyperlink{struct_gdt_entry_a60c4d0ceee738f6b233862c78f0c195f}{granularity}};\ \textcolor{comment}{//\ Granularity\ flags\ +\ upper\ 4\ bits\ of\ limit}}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00064}\mbox{\hyperlink{struct_gdt_entry_a06780abaf3f426e1c209a7aba6cd26ea}{00064}}\ \ \ \ \ \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ \mbox{\hyperlink{struct_gdt_entry_a06780abaf3f426e1c209a7aba6cd26ea}{base\_high}};\ \ \ \textcolor{comment}{//\ Last\ 8\ bits\ of\ base}}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00065}00065\ \}\ \mbox{\hyperlink{global_8h_a49f62b08b10c70ccf16f10ae9cd4add6}{PKG}};}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00067}\mbox{\hyperlink{struct_gdt_ptr}{00067}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_gdt_ptr}{GdtPtr}}\ \{}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00068}\mbox{\hyperlink{struct_gdt_ptr_a7c073c37b2fbb6703eaa9b934626bfda}{00068}}\ \ \ \ \ \mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}\ \mbox{\hyperlink{struct_gdt_ptr_a7c073c37b2fbb6703eaa9b934626bfda}{limit}};}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00069}\mbox{\hyperlink{struct_gdt_ptr_a378acf1e8752fa3ba4aa87ef8f9a2378}{00069}}\ \ \ \ \ \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ \mbox{\hyperlink{struct_gdt_ptr_a378acf1e8752fa3ba4aa87ef8f9a2378}{base}};}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00070}00070\ \}\ \mbox{\hyperlink{global_8h_a49f62b08b10c70ccf16f10ae9cd4add6}{PKG}};}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00072}\mbox{\hyperlink{struct_idt_ptr}{00072}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{idtirq_8h_a49f62b08b10c70ccf16f10ae9cd4add6}{PKG}}\ \mbox{\hyperlink{struct_idt_ptr}{IdtPtr}}\ \{}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00073}\mbox{\hyperlink{struct_idt_ptr_acfa567ade93297d5231a121d2438f4a1}{00073}}\ \ \ \ \ \mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}\ \mbox{\hyperlink{struct_idt_ptr_acfa567ade93297d5231a121d2438f4a1}{limit}};}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00074}\mbox{\hyperlink{struct_idt_ptr_ae215107daa68978bd7075bc6351a1fdf}{00074}}\ \ \ \ \ \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ \mbox{\hyperlink{struct_idt_ptr_ae215107daa68978bd7075bc6351a1fdf}{base}};}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00075}00075\ \};}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00077}00077\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00078}00078\ \textcolor{comment}{===================}}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00079}00079\ \textcolor{comment}{-\/-\/\ GDT\ FUNCTIONS\ -\/-\/}}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00080}00080\ \textcolor{comment}{===================}}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00081}00081\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00082}00082\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{idtirq_8h_a3abe176f346ee3b5fd6172998f5b94c1}{GdtInstall}}();}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00083}\mbox{\hyperlink{idtirq_8h_a354f952034d77fd685e49944e8fb35d3}{00083}}\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{idtirq_8h_a354f952034d77fd685e49944e8fb35d3}{GdtFlush}}(\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}});}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00084}00084\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{idtirq_8h_a129616f1ac7ecde95a1b9eab46bcf66d}{GdtSetGate}}(\textcolor{keywordtype}{int}\ num,\ \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ base,\ \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ limit,\ \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ access,\ \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ gran);}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00086}00086\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00087}00087\ \textcolor{comment}{============}}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00088}00088\ \textcolor{comment}{-\/-\/\ OTHERS\ -\/-\/}}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00089}00089\ \textcolor{comment}{============}}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00090}00090\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00091}00091\ \textcolor{keyword}{extern}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_idt_ptr}{IdtPtr}}\ \mbox{\hyperlink{idtirq_8h_a8a950b7284d7f2582cc4356eb67334ce}{idt\_ptrn}};}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00092}\mbox{\hyperlink{idtirq_8h_a2a59a505aa55f15c152f30f811fbd310}{00092}}\ \textcolor{preprocessor}{\#define\ IDT\_ENTRIES\ 256}}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00093}00093\ \textcolor{keyword}{extern}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_idt_entry}{IdtEntry}}\ \mbox{\hyperlink{idt_8c_a36cdbd0f8a3dc9a90160b2039db7ffb0}{idt}}[\mbox{\hyperlink{idtirq_8h_a2a59a505aa55f15c152f30f811fbd310}{IDT\_ENTRIES}}];}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00094}00094\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{idtirq_8h_ae909df77f28489ccfa376a7b89c25b25}{MsSleep}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ milliseconds);}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00095}00095\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{idtirq_8h_afead828821eca13b3f89e621010367c2}{PitInit}}(\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ freq);}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00097}00097\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/\ HANDLERS\ -\/-\/-\/-\/-\/\ //}}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00099}00099\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{idtirq_8h_af7e8d856a8a363049d76852fad30afab}{Irq0HandlerC}}(\textcolor{keywordtype}{void});\ \ \ \ \ \ \ \textcolor{comment}{//\ C\ handler\ called\ from\ asm\ IRQ0\ stub}}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00100}\mbox{\hyperlink{idtirq_8h_acf36338205273bd62f1ad2119cf51e04}{00100}}\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{idtirq_8h_acf36338205273bd62f1ad2119cf51e04}{Irq0Handler}}(\textcolor{keywordtype}{void});\ \textcolor{comment}{//\ Assembly\ IRQ0\ stub\ (global\ in\ asm)}}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00101}\mbox{\hyperlink{idtirq_8h_a8895548da393631c30c2a31b2cdcab84}{00101}}\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{idtirq_8h_a8895548da393631c30c2a31b2cdcab84}{GoodHandler}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00102}\mbox{\hyperlink{idtirq_8h_af74f3e6073767539ca97270776fc7291}{00102}}\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{idtirq_8h_af74f3e6073767539ca97270776fc7291}{Irq1Handler}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00103}00103\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{idtirq_8h_ad44e84f7c89e4ca9de4106f02453b2b9}{VirtnetIrqHandler}}();}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00104}\mbox{\hyperlink{idtirq_8h_a741ac1273347b066512660b46102ff9c}{00104}}\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{idtirq_8h_a741ac1273347b066512660b46102ff9c}{VirtnetHandler}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00105}00105\ }
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00106}00106\ \textcolor{comment}{//\ MACROS}}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00107}\mbox{\hyperlink{idtirq_8h_aaad9208d1f30cc40267fdeb44f593a35}{00107}}\ \textcolor{preprocessor}{\#define\ PIT\_FREQ\ 119}}
+\DoxyCodeLine{\Hypertarget{idtirq_8h_source_l00108}\mbox{\hyperlink{idtirq_8h_a752a45c7e0bffa22a9761b00da4bc929}{00108}}\ \textcolor{preprocessor}{\#define\ SendEOI\ Outb(0x20,\ 0x20)}}
+
+\end{DoxyCode}

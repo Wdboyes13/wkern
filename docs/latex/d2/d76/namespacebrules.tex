@@ -1,0 +1,118 @@
+\doxysection{brules Namespace Reference}
+\hypertarget{namespacebrules}{}\label{namespacebrules}\index{brules@{brules}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacebrules_ae6ebfc55a4e411b372954100af152beb}{compileasm}} ()
+\begin{DoxyCompactList}\small\item\em Compiles all NASM assembly files in {\ttfamily NASMSRCS}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacebrules_affe03ad5668966352d13cbf468bb7541}{compile\+\_\+file}} (file)
+\begin{DoxyCompactList}\small\item\em Compile a single C file if out of date. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacebrules_a1720011e61edb2a9ae886b33cd327e05}{compilec}} ()
+\begin{DoxyCompactList}\small\item\em Compiles all C sources in parallel from {\ttfamily SRCS}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacebrules_ac16352890f8352431e7ae6e3d74d5784}{partial\+\_\+link}} ()
+\begin{DoxyCompactList}\small\item\em Performs partial linking on modules from {\ttfamily MODULES}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacebrules_a9c1373e78cf82ed911a3a0893a53e045}{link}} ()
+\begin{DoxyCompactList}\small\item\em Links the final kernel ELF binary from object files. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacebrules_afad7dbdba4ec9134f6b8fe475f9d6eda}{iso}} ()
+\begin{DoxyCompactList}\small\item\em Generates a bootable ISO using GRUB and kernel ELF. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{namespacebrules_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacebrules_affe03ad5668966352d13cbf468bb7541}\index{brules@{brules}!compile\_file@{compile\_file}}
+\index{compile\_file@{compile\_file}!brules@{brules}}
+\doxysubsubsection{\texorpdfstring{compile\_file()}{compile\_file()}}
+{\footnotesize\ttfamily \label{namespacebrules_affe03ad5668966352d13cbf468bb7541} 
+brules.\+compile\+\_\+file (\begin{DoxyParamCaption}\item[{}]{file}{}\end{DoxyParamCaption})}
+
+
+
+Compile a single C file if out of date. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & The {\ttfamily .c} file path to compile \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Compilation result message 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{brules_8py_source_l00053}{53}} of file \mbox{\hyperlink{brules_8py_source}{brules.\+py}}.
+
+\Hypertarget{namespacebrules_ae6ebfc55a4e411b372954100af152beb}\index{brules@{brules}!compileasm@{compileasm}}
+\index{compileasm@{compileasm}!brules@{brules}}
+\doxysubsubsection{\texorpdfstring{compileasm()}{compileasm()}}
+{\footnotesize\ttfamily \label{namespacebrules_ae6ebfc55a4e411b372954100af152beb} 
+brules.\+compileasm (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Compiles all NASM assembly files in {\ttfamily NASMSRCS}. 
+
+Skips files that are up to date (i.\+e. object file newer than source). Assembles using {\ttfamily AS} and {\ttfamily ASFLAGS}.
+
+On error, exits the script with a non-\/zero status. 
+
+Definition at line \mbox{\hyperlink{brules_8py_source_l00030}{30}} of file \mbox{\hyperlink{brules_8py_source}{brules.\+py}}.
+
+\Hypertarget{namespacebrules_a1720011e61edb2a9ae886b33cd327e05}\index{brules@{brules}!compilec@{compilec}}
+\index{compilec@{compilec}!brules@{brules}}
+\doxysubsubsection{\texorpdfstring{compilec()}{compilec()}}
+{\footnotesize\ttfamily \label{namespacebrules_a1720011e61edb2a9ae886b33cd327e05} 
+brules.\+compilec (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Compiles all C sources in parallel from {\ttfamily SRCS}. 
+
+Uses a thread pool to speed up compilation across multiple cores. Exits on the first compilation error. 
+
+Definition at line \mbox{\hyperlink{brules_8py_source_l00073}{73}} of file \mbox{\hyperlink{brules_8py_source}{brules.\+py}}.
+
+\Hypertarget{namespacebrules_afad7dbdba4ec9134f6b8fe475f9d6eda}\index{brules@{brules}!iso@{iso}}
+\index{iso@{iso}!brules@{brules}}
+\doxysubsubsection{\texorpdfstring{iso()}{iso()}}
+{\footnotesize\ttfamily \label{namespacebrules_afad7dbdba4ec9134f6b8fe475f9d6eda} 
+brules.\+iso (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Generates a bootable ISO using GRUB and kernel ELF. 
+
+Only updates the ISO if the kernel is newer than the ISO file. Copies kernel and GRUB config to target locations and invokes {\ttfamily grub-\/mkrescue}. 
+
+Definition at line \mbox{\hyperlink{brules_8py_source_l00143}{143}} of file \mbox{\hyperlink{brules_8py_source}{brules.\+py}}.
+
+\Hypertarget{namespacebrules_a9c1373e78cf82ed911a3a0893a53e045}\index{brules@{brules}!link@{link}}
+\index{link@{link}!brules@{brules}}
+\doxysubsubsection{\texorpdfstring{link()}{link()}}
+{\footnotesize\ttfamily \label{namespacebrules_a9c1373e78cf82ed911a3a0893a53e045} 
+brules.\+link (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Links the final kernel ELF binary from object files. 
+
+Only performs linking if the output file is older than the inputs. On failure, exits with an error. 
+
+Definition at line \mbox{\hyperlink{brules_8py_source_l00121}{121}} of file \mbox{\hyperlink{brules_8py_source}{brules.\+py}}.
+
+\Hypertarget{namespacebrules_ac16352890f8352431e7ae6e3d74d5784}\index{brules@{brules}!partial\_link@{partial\_link}}
+\index{partial\_link@{partial\_link}!brules@{brules}}
+\doxysubsubsection{\texorpdfstring{partial\_link()}{partial\_link()}}
+{\footnotesize\ttfamily \label{namespacebrules_ac16352890f8352431e7ae6e3d74d5784} 
+brules.\+partial\+\_\+link (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Performs partial linking on modules from {\ttfamily MODULES}. 
+
+Links grouped {\ttfamily .o} files into monolithic {\ttfamily .o} modules in {\ttfamily objs/modules/}. Skips linking if the output is newer than all inputs.
+
+On failure, exits the script. 
+
+Definition at line \mbox{\hyperlink{brules_8py_source_l00095}{95}} of file \mbox{\hyperlink{brules_8py_source}{brules.\+py}}.
+

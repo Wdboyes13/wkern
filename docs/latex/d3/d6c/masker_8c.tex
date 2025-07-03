@@ -1,0 +1,82 @@
+\doxysection{src/idt/masker.c File Reference}
+\hypertarget{masker_8c}{}\label{masker_8c}\index{src/idt/masker.c@{src/idt/masker.c}}
+{\ttfamily \#include $<$idt/idtirq.\+h$>$}\newline
+{\ttfamily \#include $<$io/kio.\+h$>$}\newline
+{\ttfamily \#include $<$types/nums.\+h$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{masker_8c_af27e966ec947ca1172f30ae301c5f24b}{PIC1\+\_\+\+DATA}}~0x21
+\item 
+\#define \mbox{\hyperlink{masker_8c_ab6d3b9f6f427357310896adf176145f1}{PIC2\+\_\+\+DATA}}~0x\+A1
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{masker_8c_afff6913ea38ded1a054003f46bb86ad3}{Mask\+All\+Irqs}} (void)
+\begin{DoxyCompactList}\small\item\em Mask all IRQs. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{masker_8c_ae24aa8904e3388dccde357778b5e7e53}{Unmask\+Irq}} (\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} irq)
+\begin{DoxyCompactList}\small\item\em Unmask an IRQ. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\Hypertarget{masker_8c_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{masker_8c_af27e966ec947ca1172f30ae301c5f24b}\index{masker.c@{masker.c}!PIC1\_DATA@{PIC1\_DATA}}
+\index{PIC1\_DATA@{PIC1\_DATA}!masker.c@{masker.c}}
+\doxysubsubsection{\texorpdfstring{PIC1\_DATA}{PIC1\_DATA}}
+{\footnotesize\ttfamily \label{masker_8c_af27e966ec947ca1172f30ae301c5f24b} 
+\#define PIC1\+\_\+\+DATA~0x21}
+
+
+
+Definition at line \mbox{\hyperlink{masker_8c_source_l00022}{22}} of file \mbox{\hyperlink{masker_8c_source}{masker.\+c}}.
+
+\Hypertarget{masker_8c_ab6d3b9f6f427357310896adf176145f1}\index{masker.c@{masker.c}!PIC2\_DATA@{PIC2\_DATA}}
+\index{PIC2\_DATA@{PIC2\_DATA}!masker.c@{masker.c}}
+\doxysubsubsection{\texorpdfstring{PIC2\_DATA}{PIC2\_DATA}}
+{\footnotesize\ttfamily \label{masker_8c_ab6d3b9f6f427357310896adf176145f1} 
+\#define PIC2\+\_\+\+DATA~0x\+A1}
+
+
+
+Definition at line \mbox{\hyperlink{masker_8c_source_l00023}{23}} of file \mbox{\hyperlink{masker_8c_source}{masker.\+c}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{masker_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{masker_8c_afff6913ea38ded1a054003f46bb86ad3}\index{masker.c@{masker.c}!MaskAllIrqs@{MaskAllIrqs}}
+\index{MaskAllIrqs@{MaskAllIrqs}!masker.c@{masker.c}}
+\doxysubsubsection{\texorpdfstring{MaskAllIrqs()}{MaskAllIrqs()}}
+{\footnotesize\ttfamily \label{masker_8c_afff6913ea38ded1a054003f46bb86ad3} 
+void Mask\+All\+Irqs (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Mask all IRQs. 
+
+
+
+Definition at line \mbox{\hyperlink{masker_8c_source_l00026}{26}} of file \mbox{\hyperlink{masker_8c_source}{masker.\+c}}.
+
+\Hypertarget{masker_8c_ae24aa8904e3388dccde357778b5e7e53}\index{masker.c@{masker.c}!UnmaskIrq@{UnmaskIrq}}
+\index{UnmaskIrq@{UnmaskIrq}!masker.c@{masker.c}}
+\doxysubsubsection{\texorpdfstring{UnmaskIrq()}{UnmaskIrq()}}
+{\footnotesize\ttfamily \label{masker_8c_ae24aa8904e3388dccde357778b5e7e53} 
+void Unmask\+Irq (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}}]{irq}{}\end{DoxyParamCaption})}
+
+
+
+Unmask an IRQ. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em irq} & -\/ IRQ NUmber to Unmask \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{masker_8c_source_l00034}{34}} of file \mbox{\hyperlink{masker_8c_source}{masker.\+c}}.
+

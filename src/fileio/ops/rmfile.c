@@ -21,6 +21,20 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include <mem/kmem.h>
 #include <types/nums.h>
 
+/**
+ * @brief Remove a file from the FAT16 filesystem.
+ *
+ * This function searches the FAT16 root directory for a file matching the
+ * specified filename and extension. If found, it marks the directory entry
+ * as deleted and frees all associated FAT clusters by clearing their entries
+ * in the FAT table.
+ *
+ * @param filename The 8-character filename (without extension).
+ * @param ext The 3-character file extension.
+ *
+ * @note The function assumes the FAT16 filesystem structure is accessible
+ *       through the global `fat16` variable.
+ */
 void Fat16RemoveFile(const char *filename, const char *ext) {
     u32 entries_per_sector = fat16.bytes_per_sector / 32;
     u32 root_dir_sectors =

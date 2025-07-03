@@ -1,0 +1,152 @@
+\doxysection{src/pci/pci.h File Reference}
+\hypertarget{pci_8h}{}\label{pci_8h}\index{src/pci/pci.h@{src/pci/pci.h}}
+{\ttfamily \#include $<$types/nums.\+h$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{pci_8h_a8116525040b6cde4a11b3aaaf5e40ec7}{PCI\+\_\+\+INTERRUPT\+\_\+\+LINE}}~0x3C
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} \mbox{\hyperlink{pci_8h_a883c8b3048c3f301827e97c80b28d3a8}{Find\+Virtionet\+Dev}} ()
+\begin{DoxyCompactList}\small\item\em Search for Virt\+Net Device. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} \mbox{\hyperlink{pci_8h_abe1adaa5db5e07c01ec1f3f1f9eae94c}{Pci\+Config\+Read}} (\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} bus, \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} slot, \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} func, \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} offset)
+\begin{DoxyCompactList}\small\item\em Reads a 32-\/bit value from PCI configuration space. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} \mbox{\hyperlink{pci_8h_a717e3980f4282bd63092f48cae7e5eb5}{bar0}}
+\item 
+\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} \mbox{\hyperlink{pci_8h_a57db71c6ae5abbd1f05ce9d01ed08337}{virtio\+\_\+bus}}
+\item 
+\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} \mbox{\hyperlink{pci_8h_a5709937fc03efadd8a08088e85f7f04b}{virtio\+\_\+slot}}
+\item 
+\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} \mbox{\hyperlink{pci_8h_ab0352d3fdab78f951342adc725531590}{virtio\+\_\+func}}
+\item 
+\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} \mbox{\hyperlink{pci_8h_a7f702d2180b8ca0f75c47b7426c29077}{virtio\+\_\+irq}}
+\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\Hypertarget{pci_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{pci_8h_a8116525040b6cde4a11b3aaaf5e40ec7}\index{pci.h@{pci.h}!PCI\_INTERRUPT\_LINE@{PCI\_INTERRUPT\_LINE}}
+\index{PCI\_INTERRUPT\_LINE@{PCI\_INTERRUPT\_LINE}!pci.h@{pci.h}}
+\doxysubsubsection{\texorpdfstring{PCI\_INTERRUPT\_LINE}{PCI\_INTERRUPT\_LINE}}
+{\footnotesize\ttfamily \label{pci_8h_a8116525040b6cde4a11b3aaaf5e40ec7} 
+\#define PCI\+\_\+\+INTERRUPT\+\_\+\+LINE~0x3C}
+
+
+
+Definition at line \mbox{\hyperlink{pci_8h_source_l00022}{22}} of file \mbox{\hyperlink{pci_8h_source}{pci.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{pci_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{pci_8h_a883c8b3048c3f301827e97c80b28d3a8}\index{pci.h@{pci.h}!FindVirtionetDev@{FindVirtionetDev}}
+\index{FindVirtionetDev@{FindVirtionetDev}!pci.h@{pci.h}}
+\doxysubsubsection{\texorpdfstring{FindVirtionetDev()}{FindVirtionetDev()}}
+{\footnotesize\ttfamily \label{pci_8h_a883c8b3048c3f301827e97c80b28d3a8} 
+\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} Find\+Virtionet\+Dev (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Search for Virt\+Net Device. 
+
+\begin{DoxyReturn}{Returns}
+NULL 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{scconfig_8c_source_l00058}{58}} of file \mbox{\hyperlink{scconfig_8c_source}{scconfig.\+c}}.
+
+\Hypertarget{pci_8h_abe1adaa5db5e07c01ec1f3f1f9eae94c}\index{pci.h@{pci.h}!PciConfigRead@{PciConfigRead}}
+\index{PciConfigRead@{PciConfigRead}!pci.h@{pci.h}}
+\doxysubsubsection{\texorpdfstring{PciConfigRead()}{PciConfigRead()}}
+{\footnotesize\ttfamily \label{pci_8h_abe1adaa5db5e07c01ec1f3f1f9eae94c} 
+\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} Pci\+Config\+Read (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}}]{bus}{, }\item[{\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}}]{slot}{, }\item[{\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}}]{func}{, }\item[{\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}}]{offset}{}\end{DoxyParamCaption})}
+
+
+
+Reads a 32-\/bit value from PCI configuration space. 
+
+This function constructs a configuration address based on the given PCI bus, slot (device), function, and offset, and reads the corresponding 32-\/bit value from the PCI configuration space using I/O ports.
+
+The offset must be aligned to a 4-\/byte boundary (i.\+e., bits 1 and 0 are masked out).
+
+
+\begin{DoxyParams}{Parameters}
+{\em bus} & PCI bus number (0–255). \\
+\hline
+{\em slot} & PCI device number (0–31). \\
+\hline
+{\em func} & PCI function number (0–7). \\
+\hline
+{\em offset} & Offset into the configuration space (must be 4-\/byte aligned). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+32-\/bit value read from the PCI configuration register. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{scconfig_8c_source_l00047}{47}} of file \mbox{\hyperlink{scconfig_8c_source}{scconfig.\+c}}.
+
+
+
+\label{doc-var-members}
+\Hypertarget{pci_8h_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{pci_8h_a717e3980f4282bd63092f48cae7e5eb5}\index{pci.h@{pci.h}!bar0@{bar0}}
+\index{bar0@{bar0}!pci.h@{pci.h}}
+\doxysubsubsection{\texorpdfstring{bar0}{bar0}}
+{\footnotesize\ttfamily \label{pci_8h_a717e3980f4282bd63092f48cae7e5eb5} 
+\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} bar0\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{scconfig_8c_source_l00030}{30}} of file \mbox{\hyperlink{scconfig_8c_source}{scconfig.\+c}}.
+
+\Hypertarget{pci_8h_a57db71c6ae5abbd1f05ce9d01ed08337}\index{pci.h@{pci.h}!virtio\_bus@{virtio\_bus}}
+\index{virtio\_bus@{virtio\_bus}!pci.h@{pci.h}}
+\doxysubsubsection{\texorpdfstring{virtio\_bus}{virtio\_bus}}
+{\footnotesize\ttfamily \label{pci_8h_a57db71c6ae5abbd1f05ce9d01ed08337} 
+\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} virtio\+\_\+bus\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{scconfig_8c_source_l00026}{26}} of file \mbox{\hyperlink{scconfig_8c_source}{scconfig.\+c}}.
+
+\Hypertarget{pci_8h_ab0352d3fdab78f951342adc725531590}\index{pci.h@{pci.h}!virtio\_func@{virtio\_func}}
+\index{virtio\_func@{virtio\_func}!pci.h@{pci.h}}
+\doxysubsubsection{\texorpdfstring{virtio\_func}{virtio\_func}}
+{\footnotesize\ttfamily \label{pci_8h_ab0352d3fdab78f951342adc725531590} 
+\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} virtio\+\_\+func\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{scconfig_8c_source_l00028}{28}} of file \mbox{\hyperlink{scconfig_8c_source}{scconfig.\+c}}.
+
+\Hypertarget{pci_8h_a7f702d2180b8ca0f75c47b7426c29077}\index{pci.h@{pci.h}!virtio\_irq@{virtio\_irq}}
+\index{virtio\_irq@{virtio\_irq}!pci.h@{pci.h}}
+\doxysubsubsection{\texorpdfstring{virtio\_irq}{virtio\_irq}}
+{\footnotesize\ttfamily \label{pci_8h_a7f702d2180b8ca0f75c47b7426c29077} 
+\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} virtio\+\_\+irq\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{scconfig_8c_source_l00025}{25}} of file \mbox{\hyperlink{scconfig_8c_source}{scconfig.\+c}}.
+
+\Hypertarget{pci_8h_a5709937fc03efadd8a08088e85f7f04b}\index{pci.h@{pci.h}!virtio\_slot@{virtio\_slot}}
+\index{virtio\_slot@{virtio\_slot}!pci.h@{pci.h}}
+\doxysubsubsection{\texorpdfstring{virtio\_slot}{virtio\_slot}}
+{\footnotesize\ttfamily \label{pci_8h_a5709937fc03efadd8a08088e85f7f04b} 
+\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} virtio\+\_\+slot\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{scconfig_8c_source_l00027}{27}} of file \mbox{\hyperlink{scconfig_8c_source}{scconfig.\+c}}.
+

@@ -1,0 +1,38 @@
+\doxysection{nums.\+h}
+\hypertarget{nums_8h_source}{}\label{nums_8h_source}\index{src/types/nums.h@{src/types/nums.h}}
+\mbox{\hyperlink{nums_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{nums_8h_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{nums_8h_source_l00002}00002\ \textcolor{comment}{WKern\ -\/\ A\ Bare\ Metal\ OS\ /\ Kernel\ I\ am\ making\ (For\ Fun)}}
+\DoxyCodeLine{\Hypertarget{nums_8h_source_l00003}00003\ \textcolor{comment}{Copyright\ (C)\ 2025\ \ Wdboyes13}}
+\DoxyCodeLine{\Hypertarget{nums_8h_source_l00004}00004\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{nums_8h_source_l00005}00005\ \textcolor{comment}{This\ program\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{nums_8h_source_l00006}00006\ \textcolor{comment}{it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{nums_8h_source_l00007}00007\ \textcolor{comment}{the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{nums_8h_source_l00008}00008\ \textcolor{comment}{any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{nums_8h_source_l00009}00009\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{nums_8h_source_l00010}00010\ \textcolor{comment}{This\ program\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{nums_8h_source_l00011}00011\ \textcolor{comment}{but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{nums_8h_source_l00012}00012\ \textcolor{comment}{MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{nums_8h_source_l00013}00013\ \textcolor{comment}{GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{nums_8h_source_l00014}00014\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{nums_8h_source_l00015}00015\ \textcolor{comment}{You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{nums_8h_source_l00016}00016\ \textcolor{comment}{along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{nums_8h_source_l00017}00017\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{nums_8h_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{nums_8h_source_l00019}00019\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{nums_8h_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{nums_8h_source_l00021}00021\ \textcolor{comment}{//\ Old\ Definitions\ (Kept\ for\ clarity)}}
+\DoxyCodeLine{\Hypertarget{nums_8h_source_l00022}\mbox{\hyperlink{nums_8h_a757fa49d31026206eebfd0e8de0288fb}{00022}}\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{nums_8h_a757fa49d31026206eebfd0e8de0288fb}{kuint8\_t}};}
+\DoxyCodeLine{\Hypertarget{nums_8h_source_l00023}\mbox{\hyperlink{nums_8h_a96c9313a5879c9fd4659d29fcdfb60d9}{00023}}\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ \mbox{\hyperlink{nums_8h_a96c9313a5879c9fd4659d29fcdfb60d9}{kuint16\_t}};}
+\DoxyCodeLine{\Hypertarget{nums_8h_source_l00024}\mbox{\hyperlink{nums_8h_a6ee7e074253c79c7af15aefdc571dda5}{00024}}\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{nums_8h_a6ee7e074253c79c7af15aefdc571dda5}{kuint32\_t}};}
+\DoxyCodeLine{\Hypertarget{nums_8h_source_l00025}\mbox{\hyperlink{nums_8h_aefe2a65bfab91ea8c77e4be45e8b3465}{00025}}\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{nums_8h_aefe2a65bfab91ea8c77e4be45e8b3465}{kuintptr\_t}};}
+\DoxyCodeLine{\Hypertarget{nums_8h_source_l00026}\mbox{\hyperlink{nums_8h_a7c94ea6f8948649f8d181ae55911eeaf}{00026}}\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{nums_8h_a7c94ea6f8948649f8d181ae55911eeaf}{size\_t}};}
+\DoxyCodeLine{\Hypertarget{nums_8h_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{nums_8h_source_l00028}00028\ \textcolor{comment}{//\ New\ definitions,\ shorter}}
+\DoxyCodeLine{\Hypertarget{nums_8h_source_l00030}\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{00030}}\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}};}
+\DoxyCodeLine{\Hypertarget{nums_8h_source_l00032}\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{00032}}\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}};}
+\DoxyCodeLine{\Hypertarget{nums_8h_source_l00034}\mbox{\hyperlink{nums_8h_acd24f51b7ace8f85b1b20c947ba1c904}{00034}}\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{nums_8h_acd24f51b7ace8f85b1b20c947ba1c904}{uptr}};}
+\DoxyCodeLine{\Hypertarget{nums_8h_source_l00036}\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{00036}}\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ \mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}};}
+
+\end{DoxyCode}

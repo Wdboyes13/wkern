@@ -1,0 +1,57 @@
+\doxysection{src/idt/handlers/irq0.c File Reference}
+\hypertarget{irq0_8c}{}\label{irq0_8c}\index{src/idt/handlers/irq0.c@{src/idt/handlers/irq0.c}}
+{\ttfamily \#include $<$idt/idtirq.\+h$>$}\newline
+{\ttfamily \#include $<$io/kio.\+h$>$}\newline
+{\ttfamily \#include $<$types/nums.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{irq0_8c_ad7320093f50cc1874b7917f9f59731a3}{Irq0\+HandlerC}} ()
+\item 
+void \mbox{\hyperlink{irq0_8c_ae909df77f28489ccfa376a7b89c25b25}{Ms\+Sleep}} (unsigned int milliseconds)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+volatile \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} \mbox{\hyperlink{irq0_8c_aed075e5a610e156e4f10b74a48b94858}{tic\+K\+\_\+count}} = 0
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{irq0_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{irq0_8c_ad7320093f50cc1874b7917f9f59731a3}\index{irq0.c@{irq0.c}!Irq0HandlerC@{Irq0HandlerC}}
+\index{Irq0HandlerC@{Irq0HandlerC}!irq0.c@{irq0.c}}
+\doxysubsubsection{\texorpdfstring{Irq0HandlerC()}{Irq0HandlerC()}}
+{\footnotesize\ttfamily \label{irq0_8c_ad7320093f50cc1874b7917f9f59731a3} 
+void Irq0\+HandlerC (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{irq0_8c_source_l00024}{24}} of file \mbox{\hyperlink{irq0_8c_source}{irq0.\+c}}.
+
+\Hypertarget{irq0_8c_ae909df77f28489ccfa376a7b89c25b25}\index{irq0.c@{irq0.c}!MsSleep@{MsSleep}}
+\index{MsSleep@{MsSleep}!irq0.c@{irq0.c}}
+\doxysubsubsection{\texorpdfstring{MsSleep()}{MsSleep()}}
+{\footnotesize\ttfamily \label{irq0_8c_ae909df77f28489ccfa376a7b89c25b25} 
+void Ms\+Sleep (\begin{DoxyParamCaption}\item[{unsigned int}]{milliseconds}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{irq0_8c_source_l00029}{29}} of file \mbox{\hyperlink{irq0_8c_source}{irq0.\+c}}.
+
+
+
+\label{doc-var-members}
+\Hypertarget{irq0_8c_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{irq0_8c_aed075e5a610e156e4f10b74a48b94858}\index{irq0.c@{irq0.c}!ticK\_count@{ticK\_count}}
+\index{ticK\_count@{ticK\_count}!irq0.c@{irq0.c}}
+\doxysubsubsection{\texorpdfstring{ticK\_count}{ticK\_count}}
+{\footnotesize\ttfamily \label{irq0_8c_aed075e5a610e156e4f10b74a48b94858} 
+volatile \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} tic\+K\+\_\+count = 0}
+
+
+
+Definition at line \mbox{\hyperlink{irq0_8c_source_l00022}{22}} of file \mbox{\hyperlink{irq0_8c_source}{irq0.\+c}}.
+

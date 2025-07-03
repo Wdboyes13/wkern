@@ -1,0 +1,40 @@
+\doxysection{stdwex.\+h}
+\hypertarget{stdwex_8h_source}{}\label{stdwex_8h_source}\index{src/wex/stdwex.h@{src/wex/stdwex.h}}
+\mbox{\hyperlink{stdwex_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{stdwex_8h_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{stdwex_8h_source_l00002}00002\ \textcolor{comment}{WKern\ -\/\ A\ Bare\ Metal\ OS\ /\ Kernel\ I\ am\ making\ (For\ Fun)}}
+\DoxyCodeLine{\Hypertarget{stdwex_8h_source_l00003}00003\ \textcolor{comment}{Copyright\ (C)\ 2025\ \ Wdboyes13}}
+\DoxyCodeLine{\Hypertarget{stdwex_8h_source_l00004}00004\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{stdwex_8h_source_l00005}00005\ \textcolor{comment}{This\ program\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{stdwex_8h_source_l00006}00006\ \textcolor{comment}{it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{stdwex_8h_source_l00007}00007\ \textcolor{comment}{the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{stdwex_8h_source_l00008}00008\ \textcolor{comment}{any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{stdwex_8h_source_l00009}00009\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{stdwex_8h_source_l00010}00010\ \textcolor{comment}{This\ program\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{stdwex_8h_source_l00011}00011\ \textcolor{comment}{but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{stdwex_8h_source_l00012}00012\ \textcolor{comment}{MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{stdwex_8h_source_l00013}00013\ \textcolor{comment}{GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{stdwex_8h_source_l00014}00014\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{stdwex_8h_source_l00015}00015\ \textcolor{comment}{You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{stdwex_8h_source_l00016}00016\ \textcolor{comment}{along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{stdwex_8h_source_l00017}00017\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{stdwex_8h_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{stdwex_8h_source_l00019}00019\ \textcolor{preprocessor}{\#pragma\ once}\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{stdwex_8h_source_l00028}00028\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ smt[]\ =\ \{}
+\DoxyCodeLine{\Hypertarget{stdwex_8h_source_l00029}00029\ \ \ \ \ 0x0A,\ \textcolor{comment}{//\ Write}}
+\DoxyCodeLine{\Hypertarget{stdwex_8h_source_l00030}00030\ \ \ \ \ 0x0B,\ \textcolor{comment}{//\ Read}}
+\DoxyCodeLine{\Hypertarget{stdwex_8h_source_l00031}00031\ \ \ \ \ 0x0C,\ \textcolor{comment}{//\ Shutdown\ system}}
+\DoxyCodeLine{\Hypertarget{stdwex_8h_source_l00032}00032\ \ \ \ \ 0x0D,\ \textcolor{comment}{//\ Sleep\ 1}}
+\DoxyCodeLine{\Hypertarget{stdwex_8h_source_l00033}00033\ \ \ \ \ 0x01\ \ \textcolor{comment}{//\ Clear\ Screen}}
+\DoxyCodeLine{\Hypertarget{stdwex_8h_source_l00034}00034\ \};}
+\DoxyCodeLine{\Hypertarget{stdwex_8h_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{stdwex_8h_source_l00036}00036\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{stdwex_8h_af3fc9610c4455b3f2f675e055c98066e}{Execr}}();}
+\DoxyCodeLine{\Hypertarget{stdwex_8h_source_l00037}00037\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{stdwex_8h_a3b9a19febd250f2acf9d382f635b8fc2}{Runwex}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *wexexecu);}
+\DoxyCodeLine{\Hypertarget{stdwex_8h_source_l00038}\mbox{\hyperlink{stdwex_8h_a96ea75b9aa1b631cbd665128a1d27cd7}{00038}}\ \textcolor{keywordtype}{int}\ *\mbox{\hyperlink{stdwex_8h_a96ea75b9aa1b631cbd665128a1d27cd7}{ReadVals}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *exec);}
+\DoxyCodeLine{\Hypertarget{stdwex_8h_source_l00039}\mbox{\hyperlink{stdwex_8h_af0a81ddb45c404e998bac2f7bb7729e3}{00039}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{stdwex_8h_af0a81ddb45c404e998bac2f7bb7729e3}{Chkwex}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *smt,\ \textcolor{keywordtype}{int}\ smt\_len,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *st,}
+\DoxyCodeLine{\Hypertarget{stdwex_8h_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ st\_len);}
+\DoxyCodeLine{\Hypertarget{stdwex_8h_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{stdwex_8h_source_l00042}00042\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{stdwex_8h_a184a248ba7a02430f4ee68bfbc5cd48a}{Exec}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *exec);}
+
+\end{DoxyCode}

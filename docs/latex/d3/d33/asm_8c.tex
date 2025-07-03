@@ -1,0 +1,185 @@
+\doxysection{src/io/asm.c File Reference}
+\hypertarget{asm_8c}{}\label{asm_8c}\index{src/io/asm.c@{src/io/asm.c}}
+{\ttfamily \#include $<$io/kio.\+h$>$}\newline
+{\ttfamily \#include $<$types/nums.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{asm_8c_a05cb092cfc45a43dd91cff50d681af1a}{Outb}} (\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}} port, \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} val)
+\begin{DoxyCompactList}\small\item\em Write a byte to the specified I/O port. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} \mbox{\hyperlink{asm_8c_a6ab29a59b425f205c9da3550dcc76605}{Inb}} (\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}} port)
+\begin{DoxyCompactList}\small\item\em Read a byte from the specified I/O port. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{asm_8c_a1248185712c4933aa9216a5d2cdc5736}{Outw}} (\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}} port, \mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}} val)
+\begin{DoxyCompactList}\small\item\em Write a 16-\/bit word to the specified I/O port. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}} \mbox{\hyperlink{asm_8c_a6b6b4e5a56d03f0833e7cc9bb922bf52}{Inw}} (\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}} port)
+\begin{DoxyCompactList}\small\item\em Read a 16-\/bit word from the specified I/O port. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{asm_8c_ac44a237fa7c9a407408a37f35e0c1e5a}{Outl}} (\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}} port, \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} val)
+\begin{DoxyCompactList}\small\item\em Write a 32-\/bit value to the specified I/O port. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} \mbox{\hyperlink{asm_8c_a4701486394643faf28232bc4aa510bd3}{Inl}} (\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}} port)
+\begin{DoxyCompactList}\small\item\em Read a 32-\/bit value from the specified I/O port. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{asm_8c_af3dc28e772ca97ae14e85743ee082fe0}{Cli}} ()
+\begin{DoxyCompactList}\small\item\em Disable CPU interrupts (clear interrupt flag). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{asm_8c_ab26ee10caca0d97da59e9439433660cc}{Sti}} ()
+\begin{DoxyCompactList}\small\item\em Enable CPU interrupts (set interrupt flag). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{asm_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{asm_8c_af3dc28e772ca97ae14e85743ee082fe0}\index{asm.c@{asm.c}!Cli@{Cli}}
+\index{Cli@{Cli}!asm.c@{asm.c}}
+\doxysubsubsection{\texorpdfstring{Cli()}{Cli()}}
+{\footnotesize\ttfamily \label{asm_8c_af3dc28e772ca97ae14e85743ee082fe0} 
+void Cli (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Disable CPU interrupts (clear interrupt flag). 
+
+This is often used before critical sections to prevent preemption by interrupt handlers. 
+
+Definition at line \mbox{\hyperlink{asm_8c_source_l00098}{98}} of file \mbox{\hyperlink{asm_8c_source}{asm.\+c}}.
+
+\Hypertarget{asm_8c_a6ab29a59b425f205c9da3550dcc76605}\index{asm.c@{asm.c}!Inb@{Inb}}
+\index{Inb@{Inb}!asm.c@{asm.c}}
+\doxysubsubsection{\texorpdfstring{Inb()}{Inb()}}
+{\footnotesize\ttfamily \label{asm_8c_a6ab29a59b425f205c9da3550dcc76605} 
+\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} Inb (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}}]{port}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Read a byte from the specified I/O port. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & I/O port to read from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Byte value read 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{asm_8c_source_l00042}{42}} of file \mbox{\hyperlink{asm_8c_source}{asm.\+c}}.
+
+\Hypertarget{asm_8c_a4701486394643faf28232bc4aa510bd3}\index{asm.c@{asm.c}!Inl@{Inl}}
+\index{Inl@{Inl}!asm.c@{asm.c}}
+\doxysubsubsection{\texorpdfstring{Inl()}{Inl()}}
+{\footnotesize\ttfamily \label{asm_8c_a4701486394643faf28232bc4aa510bd3} 
+\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} Inl (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}}]{port}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Read a 32-\/bit value from the specified I/O port. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & I/O port to read from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+32-\/bit value read 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{asm_8c_source_l00086}{86}} of file \mbox{\hyperlink{asm_8c_source}{asm.\+c}}.
+
+\Hypertarget{asm_8c_a6b6b4e5a56d03f0833e7cc9bb922bf52}\index{asm.c@{asm.c}!Inw@{Inw}}
+\index{Inw@{Inw}!asm.c@{asm.c}}
+\doxysubsubsection{\texorpdfstring{Inw()}{Inw()}}
+{\footnotesize\ttfamily \label{asm_8c_a6b6b4e5a56d03f0833e7cc9bb922bf52} 
+\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}} Inw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}}]{port}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Read a 16-\/bit word from the specified I/O port. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & I/O port to read from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+16-\/bit value read 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{asm_8c_source_l00064}{64}} of file \mbox{\hyperlink{asm_8c_source}{asm.\+c}}.
+
+\Hypertarget{asm_8c_a05cb092cfc45a43dd91cff50d681af1a}\index{asm.c@{asm.c}!Outb@{Outb}}
+\index{Outb@{Outb}!asm.c@{asm.c}}
+\doxysubsubsection{\texorpdfstring{Outb()}{Outb()}}
+{\footnotesize\ttfamily \label{asm_8c_a05cb092cfc45a43dd91cff50d681af1a} 
+void Outb (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}}]{port}{, }\item[{\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}}]{val}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Write a byte to the specified I/O port. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & I/O port to write to \\
+\hline
+{\em val} & Byte value to write \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{asm_8c_source_l00032}{32}} of file \mbox{\hyperlink{asm_8c_source}{asm.\+c}}.
+
+\Hypertarget{asm_8c_ac44a237fa7c9a407408a37f35e0c1e5a}\index{asm.c@{asm.c}!Outl@{Outl}}
+\index{Outl@{Outl}!asm.c@{asm.c}}
+\doxysubsubsection{\texorpdfstring{Outl()}{Outl()}}
+{\footnotesize\ttfamily \label{asm_8c_ac44a237fa7c9a407408a37f35e0c1e5a} 
+void Outl (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}}]{port}{, }\item[{\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}}]{val}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Write a 32-\/bit value to the specified I/O port. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & I/O port to write to \\
+\hline
+{\em val} & 32-\/bit value to write \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{asm_8c_source_l00076}{76}} of file \mbox{\hyperlink{asm_8c_source}{asm.\+c}}.
+
+\Hypertarget{asm_8c_a1248185712c4933aa9216a5d2cdc5736}\index{asm.c@{asm.c}!Outw@{Outw}}
+\index{Outw@{Outw}!asm.c@{asm.c}}
+\doxysubsubsection{\texorpdfstring{Outw()}{Outw()}}
+{\footnotesize\ttfamily \label{asm_8c_a1248185712c4933aa9216a5d2cdc5736} 
+void Outw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}}]{port}{, }\item[{\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}}]{val}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Write a 16-\/bit word to the specified I/O port. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & I/O port to write to \\
+\hline
+{\em val} & 16-\/bit value to write \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{asm_8c_source_l00054}{54}} of file \mbox{\hyperlink{asm_8c_source}{asm.\+c}}.
+
+\Hypertarget{asm_8c_ab26ee10caca0d97da59e9439433660cc}\index{asm.c@{asm.c}!Sti@{Sti}}
+\index{Sti@{Sti}!asm.c@{asm.c}}
+\doxysubsubsection{\texorpdfstring{Sti()}{Sti()}}
+{\footnotesize\ttfamily \label{asm_8c_ab26ee10caca0d97da59e9439433660cc} 
+void Sti (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Enable CPU interrupts (set interrupt flag). 
+
+This is used after a critical section to re-\/enable interrupts. NOPs are added for minor instruction delay. 
+
+Definition at line \mbox{\hyperlink{asm_8c_source_l00108}{108}} of file \mbox{\hyperlink{asm_8c_source}{asm.\+c}}.
+

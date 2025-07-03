@@ -29,6 +29,21 @@ u8 virtio_func = 0;
 
 u32 bar0 = 0;
 
+/**
+ * @brief Reads a 32-bit value from PCI configuration space.
+ *
+ * This function constructs a configuration address based on the given
+ * PCI bus, slot (device), function, and offset, and reads the corresponding
+ * 32-bit value from the PCI configuration space using I/O ports.
+ *
+ * The offset must be aligned to a 4-byte boundary (i.e., bits 1 and 0 are masked out).
+ * 
+ * @param bus    PCI bus number (0–255).
+ * @param slot   PCI device number (0–31).
+ * @param func   PCI function number (0–7).
+ * @param offset Offset into the configuration space (must be 4-byte aligned).
+ * @return       32-bit value read from the PCI configuration register.
+ */
 u32 PciConfigRead(u8 bus, u8 slot, u8 func, u8 offset) {
     u32 addr =
         (1U << 31) | (bus << 16) | (slot << 11) | (func << 8) | (offset & 0xFC);
@@ -36,6 +51,10 @@ u32 PciConfigRead(u8 bus, u8 slot, u8 func, u8 offset) {
     return Inl(PCI_CONFIG_DATA);
 }
 
+/**
+ * @brief Search for VirtNet Device
+ * @return NULL
+ */
 u32 FindVirtionetDev() {
     for (u8 bus = 0; bus < 255; bus++) {
         for (u8 slot = 0; slot < 32; slot++) {

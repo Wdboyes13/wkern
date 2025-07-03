@@ -1,0 +1,76 @@
+\doxysection{build Namespace Reference}
+\hypertarget{namespacebuild}{}\label{namespacebuild}\index{build@{build}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacebuild_a040e3e8b77aa8911e86cfee035b5becc}{build}} ()
+\begin{DoxyCompactList}\small\item\em Main build routine. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacebuild_ab0e8c0c3ca8972d23742e55d3e1e3c0b}{clean}} ()
+\begin{DoxyCompactList}\small\item\em Remove build output files and Python caches. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacebuild_a02ddac46c157c229b19f2c0fd9ac24de}{main}} ()
+\begin{DoxyCompactList}\small\item\em CLI entrypoint for \doxylink{build_8py}{build.\+py}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{namespacebuild_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacebuild_a040e3e8b77aa8911e86cfee035b5becc}\index{build@{build}!build@{build}}
+\index{build@{build}!build@{build}}
+\doxysubsubsection{\texorpdfstring{build()}{build()}}
+{\footnotesize\ttfamily \label{namespacebuild_a040e3e8b77aa8911e86cfee035b5becc} 
+build.\+build (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Main build routine. 
+
+Calls the build pipeline in order\+:
+\begin{DoxyItemize}
+\item format output directory
+\item compile ASM
+\item compile C
+\item partial link
+\item final link
+\item generate ISO
+\item check multiboot 
+\end{DoxyItemize}
+
+Definition at line \mbox{\hyperlink{build_8py_source_l00038}{38}} of file \mbox{\hyperlink{build_8py_source}{build.\+py}}.
+
+\Hypertarget{namespacebuild_ab0e8c0c3ca8972d23742e55d3e1e3c0b}\index{build@{build}!clean@{clean}}
+\index{clean@{clean}!build@{build}}
+\doxysubsubsection{\texorpdfstring{clean()}{clean()}}
+{\footnotesize\ttfamily \label{namespacebuild_ab0e8c0c3ca8972d23742e55d3e1e3c0b} 
+build.\+clean (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Remove build output files and Python caches. 
+
+Deletes files listed in {\ttfamily CLEANTARGS} and {\ttfamily \+\_\+\+\_\+pycache\+\_\+\+\_\+} directories. 
+
+Definition at line \mbox{\hyperlink{build_8py_source_l00055}{55}} of file \mbox{\hyperlink{build_8py_source}{build.\+py}}.
+
+\Hypertarget{namespacebuild_a02ddac46c157c229b19f2c0fd9ac24de}\index{build@{build}!main@{main}}
+\index{main@{main}!build@{build}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{namespacebuild_a02ddac46c157c229b19f2c0fd9ac24de} 
+build.\+main (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+CLI entrypoint for \doxylink{build_8py}{build.\+py}. 
+
+Parses arguments and dispatches to the correct build system action\+:
+\begin{DoxyItemize}
+\item No args\+: Build after configuring if necessary
+\item {\ttfamily -\/clean}\+: Clean build output
+\item {\ttfamily -\/git}\+: Clean output and call {\ttfamily git()} (likely to prepare for commit)
+\item {\ttfamily -\/run}\+: Run the kernel via QEMU
+\item {\ttfamily -\/test}\+: Validate environment with \doxylink{configure_8py}{configure.\+py}
+\item {\ttfamily -\/loc}\+: Run {\ttfamily loc.\+sh} to count lines of code
+\item {\ttfamily -\/mkd}\+: Create and format a blank FAT16 image using mkfs.\+fat 
+\end{DoxyItemize}
+
+Definition at line \mbox{\hyperlink{build_8py_source_l00081}{81}} of file \mbox{\hyperlink{build_8py_source}{build.\+py}}.
+

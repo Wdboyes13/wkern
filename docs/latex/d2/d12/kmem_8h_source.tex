@@ -1,0 +1,35 @@
+\doxysection{kmem.\+h}
+\hypertarget{kmem_8h_source}{}\label{kmem_8h_source}\index{src/mem/kmem.h@{src/mem/kmem.h}}
+\mbox{\hyperlink{kmem_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{kmem_8h_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{kmem_8h_source_l00002}00002\ \textcolor{comment}{WKern\ -\/\ A\ Bare\ Metal\ OS\ /\ Kernel\ I\ am\ making\ (For\ Fun)}}
+\DoxyCodeLine{\Hypertarget{kmem_8h_source_l00003}00003\ \textcolor{comment}{Copyright\ (C)\ 2025\ \ Wdboyes13}}
+\DoxyCodeLine{\Hypertarget{kmem_8h_source_l00004}00004\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{kmem_8h_source_l00005}00005\ \textcolor{comment}{This\ program\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{kmem_8h_source_l00006}00006\ \textcolor{comment}{it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{kmem_8h_source_l00007}00007\ \textcolor{comment}{the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{kmem_8h_source_l00008}00008\ \textcolor{comment}{any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{kmem_8h_source_l00009}00009\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{kmem_8h_source_l00010}00010\ \textcolor{comment}{This\ program\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{kmem_8h_source_l00011}00011\ \textcolor{comment}{but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{kmem_8h_source_l00012}00012\ \textcolor{comment}{MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{kmem_8h_source_l00013}00013\ \textcolor{comment}{GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{kmem_8h_source_l00014}00014\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{kmem_8h_source_l00015}00015\ \textcolor{comment}{You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{kmem_8h_source_l00016}00016\ \textcolor{comment}{along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{kmem_8h_source_l00017}00017\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{kmem_8h_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{kmem_8h_source_l00019}00019\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{kmem_8h_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{kmem_8h_source_l00021}00021\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{nums_8h}{types/nums.h}}>}}
+\DoxyCodeLine{\Hypertarget{kmem_8h_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{kmem_8h_source_l00023}00023\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{kmem_8h_a669ed206858273d3e7b61412ef6753ca}{Kmemcmp}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}\ *a,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}\ *b,\ \textcolor{keywordtype}{size\_t}\ n);}
+\DoxyCodeLine{\Hypertarget{kmem_8h_source_l00024}00024\ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{kmem_8h_ad7db4b63d50e1827f134b3e0867d2b05}{Kmemcpy}}(\textcolor{keywordtype}{void}\ *dest,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}\ *src,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ count);}
+\DoxyCodeLine{\Hypertarget{kmem_8h_source_l00025}00025\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{kmem_8h_a0d686b7db76bc3bc8146a0b13d8e027b}{Kmemset}}(\textcolor{keywordtype}{void}\ *ptr,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ value,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ num);}
+\DoxyCodeLine{\Hypertarget{kmem_8h_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{kmem_8h_source_l00027}00027\ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{kmem_8h_a4744507132bfe63d677abecc60769ca0}{Kmalloc}}(\textcolor{keywordtype}{size\_t}\ size,\ \textcolor{keywordtype}{size\_t}\ align);}
+\DoxyCodeLine{\Hypertarget{kmem_8h_source_l00028}00028\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{kmem_8h_a9cf27cad30fd5a703658edb187f9c4c0}{KheapInit}}();}
+\DoxyCodeLine{\Hypertarget{kmem_8h_source_l00029}00029\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{kmem_8h_a51de4a944081d3a40379dafdc8cc8ba5}{Kfree}}(\textcolor{keywordtype}{void}\ *ptr);}
+
+\end{DoxyCode}

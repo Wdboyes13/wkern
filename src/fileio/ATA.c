@@ -21,6 +21,16 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include <io/kio.h>
 #include <utils/util.h>
 
+/**
+ * @brief Poll the ATA device until it's ready for data transfer.
+ *
+ * This function waits for the ATA device to clear the BSY (busy) bit,
+ * checks for errors, and verifies that the DRQ (data request) bit is set,
+ * indicating the device is ready to transfer data.
+ *
+ * @note This function blocks until the device is ready or an error occurs.
+ *       On error, the system panics.
+ */
 void AtaPoll() {
     for (int i = 0; i < 4; i++) {
         Inb(ATA_CTRL); // 400ns delay
@@ -38,6 +48,18 @@ void AtaPoll() {
     }
 }
 
+/**
+ * @brief Read a single 512-byte sector from the ATA device using LBA addressing.
+ *
+ * Sends commands to the ATA device to read one sector specified by the logical block address (LBA).
+ * The read sector data is stored in the provided buffer.
+ *
+ * @param lba The logical block address of the sector to read.
+ * @param buffer Pointer to a 512-byte buffer where the read data will be stored.
+ *
+ * @note Assumes the buffer is valid and large enough for one sector.
+ * @note Interrupts and device control signals are managed internally.
+ */
 void AtaReadSector(u32 lba, u8 *buffer) {
     irq14stat = 0;
     Outb(0x3F6, 0x00); // clear SRST, enable IRQs
@@ -53,9 +75,6 @@ void AtaReadSector(u32 lba, u8 *buffer) {
 
     AtaPoll();
 
-    u8 status = Inb(ATA_STATUS);
-    u8 err = Inb(ATA_ERROR);
-
     for (int i = 0; i < 256; i++) {
         u16 data = Inw(ATA_DATA);
         buffer[i * 2] = (u8)(data & 0xFF);
@@ -63,6 +82,18 @@ void AtaReadSector(u32 lba, u8 *buffer) {
     }
 }
 
+/**
+ * @brief Write a single 512-byte sector to the ATA device using LBA addressing.
+ *
+ * Sends commands to the ATA device to write one sector specified by the logical block address (LBA).
+ * The data to write is taken from the provided buffer.
+ *
+ * @param lba The logical block address of the sector to write.
+ * @param buffer Pointer to a 512-byte buffer containing the data to write.
+ *
+ * @note Assumes the buffer is valid and contains at least one sector of data.
+ * @note This function blocks until the write completes and the cache is flushed.
+ */
 void AtaWriteSector(u32 lba, const u8 *buffer) {
     Outb(ATA_CTRL, 0x00); // enable IRQs
 

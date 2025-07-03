@@ -1,0 +1,20 @@
+var searchData=
+[
+  ['va_5farg_0',['va_arg',['../d2/d16/vargs_8h.html#a81ebe6ea6253b0c6618e29de70fe10eb',1,'vargs.h']]],
+  ['va_5fend_1',['va_end',['../d2/d16/vargs_8h.html#acd9b3b9085ec072324c5fdac2b40304e',1,'vargs.h']]],
+  ['va_5fstart_2',['va_start',['../d2/d16/vargs_8h.html#a21b6f5a5ae4d31322e903ce806063eee',1,'vargs.h']]],
+  ['virtio_5fmax_5fsafe_5fqsize_3',['VIRTIO_MAX_SAFE_QSIZE',['../dd/db0/virtnet_8h.html#adf8c02c03a75eab8cd46eab675d2cfe9',1,'virtnet.h']]],
+  ['virtio_5fpci_5fguest_5ffeatures_4',['VIRTIO_PCI_GUEST_FEATURES',['../dd/db0/virtnet_8h.html#abdf67004c291b824a55710d156657bff',1,'virtnet.h']]],
+  ['virtio_5fpci_5fhost_5ffeatures_5',['VIRTIO_PCI_HOST_FEATURES',['../dd/db0/virtnet_8h.html#a748be558a64703b72c49cbdb09206377',1,'virtnet.h']]],
+  ['virtio_5fpci_5fqueue_5fnotify_6',['VIRTIO_PCI_QUEUE_NOTIFY',['../dd/db0/virtnet_8h.html#ab74682e1d290db867c20b37da873e911',1,'virtnet.h']]],
+  ['virtio_5fpci_5fqueue_5fnum_7',['VIRTIO_PCI_QUEUE_NUM',['../dd/db0/virtnet_8h.html#a11fe3e062e61ca606c2bcf3a9657ee37',1,'virtnet.h']]],
+  ['virtio_5fpci_5fqueue_5fpfn_8',['VIRTIO_PCI_QUEUE_PFN',['../dd/db0/virtnet_8h.html#ae21cd780c77c11772cafa85c8235fd4f',1,'virtnet.h']]],
+  ['virtio_5fpci_5fqueue_5fsel_9',['VIRTIO_PCI_QUEUE_SEL',['../dd/db0/virtnet_8h.html#a75e15963fc1528bb7d2097e04ebfa9b5',1,'virtnet.h']]],
+  ['virtio_5fpci_5fstatus_10',['VIRTIO_PCI_STATUS',['../dd/db0/virtnet_8h.html#a909a442ef89fc0455d724c8f844904d3',1,'virtnet.h']]],
+  ['virtio_5freg_11',['VIRTIO_REG',['../d7/d61/scconfig_8c.html#a1113fb316ca3e5cf5f85e7e68409b1c8',1,'scconfig.c']]],
+  ['virtio_5fstatus_5facknowledge_12',['VIRTIO_STATUS_ACKNOWLEDGE',['../dd/db0/virtnet_8h.html#a72eed47d6f482df3984b7dcfdb0fdb3f',1,'virtnet.h']]],
+  ['virtio_5fstatus_5fdriver_13',['VIRTIO_STATUS_DRIVER',['../dd/db0/virtnet_8h.html#a6c3f5e16ae3e2e7389fd772eb909cad5',1,'virtnet.h']]],
+  ['virtio_5fstatus_5fdriver_5fok_14',['VIRTIO_STATUS_DRIVER_OK',['../dd/db0/virtnet_8h.html#a046788d73fd31ecc5c35c50a962e5ee3',1,'virtnet.h']]],
+  ['virtq_5fdesc_5ff_5fnext_15',['VIRTQ_DESC_F_NEXT',['../dd/db0/virtnet_8h.html#a20e010fee3553a39ff6af7a5cc2837c2',1,'virtnet.h']]],
+  ['virtq_5fdesc_5ff_5fwrite_16',['VIRTQ_DESC_F_WRITE',['../dd/db0/virtnet_8h.html#a208ab0e95f24325454621095b80fcf27',1,'virtnet.h']]]
+];

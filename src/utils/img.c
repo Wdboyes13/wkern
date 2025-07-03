@@ -18,6 +18,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #include <io/kio.h>
 #include <utils/util.h>
+/// @brief  Prints an ASCII Happy Face
 void draw_smile() {
     Kputchar(0xDB);
     Kprintf("        ");

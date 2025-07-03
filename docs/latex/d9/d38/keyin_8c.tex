@@ -1,0 +1,192 @@
+\doxysection{src/io/keyin.c File Reference}
+\hypertarget{keyin_8c}{}\label{keyin_8c}\index{src/io/keyin.c@{src/io/keyin.c}}
+{\ttfamily \#include $<$global.\+h$>$}\newline
+{\ttfamily \#include $<$io/kio.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+unsigned char \mbox{\hyperlink{keyin_8c_a21d2fa898ac31aaaea6cbc85bd651f0b}{scancode\+\_\+to\+\_\+ascii}} (unsigned char scancode)
+\begin{DoxyCompactList}\small\item\em Converts a keyboard scancode to an ASCII character. \end{DoxyCompactList}\item 
+unsigned char \mbox{\hyperlink{keyin_8c_a766f20aac159108a9946cd048235d94b}{Keytoshift}} (unsigned char ascii)
+\begin{DoxyCompactList}\small\item\em Converts an ASCII character to its shifted equivalent. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{keyin_8c_ad34c46028a6847c3eec4ff1a810f52c6}{Irq1\+HandlerC}} (void)
+\begin{DoxyCompactList}\small\item\em IRQ handler for PS/2 keyboard (IRQ1). \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{keyin_8c_a169aeac886fd610ab102b51736c1e9e8}{Kgetkey}} ()
+\begin{DoxyCompactList}\small\item\em Gets the next character from the keyboard buffer (blocking). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{keyin_8c_a31cf36db330251ce379e7dc5dc735ee0}{Kgetstr}} (char \texorpdfstring{$\ast$}{*}str, int length)
+\begin{DoxyCompactList}\small\item\em Reads a line of input from the keyboard (blocking). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{keyin_8c_ac16b0ca4ec58cb9f895ab94a07a6bcee}{Kflush}} ()
+\begin{DoxyCompactList}\small\item\em Flushes the keyboard controller input buffer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+volatile char \mbox{\hyperlink{keyin_8c_a8dc81b3c6e896d63998697582188f6cc}{Keybuf}} \mbox{[}256\mbox{]}
+\begin{DoxyCompactList}\small\item\em Circular buffer storing incoming keystrokes. \end{DoxyCompactList}\item 
+volatile int \mbox{\hyperlink{keyin_8c_ab760d5dea27771423987fed76ab2dc64}{buf\+\_\+head}} = 0
+\begin{DoxyCompactList}\small\item\em Head index for Keybuf. \end{DoxyCompactList}\item 
+volatile int \mbox{\hyperlink{keyin_8c_ac22757a37be5e7f9ed76e8d617bf448d}{buf\+\_\+tail}} = 0
+\begin{DoxyCompactList}\small\item\em Tail index for Keybuf. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{keyin_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{keyin_8c_ad34c46028a6847c3eec4ff1a810f52c6}\index{keyin.c@{keyin.c}!Irq1HandlerC@{Irq1HandlerC}}
+\index{Irq1HandlerC@{Irq1HandlerC}!keyin.c@{keyin.c}}
+\doxysubsubsection{\texorpdfstring{Irq1HandlerC()}{Irq1HandlerC()}}
+{\footnotesize\ttfamily \label{keyin_8c_ad34c46028a6847c3eec4ff1a810f52c6} 
+void Irq1\+HandlerC (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+IRQ handler for PS/2 keyboard (IRQ1). 
+
+Reads raw scancode, handles modifier keys (Shift, Caps\+Lock), converts to ASCII, and stores in the {\ttfamily Keybuf} ring buffer. 
+
+Definition at line \mbox{\hyperlink{keyin_8c_source_l00130}{130}} of file \mbox{\hyperlink{keyin_8c_source}{keyin.\+c}}.
+
+\Hypertarget{keyin_8c_a766f20aac159108a9946cd048235d94b}\index{keyin.c@{keyin.c}!Keytoshift@{Keytoshift}}
+\index{Keytoshift@{Keytoshift}!keyin.c@{keyin.c}}
+\doxysubsubsection{\texorpdfstring{Keytoshift()}{Keytoshift()}}
+{\footnotesize\ttfamily \label{keyin_8c_a766f20aac159108a9946cd048235d94b} 
+unsigned char Keytoshift (\begin{DoxyParamCaption}\item[{unsigned char}]{ascii}{}\end{DoxyParamCaption})}
+
+
+
+Converts an ASCII character to its shifted equivalent. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ascii} & The base character \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Shifted version of the input character, or the same character if no shift mapping exists. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{keyin_8c_source_l00072}{72}} of file \mbox{\hyperlink{keyin_8c_source}{keyin.\+c}}.
+
+\Hypertarget{keyin_8c_ac16b0ca4ec58cb9f895ab94a07a6bcee}\index{keyin.c@{keyin.c}!Kflush@{Kflush}}
+\index{Kflush@{Kflush}!keyin.c@{keyin.c}}
+\doxysubsubsection{\texorpdfstring{Kflush()}{Kflush()}}
+{\footnotesize\ttfamily \label{keyin_8c_ac16b0ca4ec58cb9f895ab94a07a6bcee} 
+void Kflush (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Flushes the keyboard controller input buffer. 
+
+Reads and discards all unread bytes in the controller’s 0x60 port. 
+
+Definition at line \mbox{\hyperlink{keyin_8c_source_l00219}{219}} of file \mbox{\hyperlink{keyin_8c_source}{keyin.\+c}}.
+
+\Hypertarget{keyin_8c_a169aeac886fd610ab102b51736c1e9e8}\index{keyin.c@{keyin.c}!Kgetkey@{Kgetkey}}
+\index{Kgetkey@{Kgetkey}!keyin.c@{keyin.c}}
+\doxysubsubsection{\texorpdfstring{Kgetkey()}{Kgetkey()}}
+{\footnotesize\ttfamily \label{keyin_8c_a169aeac886fd610ab102b51736c1e9e8} 
+char Kgetkey (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Gets the next character from the keyboard buffer (blocking). 
+
+\begin{DoxyReturn}{Returns}
+The next ASCII character from the input buffer. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{keyin_8c_source_l00169}{169}} of file \mbox{\hyperlink{keyin_8c_source}{keyin.\+c}}.
+
+\Hypertarget{keyin_8c_a31cf36db330251ce379e7dc5dc735ee0}\index{keyin.c@{keyin.c}!Kgetstr@{Kgetstr}}
+\index{Kgetstr@{Kgetstr}!keyin.c@{keyin.c}}
+\doxysubsubsection{\texorpdfstring{Kgetstr()}{Kgetstr()}}
+{\footnotesize\ttfamily \label{keyin_8c_a31cf36db330251ce379e7dc5dc735ee0} 
+void Kgetstr (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{str}{, }\item[{int}]{length}{}\end{DoxyParamCaption})}
+
+
+
+Reads a line of input from the keyboard (blocking). 
+
+Handles basic line editing (Enter, Backspace, Delete).
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & Destination buffer \\
+\hline
+{\em length} & Maximum buffer length (including null terminator) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{keyin_8c_source_l00186}{186}} of file \mbox{\hyperlink{keyin_8c_source}{keyin.\+c}}.
+
+\Hypertarget{keyin_8c_a21d2fa898ac31aaaea6cbc85bd651f0b}\index{keyin.c@{keyin.c}!scancode\_to\_ascii@{scancode\_to\_ascii}}
+\index{scancode\_to\_ascii@{scancode\_to\_ascii}!keyin.c@{keyin.c}}
+\doxysubsubsection{\texorpdfstring{scancode\_to\_ascii()}{scancode\_to\_ascii()}}
+{\footnotesize\ttfamily \label{keyin_8c_a21d2fa898ac31aaaea6cbc85bd651f0b} 
+unsigned char scancode\+\_\+to\+\_\+ascii (\begin{DoxyParamCaption}\item[{unsigned char}]{scancode}{}\end{DoxyParamCaption})}
+
+
+
+Converts a keyboard scancode to an ASCII character. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scancode} & The raw scancode from keyboard hardware. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Corresponding ASCII character, or 0 if unmapped. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{keyin_8c_source_l00032}{32}} of file \mbox{\hyperlink{keyin_8c_source}{keyin.\+c}}.
+
+
+
+\label{doc-var-members}
+\Hypertarget{keyin_8c_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{keyin_8c_ab760d5dea27771423987fed76ab2dc64}\index{keyin.c@{keyin.c}!buf\_head@{buf\_head}}
+\index{buf\_head@{buf\_head}!keyin.c@{keyin.c}}
+\doxysubsubsection{\texorpdfstring{buf\_head}{buf\_head}}
+{\footnotesize\ttfamily \label{keyin_8c_ab760d5dea27771423987fed76ab2dc64} 
+volatile int buf\+\_\+head = 0}
+
+
+
+Head index for Keybuf. 
+
+
+
+Definition at line \mbox{\hyperlink{keyin_8c_source_l00065}{65}} of file \mbox{\hyperlink{keyin_8c_source}{keyin.\+c}}.
+
+\Hypertarget{keyin_8c_ac22757a37be5e7f9ed76e8d617bf448d}\index{keyin.c@{keyin.c}!buf\_tail@{buf\_tail}}
+\index{buf\_tail@{buf\_tail}!keyin.c@{keyin.c}}
+\doxysubsubsection{\texorpdfstring{buf\_tail}{buf\_tail}}
+{\footnotesize\ttfamily \label{keyin_8c_ac22757a37be5e7f9ed76e8d617bf448d} 
+volatile int buf\+\_\+tail = 0}
+
+
+
+Tail index for Keybuf. 
+
+
+
+Definition at line \mbox{\hyperlink{keyin_8c_source_l00067}{67}} of file \mbox{\hyperlink{keyin_8c_source}{keyin.\+c}}.
+
+\Hypertarget{keyin_8c_a8dc81b3c6e896d63998697582188f6cc}\index{keyin.c@{keyin.c}!Keybuf@{Keybuf}}
+\index{Keybuf@{Keybuf}!keyin.c@{keyin.c}}
+\doxysubsubsection{\texorpdfstring{Keybuf}{Keybuf}}
+{\footnotesize\ttfamily \label{keyin_8c_a8dc81b3c6e896d63998697582188f6cc} 
+volatile char Keybuf\mbox{[}256\mbox{]}}
+
+
+
+Circular buffer storing incoming keystrokes. 
+
+
+
+Definition at line \mbox{\hyperlink{keyin_8c_source_l00063}{63}} of file \mbox{\hyperlink{keyin_8c_source}{keyin.\+c}}.
+

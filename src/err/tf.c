@@ -17,6 +17,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 #include <io/kio.h>
+/// @brief Force triple fault (Makes CPU Reset)
 __attribute__((noreturn)) void TripleFault() {
     Kprintf("Triple Fault Triggered");
     __asm__ volatile("lidt (0)");  // Load an invalid IDT

@@ -1,0 +1,50 @@
+\doxysection{src/fileio/ops/write.c File Reference}
+\hypertarget{write_8c}{}\label{write_8c}\index{src/fileio/ops/write.c@{src/fileio/ops/write.c}}
+{\ttfamily \#include $<$fileio/fileio.\+h$>$}\newline
+{\ttfamily \#include $<$io/kio.\+h$>$}\newline
+{\ttfamily \#include $<$mem/kmem.\+h$>$}\newline
+{\ttfamily \#include $<$types/nums.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{write_8c_a25e15562fb1b780e6316940a4bd2fde9}{Writefile}} (const char \texorpdfstring{$\ast$}{*}filename, const char \texorpdfstring{$\ast$}{*}ext, const char \texorpdfstring{$\ast$}{*}data, \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} size)
+\begin{DoxyCompactList}\small\item\em Write data to an existing file in the FAT16 filesystem. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{write_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{write_8c_a25e15562fb1b780e6316940a4bd2fde9}\index{write.c@{write.c}!Writefile@{Writefile}}
+\index{Writefile@{Writefile}!write.c@{write.c}}
+\doxysubsubsection{\texorpdfstring{Writefile()}{Writefile()}}
+{\footnotesize\ttfamily \label{write_8c_a25e15562fb1b780e6316940a4bd2fde9} 
+void Writefile (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{filename}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{ext}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{data}{, }\item[{\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}}]{size}{}\end{DoxyParamCaption})}
+
+
+
+Write data to an existing file in the FAT16 filesystem. 
+
+Writes data to a FAT16 file, replacing its contents.
+
+Searches for the file specified by filename and extension in the FAT16 root directory. If found, writes up to 512 bytes of data to the file\textquotesingle{}s first cluster sector and updates the file size in the directory entry.
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The 8-\/character filename (without extension). \\
+\hline
+{\em ext} & The 3-\/character file extension. \\
+\hline
+{\em data} & Pointer to the data buffer to write. \\
+\hline
+{\em size} & Number of bytes to write from the data buffer (max 512 bytes).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+This function only writes to the first cluster of the file. Writing beyond the first cluster or appending is not handled. 
+
+Assumes the global {\ttfamily fat16} structure is properly initialized and accessible. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{write_8c_source_l00040}{40}} of file \mbox{\hyperlink{write_8c_source}{write.\+c}}.
+

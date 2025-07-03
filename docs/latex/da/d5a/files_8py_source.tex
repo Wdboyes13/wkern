@@ -1,0 +1,132 @@
+\doxysection{files.\+py}
+\hypertarget{files_8py_source}{}\label{files_8py_source}\index{bfiles/files.py@{bfiles/files.py}}
+\mbox{\hyperlink{files_8py}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00001}\mbox{\hyperlink{namespacefiles}{00001}}\ }
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00027}00027\ \textcolor{keyword}{import}\ glob}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00029}\mbox{\hyperlink{namespacefiles_ae67a601ad1435f4f13ca2295ecf91414}{00029}}\ SRCS\ =\ [}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00030}00030\ \ \ \ \ \textcolor{stringliteral}{"{}src/fileio/irqflags.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00031}00031\ \ \ \ \ \textcolor{stringliteral}{"{}src/fileio/ops/printconts.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00032}00032\ \ \ \ \ \textcolor{stringliteral}{"{}src/fileio/ops/ls.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00033}00033\ \ \ \ \ \textcolor{stringliteral}{"{}src/fileio/ops/mkfile.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00034}00034\ \ \ \ \ \textcolor{stringliteral}{"{}src/fileio/ops/rmfile.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00035}00035\ \ \ \ \ \textcolor{stringliteral}{"{}src/fileio/ops/write.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00036}00036\ \ \ \ \ \textcolor{stringliteral}{"{}src/fileio/ATA.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00037}00037\ \ \ \ \ \textcolor{stringliteral}{"{}src/fileio/fat16\_mnt.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00038}00038\ \ \ \ \ \textcolor{stringliteral}{"{}src/fileio/MBR.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00040}00040\ \ \ \ \ \textcolor{stringliteral}{"{}src/mem/alloc.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00041}00041\ \ \ \ \ \textcolor{stringliteral}{"{}src/mem/memutil.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00042}00042\ \ \ \ \ \textcolor{stringliteral}{"{}src/err/tf.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00043}00043\ \ \ \ \ \textcolor{stringliteral}{"{}src/err/panic.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00044}00044\ \ \ \ \ \textcolor{stringliteral}{"{}src/wex/testexec.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00045}00045\ \ \ \ \ \textcolor{stringliteral}{"{}src/wex/wexent.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00046}00046\ \ \ \ \ \textcolor{stringliteral}{"{}src/wex/wexexec.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00047}00047\ \ \ \ \ \textcolor{stringliteral}{"{}src/utils/img.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00049}00049\ \ \ \ \ \textcolor{stringliteral}{"{}src/io/keyin.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00050}00050\ \ \ \ \ \textcolor{stringliteral}{"{}src/io/printer.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00051}00051\ \ \ \ \ \textcolor{stringliteral}{"{}src/io/asm.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00052}00052\ \ \ \ \ \textcolor{stringliteral}{"{}src/utils/strings.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00053}00053\ \ \ \ \ \textcolor{stringliteral}{"{}src/utils/ksleep.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00054}00054\ \ \ \ \ \textcolor{stringliteral}{"{}src/utils/numtools.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00055}00055\ \ \ \ \ \textcolor{stringliteral}{"{}src/main.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00056}00056\ \ \ \ \ \textcolor{stringliteral}{"{}src/qemu/shutdown.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00058}00058\ \ \ \ \ \textcolor{stringliteral}{"{}src/idt/gdt.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00059}00059\ \ \ \ \ \textcolor{stringliteral}{"{}src/idt/idt.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00060}00060\ \ \ \ \ \textcolor{stringliteral}{"{}src/idt/pit.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00061}00061\ \ \ \ \ \textcolor{stringliteral}{"{}src/idt/handlers/irq0.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00062}00062\ \ \ \ \ \textcolor{stringliteral}{"{}src/idt/masker.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00063}00063\ \ \ \ \ \textcolor{stringliteral}{"{}src/pci/scconfig.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00064}00064\ \ \ \ \ \textcolor{stringliteral}{"{}src/net/virtio.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00065}00065\ \ \ \ \ \textcolor{stringliteral}{"{}src/idt/handlers/virtnetirq.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00067}00067\ \ \ \ \ \textcolor{stringliteral}{"{}src/KShell/shell.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00068}00068\ \ \ \ \ \textcolor{stringliteral}{"{}src/KShell/shellhelp.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00069}00069\ \ \ \ \ \textcolor{stringliteral}{"{}src/KShell/filecmds.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00070}00070\ \ \ \ \ \textcolor{stringliteral}{"{}src/KShell/regexcmd.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00071}00071\ \ \ \ \ \textcolor{stringliteral}{"{}src/slre/slre.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00072}00072\ ]}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00074}\mbox{\hyperlink{namespacefiles_a0b909a121db952d90ae6f25a6aace58e}{00074}}\ NASMSRCS\ =\ [}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00075}00075\ \ \ \ \ \textcolor{stringliteral}{"{}src/boot.asm"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00076}00076\ \ \ \ \ \textcolor{stringliteral}{"{}src/idt/handlers/gdtf.asm"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00077}00077\ \ \ \ \ \textcolor{stringliteral}{"{}src/idt/handlers/irq0a.asm"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00078}00078\ \ \ \ \ \textcolor{stringliteral}{"{}src/idt/handlers/irq1a.asm"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00079}00079\ \ \ \ \ \textcolor{stringliteral}{"{}src/idt/handlers/virtirq.asm"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00080}00080\ \ \ \ \ \textcolor{stringliteral}{"{}src/idt/picr.asm"{}}}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00081}00081\ ]}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00083}00083\ \textcolor{comment}{\#\ Most\ are\ grouped\ into\ 1\ except\ for\ larger\ systems}}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00084}\mbox{\hyperlink{namespacefiles_a5223102f497874187d1dfe8a32def4a2}{00084}}\ MODULES\ =\ \{}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00085}00085\ \ \ \ \ \textcolor{stringliteral}{"{}KShell"{}}:\ [\ \ \ \ \ \textcolor{stringliteral}{"{}src/KShell/shell.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}src/KShell/shellhelp.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}src/KShell/filecmds.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}src/KShell/regexcmd.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}src/slre/slre.c"{}}],}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00091}00091\ \ \ \ \ \textcolor{stringliteral}{"{}FileIO"{}}:\ [\ \ \ \ \ \textcolor{stringliteral}{"{}src/fileio/irqflags.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}src/fileio/ops/printconts.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}src/fileio/ops/ls.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}src/fileio/ops/mkfile.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}src/fileio/ops/rmfile.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}src/fileio/ops/write.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}src/fileio/ATA.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}src/fileio/fat16\_mnt.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}src/fileio/MBR.c"{}}],}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00100}00100\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00101}00101\ \ \ \ \ \textcolor{stringliteral}{"{}CPUSub"{}}:\ [\ \ \ \ \ \textcolor{stringliteral}{"{}src/idt/gdt.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}src/idt/idt.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}src/idt/pit.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}src/idt/handlers/irq0.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}src/idt/masker.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}src/pci/scconfig.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}src/net/virtio.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}src/idt/handlers/virtnetirq.c"{}}],}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00110}00110\ \ \ \ \ \textcolor{stringliteral}{"{}Core"{}}:\ [\ \ \ \ \ \ \ \textcolor{stringliteral}{"{}src/io/keyin.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}src/io/printer.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}src/io/asm.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}src/utils/strings.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}src/utils/ksleep.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}src/utils/numtools.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}src/main.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}src/qemu/shutdown.c"{}}],}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00118}00118\ }
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00119}00119\ \ \ \ \ \textcolor{stringliteral}{"{}Misc"{}}:\ [\ \ \ \ \ \ \ \textcolor{stringliteral}{"{}src/mem/alloc.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}src/mem/memutil.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}src/err/tf.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}src/err/panic.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}src/wex/testexec.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}src/wex/wexent.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}src/wex/wexexec.c"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}src/utils/img.c"{}}]}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00127}00127\ \}}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00128}00128\ }
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00129}\mbox{\hyperlink{namespacefiles_aff8a706d76fa86a1870d691b51b75bca}{00129}}\ OBJS\ =\ [f\textcolor{stringliteral}{"{}objs/modules/\{mod\}.o"{}}\ \textcolor{keywordflow}{for}\ mod\ \textcolor{keywordflow}{in}\ MODULES]}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00130}00130\ }
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00131}00131\ \textcolor{keywordflow}{for}\ src\ \textcolor{keywordflow}{in}\ NASMSRCS:}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00132}00132\ \ \ \ \ OBJS.append(\textcolor{stringliteral}{"{}objs/"{}}\ +\ src.replace(\textcolor{stringliteral}{"{}.asm"{}},\ \textcolor{stringliteral}{"{}.o"{}}))}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00133}00133\ }
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00134}\mbox{\hyperlink{namespacefiles_a3f5d95e1976560d581ef40f12ef93cfe}{00134}}\ OUT\ =\ \textcolor{stringliteral}{"{}kernel.elf"{}}}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00135}\mbox{\hyperlink{namespacefiles_a28a8c80825ff4510688e3407bc897820}{00135}}\ OUTARG\ =\ \textcolor{stringliteral}{"{}iso/boot/"{}}\ +\ OUT}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00136}\mbox{\hyperlink{namespacefiles_a3968652418e61b8e68470b0509b582e9}{00136}}\ ISO\ =\ \textcolor{stringliteral}{"{}mykern.iso"{}}}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00137}00137\ }
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00138}\mbox{\hyperlink{namespacefiles_a56008340389cf4e8955bdc4fd7b64c03}{00138}}\ GRUBCFG\ =\ \textcolor{stringliteral}{"{}grub/grub.cfg"{}}}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00139}\mbox{\hyperlink{namespacefiles_a5a5066100790982137c44c78e6cdb058}{00139}}\ GRUBCFGTARG\ =\ \textcolor{stringliteral}{"{}iso/boot/"{}}\ +\ GRUBCFG}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00140}00140\ }
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00141}\mbox{\hyperlink{namespacefiles_ab3f531f5f5a333b3a7d4ddcb836d1439}{00141}}\ HEADS\ =\ [\textcolor{stringliteral}{"{}src/types/nums.h"{}},\ \textcolor{stringliteral}{"{}src/fileio/fileio.h"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}src/global.h"{}},\ \textcolor{stringliteral}{"{}src/err/kerror.h"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}src/wex/stdwex.h"{}},\ \textcolor{stringliteral}{"{}src/io/kio.h"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}src/utils/util.h"{}},\ \textcolor{stringliteral}{"{}src/idt/idtirq.h"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}src/qemu/shutdown.h"{}},\ \textcolor{stringliteral}{"{}src/mem/kmem.h"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}src/KShell/shell.h"{}},\ \textcolor{stringliteral}{"{}src/KShell/filecmds.h"{}},}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}src/pci/pci.h"{}}}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ]}
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00149}00149\ }
+\DoxyCodeLine{\Hypertarget{files_8py_source_l00150}\mbox{\hyperlink{namespacefiles_a9539a0ef226184ad4a519e052f7199ce}{00150}}\ CLEANTARGS\ =\ [*OBJS,\ ISO,\ OUTARG,\ OUT,\ GRUBCFGTARG,\ \textcolor{stringliteral}{"{}didconf"{}},\ \ *glob.glob(\textcolor{stringliteral}{"{}objs/**/*.o"{}},\ recursive=\textcolor{keyword}{True})\ ]}
+
+\end{DoxyCode}

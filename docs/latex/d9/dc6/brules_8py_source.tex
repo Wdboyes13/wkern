@@ -1,0 +1,125 @@
+\doxysection{brules.\+py}
+\hypertarget{brules_8py_source}{}\label{brules_8py_source}\index{bfiles/brules.py@{bfiles/brules.py}}
+\mbox{\hyperlink{brules_8py}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00001}\mbox{\hyperlink{namespacebrules}{00001}}\ }
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00014}00014\ \textcolor{keyword}{import}\ os}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00015}00015\ \textcolor{keyword}{import}\ subprocess}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00016}00016\ \textcolor{keyword}{import}\ shutil}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00017}00017\ \textcolor{keyword}{import}\ sys}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00018}00018\ \textcolor{keyword}{from}\ \mbox{\hyperlink{namespacebfiles_1_1files}{bfiles.files}}\ \textcolor{keyword}{import}\ *\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Source\ file\ lists\ and\ structure}}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00019}00019\ \textcolor{keyword}{from}\ \mbox{\hyperlink{namespacebfiles_1_1toolsflags}{bfiles.toolsflags}}\ \textcolor{keyword}{import}\ *\ \ \ \ \textcolor{comment}{\#\ Compiler/linker\ tools\ and\ flags}}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00020}00020\ \textcolor{keyword}{from}\ pathlib\ \textcolor{keyword}{import}\ Path}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00021}00021\ \textcolor{keyword}{from}\ concurrent.futures\ \textcolor{keyword}{import}\ ThreadPoolExecutor,\ as\_completed}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00030}\mbox{\hyperlink{namespacebrules_ae6ebfc55a4e411b372954100af152beb}{00030}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespacebrules_ae6ebfc55a4e411b372954100af152beb}{compileasm}}():}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00031}00031\ \ \ \ \ os.chdir(Path(\_\_file\_\_).resolve().parents[1])}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00032}00032\ \ \ \ \ print(\textcolor{stringliteral}{"{}Working\ from:"{}},\ os.getcwd())}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00033}00033\ \ \ \ \ \textcolor{keywordflow}{for}\ file\ \textcolor{keywordflow}{in}\ NASMSRCS:}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00034}00034\ \ \ \ \ \ \ \ \ obj\ =\ \textcolor{stringliteral}{"{}objs/"{}}\ +\ file.replace(\textcolor{stringliteral}{"{}.asm"{}},\ \textcolor{stringliteral}{"{}.o"{}})}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00035}00035\ \ \ \ \ \ \ \ \ src\_time\ =\ os.path.getmtime(file)}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00036}00036\ \ \ \ \ \ \ \ \ obj\_time\ =\ os.path.getmtime(obj)\ \textcolor{keywordflow}{if}\ os.path.exists(obj)\ \textcolor{keywordflow}{else}\ -\/1}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00038}00038\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ src\_time\ <=\ obj\_time:}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue}}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00041}00041\ \ \ \ \ \ \ \ \ print(f\textcolor{stringliteral}{"{}Assembling\ \{file\}"{}})}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00042}00042\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}:}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ subprocess.run([AS,\ *ASFLAGS,\ file,\ \textcolor{stringliteral}{"{}-\/o"{}},\ obj],\ check=\textcolor{keyword}{True})}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00044}00044\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{except}\ subprocess.CalledProcessError\ \textcolor{keyword}{as}\ e:}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ print(f\textcolor{stringliteral}{"{}Failed\ with\ code\ \{e.returncode\}"{}},\ file=sys.stderr)}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ sys.exit(1)}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00053}\mbox{\hyperlink{namespacebrules_affe03ad5668966352d13cbf468bb7541}{00053}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespacebrules_affe03ad5668966352d13cbf468bb7541}{compile\_file}}(file):}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00054}00054\ \ \ \ \ obj\ =\ \textcolor{stringliteral}{"{}objs/"{}}\ +\ file.replace(\textcolor{stringliteral}{"{}.c"{}},\ \textcolor{stringliteral}{"{}.o"{}})}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00055}00055\ \ \ \ \ src\_time\ =\ os.path.getmtime(file)}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00056}00056\ \ \ \ \ obj\_time\ =\ os.path.getmtime(obj)\ \textcolor{keywordflow}{if}\ os.path.exists(obj)\ \textcolor{keywordflow}{else}\ -\/1}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00058}00058\ \ \ \ \ \textcolor{keywordflow}{if}\ src\_time\ <=\ obj\_time:}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00059}00059\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}0"{}}\ \ \textcolor{comment}{\#\ Indicates\ no\ work\ needed}}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00061}00061\ \ \ \ \ print(f\textcolor{stringliteral}{"{}Compiling\ \{file\}"{}})}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00062}00062\ \ \ \ \ \textcolor{keywordflow}{try}:}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00063}00063\ \ \ \ \ \ \ \ \ subprocess.run([CC,\ *CCFLAGS,\ \textcolor{stringliteral}{"{}-\/c"{}},\ file,\ \textcolor{stringliteral}{"{}-\/o"{}},\ obj],\ check=\textcolor{keyword}{True})}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00064}00064\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ f\textcolor{stringliteral}{"{}Compiled\ \{file\}"{}}}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00065}00065\ \ \ \ \ \textcolor{keywordflow}{except}\ subprocess.CalledProcessError\ \textcolor{keyword}{as}\ e:}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00066}00066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ f\textcolor{stringliteral}{"{}Failed\ \{file\}\ with\ code\ \{e.returncode\}"{}}}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00073}\mbox{\hyperlink{namespacebrules_a1720011e61edb2a9ae886b33cd327e05}{00073}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespacebrules_a1720011e61edb2a9ae886b33cd327e05}{compilec}}():}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00074}00074\ \ \ \ \ os.chdir(Path(\_\_file\_\_).resolve().parents[1])}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00075}00075\ \ \ \ \ print(\textcolor{stringliteral}{"{}Working\ from:"{}},\ os.getcwd())}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00077}00077\ \ \ \ \ \textcolor{keyword}{with}\ ThreadPoolExecutor(max\_workers=8)\ \textcolor{keyword}{as}\ executor:}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00078}00078\ \ \ \ \ \ \ \ \ futures\ =\ \{executor.submit(compile\_file,\ f):\ f\ \textcolor{keywordflow}{for}\ f\ \textcolor{keywordflow}{in}\ SRCS\}}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00080}00080\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ future\ \textcolor{keywordflow}{in}\ as\_completed(futures):}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ result\ =\ future.result()}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ result.startswith(\textcolor{stringliteral}{"{}Failed"{}}):}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ print(result,\ file=sys.stderr)}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sys.exit(1)}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ result\ !=\ \textcolor{stringliteral}{"{}0"{}}:}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ print(result)}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00095}\mbox{\hyperlink{namespacebrules_ac16352890f8352431e7ae6e3d74d5784}{00095}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespacebrules_ac16352890f8352431e7ae6e3d74d5784}{partial\_link}}():}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00096}00096\ \ \ \ \ os.chdir(Path(\_\_file\_\_).resolve().parents[1])}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00097}00097\ \ \ \ \ os.makedirs(\textcolor{stringliteral}{"{}objs/modules"{}},\ exist\_ok=\textcolor{keyword}{True})}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00099}00099\ \ \ \ \ \textcolor{keywordflow}{for}\ modname,\ files\ \textcolor{keywordflow}{in}\ MODULES.items():}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00100}00100\ \ \ \ \ \ \ \ \ obj\_files\ =\ [f\textcolor{stringliteral}{"{}objs/\{src.replace('.c',\ '.o')\}"{}}\ \textcolor{keywordflow}{for}\ src\ \textcolor{keywordflow}{in}\ files]}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00101}00101\ \ \ \ \ \ \ \ \ output\ =\ f\textcolor{stringliteral}{"{}objs/modules/\{modname\}.o"{}}}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00102}00102\ }
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00103}00103\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ os.path.exists(output):}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ out\_time\ =\ os.path.getmtime(output)}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ all(os.path.exists(f)\ \textcolor{keywordflow}{and}\ os.path.getmtime(f)\ <=\ out\_time\ \textcolor{keywordflow}{for}\ f\ \textcolor{keywordflow}{in}\ obj\_files):}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ print(f\textcolor{stringliteral}{"{}Module\ \{modname\}\ is\ up\ to\ date"{}})}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue}}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00109}00109\ \ \ \ \ \ \ \ \ print(f\textcolor{stringliteral}{"{}Linking\ module:\ \{modname\}"{}})}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00110}00110\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}:}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ subprocess.run([\textcolor{stringliteral}{"{}i686-\/elf-\/ld"{}},\ \textcolor{stringliteral}{"{}-\/r"{}},\ \textcolor{stringliteral}{"{}-\/o"{}},\ output,\ *obj\_files],\ check=\textcolor{keyword}{True})}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00112}00112\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{except}\ subprocess.CalledProcessError\ \textcolor{keyword}{as}\ e:}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ print(f\textcolor{stringliteral}{"{}Error\ linking\ module\ \{modname\}:\ \{e\}"{}},\ file=sys.stderr)}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ sys.exit(1)}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00121}\mbox{\hyperlink{namespacebrules_a9c1373e78cf82ed911a3a0893a53e045}{00121}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespacebrules_a9c1373e78cf82ed911a3a0893a53e045}{link}}():}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00122}00122\ \ \ \ \ os.chdir(Path(\_\_file\_\_).resolve().parents[1])}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00123}00123\ \ \ \ \ print(\textcolor{stringliteral}{"{}Working\ from:"{}},\ os.getcwd())}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00125}00125\ \ \ \ \ \textcolor{keywordflow}{if}\ os.path.exists(OUT):}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00126}00126\ \ \ \ \ \ \ \ \ out\_time\ =\ os.path.getmtime(OUT)}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00127}00127\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ all(os.path.exists(obj)\ \textcolor{keywordflow}{and}\ os.path.getmtime(obj)\ <=\ out\_time\ \textcolor{keywordflow}{for}\ obj\ \textcolor{keywordflow}{in}\ OBJS):}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}Kernel\ is\ up\ to\ date"{}})}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00130}00130\ }
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00131}00131\ \ \ \ \ print(\textcolor{stringliteral}{"{}Linking\ kernel"{}})}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00132}00132\ \ \ \ \ \textcolor{keywordflow}{try}:}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00133}00133\ \ \ \ \ \ \ \ \ subprocess.run([\textcolor{stringliteral}{"{}i686-\/elf-\/ld"{}},\ *LDFLAGS,\ \textcolor{stringliteral}{"{}-\/T"{}},\ \textcolor{stringliteral}{"{}link.ld"{}},\ \textcolor{stringliteral}{"{}-\/o"{}},\ OUT,\ *OBJS],\ check=\textcolor{keyword}{True})}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00134}00134\ \ \ \ \ \textcolor{keywordflow}{except}\ subprocess.CalledProcessError\ \textcolor{keyword}{as}\ e:}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00135}00135\ \ \ \ \ \ \ \ \ print(f\textcolor{stringliteral}{"{}Final\ link\ failed:\ \{e\}"{}},\ file=sys.stderr)}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00136}00136\ \ \ \ \ \ \ \ \ sys.exit(1)}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00137}00137\ }
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00138}00138\ }
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00143}\mbox{\hyperlink{namespacebrules_afad7dbdba4ec9134f6b8fe475f9d6eda}{00143}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespacebrules_afad7dbdba4ec9134f6b8fe475f9d6eda}{iso}}():}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00144}00144\ \ \ \ \ os.chdir(Path(\_\_file\_\_).resolve().parents[1])}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00145}00145\ \ \ \ \ src\_time\ =\ os.path.getmtime(\textcolor{stringliteral}{"{}kernel.elf"{}})}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00146}00146\ \ \ \ \ obj\_time\ =\ os.path.getmtime(ISO)\ \textcolor{keywordflow}{if}\ os.path.exists(ISO)\ \textcolor{keywordflow}{else}\ -\/1}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00147}00147\ \ \ \ \ \textcolor{keywordflow}{if}\ src\_time\ <=\ obj\_time:}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00148}00148\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}0"{}}\ \ \textcolor{comment}{\#\ ISO\ is\ already\ up\ to\ date}}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00149}00149\ }
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00150}00150\ \ \ \ \ print(\textcolor{stringliteral}{"{}Working\ from:"{}},\ os.getcwd())}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00151}00151\ \ \ \ \ print(\textcolor{stringliteral}{"{}Making\ ISO"{}})}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00152}00152\ \ \ \ \ shutil.copy(GRUBCFG,\ GRUBCFGTARG)}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00153}00153\ \ \ \ \ shutil.copy(OUT,\ OUTARG)}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00154}00154\ \ \ \ \ subprocess.run(}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00155}00155\ \ \ \ \ \ \ \ \ [GRUB,\ \textcolor{stringliteral}{"{}-\/o"{}},\ ISO,\ \textcolor{stringliteral}{"{}iso"{}}],}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00156}00156\ \ \ \ \ \ \ \ \ stdout=subprocess.DEVNULL,}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00157}00157\ \ \ \ \ \ \ \ \ stderr=subprocess.DEVNULL}
+\DoxyCodeLine{\Hypertarget{brules_8py_source_l00158}00158\ \ \ \ \ )}
+
+\end{DoxyCode}

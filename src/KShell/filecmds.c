@@ -18,6 +18,15 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include <fileio/fileio.h>
 #include <io/kio.h>
 #include <mem/kmem.h>
+
+/**
+ * @brief Delete a file from the FAT16 filesystem.
+ *
+ * Usage: `rm [filename] [ext]`
+ *
+ * @param argv Array of arguments. argv[1] is the filename, argv[2] is the extension.
+ * @param argc Number of arguments.
+ */
 void Rm(const char *argv[], int argc) { // rm [filename] [ext]
     if (argc < 3) {
         Kprintf("Not enough args\nUsage: rm [filename] [ext]");
@@ -26,6 +35,14 @@ void Rm(const char *argv[], int argc) { // rm [filename] [ext]
     Fat16RemoveFile(argv[1], argv[2]);
 }
 
+/**
+ * @brief Create a new empty file on the FAT16 filesystem.
+ *
+ * Usage: `mKfile [filename] [ext]`
+ *
+ * @param argv Array of arguments. argv[1] is the filename, argv[2] is the extension.
+ * @param argc Number of arguments.
+ */
 void Mkf(const char *argv[], int argc) { // mKfile [filename] [ext]
     if (argc < 3) {
         Kprintf("Not enough args\nUsage: mKfile [filename] [ext]");
@@ -34,6 +51,17 @@ void Mkf(const char *argv[], int argc) { // mKfile [filename] [ext]
     Mkfile(argv[1], argv[2]);
 }
 
+/**
+ * @brief Write data to a file in the FAT16 filesystem from user input.
+ *
+ * Prompts the user to input text and writes it to the specified file.
+ * Automatically appends an EOF marker (0x1A) at the end.
+ *
+ * Usage: `write [filename] [ext]`
+ *
+ * @param argv Array of arguments. argv[1] is the filename, argv[2] is the extension.
+ * @param argc Number of arguments.
+ */
 void Writef(const char *argv[], int argc) { // write [filename] [ext]
     if (argc < 3) {
         Kprintf("Not enough args\nUsage: write [filename] [ext]");
@@ -65,6 +93,15 @@ void Writef(const char *argv[], int argc) { // write [filename] [ext]
     Kfree(data);
 }
 
+
+/**
+ * @brief Read and display contents of a file from the FAT16 filesystem.
+ *
+ * Usage: `read [filename] [ext]`
+ *
+ * @param argv Array of arguments. argv[1] is the filename, argv[2] is the extension.
+ * @param argc Number of arguments.
+ */
 void Readf(const char *argv[], int argc) { // read [filename] [ext]
     if (argc < 3) {
         Kprintf("Not enough args\nUsage: read [filename] [ext]");

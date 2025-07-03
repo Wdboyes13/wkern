@@ -1,0 +1,17 @@
+\chapter{overview }
+\hypertarget{md_src_2slre_2docs_2overview}{}\label{md_src_2slre_2docs_2overview}\index{overview@{overview}}
+\hypertarget{md_src_2slre_2docs_2overview_autotoc_md10}{}\doxysubsection{\texorpdfstring{autotoc\+\_\+md10}{autotoc\+\_\+md10}}\label{md_src_2slre_2docs_2overview_autotoc_md10}
+\hypertarget{md_src_2slre_2docs_2overview_autotoc_md11}{}\doxysubsection{\texorpdfstring{title\+: "{}\+Overview"{}}{title\+: "{}\+Overview"{}}}\label{md_src_2slre_2docs_2overview_autotoc_md11}
+SLRE is an ISO C library that implements a subset of Perl regular expression syntax. The main features of SLRE are\+:
+
+
+\begin{DoxyItemize}
+\item Written in strict ANSI C\textquotesingle{}89
+\item Small size (compiled x86 code is about 5kB)
+\item Uses little stack and does no dynamic memory allocation
+\item Provides a simple intuitive API
+\item Implements the most useful subset of Perl regex syntax (see below)
+\item Easily extensible. E.\+g. if one wants to introduce a new metacharacter {\ttfamily \textbackslash{}i}, meaning "{}\+IPv4 address"{}, it is easy to do so with SLRE.
+\end{DoxyItemize}
+
+SLRE is perfect for tasks like parsing network requests, configuration files, user input, etc, when libraries like \href{http://pcre.org}{\texttt{PCRE}} are too heavyweight for the given task. Developers of embedded systems would benefit most. 

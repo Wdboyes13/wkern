@@ -1,0 +1,168 @@
+\doxysection{src/slre/slre.h File Reference}
+\hypertarget{slre_8h}{}\label{slre_8h}\index{src/slre/slre.h@{src/slre/slre.h}}
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structslre__cap}{slre\+\_\+cap}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{slre_8h_a6cc2f1e22312454dfcec330b2ddc87d5}{SLRE\+\_\+\+NO\+\_\+\+MATCH}}~-\/1
+\item 
+\#define \mbox{\hyperlink{slre_8h_a30cb7abab74152e6435dc9564312f8c7}{SLRE\+\_\+\+UNEXPECTED\+\_\+\+QUANTIFIER}}~-\/2
+\item 
+\#define \mbox{\hyperlink{slre_8h_a3253db1a1583737c5799109b576104b3}{SLRE\+\_\+\+UNBALANCED\+\_\+\+BRACKETS}}~-\/3
+\item 
+\#define \mbox{\hyperlink{slre_8h_ad3dd61bbf7902ad3b25ae73d4b7352b9}{SLRE\+\_\+\+INTERNAL\+\_\+\+ERROR}}~-\/4
+\item 
+\#define \mbox{\hyperlink{slre_8h_a812e904192af7921f843216404dbde92}{SLRE\+\_\+\+INVALID\+\_\+\+CHARACTER\+\_\+\+SET}}~-\/5
+\item 
+\#define \mbox{\hyperlink{slre_8h_a4a2dc5244c47f733635ec291be916e44}{SLRE\+\_\+\+INVALID\+\_\+\+METACHARACTER}}~-\/6
+\item 
+\#define \mbox{\hyperlink{slre_8h_a12c87649d7981cbb7e1151a09d2c7ce8}{SLRE\+\_\+\+CAPS\+\_\+\+ARRAY\+\_\+\+TOO\+\_\+\+SMALL}}~-\/7
+\item 
+\#define \mbox{\hyperlink{slre_8h_ac256989cda0010af8aa16cb03735f6d4}{SLRE\+\_\+\+TOO\+\_\+\+MANY\+\_\+\+BRANCHES}}~-\/8
+\item 
+\#define \mbox{\hyperlink{slre_8h_aea7be3c48ee16f13f56890ff1694bb60}{SLRE\+\_\+\+TOO\+\_\+\+MANY\+\_\+\+BRACKETS}}~-\/9
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \{ \mbox{\hyperlink{slre_8h_ac93e93137399ca0bc409f64e2bfc3099acb42ea110dcc1d12cea9b1135c2328a1}{SLRE\+\_\+\+IGNORE\+\_\+\+CASE}} = 1
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{slre_8h_a2b0b0280d10000a2a69fbf7ed80d5a6e}{slre\+\_\+match}} (const char \texorpdfstring{$\ast$}{*}regexp, const char \texorpdfstring{$\ast$}{*}buf, int buf\+\_\+len, struct \mbox{\hyperlink{structslre__cap}{slre\+\_\+cap}} \texorpdfstring{$\ast$}{*}caps, int num\+\_\+caps, int flags)
+\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\Hypertarget{slre_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{slre_8h_a12c87649d7981cbb7e1151a09d2c7ce8}\index{slre.h@{slre.h}!SLRE\_CAPS\_ARRAY\_TOO\_SMALL@{SLRE\_CAPS\_ARRAY\_TOO\_SMALL}}
+\index{SLRE\_CAPS\_ARRAY\_TOO\_SMALL@{SLRE\_CAPS\_ARRAY\_TOO\_SMALL}!slre.h@{slre.h}}
+\doxysubsubsection{\texorpdfstring{SLRE\_CAPS\_ARRAY\_TOO\_SMALL}{SLRE\_CAPS\_ARRAY\_TOO\_SMALL}}
+{\footnotesize\ttfamily \label{slre_8h_a12c87649d7981cbb7e1151a09d2c7ce8} 
+\#define SLRE\+\_\+\+CAPS\+\_\+\+ARRAY\+\_\+\+TOO\+\_\+\+SMALL~-\/7}
+
+
+
+Definition at line \mbox{\hyperlink{slre_8h_source_l00052}{52}} of file \mbox{\hyperlink{slre_8h_source}{slre.\+h}}.
+
+\Hypertarget{slre_8h_ad3dd61bbf7902ad3b25ae73d4b7352b9}\index{slre.h@{slre.h}!SLRE\_INTERNAL\_ERROR@{SLRE\_INTERNAL\_ERROR}}
+\index{SLRE\_INTERNAL\_ERROR@{SLRE\_INTERNAL\_ERROR}!slre.h@{slre.h}}
+\doxysubsubsection{\texorpdfstring{SLRE\_INTERNAL\_ERROR}{SLRE\_INTERNAL\_ERROR}}
+{\footnotesize\ttfamily \label{slre_8h_ad3dd61bbf7902ad3b25ae73d4b7352b9} 
+\#define SLRE\+\_\+\+INTERNAL\+\_\+\+ERROR~-\/4}
+
+
+
+Definition at line \mbox{\hyperlink{slre_8h_source_l00049}{49}} of file \mbox{\hyperlink{slre_8h_source}{slre.\+h}}.
+
+\Hypertarget{slre_8h_a812e904192af7921f843216404dbde92}\index{slre.h@{slre.h}!SLRE\_INVALID\_CHARACTER\_SET@{SLRE\_INVALID\_CHARACTER\_SET}}
+\index{SLRE\_INVALID\_CHARACTER\_SET@{SLRE\_INVALID\_CHARACTER\_SET}!slre.h@{slre.h}}
+\doxysubsubsection{\texorpdfstring{SLRE\_INVALID\_CHARACTER\_SET}{SLRE\_INVALID\_CHARACTER\_SET}}
+{\footnotesize\ttfamily \label{slre_8h_a812e904192af7921f843216404dbde92} 
+\#define SLRE\+\_\+\+INVALID\+\_\+\+CHARACTER\+\_\+\+SET~-\/5}
+
+
+
+Definition at line \mbox{\hyperlink{slre_8h_source_l00050}{50}} of file \mbox{\hyperlink{slre_8h_source}{slre.\+h}}.
+
+\Hypertarget{slre_8h_a4a2dc5244c47f733635ec291be916e44}\index{slre.h@{slre.h}!SLRE\_INVALID\_METACHARACTER@{SLRE\_INVALID\_METACHARACTER}}
+\index{SLRE\_INVALID\_METACHARACTER@{SLRE\_INVALID\_METACHARACTER}!slre.h@{slre.h}}
+\doxysubsubsection{\texorpdfstring{SLRE\_INVALID\_METACHARACTER}{SLRE\_INVALID\_METACHARACTER}}
+{\footnotesize\ttfamily \label{slre_8h_a4a2dc5244c47f733635ec291be916e44} 
+\#define SLRE\+\_\+\+INVALID\+\_\+\+METACHARACTER~-\/6}
+
+
+
+Definition at line \mbox{\hyperlink{slre_8h_source_l00051}{51}} of file \mbox{\hyperlink{slre_8h_source}{slre.\+h}}.
+
+\Hypertarget{slre_8h_a6cc2f1e22312454dfcec330b2ddc87d5}\index{slre.h@{slre.h}!SLRE\_NO\_MATCH@{SLRE\_NO\_MATCH}}
+\index{SLRE\_NO\_MATCH@{SLRE\_NO\_MATCH}!slre.h@{slre.h}}
+\doxysubsubsection{\texorpdfstring{SLRE\_NO\_MATCH}{SLRE\_NO\_MATCH}}
+{\footnotesize\ttfamily \label{slre_8h_a6cc2f1e22312454dfcec330b2ddc87d5} 
+\#define SLRE\+\_\+\+NO\+\_\+\+MATCH~-\/1}
+
+
+
+Definition at line \mbox{\hyperlink{slre_8h_source_l00046}{46}} of file \mbox{\hyperlink{slre_8h_source}{slre.\+h}}.
+
+\Hypertarget{slre_8h_aea7be3c48ee16f13f56890ff1694bb60}\index{slre.h@{slre.h}!SLRE\_TOO\_MANY\_BRACKETS@{SLRE\_TOO\_MANY\_BRACKETS}}
+\index{SLRE\_TOO\_MANY\_BRACKETS@{SLRE\_TOO\_MANY\_BRACKETS}!slre.h@{slre.h}}
+\doxysubsubsection{\texorpdfstring{SLRE\_TOO\_MANY\_BRACKETS}{SLRE\_TOO\_MANY\_BRACKETS}}
+{\footnotesize\ttfamily \label{slre_8h_aea7be3c48ee16f13f56890ff1694bb60} 
+\#define SLRE\+\_\+\+TOO\+\_\+\+MANY\+\_\+\+BRACKETS~-\/9}
+
+
+
+Definition at line \mbox{\hyperlink{slre_8h_source_l00054}{54}} of file \mbox{\hyperlink{slre_8h_source}{slre.\+h}}.
+
+\Hypertarget{slre_8h_ac256989cda0010af8aa16cb03735f6d4}\index{slre.h@{slre.h}!SLRE\_TOO\_MANY\_BRANCHES@{SLRE\_TOO\_MANY\_BRANCHES}}
+\index{SLRE\_TOO\_MANY\_BRANCHES@{SLRE\_TOO\_MANY\_BRANCHES}!slre.h@{slre.h}}
+\doxysubsubsection{\texorpdfstring{SLRE\_TOO\_MANY\_BRANCHES}{SLRE\_TOO\_MANY\_BRANCHES}}
+{\footnotesize\ttfamily \label{slre_8h_ac256989cda0010af8aa16cb03735f6d4} 
+\#define SLRE\+\_\+\+TOO\+\_\+\+MANY\+\_\+\+BRANCHES~-\/8}
+
+
+
+Definition at line \mbox{\hyperlink{slre_8h_source_l00053}{53}} of file \mbox{\hyperlink{slre_8h_source}{slre.\+h}}.
+
+\Hypertarget{slre_8h_a3253db1a1583737c5799109b576104b3}\index{slre.h@{slre.h}!SLRE\_UNBALANCED\_BRACKETS@{SLRE\_UNBALANCED\_BRACKETS}}
+\index{SLRE\_UNBALANCED\_BRACKETS@{SLRE\_UNBALANCED\_BRACKETS}!slre.h@{slre.h}}
+\doxysubsubsection{\texorpdfstring{SLRE\_UNBALANCED\_BRACKETS}{SLRE\_UNBALANCED\_BRACKETS}}
+{\footnotesize\ttfamily \label{slre_8h_a3253db1a1583737c5799109b576104b3} 
+\#define SLRE\+\_\+\+UNBALANCED\+\_\+\+BRACKETS~-\/3}
+
+
+
+Definition at line \mbox{\hyperlink{slre_8h_source_l00048}{48}} of file \mbox{\hyperlink{slre_8h_source}{slre.\+h}}.
+
+\Hypertarget{slre_8h_a30cb7abab74152e6435dc9564312f8c7}\index{slre.h@{slre.h}!SLRE\_UNEXPECTED\_QUANTIFIER@{SLRE\_UNEXPECTED\_QUANTIFIER}}
+\index{SLRE\_UNEXPECTED\_QUANTIFIER@{SLRE\_UNEXPECTED\_QUANTIFIER}!slre.h@{slre.h}}
+\doxysubsubsection{\texorpdfstring{SLRE\_UNEXPECTED\_QUANTIFIER}{SLRE\_UNEXPECTED\_QUANTIFIER}}
+{\footnotesize\ttfamily \label{slre_8h_a30cb7abab74152e6435dc9564312f8c7} 
+\#define SLRE\+\_\+\+UNEXPECTED\+\_\+\+QUANTIFIER~-\/2}
+
+
+
+Definition at line \mbox{\hyperlink{slre_8h_source_l00047}{47}} of file \mbox{\hyperlink{slre_8h_source}{slre.\+h}}.
+
+
+
+\label{doc-enum-members}
+\Hypertarget{slre_8h_doc-enum-members}
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{slre_8h_ac93e93137399ca0bc409f64e2bfc3099}\doxysubsubsection{\texorpdfstring{anonymous enum}{anonymous enum}}
+{\footnotesize\ttfamily \label{slre_8h_ac93e93137399ca0bc409f64e2bfc3099} 
+anonymous enum}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SLRE\_IGNORE\_CASE@{SLRE\_IGNORE\_CASE}!slre.h@{slre.h}}\index{slre.h@{slre.h}!SLRE\_IGNORE\_CASE@{SLRE\_IGNORE\_CASE}}}\Hypertarget{slre_8h_ac93e93137399ca0bc409f64e2bfc3099acb42ea110dcc1d12cea9b1135c2328a1}\label{slre_8h_ac93e93137399ca0bc409f64e2bfc3099acb42ea110dcc1d12cea9b1135c2328a1} 
+SLRE\+\_\+\+IGNORE\+\_\+\+CASE&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{slre_8h_source_l00042}{42}} of file \mbox{\hyperlink{slre_8h_source}{slre.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{slre_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{slre_8h_a2b0b0280d10000a2a69fbf7ed80d5a6e}\index{slre.h@{slre.h}!slre\_match@{slre\_match}}
+\index{slre\_match@{slre\_match}!slre.h@{slre.h}}
+\doxysubsubsection{\texorpdfstring{slre\_match()}{slre\_match()}}
+{\footnotesize\ttfamily \label{slre_8h_a2b0b0280d10000a2a69fbf7ed80d5a6e} 
+int slre\+\_\+match (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{regexp}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{buf}{, }\item[{int}]{buf\+\_\+len}{, }\item[{struct \mbox{\hyperlink{structslre__cap}{slre\+\_\+cap}} \texorpdfstring{$\ast$}{*}}]{caps}{, }\item[{int}]{num\+\_\+caps}{, }\item[{int}]{flags}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{slre_8c_source_l00476}{476}} of file \mbox{\hyperlink{slre_8c_source}{slre.\+c}}.
+

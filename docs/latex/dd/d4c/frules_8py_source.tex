@@ -1,0 +1,35 @@
+\doxysection{frules.\+py}
+\hypertarget{frules_8py_source}{}\label{frules_8py_source}\index{bfiles/frules.py@{bfiles/frules.py}}
+\mbox{\hyperlink{frules_8py}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{frules_8py_source_l00001}\mbox{\hyperlink{namespacefrules}{00001}}\ }
+\DoxyCodeLine{\Hypertarget{frules_8py_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{frules_8py_source_l00018}00018\ \textcolor{keyword}{import}\ subprocess}
+\DoxyCodeLine{\Hypertarget{frules_8py_source_l00019}00019\ \textcolor{keyword}{from}\ \mbox{\hyperlink{namespacebfiles_1_1files}{bfiles.files}}\ \textcolor{keyword}{import}\ *}
+\DoxyCodeLine{\Hypertarget{frules_8py_source_l00020}00020\ \textcolor{keyword}{import}\ os}
+\DoxyCodeLine{\Hypertarget{frules_8py_source_l00021}00021\ \textcolor{keyword}{from}\ pathlib\ \textcolor{keyword}{import}\ Path}
+\DoxyCodeLine{\Hypertarget{frules_8py_source_l00022}00022\ \textcolor{keyword}{from}\ datetime\ \textcolor{keyword}{import}\ datetime}
+\DoxyCodeLine{\Hypertarget{frules_8py_source_l00023}00023\ \textcolor{keyword}{from}\ \mbox{\hyperlink{namespacebfiles_1_1toolsflags}{bfiles.toolsflags}}\ \textcolor{keyword}{import}\ *}
+\DoxyCodeLine{\Hypertarget{frules_8py_source_l00024}\mbox{\hyperlink{namespacefrules_afa950d584cfcbd7850c21a8f0ad7839b}{00024}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespacefrules_afa950d584cfcbd7850c21a8f0ad7839b}{fmt}}():}
+\DoxyCodeLine{\Hypertarget{frules_8py_source_l00025}00025\ \ \ \ \ os.chdir(Path(\_\_file\_\_).resolve().parents[1])}
+\DoxyCodeLine{\Hypertarget{frules_8py_source_l00026}00026\ \ \ \ \ subprocess.run([\textcolor{stringliteral}{"{}clang-\/format"{}},\ \textcolor{stringliteral}{"{}-\/i"{}},\ *SRCS,\ *HEADS])}
+\DoxyCodeLine{\Hypertarget{frules_8py_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{frules_8py_source_l00028}\mbox{\hyperlink{namespacefrules_a6e8caceb356ddda5b3d1989910c9707c}{00028}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespacefrules_a6e8caceb356ddda5b3d1989910c9707c}{git}}():}
+\DoxyCodeLine{\Hypertarget{frules_8py_source_l00029}00029\ \ \ \ \ os.chdir(Path(\_\_file\_\_).resolve().parents[1])}
+\DoxyCodeLine{\Hypertarget{frules_8py_source_l00030}00030\ \ \ \ \ subprocess.run([\textcolor{stringliteral}{"{}./loc.sh"{}}])}
+\DoxyCodeLine{\Hypertarget{frules_8py_source_l00031}00031\ \ \ \ \ subprocess.run([\textcolor{stringliteral}{"{}git"{}},\ \textcolor{stringliteral}{"{}add"{}},\ \textcolor{stringliteral}{"{}."{}}])}
+\DoxyCodeLine{\Hypertarget{frules_8py_source_l00032}00032\ \ \ \ \ subprocess.run([\textcolor{stringliteral}{"{}git"{}},\ \textcolor{stringliteral}{"{}commit"{}},\ \textcolor{stringliteral}{"{}-\/m"{}},\ \textcolor{stringliteral}{"{}Updated\ at:\ "{}}\ +\ datetime.now().strftime(\textcolor{stringliteral}{"{}\%H:\%M:\%S"{}})])}
+\DoxyCodeLine{\Hypertarget{frules_8py_source_l00033}00033\ \ \ \ \ subprocess.run([\textcolor{stringliteral}{"{}git"{}},\ \textcolor{stringliteral}{"{}push"{}},\ \textcolor{stringliteral}{"{}origin"{}},\ \textcolor{stringliteral}{"{}main"{}}])}
+\DoxyCodeLine{\Hypertarget{frules_8py_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{frules_8py_source_l00035}\mbox{\hyperlink{namespacefrules_a3e81186d42fbac21b831e8afb3581bfc}{00035}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespacefrules_a3e81186d42fbac21b831e8afb3581bfc}{run}}():}
+\DoxyCodeLine{\Hypertarget{frules_8py_source_l00036}00036\ \ \ \ \ os.chdir(Path(\_\_file\_\_).resolve().parents[1])}
+\DoxyCodeLine{\Hypertarget{frules_8py_source_l00037}00037\ \ \ \ \ subprocess.run([QEMU,\ *QEMUFLAGS])}
+\DoxyCodeLine{\Hypertarget{frules_8py_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{frules_8py_source_l00039}\mbox{\hyperlink{namespacefrules_ae30c03417e4bfb2b4674a3c90ebffb19}{00039}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespacefrules_ae30c03417e4bfb2b4674a3c90ebffb19}{chkm}}():}
+\DoxyCodeLine{\Hypertarget{frules_8py_source_l00040}00040\ \ \ \ \ os.chdir(Path(\_\_file\_\_).resolve().parents[1])}
+\DoxyCodeLine{\Hypertarget{frules_8py_source_l00041}00041\ \ \ \ \ \textcolor{keywordflow}{try}:}
+\DoxyCodeLine{\Hypertarget{frules_8py_source_l00042}00042\ \ \ \ \ \ \ \ \ subprocess.run([\textcolor{stringliteral}{"{}i686-\/elf-\/grub-\/file"{}},\ \textcolor{stringliteral}{"{}-\/-\/is-\/x86-\/multiboot"{}},\ \textcolor{stringliteral}{"{}kernel.elf"{}}],\ check=\textcolor{keyword}{True})}
+\DoxyCodeLine{\Hypertarget{frules_8py_source_l00043}00043\ \ \ \ \ \textcolor{keywordflow}{except}\ subprocess.CalledProcessError:}
+\DoxyCodeLine{\Hypertarget{frules_8py_source_l00044}00044\ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}Invalid\ multiboot\ header"{}})}
+
+\end{DoxyCode}

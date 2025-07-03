@@ -1,0 +1,91 @@
+\doxysection{src/mem/memutil.c File Reference}
+\hypertarget{memutil_8c}{}\label{memutil_8c}\index{src/mem/memutil.c@{src/mem/memutil.c}}
+{\ttfamily \#include $<$mem/kmem.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{memutil_8c_a0d686b7db76bc3bc8146a0b13d8e027b}{Kmemset}} (void \texorpdfstring{$\ast$}{*}ptr, unsigned char value, unsigned int num)
+\begin{DoxyCompactList}\small\item\em Set memory to a value. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{memutil_8c_ad7db4b63d50e1827f134b3e0867d2b05}{Kmemcpy}} (void \texorpdfstring{$\ast$}{*}dest, const void \texorpdfstring{$\ast$}{*}src, unsigned int count)
+\begin{DoxyCompactList}\small\item\em Copy memory. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{memutil_8c_a669ed206858273d3e7b61412ef6753ca}{Kmemcmp}} (const void \texorpdfstring{$\ast$}{*}a, const void \texorpdfstring{$\ast$}{*}b, \mbox{\hyperlink{nums_8h_a7c94ea6f8948649f8d181ae55911eeaf}{size\+\_\+t}} n)
+\begin{DoxyCompactList}\small\item\em Compare memory. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{memutil_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{memutil_8c_a669ed206858273d3e7b61412ef6753ca}\index{memutil.c@{memutil.c}!Kmemcmp@{Kmemcmp}}
+\index{Kmemcmp@{Kmemcmp}!memutil.c@{memutil.c}}
+\doxysubsubsection{\texorpdfstring{Kmemcmp()}{Kmemcmp()}}
+{\footnotesize\ttfamily \label{memutil_8c_a669ed206858273d3e7b61412ef6753ca} 
+int Kmemcmp (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{a}{, }\item[{const void \texorpdfstring{$\ast$}{*}}]{b}{, }\item[{\mbox{\hyperlink{nums_8h_a7c94ea6f8948649f8d181ae55911eeaf}{size\+\_\+t}}}]{n}{}\end{DoxyParamCaption})}
+
+
+
+Compare memory. 
+
+Compares the first {\ttfamily n} bytes of two memory areas.
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & Pointer to the first memory area. \\
+\hline
+{\em b} & Pointer to the second memory area. \\
+\hline
+{\em n} & Number of bytes to compare. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An integer less than, equal to, or greater than zero if the first differing byte in {\ttfamily a} is found to be less than, equal to, or greater than the corresponding byte in {\ttfamily b}. Returns 0 if all {\ttfamily n} bytes are equal. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{memutil_8c_source_l00059}{59}} of file \mbox{\hyperlink{memutil_8c_source}{memutil.\+c}}.
+
+\Hypertarget{memutil_8c_ad7db4b63d50e1827f134b3e0867d2b05}\index{memutil.c@{memutil.c}!Kmemcpy@{Kmemcpy}}
+\index{Kmemcpy@{Kmemcpy}!memutil.c@{memutil.c}}
+\doxysubsubsection{\texorpdfstring{Kmemcpy()}{Kmemcpy()}}
+{\footnotesize\ttfamily \label{memutil_8c_ad7db4b63d50e1827f134b3e0867d2b05} 
+void \texorpdfstring{$\ast$}{*} Kmemcpy (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{dest}{, }\item[{const void \texorpdfstring{$\ast$}{*}}]{src}{, }\item[{unsigned int}]{count}{}\end{DoxyParamCaption})}
+
+
+
+Copy memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em void\texorpdfstring{$\ast$}{*}} & dest -\/ Pointer to memory destination \\
+\hline
+{\em void\texorpdfstring{$\ast$}{*}} & src -\/ Pointer to source memory \\
+\hline
+{\em \doxylink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} & count -\/ Amount of bytes to be copied \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{memutil_8c_source_l00038}{38}} of file \mbox{\hyperlink{memutil_8c_source}{memutil.\+c}}.
+
+\Hypertarget{memutil_8c_a0d686b7db76bc3bc8146a0b13d8e027b}\index{memutil.c@{memutil.c}!Kmemset@{Kmemset}}
+\index{Kmemset@{Kmemset}!memutil.c@{memutil.c}}
+\doxysubsubsection{\texorpdfstring{Kmemset()}{Kmemset()}}
+{\footnotesize\ttfamily \label{memutil_8c_a0d686b7db76bc3bc8146a0b13d8e027b} 
+void Kmemset (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{ptr}{, }\item[{unsigned char}]{value}{, }\item[{unsigned int}]{num}{}\end{DoxyParamCaption})}
+
+
+
+Set memory to a value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em void\texorpdfstring{$\ast$}{*}} & ptr -\/ Pointer to memory which is to be modified \\
+\hline
+{\em \doxylink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} & value -\/ Value to set memory too \\
+\hline
+{\em \doxylink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} & num -\/ Number of bytes to set \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{memutil_8c_source_l00026}{26}} of file \mbox{\hyperlink{memutil_8c_source}{memutil.\+c}}.
+

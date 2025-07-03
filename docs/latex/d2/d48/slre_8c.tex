@@ -1,0 +1,113 @@
+\doxysection{src/slre/slre.c File Reference}
+\hypertarget{slre_8c}{}\label{slre_8c}\index{src/slre/slre.c@{src/slre/slre.c}}
+{\ttfamily \#include $<$global.\+h$>$}\newline
+{\ttfamily \#include $<$utils/util.\+h$>$}\newline
+{\ttfamily \#include "{}slre.\+h"{}}\newline
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structbracket__pair}{bracket\+\_\+pair}}
+\item 
+struct \mbox{\hyperlink{structbranch}{branch}}
+\item 
+struct \mbox{\hyperlink{structregex__info}{regex\+\_\+info}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{slre_8c_a33d4bf0118147ac61bf7338681ef2afa}{MAX\+\_\+\+BRANCHES}}~100
+\item 
+\#define \mbox{\hyperlink{slre_8c_a8995d8f9d9fc4d78511c7a0e47f8b971}{MAX\+\_\+\+BRACKETS}}~100
+\item 
+\#define \mbox{\hyperlink{slre_8c_ab6a9b0d79bb818b9a0ec103f39d0846d}{FAIL\+\_\+\+IF}}(condition,  error\+\_\+code)
+\item 
+\#define \mbox{\hyperlink{slre_8c_a54cdf1919ca8a16521d76dce0df97efd}{ARRAY\+\_\+\+SIZE}}(ar)
+\item 
+\#define \mbox{\hyperlink{slre_8c_a32adf79142f0a426b5e782fb7cd4cad3}{DBG}}(x)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{slre_8c_a047572f338575539f6e29895250c6c92}{slre\+\_\+match}} (const char \texorpdfstring{$\ast$}{*}regexp, const char \texorpdfstring{$\ast$}{*}s, int s\+\_\+len, struct \mbox{\hyperlink{structslre__cap}{slre\+\_\+cap}} \texorpdfstring{$\ast$}{*}caps, int num\+\_\+caps, int flags)
+\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\Hypertarget{slre_8c_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{slre_8c_a54cdf1919ca8a16521d76dce0df97efd}\index{slre.c@{slre.c}!ARRAY\_SIZE@{ARRAY\_SIZE}}
+\index{ARRAY\_SIZE@{ARRAY\_SIZE}!slre.c@{slre.c}}
+\doxysubsubsection{\texorpdfstring{ARRAY\_SIZE}{ARRAY\_SIZE}}
+{\footnotesize\ttfamily \label{slre_8c_a54cdf1919ca8a16521d76dce0df97efd} 
+\#define ARRAY\+\_\+\+SIZE(\begin{DoxyParamCaption}\item[{}]{ar}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(\textcolor{keyword}{sizeof}(ar)\ /\ \textcolor{keyword}{sizeof}((ar)[0]))}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{slre_8c_source_l00032}{32}} of file \mbox{\hyperlink{slre_8c_source}{slre.\+c}}.
+
+\Hypertarget{slre_8c_a32adf79142f0a426b5e782fb7cd4cad3}\index{slre.c@{slre.c}!DBG@{DBG}}
+\index{DBG@{DBG}!slre.c@{slre.c}}
+\doxysubsubsection{\texorpdfstring{DBG}{DBG}}
+{\footnotesize\ttfamily \label{slre_8c_a32adf79142f0a426b5e782fb7cd4cad3} 
+\#define DBG(\begin{DoxyParamCaption}\item[{}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{slre_8c_source_l00038}{38}} of file \mbox{\hyperlink{slre_8c_source}{slre.\+c}}.
+
+\Hypertarget{slre_8c_ab6a9b0d79bb818b9a0ec103f39d0846d}\index{slre.c@{slre.c}!FAIL\_IF@{FAIL\_IF}}
+\index{FAIL\_IF@{FAIL\_IF}!slre.c@{slre.c}}
+\doxysubsubsection{\texorpdfstring{FAIL\_IF}{FAIL\_IF}}
+{\footnotesize\ttfamily \label{slre_8c_ab6a9b0d79bb818b9a0ec103f39d0846d} 
+\#define FAIL\+\_\+\+IF(\begin{DoxyParamCaption}\item[{}]{condition}{, }\item[{}]{error\+\_\+code}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (condition)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ return\ (error\_code)}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{slre_8c_source_l00027}{27}} of file \mbox{\hyperlink{slre_8c_source}{slre.\+c}}.
+
+\Hypertarget{slre_8c_a8995d8f9d9fc4d78511c7a0e47f8b971}\index{slre.c@{slre.c}!MAX\_BRACKETS@{MAX\_BRACKETS}}
+\index{MAX\_BRACKETS@{MAX\_BRACKETS}!slre.c@{slre.c}}
+\doxysubsubsection{\texorpdfstring{MAX\_BRACKETS}{MAX\_BRACKETS}}
+{\footnotesize\ttfamily \label{slre_8c_a8995d8f9d9fc4d78511c7a0e47f8b971} 
+\#define MAX\+\_\+\+BRACKETS~100}
+
+
+
+Definition at line \mbox{\hyperlink{slre_8c_source_l00026}{26}} of file \mbox{\hyperlink{slre_8c_source}{slre.\+c}}.
+
+\Hypertarget{slre_8c_a33d4bf0118147ac61bf7338681ef2afa}\index{slre.c@{slre.c}!MAX\_BRANCHES@{MAX\_BRANCHES}}
+\index{MAX\_BRANCHES@{MAX\_BRANCHES}!slre.c@{slre.c}}
+\doxysubsubsection{\texorpdfstring{MAX\_BRANCHES}{MAX\_BRANCHES}}
+{\footnotesize\ttfamily \label{slre_8c_a33d4bf0118147ac61bf7338681ef2afa} 
+\#define MAX\+\_\+\+BRANCHES~100}
+
+
+
+Definition at line \mbox{\hyperlink{slre_8c_source_l00025}{25}} of file \mbox{\hyperlink{slre_8c_source}{slre.\+c}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{slre_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{slre_8c_a047572f338575539f6e29895250c6c92}\index{slre.c@{slre.c}!slre\_match@{slre\_match}}
+\index{slre\_match@{slre\_match}!slre.c@{slre.c}}
+\doxysubsubsection{\texorpdfstring{slre\_match()}{slre\_match()}}
+{\footnotesize\ttfamily \label{slre_8c_a047572f338575539f6e29895250c6c92} 
+int slre\+\_\+match (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{regexp}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{s}{, }\item[{int}]{s\+\_\+len}{, }\item[{struct \mbox{\hyperlink{structslre__cap}{slre\+\_\+cap}} \texorpdfstring{$\ast$}{*}}]{caps}{, }\item[{int}]{num\+\_\+caps}{, }\item[{int}]{flags}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{slre_8c_source_l00476}{476}} of file \mbox{\hyperlink{slre_8c_source}{slre.\+c}}.
+

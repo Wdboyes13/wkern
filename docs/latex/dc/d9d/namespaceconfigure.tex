@@ -1,0 +1,426 @@
+\doxysection{configure Namespace Reference}
+\hypertarget{namespaceconfigure}{}\label{namespaceconfigure}\index{configure@{configure}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespaceconfigure_a48a5cc86c2a5620390c699f514d200ec}{yes}} ()
+\begin{DoxyCompactList}\small\item\em Prints a "{}\+YES"{} message in green. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespaceconfigure_ade1460e9bfc57fb148707dd651d36de3}{no}} ()
+\begin{DoxyCompactList}\small\item\em Prints a "{}\+NO"{} message in red. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespaceconfigure_aa426be408c936a99b5db8b6bf5e6496e}{run\+\_\+check}} (desc, cmd, fatal=\mbox{\hyperlink{namespaceconfigure_a9f34e64095d6ef32e7505c023e6e01a0}{True}})
+\begin{DoxyCompactList}\small\item\em Runs a shell command and checks its success. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespaceconfigure_a0e8e4edd8baf21be6982f012a529b524}{check\+\_\+tool}} (tool)
+\begin{DoxyCompactList}\small\item\em Checks if a given tool is available in PATH. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespaceconfigure_a11fafa5294d8b7ee333ad77689c13bbd}{check\+\_\+cc\+\_\+flag}} (flag)
+\begin{DoxyCompactList}\small\item\em Checks if a compiler flag is accepted by {\ttfamily i686-\/elf-\/gcc}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespaceconfigure_a6b00c2ed12a5ebe461f93e50771a3c00}{check\+\_\+ld\+\_\+flag}} (flag)
+\begin{DoxyCompactList}\small\item\em Checks if a linker flag is accepted by {\ttfamily i686-\/elf-\/ld}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+str \mbox{\hyperlink{namespaceconfigure_ac2cc9d7c72ef0117a607ba78569a3119}{BLUE}} = "{}\textbackslash{}033\mbox{[}0;34m"{}
+\item 
+str \mbox{\hyperlink{namespaceconfigure_a0cdb532b2d8214370c8c11dae443fbb0}{RED}} = "{}\textbackslash{}033\mbox{[}0;31m"{}
+\item 
+str \mbox{\hyperlink{namespaceconfigure_ab030a5f2914bf4cb207bf7be8465481f}{GREEN}} = "{}\textbackslash{}033\mbox{[}0;32m"{}
+\item 
+str \mbox{\hyperlink{namespaceconfigure_ad29412f562db2e4028f65387a0208e0c}{YELLOW}} = "{}\textbackslash{}033\mbox{[}0;33m"{}
+\item 
+str \mbox{\hyperlink{namespaceconfigure_a092825998486e37482c08f90717e0a3a}{MAGENTA}} = "{}\textbackslash{}033\mbox{[}0;35m"{}
+\item 
+str \mbox{\hyperlink{namespaceconfigure_a88018bc97fcfa75642c06e68d189a69b}{CYAN}} = "{}\textbackslash{}033\mbox{[}0;36m"{}
+\item 
+str \mbox{\hyperlink{namespaceconfigure_ae565a35db0ad2fd67d05e9b197706b01}{CLEAR}} = "{}\textbackslash{}033\mbox{[}0m"{}
+\item 
+list \mbox{\hyperlink{namespaceconfigure_a8b34be39290fdb1f281683848d4734ac}{tmp\+\_\+files}} = \mbox{[}"{}tmp.\+c"{}, "{}tmp.\+asm"{}, "{}tmp.\+o"{}, "{}disk.\+img"{}\mbox{]}
+\item 
+\mbox{\hyperlink{namespaceconfigure_a53b9bd0504d843c47b4323a4d89ceec8}{start\+\_\+time}} = time.\+time()
+\item 
+int \mbox{\hyperlink{namespaceconfigure_ab706421e5d6b9fea2f3c3489dfa4cb18}{reconfigure}} = "{}-\/-\/reconfigure"{}
+\item 
+\mbox{\hyperlink{namespaceconfigure_af55b180efe30db944f599b214c5fd943}{missing\+\_\+ok}}
+\item 
+list \mbox{\hyperlink{namespaceconfigure_a551b4cf5e04500652dceb4f5863ac505}{tools}} = \mbox{[}"{}make"{}, "{}nasm"{}, "{}i686-\/elf-\/gcc"{}, "{}i686-\/elf-\/ld"{}, "{}i686-\/elf-\/grub-\/mkrescue"{}, "{}qemu-\/system-\/i386"{}\mbox{]}
+\item 
+\mbox{\hyperlink{namespaceconfigure_ac6b536ad3f9e286a6c486f0762748abc}{shell}}
+\item 
+\mbox{\hyperlink{namespaceconfigure_a9f34e64095d6ef32e7505c023e6e01a0}{True}}
+\item 
+\mbox{\hyperlink{namespaceconfigure_ae509bafc831573ff792f25fcf0bed99e}{stdout}}
+\item 
+\mbox{\hyperlink{namespaceconfigure_ac8639202c8da743eb81427b48db11939}{DEVNULL}}
+\item 
+\mbox{\hyperlink{namespaceconfigure_a7dc67fd0c146997b94d1de5f52e61cc6}{stderr}}
+\item 
+list \mbox{\hyperlink{namespaceconfigure_aec1ff7e59ed0001b005e1606c2eb8511}{cc\+\_\+flags}} = \mbox{[}"{}-\/ffreestanding"{}, "{}-\/nostdlib"{}, "{}-\/fno-\/pie"{}, "{}-\/m32"{}, "{}-\/O2"{}, "{}-\/fno-\/omit-\/frame-\/pointer"{}, "{}-\/std=c99"{}, "{}-\/g"{}\mbox{]}
+\item 
+list \mbox{\hyperlink{namespaceconfigure_a333ab3fb6e9698e2da4c92b89e2a755a}{ld\+\_\+flags}} = \mbox{[}"{}-\/melf\+\_\+i386"{}, "{}-\/n"{}, "{}-\/-\/oformat=elf32-\/i386"{}\mbox{]}
+\item 
+\mbox{\hyperlink{namespaceconfigure_ae0155c540d3b57c8f99aaf37db8b0b34}{parents}}
+\item 
+\mbox{\hyperlink{namespaceconfigure_ade0dbc6da912ed53080aa7010198b8e3}{exist\+\_\+ok}}
+\item 
+\mbox{\hyperlink{namespaceconfigure_ae8732c4ce2c50bc3d00fdb14573530e1}{check}}
+\item 
+\mbox{\hyperlink{namespaceconfigure_a708e8b12b4c965202587864ac55980e7}{end\+\_\+time}} = time.\+time()
+\item 
+\mbox{\hyperlink{namespaceconfigure_aef369b0a10d1539bdb04f6dad7b6b7b4}{elapsed}} = \mbox{\hyperlink{namespaceconfigure_a708e8b12b4c965202587864ac55980e7}{end\+\_\+time}} -\/ \mbox{\hyperlink{namespaceconfigure_a53b9bd0504d843c47b4323a4d89ceec8}{start\+\_\+time}}
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{namespaceconfigure_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{namespaceconfigure_a11fafa5294d8b7ee333ad77689c13bbd}\index{configure@{configure}!check\_cc\_flag@{check\_cc\_flag}}
+\index{check\_cc\_flag@{check\_cc\_flag}!configure@{configure}}
+\doxysubsubsection{\texorpdfstring{check\_cc\_flag()}{check\_cc\_flag()}}
+{\footnotesize\ttfamily \label{namespaceconfigure_a11fafa5294d8b7ee333ad77689c13bbd} 
+configure.\+check\+\_\+cc\+\_\+flag (\begin{DoxyParamCaption}\item[{}]{flag}{}\end{DoxyParamCaption})}
+
+
+
+Checks if a compiler flag is accepted by {\ttfamily i686-\/elf-\/gcc}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em flag} & The compiler flag to test (e.\+g. {\ttfamily -\/ffreestanding}) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{configure_8py_source_l00075}{75}} of file \mbox{\hyperlink{configure_8py_source}{configure.\+py}}.
+
+\Hypertarget{namespaceconfigure_a6b00c2ed12a5ebe461f93e50771a3c00}\index{configure@{configure}!check\_ld\_flag@{check\_ld\_flag}}
+\index{check\_ld\_flag@{check\_ld\_flag}!configure@{configure}}
+\doxysubsubsection{\texorpdfstring{check\_ld\_flag()}{check\_ld\_flag()}}
+{\footnotesize\ttfamily \label{namespaceconfigure_a6b00c2ed12a5ebe461f93e50771a3c00} 
+configure.\+check\+\_\+ld\+\_\+flag (\begin{DoxyParamCaption}\item[{}]{flag}{}\end{DoxyParamCaption})}
+
+
+
+Checks if a linker flag is accepted by {\ttfamily i686-\/elf-\/ld}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em flag} & The linker flag to test (e.\+g. {\ttfamily -\/-\/oformat=elf32-\/i386}) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{configure_8py_source_l00089}{89}} of file \mbox{\hyperlink{configure_8py_source}{configure.\+py}}.
+
+\Hypertarget{namespaceconfigure_a0e8e4edd8baf21be6982f012a529b524}\index{configure@{configure}!check\_tool@{check\_tool}}
+\index{check\_tool@{check\_tool}!configure@{configure}}
+\doxysubsubsection{\texorpdfstring{check\_tool()}{check\_tool()}}
+{\footnotesize\ttfamily \label{namespaceconfigure_a0e8e4edd8baf21be6982f012a529b524} 
+configure.\+check\+\_\+tool (\begin{DoxyParamCaption}\item[{}]{tool}{}\end{DoxyParamCaption})}
+
+
+
+Checks if a given tool is available in PATH. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tool} & Name of the tool (e.\+g. {\ttfamily make}, {\ttfamily nasm}, etc.) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{configure_8py_source_l00063}{63}} of file \mbox{\hyperlink{configure_8py_source}{configure.\+py}}.
+
+\Hypertarget{namespaceconfigure_ade1460e9bfc57fb148707dd651d36de3}\index{configure@{configure}!no@{no}}
+\index{no@{no}!configure@{configure}}
+\doxysubsubsection{\texorpdfstring{no()}{no()}}
+{\footnotesize\ttfamily \label{namespaceconfigure_ade1460e9bfc57fb148707dd651d36de3} 
+configure.\+no (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Prints a "{}\+NO"{} message in red. 
+
+
+
+Definition at line \mbox{\hyperlink{configure_8py_source_l00041}{41}} of file \mbox{\hyperlink{configure_8py_source}{configure.\+py}}.
+
+\Hypertarget{namespaceconfigure_aa426be408c936a99b5db8b6bf5e6496e}\index{configure@{configure}!run\_check@{run\_check}}
+\index{run\_check@{run\_check}!configure@{configure}}
+\doxysubsubsection{\texorpdfstring{run\_check()}{run\_check()}}
+{\footnotesize\ttfamily \label{namespaceconfigure_aa426be408c936a99b5db8b6bf5e6496e} 
+configure.\+run\+\_\+check (\begin{DoxyParamCaption}\item[{}]{desc}{, }\item[{}]{cmd}{, }\item[{}]{fatal}{ = {\ttfamily \mbox{\hyperlink{namespaceconfigure_a9f34e64095d6ef32e7505c023e6e01a0}{True}}}}\end{DoxyParamCaption})}
+
+
+
+Runs a shell command and checks its success. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em desc} & Description of the check \\
+\hline
+{\em cmd} & Shell command to run \\
+\hline
+{\em fatal} & If True, exit on failure \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{configure_8py_source_l00049}{49}} of file \mbox{\hyperlink{configure_8py_source}{configure.\+py}}.
+
+\Hypertarget{namespaceconfigure_a48a5cc86c2a5620390c699f514d200ec}\index{configure@{configure}!yes@{yes}}
+\index{yes@{yes}!configure@{configure}}
+\doxysubsubsection{\texorpdfstring{yes()}{yes()}}
+{\footnotesize\ttfamily \label{namespaceconfigure_a48a5cc86c2a5620390c699f514d200ec} 
+configure.\+yes (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Prints a "{}\+YES"{} message in green. 
+
+
+
+Definition at line \mbox{\hyperlink{configure_8py_source_l00037}{37}} of file \mbox{\hyperlink{configure_8py_source}{configure.\+py}}.
+
+
+
+\label{doc-var-members}
+\Hypertarget{namespaceconfigure_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespaceconfigure_ac2cc9d7c72ef0117a607ba78569a3119}\index{configure@{configure}!BLUE@{BLUE}}
+\index{BLUE@{BLUE}!configure@{configure}}
+\doxysubsubsection{\texorpdfstring{BLUE}{BLUE}}
+{\footnotesize\ttfamily \label{namespaceconfigure_ac2cc9d7c72ef0117a607ba78569a3119} 
+str configure.\+BLUE = "{}\textbackslash{}033\mbox{[}0;34m"{}}
+
+
+
+Definition at line \mbox{\hyperlink{configure_8py_source_l00023}{23}} of file \mbox{\hyperlink{configure_8py_source}{configure.\+py}}.
+
+\Hypertarget{namespaceconfigure_aec1ff7e59ed0001b005e1606c2eb8511}\index{configure@{configure}!cc\_flags@{cc\_flags}}
+\index{cc\_flags@{cc\_flags}!configure@{configure}}
+\doxysubsubsection{\texorpdfstring{cc\_flags}{cc\_flags}}
+{\footnotesize\ttfamily \label{namespaceconfigure_aec1ff7e59ed0001b005e1606c2eb8511} 
+list configure.\+cc\+\_\+flags = \mbox{[}"{}-\/ffreestanding"{}, "{}-\/nostdlib"{}, "{}-\/fno-\/pie"{}, "{}-\/m32"{}, "{}-\/O2"{}, "{}-\/fno-\/omit-\/frame-\/pointer"{}, "{}-\/std=c99"{}, "{}-\/g"{}\mbox{]}}
+
+
+
+Definition at line \mbox{\hyperlink{configure_8py_source_l00131}{131}} of file \mbox{\hyperlink{configure_8py_source}{configure.\+py}}.
+
+\Hypertarget{namespaceconfigure_ae8732c4ce2c50bc3d00fdb14573530e1}\index{configure@{configure}!check@{check}}
+\index{check@{check}!configure@{configure}}
+\doxysubsubsection{\texorpdfstring{check}{check}}
+{\footnotesize\ttfamily \label{namespaceconfigure_ae8732c4ce2c50bc3d00fdb14573530e1} 
+configure.\+check}
+
+
+
+Definition at line \mbox{\hyperlink{configure_8py_source_l00153}{153}} of file \mbox{\hyperlink{configure_8py_source}{configure.\+py}}.
+
+\Hypertarget{namespaceconfigure_ae565a35db0ad2fd67d05e9b197706b01}\index{configure@{configure}!CLEAR@{CLEAR}}
+\index{CLEAR@{CLEAR}!configure@{configure}}
+\doxysubsubsection{\texorpdfstring{CLEAR}{CLEAR}}
+{\footnotesize\ttfamily \label{namespaceconfigure_ae565a35db0ad2fd67d05e9b197706b01} 
+str configure.\+CLEAR = "{}\textbackslash{}033\mbox{[}0m"{}}
+
+
+
+Definition at line \mbox{\hyperlink{configure_8py_source_l00029}{29}} of file \mbox{\hyperlink{configure_8py_source}{configure.\+py}}.
+
+\Hypertarget{namespaceconfigure_a88018bc97fcfa75642c06e68d189a69b}\index{configure@{configure}!CYAN@{CYAN}}
+\index{CYAN@{CYAN}!configure@{configure}}
+\doxysubsubsection{\texorpdfstring{CYAN}{CYAN}}
+{\footnotesize\ttfamily \label{namespaceconfigure_a88018bc97fcfa75642c06e68d189a69b} 
+str configure.\+CYAN = "{}\textbackslash{}033\mbox{[}0;36m"{}}
+
+
+
+Definition at line \mbox{\hyperlink{configure_8py_source_l00028}{28}} of file \mbox{\hyperlink{configure_8py_source}{configure.\+py}}.
+
+\Hypertarget{namespaceconfigure_ac8639202c8da743eb81427b48db11939}\index{configure@{configure}!DEVNULL@{DEVNULL}}
+\index{DEVNULL@{DEVNULL}!configure@{configure}}
+\doxysubsubsection{\texorpdfstring{DEVNULL}{DEVNULL}}
+{\footnotesize\ttfamily \label{namespaceconfigure_ac8639202c8da743eb81427b48db11939} 
+configure.\+DEVNULL}
+
+
+
+Definition at line \mbox{\hyperlink{configure_8py_source_l00120}{120}} of file \mbox{\hyperlink{configure_8py_source}{configure.\+py}}.
+
+\Hypertarget{namespaceconfigure_aef369b0a10d1539bdb04f6dad7b6b7b4}\index{configure@{configure}!elapsed@{elapsed}}
+\index{elapsed@{elapsed}!configure@{configure}}
+\doxysubsubsection{\texorpdfstring{elapsed}{elapsed}}
+{\footnotesize\ttfamily \label{namespaceconfigure_aef369b0a10d1539bdb04f6dad7b6b7b4} 
+configure.\+elapsed = \mbox{\hyperlink{namespaceconfigure_a708e8b12b4c965202587864ac55980e7}{end\+\_\+time}} -\/ \mbox{\hyperlink{namespaceconfigure_a53b9bd0504d843c47b4323a4d89ceec8}{start\+\_\+time}}}
+
+
+
+Definition at line \mbox{\hyperlink{configure_8py_source_l00156}{156}} of file \mbox{\hyperlink{configure_8py_source}{configure.\+py}}.
+
+\Hypertarget{namespaceconfigure_a708e8b12b4c965202587864ac55980e7}\index{configure@{configure}!end\_time@{end\_time}}
+\index{end\_time@{end\_time}!configure@{configure}}
+\doxysubsubsection{\texorpdfstring{end\_time}{end\_time}}
+{\footnotesize\ttfamily \label{namespaceconfigure_a708e8b12b4c965202587864ac55980e7} 
+configure.\+end\+\_\+time = time.\+time()}
+
+
+
+Definition at line \mbox{\hyperlink{configure_8py_source_l00155}{155}} of file \mbox{\hyperlink{configure_8py_source}{configure.\+py}}.
+
+\Hypertarget{namespaceconfigure_ade0dbc6da912ed53080aa7010198b8e3}\index{configure@{configure}!exist\_ok@{exist\_ok}}
+\index{exist\_ok@{exist\_ok}!configure@{configure}}
+\doxysubsubsection{\texorpdfstring{exist\_ok}{exist\_ok}}
+{\footnotesize\ttfamily \label{namespaceconfigure_ade0dbc6da912ed53080aa7010198b8e3} 
+configure.\+exist\+\_\+ok}
+
+
+
+Definition at line \mbox{\hyperlink{configure_8py_source_l00149}{149}} of file \mbox{\hyperlink{configure_8py_source}{configure.\+py}}.
+
+\Hypertarget{namespaceconfigure_ab030a5f2914bf4cb207bf7be8465481f}\index{configure@{configure}!GREEN@{GREEN}}
+\index{GREEN@{GREEN}!configure@{configure}}
+\doxysubsubsection{\texorpdfstring{GREEN}{GREEN}}
+{\footnotesize\ttfamily \label{namespaceconfigure_ab030a5f2914bf4cb207bf7be8465481f} 
+str configure.\+GREEN = "{}\textbackslash{}033\mbox{[}0;32m"{}}
+
+
+
+Definition at line \mbox{\hyperlink{configure_8py_source_l00025}{25}} of file \mbox{\hyperlink{configure_8py_source}{configure.\+py}}.
+
+\Hypertarget{namespaceconfigure_a333ab3fb6e9698e2da4c92b89e2a755a}\index{configure@{configure}!ld\_flags@{ld\_flags}}
+\index{ld\_flags@{ld\_flags}!configure@{configure}}
+\doxysubsubsection{\texorpdfstring{ld\_flags}{ld\_flags}}
+{\footnotesize\ttfamily \label{namespaceconfigure_a333ab3fb6e9698e2da4c92b89e2a755a} 
+list configure.\+ld\+\_\+flags = \mbox{[}"{}-\/melf\+\_\+i386"{}, "{}-\/n"{}, "{}-\/-\/oformat=elf32-\/i386"{}\mbox{]}}
+
+
+
+Definition at line \mbox{\hyperlink{configure_8py_source_l00137}{137}} of file \mbox{\hyperlink{configure_8py_source}{configure.\+py}}.
+
+\Hypertarget{namespaceconfigure_a092825998486e37482c08f90717e0a3a}\index{configure@{configure}!MAGENTA@{MAGENTA}}
+\index{MAGENTA@{MAGENTA}!configure@{configure}}
+\doxysubsubsection{\texorpdfstring{MAGENTA}{MAGENTA}}
+{\footnotesize\ttfamily \label{namespaceconfigure_a092825998486e37482c08f90717e0a3a} 
+str configure.\+MAGENTA = "{}\textbackslash{}033\mbox{[}0;35m"{}}
+
+
+
+Definition at line \mbox{\hyperlink{configure_8py_source_l00027}{27}} of file \mbox{\hyperlink{configure_8py_source}{configure.\+py}}.
+
+\Hypertarget{namespaceconfigure_af55b180efe30db944f599b214c5fd943}\index{configure@{configure}!missing\_ok@{missing\_ok}}
+\index{missing\_ok@{missing\_ok}!configure@{configure}}
+\doxysubsubsection{\texorpdfstring{missing\_ok}{missing\_ok}}
+{\footnotesize\ttfamily \label{namespaceconfigure_af55b180efe30db944f599b214c5fd943} 
+configure.\+missing\+\_\+ok}
+
+
+
+Definition at line \mbox{\hyperlink{configure_8py_source_l00110}{110}} of file \mbox{\hyperlink{configure_8py_source}{configure.\+py}}.
+
+\Hypertarget{namespaceconfigure_ae0155c540d3b57c8f99aaf37db8b0b34}\index{configure@{configure}!parents@{parents}}
+\index{parents@{parents}!configure@{configure}}
+\doxysubsubsection{\texorpdfstring{parents}{parents}}
+{\footnotesize\ttfamily \label{namespaceconfigure_ae0155c540d3b57c8f99aaf37db8b0b34} 
+configure.\+parents}
+
+
+
+Definition at line \mbox{\hyperlink{configure_8py_source_l00149}{149}} of file \mbox{\hyperlink{configure_8py_source}{configure.\+py}}.
+
+\Hypertarget{namespaceconfigure_ab706421e5d6b9fea2f3c3489dfa4cb18}\index{configure@{configure}!reconfigure@{reconfigure}}
+\index{reconfigure@{reconfigure}!configure@{configure}}
+\doxysubsubsection{\texorpdfstring{reconfigure}{reconfigure}}
+{\footnotesize\ttfamily \label{namespaceconfigure_ab706421e5d6b9fea2f3c3489dfa4cb18} 
+int configure.\+reconfigure = "{}-\/-\/reconfigure"{}}
+
+
+
+Definition at line \mbox{\hyperlink{configure_8py_source_l00103}{103}} of file \mbox{\hyperlink{configure_8py_source}{configure.\+py}}.
+
+\Hypertarget{namespaceconfigure_a0cdb532b2d8214370c8c11dae443fbb0}\index{configure@{configure}!RED@{RED}}
+\index{RED@{RED}!configure@{configure}}
+\doxysubsubsection{\texorpdfstring{RED}{RED}}
+{\footnotesize\ttfamily \label{namespaceconfigure_a0cdb532b2d8214370c8c11dae443fbb0} 
+str configure.\+RED = "{}\textbackslash{}033\mbox{[}0;31m"{}}
+
+
+
+Definition at line \mbox{\hyperlink{configure_8py_source_l00024}{24}} of file \mbox{\hyperlink{configure_8py_source}{configure.\+py}}.
+
+\Hypertarget{namespaceconfigure_ac6b536ad3f9e286a6c486f0762748abc}\index{configure@{configure}!shell@{shell}}
+\index{shell@{shell}!configure@{configure}}
+\doxysubsubsection{\texorpdfstring{shell}{shell}}
+{\footnotesize\ttfamily \label{namespaceconfigure_ac6b536ad3f9e286a6c486f0762748abc} 
+configure.\+shell}
+
+
+
+Definition at line \mbox{\hyperlink{configure_8py_source_l00120}{120}} of file \mbox{\hyperlink{configure_8py_source}{configure.\+py}}.
+
+\Hypertarget{namespaceconfigure_a53b9bd0504d843c47b4323a4d89ceec8}\index{configure@{configure}!start\_time@{start\_time}}
+\index{start\_time@{start\_time}!configure@{configure}}
+\doxysubsubsection{\texorpdfstring{start\_time}{start\_time}}
+{\footnotesize\ttfamily \label{namespaceconfigure_a53b9bd0504d843c47b4323a4d89ceec8} 
+configure.\+start\+\_\+time = time.\+time()}
+
+
+
+Definition at line \mbox{\hyperlink{configure_8py_source_l00102}{102}} of file \mbox{\hyperlink{configure_8py_source}{configure.\+py}}.
+
+\Hypertarget{namespaceconfigure_a7dc67fd0c146997b94d1de5f52e61cc6}\index{configure@{configure}!stderr@{stderr}}
+\index{stderr@{stderr}!configure@{configure}}
+\doxysubsubsection{\texorpdfstring{stderr}{stderr}}
+{\footnotesize\ttfamily \label{namespaceconfigure_a7dc67fd0c146997b94d1de5f52e61cc6} 
+configure.\+stderr}
+
+
+
+Definition at line \mbox{\hyperlink{configure_8py_source_l00120}{120}} of file \mbox{\hyperlink{configure_8py_source}{configure.\+py}}.
+
+\Hypertarget{namespaceconfigure_ae509bafc831573ff792f25fcf0bed99e}\index{configure@{configure}!stdout@{stdout}}
+\index{stdout@{stdout}!configure@{configure}}
+\doxysubsubsection{\texorpdfstring{stdout}{stdout}}
+{\footnotesize\ttfamily \label{namespaceconfigure_ae509bafc831573ff792f25fcf0bed99e} 
+configure.\+stdout}
+
+
+
+Definition at line \mbox{\hyperlink{configure_8py_source_l00120}{120}} of file \mbox{\hyperlink{configure_8py_source}{configure.\+py}}.
+
+\Hypertarget{namespaceconfigure_a8b34be39290fdb1f281683848d4734ac}\index{configure@{configure}!tmp\_files@{tmp\_files}}
+\index{tmp\_files@{tmp\_files}!configure@{configure}}
+\doxysubsubsection{\texorpdfstring{tmp\_files}{tmp\_files}}
+{\footnotesize\ttfamily \label{namespaceconfigure_a8b34be39290fdb1f281683848d4734ac} 
+list configure.\+tmp\+\_\+files = \mbox{[}"{}tmp.\+c"{}, "{}tmp.\+asm"{}, "{}tmp.\+o"{}, "{}disk.\+img"{}\mbox{]}}
+
+
+
+Definition at line \mbox{\hyperlink{configure_8py_source_l00032}{32}} of file \mbox{\hyperlink{configure_8py_source}{configure.\+py}}.
+
+\Hypertarget{namespaceconfigure_a551b4cf5e04500652dceb4f5863ac505}\index{configure@{configure}!tools@{tools}}
+\index{tools@{tools}!configure@{configure}}
+\doxysubsubsection{\texorpdfstring{tools}{tools}}
+{\footnotesize\ttfamily \label{namespaceconfigure_a551b4cf5e04500652dceb4f5863ac505} 
+list configure.\+tools = \mbox{[}"{}make"{}, "{}nasm"{}, "{}i686-\/elf-\/gcc"{}, "{}i686-\/elf-\/ld"{}, "{}i686-\/elf-\/grub-\/mkrescue"{}, "{}qemu-\/system-\/i386"{}\mbox{]}}
+
+
+
+Definition at line \mbox{\hyperlink{configure_8py_source_l00114}{114}} of file \mbox{\hyperlink{configure_8py_source}{configure.\+py}}.
+
+\Hypertarget{namespaceconfigure_a9f34e64095d6ef32e7505c023e6e01a0}\index{configure@{configure}!True@{True}}
+\index{True@{True}!configure@{configure}}
+\doxysubsubsection{\texorpdfstring{True}{True}}
+{\footnotesize\ttfamily \label{namespaceconfigure_a9f34e64095d6ef32e7505c023e6e01a0} 
+configure.\+True}
+
+
+
+Definition at line \mbox{\hyperlink{configure_8py_source_l00120}{120}} of file \mbox{\hyperlink{configure_8py_source}{configure.\+py}}.
+
+\Hypertarget{namespaceconfigure_ad29412f562db2e4028f65387a0208e0c}\index{configure@{configure}!YELLOW@{YELLOW}}
+\index{YELLOW@{YELLOW}!configure@{configure}}
+\doxysubsubsection{\texorpdfstring{YELLOW}{YELLOW}}
+{\footnotesize\ttfamily \label{namespaceconfigure_ad29412f562db2e4028f65387a0208e0c} 
+str configure.\+YELLOW = "{}\textbackslash{}033\mbox{[}0;33m"{}}
+
+
+
+Definition at line \mbox{\hyperlink{configure_8py_source_l00026}{26}} of file \mbox{\hyperlink{configure_8py_source}{configure.\+py}}.
+

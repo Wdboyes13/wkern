@@ -1,0 +1,321 @@
+\doxysection{src/\+KShell/shell.c File Reference}
+\hypertarget{shell_8c}{}\label{shell_8c}\index{src/KShell/shell.c@{src/KShell/shell.c}}
+{\ttfamily \#include $<$KShell/filecmds.\+h$>$}\newline
+{\ttfamily \#include $<$KShell/shell.\+h$>$}\newline
+{\ttfamily \#include $<$fileio/fileio.\+h$>$}\newline
+{\ttfamily \#include $<$global.\+h$>$}\newline
+{\ttfamily \#include $<$io/kio.\+h$>$}\newline
+{\ttfamily \#include $<$mem/kmem.\+h$>$}\newline
+{\ttfamily \#include $<$net/virtnet.\+h$>$}\newline
+{\ttfamily \#include $<$utils/util.\+h$>$}\newline
+{\ttfamily \#include $<$wex/stdwex.\+h$>$}\newline
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_command_entry}{Command\+Entry}}
+\begin{DoxyCompactList}\small\item\em Represents an individual shell command. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{shell_8c_adef3034178d2e2de064a8709350e8f01}{NUM\+\_\+\+COMMANDS}}~(sizeof(\mbox{\hyperlink{shell_8c_a38b3c25ddd58335401386043634f2ac4}{commands}}) / sizeof(\mbox{\hyperlink{struct_command_entry}{Command\+Entry}}))
+\begin{DoxyCompactList}\small\item\em Number of commands available in the shell. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef void(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{shell_8c_a9c3168e996139d653e670508257c5b12}{Command\+Func}}) (const char \texorpdfstring{$\ast$}{*}argv\mbox{[}$\,$\mbox{]}, int argc)
+\begin{DoxyCompactList}\small\item\em Command function pointer type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{shell_8c_a83e8306cf0aa99336523b09834fff2e5}{Cmd\+Cmp}} (const char \texorpdfstring{$\ast$}{*}argv\mbox{[}$\,$\mbox{]}, int argc)
+\begin{DoxyCompactList}\small\item\em Compares two strings using the internal shell comparison function. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{shell_8c_a462d5686f6fae915b93af968d3564dbe}{Cmd\+Help}} (const char \texorpdfstring{$\ast$}{*}argv\mbox{[}$\,$\mbox{]}, int argc)
+\begin{DoxyCompactList}\small\item\em Displays built-\/in help information. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{shell_8c_aa60515d6b09ce7959b0747527e8b6755}{Cmd\+Tst}} (const char \texorpdfstring{$\ast$}{*}argv\mbox{[}$\,$\mbox{]}, int argc)
+\begin{DoxyCompactList}\small\item\em Executes a test WEX executable. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{shell_8c_a8e9c098f31a27147ca911b46bf24a370}{Cmd\+Clear}} (const char \texorpdfstring{$\ast$}{*}argv\mbox{[}$\,$\mbox{]}, int argc)
+\begin{DoxyCompactList}\small\item\em Clears the shell screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{shell_8c_a83d8f2c4595e2201479ac48298509708}{Cmd\+Ls}} (const char \texorpdfstring{$\ast$}{*}argv\mbox{[}$\,$\mbox{]}, int argc)
+\begin{DoxyCompactList}\small\item\em Lists FAT16 filesystem contents. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{shell_8c_a4d1a1f2e252b875250698d87f2224ce2}{Cmd\+User}} (const char \texorpdfstring{$\ast$}{*}argv\mbox{[}$\,$\mbox{]}, int argc)
+\begin{DoxyCompactList}\small\item\em Prints the current username. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{shell_8c_af0ef7fc69201acb8660588ac0741b2d4}{Cmd\+Regex}} (const char \texorpdfstring{$\ast$}{*}argv\mbox{[}$\,$\mbox{]}, int argc)
+\begin{DoxyCompactList}\small\item\em Runs the regex test utility. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{shell_8c_a399a8cfdd8c16a23dda9c9ae1c44b4df}{Cmd\+Recv\+Pack}} (const char \texorpdfstring{$\ast$}{*}argv\mbox{[}$\,$\mbox{]}, int argc)
+\begin{DoxyCompactList}\small\item\em Receives network packets from Virt\+Net (on keypress). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{shell_8c_a4bc1c0b726585db50aabb3052ed83723}{Cmd\+Shutdown}} (const char \texorpdfstring{$\ast$}{*}argv\mbox{[}$\,$\mbox{]}, int argc)
+\begin{DoxyCompactList}\small\item\em Sends shutdown signal when running under QEMU. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{shell_8c_adaa0331d6c7cedebb57c86a5ab332c1c}{Cmd\+Set\+Name}} (const char \texorpdfstring{$\ast$}{*}argv\mbox{[}$\,$\mbox{]}, int argc)
+\begin{DoxyCompactList}\small\item\em Sets the username used in the shell. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{shell_8c_a80c98222810cc4d771ea5f99e1fb2d04}{Sh}} ()
+\begin{DoxyCompactList}\small\item\em The main interactive WKern shell loop. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_command_entry}{Command\+Entry}} \mbox{\hyperlink{shell_8c_a38b3c25ddd58335401386043634f2ac4}{commands}} \mbox{[}$\,$\mbox{]}
+\begin{DoxyCompactList}\small\item\em Array of all available shell commands. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\Hypertarget{shell_8c_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{shell_8c_adef3034178d2e2de064a8709350e8f01}\index{shell.c@{shell.c}!NUM\_COMMANDS@{NUM\_COMMANDS}}
+\index{NUM\_COMMANDS@{NUM\_COMMANDS}!shell.c@{shell.c}}
+\doxysubsubsection{\texorpdfstring{NUM\_COMMANDS}{NUM\_COMMANDS}}
+{\footnotesize\ttfamily \label{shell_8c_adef3034178d2e2de064a8709350e8f01} 
+\#define NUM\+\_\+\+COMMANDS~(sizeof(\mbox{\hyperlink{shell_8c_a38b3c25ddd58335401386043634f2ac4}{commands}}) / sizeof(\mbox{\hyperlink{struct_command_entry}{Command\+Entry}}))}
+
+
+
+Number of commands available in the shell. 
+
+
+
+Definition at line \mbox{\hyperlink{shell_8c_source_l00136}{136}} of file \mbox{\hyperlink{shell_8c_source}{shell.\+c}}.
+
+
+
+\label{doc-typedef-members}
+\Hypertarget{shell_8c_doc-typedef-members}
+\doxysubsection{Typedef Documentation}
+\Hypertarget{shell_8c_a9c3168e996139d653e670508257c5b12}\index{shell.c@{shell.c}!CommandFunc@{CommandFunc}}
+\index{CommandFunc@{CommandFunc}!shell.c@{shell.c}}
+\doxysubsubsection{\texorpdfstring{CommandFunc}{CommandFunc}}
+{\footnotesize\ttfamily \label{shell_8c_a9c3168e996139d653e670508257c5b12} 
+typedef void(\texorpdfstring{$\ast$}{*} Command\+Func) (const char \texorpdfstring{$\ast$}{*}argv\mbox{[}$\,$\mbox{]}, int argc)}
+
+
+
+Command function pointer type. 
+
+All shell commands must follow this function signature.
+
+
+\begin{DoxyParams}{Parameters}
+{\em argv} & Argument list \\
+\hline
+{\em argc} & Argument count \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{shell_8c_source_l00038}{38}} of file \mbox{\hyperlink{shell_8c_source}{shell.\+c}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{shell_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{shell_8c_a8e9c098f31a27147ca911b46bf24a370}\index{shell.c@{shell.c}!CmdClear@{CmdClear}}
+\index{CmdClear@{CmdClear}!shell.c@{shell.c}}
+\doxysubsubsection{\texorpdfstring{CmdClear()}{CmdClear()}}
+{\footnotesize\ttfamily \label{shell_8c_a8e9c098f31a27147ca911b46bf24a370} 
+void Cmd\+Clear (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{argv}{\mbox{[}$\,$\mbox{]}, }\item[{int}]{argc}{}\end{DoxyParamCaption})}
+
+
+
+Clears the shell screen. 
+
+
+
+Definition at line \mbox{\hyperlink{shell_8c_source_l00063}{63}} of file \mbox{\hyperlink{shell_8c_source}{shell.\+c}}.
+
+\Hypertarget{shell_8c_a83e8306cf0aa99336523b09834fff2e5}\index{shell.c@{shell.c}!CmdCmp@{CmdCmp}}
+\index{CmdCmp@{CmdCmp}!shell.c@{shell.c}}
+\doxysubsubsection{\texorpdfstring{CmdCmp()}{CmdCmp()}}
+{\footnotesize\ttfamily \label{shell_8c_a83e8306cf0aa99336523b09834fff2e5} 
+void Cmd\+Cmp (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{argv}{\mbox{[}$\,$\mbox{]}, }\item[{int}]{argc}{}\end{DoxyParamCaption})}
+
+
+
+Compares two strings using the internal shell comparison function. 
+
+
+
+Definition at line \mbox{\hyperlink{shell_8c_source_l00052}{52}} of file \mbox{\hyperlink{shell_8c_source}{shell.\+c}}.
+
+\Hypertarget{shell_8c_a462d5686f6fae915b93af968d3564dbe}\index{shell.c@{shell.c}!CmdHelp@{CmdHelp}}
+\index{CmdHelp@{CmdHelp}!shell.c@{shell.c}}
+\doxysubsubsection{\texorpdfstring{CmdHelp()}{CmdHelp()}}
+{\footnotesize\ttfamily \label{shell_8c_a462d5686f6fae915b93af968d3564dbe} 
+void Cmd\+Help (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{argv}{\mbox{[}$\,$\mbox{]}, }\item[{int}]{argc}{}\end{DoxyParamCaption})}
+
+
+
+Displays built-\/in help information. 
+
+
+
+Definition at line \mbox{\hyperlink{shell_8c_source_l00054}{54}} of file \mbox{\hyperlink{shell_8c_source}{shell.\+c}}.
+
+\Hypertarget{shell_8c_a83d8f2c4595e2201479ac48298509708}\index{shell.c@{shell.c}!CmdLs@{CmdLs}}
+\index{CmdLs@{CmdLs}!shell.c@{shell.c}}
+\doxysubsubsection{\texorpdfstring{CmdLs()}{CmdLs()}}
+{\footnotesize\ttfamily \label{shell_8c_a83d8f2c4595e2201479ac48298509708} 
+void Cmd\+Ls (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{argv}{\mbox{[}$\,$\mbox{]}, }\item[{int}]{argc}{}\end{DoxyParamCaption})}
+
+
+
+Lists FAT16 filesystem contents. 
+
+
+
+Definition at line \mbox{\hyperlink{shell_8c_source_l00067}{67}} of file \mbox{\hyperlink{shell_8c_source}{shell.\+c}}.
+
+\Hypertarget{shell_8c_a399a8cfdd8c16a23dda9c9ae1c44b4df}\index{shell.c@{shell.c}!CmdRecvPack@{CmdRecvPack}}
+\index{CmdRecvPack@{CmdRecvPack}!shell.c@{shell.c}}
+\doxysubsubsection{\texorpdfstring{CmdRecvPack()}{CmdRecvPack()}}
+{\footnotesize\ttfamily \label{shell_8c_a399a8cfdd8c16a23dda9c9ae1c44b4df} 
+void Cmd\+Recv\+Pack (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{argv}{\mbox{[}$\,$\mbox{]}, }\item[{int}]{argc}{}\end{DoxyParamCaption})}
+
+
+
+Receives network packets from Virt\+Net (on keypress). 
+
+
+
+Definition at line \mbox{\hyperlink{shell_8c_source_l00080}{80}} of file \mbox{\hyperlink{shell_8c_source}{shell.\+c}}.
+
+\Hypertarget{shell_8c_af0ef7fc69201acb8660588ac0741b2d4}\index{shell.c@{shell.c}!CmdRegex@{CmdRegex}}
+\index{CmdRegex@{CmdRegex}!shell.c@{shell.c}}
+\doxysubsubsection{\texorpdfstring{CmdRegex()}{CmdRegex()}}
+{\footnotesize\ttfamily \label{shell_8c_af0ef7fc69201acb8660588ac0741b2d4} 
+void Cmd\+Regex (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{argv}{\mbox{[}$\,$\mbox{]}, }\item[{int}]{argc}{}\end{DoxyParamCaption})}
+
+
+
+Runs the regex test utility. 
+
+
+
+Definition at line \mbox{\hyperlink{shell_8c_source_l00076}{76}} of file \mbox{\hyperlink{shell_8c_source}{shell.\+c}}.
+
+\Hypertarget{shell_8c_adaa0331d6c7cedebb57c86a5ab332c1c}\index{shell.c@{shell.c}!CmdSetName@{CmdSetName}}
+\index{CmdSetName@{CmdSetName}!shell.c@{shell.c}}
+\doxysubsubsection{\texorpdfstring{CmdSetName()}{CmdSetName()}}
+{\footnotesize\ttfamily \label{shell_8c_adaa0331d6c7cedebb57c86a5ab332c1c} 
+void Cmd\+Set\+Name (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{argv}{\mbox{[}$\,$\mbox{]}, }\item[{int}]{argc}{}\end{DoxyParamCaption})}
+
+
+
+Sets the username used in the shell. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argv} & \mbox{[}0\mbox{]} = "{}setname"{}, \mbox{[}1\mbox{]} = new name \\
+\hline
+{\em argc} & Must be \texorpdfstring{$>$}{>}= 2 \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{shell_8c_source_l00103}{103}} of file \mbox{\hyperlink{shell_8c_source}{shell.\+c}}.
+
+\Hypertarget{shell_8c_a4bc1c0b726585db50aabb3052ed83723}\index{shell.c@{shell.c}!CmdShutdown@{CmdShutdown}}
+\index{CmdShutdown@{CmdShutdown}!shell.c@{shell.c}}
+\doxysubsubsection{\texorpdfstring{CmdShutdown()}{CmdShutdown()}}
+{\footnotesize\ttfamily \label{shell_8c_a4bc1c0b726585db50aabb3052ed83723} 
+void Cmd\+Shutdown (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{argv}{\mbox{[}$\,$\mbox{]}, }\item[{int}]{argc}{}\end{DoxyParamCaption})}
+
+
+
+Sends shutdown signal when running under QEMU. 
+
+
+
+Definition at line \mbox{\hyperlink{shell_8c_source_l00089}{89}} of file \mbox{\hyperlink{shell_8c_source}{shell.\+c}}.
+
+\Hypertarget{shell_8c_aa60515d6b09ce7959b0747527e8b6755}\index{shell.c@{shell.c}!CmdTst@{CmdTst}}
+\index{CmdTst@{CmdTst}!shell.c@{shell.c}}
+\doxysubsubsection{\texorpdfstring{CmdTst()}{CmdTst()}}
+{\footnotesize\ttfamily \label{shell_8c_aa60515d6b09ce7959b0747527e8b6755} 
+void Cmd\+Tst (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{argv}{\mbox{[}$\,$\mbox{]}, }\item[{int}]{argc}{}\end{DoxyParamCaption})}
+
+
+
+Executes a test WEX executable. 
+
+
+
+Definition at line \mbox{\hyperlink{shell_8c_source_l00058}{58}} of file \mbox{\hyperlink{shell_8c_source}{shell.\+c}}.
+
+\Hypertarget{shell_8c_a4d1a1f2e252b875250698d87f2224ce2}\index{shell.c@{shell.c}!CmdUser@{CmdUser}}
+\index{CmdUser@{CmdUser}!shell.c@{shell.c}}
+\doxysubsubsection{\texorpdfstring{CmdUser()}{CmdUser()}}
+{\footnotesize\ttfamily \label{shell_8c_a4d1a1f2e252b875250698d87f2224ce2} 
+void Cmd\+User (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{argv}{\mbox{[}$\,$\mbox{]}, }\item[{int}]{argc}{}\end{DoxyParamCaption})}
+
+
+
+Prints the current username. 
+
+
+
+Definition at line \mbox{\hyperlink{shell_8c_source_l00072}{72}} of file \mbox{\hyperlink{shell_8c_source}{shell.\+c}}.
+
+\Hypertarget{shell_8c_a80c98222810cc4d771ea5f99e1fb2d04}\index{shell.c@{shell.c}!Sh@{Sh}}
+\index{Sh@{Sh}!shell.c@{shell.c}}
+\doxysubsubsection{\texorpdfstring{Sh()}{Sh()}}
+{\footnotesize\ttfamily \label{shell_8c_a80c98222810cc4d771ea5f99e1fb2d04} 
+void Sh (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+The main interactive WKern shell loop. 
+
+This loop\+:
+\begin{DoxyItemize}
+\item Prompts the user for input
+\item Tokenizes input into arguments
+\item Looks up matching command in the command table
+\item Executes the corresponding command
+\end{DoxyItemize}
+
+On failure, prints an unknown command message.
+
+\begin{DoxyNote}{Note}
+This loop never exits. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{shell_8c_source_l00151}{151}} of file \mbox{\hyperlink{shell_8c_source}{shell.\+c}}.
+
+
+
+\label{doc-var-members}
+\Hypertarget{shell_8c_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{shell_8c_a38b3c25ddd58335401386043634f2ac4}\index{shell.c@{shell.c}!commands@{commands}}
+\index{commands@{commands}!shell.c@{shell.c}}
+\doxysubsubsection{\texorpdfstring{commands}{commands}}
+{\footnotesize\ttfamily \label{shell_8c_a38b3c25ddd58335401386043634f2ac4} 
+\mbox{\hyperlink{struct_command_entry}{Command\+Entry}} commands\mbox{[}$\,$\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \{}
+\DoxyCodeLine{\ \ \ \ \{\ \textcolor{stringliteral}{"{}cmp"{}},\ \ \ \ \ \mbox{\hyperlink{shell_8c_a83e8306cf0aa99336523b09834fff2e5}{CmdCmp}}\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ \textcolor{stringliteral}{"{}help"{}},\ \ \ \ \mbox{\hyperlink{shell_8c_a462d5686f6fae915b93af968d3564dbe}{CmdHelp}}\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ \textcolor{stringliteral}{"{}tst"{}},\ \ \ \ \ \mbox{\hyperlink{shell_8c_aa60515d6b09ce7959b0747527e8b6755}{CmdTst}}\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ \textcolor{stringliteral}{"{}clear"{}},\ \ \ \mbox{\hyperlink{shell_8c_a8e9c098f31a27147ca911b46bf24a370}{CmdClear}}\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ \textcolor{stringliteral}{"{}ls"{}},\ \ \ \ \ \ \mbox{\hyperlink{shell_8c_a83d8f2c4595e2201479ac48298509708}{CmdLs}}\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ \textcolor{stringliteral}{"{}read"{}},\ \ \ \ \mbox{\hyperlink{filecmds_8c_a3b19414bd63d5dbc8eead87028b78f36}{Readf}}\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ \textcolor{stringliteral}{"{}user"{}},\ \ \ \ \mbox{\hyperlink{shell_8c_a4d1a1f2e252b875250698d87f2224ce2}{CmdUser}}\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ \textcolor{stringliteral}{"{}mKfile"{}},\ \ \mbox{\hyperlink{filecmds_8c_af4df3f791bebb47781781cf5193d2af2}{Mkf}}\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ \textcolor{stringliteral}{"{}rm"{}},\ \ \ \ \ \ \mbox{\hyperlink{filecmds_8c_a65d79836362fd0249f051610e90601a9}{Rm}}\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ \textcolor{stringliteral}{"{}write"{}},\ \ \ \mbox{\hyperlink{filecmds_8c_a7c98338b2ececdd028b380c175219f1b}{Writef}}\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ \textcolor{stringliteral}{"{}regex"{}},\ \ \ \mbox{\hyperlink{shell_8c_af0ef7fc69201acb8660588ac0741b2d4}{CmdRegex}}\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ \textcolor{stringliteral}{"{}recvpacK"{}},\mbox{\hyperlink{shell_8c_a399a8cfdd8c16a23dda9c9ae1c44b4df}{CmdRecvPack}}\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ \textcolor{stringliteral}{"{}shutdown"{}},\mbox{\hyperlink{shell_8c_a4bc1c0b726585db50aabb3052ed83723}{CmdShutdown}}\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ \textcolor{stringliteral}{"{}setname"{}},\ \mbox{\hyperlink{shell_8c_adaa0331d6c7cedebb57c86a5ab332c1c}{CmdSetName}}\ \},}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Array of all available shell commands. 
+
+
+
+Definition at line \mbox{\hyperlink{shell_8c_source_l00115}{115}} of file \mbox{\hyperlink{shell_8c_source}{shell.\+c}}.
+

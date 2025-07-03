@@ -1,0 +1,25 @@
+\doxysection{virtnetirq.\+c}
+\hypertarget{virtnetirq_8c_source}{}\label{virtnetirq_8c_source}\index{src/idt/handlers/virtnetirq.c@{src/idt/handlers/virtnetirq.c}}
+\mbox{\hyperlink{virtnetirq_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{virtnetirq_8c_source_l00001}00001\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{idtirq_8h}{idt/idtirq.h}}>}\ \textcolor{comment}{//\ Your\ IDT\ and\ IRQ\ helper\ headers}}
+\DoxyCodeLine{\Hypertarget{virtnetirq_8c_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{kio_8h}{io/kio.h}}>}}
+\DoxyCodeLine{\Hypertarget{virtnetirq_8c_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{kmem_8h}{mem/kmem.h}}>}}
+\DoxyCodeLine{\Hypertarget{virtnetirq_8c_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{virtnet_8h}{net/virtnet.h}}>}}
+\DoxyCodeLine{\Hypertarget{virtnetirq_8c_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{pci_8h}{pci/pci.h}}>}}
+\DoxyCodeLine{\Hypertarget{virtnetirq_8c_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{nums_8h}{types/nums.h}}>}}
+\DoxyCodeLine{\Hypertarget{virtnetirq_8c_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{virtnetirq_8c_source_l00008}00008\ \textcolor{keyword}{static}\ \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}}
+\DoxyCodeLine{\Hypertarget{virtnetirq_8c_source_l00009}00009\ \ \ \ \ virtio\_iob;\ \textcolor{comment}{//\ Store\ BAR0\ base\ I/O\ address\ globally\ or\ pass\ appropriately}}
+\DoxyCodeLine{\Hypertarget{virtnetirq_8c_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{virtnetirq_8c_source_l00011}\mbox{\hyperlink{virtnetirq_8c_ad44e84f7c89e4ca9de4106f02453b2b9}{00011}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{virtnetirq_8c_ad44e84f7c89e4ca9de4106f02453b2b9}{VirtnetIrqHandler}}()\ \{}
+\DoxyCodeLine{\Hypertarget{virtnetirq_8c_source_l00012}00012\ \ \ \ \ \textcolor{comment}{//\ Read\ ISR\ to\ acKnowledge\ interrupt\ from\ VirtIO\ device}}
+\DoxyCodeLine{\Hypertarget{virtnetirq_8c_source_l00013}00013\ \ \ \ \ \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ isr\ =\ \mbox{\hyperlink{asm_8c_a6ab29a59b425f205c9da3550dcc76605}{Inb}}(virtio\_iob\ +\ 0x13);}
+\DoxyCodeLine{\Hypertarget{virtnetirq_8c_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{virtnetirq_8c_source_l00015}00015\ \ \ \ \ \textcolor{keywordflow}{if}\ (isr\ \&\ 0x1)\ \{}
+\DoxyCodeLine{\Hypertarget{virtnetirq_8c_source_l00016}00016\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Call\ your\ pacKet\ handler\ to\ process\ used\ buffers}}
+\DoxyCodeLine{\Hypertarget{virtnetirq_8c_source_l00017}00017\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{virtio_8c_a6b1c9baee3d5fa757db9be26bfe34eae}{NetStq}}(virtio\_iob);}
+\DoxyCodeLine{\Hypertarget{virtnetirq_8c_source_l00018}00018\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{virtnetirq_8c_source_l00019}00019\ \}}
+
+\end{DoxyCode}

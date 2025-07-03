@@ -29,6 +29,9 @@ typedef struct BlocK {
 static char *heap = HEAP_START;
 static blocK_t *free_list = NULL;
 
+/**
+ * @brief Initialize Memory Heap
+ */
 void KheapInit() {
     free_list = (blocK_t *)heap;
     free_list->size = HEAP_SIZE - sizeof(blocK_t);
@@ -36,6 +39,12 @@ void KheapInit() {
     free_list->free = 1;
 }
 
+/**
+ * @brief Allocate memory
+ * @param Size - Size of memory to allocate
+ * @param Align - Which to align memory to
+ * @return Pointer to allocated memory
+ */
 void *Kmalloc(size_t size, size_t align) {
     size = (size + align - 1) & ~(align - 1);
     blocK_t *curr = free_list;
@@ -59,6 +68,10 @@ void *Kmalloc(size_t size, size_t align) {
     return NULL;
 }
 
+/**
+ * @brief Free allocated memory
+ * @param voifd* - Pointer to allocated memory (from Kmalloc)
+ */
 void Kfree(void *ptr) {
     if (!ptr) {
         return;

@@ -1,0 +1,82 @@
+\doxysection{filecmds.\+c}
+\hypertarget{filecmds_8c_source}{}\label{filecmds_8c_source}\index{src/KShell/filecmds.c@{src/KShell/filecmds.c}}
+\mbox{\hyperlink{filecmds_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00002}00002\ \textcolor{comment}{WKern\ -\/\ A\ Bare\ Metal\ OS\ /\ Kernel\ I\ am\ maKing\ (For\ Fun)}}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00003}00003\ \textcolor{comment}{Copyright\ (C)\ 2025\ \ Wdboyes13}}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00004}00004\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00005}00005\ \textcolor{comment}{This\ program\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00006}00006\ \textcolor{comment}{it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00007}00007\ \textcolor{comment}{the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00008}00008\ \textcolor{comment}{any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00009}00009\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00010}00010\ \textcolor{comment}{This\ program\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00011}00011\ \textcolor{comment}{but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00012}00012\ \textcolor{comment}{MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00013}00013\ \textcolor{comment}{GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00014}00014\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00015}00015\ \textcolor{comment}{You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00016}00016\ \textcolor{comment}{along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00017}00017\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00018}00018\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{fileio_8h}{fileio/fileio.h}}>}}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00019}00019\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{kio_8h}{io/kio.h}}>}}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00020}00020\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{kmem_8h}{mem/kmem.h}}>}}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00030}\mbox{\hyperlink{filecmds_8c_a65d79836362fd0249f051610e90601a9}{00030}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{filecmds_8c_a65d79836362fd0249f051610e90601a9}{Rm}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *argv[],\ \textcolor{keywordtype}{int}\ argc)\ \{\ \textcolor{comment}{//\ rm\ [filename]\ [ext]}}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00031}00031\ \ \ \ \ \textcolor{keywordflow}{if}\ (argc\ <\ 3)\ \{}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00032}00032\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{stringliteral}{"{}Not\ enough\ args\(\backslash\)nUsage:\ rm\ [filename]\ [ext]"{}});}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00033}00033\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00034}00034\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00035}00035\ \ \ \ \ \mbox{\hyperlink{fileio_8h_a6339a034411051b10653a617583e1ddf}{Fat16RemoveFile}}(argv[1],\ argv[2]);}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00036}00036\ \}}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00046}\mbox{\hyperlink{filecmds_8c_af4df3f791bebb47781781cf5193d2af2}{00046}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{filecmds_8c_af4df3f791bebb47781781cf5193d2af2}{Mkf}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *argv[],\ \textcolor{keywordtype}{int}\ argc)\ \{\ \textcolor{comment}{//\ mKfile\ [filename]\ [ext]}}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00047}00047\ \ \ \ \ \textcolor{keywordflow}{if}\ (argc\ <\ 3)\ \{}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00048}00048\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{stringliteral}{"{}Not\ enough\ args\(\backslash\)nUsage:\ mKfile\ [filename]\ [ext]"{}});}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00049}00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00050}00050\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00051}00051\ \ \ \ \ \mbox{\hyperlink{fileio_8h_a0955c984a7b27de3da315eefeb4db734}{Mkfile}}(argv[1],\ argv[2]);}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00052}00052\ \}}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00065}\mbox{\hyperlink{filecmds_8c_a7c98338b2ececdd028b380c175219f1b}{00065}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{filecmds_8c_a7c98338b2ececdd028b380c175219f1b}{Writef}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *argv[],\ \textcolor{keywordtype}{int}\ argc)\ \{\ \textcolor{comment}{//\ write\ [filename]\ [ext]}}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00066}00066\ \ \ \ \ \textcolor{keywordflow}{if}\ (argc\ <\ 3)\ \{}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00067}00067\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{stringliteral}{"{}Not\ enough\ args\(\backslash\)nUsage:\ write\ [filename]\ [ext]"{}});}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00068}00068\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00069}00069\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00070}00070\ \ \ \ \ \textcolor{keywordtype}{char}\ *data\ =\ (\textcolor{keywordtype}{char}\ *)\mbox{\hyperlink{alloc_8c_a4744507132bfe63d677abecc60769ca0}{Kmalloc}}(512,\ 8);}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00071}00071\ \ \ \ \ \textcolor{keywordflow}{if}\ (!data)\ \{}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00072}00072\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{stringliteral}{"{}\(\backslash\)nMalloc\ Failed!\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00073}00073\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{alloc_8c_a51de4a944081d3a40379dafdc8cc8ba5}{Kfree}}(data);}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00074}00074\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00075}00075\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00076}00076\ \ \ \ \ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{stringliteral}{"{}Start\ Writing\ Data:\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00077}00077\ \ \ \ \ \mbox{\hyperlink{keyin_8c_a31cf36db330251ce379e7dc5dc735ee0}{Kgetstr}}(data,\ 500);\ \textcolor{comment}{//\ only\ read\ 500\ max}}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00078}00078\ \ \ \ \ \mbox{\hyperlink{keyin_8c_ac16b0ca4ec58cb9f895ab94a07a6bcee}{Kflush}}();}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00080}00080\ \ \ \ \ \textcolor{keywordtype}{int}\ len\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00081}00081\ \ \ \ \ \textcolor{keywordflow}{while}\ (len\ <\ 500\ \&\&\ data[len]\ !=\ \textcolor{charliteral}{'\(\backslash\)0'})\ \{}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00082}00082\ \ \ \ \ \ \ \ \ len++;}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00083}00083\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00085}00085\ \ \ \ \ \textcolor{comment}{//\ Add\ EOF\ marKer}}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00086}00086\ \ \ \ \ \textcolor{keywordflow}{if}\ (len\ +\ 5\ <\ 512)\ \{}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00087}00087\ \ \ \ \ \ \ \ \ data[len]\ =\ 0x1A;}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00088}00088\ \ \ \ \ \ \ \ \ len++;}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00089}00089\ \ \ \ \ \ \ \ \ data[len]\ =\ \textcolor{charliteral}{'\(\backslash\)0'};\ \textcolor{comment}{//\ Optional\ if\ your\ writer\ handles\ C-\/strings}}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00090}00090\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00092}00092\ \ \ \ \ \mbox{\hyperlink{fileio_8h_a25e15562fb1b780e6316940a4bd2fde9}{Writefile}}(argv[1],\ argv[2],\ data,\ len\ +\ 1);\ \textcolor{comment}{//\ Use\ actual\ size}}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00093}00093\ \ \ \ \ \mbox{\hyperlink{alloc_8c_a51de4a944081d3a40379dafdc8cc8ba5}{Kfree}}(data);}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00094}00094\ \}}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00105}\mbox{\hyperlink{filecmds_8c_a3b19414bd63d5dbc8eead87028b78f36}{00105}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{filecmds_8c_a3b19414bd63d5dbc8eead87028b78f36}{Readf}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *argv[],\ \textcolor{keywordtype}{int}\ argc)\ \{\ \textcolor{comment}{//\ read\ [filename]\ [ext]}}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00106}00106\ \ \ \ \ \textcolor{keywordflow}{if}\ (argc\ <\ 3)\ \{}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00107}00107\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{stringliteral}{"{}Not\ enough\ args\(\backslash\)nUsage:\ read\ [filename]\ [ext]"{}});}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00108}00108\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00109}00109\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00110}00110\ \ \ \ \ \mbox{\hyperlink{fileio_8h_a08e4988eb7beeffb9188674f29a975f6}{Fileconts}}(argv[1],\ argv[2]);}
+\DoxyCodeLine{\Hypertarget{filecmds_8c_source_l00111}00111\ \}}
+
+\end{DoxyCode}

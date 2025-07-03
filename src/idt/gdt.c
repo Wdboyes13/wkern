@@ -17,9 +17,21 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 #include <idt/idtirq.h>
+/** Global Descriptor Table entries */
 struct GdtEntry gdt[3];
+
+/** GDT pointer structure */
 struct GdtPtr gp;
 
+/**
+ * @brief Set a GDT entry (descriptor)
+ * 
+ * @param num Index of the GDT entry to set
+ * @param base Base address for the segment
+ * @param limit Limit of the segment
+ * @param access Access flags (e.g., executable, readable)
+ * @param gran Granularity and size flags
+ */
 void GdtSetGate(int num, u32 base, u32 limit, u8 access, u8 gran) {
     gdt[num].base_low = (base & 0xFFFF);
     gdt[num].base_middle = (base >> 16) & 0xFF;
@@ -32,6 +44,15 @@ void GdtSetGate(int num, u32 base, u32 limit, u8 access, u8 gran) {
     gdt[num].access = access;
 }
 
+/**
+ * @brief Initialize and load the Global Descriptor Table (GDT)
+ * 
+ * - Sets up three GDT entries:
+ *   - Null segment
+ *   - Code segment (executable, readable)
+ *   - Data segment (read/write)
+ * - Loads the GDT register with the new table
+ */
 void GdtInstall() {
     gp.limit = (sizeof(struct GdtEntry) * 3) - 1;
     gp.base = (uptr)&gdt;

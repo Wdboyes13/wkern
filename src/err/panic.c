@@ -17,6 +17,10 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 #include <io/kio.h>
+/**
+ * @brief Kernel Panics with Message
+ * @param Message - Panic Error Message
+ */
 __attribute__((noreturn)) void Panic(const char *msg) {
     Kprintf("\n\n** KERNEL PANIC **\n");
     Kprintf("Message: ");

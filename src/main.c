@@ -17,12 +17,12 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 #include <KShell/shell.h>
-#include <err/Kerror.h>
+#include <err/kerror.h>
 #include <fileio/fileio.h>
 #include <global.h>
 #include <idt/idtirq.h>
-#include <io/Kio.h>
-#include <mem/Kmem.h>
+#include <io/kio.h>
+#include <mem/kmem.h>
 #include <net/virtnet.h>
 #include <pci/pci.h>
 #include <types/bool.h>
@@ -34,6 +34,20 @@ int col = 0;
 bool capson = false;
 bool shift = false;
 u32 iob = 0;
+/**
+ * @brief Kernel entry point
+ * - Sets up GDT (Grand Descriptor Table)
+ * - Sets up IDT (Interrupt Descriptor Table)
+ * - Sets up PIT (Programmable Interval Timer) at 10ms per tick
+ * - Finds FAT16 Partition on ATA Device
+ * - Mounts FAT16 Partition
+ * - Initializes Memory Heap
+ * - Clears screen
+ * - Does Virtual Network setup
+ * - Does login
+ * - Starts shell
+ * @return Void - Should never return
+ */
 void KernelMain() {
     AllIdt(); // Do all IDT/GDT Setup
 

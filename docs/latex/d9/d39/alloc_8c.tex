@@ -1,0 +1,128 @@
+\doxysection{src/mem/alloc.c File Reference}
+\hypertarget{alloc_8c}{}\label{alloc_8c}\index{src/mem/alloc.c@{src/mem/alloc.c}}
+{\ttfamily \#include $<$global.\+h$>$}\newline
+{\ttfamily \#include $<$types/nums.\+h$>$}\newline
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_bloc_k}{BlocK}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{alloc_8c_ae9739bcecd10d5962cc10c12bf01594f}{HEAP\+\_\+\+START}}~((char \texorpdfstring{$\ast$}{*})0x100000)
+\item 
+\#define \mbox{\hyperlink{alloc_8c_a1b45302695680930829cac31d65e41e1}{HEAP\+\_\+\+SIZE}}~(512 \texorpdfstring{$\ast$}{*} 1024)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{struct_bloc_k}{BlocK}} \mbox{\hyperlink{alloc_8c_aaabf51bbcbd8956fe1b14b523b47fa46}{bloc\+K\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{alloc_8c_a9cf27cad30fd5a703658edb187f9c4c0}{Kheap\+Init}} ()
+\begin{DoxyCompactList}\small\item\em Initialize Memory Heap. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{alloc_8c_a4744507132bfe63d677abecc60769ca0}{Kmalloc}} (\mbox{\hyperlink{nums_8h_a7c94ea6f8948649f8d181ae55911eeaf}{size\+\_\+t}} size, \mbox{\hyperlink{nums_8h_a7c94ea6f8948649f8d181ae55911eeaf}{size\+\_\+t}} align)
+\begin{DoxyCompactList}\small\item\em Allocate memory. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{alloc_8c_a51de4a944081d3a40379dafdc8cc8ba5}{Kfree}} (void \texorpdfstring{$\ast$}{*}ptr)
+\begin{DoxyCompactList}\small\item\em Free allocated memory. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\Hypertarget{alloc_8c_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{alloc_8c_a1b45302695680930829cac31d65e41e1}\index{alloc.c@{alloc.c}!HEAP\_SIZE@{HEAP\_SIZE}}
+\index{HEAP\_SIZE@{HEAP\_SIZE}!alloc.c@{alloc.c}}
+\doxysubsubsection{\texorpdfstring{HEAP\_SIZE}{HEAP\_SIZE}}
+{\footnotesize\ttfamily \label{alloc_8c_a1b45302695680930829cac31d65e41e1} 
+\#define HEAP\+\_\+\+SIZE~(512 \texorpdfstring{$\ast$}{*} 1024)}
+
+
+
+Definition at line \mbox{\hyperlink{alloc_8c_source_l00027}{27}} of file \mbox{\hyperlink{alloc_8c_source}{alloc.\+c}}.
+
+\Hypertarget{alloc_8c_ae9739bcecd10d5962cc10c12bf01594f}\index{alloc.c@{alloc.c}!HEAP\_START@{HEAP\_START}}
+\index{HEAP\_START@{HEAP\_START}!alloc.c@{alloc.c}}
+\doxysubsubsection{\texorpdfstring{HEAP\_START}{HEAP\_START}}
+{\footnotesize\ttfamily \label{alloc_8c_ae9739bcecd10d5962cc10c12bf01594f} 
+\#define HEAP\+\_\+\+START~((char \texorpdfstring{$\ast$}{*})0x100000)}
+
+
+
+Definition at line \mbox{\hyperlink{alloc_8c_source_l00026}{26}} of file \mbox{\hyperlink{alloc_8c_source}{alloc.\+c}}.
+
+
+
+\label{doc-typedef-members}
+\Hypertarget{alloc_8c_doc-typedef-members}
+\doxysubsection{Typedef Documentation}
+\Hypertarget{alloc_8c_aaabf51bbcbd8956fe1b14b523b47fa46}\index{alloc.c@{alloc.c}!blocK\_t@{blocK\_t}}
+\index{blocK\_t@{blocK\_t}!alloc.c@{alloc.c}}
+\doxysubsubsection{\texorpdfstring{blocK\_t}{blocK\_t}}
+{\footnotesize\ttfamily \label{alloc_8c_aaabf51bbcbd8956fe1b14b523b47fa46} 
+typedef struct \mbox{\hyperlink{struct_bloc_k}{BlocK}} \mbox{\hyperlink{alloc_8c_aaabf51bbcbd8956fe1b14b523b47fa46}{bloc\+K\+\_\+t}}}
+
+
+
+\label{doc-func-members}
+\Hypertarget{alloc_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{alloc_8c_a51de4a944081d3a40379dafdc8cc8ba5}\index{alloc.c@{alloc.c}!Kfree@{Kfree}}
+\index{Kfree@{Kfree}!alloc.c@{alloc.c}}
+\doxysubsubsection{\texorpdfstring{Kfree()}{Kfree()}}
+{\footnotesize\ttfamily \label{alloc_8c_a51de4a944081d3a40379dafdc8cc8ba5} 
+void Kfree (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{ptr}{}\end{DoxyParamCaption})}
+
+
+
+Free allocated memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em voifd\texorpdfstring{$\ast$}{*}} & -\/ Pointer to allocated memory (from Kmalloc) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{alloc_8c_source_l00075}{75}} of file \mbox{\hyperlink{alloc_8c_source}{alloc.\+c}}.
+
+\Hypertarget{alloc_8c_a9cf27cad30fd5a703658edb187f9c4c0}\index{alloc.c@{alloc.c}!KheapInit@{KheapInit}}
+\index{KheapInit@{KheapInit}!alloc.c@{alloc.c}}
+\doxysubsubsection{\texorpdfstring{KheapInit()}{KheapInit()}}
+{\footnotesize\ttfamily \label{alloc_8c_a9cf27cad30fd5a703658edb187f9c4c0} 
+void Kheap\+Init (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Initialize Memory Heap. 
+
+
+
+Definition at line \mbox{\hyperlink{alloc_8c_source_l00035}{35}} of file \mbox{\hyperlink{alloc_8c_source}{alloc.\+c}}.
+
+\Hypertarget{alloc_8c_a4744507132bfe63d677abecc60769ca0}\index{alloc.c@{alloc.c}!Kmalloc@{Kmalloc}}
+\index{Kmalloc@{Kmalloc}!alloc.c@{alloc.c}}
+\doxysubsubsection{\texorpdfstring{Kmalloc()}{Kmalloc()}}
+{\footnotesize\ttfamily \label{alloc_8c_a4744507132bfe63d677abecc60769ca0} 
+void \texorpdfstring{$\ast$}{*} Kmalloc (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nums_8h_a7c94ea6f8948649f8d181ae55911eeaf}{size\+\_\+t}}}]{size}{, }\item[{\mbox{\hyperlink{nums_8h_a7c94ea6f8948649f8d181ae55911eeaf}{size\+\_\+t}}}]{align}{}\end{DoxyParamCaption})}
+
+
+
+Allocate memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Size} & -\/ Size of memory to allocate \\
+\hline
+{\em Align} & -\/ Which to align memory to \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to allocated memory 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{alloc_8c_source_l00048}{48}} of file \mbox{\hyperlink{alloc_8c_source}{alloc.\+c}}.
+

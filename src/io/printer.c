@@ -20,6 +20,11 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include <io/kio.h>
 #include <types/nums.h>
 #include <types/vargs.h>
+/**
+ * @brief Clears the screen by filling the video memory with spaces.
+ *
+ * Resets cursor position to the top-left corner (0,0).
+ */
 void Kcfp() {
     for (int i = 0; i < 80 * 25; i++) {
         vmem[i * 2] = ' ';
@@ -29,6 +34,15 @@ void Kcfp() {
     row = 0;
 }
 
+
+/**
+ * @brief Outputs a single character to the screen at the current cursor position.
+ *
+ * Supports newline ('\n') to move cursor to the next line.
+ * Advances cursor position and scrolls screen if necessary.
+ *
+ * @param c Character to output
+ */
 void Kputchar(char c) {
     if (c == '\n') {
         col = 0;
@@ -50,6 +64,9 @@ void Kputchar(char c) {
     }
 }
 
+/**
+ * @brief Handles backspace keypress by moving the cursor back and clearing the character.
+ */
 void KputcharBackspace() {
     if (col > 0) {
         col--;
@@ -63,6 +80,13 @@ void KputcharBackspace() {
     vmem[(offset * 2) + 1] = 0x07; // normal attribute
 }
 
+/**
+ * @brief Prints a 32-bit unsigned integer in hexadecimal format prefixed with "0x".
+ *
+ * Example output: 0xDEADBEEF
+ *
+ * @param num The number to print
+ */
 void KprintHex(u32 num) {
     char buf[11] = "0x00000000";
     const char *hex = "0123456789ABCDEF";
@@ -72,6 +96,13 @@ void KprintHex(u32 num) {
     Kprintf(buf);
 }
 
+/**
+ * @brief Prints a signed integer in decimal format.
+ *
+ * Handles zero and negative numbers correctly.
+ *
+ * @param num The number to print
+ */
 void KprintDec(int num) {
     char buf[12]; // enough for -2^31
     int i = 0;
@@ -92,12 +123,31 @@ void KprintDec(int num) {
     }
 }
 
+
+/**
+ * @brief Prints a null-terminated string to the screen.
+ *
+ * @param str Pointer to the string to print
+ */
 void KprintStr(const char *str) {
     while (*str) {
         Kputchar(*str++);
     }
 }
 
+/**
+ * @brief Formatted output to the screen.
+ *
+ * Supports format specifiers:
+ * - %c : character
+ * - %s : string
+ * - %d : signed decimal integer
+ * - %x : unsigned hexadecimal integer
+ * - %% : literal percent sign
+ *
+ * @param fmt Format string
+ * @param ... Variable arguments corresponding to format specifiers
+ */
 void Kprintf(const char *fmt, ...) {
     va_list args;
     va_start(args, fmt);

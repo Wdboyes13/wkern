@@ -1,0 +1,169 @@
+\doxysection{src/io/printer.c File Reference}
+\hypertarget{printer_8c}{}\label{printer_8c}\index{src/io/printer.c@{src/io/printer.c}}
+{\ttfamily \#include $<$global.\+h$>$}\newline
+{\ttfamily \#include $<$io/kio.\+h$>$}\newline
+{\ttfamily \#include $<$types/nums.\+h$>$}\newline
+{\ttfamily \#include $<$types/vargs.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{printer_8c_ab5b1620493cead3b15794c38e08b6cbb}{Kcfp}} ()
+\begin{DoxyCompactList}\small\item\em Clears the screen by filling the video memory with spaces. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{printer_8c_af05ef766e47691675bd907cbd362e7c5}{Kputchar}} (char c)
+\begin{DoxyCompactList}\small\item\em Outputs a single character to the screen at the current cursor position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{printer_8c_a90480719311b7945e3fde965b01d9b31}{Kputchar\+Backspace}} ()
+\begin{DoxyCompactList}\small\item\em Handles backspace keypress by moving the cursor back and clearing the character. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{printer_8c_adff30c0a071f02dbf33d53ecef9535ed}{Kprint\+Hex}} (\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} num)
+\begin{DoxyCompactList}\small\item\em Prints a 32-\/bit unsigned integer in hexadecimal format prefixed with "{}0x"{}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{printer_8c_a4bc0f408224cc1edf6a00cbafaa047bd}{Kprint\+Dec}} (int num)
+\begin{DoxyCompactList}\small\item\em Prints a signed integer in decimal format. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{printer_8c_a59969d0d50b5d26dce644d8ce840e4f4}{Kprint\+Str}} (const char \texorpdfstring{$\ast$}{*}str)
+\begin{DoxyCompactList}\small\item\em Prints a null-\/terminated string to the screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{printer_8c_a556dbaca28768fd91dacd53422223230}{Kprintf}} (const char \texorpdfstring{$\ast$}{*}fmt,...)
+\begin{DoxyCompactList}\small\item\em Formatted output to the screen. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{printer_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{printer_8c_ab5b1620493cead3b15794c38e08b6cbb}\index{printer.c@{printer.c}!Kcfp@{Kcfp}}
+\index{Kcfp@{Kcfp}!printer.c@{printer.c}}
+\doxysubsubsection{\texorpdfstring{Kcfp()}{Kcfp()}}
+{\footnotesize\ttfamily \label{printer_8c_ab5b1620493cead3b15794c38e08b6cbb} 
+void Kcfp (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Clears the screen by filling the video memory with spaces. 
+
+Resets cursor position to the top-\/left corner (0,0). 
+
+Definition at line \mbox{\hyperlink{printer_8c_source_l00028}{28}} of file \mbox{\hyperlink{printer_8c_source}{printer.\+c}}.
+
+\Hypertarget{printer_8c_a4bc0f408224cc1edf6a00cbafaa047bd}\index{printer.c@{printer.c}!KprintDec@{KprintDec}}
+\index{KprintDec@{KprintDec}!printer.c@{printer.c}}
+\doxysubsubsection{\texorpdfstring{KprintDec()}{KprintDec()}}
+{\footnotesize\ttfamily \label{printer_8c_a4bc0f408224cc1edf6a00cbafaa047bd} 
+void Kprint\+Dec (\begin{DoxyParamCaption}\item[{int}]{num}{}\end{DoxyParamCaption})}
+
+
+
+Prints a signed integer in decimal format. 
+
+Handles zero and negative numbers correctly.
+
+
+\begin{DoxyParams}{Parameters}
+{\em num} & The number to print \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{printer_8c_source_l00106}{106}} of file \mbox{\hyperlink{printer_8c_source}{printer.\+c}}.
+
+\Hypertarget{printer_8c_a556dbaca28768fd91dacd53422223230}\index{printer.c@{printer.c}!Kprintf@{Kprintf}}
+\index{Kprintf@{Kprintf}!printer.c@{printer.c}}
+\doxysubsubsection{\texorpdfstring{Kprintf()}{Kprintf()}}
+{\footnotesize\ttfamily \label{printer_8c_a556dbaca28768fd91dacd53422223230} 
+void Kprintf (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{fmt}{, }\item[{}]{...}{}\end{DoxyParamCaption})}
+
+
+
+Formatted output to the screen. 
+
+Supports format specifiers\+:
+\begin{DoxyItemize}
+\item c \+: character
+\item s \+: string
+\item d \+: signed decimal integer
+\item x \+: unsigned hexadecimal integer
+\item \%\% \+: literal percent sign
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em fmt} & Format string \\
+\hline
+{\em ...} & Variable arguments corresponding to format specifiers \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{printer_8c_source_l00151}{151}} of file \mbox{\hyperlink{printer_8c_source}{printer.\+c}}.
+
+\Hypertarget{printer_8c_adff30c0a071f02dbf33d53ecef9535ed}\index{printer.c@{printer.c}!KprintHex@{KprintHex}}
+\index{KprintHex@{KprintHex}!printer.c@{printer.c}}
+\doxysubsubsection{\texorpdfstring{KprintHex()}{KprintHex()}}
+{\footnotesize\ttfamily \label{printer_8c_adff30c0a071f02dbf33d53ecef9535ed} 
+void Kprint\+Hex (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}}]{num}{}\end{DoxyParamCaption})}
+
+
+
+Prints a 32-\/bit unsigned integer in hexadecimal format prefixed with "{}0x"{}. 
+
+Example output\+: 0x\+DEADBEEF
+
+
+\begin{DoxyParams}{Parameters}
+{\em num} & The number to print \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{printer_8c_source_l00090}{90}} of file \mbox{\hyperlink{printer_8c_source}{printer.\+c}}.
+
+\Hypertarget{printer_8c_a59969d0d50b5d26dce644d8ce840e4f4}\index{printer.c@{printer.c}!KprintStr@{KprintStr}}
+\index{KprintStr@{KprintStr}!printer.c@{printer.c}}
+\doxysubsubsection{\texorpdfstring{KprintStr()}{KprintStr()}}
+{\footnotesize\ttfamily \label{printer_8c_a59969d0d50b5d26dce644d8ce840e4f4} 
+void Kprint\+Str (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{str}{}\end{DoxyParamCaption})}
+
+
+
+Prints a null-\/terminated string to the screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & Pointer to the string to print \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{printer_8c_source_l00132}{132}} of file \mbox{\hyperlink{printer_8c_source}{printer.\+c}}.
+
+\Hypertarget{printer_8c_af05ef766e47691675bd907cbd362e7c5}\index{printer.c@{printer.c}!Kputchar@{Kputchar}}
+\index{Kputchar@{Kputchar}!printer.c@{printer.c}}
+\doxysubsubsection{\texorpdfstring{Kputchar()}{Kputchar()}}
+{\footnotesize\ttfamily \label{printer_8c_af05ef766e47691675bd907cbd362e7c5} 
+void Kputchar (\begin{DoxyParamCaption}\item[{char}]{c}{}\end{DoxyParamCaption})}
+
+
+
+Outputs a single character to the screen at the current cursor position. 
+
+Supports newline (\textquotesingle{}~\newline
+\textquotesingle{}) to move cursor to the next line. Advances cursor position and scrolls screen if necessary.
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & Character to output \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{printer_8c_source_l00046}{46}} of file \mbox{\hyperlink{printer_8c_source}{printer.\+c}}.
+
+\Hypertarget{printer_8c_a90480719311b7945e3fde965b01d9b31}\index{printer.c@{printer.c}!KputcharBackspace@{KputcharBackspace}}
+\index{KputcharBackspace@{KputcharBackspace}!printer.c@{printer.c}}
+\doxysubsubsection{\texorpdfstring{KputcharBackspace()}{KputcharBackspace()}}
+{\footnotesize\ttfamily \label{printer_8c_a90480719311b7945e3fde965b01d9b31} 
+void Kputchar\+Backspace (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Handles backspace keypress by moving the cursor back and clearing the character. 
+
+
+
+Definition at line \mbox{\hyperlink{printer_8c_source_l00070}{70}} of file \mbox{\hyperlink{printer_8c_source}{printer.\+c}}.
+

@@ -1,0 +1,27 @@
+var virtnet_8h =
+[
+    [ "VirtqDesc", "d8/db0/struct_virtq_desc.html", "d8/db0/struct_virtq_desc" ],
+    [ "VirtqAvail", "d2/dc9/struct_virtq_avail.html", "d2/dc9/struct_virtq_avail" ],
+    [ "VirtqUsed", "da/d71/struct_virtq_used.html", "da/d71/struct_virtq_used" ],
+    [ "MAX_RX_DESCS", "dd/db0/virtnet_8h.html#a0a12e0addadc80362d4d4c9b8cd9a783", null ],
+    [ "VIRTIO_MAX_SAFE_QSIZE", "dd/db0/virtnet_8h.html#adf8c02c03a75eab8cd46eab675d2cfe9", null ],
+    [ "VIRTIO_PCI_GUEST_FEATURES", "dd/db0/virtnet_8h.html#abdf67004c291b824a55710d156657bff", null ],
+    [ "VIRTIO_PCI_HOST_FEATURES", "dd/db0/virtnet_8h.html#a748be558a64703b72c49cbdb09206377", null ],
+    [ "VIRTIO_PCI_QUEUE_NOTIFY", "dd/db0/virtnet_8h.html#ab74682e1d290db867c20b37da873e911", null ],
+    [ "VIRTIO_PCI_QUEUE_NUM", "dd/db0/virtnet_8h.html#a11fe3e062e61ca606c2bcf3a9657ee37", null ],
+    [ "VIRTIO_PCI_QUEUE_PFN", "dd/db0/virtnet_8h.html#ae21cd780c77c11772cafa85c8235fd4f", null ],
+    [ "VIRTIO_PCI_QUEUE_SEL", "dd/db0/virtnet_8h.html#a75e15963fc1528bb7d2097e04ebfa9b5", null ],
+    [ "VIRTIO_PCI_STATUS", "dd/db0/virtnet_8h.html#a909a442ef89fc0455d724c8f844904d3", null ],
+    [ "VIRTIO_STATUS_ACKNOWLEDGE", "dd/db0/virtnet_8h.html#a72eed47d6f482df3984b7dcfdb0fdb3f", null ],
+    [ "VIRTIO_STATUS_DRIVER", "dd/db0/virtnet_8h.html#a6c3f5e16ae3e2e7389fd772eb909cad5", null ],
+    [ "VIRTIO_STATUS_DRIVER_OK", "dd/db0/virtnet_8h.html#a046788d73fd31ecc5c35c50a962e5ee3", null ],
+    [ "VIRTQ_DESC_F_NEXT", "dd/db0/virtnet_8h.html#a20e010fee3553a39ff6af7a5cc2837c2", null ],
+    [ "VIRTQ_DESC_F_WRITE", "dd/db0/virtnet_8h.html#a208ab0e95f24325454621095b80fcf27", null ],
+    [ "virtq_avail", "dd/db0/virtnet_8h.html#abf8feba96046d05e4d9dfbabd27849ca", null ],
+    [ "virtq_desc", "dd/db0/virtnet_8h.html#ad6ad3fd8bd40919802ad059eb2288a00", null ],
+    [ "virtq_used", "dd/db0/virtnet_8h.html#a116af74cc7fefcb8685f976a10f3d33a", null ],
+    [ "NetStq", "dd/db0/virtnet_8h.html#a6b1c9baee3d5fa757db9be26bfe34eae", null ],
+    [ "VirtnetInit", "dd/db0/virtnet_8h.html#af3ec14b624bc04c89286f6487c91a83b", null ],
+    [ "VirtnetNegotiate", "dd/db0/virtnet_8h.html#ae39c83a0ad1233c9d2e76b7add988860", null ],
+    [ "VirtnetSetup", "dd/db0/virtnet_8h.html#a32830a541ec636e265304d1ad827c42a", null ]
+];

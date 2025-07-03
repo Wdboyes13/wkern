@@ -1,0 +1,51 @@
+\doxysection{memutil.\+c}
+\hypertarget{memutil_8c_source}{}\label{memutil_8c_source}\index{src/mem/memutil.c@{src/mem/memutil.c}}
+\mbox{\hyperlink{memutil_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{memutil_8c_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{memutil_8c_source_l00002}00002\ \textcolor{comment}{WKern\ -\/\ A\ Bare\ Metal\ OS\ /\ Kernel\ I\ am\ maKing\ (For\ Fun)}}
+\DoxyCodeLine{\Hypertarget{memutil_8c_source_l00003}00003\ \textcolor{comment}{Copyright\ (C)\ 2025\ \ Wdboyes13}}
+\DoxyCodeLine{\Hypertarget{memutil_8c_source_l00004}00004\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{memutil_8c_source_l00005}00005\ \textcolor{comment}{This\ program\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{memutil_8c_source_l00006}00006\ \textcolor{comment}{it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{memutil_8c_source_l00007}00007\ \textcolor{comment}{the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{memutil_8c_source_l00008}00008\ \textcolor{comment}{any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{memutil_8c_source_l00009}00009\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{memutil_8c_source_l00010}00010\ \textcolor{comment}{This\ program\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{memutil_8c_source_l00011}00011\ \textcolor{comment}{but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{memutil_8c_source_l00012}00012\ \textcolor{comment}{MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{memutil_8c_source_l00013}00013\ \textcolor{comment}{GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{memutil_8c_source_l00014}00014\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{memutil_8c_source_l00015}00015\ \textcolor{comment}{You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{memutil_8c_source_l00016}00016\ \textcolor{comment}{along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{memutil_8c_source_l00017}00017\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{memutil_8c_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{memutil_8c_source_l00019}00019\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{kmem_8h}{mem/kmem.h}}>}}
+\DoxyCodeLine{\Hypertarget{memutil_8c_source_l00026}\mbox{\hyperlink{kmem_8h_a0d686b7db76bc3bc8146a0b13d8e027b}{00026}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{memutil_8c_a0d686b7db76bc3bc8146a0b13d8e027b}{Kmemset}}(\textcolor{keywordtype}{void}\ *ptr,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ value,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ num)\ \{}
+\DoxyCodeLine{\Hypertarget{memutil_8c_source_l00027}00027\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *p\ =\ (\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *)ptr;}
+\DoxyCodeLine{\Hypertarget{memutil_8c_source_l00028}00028\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ num;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{memutil_8c_source_l00029}00029\ \ \ \ \ \ \ \ \ p[i]\ =\ value;}
+\DoxyCodeLine{\Hypertarget{memutil_8c_source_l00030}00030\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{memutil_8c_source_l00031}00031\ \}}
+\DoxyCodeLine{\Hypertarget{memutil_8c_source_l00038}\mbox{\hyperlink{kmem_8h_ad7db4b63d50e1827f134b3e0867d2b05}{00038}}\ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{memutil_8c_ad7db4b63d50e1827f134b3e0867d2b05}{Kmemcpy}}(\textcolor{keywordtype}{void}\ *dest,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}\ *src,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ count)\ \{}
+\DoxyCodeLine{\Hypertarget{memutil_8c_source_l00039}00039\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *d\ =\ (\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *)dest;}
+\DoxyCodeLine{\Hypertarget{memutil_8c_source_l00040}00040\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *s\ =\ (\textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *)src;}
+\DoxyCodeLine{\Hypertarget{memutil_8c_source_l00041}00041\ \ \ \ \ \textcolor{keywordflow}{while}\ (count-\/-\/)\ \{}
+\DoxyCodeLine{\Hypertarget{memutil_8c_source_l00042}00042\ \ \ \ \ \ \ \ \ *d++\ =\ *s++;}
+\DoxyCodeLine{\Hypertarget{memutil_8c_source_l00043}00043\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{memutil_8c_source_l00044}00044\ \ \ \ \ \textcolor{keywordflow}{return}\ dest;}
+\DoxyCodeLine{\Hypertarget{memutil_8c_source_l00045}00045\ \}}
+\DoxyCodeLine{\Hypertarget{memutil_8c_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{memutil_8c_source_l00059}\mbox{\hyperlink{kmem_8h_a669ed206858273d3e7b61412ef6753ca}{00059}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{memutil_8c_a669ed206858273d3e7b61412ef6753ca}{Kmemcmp}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}\ *a,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}\ *b,\ \textcolor{keywordtype}{size\_t}\ n)\ \{}
+\DoxyCodeLine{\Hypertarget{memutil_8c_source_l00060}00060\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *p1\ =\ (\textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *)a;}
+\DoxyCodeLine{\Hypertarget{memutil_8c_source_l00061}00061\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *p2\ =\ (\textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *)b;}
+\DoxyCodeLine{\Hypertarget{memutil_8c_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{memutil_8c_source_l00063}00063\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ n;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{memutil_8c_source_l00064}00064\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (p1[i]\ !=\ p2[i])\ \{}
+\DoxyCodeLine{\Hypertarget{memutil_8c_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\textcolor{keywordtype}{int})p1[i]\ -\/\ (int)p2[i];}
+\DoxyCodeLine{\Hypertarget{memutil_8c_source_l00066}00066\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{memutil_8c_source_l00067}00067\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{memutil_8c_source_l00068}00068\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{memutil_8c_source_l00069}00069\ \}}
+
+\end{DoxyCode}

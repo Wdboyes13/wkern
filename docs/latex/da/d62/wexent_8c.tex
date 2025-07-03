@@ -1,0 +1,90 @@
+\doxysection{src/wex/wexent.c File Reference}
+\hypertarget{wexent_8c}{}\label{wexent_8c}\index{src/wex/wexent.c@{src/wex/wexent.c}}
+{\ttfamily \#include $<$io/kio.\+h$>$}\newline
+{\ttfamily \#include $<$wex/stdwex.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{wexent_8c_af38e9ba38e713a6cca62d43f00e53358}{read\+\_\+vals}} (const unsigned char \texorpdfstring{$\ast$}{*}exec)
+\begin{DoxyCompactList}\small\item\em Read First Values of WEX Executable. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{wexent_8c_a3b403bcf289074dcba2e6c6249697db0}{ch\+Kwex}} (const unsigned char \texorpdfstring{$\ast$}{*}smt, int smt\+\_\+len, const unsigned char \texorpdfstring{$\ast$}{*}st, int st\+\_\+len)
+\begin{DoxyCompactList}\small\item\em Verify symbols in executable. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{wexent_8c_a3b9a19febd250f2acf9d382f635b8fc2}{Runwex}} (unsigned char \texorpdfstring{$\ast$}{*}wexexecu)
+\begin{DoxyCompactList}\small\item\em Automatically checks and executes an executable. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{wexent_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{wexent_8c_a3b403bcf289074dcba2e6c6249697db0}\index{wexent.c@{wexent.c}!chKwex@{chKwex}}
+\index{chKwex@{chKwex}!wexent.c@{wexent.c}}
+\doxysubsubsection{\texorpdfstring{chKwex()}{chKwex()}}
+{\footnotesize\ttfamily \label{wexent_8c_a3b403bcf289074dcba2e6c6249697db0} 
+int ch\+Kwex (\begin{DoxyParamCaption}\item[{const unsigned char \texorpdfstring{$\ast$}{*}}]{smt}{, }\item[{int}]{smt\+\_\+len}{, }\item[{const unsigned char \texorpdfstring{$\ast$}{*}}]{st}{, }\item[{int}]{st\+\_\+len}{}\end{DoxyParamCaption})}
+
+
+
+Verify symbols in executable. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em SMT} & -\/ Executables symbol table -\/ Hex Array \\
+\hline
+{\em SMT\+\_\+\+LEN} & -\/ Executable symbol table length -\/ int \\
+\hline
+{\em ST} & -\/ Master Symbol Table \\
+\hline
+{\em ST\+\_\+\+LEN} & -\/ Master Symbol Table Length \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int -\/ 0 if valid, 1 if invalid 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{wexent_8c_source_l00050}{50}} of file \mbox{\hyperlink{wexent_8c_source}{wexent.\+c}}.
+
+\Hypertarget{wexent_8c_af38e9ba38e713a6cca62d43f00e53358}\index{wexent.c@{wexent.c}!read\_vals@{read\_vals}}
+\index{read\_vals@{read\_vals}!wexent.c@{wexent.c}}
+\doxysubsubsection{\texorpdfstring{read\_vals()}{read\_vals()}}
+{\footnotesize\ttfamily \label{wexent_8c_af38e9ba38e713a6cca62d43f00e53358} 
+int \texorpdfstring{$\ast$}{*} read\+\_\+vals (\begin{DoxyParamCaption}\item[{const unsigned char \texorpdfstring{$\ast$}{*}}]{exec}{}\end{DoxyParamCaption})}
+
+
+
+Read First Values of WEX Executable. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em exec} & -\/ Executable in hexadecimal array format \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Integer array containing executable data -\/ ret\mbox{[}0\mbox{]}=Entry Point ret\mbox{[}1\mbox{]}=Symbol Table Size 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{wexent_8c_source_l00029}{29}} of file \mbox{\hyperlink{wexent_8c_source}{wexent.\+c}}.
+
+\Hypertarget{wexent_8c_a3b9a19febd250f2acf9d382f635b8fc2}\index{wexent.c@{wexent.c}!Runwex@{Runwex}}
+\index{Runwex@{Runwex}!wexent.c@{wexent.c}}
+\doxysubsubsection{\texorpdfstring{Runwex()}{Runwex()}}
+{\footnotesize\ttfamily \label{wexent_8c_a3b9a19febd250f2acf9d382f635b8fc2} 
+void Runwex (\begin{DoxyParamCaption}\item[{unsigned char \texorpdfstring{$\ast$}{*}}]{wexexecu}{}\end{DoxyParamCaption})}
+
+
+
+Automatically checks and executes an executable. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em WEXEXECU} & -\/ WEX Executable stored as Hexadecimal Array \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Void Function -\/ Does not return value 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{wexent_8c_source_l00072}{72}} of file \mbox{\hyperlink{wexent_8c_source}{wexent.\+c}}.
+

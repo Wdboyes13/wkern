@@ -1,0 +1,97 @@
+\doxysection{src/idt/gdt.c File Reference}
+\hypertarget{gdt_8c}{}\label{gdt_8c}\index{src/idt/gdt.c@{src/idt/gdt.c}}
+{\ttfamily \#include $<$idt/idtirq.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{gdt_8c_a129616f1ac7ecde95a1b9eab46bcf66d}{Gdt\+Set\+Gate}} (int num, \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} base, \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} limit, \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} access, \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} gran)
+\begin{DoxyCompactList}\small\item\em Set a GDT entry (descriptor) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gdt_8c_a3abe176f346ee3b5fd6172998f5b94c1}{Gdt\+Install}} ()
+\begin{DoxyCompactList}\small\item\em Initialize and load the Global Descriptor Table (GDT) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_gdt_entry}{Gdt\+Entry}} \mbox{\hyperlink{gdt_8c_a9b7742f80e9a13df796a5be4fb147d88}{gdt}} \mbox{[}3\mbox{]}
+\item 
+struct \mbox{\hyperlink{struct_gdt_ptr}{Gdt\+Ptr}} \mbox{\hyperlink{gdt_8c_ad951c23c9a83963a404f48c2922d7c52}{gp}}
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{gdt_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{gdt_8c_a3abe176f346ee3b5fd6172998f5b94c1}\index{gdt.c@{gdt.c}!GdtInstall@{GdtInstall}}
+\index{GdtInstall@{GdtInstall}!gdt.c@{gdt.c}}
+\doxysubsubsection{\texorpdfstring{GdtInstall()}{GdtInstall()}}
+{\footnotesize\ttfamily \label{gdt_8c_a3abe176f346ee3b5fd6172998f5b94c1} 
+void Gdt\+Install (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Initialize and load the Global Descriptor Table (GDT) 
+
+
+\begin{DoxyItemize}
+\item Sets up three GDT entries\+:
+\begin{DoxyItemize}
+\item Null segment
+\item Code segment (executable, readable)
+\item Data segment (read/write)
+\end{DoxyItemize}
+\item Loads the GDT register with the new table 
+\end{DoxyItemize}
+
+Definition at line \mbox{\hyperlink{gdt_8c_source_l00056}{56}} of file \mbox{\hyperlink{gdt_8c_source}{gdt.\+c}}.
+
+\Hypertarget{gdt_8c_a129616f1ac7ecde95a1b9eab46bcf66d}\index{gdt.c@{gdt.c}!GdtSetGate@{GdtSetGate}}
+\index{GdtSetGate@{GdtSetGate}!gdt.c@{gdt.c}}
+\doxysubsubsection{\texorpdfstring{GdtSetGate()}{GdtSetGate()}}
+{\footnotesize\ttfamily \label{gdt_8c_a129616f1ac7ecde95a1b9eab46bcf66d} 
+void Gdt\+Set\+Gate (\begin{DoxyParamCaption}\item[{int}]{num}{, }\item[{\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}}]{base}{, }\item[{\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}}]{limit}{, }\item[{\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}}]{access}{, }\item[{\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}}]{gran}{}\end{DoxyParamCaption})}
+
+
+
+Set a GDT entry (descriptor) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em num} & Index of the GDT entry to set \\
+\hline
+{\em base} & Base address for the segment \\
+\hline
+{\em limit} & Limit of the segment \\
+\hline
+{\em access} & Access flags (e.\+g., executable, readable) \\
+\hline
+{\em gran} & Granularity and size flags \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{gdt_8c_source_l00035}{35}} of file \mbox{\hyperlink{gdt_8c_source}{gdt.\+c}}.
+
+
+
+\label{doc-var-members}
+\Hypertarget{gdt_8c_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{gdt_8c_a9b7742f80e9a13df796a5be4fb147d88}\index{gdt.c@{gdt.c}!gdt@{gdt}}
+\index{gdt@{gdt}!gdt.c@{gdt.c}}
+\doxysubsubsection{\texorpdfstring{gdt}{gdt}}
+{\footnotesize\ttfamily \label{gdt_8c_a9b7742f80e9a13df796a5be4fb147d88} 
+struct \mbox{\hyperlink{struct_gdt_entry}{Gdt\+Entry}} gdt\mbox{[}3\mbox{]}}
+
+Global Descriptor Table entries 
+
+Definition at line \mbox{\hyperlink{gdt_8c_source_l00021}{21}} of file \mbox{\hyperlink{gdt_8c_source}{gdt.\+c}}.
+
+\Hypertarget{gdt_8c_ad951c23c9a83963a404f48c2922d7c52}\index{gdt.c@{gdt.c}!gp@{gp}}
+\index{gp@{gp}!gdt.c@{gdt.c}}
+\doxysubsubsection{\texorpdfstring{gp}{gp}}
+{\footnotesize\ttfamily \label{gdt_8c_ad951c23c9a83963a404f48c2922d7c52} 
+struct \mbox{\hyperlink{struct_gdt_ptr}{Gdt\+Ptr}} gp}
+
+GDT pointer structure 
+
+Definition at line \mbox{\hyperlink{gdt_8c_source_l00024}{24}} of file \mbox{\hyperlink{gdt_8c_source}{gdt.\+c}}.
+

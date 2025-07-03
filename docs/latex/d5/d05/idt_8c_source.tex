@@ -1,0 +1,105 @@
+\doxysection{idt.\+c}
+\hypertarget{idt_8c_source}{}\label{idt_8c_source}\index{src/idt/idt.c@{src/idt/idt.c}}
+\mbox{\hyperlink{idt_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00002}00002\ \textcolor{comment}{WKern\ -\/\ A\ Bare\ Metal\ OS\ /\ Kernel\ I\ am\ maKing\ (For\ Fun)}}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00003}00003\ \textcolor{comment}{Copyright\ (C)\ 2025\ \ Wdboyes13}}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00004}00004\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00005}00005\ \textcolor{comment}{This\ program\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00006}00006\ \textcolor{comment}{it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00007}00007\ \textcolor{comment}{the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00008}00008\ \textcolor{comment}{any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00009}00009\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00010}00010\ \textcolor{comment}{This\ program\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00011}00011\ \textcolor{comment}{but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00012}00012\ \textcolor{comment}{MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00013}00013\ \textcolor{comment}{GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00014}00014\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00015}00015\ \textcolor{comment}{You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00016}00016\ \textcolor{comment}{along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00017}00017\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00019}00019\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{global_8h}{global.h}}>}}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00020}00020\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{idtirq_8h}{idt/idtirq.h}}>}}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00021}00021\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{kio_8h}{io/kio.h}}>}}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00022}00022\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{kmem_8h}{mem/kmem.h}}>}}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00023}00023\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{nums_8h}{types/nums.h}}>}}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00024}00024\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{util_8h}{utils/util.h}}>}}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00027}\mbox{\hyperlink{idt_8c_a36cdbd0f8a3dc9a90160b2039db7ffb0}{00027}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_idt_entry}{IdtEntry}}\ \mbox{\hyperlink{idt_8c_a36cdbd0f8a3dc9a90160b2039db7ffb0}{idt}}[\mbox{\hyperlink{idtirq_8h_a2a59a505aa55f15c152f30f811fbd310}{IDT\_ENTRIES}}];}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00030}\mbox{\hyperlink{idt_8c_ac5afae34a14e24b8eeb857a964baf4f3}{00030}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_idt_ptr}{IdtPtr}}\ \mbox{\hyperlink{idtirq_8h_a8a950b7284d7f2582cc4356eb67334ce}{idt\_ptrn}}\ \mbox{\hyperlink{panic_8c_a1b6824bfd4ec0404a4f875ed8db0274e}{\_\_attribute\_\_}}((aligned(16)));}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00040}\mbox{\hyperlink{idt_8c_af6395787910fc416ceb5c2a7cfe468c6}{00040}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{idt_8c_af6395787910fc416ceb5c2a7cfe468c6}{IdtSetGate}}(\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ num,\ \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ \mbox{\hyperlink{struct_idt_ptr_ae215107daa68978bd7075bc6351a1fdf}{base}},\ \mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}\ sel,\ \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ flags)\ \{}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00041}00041\ \ \ \ \ \mbox{\hyperlink{idt_8c_a36cdbd0f8a3dc9a90160b2039db7ffb0}{idt}}[num].base\_lo\ =\ \mbox{\hyperlink{struct_idt_ptr_ae215107daa68978bd7075bc6351a1fdf}{base}}\ \&\ 0xFFFF;}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00042}00042\ \ \ \ \ \mbox{\hyperlink{idt_8c_a36cdbd0f8a3dc9a90160b2039db7ffb0}{idt}}[num].sel\ =\ sel;}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00043}00043\ \ \ \ \ \mbox{\hyperlink{idt_8c_a36cdbd0f8a3dc9a90160b2039db7ffb0}{idt}}[num].always0\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00044}00044\ \ \ \ \ \mbox{\hyperlink{idt_8c_a36cdbd0f8a3dc9a90160b2039db7ffb0}{idt}}[num].flags\ =\ flags;}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00045}00045\ \ \ \ \ \mbox{\hyperlink{idt_8c_a36cdbd0f8a3dc9a90160b2039db7ffb0}{idt}}[num].base\_hi\ =\ (\mbox{\hyperlink{struct_idt_ptr_ae215107daa68978bd7075bc6351a1fdf}{base}}\ >>\ 16)\ \&\ 0xFFFF;}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00046}00046\ \}}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00049}\mbox{\hyperlink{idt_8c_a84570865f37dac35b40cae1b2943f418}{00049}}\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{idt_8c_a84570865f37dac35b40cae1b2943f418}{IdtLoad}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00056}\mbox{\hyperlink{idt_8c_a358731e05134eb3546df246269287c55}{00056}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{idt_8c_a358731e05134eb3546df246269287c55}{debug\_print\_idt\_entry}}(\textcolor{keywordtype}{int}\ i)\ \{}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00057}00057\ \ \ \ \ \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ \mbox{\hyperlink{struct_idt_ptr_ae215107daa68978bd7075bc6351a1fdf}{base}}\ =\ (\mbox{\hyperlink{idt_8c_a36cdbd0f8a3dc9a90160b2039db7ffb0}{idt}}[i].base\_hi\ <<\ 16)\ |\ \mbox{\hyperlink{idt_8c_a36cdbd0f8a3dc9a90160b2039db7ffb0}{idt}}[i].base\_lo;}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00058}00058\ \ \ \ \ \textcolor{keywordtype}{char}\ buf[25];}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00059}00059\ \ \ \ \ \mbox{\hyperlink{numtools_8c_adf3d019d31a4ab8cd9fbef5e6173f224}{Kitoa}}(i,\ buf);}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00060}00060\ \ \ \ \ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{stringliteral}{"{}IDT[\%s]\ =\ \%x\(\backslash\)n"{}},\ buf,\ \mbox{\hyperlink{struct_idt_ptr_ae215107daa68978bd7075bc6351a1fdf}{base}});}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00061}00061\ \}}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00073}\mbox{\hyperlink{idt_8c_afc934f0079b12ec1cac0f6f49df28ca0}{00073}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{idt_8c_afc934f0079b12ec1cac0f6f49df28ca0}{AllIdt}}()\ \{}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00075}00075\ \ \ \ \ \mbox{\hyperlink{gdt_8c_a3abe176f346ee3b5fd6172998f5b94c1}{GdtInstall}}();\ }
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00077}00077\ \ \ \ \ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{stringliteral}{"{}Calling\ PIC\ Remap\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00078}00078\ \ \ \ \ \mbox{\hyperlink{idtirq_8h_a49265dc90c23565b2cb010eb6594f431}{\_picr}}();\ }
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00080}00080\ \ \ \ \ \mbox{\hyperlink{idtirq_8h_afff6913ea38ded1a054003f46bb86ad3}{MaskAllIrqs}}();\ }
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00082}00082\ \ \ \ \ \mbox{\hyperlink{idtirq_8h_ae24aa8904e3388dccde357778b5e7e53}{UnmaskIrq}}(1);\ }
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00083}00083\ \ \ \ \ \mbox{\hyperlink{idtirq_8h_ae24aa8904e3388dccde357778b5e7e53}{UnmaskIrq}}(0);\ }
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00085}00085\ \ \ \ \ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{stringliteral}{"{}Setting\ IDT\ to\ 0x00\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00086}00086\ \ \ \ \ \mbox{\hyperlink{kmem_8h_a0d686b7db76bc3bc8146a0b13d8e027b}{Kmemset}}(\&\mbox{\hyperlink{idt_8c_a36cdbd0f8a3dc9a90160b2039db7ffb0}{idt}},\ 0,}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{sizeof}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{struct_idt_entry}{IdtEntry}})\ *\ \mbox{\hyperlink{idtirq_8h_a2a59a505aa55f15c152f30f811fbd310}{IDT\_ENTRIES}});\ }
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00089}00089\ \ \ \ \ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{stringliteral}{"{}Setting\ IDT\ Limit\ +\ Base\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00090}00090\ \ \ \ \ \mbox{\hyperlink{idtirq_8h_a8a950b7284d7f2582cc4356eb67334ce}{idt\_ptrn}}.limit\ =}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00091}00091\ \ \ \ \ \ \ \ \ (\textcolor{keyword}{sizeof}(\textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_idt_entry}{IdtEntry}})\ *\ \mbox{\hyperlink{idtirq_8h_a2a59a505aa55f15c152f30f811fbd310}{IDT\_ENTRIES}})\ -\/\ 1;\ }
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00092}00092\ \ \ \ \ \mbox{\hyperlink{idtirq_8h_a8a950b7284d7f2582cc4356eb67334ce}{idt\_ptrn}}.base\ =\ (\mbox{\hyperlink{nums_8h_acd24f51b7ace8f85b1b20c947ba1c904}{uptr}})\mbox{\hyperlink{idt_8c_a36cdbd0f8a3dc9a90160b2039db7ffb0}{idt}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00094}00094\ \ \ \ \ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{stringliteral}{"{}Setting\ up\ IDT\ gate\ 32\ (IRQ0)\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00095}00095\ \ \ \ \ \mbox{\hyperlink{idt_8c_af6395787910fc416ceb5c2a7cfe468c6}{IdtSetGate}}(32,\ (\mbox{\hyperlink{nums_8h_acd24f51b7ace8f85b1b20c947ba1c904}{uptr}})\mbox{\hyperlink{idtirq_8h_acf36338205273bd62f1ad2119cf51e04}{Irq0Handler}},\ \mbox{\hyperlink{idtirq_8h_a6e6d7d33347e967d8e08331768d7613d}{KERNEL\_CODE\_SEGMENT}},}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x8E);\ }
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00097}00097\ \ \ \ \ \mbox{\hyperlink{idt_8c_a358731e05134eb3546df246269287c55}{debug\_print\_idt\_entry}}(32);}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00099}00099\ \ \ \ \ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{stringliteral}{"{}Setting\ up\ IDT\ gate\ 33\ (IRQ1)\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00100}00100\ \ \ \ \ \mbox{\hyperlink{idt_8c_af6395787910fc416ceb5c2a7cfe468c6}{IdtSetGate}}(33,\ (\mbox{\hyperlink{nums_8h_acd24f51b7ace8f85b1b20c947ba1c904}{uptr}})\mbox{\hyperlink{idtirq_8h_af74f3e6073767539ca97270776fc7291}{Irq1Handler}},\ \mbox{\hyperlink{idtirq_8h_a6e6d7d33347e967d8e08331768d7613d}{KERNEL\_CODE\_SEGMENT}},}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x8E);\ }
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00102}00102\ \ \ \ \ \mbox{\hyperlink{idt_8c_a358731e05134eb3546df246269287c55}{debug\_print\_idt\_entry}}(33);}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00104}00104\ \ \ \ \ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{stringliteral}{"{}Disabling\ interrupts\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00105}00105\ \ \ \ \ \_\_asm\_\_\ \textcolor{keyword}{volatile}(\textcolor{stringliteral}{"{}cli"{}});\ }
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00106}00106\ }
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00107}00107\ \ \ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00108}00108\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}\ limit;}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00109}00109\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ base;}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00110}00110\ \ \ \ \ \}\ \mbox{\hyperlink{global_8h_a49f62b08b10c70ccf16f10ae9cd4add6}{PKG}}\ gdtr;}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00112}00112\ \ \ \ \ \_\_asm\_\_\ \textcolor{keyword}{volatile}(\textcolor{stringliteral}{"{}sgdt\ \%0"{}}\ :\ \textcolor{stringliteral}{"{}=m"{}}(gdtr));\ }
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00114}00114\ \ \ \ \ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{stringliteral}{"{}GDT\ base\ =\ \%x,\ limit\ =\ \%x\(\backslash\)n"{}},\ gdtr.base,\ gdtr.limit);}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00115}00115\ \ \ \ \ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{stringliteral}{"{}IDT\ base\ =\ \%x,\ limit\ =\ \%x\(\backslash\)n"{}},\ \mbox{\hyperlink{idtirq_8h_a8a950b7284d7f2582cc4356eb67334ce}{idt\_ptrn}}.base,\ \mbox{\hyperlink{idtirq_8h_a8a950b7284d7f2582cc4356eb67334ce}{idt\_ptrn}}.limit);}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00117}00117\ \ \ \ \ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{stringliteral}{"{}Loading\ IDT\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00118}00118\ \ \ \ \ \_\_asm\_\_\ \textcolor{keyword}{volatile}(\textcolor{stringliteral}{"{}lidt\ \%[idt]"{}}\ ::[\mbox{\hyperlink{idt_8c_a36cdbd0f8a3dc9a90160b2039db7ffb0}{idt}}]\ \textcolor{stringliteral}{"{}m"{}}(\mbox{\hyperlink{idtirq_8h_a8a950b7284d7f2582cc4356eb67334ce}{idt\_ptrn}})}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}memory"{}});\ }
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00120}00120\ }
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00121}00121\ \ \ \ \ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{stringliteral}{"{}Enabling\ interrupts"{}});}
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00122}00122\ \ \ \ \ \_\_asm\_\_\ \textcolor{keyword}{volatile}(\textcolor{stringliteral}{"{}sti"{}});\ }
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00123}00123\ }
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00124}00124\ \ \ \ \ \mbox{\hyperlink{idtirq_8h_afead828821eca13b3f89e621010367c2}{PitInit}}(\mbox{\hyperlink{idtirq_8h_aaad9208d1f30cc40267fdeb44f593a35}{PIT\_FREQ}});\ }
+\DoxyCodeLine{\Hypertarget{idt_8c_source_l00125}00125\ \}}
+
+\end{DoxyCode}

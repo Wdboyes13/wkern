@@ -22,12 +22,15 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #define PIC1_DATA 0x21
 #define PIC2_DATA 0xA1
 
+/// @brief Mask all IRQs 
 void MaskAllIrqs(void) {
     Kprintf("MasKing all IRQs\n");
     Outb(PIC1_DATA, 0xFF); // MasK all IRQs on master PIC
     Outb(PIC2_DATA, 0xFF); // MasK all IRQs on slave PIC
 }
 
+/// @brief Unmask an IRQ
+/// @param irq - IRQ NUmber to Unmask
 void UnmaskIrq(u8 irq) {
     Kprintf("UnmasKing IRQ\n");
     u16 port;

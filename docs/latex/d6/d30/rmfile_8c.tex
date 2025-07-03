@@ -1,0 +1,44 @@
+\doxysection{src/fileio/ops/rmfile.c File Reference}
+\hypertarget{rmfile_8c}{}\label{rmfile_8c}\index{src/fileio/ops/rmfile.c@{src/fileio/ops/rmfile.c}}
+{\ttfamily \#include $<$fileio/fileio.\+h$>$}\newline
+{\ttfamily \#include $<$io/kio.\+h$>$}\newline
+{\ttfamily \#include $<$mem/kmem.\+h$>$}\newline
+{\ttfamily \#include $<$types/nums.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{rmfile_8c_a6339a034411051b10653a617583e1ddf}{Fat16\+Remove\+File}} (const char \texorpdfstring{$\ast$}{*}filename, const char \texorpdfstring{$\ast$}{*}ext)
+\begin{DoxyCompactList}\small\item\em Remove a file from the FAT16 filesystem. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{rmfile_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{rmfile_8c_a6339a034411051b10653a617583e1ddf}\index{rmfile.c@{rmfile.c}!Fat16RemoveFile@{Fat16RemoveFile}}
+\index{Fat16RemoveFile@{Fat16RemoveFile}!rmfile.c@{rmfile.c}}
+\doxysubsubsection{\texorpdfstring{Fat16RemoveFile()}{Fat16RemoveFile()}}
+{\footnotesize\ttfamily \label{rmfile_8c_a6339a034411051b10653a617583e1ddf} 
+void Fat16\+Remove\+File (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{filename}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{ext}{}\end{DoxyParamCaption})}
+
+
+
+Remove a file from the FAT16 filesystem. 
+
+Removes a file from the FAT16 root directory and frees clusters.
+
+This function searches the FAT16 root directory for a file matching the specified filename and extension. If found, it marks the directory entry as deleted and frees all associated FAT clusters by clearing their entries in the FAT table.
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The 8-\/character filename (without extension). \\
+\hline
+{\em ext} & The 3-\/character file extension.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+The function assumes the FAT16 filesystem structure is accessible through the global {\ttfamily fat16} variable. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{rmfile_8c_source_l00038}{38}} of file \mbox{\hyperlink{rmfile_8c_source}{rmfile.\+c}}.
+

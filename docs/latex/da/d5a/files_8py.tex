@@ -1,0 +1,71 @@
+\doxysection{bfiles/files.py File Reference}
+\hypertarget{files_8py}{}\label{files_8py}\index{bfiles/files.py@{bfiles/files.py}}
+
+
+Defines file organization and module structure for the build system.  
+
+
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacefiles}{files}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+list \mbox{\hyperlink{namespacefiles_ae67a601ad1435f4f13ca2295ecf91414}{files.\+SRCS}}
+\item 
+list \mbox{\hyperlink{namespacefiles_a0b909a121db952d90ae6f25a6aace58e}{files.\+NASMSRCS}}
+\item 
+dict \mbox{\hyperlink{namespacefiles_a5223102f497874187d1dfe8a32def4a2}{files.\+MODULES}}
+\item 
+list \mbox{\hyperlink{namespacefiles_aff8a706d76fa86a1870d691b51b75bca}{files.\+OBJS}} = \mbox{[}f"{}objs/modules/\{mod\}.o"{} for mod in \mbox{\hyperlink{namespacefiles_a5223102f497874187d1dfe8a32def4a2}{MODULES}}\mbox{]}
+\item 
+str \mbox{\hyperlink{namespacefiles_a3f5d95e1976560d581ef40f12ef93cfe}{files.\+OUT}} = "{}kernel.\+elf"{}
+\item 
+str \mbox{\hyperlink{namespacefiles_a28a8c80825ff4510688e3407bc897820}{files.\+OUTARG}} = "{}iso/boot/"{} + OUT
+\item 
+str \mbox{\hyperlink{namespacefiles_a3968652418e61b8e68470b0509b582e9}{files.\+ISO}} = "{}mykern.\+iso"{}
+\item 
+str \mbox{\hyperlink{namespacefiles_a56008340389cf4e8955bdc4fd7b64c03}{files.\+GRUBCFG}} = "{}grub/grub.\+cfg"{}
+\item 
+str \mbox{\hyperlink{namespacefiles_a5a5066100790982137c44c78e6cdb058}{files.\+GRUBCFGTARG}} = "{}iso/boot/"{} + GRUBCFG
+\item 
+list \mbox{\hyperlink{namespacefiles_ab3f531f5f5a333b3a7d4ddcb836d1439}{files.\+HEADS}}
+\item 
+list \mbox{\hyperlink{namespacefiles_a9539a0ef226184ad4a519e052f7199ce}{files.\+CLEANTARGS}} = \mbox{[}\texorpdfstring{$\ast$}{*}\mbox{\hyperlink{namespacefiles_aff8a706d76fa86a1870d691b51b75bca}{OBJS}}, \mbox{\hyperlink{namespacefiles_a3968652418e61b8e68470b0509b582e9}{ISO}}, \mbox{\hyperlink{namespacefiles_a28a8c80825ff4510688e3407bc897820}{OUTARG}}, \mbox{\hyperlink{namespacefiles_a3f5d95e1976560d581ef40f12ef93cfe}{OUT}}, \mbox{\hyperlink{namespacefiles_a5a5066100790982137c44c78e6cdb058}{GRUBCFGTARG}}, "{}didconf"{}, \texorpdfstring{$\ast$}{*}glob.\+glob("{}objs/\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}/\texorpdfstring{$\ast$}{*}.o"{}, recursive=True) \mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Defines file organization and module structure for the build system. 
+
+This file contains lists of source files (C and ASM), grouped into modules. It also defines output targets, build metadata, and clean targets used by other parts of the build system.
+
+The build system uses this file to\+:
+\begin{DoxyItemize}
+\item Track all C source files ({\ttfamily SRCS})
+\item Track all NASM source files ({\ttfamily NASMSRCS})
+\item Define how C source files are grouped into logical modules ({\ttfamily MODULES})
+\item Generate output ELF files and ISO builds
+\item Determine which object files need to be cleaned ({\ttfamily CLEANTARGS})
+\end{DoxyItemize}
+
+This file is imported by other scripts such as {\ttfamily \doxylink{build_8py}{build.\+py}}, {\ttfamily \doxylink{brules_8py}{brules.\+py}}, and {\ttfamily \doxylink{frules_8py}{frules.\+py}} to control compilation, linking, and packaging.
+
+\begin{DoxyAuthor}{Author}
+Will 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\+0
+\end{DoxyVersion}
+\begin{DoxyNote}{Note}
+You must update this file whenever a new source file or module is added to the project. 
+\end{DoxyNote}
+
+
+Definition in file \mbox{\hyperlink{files_8py_source}{files.\+py}}.
+

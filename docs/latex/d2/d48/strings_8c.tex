@@ -1,0 +1,241 @@
+\doxysection{src/utils/strings.c File Reference}
+\hypertarget{strings_8c}{}\label{strings_8c}\index{src/utils/strings.c@{src/utils/strings.c}}
+{\ttfamily \#include $<$global.\+h$>$}\newline
+{\ttfamily \#include $<$io/kio.\+h$>$}\newline
+{\ttfamily \#include $<$utils/util.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{strings_8c_acc439d817730f3d3edbf4f977787b18c}{Kstrcmp}} (const char \texorpdfstring{$\ast$}{*}a, const char \texorpdfstring{$\ast$}{*}b)
+\begin{DoxyCompactList}\small\item\em Compare Strings -\/ Similar to standard libc strcmp. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{strings_8c_a7e0fb67a75f4e208ee6c20c17f3aa80f}{Kshcmp}} ()
+\begin{DoxyCompactList}\small\item\em Interactive string comparison. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} \mbox{\hyperlink{strings_8c_a8b12d011319eaa179726ff1393268cb7}{Kmstrlen}} (const char \texorpdfstring{$\ast$}{*}str)
+\begin{DoxyCompactList}\small\item\em Get string length. \end{DoxyCompactList}\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{strings_8c_a6e6d94e9673fd8f973ba79e3f18bdb1f}{Kstrchr}} (const char \texorpdfstring{$\ast$}{*}str, int c)
+\begin{DoxyCompactList}\small\item\em Search for character in string. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{strings_8c_a8a3a9d498da213c6c9774ae34f5f7a15}{Ktolower}} (int c)
+\begin{DoxyCompactList}\small\item\em Convert character to lowercase. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{strings_8c_a9f05cc41dd6ab3c8aa401f55094101b5}{Kisdigit}} (int c)
+\item 
+int \mbox{\hyperlink{strings_8c_a2e57573cda6b7cfcabfe46ef022fb217}{Kisspace}} (int c)
+\begin{DoxyCompactList}\small\item\em Check if character is whitespace. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{nums_8h_a7c94ea6f8948649f8d181ae55911eeaf}{size\+\_\+t}} \mbox{\hyperlink{strings_8c_af7d57c5338df07ca5f8480473539d7fd}{Kstrlen}} (const char \texorpdfstring{$\ast$}{*}str)
+\begin{DoxyCompactList}\small\item\em Get string length. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{strings_8c_a9048db1be4bac47ddd7b8f5163cb4f3e}{Kisxdigit}} (int c)
+\begin{DoxyCompactList}\small\item\em Checks if input is a Hexadecimal Diget. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{strings_8c_a33913a7d36d6e95f7762d86dc03f4c10}{Split}} (char \texorpdfstring{$\ast$}{*}input, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}argv, int max\+\_\+args)
+\begin{DoxyCompactList}\small\item\em Split into ARGC. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{strings_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{strings_8c_a9f05cc41dd6ab3c8aa401f55094101b5}\index{strings.c@{strings.c}!Kisdigit@{Kisdigit}}
+\index{Kisdigit@{Kisdigit}!strings.c@{strings.c}}
+\doxysubsubsection{\texorpdfstring{Kisdigit()}{Kisdigit()}}
+{\footnotesize\ttfamily \label{strings_8c_a9f05cc41dd6ab3c8aa401f55094101b5} 
+int Kisdigit (\begin{DoxyParamCaption}\item[{int}]{c}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{strings_8c_source_l00100}{100}} of file \mbox{\hyperlink{strings_8c_source}{strings.\+c}}.
+
+\Hypertarget{strings_8c_a2e57573cda6b7cfcabfe46ef022fb217}\index{strings.c@{strings.c}!Kisspace@{Kisspace}}
+\index{Kisspace@{Kisspace}!strings.c@{strings.c}}
+\doxysubsubsection{\texorpdfstring{Kisspace()}{Kisspace()}}
+{\footnotesize\ttfamily \label{strings_8c_a2e57573cda6b7cfcabfe46ef022fb217} 
+int Kisspace (\begin{DoxyParamCaption}\item[{int}]{c}{}\end{DoxyParamCaption})}
+
+
+
+Check if character is whitespace. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & -\/ Character to check \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if whitespace, 0 if not 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{strings_8c_source_l00107}{107}} of file \mbox{\hyperlink{strings_8c_source}{strings.\+c}}.
+
+\Hypertarget{strings_8c_a9048db1be4bac47ddd7b8f5163cb4f3e}\index{strings.c@{strings.c}!Kisxdigit@{Kisxdigit}}
+\index{Kisxdigit@{Kisxdigit}!strings.c@{strings.c}}
+\doxysubsubsection{\texorpdfstring{Kisxdigit()}{Kisxdigit()}}
+{\footnotesize\ttfamily \label{strings_8c_a9048db1be4bac47ddd7b8f5163cb4f3e} 
+int Kisxdigit (\begin{DoxyParamCaption}\item[{int}]{c}{}\end{DoxyParamCaption})}
+
+
+
+Checks if input is a Hexadecimal Diget. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Character} & to check \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if is hex digit, 0 if not 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{strings_8c_source_l00134}{134}} of file \mbox{\hyperlink{strings_8c_source}{strings.\+c}}.
+
+\Hypertarget{strings_8c_a8b12d011319eaa179726ff1393268cb7}\index{strings.c@{strings.c}!Kmstrlen@{Kmstrlen}}
+\index{Kmstrlen@{Kmstrlen}!strings.c@{strings.c}}
+\doxysubsubsection{\texorpdfstring{Kmstrlen()}{Kmstrlen()}}
+{\footnotesize\ttfamily \label{strings_8c_a8b12d011319eaa179726ff1393268cb7} 
+\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} Kmstrlen (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{str}{}\end{DoxyParamCaption})}
+
+
+
+Get string length. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & -\/ String to check length \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+uint32\+\_\+t (\doxylink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}) -\/ Length of passed string 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{strings_8c_source_l00060}{60}} of file \mbox{\hyperlink{strings_8c_source}{strings.\+c}}.
+
+\Hypertarget{strings_8c_a7e0fb67a75f4e208ee6c20c17f3aa80f}\index{strings.c@{strings.c}!Kshcmp@{Kshcmp}}
+\index{Kshcmp@{Kshcmp}!strings.c@{strings.c}}
+\doxysubsubsection{\texorpdfstring{Kshcmp()}{Kshcmp()}}
+{\footnotesize\ttfamily \label{strings_8c_a7e0fb67a75f4e208ee6c20c17f3aa80f} 
+void Kshcmp (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Interactive string comparison. 
+
+
+
+Definition at line \mbox{\hyperlink{strings_8c_source_l00038}{38}} of file \mbox{\hyperlink{strings_8c_source}{strings.\+c}}.
+
+\Hypertarget{strings_8c_a6e6d94e9673fd8f973ba79e3f18bdb1f}\index{strings.c@{strings.c}!Kstrchr@{Kstrchr}}
+\index{Kstrchr@{Kstrchr}!strings.c@{strings.c}}
+\doxysubsubsection{\texorpdfstring{Kstrchr()}{Kstrchr()}}
+{\footnotesize\ttfamily \label{strings_8c_a6e6d94e9673fd8f973ba79e3f18bdb1f} 
+char \texorpdfstring{$\ast$}{*} Kstrchr (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{str}{, }\item[{int}]{c}{}\end{DoxyParamCaption})}
+
+
+
+Search for character in string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em String} & to search \\
+\hline
+{\em Character} & to find \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to character if found, if not found NULL 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{strings_8c_source_l00074}{74}} of file \mbox{\hyperlink{strings_8c_source}{strings.\+c}}.
+
+\Hypertarget{strings_8c_acc439d817730f3d3edbf4f977787b18c}\index{strings.c@{strings.c}!Kstrcmp@{Kstrcmp}}
+\index{Kstrcmp@{Kstrcmp}!strings.c@{strings.c}}
+\doxysubsubsection{\texorpdfstring{Kstrcmp()}{Kstrcmp()}}
+{\footnotesize\ttfamily \label{strings_8c_acc439d817730f3d3edbf4f977787b18c} 
+int Kstrcmp (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{a}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{b}{}\end{DoxyParamCaption})}
+
+
+
+Compare Strings -\/ Similar to standard libc strcmp. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & -\/ First string to compare \\
+\hline
+{\em b} & -\/ Second string to compare \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Integer -\/ 0 if match 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{strings_8c_source_l00027}{27}} of file \mbox{\hyperlink{strings_8c_source}{strings.\+c}}.
+
+\Hypertarget{strings_8c_af7d57c5338df07ca5f8480473539d7fd}\index{strings.c@{strings.c}!Kstrlen@{Kstrlen}}
+\index{Kstrlen@{Kstrlen}!strings.c@{strings.c}}
+\doxysubsubsection{\texorpdfstring{Kstrlen()}{Kstrlen()}}
+{\footnotesize\ttfamily \label{strings_8c_af7d57c5338df07ca5f8480473539d7fd} 
+\mbox{\hyperlink{nums_8h_a7c94ea6f8948649f8d181ae55911eeaf}{size\+\_\+t}} Kstrlen (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{str}{}\end{DoxyParamCaption})}
+
+
+
+Get string length. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & -\/ String to check length \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+uint32\+\_\+t (\doxylink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}) -\/ Length of passed string 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{strings_8c_source_l00121}{121}} of file \mbox{\hyperlink{strings_8c_source}{strings.\+c}}.
+
+\Hypertarget{strings_8c_a8a3a9d498da213c6c9774ae34f5f7a15}\index{strings.c@{strings.c}!Ktolower@{Ktolower}}
+\index{Ktolower@{Ktolower}!strings.c@{strings.c}}
+\doxysubsubsection{\texorpdfstring{Ktolower()}{Ktolower()}}
+{\footnotesize\ttfamily \label{strings_8c_a8a3a9d498da213c6c9774ae34f5f7a15} 
+int Ktolower (\begin{DoxyParamCaption}\item[{int}]{c}{}\end{DoxyParamCaption})}
+
+
+
+Convert character to lowercase. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Character} & to convert \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Lowercase character 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{strings_8c_source_l00092}{92}} of file \mbox{\hyperlink{strings_8c_source}{strings.\+c}}.
+
+\Hypertarget{strings_8c_a33913a7d36d6e95f7762d86dc03f4c10}\index{strings.c@{strings.c}!Split@{Split}}
+\index{Split@{Split}!strings.c@{strings.c}}
+\doxysubsubsection{\texorpdfstring{Split()}{Split()}}
+{\footnotesize\ttfamily \label{strings_8c_a33913a7d36d6e95f7762d86dc03f4c10} 
+int Split (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{input}{, }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{argv}{, }\item[{int}]{max\+\_\+args}{}\end{DoxyParamCaption})}
+
+
+
+Split into ARGC. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em char\texorpdfstring{$\ast$}{*}} & -\/ Input String \\
+\hline
+{\em char\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}} & -\/ Argv Buffer \\
+\hline
+{\em -\/} & Max args \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Arguement number (argc) 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{strings_8c_source_l00146}{146}} of file \mbox{\hyperlink{strings_8c_source}{strings.\+c}}.
+

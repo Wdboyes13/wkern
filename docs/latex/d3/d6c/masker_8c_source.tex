@@ -1,0 +1,51 @@
+\doxysection{masker.\+c}
+\hypertarget{masker_8c_source}{}\label{masker_8c_source}\index{src/idt/masker.c@{src/idt/masker.c}}
+\mbox{\hyperlink{masker_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{masker_8c_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{masker_8c_source_l00002}00002\ \textcolor{comment}{WKern\ -\/\ A\ Bare\ Metal\ OS\ /\ Kernel\ I\ am\ maKing\ (For\ Fun)}}
+\DoxyCodeLine{\Hypertarget{masker_8c_source_l00003}00003\ \textcolor{comment}{Copyright\ (C)\ 2025\ \ Wdboyes13}}
+\DoxyCodeLine{\Hypertarget{masker_8c_source_l00004}00004\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{masker_8c_source_l00005}00005\ \textcolor{comment}{This\ program\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{masker_8c_source_l00006}00006\ \textcolor{comment}{it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{masker_8c_source_l00007}00007\ \textcolor{comment}{the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{masker_8c_source_l00008}00008\ \textcolor{comment}{any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{masker_8c_source_l00009}00009\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{masker_8c_source_l00010}00010\ \textcolor{comment}{This\ program\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{masker_8c_source_l00011}00011\ \textcolor{comment}{but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{masker_8c_source_l00012}00012\ \textcolor{comment}{MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{masker_8c_source_l00013}00013\ \textcolor{comment}{GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{masker_8c_source_l00014}00014\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{masker_8c_source_l00015}00015\ \textcolor{comment}{You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{masker_8c_source_l00016}00016\ \textcolor{comment}{along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{masker_8c_source_l00017}00017\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{masker_8c_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{masker_8c_source_l00019}00019\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{idtirq_8h}{idt/idtirq.h}}>}}
+\DoxyCodeLine{\Hypertarget{masker_8c_source_l00020}00020\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{kio_8h}{io/kio.h}}>}}
+\DoxyCodeLine{\Hypertarget{masker_8c_source_l00021}00021\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{nums_8h}{types/nums.h}}>}}
+\DoxyCodeLine{\Hypertarget{masker_8c_source_l00022}\mbox{\hyperlink{masker_8c_af27e966ec947ca1172f30ae301c5f24b}{00022}}\ \textcolor{preprocessor}{\#define\ PIC1\_DATA\ 0x21}}
+\DoxyCodeLine{\Hypertarget{masker_8c_source_l00023}\mbox{\hyperlink{masker_8c_ab6d3b9f6f427357310896adf176145f1}{00023}}\ \textcolor{preprocessor}{\#define\ PIC2\_DATA\ 0xA1}}
+\DoxyCodeLine{\Hypertarget{masker_8c_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{masker_8c_source_l00026}\mbox{\hyperlink{idtirq_8h_afff6913ea38ded1a054003f46bb86ad3}{00026}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{masker_8c_afff6913ea38ded1a054003f46bb86ad3}{MaskAllIrqs}}(\textcolor{keywordtype}{void})\ \{}
+\DoxyCodeLine{\Hypertarget{masker_8c_source_l00027}00027\ \ \ \ \ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{stringliteral}{"{}MasKing\ all\ IRQs\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{masker_8c_source_l00028}00028\ \ \ \ \ \mbox{\hyperlink{asm_8c_a05cb092cfc45a43dd91cff50d681af1a}{Outb}}(\mbox{\hyperlink{masker_8c_af27e966ec947ca1172f30ae301c5f24b}{PIC1\_DATA}},\ 0xFF);\ \textcolor{comment}{//\ MasK\ all\ IRQs\ on\ master\ PIC}}
+\DoxyCodeLine{\Hypertarget{masker_8c_source_l00029}00029\ \ \ \ \ \mbox{\hyperlink{asm_8c_a05cb092cfc45a43dd91cff50d681af1a}{Outb}}(\mbox{\hyperlink{masker_8c_ab6d3b9f6f427357310896adf176145f1}{PIC2\_DATA}},\ 0xFF);\ \textcolor{comment}{//\ MasK\ all\ IRQs\ on\ slave\ PIC}}
+\DoxyCodeLine{\Hypertarget{masker_8c_source_l00030}00030\ \}}
+\DoxyCodeLine{\Hypertarget{masker_8c_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{masker_8c_source_l00034}\mbox{\hyperlink{idtirq_8h_ae24aa8904e3388dccde357778b5e7e53}{00034}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{masker_8c_ae24aa8904e3388dccde357778b5e7e53}{UnmaskIrq}}(\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ irq)\ \{}
+\DoxyCodeLine{\Hypertarget{masker_8c_source_l00035}00035\ \ \ \ \ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{stringliteral}{"{}UnmasKing\ IRQ\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{masker_8c_source_l00036}00036\ \ \ \ \ \mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}\ port;}
+\DoxyCodeLine{\Hypertarget{masker_8c_source_l00037}00037\ \ \ \ \ \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ value;}
+\DoxyCodeLine{\Hypertarget{masker_8c_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{masker_8c_source_l00039}00039\ \ \ \ \ \textcolor{keywordflow}{if}\ (irq\ <\ 8)\ \{}
+\DoxyCodeLine{\Hypertarget{masker_8c_source_l00040}00040\ \ \ \ \ \ \ \ \ port\ =\ 0x21;}
+\DoxyCodeLine{\Hypertarget{masker_8c_source_l00041}00041\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{masker_8c_source_l00042}00042\ \ \ \ \ \ \ \ \ port\ =\ 0xA1;}
+\DoxyCodeLine{\Hypertarget{masker_8c_source_l00043}00043\ \ \ \ \ \ \ \ \ irq\ -\/=\ 8;}
+\DoxyCodeLine{\Hypertarget{masker_8c_source_l00044}00044\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{masker_8c_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{masker_8c_source_l00046}00046\ \ \ \ \ value\ =\ \mbox{\hyperlink{asm_8c_a6ab29a59b425f205c9da3550dcc76605}{Inb}}(port)\ \&\ \string~(1\ <<\ irq);}
+\DoxyCodeLine{\Hypertarget{masker_8c_source_l00047}00047\ \ \ \ \ \mbox{\hyperlink{asm_8c_a05cb092cfc45a43dd91cff50d681af1a}{Outb}}(port,\ value);}
+\DoxyCodeLine{\Hypertarget{masker_8c_source_l00048}00048\ \}}
+
+\end{DoxyCode}

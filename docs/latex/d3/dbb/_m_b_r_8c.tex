@@ -1,0 +1,131 @@
+\doxysection{src/fileio/\+MBR.c File Reference}
+\hypertarget{_m_b_r_8c}{}\label{_m_b_r_8c}\index{src/fileio/MBR.c@{src/fileio/MBR.c}}
+{\ttfamily \#include $<$fileio/fileio.\+h$>$}\newline
+{\ttfamily \#include $<$global.\+h$>$}\newline
+{\ttfamily \#include $<$io/kio.\+h$>$}\newline
+{\ttfamily \#include $<$types/nums.\+h$>$}\newline
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_partition_entry}{Partition\+Entry}}
+\begin{DoxyCompactList}\small\item\em Represents a single partition entry in the \doxylink{struct_m_b_r}{MBR} partition table. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_m_b_r}{MBR}}
+\begin{DoxyCompactList}\small\item\em Master Boot Record structure layout. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_m_b_r_8c_aa35bad1e92008da628f27b2f6bb270aa}{SECTOR\+\_\+\+SIZE}}~512
+\begin{DoxyCompactList}\small\item\em Size of a disk sector in bytes. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_m_b_r_8c_a4ed32bd4f78617ce362737f00fdc0b7b}{FAT16\+\_\+\+TYPE1}}~0x04
+\begin{DoxyCompactList}\small\item\em FAT16 partition type code variant 1. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_m_b_r_8c_a2c3746bbda6ed25630e65cef1f7f5831}{FAT16\+\_\+\+TYPE2}}~0x06
+\begin{DoxyCompactList}\small\item\em FAT16 partition type code variant 2. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} \mbox{\hyperlink{_m_b_r_8c_a577272db0c7e551ce4486fbb640ab149}{Find\+Fat16\+Partition}} ()
+\begin{DoxyCompactList}\small\item\em Finds the LBA start of the first FAT16 partition in the \doxylink{struct_m_b_r}{MBR}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} \mbox{\hyperlink{_m_b_r_8c_a64cdbe42e79baf07e056213647a512a0}{sector}} \mbox{[}\mbox{\hyperlink{_m_b_r_8c_aa35bad1e92008da628f27b2f6bb270aa}{SECTOR\+\_\+\+SIZE}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Buffer for reading sectors. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\Hypertarget{_m_b_r_8c_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{_m_b_r_8c_a4ed32bd4f78617ce362737f00fdc0b7b}\index{MBR.c@{MBR.c}!FAT16\_TYPE1@{FAT16\_TYPE1}}
+\index{FAT16\_TYPE1@{FAT16\_TYPE1}!MBR.c@{MBR.c}}
+\doxysubsubsection{\texorpdfstring{FAT16\_TYPE1}{FAT16\_TYPE1}}
+{\footnotesize\ttfamily \label{_m_b_r_8c_a4ed32bd4f78617ce362737f00fdc0b7b} 
+\#define FAT16\+\_\+\+TYPE1~0x04}
+
+
+
+FAT16 partition type code variant 1. 
+
+
+
+Definition at line \mbox{\hyperlink{_m_b_r_8c_source_l00028}{28}} of file \mbox{\hyperlink{_m_b_r_8c_source}{MBR.\+c}}.
+
+\Hypertarget{_m_b_r_8c_a2c3746bbda6ed25630e65cef1f7f5831}\index{MBR.c@{MBR.c}!FAT16\_TYPE2@{FAT16\_TYPE2}}
+\index{FAT16\_TYPE2@{FAT16\_TYPE2}!MBR.c@{MBR.c}}
+\doxysubsubsection{\texorpdfstring{FAT16\_TYPE2}{FAT16\_TYPE2}}
+{\footnotesize\ttfamily \label{_m_b_r_8c_a2c3746bbda6ed25630e65cef1f7f5831} 
+\#define FAT16\+\_\+\+TYPE2~0x06}
+
+
+
+FAT16 partition type code variant 2. 
+
+
+
+Definition at line \mbox{\hyperlink{_m_b_r_8c_source_l00031}{31}} of file \mbox{\hyperlink{_m_b_r_8c_source}{MBR.\+c}}.
+
+\Hypertarget{_m_b_r_8c_aa35bad1e92008da628f27b2f6bb270aa}\index{MBR.c@{MBR.c}!SECTOR\_SIZE@{SECTOR\_SIZE}}
+\index{SECTOR\_SIZE@{SECTOR\_SIZE}!MBR.c@{MBR.c}}
+\doxysubsubsection{\texorpdfstring{SECTOR\_SIZE}{SECTOR\_SIZE}}
+{\footnotesize\ttfamily \label{_m_b_r_8c_aa35bad1e92008da628f27b2f6bb270aa} 
+\#define SECTOR\+\_\+\+SIZE~512}
+
+
+
+Size of a disk sector in bytes. 
+
+
+
+Definition at line \mbox{\hyperlink{_m_b_r_8c_source_l00025}{25}} of file \mbox{\hyperlink{_m_b_r_8c_source}{MBR.\+c}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{_m_b_r_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{_m_b_r_8c_a577272db0c7e551ce4486fbb640ab149}\index{MBR.c@{MBR.c}!FindFat16Partition@{FindFat16Partition}}
+\index{FindFat16Partition@{FindFat16Partition}!MBR.c@{MBR.c}}
+\doxysubsubsection{\texorpdfstring{FindFat16Partition()}{FindFat16Partition()}}
+{\footnotesize\ttfamily \label{_m_b_r_8c_a577272db0c7e551ce4486fbb640ab149} 
+\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} Find\+Fat16\+Partition (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Finds the LBA start of the first FAT16 partition in the \doxylink{struct_m_b_r}{MBR}. 
+
+Finds the FAT16 partition on disk.
+
+Reads the \doxylink{struct_m_b_r}{MBR} sector, verifies the signature, then scans all partitions for a FAT16 type (0x04 or 0x06). ~\newline
+
+
+Prints debug info about partitions to kernel log.
+
+\begin{DoxyReturn}{Returns}
+LBA of the FAT16 partition start or 0 if none found or invalid \doxylink{struct_m_b_r}{MBR}. 
+\end{DoxyReturn}
+\texorpdfstring{$<$}{<} Invalid \doxylink{struct_m_b_r}{MBR} signature
+
+\texorpdfstring{$<$}{<} Return FAT16 partition start LBA
+
+\texorpdfstring{$<$}{<} No FAT16 partition found
+
+Definition at line \mbox{\hyperlink{_m_b_r_8c_source_l00069}{69}} of file \mbox{\hyperlink{_m_b_r_8c_source}{MBR.\+c}}.
+
+
+
+\label{doc-var-members}
+\Hypertarget{_m_b_r_8c_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{_m_b_r_8c_a64cdbe42e79baf07e056213647a512a0}\index{MBR.c@{MBR.c}!sector@{sector}}
+\index{sector@{sector}!MBR.c@{MBR.c}}
+\doxysubsubsection{\texorpdfstring{sector}{sector}}
+{\footnotesize\ttfamily \label{_m_b_r_8c_a64cdbe42e79baf07e056213647a512a0} 
+\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} sector\mbox{[}\mbox{\hyperlink{_m_b_r_8c_aa35bad1e92008da628f27b2f6bb270aa}{SECTOR\+\_\+\+SIZE}}\mbox{]}}
+
+
+
+Buffer for reading sectors. 
+
+
+
+Definition at line \mbox{\hyperlink{_m_b_r_8c_source_l00057}{57}} of file \mbox{\hyperlink{_m_b_r_8c_source}{MBR.\+c}}.
+

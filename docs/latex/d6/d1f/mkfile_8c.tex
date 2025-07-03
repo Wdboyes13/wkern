@@ -1,0 +1,47 @@
+\doxysection{src/fileio/ops/mkfile.c File Reference}
+\hypertarget{mkfile_8c}{}\label{mkfile_8c}\index{src/fileio/ops/mkfile.c@{src/fileio/ops/mkfile.c}}
+{\ttfamily \#include $<$fileio/fileio.\+h$>$}\newline
+{\ttfamily \#include $<$io/kio.\+h$>$}\newline
+{\ttfamily \#include $<$mem/kmem.\+h$>$}\newline
+{\ttfamily \#include $<$types/nums.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{mkfile_8c_a0955c984a7b27de3da315eefeb4db734}{Mkfile}} (const char \texorpdfstring{$\ast$}{*}filename, const char \texorpdfstring{$\ast$}{*}ext)
+\begin{DoxyCompactList}\small\item\em Create a new empty file entry in the FAT16 root directory. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{mkfile_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{mkfile_8c_a0955c984a7b27de3da315eefeb4db734}\index{mkfile.c@{mkfile.c}!Mkfile@{Mkfile}}
+\index{Mkfile@{Mkfile}!mkfile.c@{mkfile.c}}
+\doxysubsubsection{\texorpdfstring{Mkfile()}{Mkfile()}}
+{\footnotesize\ttfamily \label{mkfile_8c_a0955c984a7b27de3da315eefeb4db734} 
+void Mkfile (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{filename}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{ext}{}\end{DoxyParamCaption})}
+
+
+
+Create a new empty file entry in the FAT16 root directory. 
+
+Creates a new empty file in the FAT16 root directory.
+
+This function searches for a free root directory entry and a free cluster, then creates a new directory entry for the specified filename and extension. It initializes the directory entry with default attributes and zero file size.
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The 8-\/character filename (without extension). \\
+\hline
+{\em ext} & The 3-\/character file extension.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+The function assumes FAT16 filesystem data is accessible through the global {\ttfamily fat16} structure.
+\end{DoxyNote}
+\begin{DoxyWarning}{Warning}
+If no free directory entry or cluster is available, the function prints an error message and returns without creating the file. 
+\end{DoxyWarning}
+
+
+Definition at line \mbox{\hyperlink{mkfile_8c_source_l00040}{40}} of file \mbox{\hyperlink{mkfile_8c_source}{mkfile.\+c}}.
+

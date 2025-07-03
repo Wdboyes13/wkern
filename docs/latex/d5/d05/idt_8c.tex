@@ -1,0 +1,152 @@
+\doxysection{src/idt/idt.c File Reference}
+\hypertarget{idt_8c}{}\label{idt_8c}\index{src/idt/idt.c@{src/idt/idt.c}}
+{\ttfamily \#include $<$global.\+h$>$}\newline
+{\ttfamily \#include $<$idt/idtirq.\+h$>$}\newline
+{\ttfamily \#include $<$io/kio.\+h$>$}\newline
+{\ttfamily \#include $<$mem/kmem.\+h$>$}\newline
+{\ttfamily \#include $<$types/nums.\+h$>$}\newline
+{\ttfamily \#include $<$utils/util.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_idt_ptr}{Idt\+Ptr}} \mbox{\hyperlink{idtirq_8h_a8a950b7284d7f2582cc4356eb67334ce}{idt\+\_\+ptrn}} \mbox{\hyperlink{idt_8c_ac5afae34a14e24b8eeb857a964baf4f3}{\+\_\+\+\_\+attribute\+\_\+\+\_\+}} ((aligned(16)))
+\item 
+void \mbox{\hyperlink{idt_8c_af6395787910fc416ceb5c2a7cfe468c6}{Idt\+Set\+Gate}} (\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} num, \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} base, \mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}} sel, \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} flags)
+\begin{DoxyCompactList}\small\item\em Set an IDT gate (entry) at given index. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{idt_8c_a84570865f37dac35b40cae1b2943f418}{Idt\+Load}} (void)
+\item 
+void \mbox{\hyperlink{idt_8c_a358731e05134eb3546df246269287c55}{debug\+\_\+print\+\_\+idt\+\_\+entry}} (int i)
+\begin{DoxyCompactList}\small\item\em Debug function to print an IDT entry\textquotesingle{}s handler address. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{idt_8c_afc934f0079b12ec1cac0f6f49df28ca0}{All\+Idt}} ()
+\begin{DoxyCompactList}\small\item\em Initialize and load the Interrupt Descriptor Table (IDT) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_idt_entry}{Idt\+Entry}} \mbox{\hyperlink{idt_8c_a36cdbd0f8a3dc9a90160b2039db7ffb0}{idt}} \mbox{[}\mbox{\hyperlink{idtirq_8h_a2a59a505aa55f15c152f30f811fbd310}{IDT\+\_\+\+ENTRIES}}\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{idt_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{idt_8c_ac5afae34a14e24b8eeb857a964baf4f3}\index{idt.c@{idt.c}!\_\_attribute\_\_@{\_\_attribute\_\_}}
+\index{\_\_attribute\_\_@{\_\_attribute\_\_}!idt.c@{idt.c}}
+\doxysubsubsection{\texorpdfstring{\_\_attribute\_\_()}{\_\_attribute\_\_()}}
+{\footnotesize\ttfamily \label{idt_8c_ac5afae34a14e24b8eeb857a964baf4f3} 
+struct \mbox{\hyperlink{struct_idt_ptr}{Idt\+Ptr}} \mbox{\hyperlink{idtirq_8h_a8a950b7284d7f2582cc4356eb67334ce}{idt\+\_\+ptrn}} \+\_\+\+\_\+attribute\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{(aligned(16))}]{}{}\end{DoxyParamCaption})}
+
+IDT pointer structure, aligned to 16 bytes \Hypertarget{idt_8c_afc934f0079b12ec1cac0f6f49df28ca0}\index{idt.c@{idt.c}!AllIdt@{AllIdt}}
+\index{AllIdt@{AllIdt}!idt.c@{idt.c}}
+\doxysubsubsection{\texorpdfstring{AllIdt()}{AllIdt()}}
+{\footnotesize\ttfamily \label{idt_8c_afc934f0079b12ec1cac0f6f49df28ca0} 
+void All\+Idt (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Initialize and load the Interrupt Descriptor Table (IDT) 
+
+
+\begin{DoxyItemize}
+\item Installs GDT
+\item Remaps PIC interrupts
+\item Masks all IRQs, then unmasks IRQ 0 and 1
+\item Sets IDT gates for IRQ0 and IRQ1 handlers
+\item Loads the IDT and enables interrupts
+\item Starts the PIT timer at a base frequency 
+\end{DoxyItemize}\texorpdfstring{$<$}{<} Install the Global Descriptor Table (GDT)
+
+\texorpdfstring{$<$}{<} Remap the PIC (Programmable Interrupt Controller)
+
+\texorpdfstring{$<$}{<} Mask all IRQs for safety
+
+\texorpdfstring{$<$}{<} Unmask IRQ1 (keyboard)
+
+\texorpdfstring{$<$}{<} Unmask IRQ0 (timer)
+
+\texorpdfstring{$<$}{<} Clear the IDT entries
+
+\texorpdfstring{$<$}{<} Set IDT limit
+
+\texorpdfstring{$<$}{<} Set IDT base address
+
+\texorpdfstring{$<$}{<} Set IRQ0 handler
+
+\texorpdfstring{$<$}{<} Set IRQ1 handler
+
+\texorpdfstring{$<$}{<} Disable CPU interrupts during setup
+
+\texorpdfstring{$<$}{<} Reload the GDT
+
+\texorpdfstring{$<$}{<} Load the new IDT
+
+\texorpdfstring{$<$}{<} Re-\/enable CPU interrupts
+
+\texorpdfstring{$<$}{<} Initialize PIT with base frequency (e.\+g., 1193182 Hz)
+
+Definition at line \mbox{\hyperlink{idt_8c_source_l00073}{73}} of file \mbox{\hyperlink{idt_8c_source}{idt.\+c}}.
+
+\Hypertarget{idt_8c_a358731e05134eb3546df246269287c55}\index{idt.c@{idt.c}!debug\_print\_idt\_entry@{debug\_print\_idt\_entry}}
+\index{debug\_print\_idt\_entry@{debug\_print\_idt\_entry}!idt.c@{idt.c}}
+\doxysubsubsection{\texorpdfstring{debug\_print\_idt\_entry()}{debug\_print\_idt\_entry()}}
+{\footnotesize\ttfamily \label{idt_8c_a358731e05134eb3546df246269287c55} 
+void debug\+\_\+print\+\_\+idt\+\_\+entry (\begin{DoxyParamCaption}\item[{int}]{i}{}\end{DoxyParamCaption})}
+
+
+
+Debug function to print an IDT entry\textquotesingle{}s handler address. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & Index of the IDT entry to print \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{idt_8c_source_l00056}{56}} of file \mbox{\hyperlink{idt_8c_source}{idt.\+c}}.
+
+\Hypertarget{idt_8c_a84570865f37dac35b40cae1b2943f418}\index{idt.c@{idt.c}!IdtLoad@{IdtLoad}}
+\index{IdtLoad@{IdtLoad}!idt.c@{idt.c}}
+\doxysubsubsection{\texorpdfstring{IdtLoad()}{IdtLoad()}}
+{\footnotesize\ttfamily \label{idt_8c_a84570865f37dac35b40cae1b2943f418} 
+void Idt\+Load (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+External assembly function to load the IDT \Hypertarget{idt_8c_af6395787910fc416ceb5c2a7cfe468c6}\index{idt.c@{idt.c}!IdtSetGate@{IdtSetGate}}
+\index{IdtSetGate@{IdtSetGate}!idt.c@{idt.c}}
+\doxysubsubsection{\texorpdfstring{IdtSetGate()}{IdtSetGate()}}
+{\footnotesize\ttfamily \label{idt_8c_af6395787910fc416ceb5c2a7cfe468c6} 
+void Idt\+Set\+Gate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}}]{num}{, }\item[{\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}}]{base}{, }\item[{\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}}]{sel}{, }\item[{\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}}]{flags}{}\end{DoxyParamCaption})}
+
+
+
+Set an IDT gate (entry) at given index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em num} & Index of the IDT entry to set \\
+\hline
+{\em base} & Address of the interrupt handler function \\
+\hline
+{\em sel} & Code segment selector in GDT \\
+\hline
+{\em flags} & Flags controlling gate type and privileges \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{idt_8c_source_l00040}{40}} of file \mbox{\hyperlink{idt_8c_source}{idt.\+c}}.
+
+
+
+\label{doc-var-members}
+\Hypertarget{idt_8c_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{idt_8c_a36cdbd0f8a3dc9a90160b2039db7ffb0}\index{idt.c@{idt.c}!idt@{idt}}
+\index{idt@{idt}!idt.c@{idt.c}}
+\doxysubsubsection{\texorpdfstring{idt}{idt}}
+{\footnotesize\ttfamily \label{idt_8c_a36cdbd0f8a3dc9a90160b2039db7ffb0} 
+struct \mbox{\hyperlink{struct_idt_entry}{Idt\+Entry}} idt\mbox{[}\mbox{\hyperlink{idtirq_8h_a2a59a505aa55f15c152f30f811fbd310}{IDT\+\_\+\+ENTRIES}}\mbox{]}}
+
+Interrupt Descriptor Table entries 
+
+Definition at line \mbox{\hyperlink{idt_8c_source_l00027}{27}} of file \mbox{\hyperlink{idt_8c_source}{idt.\+c}}.
+

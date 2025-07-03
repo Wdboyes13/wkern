@@ -22,6 +22,22 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include <types/nums.h>
 #include <utils/util.h>
 
+
+/**
+ * @brief Display the contents of a file in the FAT16 filesystem.
+ *
+ * This function searches the FAT16 root directory for a file matching the
+ * specified filename and extension. If found, it reads the first data cluster
+ * of the file and prints its contents as ASCII characters to the console.
+ * Non-printable characters are displayed as dots ('.'). The reading stops
+ * either at the end of the cluster or when a FAT16 EOF marker (0x1A) is found.
+ *
+ * @param filename The 8-character filename (without extension).
+ * @param ext The 3-character file extension.
+ *
+ * @note The function assumes the FAT16 filesystem structure is accessible
+ *       through the global `fat16` variable.
+ */
 void Fileconts(const char *filename, const char *ext) {
     u32 entries_per_sector = fat16.bytes_per_sector / 32;
     u32 root_dir_sectors =

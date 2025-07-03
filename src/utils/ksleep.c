@@ -20,5 +20,9 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include <io/kio.h>
 #include <types/nums.h>
 #include <utils/util.h>
+/// @brief Sleeps for 10ms
+/// @param ms - Number of 10ms to sleep
 void ZZZ(int ms) { MsSleep(ms); }
-void SSleep(int secs) { MsSleep(secs * 1000); }
+/// @brief Sleep for X seconds
+/// @param secs - Number of seconds to sleep
+void SSleep(int secs) { MsSleep(secs * 100); }

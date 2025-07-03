@@ -1,0 +1,50 @@
+\doxysection{pit.\+c}
+\hypertarget{pit_8c_source}{}\label{pit_8c_source}\index{src/idt/pit.c@{src/idt/pit.c}}
+\mbox{\hyperlink{pit_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{pit_8c_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{pit_8c_source_l00002}00002\ \textcolor{comment}{WKern\ -\/\ A\ Bare\ Metal\ OS\ /\ Kernel\ I\ am\ maKing\ (For\ Fun)}}
+\DoxyCodeLine{\Hypertarget{pit_8c_source_l00003}00003\ \textcolor{comment}{Copyright\ (C)\ 2025\ \ Wdboyes13}}
+\DoxyCodeLine{\Hypertarget{pit_8c_source_l00004}00004\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{pit_8c_source_l00005}00005\ \textcolor{comment}{This\ program\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{pit_8c_source_l00006}00006\ \textcolor{comment}{it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{pit_8c_source_l00007}00007\ \textcolor{comment}{the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{pit_8c_source_l00008}00008\ \textcolor{comment}{any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{pit_8c_source_l00009}00009\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{pit_8c_source_l00010}00010\ \textcolor{comment}{This\ program\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{pit_8c_source_l00011}00011\ \textcolor{comment}{but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{pit_8c_source_l00012}00012\ \textcolor{comment}{MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{pit_8c_source_l00013}00013\ \textcolor{comment}{GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{pit_8c_source_l00014}00014\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{pit_8c_source_l00015}00015\ \textcolor{comment}{You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{pit_8c_source_l00016}00016\ \textcolor{comment}{along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{pit_8c_source_l00017}00017\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{pit_8c_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{pit_8c_source_l00019}00019\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{kio_8h}{io/kio.h}}>}}
+\DoxyCodeLine{\Hypertarget{pit_8c_source_l00020}00020\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{nums_8h}{types/nums.h}}>}}
+\DoxyCodeLine{\Hypertarget{pit_8c_source_l00021}00021\ \textcolor{comment}{//\ PIT\ ports}}
+\DoxyCodeLine{\Hypertarget{pit_8c_source_l00022}\mbox{\hyperlink{pit_8c_abba319c44ca53f3dd53947be93a177c5}{00022}}\ \textcolor{preprocessor}{\#define\ PIT\_CHANNEL0\ 0x40}}
+\DoxyCodeLine{\Hypertarget{pit_8c_source_l00023}\mbox{\hyperlink{pit_8c_a3e73731695c5d9150fcafa8f2e493400}{00023}}\ \textcolor{preprocessor}{\#define\ PIT\_COMMAND\ 0x43}}
+\DoxyCodeLine{\Hypertarget{pit_8c_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{pit_8c_source_l00025}00025\ \textcolor{comment}{//\ Command\ byte\ bits\ for\ mode\ 3\ (square\ wave\ generator)}}
+\DoxyCodeLine{\Hypertarget{pit_8c_source_l00026}\mbox{\hyperlink{pit_8c_ab919d3f4e66fa61b06be266dd532c0e5}{00026}}\ \textcolor{preprocessor}{\#define\ PIT\_ACCESS\_LOHI\ 0x30\ }\textcolor{comment}{//\ access\ low\ byte\ then\ high\ byte}}
+\DoxyCodeLine{\Hypertarget{pit_8c_source_l00027}\mbox{\hyperlink{pit_8c_a18ca895388de30b402f05ae4dc1e1f78}{00027}}\ \textcolor{preprocessor}{\#define\ PIT\_MODE3\ 0x06\ \ \ \ \ \ \ }\textcolor{comment}{//\ mode\ 3\ (square\ wave)}}
+\DoxyCodeLine{\Hypertarget{pit_8c_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{pit_8c_source_l00029}00029\ \textcolor{comment}{//\ PIT\ frequency\ and\ divisor}}
+\DoxyCodeLine{\Hypertarget{pit_8c_source_l00030}\mbox{\hyperlink{pit_8c_aaad9208d1f30cc40267fdeb44f593a35}{00030}}\ \textcolor{preprocessor}{\#define\ PIT\_FREQ\ 1193182\ }\textcolor{comment}{//\ base\ frequency\ in\ Hz}}
+\DoxyCodeLine{\Hypertarget{pit_8c_source_l00031}00031\ \textcolor{comment}{//\ Setup\ PIT\ for\ a\ given\ frequency\ (e.g.,\ 100\ Hz)}}
+\DoxyCodeLine{\Hypertarget{pit_8c_source_l00032}\mbox{\hyperlink{idtirq_8h_afead828821eca13b3f89e621010367c2}{00032}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{pit_8c_afead828821eca13b3f89e621010367c2}{PitInit}}(\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ freq)\ \{}
+\DoxyCodeLine{\Hypertarget{pit_8c_source_l00033}00033\ \ \ \ \ \mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}\ divisor\ =\ (\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}})(\mbox{\hyperlink{idtirq_8h_aaad9208d1f30cc40267fdeb44f593a35}{PIT\_FREQ}}\ /\ freq);}
+\DoxyCodeLine{\Hypertarget{pit_8c_source_l00034}00034\ \ \ \ \ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{stringliteral}{"{}Divisor\ Set\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{pit_8c_source_l00035}00035\ \ \ \ \ \textcolor{comment}{//\ Send\ command\ byte:\ channel\ 0,\ access\ mode\ lo/hi,\ mode\ 3,\ binary\ mode}}
+\DoxyCodeLine{\Hypertarget{pit_8c_source_l00036}00036\ \ \ \ \ \mbox{\hyperlink{asm_8c_a05cb092cfc45a43dd91cff50d681af1a}{Outb}}(\mbox{\hyperlink{pit_8c_a3e73731695c5d9150fcafa8f2e493400}{PIT\_COMMAND}},\ \mbox{\hyperlink{pit_8c_ab919d3f4e66fa61b06be266dd532c0e5}{PIT\_ACCESS\_LOHI}}\ |\ \mbox{\hyperlink{pit_8c_a18ca895388de30b402f05ae4dc1e1f78}{PIT\_MODE3}});}
+\DoxyCodeLine{\Hypertarget{pit_8c_source_l00037}00037\ \ \ \ \ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{stringliteral}{"{}Command\ Byte\ Sent\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{pit_8c_source_l00038}00038\ \ \ \ \ \textcolor{comment}{//\ Send\ divisor\ low\ byte}}
+\DoxyCodeLine{\Hypertarget{pit_8c_source_l00039}00039\ \ \ \ \ \mbox{\hyperlink{asm_8c_a05cb092cfc45a43dd91cff50d681af1a}{Outb}}(\mbox{\hyperlink{pit_8c_abba319c44ca53f3dd53947be93a177c5}{PIT\_CHANNEL0}},\ divisor\ \&\ 0xFF);}
+\DoxyCodeLine{\Hypertarget{pit_8c_source_l00040}00040\ \ \ \ \ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{stringliteral}{"{}Low\ byte\ sent\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{pit_8c_source_l00041}00041\ \ \ \ \ \textcolor{comment}{//\ Send\ divisor\ high\ byte}}
+\DoxyCodeLine{\Hypertarget{pit_8c_source_l00042}00042\ \ \ \ \ \mbox{\hyperlink{asm_8c_a05cb092cfc45a43dd91cff50d681af1a}{Outb}}(\mbox{\hyperlink{pit_8c_abba319c44ca53f3dd53947be93a177c5}{PIT\_CHANNEL0}},\ (divisor\ >>\ 8)\ \&\ 0xFF);}
+\DoxyCodeLine{\Hypertarget{pit_8c_source_l00043}00043\ \ \ \ \ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{stringliteral}{"{}High\ byte\ sent\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{pit_8c_source_l00044}00044\ \}}
+
+\end{DoxyCode}

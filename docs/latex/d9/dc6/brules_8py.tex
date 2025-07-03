@@ -1,0 +1,44 @@
+\doxysection{bfiles/brules.py File Reference}
+\hypertarget{brules_8py}{}\label{brules_8py}\index{bfiles/brules.py@{bfiles/brules.py}}
+
+
+Core build functions\+: compile, link, ISO creation.  
+
+
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacebrules}{brules}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacebrules_ae6ebfc55a4e411b372954100af152beb}{brules.\+compileasm}} ()
+\begin{DoxyCompactList}\small\item\em Compiles all NASM assembly files in {\ttfamily NASMSRCS}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacebrules_affe03ad5668966352d13cbf468bb7541}{brules.\+compile\+\_\+file}} (file)
+\begin{DoxyCompactList}\small\item\em Compile a single C file if out of date. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacebrules_a1720011e61edb2a9ae886b33cd327e05}{brules.\+compilec}} ()
+\begin{DoxyCompactList}\small\item\em Compiles all C sources in parallel from {\ttfamily SRCS}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacebrules_ac16352890f8352431e7ae6e3d74d5784}{brules.\+partial\+\_\+link}} ()
+\begin{DoxyCompactList}\small\item\em Performs partial linking on modules from {\ttfamily MODULES}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacebrules_a9c1373e78cf82ed911a3a0893a53e045}{brules.\+link}} ()
+\begin{DoxyCompactList}\small\item\em Links the final kernel ELF binary from object files. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacebrules_afad7dbdba4ec9134f6b8fe475f9d6eda}{brules.\+iso}} ()
+\begin{DoxyCompactList}\small\item\em Generates a bootable ISO using GRUB and kernel ELF. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Core build functions\+: compile, link, ISO creation. 
+
+This file includes logic for\+:
+\begin{DoxyItemize}
+\item Compiling assembly and C sources
+\item Partial linking of modules
+\item Full kernel linking
+\item ISO generation using GRUB
+\end{DoxyItemize}
+
+This is used by {\ttfamily \doxylink{build_8py}{build.\+py}} to perform all low-\/level build operations. 
+
+Definition in file \mbox{\hyperlink{brules_8py_source}{brules.\+py}}.
+

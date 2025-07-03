@@ -1,0 +1,40 @@
+\doxysection{testexec.\+c}
+\hypertarget{testexec_8c_source}{}\label{testexec_8c_source}\index{src/wex/testexec.c@{src/wex/testexec.c}}
+\mbox{\hyperlink{testexec_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{testexec_8c_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{testexec_8c_source_l00002}00002\ \textcolor{comment}{WKern\ -\/\ A\ Bare\ Metal\ OS\ /\ Kernel\ I\ am\ maKing\ (For\ Fun)}}
+\DoxyCodeLine{\Hypertarget{testexec_8c_source_l00003}00003\ \textcolor{comment}{Copyright\ (C)\ 2025\ \ Wdboyes13}}
+\DoxyCodeLine{\Hypertarget{testexec_8c_source_l00004}00004\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{testexec_8c_source_l00005}00005\ \textcolor{comment}{This\ program\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{testexec_8c_source_l00006}00006\ \textcolor{comment}{it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{testexec_8c_source_l00007}00007\ \textcolor{comment}{the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{testexec_8c_source_l00008}00008\ \textcolor{comment}{any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{testexec_8c_source_l00009}00009\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{testexec_8c_source_l00010}00010\ \textcolor{comment}{This\ program\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{testexec_8c_source_l00011}00011\ \textcolor{comment}{but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{testexec_8c_source_l00012}00012\ \textcolor{comment}{MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{testexec_8c_source_l00013}00013\ \textcolor{comment}{GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{testexec_8c_source_l00014}00014\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{testexec_8c_source_l00015}00015\ \textcolor{comment}{You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{testexec_8c_source_l00016}00016\ \textcolor{comment}{along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{testexec_8c_source_l00017}00017\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{testexec_8c_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{testexec_8c_source_l00019}00019\ \textcolor{comment}{//\ This\ is\ a\ test\ executable\ of\ the\ WEX\ format}}
+\DoxyCodeLine{\Hypertarget{testexec_8c_source_l00020}00020\ \textcolor{comment}{//\ The\ data\ would\ be\ in\ an\ actual\ file\ normally}}
+\DoxyCodeLine{\Hypertarget{testexec_8c_source_l00021}00021\ \textcolor{comment}{//\ This\ is\ just\ an\ array\ to\ simulate\ it}}
+\DoxyCodeLine{\Hypertarget{testexec_8c_source_l00022}00022\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ exec[]\ =\ \{}
+\DoxyCodeLine{\Hypertarget{testexec_8c_source_l00023}00023\ \ \ \ \ 0x06,\ 0x04,\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Entry\ point\ =\ 0x06,\ Symbol\ Table\ Size\ =\ 4}}
+\DoxyCodeLine{\Hypertarget{testexec_8c_source_l00024}00024\ \ \ \ \ 0x0A,\ 0x0C,\ 0x0D,\ 0x01,\ \textcolor{comment}{//\ Symbol\ Table:\ [0]=Write,\ [1]=Shutdown,\ [2]=Sleep,}}
+\DoxyCodeLine{\Hypertarget{testexec_8c_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ [3]=CLS}}
+\DoxyCodeLine{\Hypertarget{testexec_8c_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{testexec_8c_source_l00027}00027\ \ \ \ \ 0x00,\ 0x03,\ \textcolor{comment}{//\ CALL\ CLS\ (smt[3]\ =\ 0x01)}}
+\DoxyCodeLine{\Hypertarget{testexec_8c_source_l00028}00028\ \ \ \ \ 0x00,\ 0x00,\ \textcolor{charliteral}{'H'},\ \textcolor{charliteral}{'E'},\ \textcolor{charliteral}{'L'},\ \textcolor{charliteral}{'L'},\ \textcolor{charliteral}{'O'},\ \textcolor{charliteral}{'\(\backslash\)n'},\ 0x00,\ 0x00,}
+\DoxyCodeLine{\Hypertarget{testexec_8c_source_l00029}00029\ \ \ \ \ 0x02,\ \ \ \ \ \ \ \textcolor{comment}{//\ CALL\ SLEEP\ (smt[2]\ =\ 0x0D)}}
+\DoxyCodeLine{\Hypertarget{testexec_8c_source_l00030}00030\ \ \ \ \ 0x00,\ 0x01,\ \textcolor{comment}{//\ CALL\ SHUTDOWN\ (smt[1]\ =\ 0x0C)}}
+\DoxyCodeLine{\Hypertarget{testexec_8c_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{testexec_8c_source_l00032}00032\ \ \ \ \ 0xFF\ \textcolor{comment}{//\ End\ of\ program}}
+\DoxyCodeLine{\Hypertarget{testexec_8c_source_l00033}00033\ \};}
+\DoxyCodeLine{\Hypertarget{testexec_8c_source_l00034}\mbox{\hyperlink{stdwex_8h_af3fc9610c4455b3f2f675e055c98066e}{00034}}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{testexec_8c_af3fc9610c4455b3f2f675e055c98066e}{Execr}}()\ \{\ \textcolor{keywordflow}{return}\ exec;\ \}}
+
+\end{DoxyCode}

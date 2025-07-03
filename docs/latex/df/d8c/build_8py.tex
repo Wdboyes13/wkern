@@ -1,0 +1,40 @@
+\doxysection{build.\+py File Reference}
+\hypertarget{build_8py}{}\label{build_8py}\index{build.py@{build.py}}
+
+
+Entry point for the OS kernel build system.  
+
+
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacebuild}{build}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacebuild_a040e3e8b77aa8911e86cfee035b5becc}{build.\+build}} ()
+\begin{DoxyCompactList}\small\item\em Main build routine. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacebuild_ab0e8c0c3ca8972d23742e55d3e1e3c0b}{build.\+clean}} ()
+\begin{DoxyCompactList}\small\item\em Remove build output files and Python caches. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacebuild_a02ddac46c157c229b19f2c0fd9ac24de}{build.\+main}} ()
+\begin{DoxyCompactList}\small\item\em CLI entrypoint for \doxylink{build_8py}{build.\+py}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Entry point for the OS kernel build system. 
+
+This script coordinates the entire build process, as well as cleanup, running, and testing workflows.\hypertarget{build_8py_autotoc_md18}{}\doxysubsubsection{\texorpdfstring{Usage\+:}{Usage\+:}}\label{build_8py_autotoc_md18}
+
+\begin{DoxyItemize}
+\item {\ttfamily ./build.py} \+: Configure (if needed) and build the project
+\item {\ttfamily ./build.py -\/clean} \+: Clean build artifacts
+\item {\ttfamily ./build.py -\/git} \+: Clean and perform Git-\/specific cleanup
+\item {\ttfamily ./build.py -\/run} \+: Run the built image using QEMU
+\item {\ttfamily ./build.py -\/test} \+: Re-\/run \doxylink{configure_8py}{configure.\+py} to verify system setup
+\item {\ttfamily ./build.py -\/loc} \+: Count lines of code via {\ttfamily loc.\+sh}
+\item {\ttfamily ./build.py -\/mkd} \+: Create and format a blank FAT16 disk image 
+\end{DoxyItemize}
+
+Definition in file \mbox{\hyperlink{build_8py_source}{build.\+py}}.
+

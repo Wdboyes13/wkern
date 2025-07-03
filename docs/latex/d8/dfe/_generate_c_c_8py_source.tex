@@ -1,0 +1,45 @@
+\doxysection{Generate\+CC.\+py}
+\hypertarget{_generate_c_c_8py_source}{}\label{_generate_c_c_8py_source}\index{bfiles/GenerateCC.py@{bfiles/GenerateCC.py}}
+\mbox{\hyperlink{_generate_c_c_8py}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_generate_c_c_8py_source_l00001}\mbox{\hyperlink{namespace_generate_c_c}{00001}}\ \textcolor{comment}{\#!/usr/bin/env\ python3}}
+\DoxyCodeLine{\Hypertarget{_generate_c_c_8py_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_generate_c_c_8py_source_l00003}00003\ \textcolor{keyword}{import}\ os}
+\DoxyCodeLine{\Hypertarget{_generate_c_c_8py_source_l00004}00004\ \textcolor{keyword}{import}\ json}
+\DoxyCodeLine{\Hypertarget{_generate_c_c_8py_source_l00005}00005\ \textcolor{keyword}{from}\ \mbox{\hyperlink{namespacebfiles_1_1toolsflags}{bfiles.toolsflags}}\ \textcolor{keyword}{import}\ *}
+\DoxyCodeLine{\Hypertarget{_generate_c_c_8py_source_l00006}00006\ \textcolor{keyword}{from}\ pathlib\ \textcolor{keyword}{import}\ Path}
+\DoxyCodeLine{\Hypertarget{_generate_c_c_8py_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_generate_c_c_8py_source_l00008}00008\ \textcolor{comment}{\#\ Root\ directory\ to\ search\ .c\ files}}
+\DoxyCodeLine{\Hypertarget{_generate_c_c_8py_source_l00009}\mbox{\hyperlink{namespace_generate_c_c_ab5bf167851a170a8711a24705896aa91}{00009}}\ ROOT\_DIR\ =\ \textcolor{stringliteral}{"{}."{}}\ \ \textcolor{comment}{\#\ Change\ if\ needed}}
+\DoxyCodeLine{\Hypertarget{_generate_c_c_8py_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{_generate_c_c_8py_source_l00011}\mbox{\hyperlink{namespace_generate_c_c_af55e981abb46c221922a922cdfd73d2a}{00011}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespace_generate_c_c_af55e981abb46c221922a922cdfd73d2a}{find\_c\_files}}(root):}
+\DoxyCodeLine{\Hypertarget{_generate_c_c_8py_source_l00012}00012\ \ \ \ \ c\_files\ =\ []}
+\DoxyCodeLine{\Hypertarget{_generate_c_c_8py_source_l00013}00013\ \ \ \ \ \textcolor{keywordflow}{for}\ dirpath,\ \_,\ filenames\ \textcolor{keywordflow}{in}\ os.walk(root):}
+\DoxyCodeLine{\Hypertarget{_generate_c_c_8py_source_l00014}00014\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ f\ \textcolor{keywordflow}{in}\ filenames:}
+\DoxyCodeLine{\Hypertarget{_generate_c_c_8py_source_l00015}00015\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ f.endswith(\textcolor{stringliteral}{"{}.c"{}}):}
+\DoxyCodeLine{\Hypertarget{_generate_c_c_8py_source_l00016}00016\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ full\_path\ =\ os.path.relpath(os.path.join(dirpath,\ f),\ root)}
+\DoxyCodeLine{\Hypertarget{_generate_c_c_8py_source_l00017}00017\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ c\_files.append(full\_path)}
+\DoxyCodeLine{\Hypertarget{_generate_c_c_8py_source_l00018}00018\ \ \ \ \ \textcolor{keywordflow}{return}\ c\_files}
+\DoxyCodeLine{\Hypertarget{_generate_c_c_8py_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_generate_c_c_8py_source_l00020}\mbox{\hyperlink{namespace_generate_c_c_abde681953f4ff585f68f9b4d40caf63e}{00020}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespace_generate_c_c_abde681953f4ff585f68f9b4d40caf63e}{main}}():}
+\DoxyCodeLine{\Hypertarget{_generate_c_c_8py_source_l00021}00021\ \ \ \ \ os.chdir(Path(\_\_file\_\_).resolve().parents[1])}
+\DoxyCodeLine{\Hypertarget{_generate_c_c_8py_source_l00022}00022\ \ \ \ \ files\ =\ \mbox{\hyperlink{namespace_generate_c_c_af55e981abb46c221922a922cdfd73d2a}{find\_c\_files}}(ROOT\_DIR)}
+\DoxyCodeLine{\Hypertarget{_generate_c_c_8py_source_l00023}00023\ \ \ \ \ compile\_commands\ =\ []}
+\DoxyCodeLine{\Hypertarget{_generate_c_c_8py_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_generate_c_c_8py_source_l00025}00025\ \ \ \ \ \textcolor{keywordflow}{for}\ file\ \textcolor{keywordflow}{in}\ files:}
+\DoxyCodeLine{\Hypertarget{_generate_c_c_8py_source_l00026}00026\ \ \ \ \ \ \ \ \ cmd\ =\ \{}
+\DoxyCodeLine{\Hypertarget{_generate_c_c_8py_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}directory"{}}:\ os.path.abspath(ROOT\_DIR),}
+\DoxyCodeLine{\Hypertarget{_generate_c_c_8py_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}command"{}}:\ \textcolor{stringliteral}{"{}clang\ "{}}\ +\ \textcolor{stringliteral}{"{}\ "{}}.join(CCFLAGS)\ +\ f\textcolor{stringliteral}{"{}\ -\/c\ \{file\}\ -\/o\ \{file\}.o"{}},}
+\DoxyCodeLine{\Hypertarget{_generate_c_c_8py_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}file"{}}:\ os.path.abspath(file),}
+\DoxyCodeLine{\Hypertarget{_generate_c_c_8py_source_l00030}00030\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_generate_c_c_8py_source_l00031}00031\ \ \ \ \ \ \ \ \ compile\_commands.append(cmd)}
+\DoxyCodeLine{\Hypertarget{_generate_c_c_8py_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_generate_c_c_8py_source_l00033}00033\ \ \ \ \ \textcolor{keyword}{with}\ open(\textcolor{stringliteral}{"{}compile\_commands.json"{}},\ \textcolor{stringliteral}{"{}w"{}})\ \textcolor{keyword}{as}\ f:}
+\DoxyCodeLine{\Hypertarget{_generate_c_c_8py_source_l00034}00034\ \ \ \ \ \ \ \ \ json.dump(compile\_commands,\ f,\ indent=2)}
+\DoxyCodeLine{\Hypertarget{_generate_c_c_8py_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_generate_c_c_8py_source_l00036}00036\ \ \ \ \ print(f\textcolor{stringliteral}{"{}Generated\ compile\_commands.json\ with\ \{len(files)\}\ entries."{}})}
+\DoxyCodeLine{\Hypertarget{_generate_c_c_8py_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_generate_c_c_8py_source_l00038}00038\ \textcolor{keywordflow}{if}\ \_\_name\_\_\ ==\ \textcolor{stringliteral}{"{}\_\_main\_\_"{}}:}
+\DoxyCodeLine{\Hypertarget{_generate_c_c_8py_source_l00039}00039\ \ \ \ \ \mbox{\hyperlink{namespace_generate_c_c_abde681953f4ff585f68f9b4d40caf63e}{main}}()}
+
+\end{DoxyCode}

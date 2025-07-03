@@ -1,0 +1,54 @@
+\doxysection{shellhelp.\+c}
+\hypertarget{shellhelp_8c_source}{}\label{shellhelp_8c_source}\index{src/KShell/shellhelp.c@{src/KShell/shellhelp.c}}
+\mbox{\hyperlink{shellhelp_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{shellhelp_8c_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{shellhelp_8c_source_l00002}00002\ \textcolor{comment}{WKern\ -\/\ A\ Bare\ Metal\ OS\ /\ Kernel\ I\ am\ maKing\ (For\ Fun)}}
+\DoxyCodeLine{\Hypertarget{shellhelp_8c_source_l00003}00003\ \textcolor{comment}{Copyright\ (C)\ 2025\ \ Wdboyes13}}
+\DoxyCodeLine{\Hypertarget{shellhelp_8c_source_l00004}00004\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{shellhelp_8c_source_l00005}00005\ \textcolor{comment}{This\ program\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{shellhelp_8c_source_l00006}00006\ \textcolor{comment}{it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{shellhelp_8c_source_l00007}00007\ \textcolor{comment}{the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{shellhelp_8c_source_l00008}00008\ \textcolor{comment}{any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{shellhelp_8c_source_l00009}00009\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{shellhelp_8c_source_l00010}00010\ \textcolor{comment}{This\ program\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{shellhelp_8c_source_l00011}00011\ \textcolor{comment}{but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{shellhelp_8c_source_l00012}00012\ \textcolor{comment}{MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{shellhelp_8c_source_l00013}00013\ \textcolor{comment}{GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{shellhelp_8c_source_l00014}00014\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{shellhelp_8c_source_l00015}00015\ \textcolor{comment}{You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{shellhelp_8c_source_l00016}00016\ \textcolor{comment}{along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{shellhelp_8c_source_l00017}00017\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{shellhelp_8c_source_l00018}00018\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{shell_8h}{KShell/shell.h}}>}}
+\DoxyCodeLine{\Hypertarget{shellhelp_8c_source_l00019}00019\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{kio_8h}{io/kio.h}}>}}
+\DoxyCodeLine{\Hypertarget{shellhelp_8c_source_l00020}00020\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{kmem_8h}{mem/kmem.h}}>}}
+\DoxyCodeLine{\Hypertarget{shellhelp_8c_source_l00021}00021\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{util_8h}{utils/util.h}}>}}
+\DoxyCodeLine{\Hypertarget{shellhelp_8c_source_l00023}\mbox{\hyperlink{shell_8h_a54d17a6d0bb758f26b9dda4c6d8e8da8}{00023}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{shellhelp_8c_a54d17a6d0bb758f26b9dda4c6d8e8da8}{Help}}()\ \{}
+\DoxyCodeLine{\Hypertarget{shellhelp_8c_source_l00024}00024\ \ \ \ \ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{stringliteral}{"{}Page\ 1\ or\ 2\ ?\ "{}});}
+\DoxyCodeLine{\Hypertarget{shellhelp_8c_source_l00025}00025\ \ \ \ \ \textcolor{keywordtype}{char}\ *opt\ =\ (\textcolor{keywordtype}{char}\ *)\mbox{\hyperlink{alloc_8c_a4744507132bfe63d677abecc60769ca0}{Kmalloc}}(10,\ 8);}
+\DoxyCodeLine{\Hypertarget{shellhelp_8c_source_l00026}00026\ \ \ \ \ \textcolor{keywordflow}{if}\ (!opt)\ \{}
+\DoxyCodeLine{\Hypertarget{shellhelp_8c_source_l00027}00027\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{stringliteral}{"{}There\ was\ a\ mistaKe\ created,\ Known\ as\ a\ Malloc\ Failure"{}});}
+\DoxyCodeLine{\Hypertarget{shellhelp_8c_source_l00028}00028\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{shellhelp_8c_source_l00029}00029\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{shellhelp_8c_source_l00030}00030\ \ \ \ \ \mbox{\hyperlink{keyin_8c_a31cf36db330251ce379e7dc5dc735ee0}{Kgetstr}}(opt,\ 10);}
+\DoxyCodeLine{\Hypertarget{shellhelp_8c_source_l00031}00031\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{strings_8c_acc439d817730f3d3edbf4f977787b18c}{Kstrcmp}}(opt,\ \textcolor{stringliteral}{"{}1"{}})\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{shellhelp_8c_source_l00032}00032\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{stringliteral}{"{}\(\backslash\)nshutdown\ -\/\ shutdown\ system"{}});}
+\DoxyCodeLine{\Hypertarget{shellhelp_8c_source_l00033}00033\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{stringliteral}{"{}\(\backslash\)nhelp\ -\/\ list\ command"{}});}
+\DoxyCodeLine{\Hypertarget{shellhelp_8c_source_l00034}00034\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{stringliteral}{"{}\(\backslash\)ncmp\ -\/\ compare\ strings"{}});}
+\DoxyCodeLine{\Hypertarget{shellhelp_8c_source_l00035}00035\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{stringliteral}{"{}\(\backslash\)nclear\ -\/\ clear\ screen"{}});}
+\DoxyCodeLine{\Hypertarget{shellhelp_8c_source_l00036}00036\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{stringliteral}{"{}\(\backslash\)nsetname\ -\/\ Set\ Username"{}});}
+\DoxyCodeLine{\Hypertarget{shellhelp_8c_source_l00037}00037\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{stringliteral}{"{}\(\backslash\)nuser\ -\/\ List\ Username"{}});}
+\DoxyCodeLine{\Hypertarget{shellhelp_8c_source_l00038}00038\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{stringliteral}{"{}\(\backslash\)nrecvpacK\ -\/\ Receive\ a\ networK\ pacKet"{}});}
+\DoxyCodeLine{\Hypertarget{shellhelp_8c_source_l00039}00039\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{strings_8c_acc439d817730f3d3edbf4f977787b18c}{Kstrcmp}}(opt,\ \textcolor{stringliteral}{"{}2"{}})\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{shellhelp_8c_source_l00040}00040\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{stringliteral}{"{}\(\backslash\)ntst\ -\/\ Test\ a\ WEX\ Executable"{}});}
+\DoxyCodeLine{\Hypertarget{shellhelp_8c_source_l00041}00041\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{stringliteral}{"{}\(\backslash\)nls\ -\/\ List\ Files\ in\ Mounted\ FAT16"{}});}
+\DoxyCodeLine{\Hypertarget{shellhelp_8c_source_l00042}00042\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{stringliteral}{"{}\(\backslash\)nread\ -\/\ Read\ File\ Contents\ from\ Cluster\ (512\ Bytes)"{}});}
+\DoxyCodeLine{\Hypertarget{shellhelp_8c_source_l00043}00043\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{stringliteral}{"{}\(\backslash\)nmKfile\ -\/\ MaKe\ a\ new\ file"{}});}
+\DoxyCodeLine{\Hypertarget{shellhelp_8c_source_l00044}00044\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{stringliteral}{"{}\(\backslash\)nrm\ -\/\ Remove\ a\ file"{}});}
+\DoxyCodeLine{\Hypertarget{shellhelp_8c_source_l00045}00045\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{stringliteral}{"{}\(\backslash\)nwrite\ -\/\ Write\ to\ a\ File"{}});}
+\DoxyCodeLine{\Hypertarget{shellhelp_8c_source_l00046}00046\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{stringliteral}{"{}\(\backslash\)nregex\ -\/\ Use\ POSIX\ ERE\ Regex"{}});}
+\DoxyCodeLine{\Hypertarget{shellhelp_8c_source_l00047}00047\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{shellhelp_8c_source_l00048}00048\ \ \ \ \ \mbox{\hyperlink{alloc_8c_a51de4a944081d3a40379dafdc8cc8ba5}{Kfree}}(opt);}
+\DoxyCodeLine{\Hypertarget{shellhelp_8c_source_l00049}00049\ \}}
+
+\end{DoxyCode}

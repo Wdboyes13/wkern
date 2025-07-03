@@ -1,0 +1,43 @@
+\doxysection{kio.\+h}
+\hypertarget{kio_8h_source}{}\label{kio_8h_source}\index{src/io/kio.h@{src/io/kio.h}}
+\mbox{\hyperlink{kio_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{kio_8h_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{kio_8h_source_l00002}00002\ \textcolor{comment}{WKern\ -\/\ A\ Bare\ Metal\ OS\ /\ Kernel\ I\ am\ making\ (For\ Fun)}}
+\DoxyCodeLine{\Hypertarget{kio_8h_source_l00003}00003\ \textcolor{comment}{Copyright\ (C)\ 2025\ \ Wdboyes13}}
+\DoxyCodeLine{\Hypertarget{kio_8h_source_l00004}00004\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{kio_8h_source_l00005}00005\ \textcolor{comment}{This\ program\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{kio_8h_source_l00006}00006\ \textcolor{comment}{it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{kio_8h_source_l00007}00007\ \textcolor{comment}{the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{kio_8h_source_l00008}00008\ \textcolor{comment}{any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{kio_8h_source_l00009}00009\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{kio_8h_source_l00010}00010\ \textcolor{comment}{This\ program\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{kio_8h_source_l00011}00011\ \textcolor{comment}{but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{kio_8h_source_l00012}00012\ \textcolor{comment}{MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{kio_8h_source_l00013}00013\ \textcolor{comment}{GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{kio_8h_source_l00014}00014\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{kio_8h_source_l00015}00015\ \textcolor{comment}{You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{kio_8h_source_l00016}00016\ \textcolor{comment}{along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{kio_8h_source_l00017}00017\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{kio_8h_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{kio_8h_source_l00019}00019\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{kio_8h_source_l00020}00020\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{nums_8h}{types/nums.h}}>}}
+\DoxyCodeLine{\Hypertarget{kio_8h_source_l00021}00021\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *fmt,\ ...);}
+\DoxyCodeLine{\Hypertarget{kio_8h_source_l00022}00022\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{kio_8h_af05ef766e47691675bd907cbd362e7c5}{Kputchar}}(\textcolor{keywordtype}{char}\ c);}
+\DoxyCodeLine{\Hypertarget{kio_8h_source_l00023}00023\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{kio_8h_ab5b1620493cead3b15794c38e08b6cbb}{Kcfp}}();}
+\DoxyCodeLine{\Hypertarget{kio_8h_source_l00024}00024\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{kio_8h_a90480719311b7945e3fde965b01d9b31}{KputcharBackspace}}();}
+\DoxyCodeLine{\Hypertarget{kio_8h_source_l00025}00025\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{kio_8h_adff30c0a071f02dbf33d53ecef9535ed}{KprintHex}}(\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ num);}
+\DoxyCodeLine{\Hypertarget{kio_8h_source_l00026}00026\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{kio_8h_a169aeac886fd610ab102b51736c1e9e8}{Kgetkey}}();}
+\DoxyCodeLine{\Hypertarget{kio_8h_source_l00027}\mbox{\hyperlink{kio_8h_adb7e321a39049c02f26c17cfcce30d3f}{00027}}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{kio_8h_adb7e321a39049c02f26c17cfcce30d3f}{ScancodeToAscii}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ scancode);}
+\DoxyCodeLine{\Hypertarget{kio_8h_source_l00028}00028\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{kio_8h_a31cf36db330251ce379e7dc5dc735ee0}{Kgetstr}}(\textcolor{keywordtype}{char}\ *str,\ \textcolor{keywordtype}{int}\ length);}
+\DoxyCodeLine{\Hypertarget{kio_8h_source_l00029}00029\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{kio_8h_ac16b0ca4ec58cb9f895ab94a07a6bcee}{Kflush}}();}
+\DoxyCodeLine{\Hypertarget{kio_8h_source_l00030}00030\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{kio_8h_a861abd8c3e0ad4db7d647956e6d6fa51}{Outb}}(\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}\ port,\ \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ value);}
+\DoxyCodeLine{\Hypertarget{kio_8h_source_l00031}00031\ \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ \mbox{\hyperlink{kio_8h_a6ab29a59b425f205c9da3550dcc76605}{Inb}}(\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}\ port);}
+\DoxyCodeLine{\Hypertarget{kio_8h_source_l00032}00032\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{kio_8h_aab8bc2ab54d308769334c382f14dd21f}{Outw}}(\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}\ port,\ \mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}\ value);}
+\DoxyCodeLine{\Hypertarget{kio_8h_source_l00033}00033\ \mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}\ \mbox{\hyperlink{kio_8h_a6b6b4e5a56d03f0833e7cc9bb922bf52}{Inw}}(\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}\ port);}
+\DoxyCodeLine{\Hypertarget{kio_8h_source_l00034}00034\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{kio_8h_af3dc28e772ca97ae14e85743ee082fe0}{Cli}}();}
+\DoxyCodeLine{\Hypertarget{kio_8h_source_l00035}00035\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{kio_8h_ab26ee10caca0d97da59e9439433660cc}{Sti}}();}
+\DoxyCodeLine{\Hypertarget{kio_8h_source_l00036}00036\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{kio_8h_ac44a237fa7c9a407408a37f35e0c1e5a}{Outl}}(\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}\ port,\ \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ val);}
+\DoxyCodeLine{\Hypertarget{kio_8h_source_l00037}00037\ \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ \mbox{\hyperlink{kio_8h_a4701486394643faf28232bc4aa510bd3}{Inl}}(\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}\ port);}
+
+\end{DoxyCode}

@@ -30,6 +30,14 @@ static void *virtq_rx = NULL;
 static void *rx_bufs[MAX_RX_DESCS]; // define somewhere
 static u16 last_used_idx = 0;
 
+/**
+ * @brief Performs device negotiation with the VirtIO network device.
+ *
+ * Resets the VirtIO network device and negotiates feature support
+ * by writing appropriate status flags to the I/O port.
+ *
+ * @param iob The I/O base address for the VirtIO device.
+ */
 void VirtnetNegotiate(u32 iob) {
     Kprintf("Reset device status\n");
     Outb(iob + VIRTIO_PCI_STATUS, 0);
@@ -52,6 +60,21 @@ void VirtnetNegotiate(u32 iob) {
     Kprintf("Negotiation done\n");
 }
 
+/**
+ * @brief Initializes the VirtIO network queue and allocates RX buffers.
+ *
+ * - Selects RX queue 0 via PCI register.
+ * - Allocates a 4 KiB block for the VirtIO queue and zeroes it.
+ * - Determines the queue size from the device, clamping if needed.
+ * - Initializes descriptor structures:
+ *    - `desc`: descriptors for received packets
+ *    - `avail`: list of available descriptors
+ *    - `used`: list of used descriptors from the device
+ * - Allocates individual 2 KiB RX buffers for each descriptor.
+ * - Notifies the device that the queue is ready and available.
+ *
+ * @param iob The I/O base address for the VirtIO device.
+ */
 void VirtnetInit(u32 iob) {
     Outw(iob + VIRTIO_PCI_QUEUE_SEL, 0);
     Kprintf("Allocating mem\n");
@@ -103,6 +126,15 @@ void VirtnetInit(u32 iob) {
     Kprintf("NetworK up\n");
 }
 
+/**
+ * @brief Processes received packets from the VirtIO queue.
+ *
+ * Iterates over the used ring to find received packets,
+ * prints their contents in hex, and recycles the RX buffers
+ * by re-adding the descriptors to the avail ring.
+ *
+ * @param iob The I/O base address for the VirtIO device.
+ */
 void NetStq(u32 iob) {
     // u8 isr = inb(iob + 0x13);
     // if (!(isr & 0x1))
@@ -134,6 +166,13 @@ void NetStq(u32 iob) {
     Outw(iob + VIRTIO_PCI_QUEUE_NOTIFY, 0);
 }
 
+/**
+ * @brief Performs full setup of the VirtIO network device.
+ *
+ * Finds the VirtIO network device on the PCI bus, reads its IRQ,
+ * sets the interrupt handler, unmasks the IRQ, and performs
+ * negotiation and initialization.
+ */
 void VirtnetSetup() {
     iob = FindVirtionetDev();
     virtio_irq = PciConfigRead(virtio_bus, virtio_slot, virtio_func,

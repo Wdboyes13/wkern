@@ -1,0 +1,51 @@
+\doxysection{gdt.\+c}
+\hypertarget{gdt_8c_source}{}\label{gdt_8c_source}\index{src/idt/gdt.c@{src/idt/gdt.c}}
+\mbox{\hyperlink{gdt_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{gdt_8c_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{gdt_8c_source_l00002}00002\ \textcolor{comment}{WKern\ -\/\ A\ Bare\ Metal\ OS\ /\ Kernel\ I\ am\ maKing\ (For\ Fun)}}
+\DoxyCodeLine{\Hypertarget{gdt_8c_source_l00003}00003\ \textcolor{comment}{Copyright\ (C)\ 2025\ \ Wdboyes13}}
+\DoxyCodeLine{\Hypertarget{gdt_8c_source_l00004}00004\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{gdt_8c_source_l00005}00005\ \textcolor{comment}{This\ program\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{gdt_8c_source_l00006}00006\ \textcolor{comment}{it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{gdt_8c_source_l00007}00007\ \textcolor{comment}{the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{gdt_8c_source_l00008}00008\ \textcolor{comment}{any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{gdt_8c_source_l00009}00009\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{gdt_8c_source_l00010}00010\ \textcolor{comment}{This\ program\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{gdt_8c_source_l00011}00011\ \textcolor{comment}{but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{gdt_8c_source_l00012}00012\ \textcolor{comment}{MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{gdt_8c_source_l00013}00013\ \textcolor{comment}{GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{gdt_8c_source_l00014}00014\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{gdt_8c_source_l00015}00015\ \textcolor{comment}{You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{gdt_8c_source_l00016}00016\ \textcolor{comment}{along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{gdt_8c_source_l00017}00017\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{gdt_8c_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{gdt_8c_source_l00019}00019\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{idtirq_8h}{idt/idtirq.h}}>}}
+\DoxyCodeLine{\Hypertarget{gdt_8c_source_l00021}\mbox{\hyperlink{gdt_8c_a9b7742f80e9a13df796a5be4fb147d88}{00021}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_gdt_entry}{GdtEntry}}\ \mbox{\hyperlink{gdt_8c_a9b7742f80e9a13df796a5be4fb147d88}{gdt}}[3];}
+\DoxyCodeLine{\Hypertarget{gdt_8c_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{gdt_8c_source_l00024}\mbox{\hyperlink{gdt_8c_ad951c23c9a83963a404f48c2922d7c52}{00024}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_gdt_ptr}{GdtPtr}}\ \mbox{\hyperlink{gdt_8c_ad951c23c9a83963a404f48c2922d7c52}{gp}};}
+\DoxyCodeLine{\Hypertarget{gdt_8c_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{gdt_8c_source_l00035}\mbox{\hyperlink{gdt_8c_a129616f1ac7ecde95a1b9eab46bcf66d}{00035}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gdt_8c_a129616f1ac7ecde95a1b9eab46bcf66d}{GdtSetGate}}(\textcolor{keywordtype}{int}\ num,\ \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ \mbox{\hyperlink{struct_gdt_ptr_a378acf1e8752fa3ba4aa87ef8f9a2378}{base}},\ \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ \mbox{\hyperlink{struct_gdt_ptr_a7c073c37b2fbb6703eaa9b934626bfda}{limit}},\ \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ access,\ \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ gran)\ \{}
+\DoxyCodeLine{\Hypertarget{gdt_8c_source_l00036}00036\ \ \ \ \ \mbox{\hyperlink{gdt_8c_a9b7742f80e9a13df796a5be4fb147d88}{gdt}}[num].base\_low\ =\ (\mbox{\hyperlink{struct_gdt_ptr_a378acf1e8752fa3ba4aa87ef8f9a2378}{base}}\ \&\ 0xFFFF);}
+\DoxyCodeLine{\Hypertarget{gdt_8c_source_l00037}00037\ \ \ \ \ \mbox{\hyperlink{gdt_8c_a9b7742f80e9a13df796a5be4fb147d88}{gdt}}[num].base\_middle\ =\ (\mbox{\hyperlink{struct_gdt_ptr_a378acf1e8752fa3ba4aa87ef8f9a2378}{base}}\ >>\ 16)\ \&\ 0xFF;}
+\DoxyCodeLine{\Hypertarget{gdt_8c_source_l00038}00038\ \ \ \ \ \mbox{\hyperlink{gdt_8c_a9b7742f80e9a13df796a5be4fb147d88}{gdt}}[num].base\_high\ =\ (\mbox{\hyperlink{struct_gdt_ptr_a378acf1e8752fa3ba4aa87ef8f9a2378}{base}}\ >>\ 24)\ \&\ 0xFF;}
+\DoxyCodeLine{\Hypertarget{gdt_8c_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{gdt_8c_source_l00040}00040\ \ \ \ \ \mbox{\hyperlink{gdt_8c_a9b7742f80e9a13df796a5be4fb147d88}{gdt}}[num].limit\_low\ =\ (\mbox{\hyperlink{struct_gdt_ptr_a7c073c37b2fbb6703eaa9b934626bfda}{limit}}\ \&\ 0xFFFF);}
+\DoxyCodeLine{\Hypertarget{gdt_8c_source_l00041}00041\ \ \ \ \ \mbox{\hyperlink{gdt_8c_a9b7742f80e9a13df796a5be4fb147d88}{gdt}}[num].granularity\ =\ ((\mbox{\hyperlink{struct_gdt_ptr_a7c073c37b2fbb6703eaa9b934626bfda}{limit}}\ >>\ 16)\ \&\ 0x0F);}
+\DoxyCodeLine{\Hypertarget{gdt_8c_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{gdt_8c_source_l00043}00043\ \ \ \ \ \mbox{\hyperlink{gdt_8c_a9b7742f80e9a13df796a5be4fb147d88}{gdt}}[num].granularity\ |=\ (gran\ \&\ 0xF0);}
+\DoxyCodeLine{\Hypertarget{gdt_8c_source_l00044}00044\ \ \ \ \ \mbox{\hyperlink{gdt_8c_a9b7742f80e9a13df796a5be4fb147d88}{gdt}}[num].access\ =\ access;}
+\DoxyCodeLine{\Hypertarget{gdt_8c_source_l00045}00045\ \}}
+\DoxyCodeLine{\Hypertarget{gdt_8c_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{gdt_8c_source_l00056}\mbox{\hyperlink{gdt_8c_a3abe176f346ee3b5fd6172998f5b94c1}{00056}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gdt_8c_a3abe176f346ee3b5fd6172998f5b94c1}{GdtInstall}}()\ \{}
+\DoxyCodeLine{\Hypertarget{gdt_8c_source_l00057}00057\ \ \ \ \ \mbox{\hyperlink{gdt_8c_ad951c23c9a83963a404f48c2922d7c52}{gp}}.limit\ =\ (\textcolor{keyword}{sizeof}(\textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_gdt_entry}{GdtEntry}})\ *\ 3)\ -\/\ 1;}
+\DoxyCodeLine{\Hypertarget{gdt_8c_source_l00058}00058\ \ \ \ \ \mbox{\hyperlink{gdt_8c_ad951c23c9a83963a404f48c2922d7c52}{gp}}.base\ =\ (\mbox{\hyperlink{nums_8h_acd24f51b7ace8f85b1b20c947ba1c904}{uptr}})\&\mbox{\hyperlink{gdt_8c_a9b7742f80e9a13df796a5be4fb147d88}{gdt}};}
+\DoxyCodeLine{\Hypertarget{gdt_8c_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{gdt_8c_source_l00060}00060\ \ \ \ \ \mbox{\hyperlink{gdt_8c_a129616f1ac7ecde95a1b9eab46bcf66d}{GdtSetGate}}(0,\ 0,\ 0,\ 0,\ 0);}
+\DoxyCodeLine{\Hypertarget{gdt_8c_source_l00061}00061\ \ \ \ \ \mbox{\hyperlink{gdt_8c_a129616f1ac7ecde95a1b9eab46bcf66d}{GdtSetGate}}(1,\ 0,\ 0xFFFFF,\ 0x9A,\ 0xCF);}
+\DoxyCodeLine{\Hypertarget{gdt_8c_source_l00062}00062\ \ \ \ \ \mbox{\hyperlink{gdt_8c_a129616f1ac7ecde95a1b9eab46bcf66d}{GdtSetGate}}(2,\ 0,\ 0xFFFFF,\ 0x92,\ 0xCF);}
+\DoxyCodeLine{\Hypertarget{gdt_8c_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{gdt_8c_source_l00064}00064\ \ \ \ \ \mbox{\hyperlink{idtirq_8h_a354f952034d77fd685e49944e8fb35d3}{GdtFlush}}((\mbox{\hyperlink{nums_8h_acd24f51b7ace8f85b1b20c947ba1c904}{uptr}})\&\mbox{\hyperlink{gdt_8c_ad951c23c9a83963a404f48c2922d7c52}{gp}});}
+\DoxyCodeLine{\Hypertarget{gdt_8c_source_l00065}00065\ \}}
+
+\end{DoxyCode}

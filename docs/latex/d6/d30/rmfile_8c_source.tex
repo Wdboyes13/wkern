@@ -1,0 +1,89 @@
+\doxysection{rmfile.\+c}
+\hypertarget{rmfile_8c_source}{}\label{rmfile_8c_source}\index{src/fileio/ops/rmfile.c@{src/fileio/ops/rmfile.c}}
+\mbox{\hyperlink{rmfile_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00002}00002\ \textcolor{comment}{WKern\ -\/\ A\ Bare\ Metal\ OS\ /\ Kernel\ I\ am\ maKing\ (For\ Fun)}}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00003}00003\ \textcolor{comment}{Copyright\ (C)\ 2025\ \ Wdboyes13}}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00004}00004\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00005}00005\ \textcolor{comment}{This\ program\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00006}00006\ \textcolor{comment}{it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00007}00007\ \textcolor{comment}{the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00008}00008\ \textcolor{comment}{any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00009}00009\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00010}00010\ \textcolor{comment}{This\ program\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00011}00011\ \textcolor{comment}{but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00012}00012\ \textcolor{comment}{MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00013}00013\ \textcolor{comment}{GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00014}00014\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00015}00015\ \textcolor{comment}{You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00016}00016\ \textcolor{comment}{along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00017}00017\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00019}00019\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{fileio_8h}{fileio/fileio.h}}>}}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00020}00020\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{kio_8h}{io/kio.h}}>}}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00021}00021\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{kmem_8h}{mem/kmem.h}}>}}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00022}00022\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{nums_8h}{types/nums.h}}>}}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00038}\mbox{\hyperlink{fileio_8h_a6339a034411051b10653a617583e1ddf}{00038}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{rmfile_8c_a6339a034411051b10653a617583e1ddf}{Fat16RemoveFile}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *filename,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *ext)\ \{}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00039}00039\ \ \ \ \ \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ entries\_per\_sector\ =\ \mbox{\hyperlink{fat16__mnt_8c_a666a93dce54663bac1b67500b58cbb48}{fat16}}.bytes\_per\_sector\ /\ 32;}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00040}00040\ \ \ \ \ \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ root\_dir\_sectors\ =}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00041}00041\ \ \ \ \ \ \ \ \ ((\mbox{\hyperlink{fat16__mnt_8c_a666a93dce54663bac1b67500b58cbb48}{fat16}}.root\_entry\_count\ *\ 32)\ +\ \mbox{\hyperlink{fat16__mnt_8c_a666a93dce54663bac1b67500b58cbb48}{fat16}}.bytes\_per\_sector\ -\/\ 1)\ /}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00042}00042\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{fat16__mnt_8c_a666a93dce54663bac1b67500b58cbb48}{fat16}}.bytes\_per\_sector;}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00043}00043\ \ \ \ \ \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ \mbox{\hyperlink{_m_b_r_8c_a64cdbe42e79baf07e056213647a512a0}{sector}}[512];}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00045}00045\ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ i\ =\ 0;\ i\ <\ root\_dir\_sectors;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00046}00046\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_a_t_a_8c_a6c22a78fa6a488041bb15afa10a26137}{AtaReadSector}}(\mbox{\hyperlink{fat16__mnt_8c_a666a93dce54663bac1b67500b58cbb48}{fat16}}.root\_dir\_start\_lba\ +\ i,\ \mbox{\hyperlink{_m_b_r_8c_a64cdbe42e79baf07e056213647a512a0}{sector}});}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00047}00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ j\ =\ 0;\ j\ <\ entries\_per\_sector;\ j++)\ \{}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ *entry\ =\ \&\mbox{\hyperlink{_m_b_r_8c_a64cdbe42e79baf07e056213647a512a0}{sector}}[j\ *\ 32];}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (entry[0]\ ==\ 0x00)\ \{}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};\ \textcolor{comment}{//\ no\ more\ entries}}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (entry[0]\ ==\ 0xE5)\ \{}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};\ \textcolor{comment}{//\ already\ deleted}}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ name\_pad[8];}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ ext\_pad[3];}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ Padname(filename,\ name\_pad,\ 8);}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ Padname(ext,\ ext\_pad,\ 3);}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ChecK\ filename\ and\ extension\ match}}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{kmem_8h_a669ed206858273d3e7b61412ef6753ca}{Kmemcmp}}(entry,\ name\_pad,\ 8)\ ==\ 0\ \&\&}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kmem_8h_a669ed206858273d3e7b61412ef6753ca}{Kmemcmp}}(entry\ +\ 8,\ ext\_pad,\ 3)\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ MarK\ entry\ as\ deleted}}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ entry[0]\ =\ 0xE5;}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Write\ bacK\ directory\ sector}}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_a_t_a_8c_a42403de508595b74b8ce384c2026a1d5}{AtaWriteSector}}(\mbox{\hyperlink{fat16__mnt_8c_a666a93dce54663bac1b67500b58cbb48}{fat16}}.root\_dir\_start\_lba\ +\ i,\ \mbox{\hyperlink{_m_b_r_8c_a64cdbe42e79baf07e056213647a512a0}{sector}});}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Free\ FAT\ clusters}}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}\ cluster\ =\ entry[26]\ |\ (entry[27]\ <<\ 8);}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (cluster\ >=\ 0x0002\ \&\&\ cluster\ <=\ 0xFFEF)\ \{}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ fat\_offset\ =\ cluster\ *\ 2;}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ fat\_sector\ =\ \mbox{\hyperlink{fat16__mnt_8c_a666a93dce54663bac1b67500b58cbb48}{fat16}}.fat\_start\_lba\ +\ (fat\_offset\ /\ 512);}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ fat\_index\ =\ fat\_offset\ \%\ 512;}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ fatbuf[512];}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_a_t_a_8c_a6c22a78fa6a488041bb15afa10a26137}{AtaReadSector}}(fat\_sector,\ fatbuf);}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Read\ next\ cluster\ in\ chain}}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}\ next\_cluster\ =}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fatbuf[fat\_index]\ |\ (fatbuf[fat\_index\ +\ 1]\ <<\ 8);}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Clear\ current\ cluster\ in\ FAT}}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fatbuf[fat\_index]\ =\ 0x00;}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fatbuf[fat\_index\ +\ 1]\ =\ 0x00;}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_a_t_a_8c_a42403de508595b74b8ce384c2026a1d5}{AtaWriteSector}}(fat\_sector,\ fatbuf);}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cluster\ =\ next\_cluster;}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};\ \textcolor{comment}{//\ Done\ deleting\ file}}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00095}00095\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00096}00096\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{rmfile_8c_source_l00097}00097\ \}}
+
+\end{DoxyCode}

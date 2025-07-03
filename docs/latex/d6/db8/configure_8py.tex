@@ -1,0 +1,89 @@
+\doxysection{configure.\+py File Reference}
+\hypertarget{configure_8py}{}\label{configure_8py}\index{configure.py@{configure.py}}
+
+
+Pre-\/build configuration checker for the kernel build system.  
+
+
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespaceconfigure}{configure}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespaceconfigure_a48a5cc86c2a5620390c699f514d200ec}{configure.\+yes}} ()
+\begin{DoxyCompactList}\small\item\em Prints a "{}\+YES"{} message in green. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespaceconfigure_ade1460e9bfc57fb148707dd651d36de3}{configure.\+no}} ()
+\begin{DoxyCompactList}\small\item\em Prints a "{}\+NO"{} message in red. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespaceconfigure_aa426be408c936a99b5db8b6bf5e6496e}{configure.\+run\+\_\+check}} (desc, cmd, fatal=\mbox{\hyperlink{namespaceconfigure_a9f34e64095d6ef32e7505c023e6e01a0}{True}})
+\begin{DoxyCompactList}\small\item\em Runs a shell command and checks its success. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespaceconfigure_a0e8e4edd8baf21be6982f012a529b524}{configure.\+check\+\_\+tool}} (tool)
+\begin{DoxyCompactList}\small\item\em Checks if a given tool is available in PATH. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespaceconfigure_a11fafa5294d8b7ee333ad77689c13bbd}{configure.\+check\+\_\+cc\+\_\+flag}} (flag)
+\begin{DoxyCompactList}\small\item\em Checks if a compiler flag is accepted by {\ttfamily i686-\/elf-\/gcc}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespaceconfigure_a6b00c2ed12a5ebe461f93e50771a3c00}{configure.\+check\+\_\+ld\+\_\+flag}} (flag)
+\begin{DoxyCompactList}\small\item\em Checks if a linker flag is accepted by {\ttfamily i686-\/elf-\/ld}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+str \mbox{\hyperlink{namespaceconfigure_ac2cc9d7c72ef0117a607ba78569a3119}{configure.\+BLUE}} = "{}\textbackslash{}033\mbox{[}0;34m"{}
+\item 
+str \mbox{\hyperlink{namespaceconfigure_a0cdb532b2d8214370c8c11dae443fbb0}{configure.\+RED}} = "{}\textbackslash{}033\mbox{[}0;31m"{}
+\item 
+str \mbox{\hyperlink{namespaceconfigure_ab030a5f2914bf4cb207bf7be8465481f}{configure.\+GREEN}} = "{}\textbackslash{}033\mbox{[}0;32m"{}
+\item 
+str \mbox{\hyperlink{namespaceconfigure_ad29412f562db2e4028f65387a0208e0c}{configure.\+YELLOW}} = "{}\textbackslash{}033\mbox{[}0;33m"{}
+\item 
+str \mbox{\hyperlink{namespaceconfigure_a092825998486e37482c08f90717e0a3a}{configure.\+MAGENTA}} = "{}\textbackslash{}033\mbox{[}0;35m"{}
+\item 
+str \mbox{\hyperlink{namespaceconfigure_a88018bc97fcfa75642c06e68d189a69b}{configure.\+CYAN}} = "{}\textbackslash{}033\mbox{[}0;36m"{}
+\item 
+str \mbox{\hyperlink{namespaceconfigure_ae565a35db0ad2fd67d05e9b197706b01}{configure.\+CLEAR}} = "{}\textbackslash{}033\mbox{[}0m"{}
+\item 
+list \mbox{\hyperlink{namespaceconfigure_a8b34be39290fdb1f281683848d4734ac}{configure.\+tmp\+\_\+files}} = \mbox{[}"{}tmp.\+c"{}, "{}tmp.\+asm"{}, "{}tmp.\+o"{}, "{}disk.\+img"{}\mbox{]}
+\item 
+\mbox{\hyperlink{namespaceconfigure_a53b9bd0504d843c47b4323a4d89ceec8}{configure.\+start\+\_\+time}} = time.\+time()
+\item 
+int \mbox{\hyperlink{namespaceconfigure_ab706421e5d6b9fea2f3c3489dfa4cb18}{configure.\+reconfigure}} = "{}-\/-\/reconfigure"{}
+\item 
+\mbox{\hyperlink{namespaceconfigure_af55b180efe30db944f599b214c5fd943}{configure.\+missing\+\_\+ok}}
+\item 
+list \mbox{\hyperlink{namespaceconfigure_a551b4cf5e04500652dceb4f5863ac505}{configure.\+tools}} = \mbox{[}"{}make"{}, "{}nasm"{}, "{}i686-\/elf-\/gcc"{}, "{}i686-\/elf-\/ld"{}, "{}i686-\/elf-\/grub-\/mkrescue"{}, "{}qemu-\/system-\/i386"{}\mbox{]}
+\item 
+\mbox{\hyperlink{namespaceconfigure_ac6b536ad3f9e286a6c486f0762748abc}{configure.\+shell}}
+\item 
+\mbox{\hyperlink{namespaceconfigure_a9f34e64095d6ef32e7505c023e6e01a0}{configure.\+True}}
+\item 
+\mbox{\hyperlink{namespaceconfigure_ae509bafc831573ff792f25fcf0bed99e}{configure.\+stdout}}
+\item 
+\mbox{\hyperlink{namespaceconfigure_ac8639202c8da743eb81427b48db11939}{configure.\+DEVNULL}}
+\item 
+\mbox{\hyperlink{namespaceconfigure_a7dc67fd0c146997b94d1de5f52e61cc6}{configure.\+stderr}}
+\item 
+list \mbox{\hyperlink{namespaceconfigure_aec1ff7e59ed0001b005e1606c2eb8511}{configure.\+cc\+\_\+flags}} = \mbox{[}"{}-\/ffreestanding"{}, "{}-\/nostdlib"{}, "{}-\/fno-\/pie"{}, "{}-\/m32"{}, "{}-\/O2"{}, "{}-\/fno-\/omit-\/frame-\/pointer"{}, "{}-\/std=c99"{}, "{}-\/g"{}\mbox{]}
+\item 
+list \mbox{\hyperlink{namespaceconfigure_a333ab3fb6e9698e2da4c92b89e2a755a}{configure.\+ld\+\_\+flags}} = \mbox{[}"{}-\/melf\+\_\+i386"{}, "{}-\/n"{}, "{}-\/-\/oformat=elf32-\/i386"{}\mbox{]}
+\item 
+\mbox{\hyperlink{namespaceconfigure_ae0155c540d3b57c8f99aaf37db8b0b34}{configure.\+parents}}
+\item 
+\mbox{\hyperlink{namespaceconfigure_ade0dbc6da912ed53080aa7010198b8e3}{configure.\+exist\+\_\+ok}}
+\item 
+\mbox{\hyperlink{namespaceconfigure_ae8732c4ce2c50bc3d00fdb14573530e1}{configure.\+check}}
+\item 
+\mbox{\hyperlink{namespaceconfigure_a708e8b12b4c965202587864ac55980e7}{configure.\+end\+\_\+time}} = time.\+time()
+\item 
+\mbox{\hyperlink{namespaceconfigure_aef369b0a10d1539bdb04f6dad7b6b7b4}{configure.\+elapsed}} = \mbox{\hyperlink{namespaceconfigure_a708e8b12b4c965202587864ac55980e7}{end\+\_\+time}} -\/ \mbox{\hyperlink{namespaceconfigure_a53b9bd0504d843c47b4323a4d89ceec8}{start\+\_\+time}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Pre-\/build configuration checker for the kernel build system. 
+
+This script checks for required tools, verifies compiler and linker flags, sets up directories, clones needed dependencies, and prepares the environment for building.
+
+Run this script before running the actual build ({\ttfamily ./build.py}). Use {\ttfamily -\/-\/reconfigure} to force regeneration of the {\ttfamily didconf} file. 
+
+Definition in file \mbox{\hyperlink{configure_8py_source}{configure.\+py}}.
+

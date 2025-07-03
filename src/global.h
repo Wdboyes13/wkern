@@ -20,6 +20,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #include <types/bool.h>
 #include <types/nums.h>
+
+/// @brief x86 Video Memory Address
 __attribute__((unused)) static volatile char *vmem =
     (volatile char *)0xb8000; // x86 vmem address
 extern int row;
@@ -27,7 +29,9 @@ extern int col;
 extern bool capson;
 extern bool shift;
 
+/// @brief Apply X attribute
 #define ATTR(x) __attribute__((x))
+/// @brief Add attribute packed
 #define PKG ATTR(packed)
 
 extern char *name;

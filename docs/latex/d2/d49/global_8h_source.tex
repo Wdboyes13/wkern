@@ -1,0 +1,42 @@
+\doxysection{global.\+h}
+\hypertarget{global_8h_source}{}\label{global_8h_source}\index{src/global.h@{src/global.h}}
+\mbox{\hyperlink{global_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{global_8h_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{global_8h_source_l00002}00002\ \textcolor{comment}{WKern\ -\/\ A\ Bare\ Metal\ OS\ /\ Kernel\ I\ am\ making\ (For\ Fun)}}
+\DoxyCodeLine{\Hypertarget{global_8h_source_l00003}00003\ \textcolor{comment}{Copyright\ (C)\ 2025\ \ Wdboyes13}}
+\DoxyCodeLine{\Hypertarget{global_8h_source_l00004}00004\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{global_8h_source_l00005}00005\ \textcolor{comment}{This\ program\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{global_8h_source_l00006}00006\ \textcolor{comment}{it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{global_8h_source_l00007}00007\ \textcolor{comment}{the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{global_8h_source_l00008}00008\ \textcolor{comment}{any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{global_8h_source_l00009}00009\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{global_8h_source_l00010}00010\ \textcolor{comment}{This\ program\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{global_8h_source_l00011}00011\ \textcolor{comment}{but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{global_8h_source_l00012}00012\ \textcolor{comment}{MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{global_8h_source_l00013}00013\ \textcolor{comment}{GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{global_8h_source_l00014}00014\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{global_8h_source_l00015}00015\ \textcolor{comment}{You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{global_8h_source_l00016}00016\ \textcolor{comment}{along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{global_8h_source_l00017}00017\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{global_8h_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{global_8h_source_l00019}00019\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{global_8h_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{global_8h_source_l00021}00021\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{bool_8h}{types/bool.h}}>}}
+\DoxyCodeLine{\Hypertarget{global_8h_source_l00022}00022\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{nums_8h}{types/nums.h}}>}}
+\DoxyCodeLine{\Hypertarget{global_8h_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{global_8h_source_l00025}\mbox{\hyperlink{global_8h_acc5c9b2f93293669af4fcebb9e0b9a85}{00025}}\ \mbox{\hyperlink{global_8h_acc5c9b2f93293669af4fcebb9e0b9a85}{\_\_attribute\_\_}}((unused))\ \textcolor{keyword}{static}\ \textcolor{keyword}{volatile}\ \textcolor{keywordtype}{char}\ *vmem\ =}
+\DoxyCodeLine{\Hypertarget{global_8h_source_l00026}00026\ \ \ \ \ (\textcolor{keyword}{volatile}\ \textcolor{keywordtype}{char}\ *)0xb8000;\ \textcolor{comment}{//\ x86\ vmem\ address}}
+\DoxyCodeLine{\Hypertarget{global_8h_source_l00027}00027\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{global_8h_af1d3cff2e4538e23400e260bae3dadad}{row}};}
+\DoxyCodeLine{\Hypertarget{global_8h_source_l00028}00028\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{global_8h_afb52e720f5f0c483db5861f9e42e924e}{col}};}
+\DoxyCodeLine{\Hypertarget{global_8h_source_l00029}00029\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{global_8h_a2b30266941861e389096f125809faf0d}{capson}};}
+\DoxyCodeLine{\Hypertarget{global_8h_source_l00030}00030\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{global_8h_ace78b37abb3d96740735fd8eb41235e6}{shift}};}
+\DoxyCodeLine{\Hypertarget{global_8h_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{global_8h_source_l00033}\mbox{\hyperlink{global_8h_af09a65cfd198568aea29d5ca4aa1ecf6}{00033}}\ \textcolor{preprocessor}{\#define\ ATTR(x)\ \_\_attribute\_\_((x))}}
+\DoxyCodeLine{\Hypertarget{global_8h_source_l00035}\mbox{\hyperlink{global_8h_a49f62b08b10c70ccf16f10ae9cd4add6}{00035}}\ \textcolor{preprocessor}{\#define\ PKG\ ATTR(packed)}}
+\DoxyCodeLine{\Hypertarget{global_8h_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{global_8h_source_l00037}00037\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{global_8h_a5ac083a645d964373f022d03df4849c8}{name}};}
+\DoxyCodeLine{\Hypertarget{global_8h_source_l00038}00038\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ \mbox{\hyperlink{global_8h_a1948e96711d16f6cd2d551c5c3b121c5}{iob}};}
+\DoxyCodeLine{\Hypertarget{global_8h_source_l00039}\mbox{\hyperlink{global_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{00039}}\ \textcolor{preprocessor}{\#define\ NULL\ ((void\ *)0)}}
+
+\end{DoxyCode}

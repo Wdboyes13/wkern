@@ -1,0 +1,99 @@
+\doxysection{src/fileio/\+ATA.c File Reference}
+\hypertarget{_a_t_a_8c}{}\label{_a_t_a_8c}\index{src/fileio/ATA.c@{src/fileio/ATA.c}}
+{\ttfamily \#include $<$err/kerror.\+h$>$}\newline
+{\ttfamily \#include $<$fileio/fileio.\+h$>$}\newline
+{\ttfamily \#include $<$io/kio.\+h$>$}\newline
+{\ttfamily \#include $<$utils/util.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_a_t_a_8c_a1900b48862fde060e2793d5d113cf6f4}{Ata\+Poll}} ()
+\begin{DoxyCompactList}\small\item\em Poll the ATA device until it\textquotesingle{}s ready for data transfer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_a_t_a_8c_a6c22a78fa6a488041bb15afa10a26137}{Ata\+Read\+Sector}} (\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} lba, \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} \texorpdfstring{$\ast$}{*}buffer)
+\begin{DoxyCompactList}\small\item\em Read a single 512-\/byte sector from the ATA device using LBA addressing. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_a_t_a_8c_a42403de508595b74b8ce384c2026a1d5}{Ata\+Write\+Sector}} (\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} lba, const \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} \texorpdfstring{$\ast$}{*}buffer)
+\begin{DoxyCompactList}\small\item\em Write a single 512-\/byte sector to the ATA device using LBA addressing. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{_a_t_a_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{_a_t_a_8c_a1900b48862fde060e2793d5d113cf6f4}\index{ATA.c@{ATA.c}!AtaPoll@{AtaPoll}}
+\index{AtaPoll@{AtaPoll}!ATA.c@{ATA.c}}
+\doxysubsubsection{\texorpdfstring{AtaPoll()}{AtaPoll()}}
+{\footnotesize\ttfamily \label{_a_t_a_8c_a1900b48862fde060e2793d5d113cf6f4} 
+void Ata\+Poll (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Poll the ATA device until it\textquotesingle{}s ready for data transfer. 
+
+This function waits for the ATA device to clear the BSY (busy) bit, checks for errors, and verifies that the DRQ (data request) bit is set, indicating the device is ready to transfer data.
+
+\begin{DoxyNote}{Note}
+This function blocks until the device is ready or an error occurs. On error, the system panics. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{_a_t_a_8c_source_l00034}{34}} of file \mbox{\hyperlink{_a_t_a_8c_source}{ATA.\+c}}.
+
+\Hypertarget{_a_t_a_8c_a6c22a78fa6a488041bb15afa10a26137}\index{ATA.c@{ATA.c}!AtaReadSector@{AtaReadSector}}
+\index{AtaReadSector@{AtaReadSector}!ATA.c@{ATA.c}}
+\doxysubsubsection{\texorpdfstring{AtaReadSector()}{AtaReadSector()}}
+{\footnotesize\ttfamily \label{_a_t_a_8c_a6c22a78fa6a488041bb15afa10a26137} 
+void Ata\+Read\+Sector (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}}]{lba}{, }\item[{\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} \texorpdfstring{$\ast$}{*}}]{buffer}{}\end{DoxyParamCaption})}
+
+
+
+Read a single 512-\/byte sector from the ATA device using LBA addressing. 
+
+Reads a 512-\/byte sector from ATA disk into buffer.
+
+Sends commands to the ATA device to read one sector specified by the logical block address (LBA). The read sector data is stored in the provided buffer.
+
+
+\begin{DoxyParams}{Parameters}
+{\em lba} & The logical block address of the sector to read. \\
+\hline
+{\em buffer} & Pointer to a 512-\/byte buffer where the read data will be stored.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Assumes the buffer is valid and large enough for one sector. 
+
+Interrupts and device control signals are managed internally. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{_a_t_a_8c_source_l00063}{63}} of file \mbox{\hyperlink{_a_t_a_8c_source}{ATA.\+c}}.
+
+\Hypertarget{_a_t_a_8c_a42403de508595b74b8ce384c2026a1d5}\index{ATA.c@{ATA.c}!AtaWriteSector@{AtaWriteSector}}
+\index{AtaWriteSector@{AtaWriteSector}!ATA.c@{ATA.c}}
+\doxysubsubsection{\texorpdfstring{AtaWriteSector()}{AtaWriteSector()}}
+{\footnotesize\ttfamily \label{_a_t_a_8c_a42403de508595b74b8ce384c2026a1d5} 
+void Ata\+Write\+Sector (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}}]{lba}{, }\item[{const \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} \texorpdfstring{$\ast$}{*}}]{buffer}{}\end{DoxyParamCaption})}
+
+
+
+Write a single 512-\/byte sector to the ATA device using LBA addressing. 
+
+Writes a 512-\/byte sector to ATA disk from buffer.
+
+Sends commands to the ATA device to write one sector specified by the logical block address (LBA). The data to write is taken from the provided buffer.
+
+
+\begin{DoxyParams}{Parameters}
+{\em lba} & The logical block address of the sector to write. \\
+\hline
+{\em buffer} & Pointer to a 512-\/byte buffer containing the data to write.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Assumes the buffer is valid and contains at least one sector of data. 
+
+This function blocks until the write completes and the cache is flushed. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{_a_t_a_8c_source_l00097}{97}} of file \mbox{\hyperlink{_a_t_a_8c_source}{ATA.\+c}}.
+

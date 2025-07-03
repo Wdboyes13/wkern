@@ -1,0 +1,71 @@
+\doxysection{src/\+KShell/shell.h File Reference}
+\hypertarget{shell_8h}{}\label{shell_8h}\index{src/KShell/shell.h@{src/KShell/shell.h}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{shell_8h_a80c98222810cc4d771ea5f99e1fb2d04}{Sh}} ()
+\begin{DoxyCompactList}\small\item\em The main interactive WKern shell loop. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{shell_8h_a54d17a6d0bb758f26b9dda4c6d8e8da8}{Help}} ()
+\begin{DoxyCompactList}\small\item\em Prints Shell Help. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{shell_8h_ac01d2ca072ff1771f9562ec56acbf9a7}{Regexc}} ()
+\begin{DoxyCompactList}\small\item\em Interactive regex command. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{shell_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{shell_8h_a54d17a6d0bb758f26b9dda4c6d8e8da8}\index{shell.h@{shell.h}!Help@{Help}}
+\index{Help@{Help}!shell.h@{shell.h}}
+\doxysubsubsection{\texorpdfstring{Help()}{Help()}}
+{\footnotesize\ttfamily \label{shell_8h_a54d17a6d0bb758f26b9dda4c6d8e8da8} 
+void Help (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Prints Shell Help. 
+
+
+
+Definition at line \mbox{\hyperlink{shellhelp_8c_source_l00023}{23}} of file \mbox{\hyperlink{shellhelp_8c_source}{shellhelp.\+c}}.
+
+\Hypertarget{shell_8h_ac01d2ca072ff1771f9562ec56acbf9a7}\index{shell.h@{shell.h}!Regexc@{Regexc}}
+\index{Regexc@{Regexc}!shell.h@{shell.h}}
+\doxysubsubsection{\texorpdfstring{Regexc()}{Regexc()}}
+{\footnotesize\ttfamily \label{shell_8h_ac01d2ca072ff1771f9562ec56acbf9a7} 
+void Regexc (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Interactive regex command. 
+
+
+
+Definition at line \mbox{\hyperlink{regexcmd_8c_source_l00028}{28}} of file \mbox{\hyperlink{regexcmd_8c_source}{regexcmd.\+c}}.
+
+\Hypertarget{shell_8h_a80c98222810cc4d771ea5f99e1fb2d04}\index{shell.h@{shell.h}!Sh@{Sh}}
+\index{Sh@{Sh}!shell.h@{shell.h}}
+\doxysubsubsection{\texorpdfstring{Sh()}{Sh()}}
+{\footnotesize\ttfamily \label{shell_8h_a80c98222810cc4d771ea5f99e1fb2d04} 
+void Sh (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+The main interactive WKern shell loop. 
+
+This loop\+:
+\begin{DoxyItemize}
+\item Prompts the user for input
+\item Tokenizes input into arguments
+\item Looks up matching command in the command table
+\item Executes the corresponding command
+\end{DoxyItemize}
+
+On failure, prints an unknown command message.
+
+\begin{DoxyNote}{Note}
+This loop never exits. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{shell_8c_source_l00151}{151}} of file \mbox{\hyperlink{shell_8c_source}{shell.\+c}}.
+

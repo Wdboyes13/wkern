@@ -1,0 +1,81 @@
+\doxysection{src/types/vargs.h File Reference}
+\hypertarget{vargs_8h}{}\label{vargs_8h}\index{src/types/vargs.h@{src/types/vargs.h}}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{vargs_8h_a21b6f5a5ae4d31322e903ce806063eee}{va\+\_\+start}}(ap,  last\+\_\+arg)
+\item 
+\#define \mbox{\hyperlink{vargs_8h_a81ebe6ea6253b0c6618e29de70fe10eb}{va\+\_\+arg}}(ap,  type)
+\item 
+\#define \mbox{\hyperlink{vargs_8h_acd9b3b9085ec072324c5fdac2b40304e}{va\+\_\+end}}(ap)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef \+\_\+\+\_\+builtin\+\_\+va\+\_\+list \mbox{\hyperlink{vargs_8h_af53f622e3b6c080daeb167c1955d7ec1}{va\+\_\+list}}
+\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\Hypertarget{vargs_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{vargs_8h_a81ebe6ea6253b0c6618e29de70fe10eb}\index{vargs.h@{vargs.h}!va\_arg@{va\_arg}}
+\index{va\_arg@{va\_arg}!vargs.h@{vargs.h}}
+\doxysubsubsection{\texorpdfstring{va\_arg}{va\_arg}}
+{\footnotesize\ttfamily \label{vargs_8h_a81ebe6ea6253b0c6618e29de70fe10eb} 
+\#define va\+\_\+arg(\begin{DoxyParamCaption}\item[{}]{ap}{, }\item[{}]{type}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\_\_builtin\_va\_arg(ap,\ type)}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{vargs_8h_source_l00023}{23}} of file \mbox{\hyperlink{vargs_8h_source}{vargs.\+h}}.
+
+\Hypertarget{vargs_8h_acd9b3b9085ec072324c5fdac2b40304e}\index{vargs.h@{vargs.h}!va\_end@{va\_end}}
+\index{va\_end@{va\_end}!vargs.h@{vargs.h}}
+\doxysubsubsection{\texorpdfstring{va\_end}{va\_end}}
+{\footnotesize\ttfamily \label{vargs_8h_acd9b3b9085ec072324c5fdac2b40304e} 
+\#define va\+\_\+end(\begin{DoxyParamCaption}\item[{}]{ap}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\_\_builtin\_va\_end(ap)}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{vargs_8h_source_l00024}{24}} of file \mbox{\hyperlink{vargs_8h_source}{vargs.\+h}}.
+
+\Hypertarget{vargs_8h_a21b6f5a5ae4d31322e903ce806063eee}\index{vargs.h@{vargs.h}!va\_start@{va\_start}}
+\index{va\_start@{va\_start}!vargs.h@{vargs.h}}
+\doxysubsubsection{\texorpdfstring{va\_start}{va\_start}}
+{\footnotesize\ttfamily \label{vargs_8h_a21b6f5a5ae4d31322e903ce806063eee} 
+\#define va\+\_\+start(\begin{DoxyParamCaption}\item[{}]{ap}{, }\item[{}]{last\+\_\+arg}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\_\_builtin\_va\_start(ap,\ last\_arg)}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{vargs_8h_source_l00022}{22}} of file \mbox{\hyperlink{vargs_8h_source}{vargs.\+h}}.
+
+
+
+\label{doc-typedef-members}
+\Hypertarget{vargs_8h_doc-typedef-members}
+\doxysubsection{Typedef Documentation}
+\Hypertarget{vargs_8h_af53f622e3b6c080daeb167c1955d7ec1}\index{vargs.h@{vargs.h}!va\_list@{va\_list}}
+\index{va\_list@{va\_list}!vargs.h@{vargs.h}}
+\doxysubsubsection{\texorpdfstring{va\_list}{va\_list}}
+{\footnotesize\ttfamily \label{vargs_8h_af53f622e3b6c080daeb167c1955d7ec1} 
+typedef \+\_\+\+\_\+builtin\+\_\+va\+\_\+list \mbox{\hyperlink{vargs_8h_af53f622e3b6c080daeb167c1955d7ec1}{va\+\_\+list}}}
+
+
+
+Definition at line \mbox{\hyperlink{vargs_8h_source_l00020}{20}} of file \mbox{\hyperlink{vargs_8h_source}{vargs.\+h}}.
+

@@ -1,0 +1,74 @@
+\doxysection{src/wex/stdwex.h File Reference}
+\hypertarget{stdwex_8h}{}\label{stdwex_8h}\index{src/wex/stdwex.h@{src/wex/stdwex.h}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+unsigned char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{stdwex_8h_af3fc9610c4455b3f2f675e055c98066e}{Execr}} ()
+\item 
+void \mbox{\hyperlink{stdwex_8h_a3b9a19febd250f2acf9d382f635b8fc2}{Runwex}} (unsigned char \texorpdfstring{$\ast$}{*}wexexecu)
+\begin{DoxyCompactList}\small\item\em Automatically checks and executes an executable. \end{DoxyCompactList}\item 
+int \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{stdwex_8h_a96ea75b9aa1b631cbd665128a1d27cd7}{Read\+Vals}} (const unsigned char \texorpdfstring{$\ast$}{*}exec)
+\item 
+int \mbox{\hyperlink{stdwex_8h_af0a81ddb45c404e998bac2f7bb7729e3}{Chkwex}} (const unsigned char \texorpdfstring{$\ast$}{*}smt, int smt\+\_\+len, const unsigned char \texorpdfstring{$\ast$}{*}st, int st\+\_\+len)
+\item 
+void \mbox{\hyperlink{stdwex_8h_a184a248ba7a02430f4ee68bfbc5cd48a}{Exec}} (unsigned char \texorpdfstring{$\ast$}{*}exec)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{stdwex_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{stdwex_8h_af0a81ddb45c404e998bac2f7bb7729e3}\index{stdwex.h@{stdwex.h}!Chkwex@{Chkwex}}
+\index{Chkwex@{Chkwex}!stdwex.h@{stdwex.h}}
+\doxysubsubsection{\texorpdfstring{Chkwex()}{Chkwex()}}
+{\footnotesize\ttfamily \label{stdwex_8h_af0a81ddb45c404e998bac2f7bb7729e3} 
+int Chkwex (\begin{DoxyParamCaption}\item[{const unsigned char \texorpdfstring{$\ast$}{*}}]{smt}{, }\item[{int}]{smt\+\_\+len}{, }\item[{const unsigned char \texorpdfstring{$\ast$}{*}}]{st}{, }\item[{int}]{st\+\_\+len}{}\end{DoxyParamCaption})}
+
+\Hypertarget{stdwex_8h_a184a248ba7a02430f4ee68bfbc5cd48a}\index{stdwex.h@{stdwex.h}!Exec@{Exec}}
+\index{Exec@{Exec}!stdwex.h@{stdwex.h}}
+\doxysubsubsection{\texorpdfstring{Exec()}{Exec()}}
+{\footnotesize\ttfamily \label{stdwex_8h_a184a248ba7a02430f4ee68bfbc5cd48a} 
+void Exec (\begin{DoxyParamCaption}\item[{unsigned char \texorpdfstring{$\ast$}{*}}]{exec}{}\end{DoxyParamCaption})}
+
+Execute a WEX Exexutable 
+
+Definition at line \mbox{\hyperlink{wexexec_8c_source_l00029}{29}} of file \mbox{\hyperlink{wexexec_8c_source}{wexexec.\+c}}.
+
+\Hypertarget{stdwex_8h_af3fc9610c4455b3f2f675e055c98066e}\index{stdwex.h@{stdwex.h}!Execr@{Execr}}
+\index{Execr@{Execr}!stdwex.h@{stdwex.h}}
+\doxysubsubsection{\texorpdfstring{Execr()}{Execr()}}
+{\footnotesize\ttfamily \label{stdwex_8h_af3fc9610c4455b3f2f675e055c98066e} 
+unsigned char \texorpdfstring{$\ast$}{*} Execr (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{testexec_8c_source_l00034}{34}} of file \mbox{\hyperlink{testexec_8c_source}{testexec.\+c}}.
+
+\Hypertarget{stdwex_8h_a96ea75b9aa1b631cbd665128a1d27cd7}\index{stdwex.h@{stdwex.h}!ReadVals@{ReadVals}}
+\index{ReadVals@{ReadVals}!stdwex.h@{stdwex.h}}
+\doxysubsubsection{\texorpdfstring{ReadVals()}{ReadVals()}}
+{\footnotesize\ttfamily \label{stdwex_8h_a96ea75b9aa1b631cbd665128a1d27cd7} 
+int \texorpdfstring{$\ast$}{*} Read\+Vals (\begin{DoxyParamCaption}\item[{const unsigned char \texorpdfstring{$\ast$}{*}}]{exec}{}\end{DoxyParamCaption})}
+
+\Hypertarget{stdwex_8h_a3b9a19febd250f2acf9d382f635b8fc2}\index{stdwex.h@{stdwex.h}!Runwex@{Runwex}}
+\index{Runwex@{Runwex}!stdwex.h@{stdwex.h}}
+\doxysubsubsection{\texorpdfstring{Runwex()}{Runwex()}}
+{\footnotesize\ttfamily \label{stdwex_8h_a3b9a19febd250f2acf9d382f635b8fc2} 
+void Runwex (\begin{DoxyParamCaption}\item[{unsigned char \texorpdfstring{$\ast$}{*}}]{wexexecu}{}\end{DoxyParamCaption})}
+
+
+
+Automatically checks and executes an executable. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em WEXEXECU} & -\/ WEX Executable stored as Hexadecimal Array \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Void Function -\/ Does not return value 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{wexent_8c_source_l00072}{72}} of file \mbox{\hyperlink{wexent_8c_source}{wexent.\+c}}.
+

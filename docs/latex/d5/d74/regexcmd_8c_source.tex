@@ -1,0 +1,67 @@
+\doxysection{regexcmd.\+c}
+\hypertarget{regexcmd_8c_source}{}\label{regexcmd_8c_source}\index{src/KShell/regexcmd.c@{src/KShell/regexcmd.c}}
+\mbox{\hyperlink{regexcmd_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00002}00002\ \textcolor{comment}{WKern\ -\/\ A\ Bare\ Metal\ OS\ /\ Kernel\ I\ am\ maKing\ (For\ Fun)}}
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00003}00003\ \textcolor{comment}{Copyright\ (C)\ 2025\ \ Wdboyes13}}
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00004}00004\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00005}00005\ \textcolor{comment}{This\ program\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00006}00006\ \textcolor{comment}{it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00007}00007\ \textcolor{comment}{the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00008}00008\ \textcolor{comment}{any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00009}00009\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00010}00010\ \textcolor{comment}{This\ program\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00011}00011\ \textcolor{comment}{but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00012}00012\ \textcolor{comment}{MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00013}00013\ \textcolor{comment}{GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00014}00014\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00015}00015\ \textcolor{comment}{You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00016}00016\ \textcolor{comment}{along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00017}00017\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00018}00018\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{shell_8h}{KShell/shell.h}}>}}
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00019}00019\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{global_8h}{global.h}}>}}
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00020}00020\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{kio_8h}{io/kio.h}}>}}
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00021}00021\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{kmem_8h}{mem/kmem.h}}>}}
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00022}00022\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{slre_8h}{slre/slre.h}}>}}
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00023}00023\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{util_8h}{utils/util.h}}>}}
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00028}\mbox{\hyperlink{regexcmd_8c_ac01d2ca072ff1771f9562ec56acbf9a7}{00028}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{regexcmd_8c_ac01d2ca072ff1771f9562ec56acbf9a7}{Regexc}}()\ \{}
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00029}00029\ \ \ \ \ \textcolor{keywordtype}{char}\ regexp[100];}
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00030}00030\ \ \ \ \ \textcolor{keywordtype}{char}\ *res\ =\ (\textcolor{keywordtype}{char}\ *)\mbox{\hyperlink{alloc_8c_a4744507132bfe63d677abecc60769ca0}{Kmalloc}}(300,\ 8);}
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00032}00032\ \ \ \ \ \textcolor{keywordflow}{if}\ (!res)\ \{}
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00033}00033\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{stringliteral}{"{}Malloc\ failed!\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00034}00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00035}00035\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00037}00037\ \ \ \ \ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{stringliteral}{"{}Enter\ regex\ expression:\ "{}});}
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00038}00038\ \ \ \ \ \mbox{\hyperlink{keyin_8c_a31cf36db330251ce379e7dc5dc735ee0}{Kgetstr}}(regexp,\ 99);}
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00040}00040\ \ \ \ \ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{stringliteral}{"{}Enter\ text:\ "{}});}
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00041}00041\ \ \ \ \ \mbox{\hyperlink{keyin_8c_a31cf36db330251ce379e7dc5dc735ee0}{Kgetstr}}(res,\ 299);}
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00043}00043\ \ \ \ \ \textcolor{comment}{//\ Allocate\ space\ for\ capture\ groups\ (we'll\ use\ 1\ group\ here)}}
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00044}00044\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structslre__cap}{slre\_cap}}\ caps[1];}
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00046}00046\ \ \ \ \ \textcolor{keywordtype}{int}\ matched\ =\ \mbox{\hyperlink{slre_8c_a047572f338575539f6e29895250c6c92}{slre\_match}}(regexp,\ res,\ \mbox{\hyperlink{strings_8c_af7d57c5338df07ca5f8480473539d7fd}{Kstrlen}}(res),\ caps,\ 1,\ 0);}
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00047}00047\ \ \ \ \ \textcolor{keywordflow}{if}\ (matched\ >\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00048}00048\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{stringliteral}{"{}Match!\ Matched\ "{}});}
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00049}00049\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kio_8h_adff30c0a071f02dbf33d53ecef9535ed}{KprintHex}}(matched);}
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00050}00050\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kio_8h_af05ef766e47691675bd907cbd362e7c5}{Kputchar}}(\textcolor{charliteral}{'\(\backslash\)n'});}
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00052}00052\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Print\ matched\ substring}}
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00053}00053\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structslre__cap_ac804caf49ff0effb42a2518820e01661}{len}}\ =\ caps[0].\mbox{\hyperlink{structslre__cap_ac804caf49ff0effb42a2518820e01661}{len}};}
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00054}00054\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{stringliteral}{"{}Matched\ text:\ "{}});}
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00055}00055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{structslre__cap_ac804caf49ff0effb42a2518820e01661}{len}};\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kio_8h_af05ef766e47691675bd907cbd362e7c5}{Kputchar}}(caps[0].\mbox{\hyperlink{structslre__cap_a2c527cad75b185ebf7da086064cc1ee8}{ptr}}[i]);}
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00057}00057\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00058}00058\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kio_8h_af05ef766e47691675bd907cbd362e7c5}{Kputchar}}(\textcolor{charliteral}{'\(\backslash\)n'});}
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00059}00059\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00060}00060\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{stringliteral}{"{}No\ match.\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00061}00061\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00063}00063\ \ \ \ \ \mbox{\hyperlink{alloc_8c_a51de4a944081d3a40379dafdc8cc8ba5}{Kfree}}(res);}
+\DoxyCodeLine{\Hypertarget{regexcmd_8c_source_l00064}00064\ \}}
+
+\end{DoxyCode}

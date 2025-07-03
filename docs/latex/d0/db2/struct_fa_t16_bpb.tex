@@ -1,0 +1,273 @@
+\doxysection{Fa\+T16\+Bpb Struct Reference}
+\hypertarget{struct_fa_t16_bpb}{}\label{struct_fa_t16_bpb}\index{FaT16Bpb@{FaT16Bpb}}
+
+
+FAT16 BIOS Parameter Block (BPB) structure — describes volume layout.  
+
+
+
+
+{\ttfamily \#include $<$fileio.\+h$>$}
+
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} \mbox{\hyperlink{struct_fa_t16_bpb_a1490c8b5faf9454f328301484e14e507}{jmp}} \mbox{[}3\mbox{]}
+\item 
+\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} \mbox{\hyperlink{struct_fa_t16_bpb_a87c6e8bdec75e4e0eb9f105c55056ac0}{oem}} \mbox{[}8\mbox{]}
+\item 
+\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}} \mbox{\hyperlink{struct_fa_t16_bpb_a93b94eecdb219f0e9dfe2bb495879fa8}{bytes\+\_\+per\+\_\+sector}}
+\item 
+\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} \mbox{\hyperlink{struct_fa_t16_bpb_a8f0aed19aa3d3181cd6860053ea1497c}{sectors\+\_\+per\+\_\+cluster}}
+\item 
+\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}} \mbox{\hyperlink{struct_fa_t16_bpb_a12b76876b0be1754f574065e5fe46634}{reserved\+\_\+sectors}}
+\item 
+\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} \mbox{\hyperlink{struct_fa_t16_bpb_a1d082467adcdf6d26648eba9678cef19}{num\+\_\+fats}}
+\item 
+\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}} \mbox{\hyperlink{struct_fa_t16_bpb_a68d40dc9d40578a48c49bd1ad873c8ee}{root\+\_\+entry\+\_\+count}}
+\item 
+\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}} \mbox{\hyperlink{struct_fa_t16_bpb_a74c80c48079ca2c6b8b731d533876e76}{total\+\_\+sectors\+\_\+short}}
+\item 
+\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} \mbox{\hyperlink{struct_fa_t16_bpb_a59e371213822a4a51be8783cd7c4ba78}{media\+\_\+descriptor}}
+\item 
+\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}} \mbox{\hyperlink{struct_fa_t16_bpb_a875e00f22bb8d3ee384357aee87d8a2d}{sectors\+\_\+per\+\_\+fat}}
+\item 
+\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}} \mbox{\hyperlink{struct_fa_t16_bpb_a7c8e271731ffd2ec55cf4173c2f35e0b}{sectors\+\_\+per\+\_\+track}}
+\item 
+\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}} \mbox{\hyperlink{struct_fa_t16_bpb_a90f815d6c37b757dcc20f4a965848bb9}{num\+\_\+heads}}
+\item 
+\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} \mbox{\hyperlink{struct_fa_t16_bpb_a93b63d79ce8f5e65ac951484922a9953}{hidden\+\_\+sectors}}
+\item 
+\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} \mbox{\hyperlink{struct_fa_t16_bpb_abc2ebd0e617d301d79f18ed06a437a4f}{total\+\_\+sectors\+\_\+long}}
+\item 
+\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} \mbox{\hyperlink{struct_fa_t16_bpb_a519e8bfe929485b40a652d8694da0f60}{drive\+\_\+number}}
+\item 
+\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} \mbox{\hyperlink{struct_fa_t16_bpb_abc81f60f1f7f0e40cb72115aafb049eb}{reserved1}}
+\item 
+\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} \mbox{\hyperlink{struct_fa_t16_bpb_ac9c63a4b527cf0ed34b6bfacc8935605}{boot\+\_\+signature}}
+\item 
+\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} \mbox{\hyperlink{struct_fa_t16_bpb_aec03192818787c7d6f0e63b70ab0254d}{volume\+\_\+id}}
+\item 
+\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} \mbox{\hyperlink{struct_fa_t16_bpb_ae759aa3c1a882541456fa32bca059104}{volume\+\_\+label}} \mbox{[}11\mbox{]}
+\item 
+\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} \mbox{\hyperlink{struct_fa_t16_bpb_a0f8664f9e036e6fb33fe2d9256fce357}{fs\+\_\+type}} \mbox{[}8\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+FAT16 BIOS Parameter Block (BPB) structure — describes volume layout. 
+
+Matches the FAT16 boot sector layout. 
+
+Definition at line \mbox{\hyperlink{fileio_8h_source_l00081}{81}} of file \mbox{\hyperlink{fileio_8h_source}{fileio.\+h}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{struct_fa_t16_bpb_doc-variable-members}
+\doxysubsection{Field Documentation}
+\Hypertarget{struct_fa_t16_bpb_ac9c63a4b527cf0ed34b6bfacc8935605}\index{FaT16Bpb@{FaT16Bpb}!boot\_signature@{boot\_signature}}
+\index{boot\_signature@{boot\_signature}!FaT16Bpb@{FaT16Bpb}}
+\doxysubsubsection{\texorpdfstring{boot\_signature}{boot\_signature}}
+{\footnotesize\ttfamily \label{struct_fa_t16_bpb_ac9c63a4b527cf0ed34b6bfacc8935605} 
+\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} Fa\+T16\+Bpb\+::boot\+\_\+signature}
+
+Extended boot signature (0x29 means valid) 
+
+Definition at line \mbox{\hyperlink{fileio_8h_source_l00100}{100}} of file \mbox{\hyperlink{fileio_8h_source}{fileio.\+h}}.
+
+\Hypertarget{struct_fa_t16_bpb_a93b94eecdb219f0e9dfe2bb495879fa8}\index{FaT16Bpb@{FaT16Bpb}!bytes\_per\_sector@{bytes\_per\_sector}}
+\index{bytes\_per\_sector@{bytes\_per\_sector}!FaT16Bpb@{FaT16Bpb}}
+\doxysubsubsection{\texorpdfstring{bytes\_per\_sector}{bytes\_per\_sector}}
+{\footnotesize\ttfamily \label{struct_fa_t16_bpb_a93b94eecdb219f0e9dfe2bb495879fa8} 
+\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}} Fa\+T16\+Bpb\+::bytes\+\_\+per\+\_\+sector}
+
+Bytes per sector 
+
+Definition at line \mbox{\hyperlink{fileio_8h_source_l00084}{84}} of file \mbox{\hyperlink{fileio_8h_source}{fileio.\+h}}.
+
+\Hypertarget{struct_fa_t16_bpb_a519e8bfe929485b40a652d8694da0f60}\index{FaT16Bpb@{FaT16Bpb}!drive\_number@{drive\_number}}
+\index{drive\_number@{drive\_number}!FaT16Bpb@{FaT16Bpb}}
+\doxysubsubsection{\texorpdfstring{drive\_number}{drive\_number}}
+{\footnotesize\ttfamily \label{struct_fa_t16_bpb_a519e8bfe929485b40a652d8694da0f60} 
+\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} Fa\+T16\+Bpb\+::drive\+\_\+number}
+
+Physical drive number 
+
+Definition at line \mbox{\hyperlink{fileio_8h_source_l00098}{98}} of file \mbox{\hyperlink{fileio_8h_source}{fileio.\+h}}.
+
+\Hypertarget{struct_fa_t16_bpb_a0f8664f9e036e6fb33fe2d9256fce357}\index{FaT16Bpb@{FaT16Bpb}!fs\_type@{fs\_type}}
+\index{fs\_type@{fs\_type}!FaT16Bpb@{FaT16Bpb}}
+\doxysubsubsection{\texorpdfstring{fs\_type}{fs\_type}}
+{\footnotesize\ttfamily \label{struct_fa_t16_bpb_a0f8664f9e036e6fb33fe2d9256fce357} 
+\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} Fa\+T16\+Bpb\+::fs\+\_\+type\mbox{[}8\mbox{]}}
+
+Filesystem type string (e.\+g., "{}\+FAT16   "{}) 
+
+Definition at line \mbox{\hyperlink{fileio_8h_source_l00103}{103}} of file \mbox{\hyperlink{fileio_8h_source}{fileio.\+h}}.
+
+\Hypertarget{struct_fa_t16_bpb_a93b63d79ce8f5e65ac951484922a9953}\index{FaT16Bpb@{FaT16Bpb}!hidden\_sectors@{hidden\_sectors}}
+\index{hidden\_sectors@{hidden\_sectors}!FaT16Bpb@{FaT16Bpb}}
+\doxysubsubsection{\texorpdfstring{hidden\_sectors}{hidden\_sectors}}
+{\footnotesize\ttfamily \label{struct_fa_t16_bpb_a93b63d79ce8f5e65ac951484922a9953} 
+\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} Fa\+T16\+Bpb\+::hidden\+\_\+sectors}
+
+Hidden sectors before partition 
+
+Definition at line \mbox{\hyperlink{fileio_8h_source_l00094}{94}} of file \mbox{\hyperlink{fileio_8h_source}{fileio.\+h}}.
+
+\Hypertarget{struct_fa_t16_bpb_a1490c8b5faf9454f328301484e14e507}\index{FaT16Bpb@{FaT16Bpb}!jmp@{jmp}}
+\index{jmp@{jmp}!FaT16Bpb@{FaT16Bpb}}
+\doxysubsubsection{\texorpdfstring{jmp}{jmp}}
+{\footnotesize\ttfamily \label{struct_fa_t16_bpb_a1490c8b5faf9454f328301484e14e507} 
+\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} Fa\+T16\+Bpb\+::jmp\mbox{[}3\mbox{]}}
+
+Jump instruction to boot code 
+
+Definition at line \mbox{\hyperlink{fileio_8h_source_l00082}{82}} of file \mbox{\hyperlink{fileio_8h_source}{fileio.\+h}}.
+
+\Hypertarget{struct_fa_t16_bpb_a59e371213822a4a51be8783cd7c4ba78}\index{FaT16Bpb@{FaT16Bpb}!media\_descriptor@{media\_descriptor}}
+\index{media\_descriptor@{media\_descriptor}!FaT16Bpb@{FaT16Bpb}}
+\doxysubsubsection{\texorpdfstring{media\_descriptor}{media\_descriptor}}
+{\footnotesize\ttfamily \label{struct_fa_t16_bpb_a59e371213822a4a51be8783cd7c4ba78} 
+\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} Fa\+T16\+Bpb\+::media\+\_\+descriptor}
+
+Media descriptor byte 
+
+Definition at line \mbox{\hyperlink{fileio_8h_source_l00090}{90}} of file \mbox{\hyperlink{fileio_8h_source}{fileio.\+h}}.
+
+\Hypertarget{struct_fa_t16_bpb_a1d082467adcdf6d26648eba9678cef19}\index{FaT16Bpb@{FaT16Bpb}!num\_fats@{num\_fats}}
+\index{num\_fats@{num\_fats}!FaT16Bpb@{FaT16Bpb}}
+\doxysubsubsection{\texorpdfstring{num\_fats}{num\_fats}}
+{\footnotesize\ttfamily \label{struct_fa_t16_bpb_a1d082467adcdf6d26648eba9678cef19} 
+\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} Fa\+T16\+Bpb\+::num\+\_\+fats}
+
+Number of FAT tables 
+
+Definition at line \mbox{\hyperlink{fileio_8h_source_l00087}{87}} of file \mbox{\hyperlink{fileio_8h_source}{fileio.\+h}}.
+
+\Hypertarget{struct_fa_t16_bpb_a90f815d6c37b757dcc20f4a965848bb9}\index{FaT16Bpb@{FaT16Bpb}!num\_heads@{num\_heads}}
+\index{num\_heads@{num\_heads}!FaT16Bpb@{FaT16Bpb}}
+\doxysubsubsection{\texorpdfstring{num\_heads}{num\_heads}}
+{\footnotesize\ttfamily \label{struct_fa_t16_bpb_a90f815d6c37b757dcc20f4a965848bb9} 
+\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}} Fa\+T16\+Bpb\+::num\+\_\+heads}
+
+Number of heads (for BIOS) 
+
+Definition at line \mbox{\hyperlink{fileio_8h_source_l00093}{93}} of file \mbox{\hyperlink{fileio_8h_source}{fileio.\+h}}.
+
+\Hypertarget{struct_fa_t16_bpb_a87c6e8bdec75e4e0eb9f105c55056ac0}\index{FaT16Bpb@{FaT16Bpb}!oem@{oem}}
+\index{oem@{oem}!FaT16Bpb@{FaT16Bpb}}
+\doxysubsubsection{\texorpdfstring{oem}{oem}}
+{\footnotesize\ttfamily \label{struct_fa_t16_bpb_a87c6e8bdec75e4e0eb9f105c55056ac0} 
+\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} Fa\+T16\+Bpb\+::oem\mbox{[}8\mbox{]}}
+
+OEM Name 
+
+Definition at line \mbox{\hyperlink{fileio_8h_source_l00083}{83}} of file \mbox{\hyperlink{fileio_8h_source}{fileio.\+h}}.
+
+\Hypertarget{struct_fa_t16_bpb_abc81f60f1f7f0e40cb72115aafb049eb}\index{FaT16Bpb@{FaT16Bpb}!reserved1@{reserved1}}
+\index{reserved1@{reserved1}!FaT16Bpb@{FaT16Bpb}}
+\doxysubsubsection{\texorpdfstring{reserved1}{reserved1}}
+{\footnotesize\ttfamily \label{struct_fa_t16_bpb_abc81f60f1f7f0e40cb72115aafb049eb} 
+\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} Fa\+T16\+Bpb\+::reserved1}
+
+Reserved 
+
+Definition at line \mbox{\hyperlink{fileio_8h_source_l00099}{99}} of file \mbox{\hyperlink{fileio_8h_source}{fileio.\+h}}.
+
+\Hypertarget{struct_fa_t16_bpb_a12b76876b0be1754f574065e5fe46634}\index{FaT16Bpb@{FaT16Bpb}!reserved\_sectors@{reserved\_sectors}}
+\index{reserved\_sectors@{reserved\_sectors}!FaT16Bpb@{FaT16Bpb}}
+\doxysubsubsection{\texorpdfstring{reserved\_sectors}{reserved\_sectors}}
+{\footnotesize\ttfamily \label{struct_fa_t16_bpb_a12b76876b0be1754f574065e5fe46634} 
+\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}} Fa\+T16\+Bpb\+::reserved\+\_\+sectors}
+
+Reserved sectors before FAT 
+
+Definition at line \mbox{\hyperlink{fileio_8h_source_l00086}{86}} of file \mbox{\hyperlink{fileio_8h_source}{fileio.\+h}}.
+
+\Hypertarget{struct_fa_t16_bpb_a68d40dc9d40578a48c49bd1ad873c8ee}\index{FaT16Bpb@{FaT16Bpb}!root\_entry\_count@{root\_entry\_count}}
+\index{root\_entry\_count@{root\_entry\_count}!FaT16Bpb@{FaT16Bpb}}
+\doxysubsubsection{\texorpdfstring{root\_entry\_count}{root\_entry\_count}}
+{\footnotesize\ttfamily \label{struct_fa_t16_bpb_a68d40dc9d40578a48c49bd1ad873c8ee} 
+\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}} Fa\+T16\+Bpb\+::root\+\_\+entry\+\_\+count}
+
+Max root directory entries 
+
+Definition at line \mbox{\hyperlink{fileio_8h_source_l00088}{88}} of file \mbox{\hyperlink{fileio_8h_source}{fileio.\+h}}.
+
+\Hypertarget{struct_fa_t16_bpb_a8f0aed19aa3d3181cd6860053ea1497c}\index{FaT16Bpb@{FaT16Bpb}!sectors\_per\_cluster@{sectors\_per\_cluster}}
+\index{sectors\_per\_cluster@{sectors\_per\_cluster}!FaT16Bpb@{FaT16Bpb}}
+\doxysubsubsection{\texorpdfstring{sectors\_per\_cluster}{sectors\_per\_cluster}}
+{\footnotesize\ttfamily \label{struct_fa_t16_bpb_a8f0aed19aa3d3181cd6860053ea1497c} 
+\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} Fa\+T16\+Bpb\+::sectors\+\_\+per\+\_\+cluster}
+
+Sectors per cluster 
+
+Definition at line \mbox{\hyperlink{fileio_8h_source_l00085}{85}} of file \mbox{\hyperlink{fileio_8h_source}{fileio.\+h}}.
+
+\Hypertarget{struct_fa_t16_bpb_a875e00f22bb8d3ee384357aee87d8a2d}\index{FaT16Bpb@{FaT16Bpb}!sectors\_per\_fat@{sectors\_per\_fat}}
+\index{sectors\_per\_fat@{sectors\_per\_fat}!FaT16Bpb@{FaT16Bpb}}
+\doxysubsubsection{\texorpdfstring{sectors\_per\_fat}{sectors\_per\_fat}}
+{\footnotesize\ttfamily \label{struct_fa_t16_bpb_a875e00f22bb8d3ee384357aee87d8a2d} 
+\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}} Fa\+T16\+Bpb\+::sectors\+\_\+per\+\_\+fat}
+
+Sectors per FAT 
+
+Definition at line \mbox{\hyperlink{fileio_8h_source_l00091}{91}} of file \mbox{\hyperlink{fileio_8h_source}{fileio.\+h}}.
+
+\Hypertarget{struct_fa_t16_bpb_a7c8e271731ffd2ec55cf4173c2f35e0b}\index{FaT16Bpb@{FaT16Bpb}!sectors\_per\_track@{sectors\_per\_track}}
+\index{sectors\_per\_track@{sectors\_per\_track}!FaT16Bpb@{FaT16Bpb}}
+\doxysubsubsection{\texorpdfstring{sectors\_per\_track}{sectors\_per\_track}}
+{\footnotesize\ttfamily \label{struct_fa_t16_bpb_a7c8e271731ffd2ec55cf4173c2f35e0b} 
+\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}} Fa\+T16\+Bpb\+::sectors\+\_\+per\+\_\+track}
+
+Sectors per track (for BIOS) 
+
+Definition at line \mbox{\hyperlink{fileio_8h_source_l00092}{92}} of file \mbox{\hyperlink{fileio_8h_source}{fileio.\+h}}.
+
+\Hypertarget{struct_fa_t16_bpb_abc2ebd0e617d301d79f18ed06a437a4f}\index{FaT16Bpb@{FaT16Bpb}!total\_sectors\_long@{total\_sectors\_long}}
+\index{total\_sectors\_long@{total\_sectors\_long}!FaT16Bpb@{FaT16Bpb}}
+\doxysubsubsection{\texorpdfstring{total\_sectors\_long}{total\_sectors\_long}}
+{\footnotesize\ttfamily \label{struct_fa_t16_bpb_abc2ebd0e617d301d79f18ed06a437a4f} 
+\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} Fa\+T16\+Bpb\+::total\+\_\+sectors\+\_\+long}
+
+Total sectors (if total\+\_\+sectors\+\_\+short is zero) 
+
+Definition at line \mbox{\hyperlink{fileio_8h_source_l00095}{95}} of file \mbox{\hyperlink{fileio_8h_source}{fileio.\+h}}.
+
+\Hypertarget{struct_fa_t16_bpb_a74c80c48079ca2c6b8b731d533876e76}\index{FaT16Bpb@{FaT16Bpb}!total\_sectors\_short@{total\_sectors\_short}}
+\index{total\_sectors\_short@{total\_sectors\_short}!FaT16Bpb@{FaT16Bpb}}
+\doxysubsubsection{\texorpdfstring{total\_sectors\_short}{total\_sectors\_short}}
+{\footnotesize\ttfamily \label{struct_fa_t16_bpb_a74c80c48079ca2c6b8b731d533876e76} 
+\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}} Fa\+T16\+Bpb\+::total\+\_\+sectors\+\_\+short}
+
+Total sectors (if zero, use total\+\_\+sectors\+\_\+long) 
+
+Definition at line \mbox{\hyperlink{fileio_8h_source_l00089}{89}} of file \mbox{\hyperlink{fileio_8h_source}{fileio.\+h}}.
+
+\Hypertarget{struct_fa_t16_bpb_aec03192818787c7d6f0e63b70ab0254d}\index{FaT16Bpb@{FaT16Bpb}!volume\_id@{volume\_id}}
+\index{volume\_id@{volume\_id}!FaT16Bpb@{FaT16Bpb}}
+\doxysubsubsection{\texorpdfstring{volume\_id}{volume\_id}}
+{\footnotesize\ttfamily \label{struct_fa_t16_bpb_aec03192818787c7d6f0e63b70ab0254d} 
+\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} Fa\+T16\+Bpb\+::volume\+\_\+id}
+
+Volume serial number 
+
+Definition at line \mbox{\hyperlink{fileio_8h_source_l00101}{101}} of file \mbox{\hyperlink{fileio_8h_source}{fileio.\+h}}.
+
+\Hypertarget{struct_fa_t16_bpb_ae759aa3c1a882541456fa32bca059104}\index{FaT16Bpb@{FaT16Bpb}!volume\_label@{volume\_label}}
+\index{volume\_label@{volume\_label}!FaT16Bpb@{FaT16Bpb}}
+\doxysubsubsection{\texorpdfstring{volume\_label}{volume\_label}}
+{\footnotesize\ttfamily \label{struct_fa_t16_bpb_ae759aa3c1a882541456fa32bca059104} 
+\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} Fa\+T16\+Bpb\+::volume\+\_\+label\mbox{[}11\mbox{]}}
+
+Volume label string 
+
+Definition at line \mbox{\hyperlink{fileio_8h_source_l00102}{102}} of file \mbox{\hyperlink{fileio_8h_source}{fileio.\+h}}.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/fileio/\mbox{\hyperlink{fileio_8h}{fileio.\+h}}\end{DoxyCompactItemize}

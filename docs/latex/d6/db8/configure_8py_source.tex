@@ -1,0 +1,138 @@
+\doxysection{configure.\+py}
+\hypertarget{configure_8py_source}{}\label{configure_8py_source}\mbox{\hyperlink{configure_8py}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00001}\mbox{\hyperlink{namespaceconfigure}{00001}}\ \textcolor{comment}{\#!/usr/bin/env\ python3}}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00014}00014\ \textcolor{keyword}{import}\ os}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00015}00015\ \textcolor{keyword}{import}\ sys}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00016}00016\ \textcolor{keyword}{import}\ subprocess}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00017}00017\ \textcolor{keyword}{import}\ atexit}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00018}00018\ \textcolor{keyword}{from}\ pathlib\ \textcolor{keyword}{import}\ Path}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00019}00019\ \textcolor{keyword}{from}\ concurrent.futures\ \textcolor{keyword}{import}\ ThreadPoolExecutor}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00020}00020\ \textcolor{keyword}{import}\ time}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00022}00022\ \textcolor{comment}{\#\ ===\ ANSI\ Color\ Constants\ ===}}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00023}\mbox{\hyperlink{namespaceconfigure_ac2cc9d7c72ef0117a607ba78569a3119}{00023}}\ BLUE\ \ \ \ =\ \textcolor{stringliteral}{"{}\(\backslash\)033[0;34m"{}}}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00024}\mbox{\hyperlink{namespaceconfigure_a0cdb532b2d8214370c8c11dae443fbb0}{00024}}\ RED\ \ \ \ \ =\ \textcolor{stringliteral}{"{}\(\backslash\)033[0;31m"{}}}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00025}\mbox{\hyperlink{namespaceconfigure_ab030a5f2914bf4cb207bf7be8465481f}{00025}}\ GREEN\ \ \ =\ \textcolor{stringliteral}{"{}\(\backslash\)033[0;32m"{}}}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00026}\mbox{\hyperlink{namespaceconfigure_ad29412f562db2e4028f65387a0208e0c}{00026}}\ YELLOW\ \ =\ \textcolor{stringliteral}{"{}\(\backslash\)033[0;33m"{}}}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00027}\mbox{\hyperlink{namespaceconfigure_a092825998486e37482c08f90717e0a3a}{00027}}\ MAGENTA\ =\ \textcolor{stringliteral}{"{}\(\backslash\)033[0;35m"{}}}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00028}\mbox{\hyperlink{namespaceconfigure_a88018bc97fcfa75642c06e68d189a69b}{00028}}\ CYAN\ \ \ \ =\ \textcolor{stringliteral}{"{}\(\backslash\)033[0;36m"{}}}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00029}\mbox{\hyperlink{namespaceconfigure_ae565a35db0ad2fd67d05e9b197706b01}{00029}}\ CLEAR\ \ \ =\ \textcolor{stringliteral}{"{}\(\backslash\)033[0m"{}}}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00031}00031\ \textcolor{comment}{\#\ ===\ Temporary\ Files\ to\ Clean\ on\ Exit\ ===}}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00032}\mbox{\hyperlink{namespaceconfigure_a8b34be39290fdb1f281683848d4734ac}{00032}}\ tmp\_files\ =\ [\textcolor{stringliteral}{"{}tmp.c"{}},\ \textcolor{stringliteral}{"{}tmp.asm"{}},\ \textcolor{stringliteral}{"{}tmp.o"{}},\ \textcolor{stringliteral}{"{}disk.img"{}}]}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00033}00033\ atexit.register(\textcolor{keyword}{lambda}:\ [os.remove(f)\ \textcolor{keywordflow}{for}\ f\ \textcolor{keywordflow}{in}\ tmp\_files\ \textcolor{keywordflow}{if}\ os.path.exists(f)])}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00037}\mbox{\hyperlink{namespaceconfigure_a48a5cc86c2a5620390c699f514d200ec}{00037}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespaceconfigure_a48a5cc86c2a5620390c699f514d200ec}{yes}}():\ \textcolor{keywordflow}{print}(f\textcolor{stringliteral}{"{}\(\backslash\)033[30;42m\ YES\ \(\backslash\)033[0m"{}})}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00041}\mbox{\hyperlink{namespaceconfigure_ade1460e9bfc57fb148707dd651d36de3}{00041}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespaceconfigure_ade1460e9bfc57fb148707dd651d36de3}{no}}():\ \ \textcolor{keywordflow}{print}(f\textcolor{stringliteral}{"{}\(\backslash\)033[30;41m\ NO\ \ \(\backslash\)033[0m"{}})}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00049}\mbox{\hyperlink{namespaceconfigure_aa426be408c936a99b5db8b6bf5e6496e}{00049}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespaceconfigure_aa426be408c936a99b5db8b6bf5e6496e}{run\_check}}(desc,\ cmd,\ fatal=True):}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00050}00050\ \ \ \ \ print(desc)}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00051}00051\ \ \ \ \ result\ =\ subprocess.run(cmd,\ shell=\textcolor{keyword}{True},\ stdout=subprocess.DEVNULL,\ stderr=subprocess.DEVNULL)}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00052}00052\ \ \ \ \ \textcolor{keywordflow}{if}\ result.returncode\ ==\ 0:}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00053}00053\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceconfigure_a48a5cc86c2a5620390c699f514d200ec}{yes}}()}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00054}00054\ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00055}00055\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceconfigure_ade1460e9bfc57fb148707dd651d36de3}{no}}()}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00056}00056\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ fatal:}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ sys.exit(1)}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00063}\mbox{\hyperlink{namespaceconfigure_a0e8e4edd8baf21be6982f012a529b524}{00063}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespaceconfigure_a0e8e4edd8baf21be6982f012a529b524}{check\_tool}}(tool):}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00064}00064\ \ \ \ \ result\ =\ subprocess.run(f\textcolor{stringliteral}{"{}\{tool\}\ -\/-\/version"{}},\ shell=\textcolor{keyword}{True},}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stdout=subprocess.DEVNULL,\ stderr=subprocess.DEVNULL)}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00066}00066\ \ \ \ \ status\ =\ f\textcolor{stringliteral}{"{}\(\backslash\)033[30;42m\ YES\ \(\backslash\)033[0m"{}}\ \textcolor{keywordflow}{if}\ result.returncode\ ==\ 0\ \textcolor{keywordflow}{else}\ f\textcolor{stringliteral}{"{}\(\backslash\)033[30;41m\ NO\ \ \(\backslash\)033[0m"{}}}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00067}00067\ \ \ \ \ print(f\textcolor{stringliteral}{"{}\{BLUE\}Checking\ for\ \{tool\}\{CLEAR\}\ -\/>\ \{status\}"{}})}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00068}00068\ \ \ \ \ \textcolor{keywordflow}{if}\ result.returncode\ !=\ 0:}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00069}00069\ \ \ \ \ \ \ \ \ sys.exit(1)}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00075}\mbox{\hyperlink{namespaceconfigure_a11fafa5294d8b7ee333ad77689c13bbd}{00075}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespaceconfigure_a11fafa5294d8b7ee333ad77689c13bbd}{check\_cc\_flag}}(flag):}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00076}00076\ \ \ \ \ \textcolor{keyword}{with}\ open(\textcolor{stringliteral}{"{}tmp.c"{}},\ \textcolor{stringliteral}{"{}w"{}})\ \textcolor{keyword}{as}\ f:}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00077}00077\ \ \ \ \ \ \ \ \ f.write(\textcolor{stringliteral}{"{}int\ main()\ \{\ return\ 0;\ \}"{}})}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00078}00078\ \ \ \ \ result\ =\ subprocess.run(f\textcolor{stringliteral}{"{}i686-\/elf-\/gcc\ \{flag\}\ -\/c\ tmp.c\ -\/o\ /dev/null"{}},\ shell=\textcolor{keyword}{True},}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stdout=subprocess.DEVNULL,\ stderr=subprocess.DEVNULL)}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00080}00080\ \ \ \ \ status\ =\ f\textcolor{stringliteral}{"{}\(\backslash\)033[30;42m\ YES\ \(\backslash\)033[0m"{}}\ \textcolor{keywordflow}{if}\ result.returncode\ ==\ 0\ \textcolor{keywordflow}{else}\ f\textcolor{stringliteral}{"{}\(\backslash\)033[30;41m\ NO\ \ \(\backslash\)033[0m"{}}}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00081}00081\ \ \ \ \ print(f\textcolor{stringliteral}{"{}\{MAGENTA\}Checking\ CC\ Flag\ \(\backslash\)"{}\{flag\}\(\backslash\)"{}\{CLEAR\}\ -\/>\ \{status\}"{}})}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00082}00082\ \ \ \ \ \textcolor{keywordflow}{if}\ result.returncode\ !=\ 0:}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00083}00083\ \ \ \ \ \ \ \ \ sys.exit(1)}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00089}\mbox{\hyperlink{namespaceconfigure_a6b00c2ed12a5ebe461f93e50771a3c00}{00089}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespaceconfigure_a6b00c2ed12a5ebe461f93e50771a3c00}{check\_ld\_flag}}(flag):}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00090}00090\ \ \ \ \ \textcolor{keyword}{with}\ open(\textcolor{stringliteral}{"{}tmp.c"{}},\ \textcolor{stringliteral}{"{}w"{}})\ \textcolor{keyword}{as}\ f:}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00091}00091\ \ \ \ \ \ \ \ \ f.write(\textcolor{stringliteral}{"{}int\ main()\ \{\ return\ 0;\ \}"{}})}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00092}00092\ \ \ \ \ subprocess.run(\textcolor{stringliteral}{"{}i686-\/elf-\/gcc\ -\/c\ tmp.c\ -\/o\ tmp.o"{}},\ shell=\textcolor{keyword}{True},\ check=\textcolor{keyword}{True})}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00093}00093\ \ \ \ \ result\ =\ subprocess.run(f\textcolor{stringliteral}{"{}i686-\/elf-\/ld\ \{flag\}\ -\/o\ /dev/null\ tmp.o"{}},\ shell=\textcolor{keyword}{True},}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stdout=subprocess.DEVNULL,\ stderr=subprocess.DEVNULL)}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00095}00095\ \ \ \ \ status\ =\ f\textcolor{stringliteral}{"{}\(\backslash\)033[30;42m\ YES\ \(\backslash\)033[0m"{}}\ \textcolor{keywordflow}{if}\ result.returncode\ ==\ 0\ \textcolor{keywordflow}{else}\ f\textcolor{stringliteral}{"{}\(\backslash\)033[30;41m\ NO\ \ \(\backslash\)033[0m"{}}}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00096}00096\ \ \ \ \ print(f\textcolor{stringliteral}{"{}\{RED\}Checking\ LD\ Flag\ \(\backslash\)"{}\{flag\}\(\backslash\)"{}\{CLEAR\}\ -\/>\ \{status\}"{}})}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00097}00097\ \ \ \ \ \textcolor{keywordflow}{if}\ result.returncode\ !=\ 0:}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00098}00098\ \ \ \ \ \ \ \ \ sys.exit(1)}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00099}00099\ }
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00100}00100\ \textcolor{comment}{\#\ ===\ Main\ Entrypoint\ ===}}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00101}00101\ \textcolor{keywordflow}{if}\ \_\_name\_\_\ ==\ \textcolor{stringliteral}{"{}\_\_main\_\_"{}}:}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00102}\mbox{\hyperlink{namespaceconfigure_a53b9bd0504d843c47b4323a4d89ceec8}{00102}}\ \ \ \ \ start\_time\ =\ time.time()}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00103}\mbox{\hyperlink{namespaceconfigure_ab706421e5d6b9fea2f3c3489dfa4cb18}{00103}}\ \ \ \ \ reconfigure\ =\ len(sys.argv)\ >\ 1\ \textcolor{keywordflow}{and}\ sys.argv[1]\ ==\ \textcolor{stringliteral}{"{}-\/-\/reconfigure"{}}}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00105}00105\ \ \ \ \ \textcolor{comment}{\#\ Check\ if\ already\ configured}}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00106}00106\ \ \ \ \ \textcolor{keywordflow}{if}\ Path(\textcolor{stringliteral}{"{}didconf"{}}).exists()\ \textcolor{keywordflow}{and}\ \textcolor{keywordflow}{not}\ reconfigure:}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00107}00107\ \ \ \ \ \ \ \ \ print(f\textcolor{stringliteral}{"{}\{RED\}Already\ configured.\ Run\ with\ -\/-\/reconfigure\ to\ force.\{CLEAR\}"{}})}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00108}00108\ \ \ \ \ \ \ \ \ sys.exit(0)}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00109}00109\ \ \ \ \ \textcolor{keywordflow}{elif}\ reconfigure:}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00110}\mbox{\hyperlink{namespaceconfigure_af55b180efe30db944f599b214c5fd943}{00110}}\ \ \ \ \ \ \ \ \ Path(\textcolor{stringliteral}{"{}didconf"{}}).unlink(missing\_ok=\textcolor{keyword}{True})}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00112}00112\ \ \ \ \ \textcolor{comment}{\#\ Tool\ Check}}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00113}00113\ \ \ \ \ print(f\textcolor{stringliteral}{"{}\{CYAN\}Checking\ for\ required\ tools\{CLEAR\}\(\backslash\)n"{}})}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00114}\mbox{\hyperlink{namespaceconfigure_a551b4cf5e04500652dceb4f5863ac505}{00114}}\ \ \ \ \ tools\ =\ [\textcolor{stringliteral}{"{}make"{}},\ \textcolor{stringliteral}{"{}nasm"{}},\ \textcolor{stringliteral}{"{}i686-\/elf-\/gcc"{}},\ \textcolor{stringliteral}{"{}i686-\/elf-\/ld"{}},\ \textcolor{stringliteral}{"{}i686-\/elf-\/grub-\/mkrescue"{}},\ \textcolor{stringliteral}{"{}qemu-\/system-\/i386"{}}]}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00115}00115\ \ \ \ \ \textcolor{keyword}{with}\ ThreadPoolExecutor()\ \textcolor{keyword}{as}\ exec:}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00116}00116\ \ \ \ \ \ \ \ \ exec.map(check\_tool,\ tools)}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00118}00118\ \ \ \ \ \textcolor{comment}{\#\ mkfs.msdos\ test}}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00119}00119\ \ \ \ \ print(f\textcolor{stringliteral}{"{}\(\backslash\)n\{CYAN\}Checking\ if\ mkfs.msdos\ works\{CLEAR\}"{}})}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00120}\mbox{\hyperlink{namespaceconfigure_ac8639202c8da743eb81427b48db11939}{00120}}\ \ \ \ \ subprocess.run(\textcolor{stringliteral}{"{}dd\ if=/dev/zero\ of=disk.img\ bs=1M\ count=64"{}},\ shell=\textcolor{keyword}{True},\ stdout=subprocess.DEVNULL,\ stderr=subprocess.DEVNULL)}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00121}00121\ \ \ \ \ \mbox{\hyperlink{namespaceconfigure_aa426be408c936a99b5db8b6bf5e6496e}{run\_check}}(\textcolor{stringliteral}{"{}"{}},\ \textcolor{stringliteral}{"{}mkfs.msdos\ disk.img\ -\/F\ 16"{}})}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00123}00123\ \ \ \ \ \textcolor{comment}{\#\ NASM\ test}}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00124}00124\ \ \ \ \ print(f\textcolor{stringliteral}{"{}\{CYAN\}Checking\ if\ NASM\ works\{CLEAR\}"{}})}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00125}00125\ \ \ \ \ \textcolor{keyword}{with}\ open(\textcolor{stringliteral}{"{}tmp.asm"{}},\ \textcolor{stringliteral}{"{}w"{}})\ \textcolor{keyword}{as}\ f:}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00126}00126\ \ \ \ \ \ \ \ \ f.write(\textcolor{stringliteral}{"{}\_start:\(\backslash\)n\(\backslash\)tmov\ eax,\ 0x00\(\backslash\)n\(\backslash\)tmov\ ebx,\ 0x00\(\backslash\)n\(\backslash\)tret\(\backslash\)n"{}})}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00127}00127\ \ \ \ \ \mbox{\hyperlink{namespaceconfigure_aa426be408c936a99b5db8b6bf5e6496e}{run\_check}}(\textcolor{stringliteral}{"{}"{}},\ \textcolor{stringliteral}{"{}nasm\ tmp.asm\ -\/o\ /dev/null"{}})}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00128}00128\ }
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00129}00129\ \ \ \ \ \textcolor{comment}{\#\ Compiler\ flags}}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00130}00130\ \ \ \ \ print(f\textcolor{stringliteral}{"{}\(\backslash\)n\{CYAN\}Checking\ compiler\ flags\{CLEAR\}\(\backslash\)n"{}})}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00131}\mbox{\hyperlink{namespaceconfigure_aec1ff7e59ed0001b005e1606c2eb8511}{00131}}\ \ \ \ \ cc\_flags\ =\ [\textcolor{stringliteral}{"{}-\/ffreestanding"{}},\ \textcolor{stringliteral}{"{}-\/nostdlib"{}},\ \textcolor{stringliteral}{"{}-\/fno-\/pie"{}},\ \textcolor{stringliteral}{"{}-\/m32"{}},\ \textcolor{stringliteral}{"{}-\/O2"{}},\ \textcolor{stringliteral}{"{}-\/fno-\/omit-\/frame-\/pointer"{}},\ \textcolor{stringliteral}{"{}-\/std=c99"{}},\ \textcolor{stringliteral}{"{}-\/g"{}}]}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00132}00132\ \ \ \ \ \textcolor{keyword}{with}\ ThreadPoolExecutor()\ \textcolor{keyword}{as}\ exec:}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00133}00133\ \ \ \ \ \ \ \ \ exec.map(check\_cc\_flag,\ cc\_flags)}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00134}00134\ }
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00135}00135\ \ \ \ \ \textcolor{comment}{\#\ Linker\ flags}}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00136}00136\ \ \ \ \ print(f\textcolor{stringliteral}{"{}\(\backslash\)n\{CYAN\}Checking\ linker\ flags\{CLEAR\}\(\backslash\)n"{}})}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00137}\mbox{\hyperlink{namespaceconfigure_a333ab3fb6e9698e2da4c92b89e2a755a}{00137}}\ \ \ \ \ ld\_flags\ =\ [\textcolor{stringliteral}{"{}-\/melf\_i386"{}},\ \textcolor{stringliteral}{"{}-\/n"{}},\ \textcolor{stringliteral}{"{}-\/-\/oformat=elf32-\/i386"{}}]}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00138}00138\ \ \ \ \ \textcolor{keyword}{with}\ ThreadPoolExecutor()\ \textcolor{keyword}{as}\ exec:}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00139}00139\ \ \ \ \ \ \ \ \ exec.map(check\_ld\_flag,\ ld\_flags)}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00140}00140\ }
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00141}00141\ \ \ \ \ \textcolor{comment}{\#\ Mark\ configuration\ done}}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00142}00142\ \ \ \ \ Path(\textcolor{stringliteral}{"{}didconf"{}}).write\_text(\textcolor{stringliteral}{"{}Y"{}})}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00143}00143\ }
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00144}00144\ \ \ \ \ \textcolor{comment}{\#\ Create\ \`{}objs/`\ directory\ structure}}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00145}00145\ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ Path(\textcolor{stringliteral}{"{}./objs"{}}).exists():}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00146}00146\ \ \ \ \ \ \ \ \ print(f\textcolor{stringliteral}{"{}\{YELLOW\}Creating\ build\ directory\{CLEAR\}"{}})}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00147}00147\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ subdir\ \textcolor{keywordflow}{in}\ Path(\textcolor{stringliteral}{"{}src"{}}).rglob(\textcolor{stringliteral}{"{}*"{}}):}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ subdir.is\_dir():}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00149}\mbox{\hyperlink{namespaceconfigure_ade0dbc6da912ed53080aa7010198b8e3}{00149}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (Path(\textcolor{stringliteral}{"{}objs"{}})\ /\ subdir).mkdir(parents=\textcolor{keyword}{True},\ exist\_ok=\textcolor{keyword}{True})}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00150}00150\ }
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00151}00151\ \ \ \ \ \textcolor{comment}{\#\ Clone\ SLRE\ regex\ engine\ if\ not\ present}}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00152}00152\ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ Path(\textcolor{stringliteral}{"{}./src/slre"{}}).exists():}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00153}\mbox{\hyperlink{namespaceconfigure_ae8732c4ce2c50bc3d00fdb14573530e1}{00153}}\ \ \ \ \ \ \ \ \ subprocess.run(\textcolor{stringliteral}{"{}git\ clone\ -\/-\/depth\ 1\ https://github.com/Wdboyes13/slre\ src/slre"{}},\ shell=\textcolor{keyword}{True},\ check=\textcolor{keyword}{True})}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00154}00154\ }
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00155}\mbox{\hyperlink{namespaceconfigure_a708e8b12b4c965202587864ac55980e7}{00155}}\ \ \ \ \ end\_time\ =\ time.time()}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00156}\mbox{\hyperlink{namespaceconfigure_aef369b0a10d1539bdb04f6dad7b6b7b4}{00156}}\ \ \ \ \ elapsed\ =\ end\_time\ -\/\ start\_time}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00157}00157\ \ \ \ \ print(f\textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)033[36mFinished\ in\ \{elapsed:.2f\}\ seconds\(\backslash\)033[0m"{}})}
+\DoxyCodeLine{\Hypertarget{configure_8py_source_l00158}00158\ \ \ \ \ print(f\textcolor{stringliteral}{"{}\{GREEN\}Configured\ -\/\ run\ \`{}./build.py`\ to\ start\ build\{CLEAR\}"{}})}
+
+\end{DoxyCode}

@@ -17,6 +17,9 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 #include <utils/util.h>
+/// @brief Converts ASCII - Integer
+/// @param str - ASCII Text
+/// @return Integer from ASCII Input
 int Katoi(const char *str) {
     int result = 0;
     int sign = 1;
@@ -38,6 +41,9 @@ int Katoi(const char *str) {
     return result * sign;
 }
 
+/// @brief Safely convert ASCII To Integer
+/// @param str - ASCII Text
+/// @return Integer from ASCII Input
 int Katoi_auto(const char *str) {
     if (str[0] == '0' && (str[1] == 'x' || str[1] == 'X')) {
         // Hex string
@@ -61,6 +67,9 @@ int Katoi_auto(const char *str) {
     return Katoi(str);
 }
 
+/// @brief Convert Integer to ASCII Text
+/// @param num - Number to convert to ASCII Text
+/// @param buf - Buffer which ASCII Text will be stored at
 void Kitoa(unsigned int num, char *buf) {
     int i = 0;
     if (num == 0) {

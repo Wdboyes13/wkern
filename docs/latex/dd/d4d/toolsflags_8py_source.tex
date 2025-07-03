@@ -1,0 +1,27 @@
+\doxysection{toolsflags.\+py}
+\hypertarget{toolsflags_8py_source}{}\label{toolsflags_8py_source}\index{bfiles/toolsflags.py@{bfiles/toolsflags.py}}
+\mbox{\hyperlink{toolsflags_8py}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{toolsflags_8py_source_l00001}\mbox{\hyperlink{namespacetoolsflags}{00001}}\ \textcolor{comment}{\#\ Tools}}
+\DoxyCodeLine{\Hypertarget{toolsflags_8py_source_l00002}\mbox{\hyperlink{namespacetoolsflags_a924087f4f05668f6514ad10edbfa87bb}{00002}}\ CC\ =\ \textcolor{stringliteral}{"{}i686-\/elf-\/gcc"{}}}
+\DoxyCodeLine{\Hypertarget{toolsflags_8py_source_l00003}\mbox{\hyperlink{namespacetoolsflags_a40af18bf658aedfdd0604d9a309755b5}{00003}}\ LD\ =\ \textcolor{stringliteral}{"{}i686-\/elf-\/ld"{}}}
+\DoxyCodeLine{\Hypertarget{toolsflags_8py_source_l00004}\mbox{\hyperlink{namespacetoolsflags_a68845751001966dbed1c7ce185e07fd2}{00004}}\ AS\ =\ \textcolor{stringliteral}{"{}nasm"{}}}
+\DoxyCodeLine{\Hypertarget{toolsflags_8py_source_l00005}\mbox{\hyperlink{namespacetoolsflags_a546d1636f82d641e251329e270440cc9}{00005}}\ GRUB\ =\ \textcolor{stringliteral}{"{}i686-\/elf-\/grub-\/mkrescue"{}}}
+\DoxyCodeLine{\Hypertarget{toolsflags_8py_source_l00006}\mbox{\hyperlink{namespacetoolsflags_a10b32e44296c154db4145c04a4501dc6}{00006}}\ QEMU\ =\ \textcolor{stringliteral}{"{}qemu-\/system-\/i386"{}}}
+\DoxyCodeLine{\Hypertarget{toolsflags_8py_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{toolsflags_8py_source_l00008}00008\ \textcolor{comment}{\#\ Flags}}
+\DoxyCodeLine{\Hypertarget{toolsflags_8py_source_l00009}\mbox{\hyperlink{namespacetoolsflags_af917404c6cc38448bca980766c7a19d7}{00009}}\ CCFLAGS\ =\ [\textcolor{stringliteral}{"{}-\/ffreestanding"{}},\ \textcolor{stringliteral}{"{}-\/I./src"{}},\ \textcolor{stringliteral}{"{}-\/DARCH\_X86"{}},\ \textcolor{stringliteral}{"{}-\/DVMQEMU"{}},\ \textcolor{stringliteral}{"{}-\/fno-\/pie"{}},\ \textcolor{stringliteral}{"{}-\/nostdlib"{}},}
+\DoxyCodeLine{\Hypertarget{toolsflags_8py_source_l00010}00010\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}-\/m32"{}},\ \textcolor{stringliteral}{"{}-\/O2"{}},\ \textcolor{stringliteral}{"{}-\/g"{}},\ \textcolor{stringliteral}{"{}-\/fno-\/omit-\/frame-\/pointer"{}},\ \textcolor{stringliteral}{"{}-\/std=c99"{}},\ \textcolor{stringliteral}{"{}-\/Wall"{}},\ \textcolor{stringliteral}{"{}-\/Wextra"{}}]}
+\DoxyCodeLine{\Hypertarget{toolsflags_8py_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{toolsflags_8py_source_l00012}\mbox{\hyperlink{namespacetoolsflags_a152f45ee3f05471c93861870057c418f}{00012}}\ LDFLAGS\ =\ [\textcolor{stringliteral}{"{}-\/melf\_i386"{}},\ \textcolor{stringliteral}{"{}-\/n"{}},\ \textcolor{stringliteral}{"{}-\/-\/oformat=elf32-\/i386"{}}]}
+\DoxyCodeLine{\Hypertarget{toolsflags_8py_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{toolsflags_8py_source_l00014}\mbox{\hyperlink{namespacetoolsflags_a3e30d0cba387c4d6d366090f2fc3a675}{00014}}\ ASFLAGS\ =\ [\textcolor{stringliteral}{"{}-\/felf32"{}},\ \textcolor{stringliteral}{"{}-\/g"{}},\ \textcolor{stringliteral}{"{}-\/Fdwarf"{}}]}
+\DoxyCodeLine{\Hypertarget{toolsflags_8py_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{toolsflags_8py_source_l00016}\mbox{\hyperlink{namespacetoolsflags_ae281c37494811df87f9d2e941a2946ba}{00016}}\ QEMUFLAGS\ =\ [\textcolor{stringliteral}{"{}-\/machine"{}},\ \textcolor{stringliteral}{"{}pc,accel=tcg"{}},}
+\DoxyCodeLine{\Hypertarget{toolsflags_8py_source_l00017}00017\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}-\/drive"{}},\ \textcolor{stringliteral}{"{}file=mykern.iso,format=raw,media=cdrom,if=ide,index=2"{}},}
+\DoxyCodeLine{\Hypertarget{toolsflags_8py_source_l00018}00018\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}-\/drive"{}},\ \textcolor{stringliteral}{"{}file=fat16.img,format=raw,if=ide,index=0"{}},}
+\DoxyCodeLine{\Hypertarget{toolsflags_8py_source_l00019}00019\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}-\/boot"{}},\ \textcolor{stringliteral}{"{}d"{}},\ \textcolor{stringliteral}{"{}-\/gdb"{}},\ \textcolor{stringliteral}{"{}tcp::1234"{}},\ \textcolor{stringliteral}{"{}-\/monitor"{}},\ \textcolor{stringliteral}{"{}stdio"{}},}
+\DoxyCodeLine{\Hypertarget{toolsflags_8py_source_l00020}00020\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}-\/qmp"{}},\ \textcolor{stringliteral}{"{}tcp:localhost:4444,server,nowait"{}},\ }
+\DoxyCodeLine{\Hypertarget{toolsflags_8py_source_l00021}00021\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}-\/netdev"{}},\ \textcolor{stringliteral}{"{}user,id=n1"{}},\ \textcolor{stringliteral}{"{}-\/device"{}},\ \textcolor{stringliteral}{"{}virtio-\/net-\/pci,netdev=n1"{}}]}
+
+\end{DoxyCode}

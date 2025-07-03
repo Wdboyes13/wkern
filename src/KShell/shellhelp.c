@@ -19,6 +19,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include <io/kio.h>
 #include <mem/kmem.h>
 #include <utils/util.h>
+/// @brief Prints Shell Help
 void Help() {
     Kprintf("Page 1 or 2 ? ");
     char *opt = (char *)Kmalloc(10, 8);

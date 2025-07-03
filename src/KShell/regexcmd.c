@@ -22,6 +22,9 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include <slre/slre.h>
 #include <utils/util.h>
 
+/**
+ * @brief Interactive regex command
+ */
 void Regexc() {
     char regexp[100];
     char *res = (char *)Kmalloc(300, 8);

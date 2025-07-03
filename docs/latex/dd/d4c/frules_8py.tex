@@ -1,0 +1,52 @@
+\doxysection{bfiles/frules.py File Reference}
+\hypertarget{frules_8py}{}\label{frules_8py}\index{bfiles/frules.py@{bfiles/frules.py}}
+
+
+Build system utility rules for formatting, Git, run, and header validation.  
+
+
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacefrules}{frules}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacefrules_afa950d584cfcbd7850c21a8f0ad7839b}{frules.\+fmt}} ()
+\item 
+\mbox{\hyperlink{namespacefrules_a6e8caceb356ddda5b3d1989910c9707c}{frules.\+git}} ()
+\item 
+\mbox{\hyperlink{namespacefrules_a3e81186d42fbac21b831e8afb3581bfc}{frules.\+run}} ()
+\item 
+\mbox{\hyperlink{namespacefrules_ae30c03417e4bfb2b4674a3c90ebffb19}{frules.\+chkm}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Build system utility rules for formatting, Git, run, and header validation. 
+
+This file defines helper routines used during the build pipeline\+:
+\begin{DoxyItemize}
+\item Code formatting with {\ttfamily clang-\/format}
+\item Auto-\/committing via Git
+\item Running the kernel in QEMU
+\item Validating the ELF binary with {\ttfamily grub-\/file} for multiboot support
+\end{DoxyItemize}
+
+These functions are imported into {\ttfamily \doxylink{build_8py}{build.\+py}} and called based on CLI arguments. \begin{DoxyAuthor}{Author}
+Will 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\+0
+\end{DoxyVersion}
+\begin{DoxyNote}{Note}
+This file is part of a larger modular build system. 
+\end{DoxyNote}
+
+
+Definition in file \mbox{\hyperlink{frules_8py_source}{frules.\+py}}.
+

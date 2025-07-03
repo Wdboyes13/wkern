@@ -1,0 +1,112 @@
+\doxysection{src/\+KShell/filecmds.h File Reference}
+\hypertarget{filecmds_8h}{}\label{filecmds_8h}\index{src/KShell/filecmds.h@{src/KShell/filecmds.h}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{filecmds_8h_a65d79836362fd0249f051610e90601a9}{Rm}} (const char \texorpdfstring{$\ast$}{*}argv\mbox{[}$\,$\mbox{]}, int argc)
+\begin{DoxyCompactList}\small\item\em Delete a file from the FAT16 filesystem. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{filecmds_8h_af4df3f791bebb47781781cf5193d2af2}{Mkf}} (const char \texorpdfstring{$\ast$}{*}argv\mbox{[}$\,$\mbox{]}, int argc)
+\begin{DoxyCompactList}\small\item\em Create a new empty file on the FAT16 filesystem. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{filecmds_8h_a7c98338b2ececdd028b380c175219f1b}{Writef}} (const char \texorpdfstring{$\ast$}{*}argv\mbox{[}$\,$\mbox{]}, int argc)
+\begin{DoxyCompactList}\small\item\em Write data to a file in the FAT16 filesystem from user input. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{filecmds_8h_a3b19414bd63d5dbc8eead87028b78f36}{Readf}} (const char \texorpdfstring{$\ast$}{*}argv\mbox{[}$\,$\mbox{]}, int argc)
+\begin{DoxyCompactList}\small\item\em Read and display contents of a file from the FAT16 filesystem. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{filecmds_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{filecmds_8h_af4df3f791bebb47781781cf5193d2af2}\index{filecmds.h@{filecmds.h}!Mkf@{Mkf}}
+\index{Mkf@{Mkf}!filecmds.h@{filecmds.h}}
+\doxysubsubsection{\texorpdfstring{Mkf()}{Mkf()}}
+{\footnotesize\ttfamily \label{filecmds_8h_af4df3f791bebb47781781cf5193d2af2} 
+void Mkf (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{argv}{\mbox{[}$\,$\mbox{]}, }\item[{int}]{argc}{}\end{DoxyParamCaption})}
+
+
+
+Create a new empty file on the FAT16 filesystem. 
+
+Usage\+: {\ttfamily m\+Kfile \mbox{[}filename\mbox{]} \mbox{[}ext\mbox{]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em argv} & Array of arguments. argv\mbox{[}1\mbox{]} is the filename, argv\mbox{[}2\mbox{]} is the extension. \\
+\hline
+{\em argc} & Number of arguments. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{filecmds_8c_source_l00046}{46}} of file \mbox{\hyperlink{filecmds_8c_source}{filecmds.\+c}}.
+
+\Hypertarget{filecmds_8h_a3b19414bd63d5dbc8eead87028b78f36}\index{filecmds.h@{filecmds.h}!Readf@{Readf}}
+\index{Readf@{Readf}!filecmds.h@{filecmds.h}}
+\doxysubsubsection{\texorpdfstring{Readf()}{Readf()}}
+{\footnotesize\ttfamily \label{filecmds_8h_a3b19414bd63d5dbc8eead87028b78f36} 
+void Readf (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{argv}{\mbox{[}$\,$\mbox{]}, }\item[{int}]{argc}{}\end{DoxyParamCaption})}
+
+
+
+Read and display contents of a file from the FAT16 filesystem. 
+
+Usage\+: {\ttfamily read \mbox{[}filename\mbox{]} \mbox{[}ext\mbox{]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em argv} & Array of arguments. argv\mbox{[}1\mbox{]} is the filename, argv\mbox{[}2\mbox{]} is the extension. \\
+\hline
+{\em argc} & Number of arguments. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{filecmds_8c_source_l00105}{105}} of file \mbox{\hyperlink{filecmds_8c_source}{filecmds.\+c}}.
+
+\Hypertarget{filecmds_8h_a65d79836362fd0249f051610e90601a9}\index{filecmds.h@{filecmds.h}!Rm@{Rm}}
+\index{Rm@{Rm}!filecmds.h@{filecmds.h}}
+\doxysubsubsection{\texorpdfstring{Rm()}{Rm()}}
+{\footnotesize\ttfamily \label{filecmds_8h_a65d79836362fd0249f051610e90601a9} 
+void Rm (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{argv}{\mbox{[}$\,$\mbox{]}, }\item[{int}]{argc}{}\end{DoxyParamCaption})}
+
+
+
+Delete a file from the FAT16 filesystem. 
+
+Usage\+: {\ttfamily rm \mbox{[}filename\mbox{]} \mbox{[}ext\mbox{]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em argv} & Array of arguments. argv\mbox{[}1\mbox{]} is the filename, argv\mbox{[}2\mbox{]} is the extension. \\
+\hline
+{\em argc} & Number of arguments. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{filecmds_8c_source_l00030}{30}} of file \mbox{\hyperlink{filecmds_8c_source}{filecmds.\+c}}.
+
+\Hypertarget{filecmds_8h_a7c98338b2ececdd028b380c175219f1b}\index{filecmds.h@{filecmds.h}!Writef@{Writef}}
+\index{Writef@{Writef}!filecmds.h@{filecmds.h}}
+\doxysubsubsection{\texorpdfstring{Writef()}{Writef()}}
+{\footnotesize\ttfamily \label{filecmds_8h_a7c98338b2ececdd028b380c175219f1b} 
+void Writef (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{argv}{\mbox{[}$\,$\mbox{]}, }\item[{int}]{argc}{}\end{DoxyParamCaption})}
+
+
+
+Write data to a file in the FAT16 filesystem from user input. 
+
+Prompts the user to input text and writes it to the specified file. Automatically appends an EOF marker (0x1A) at the end.
+
+Usage\+: {\ttfamily write \mbox{[}filename\mbox{]} \mbox{[}ext\mbox{]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em argv} & Array of arguments. argv\mbox{[}1\mbox{]} is the filename, argv\mbox{[}2\mbox{]} is the extension. \\
+\hline
+{\em argc} & Number of arguments. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{filecmds_8c_source_l00065}{65}} of file \mbox{\hyperlink{filecmds_8c_source}{filecmds.\+c}}.
+

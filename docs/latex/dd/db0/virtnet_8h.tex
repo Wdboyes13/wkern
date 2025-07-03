@@ -1,0 +1,327 @@
+\doxysection{src/net/virtnet.h File Reference}
+\hypertarget{virtnet_8h}{}\label{virtnet_8h}\index{src/net/virtnet.h@{src/net/virtnet.h}}
+{\ttfamily \#include $<$types/nums.\+h$>$}\newline
+{\ttfamily \#include $<$global.\+h$>$}\newline
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_virtq_desc}{Virtq\+Desc}}
+\item 
+struct \mbox{\hyperlink{struct_virtq_avail}{Virtq\+Avail}}
+\item 
+struct \mbox{\hyperlink{struct_virtq_used}{Virtq\+Used}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{virtnet_8h_a75e15963fc1528bb7d2097e04ebfa9b5}{VIRTIO\+\_\+\+PCI\+\_\+\+QUEUE\+\_\+\+SEL}}~0x0E
+\item 
+\#define \mbox{\hyperlink{virtnet_8h_a11fe3e062e61ca606c2bcf3a9657ee37}{VIRTIO\+\_\+\+PCI\+\_\+\+QUEUE\+\_\+\+NUM}}~0x0C
+\item 
+\#define \mbox{\hyperlink{virtnet_8h_ae21cd780c77c11772cafa85c8235fd4f}{VIRTIO\+\_\+\+PCI\+\_\+\+QUEUE\+\_\+\+PFN}}~0x08
+\item 
+\#define \mbox{\hyperlink{virtnet_8h_ab74682e1d290db867c20b37da873e911}{VIRTIO\+\_\+\+PCI\+\_\+\+QUEUE\+\_\+\+NOTIFY}}~0x10
+\item 
+\#define \mbox{\hyperlink{virtnet_8h_a20e010fee3553a39ff6af7a5cc2837c2}{VIRTQ\+\_\+\+DESC\+\_\+\+F\+\_\+\+NEXT}}~1
+\item 
+\#define \mbox{\hyperlink{virtnet_8h_a208ab0e95f24325454621095b80fcf27}{VIRTQ\+\_\+\+DESC\+\_\+\+F\+\_\+\+WRITE}}~2
+\item 
+\#define \mbox{\hyperlink{virtnet_8h_adf8c02c03a75eab8cd46eab675d2cfe9}{VIRTIO\+\_\+\+MAX\+\_\+\+SAFE\+\_\+\+QSIZE}}~16
+\item 
+\#define \mbox{\hyperlink{virtnet_8h_a0a12e0addadc80362d4d4c9b8cd9a783}{MAX\+\_\+\+RX\+\_\+\+DESCS}}~\mbox{\hyperlink{virtnet_8h_adf8c02c03a75eab8cd46eab675d2cfe9}{VIRTIO\+\_\+\+MAX\+\_\+\+SAFE\+\_\+\+QSIZE}}
+\item 
+\#define \mbox{\hyperlink{virtnet_8h_a748be558a64703b72c49cbdb09206377}{VIRTIO\+\_\+\+PCI\+\_\+\+HOST\+\_\+\+FEATURES}}~0x00
+\item 
+\#define \mbox{\hyperlink{virtnet_8h_abdf67004c291b824a55710d156657bff}{VIRTIO\+\_\+\+PCI\+\_\+\+GUEST\+\_\+\+FEATURES}}~0x04
+\item 
+\#define \mbox{\hyperlink{virtnet_8h_a909a442ef89fc0455d724c8f844904d3}{VIRTIO\+\_\+\+PCI\+\_\+\+STATUS}}~0x12
+\item 
+\#define \mbox{\hyperlink{virtnet_8h_a72eed47d6f482df3984b7dcfdb0fdb3f}{VIRTIO\+\_\+\+STATUS\+\_\+\+ACKNOWLEDGE}}~1
+\item 
+\#define \mbox{\hyperlink{virtnet_8h_a6c3f5e16ae3e2e7389fd772eb909cad5}{VIRTIO\+\_\+\+STATUS\+\_\+\+DRIVER}}~2
+\item 
+\#define \mbox{\hyperlink{virtnet_8h_a046788d73fd31ecc5c35c50a962e5ee3}{VIRTIO\+\_\+\+STATUS\+\_\+\+DRIVER\+\_\+\+OK}}~4
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{struct_virtq_desc}{Virtq\+Desc}} \mbox{\hyperlink{virtnet_8h_ad6ad3fd8bd40919802ad059eb2288a00}{virtq\+\_\+desc}}
+\item 
+typedef struct \mbox{\hyperlink{struct_virtq_avail}{Virtq\+Avail}} \mbox{\hyperlink{virtnet_8h_abf8feba96046d05e4d9dfbabd27849ca}{virtq\+\_\+avail}}
+\item 
+typedef struct \mbox{\hyperlink{struct_virtq_used}{Virtq\+Used}} \mbox{\hyperlink{virtnet_8h_a116af74cc7fefcb8685f976a10f3d33a}{virtq\+\_\+used}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{virtnet_8h_a6b1c9baee3d5fa757db9be26bfe34eae}{Net\+Stq}} (\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} \mbox{\hyperlink{global_8h_a1948e96711d16f6cd2d551c5c3b121c5}{iob}})
+\begin{DoxyCompactList}\small\item\em Processes received packets from the Virt\+IO queue. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{virtnet_8h_af3ec14b624bc04c89286f6487c91a83b}{Virtnet\+Init}} (\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} \mbox{\hyperlink{global_8h_a1948e96711d16f6cd2d551c5c3b121c5}{iob}})
+\begin{DoxyCompactList}\small\item\em Initializes the Virt\+IO network queue and allocates RX buffers. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{virtnet_8h_ae39c83a0ad1233c9d2e76b7add988860}{Virtnet\+Negotiate}} (\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} \mbox{\hyperlink{global_8h_a1948e96711d16f6cd2d551c5c3b121c5}{iob}})
+\begin{DoxyCompactList}\small\item\em Performs device negotiation with the Virt\+IO network device. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{virtnet_8h_a32830a541ec636e265304d1ad827c42a}{Virtnet\+Setup}} ()
+\begin{DoxyCompactList}\small\item\em Performs full setup of the Virt\+IO network device. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\Hypertarget{virtnet_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{virtnet_8h_a0a12e0addadc80362d4d4c9b8cd9a783}\index{virtnet.h@{virtnet.h}!MAX\_RX\_DESCS@{MAX\_RX\_DESCS}}
+\index{MAX\_RX\_DESCS@{MAX\_RX\_DESCS}!virtnet.h@{virtnet.h}}
+\doxysubsubsection{\texorpdfstring{MAX\_RX\_DESCS}{MAX\_RX\_DESCS}}
+{\footnotesize\ttfamily \label{virtnet_8h_a0a12e0addadc80362d4d4c9b8cd9a783} 
+\#define MAX\+\_\+\+RX\+\_\+\+DESCS~\mbox{\hyperlink{virtnet_8h_adf8c02c03a75eab8cd46eab675d2cfe9}{VIRTIO\+\_\+\+MAX\+\_\+\+SAFE\+\_\+\+QSIZE}}}
+
+
+
+Definition at line \mbox{\hyperlink{virtnet_8h_source_l00030}{30}} of file \mbox{\hyperlink{virtnet_8h_source}{virtnet.\+h}}.
+
+\Hypertarget{virtnet_8h_adf8c02c03a75eab8cd46eab675d2cfe9}\index{virtnet.h@{virtnet.h}!VIRTIO\_MAX\_SAFE\_QSIZE@{VIRTIO\_MAX\_SAFE\_QSIZE}}
+\index{VIRTIO\_MAX\_SAFE\_QSIZE@{VIRTIO\_MAX\_SAFE\_QSIZE}!virtnet.h@{virtnet.h}}
+\doxysubsubsection{\texorpdfstring{VIRTIO\_MAX\_SAFE\_QSIZE}{VIRTIO\_MAX\_SAFE\_QSIZE}}
+{\footnotesize\ttfamily \label{virtnet_8h_adf8c02c03a75eab8cd46eab675d2cfe9} 
+\#define VIRTIO\+\_\+\+MAX\+\_\+\+SAFE\+\_\+\+QSIZE~16}
+
+
+
+Definition at line \mbox{\hyperlink{virtnet_8h_source_l00029}{29}} of file \mbox{\hyperlink{virtnet_8h_source}{virtnet.\+h}}.
+
+\Hypertarget{virtnet_8h_abdf67004c291b824a55710d156657bff}\index{virtnet.h@{virtnet.h}!VIRTIO\_PCI\_GUEST\_FEATURES@{VIRTIO\_PCI\_GUEST\_FEATURES}}
+\index{VIRTIO\_PCI\_GUEST\_FEATURES@{VIRTIO\_PCI\_GUEST\_FEATURES}!virtnet.h@{virtnet.h}}
+\doxysubsubsection{\texorpdfstring{VIRTIO\_PCI\_GUEST\_FEATURES}{VIRTIO\_PCI\_GUEST\_FEATURES}}
+{\footnotesize\ttfamily \label{virtnet_8h_abdf67004c291b824a55710d156657bff} 
+\#define VIRTIO\+\_\+\+PCI\+\_\+\+GUEST\+\_\+\+FEATURES~0x04}
+
+
+
+Definition at line \mbox{\hyperlink{virtnet_8h_source_l00032}{32}} of file \mbox{\hyperlink{virtnet_8h_source}{virtnet.\+h}}.
+
+\Hypertarget{virtnet_8h_a748be558a64703b72c49cbdb09206377}\index{virtnet.h@{virtnet.h}!VIRTIO\_PCI\_HOST\_FEATURES@{VIRTIO\_PCI\_HOST\_FEATURES}}
+\index{VIRTIO\_PCI\_HOST\_FEATURES@{VIRTIO\_PCI\_HOST\_FEATURES}!virtnet.h@{virtnet.h}}
+\doxysubsubsection{\texorpdfstring{VIRTIO\_PCI\_HOST\_FEATURES}{VIRTIO\_PCI\_HOST\_FEATURES}}
+{\footnotesize\ttfamily \label{virtnet_8h_a748be558a64703b72c49cbdb09206377} 
+\#define VIRTIO\+\_\+\+PCI\+\_\+\+HOST\+\_\+\+FEATURES~0x00}
+
+
+
+Definition at line \mbox{\hyperlink{virtnet_8h_source_l00031}{31}} of file \mbox{\hyperlink{virtnet_8h_source}{virtnet.\+h}}.
+
+\Hypertarget{virtnet_8h_ab74682e1d290db867c20b37da873e911}\index{virtnet.h@{virtnet.h}!VIRTIO\_PCI\_QUEUE\_NOTIFY@{VIRTIO\_PCI\_QUEUE\_NOTIFY}}
+\index{VIRTIO\_PCI\_QUEUE\_NOTIFY@{VIRTIO\_PCI\_QUEUE\_NOTIFY}!virtnet.h@{virtnet.h}}
+\doxysubsubsection{\texorpdfstring{VIRTIO\_PCI\_QUEUE\_NOTIFY}{VIRTIO\_PCI\_QUEUE\_NOTIFY}}
+{\footnotesize\ttfamily \label{virtnet_8h_ab74682e1d290db867c20b37da873e911} 
+\#define VIRTIO\+\_\+\+PCI\+\_\+\+QUEUE\+\_\+\+NOTIFY~0x10}
+
+
+
+Definition at line \mbox{\hyperlink{virtnet_8h_source_l00026}{26}} of file \mbox{\hyperlink{virtnet_8h_source}{virtnet.\+h}}.
+
+\Hypertarget{virtnet_8h_a11fe3e062e61ca606c2bcf3a9657ee37}\index{virtnet.h@{virtnet.h}!VIRTIO\_PCI\_QUEUE\_NUM@{VIRTIO\_PCI\_QUEUE\_NUM}}
+\index{VIRTIO\_PCI\_QUEUE\_NUM@{VIRTIO\_PCI\_QUEUE\_NUM}!virtnet.h@{virtnet.h}}
+\doxysubsubsection{\texorpdfstring{VIRTIO\_PCI\_QUEUE\_NUM}{VIRTIO\_PCI\_QUEUE\_NUM}}
+{\footnotesize\ttfamily \label{virtnet_8h_a11fe3e062e61ca606c2bcf3a9657ee37} 
+\#define VIRTIO\+\_\+\+PCI\+\_\+\+QUEUE\+\_\+\+NUM~0x0C}
+
+
+
+Definition at line \mbox{\hyperlink{virtnet_8h_source_l00024}{24}} of file \mbox{\hyperlink{virtnet_8h_source}{virtnet.\+h}}.
+
+\Hypertarget{virtnet_8h_ae21cd780c77c11772cafa85c8235fd4f}\index{virtnet.h@{virtnet.h}!VIRTIO\_PCI\_QUEUE\_PFN@{VIRTIO\_PCI\_QUEUE\_PFN}}
+\index{VIRTIO\_PCI\_QUEUE\_PFN@{VIRTIO\_PCI\_QUEUE\_PFN}!virtnet.h@{virtnet.h}}
+\doxysubsubsection{\texorpdfstring{VIRTIO\_PCI\_QUEUE\_PFN}{VIRTIO\_PCI\_QUEUE\_PFN}}
+{\footnotesize\ttfamily \label{virtnet_8h_ae21cd780c77c11772cafa85c8235fd4f} 
+\#define VIRTIO\+\_\+\+PCI\+\_\+\+QUEUE\+\_\+\+PFN~0x08}
+
+
+
+Definition at line \mbox{\hyperlink{virtnet_8h_source_l00025}{25}} of file \mbox{\hyperlink{virtnet_8h_source}{virtnet.\+h}}.
+
+\Hypertarget{virtnet_8h_a75e15963fc1528bb7d2097e04ebfa9b5}\index{virtnet.h@{virtnet.h}!VIRTIO\_PCI\_QUEUE\_SEL@{VIRTIO\_PCI\_QUEUE\_SEL}}
+\index{VIRTIO\_PCI\_QUEUE\_SEL@{VIRTIO\_PCI\_QUEUE\_SEL}!virtnet.h@{virtnet.h}}
+\doxysubsubsection{\texorpdfstring{VIRTIO\_PCI\_QUEUE\_SEL}{VIRTIO\_PCI\_QUEUE\_SEL}}
+{\footnotesize\ttfamily \label{virtnet_8h_a75e15963fc1528bb7d2097e04ebfa9b5} 
+\#define VIRTIO\+\_\+\+PCI\+\_\+\+QUEUE\+\_\+\+SEL~0x0E}
+
+
+
+Definition at line \mbox{\hyperlink{virtnet_8h_source_l00023}{23}} of file \mbox{\hyperlink{virtnet_8h_source}{virtnet.\+h}}.
+
+\Hypertarget{virtnet_8h_a909a442ef89fc0455d724c8f844904d3}\index{virtnet.h@{virtnet.h}!VIRTIO\_PCI\_STATUS@{VIRTIO\_PCI\_STATUS}}
+\index{VIRTIO\_PCI\_STATUS@{VIRTIO\_PCI\_STATUS}!virtnet.h@{virtnet.h}}
+\doxysubsubsection{\texorpdfstring{VIRTIO\_PCI\_STATUS}{VIRTIO\_PCI\_STATUS}}
+{\footnotesize\ttfamily \label{virtnet_8h_a909a442ef89fc0455d724c8f844904d3} 
+\#define VIRTIO\+\_\+\+PCI\+\_\+\+STATUS~0x12}
+
+
+
+Definition at line \mbox{\hyperlink{virtnet_8h_source_l00033}{33}} of file \mbox{\hyperlink{virtnet_8h_source}{virtnet.\+h}}.
+
+\Hypertarget{virtnet_8h_a72eed47d6f482df3984b7dcfdb0fdb3f}\index{virtnet.h@{virtnet.h}!VIRTIO\_STATUS\_ACKNOWLEDGE@{VIRTIO\_STATUS\_ACKNOWLEDGE}}
+\index{VIRTIO\_STATUS\_ACKNOWLEDGE@{VIRTIO\_STATUS\_ACKNOWLEDGE}!virtnet.h@{virtnet.h}}
+\doxysubsubsection{\texorpdfstring{VIRTIO\_STATUS\_ACKNOWLEDGE}{VIRTIO\_STATUS\_ACKNOWLEDGE}}
+{\footnotesize\ttfamily \label{virtnet_8h_a72eed47d6f482df3984b7dcfdb0fdb3f} 
+\#define VIRTIO\+\_\+\+STATUS\+\_\+\+ACKNOWLEDGE~1}
+
+
+
+Definition at line \mbox{\hyperlink{virtnet_8h_source_l00035}{35}} of file \mbox{\hyperlink{virtnet_8h_source}{virtnet.\+h}}.
+
+\Hypertarget{virtnet_8h_a6c3f5e16ae3e2e7389fd772eb909cad5}\index{virtnet.h@{virtnet.h}!VIRTIO\_STATUS\_DRIVER@{VIRTIO\_STATUS\_DRIVER}}
+\index{VIRTIO\_STATUS\_DRIVER@{VIRTIO\_STATUS\_DRIVER}!virtnet.h@{virtnet.h}}
+\doxysubsubsection{\texorpdfstring{VIRTIO\_STATUS\_DRIVER}{VIRTIO\_STATUS\_DRIVER}}
+{\footnotesize\ttfamily \label{virtnet_8h_a6c3f5e16ae3e2e7389fd772eb909cad5} 
+\#define VIRTIO\+\_\+\+STATUS\+\_\+\+DRIVER~2}
+
+
+
+Definition at line \mbox{\hyperlink{virtnet_8h_source_l00036}{36}} of file \mbox{\hyperlink{virtnet_8h_source}{virtnet.\+h}}.
+
+\Hypertarget{virtnet_8h_a046788d73fd31ecc5c35c50a962e5ee3}\index{virtnet.h@{virtnet.h}!VIRTIO\_STATUS\_DRIVER\_OK@{VIRTIO\_STATUS\_DRIVER\_OK}}
+\index{VIRTIO\_STATUS\_DRIVER\_OK@{VIRTIO\_STATUS\_DRIVER\_OK}!virtnet.h@{virtnet.h}}
+\doxysubsubsection{\texorpdfstring{VIRTIO\_STATUS\_DRIVER\_OK}{VIRTIO\_STATUS\_DRIVER\_OK}}
+{\footnotesize\ttfamily \label{virtnet_8h_a046788d73fd31ecc5c35c50a962e5ee3} 
+\#define VIRTIO\+\_\+\+STATUS\+\_\+\+DRIVER\+\_\+\+OK~4}
+
+
+
+Definition at line \mbox{\hyperlink{virtnet_8h_source_l00037}{37}} of file \mbox{\hyperlink{virtnet_8h_source}{virtnet.\+h}}.
+
+\Hypertarget{virtnet_8h_a20e010fee3553a39ff6af7a5cc2837c2}\index{virtnet.h@{virtnet.h}!VIRTQ\_DESC\_F\_NEXT@{VIRTQ\_DESC\_F\_NEXT}}
+\index{VIRTQ\_DESC\_F\_NEXT@{VIRTQ\_DESC\_F\_NEXT}!virtnet.h@{virtnet.h}}
+\doxysubsubsection{\texorpdfstring{VIRTQ\_DESC\_F\_NEXT}{VIRTQ\_DESC\_F\_NEXT}}
+{\footnotesize\ttfamily \label{virtnet_8h_a20e010fee3553a39ff6af7a5cc2837c2} 
+\#define VIRTQ\+\_\+\+DESC\+\_\+\+F\+\_\+\+NEXT~1}
+
+
+
+Definition at line \mbox{\hyperlink{virtnet_8h_source_l00027}{27}} of file \mbox{\hyperlink{virtnet_8h_source}{virtnet.\+h}}.
+
+\Hypertarget{virtnet_8h_a208ab0e95f24325454621095b80fcf27}\index{virtnet.h@{virtnet.h}!VIRTQ\_DESC\_F\_WRITE@{VIRTQ\_DESC\_F\_WRITE}}
+\index{VIRTQ\_DESC\_F\_WRITE@{VIRTQ\_DESC\_F\_WRITE}!virtnet.h@{virtnet.h}}
+\doxysubsubsection{\texorpdfstring{VIRTQ\_DESC\_F\_WRITE}{VIRTQ\_DESC\_F\_WRITE}}
+{\footnotesize\ttfamily \label{virtnet_8h_a208ab0e95f24325454621095b80fcf27} 
+\#define VIRTQ\+\_\+\+DESC\+\_\+\+F\+\_\+\+WRITE~2}
+
+
+
+Definition at line \mbox{\hyperlink{virtnet_8h_source_l00028}{28}} of file \mbox{\hyperlink{virtnet_8h_source}{virtnet.\+h}}.
+
+
+
+\label{doc-typedef-members}
+\Hypertarget{virtnet_8h_doc-typedef-members}
+\doxysubsection{Typedef Documentation}
+\Hypertarget{virtnet_8h_abf8feba96046d05e4d9dfbabd27849ca}\index{virtnet.h@{virtnet.h}!virtq\_avail@{virtq\_avail}}
+\index{virtq\_avail@{virtq\_avail}!virtnet.h@{virtnet.h}}
+\doxysubsubsection{\texorpdfstring{virtq\_avail}{virtq\_avail}}
+{\footnotesize\ttfamily \label{virtnet_8h_abf8feba96046d05e4d9dfbabd27849ca} 
+typedef struct \mbox{\hyperlink{struct_virtq_avail}{Virtq\+Avail}} \mbox{\hyperlink{virtnet_8h_abf8feba96046d05e4d9dfbabd27849ca}{virtq\+\_\+avail}}}
+
+\Hypertarget{virtnet_8h_ad6ad3fd8bd40919802ad059eb2288a00}\index{virtnet.h@{virtnet.h}!virtq\_desc@{virtq\_desc}}
+\index{virtq\_desc@{virtq\_desc}!virtnet.h@{virtnet.h}}
+\doxysubsubsection{\texorpdfstring{virtq\_desc}{virtq\_desc}}
+{\footnotesize\ttfamily \label{virtnet_8h_ad6ad3fd8bd40919802ad059eb2288a00} 
+typedef struct \mbox{\hyperlink{struct_virtq_desc}{Virtq\+Desc}} \mbox{\hyperlink{virtnet_8h_ad6ad3fd8bd40919802ad059eb2288a00}{virtq\+\_\+desc}}}
+
+\Hypertarget{virtnet_8h_a116af74cc7fefcb8685f976a10f3d33a}\index{virtnet.h@{virtnet.h}!virtq\_used@{virtq\_used}}
+\index{virtq\_used@{virtq\_used}!virtnet.h@{virtnet.h}}
+\doxysubsubsection{\texorpdfstring{virtq\_used}{virtq\_used}}
+{\footnotesize\ttfamily \label{virtnet_8h_a116af74cc7fefcb8685f976a10f3d33a} 
+typedef struct \mbox{\hyperlink{struct_virtq_used}{Virtq\+Used}} \mbox{\hyperlink{virtnet_8h_a116af74cc7fefcb8685f976a10f3d33a}{virtq\+\_\+used}}}
+
+
+
+\label{doc-func-members}
+\Hypertarget{virtnet_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{virtnet_8h_a6b1c9baee3d5fa757db9be26bfe34eae}\index{virtnet.h@{virtnet.h}!NetStq@{NetStq}}
+\index{NetStq@{NetStq}!virtnet.h@{virtnet.h}}
+\doxysubsubsection{\texorpdfstring{NetStq()}{NetStq()}}
+{\footnotesize\ttfamily \label{virtnet_8h_a6b1c9baee3d5fa757db9be26bfe34eae} 
+void Net\+Stq (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}}]{iob}{}\end{DoxyParamCaption})}
+
+
+
+Processes received packets from the Virt\+IO queue. 
+
+Iterates over the used ring to find received packets, prints their contents in hex, and recycles the RX buffers by re-\/adding the descriptors to the avail ring.
+
+
+\begin{DoxyParams}{Parameters}
+{\em iob} & The I/O base address for the Virt\+IO device. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{virtio_8c_source_l00138}{138}} of file \mbox{\hyperlink{virtio_8c_source}{virtio.\+c}}.
+
+\Hypertarget{virtnet_8h_af3ec14b624bc04c89286f6487c91a83b}\index{virtnet.h@{virtnet.h}!VirtnetInit@{VirtnetInit}}
+\index{VirtnetInit@{VirtnetInit}!virtnet.h@{virtnet.h}}
+\doxysubsubsection{\texorpdfstring{VirtnetInit()}{VirtnetInit()}}
+{\footnotesize\ttfamily \label{virtnet_8h_af3ec14b624bc04c89286f6487c91a83b} 
+void Virtnet\+Init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}}]{iob}{}\end{DoxyParamCaption})}
+
+
+
+Initializes the Virt\+IO network queue and allocates RX buffers. 
+
+
+\begin{DoxyItemize}
+\item Selects RX queue 0 via PCI register.
+\item Allocates a 4 KiB block for the Virt\+IO queue and zeroes it.
+\item Determines the queue size from the device, clamping if needed.
+\item Initializes descriptor structures\+:
+\begin{DoxyItemize}
+\item {\ttfamily desc}\+: descriptors for received packets
+\item {\ttfamily avail}\+: list of available descriptors
+\item {\ttfamily used}\+: list of used descriptors from the device
+\end{DoxyItemize}
+\item Allocates individual 2 KiB RX buffers for each descriptor.
+\item Notifies the device that the queue is ready and available.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em iob} & The I/O base address for the Virt\+IO device. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{virtio_8c_source_l00078}{78}} of file \mbox{\hyperlink{virtio_8c_source}{virtio.\+c}}.
+
+\Hypertarget{virtnet_8h_ae39c83a0ad1233c9d2e76b7add988860}\index{virtnet.h@{virtnet.h}!VirtnetNegotiate@{VirtnetNegotiate}}
+\index{VirtnetNegotiate@{VirtnetNegotiate}!virtnet.h@{virtnet.h}}
+\doxysubsubsection{\texorpdfstring{VirtnetNegotiate()}{VirtnetNegotiate()}}
+{\footnotesize\ttfamily \label{virtnet_8h_ae39c83a0ad1233c9d2e76b7add988860} 
+void Virtnet\+Negotiate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}}]{iob}{}\end{DoxyParamCaption})}
+
+
+
+Performs device negotiation with the Virt\+IO network device. 
+
+Resets the Virt\+IO network device and negotiates feature support by writing appropriate status flags to the I/O port.
+
+
+\begin{DoxyParams}{Parameters}
+{\em iob} & The I/O base address for the Virt\+IO device. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{virtio_8c_source_l00041}{41}} of file \mbox{\hyperlink{virtio_8c_source}{virtio.\+c}}.
+
+\Hypertarget{virtnet_8h_a32830a541ec636e265304d1ad827c42a}\index{virtnet.h@{virtnet.h}!VirtnetSetup@{VirtnetSetup}}
+\index{VirtnetSetup@{VirtnetSetup}!virtnet.h@{virtnet.h}}
+\doxysubsubsection{\texorpdfstring{VirtnetSetup()}{VirtnetSetup()}}
+{\footnotesize\ttfamily \label{virtnet_8h_a32830a541ec636e265304d1ad827c42a} 
+void Virtnet\+Setup (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Performs full setup of the Virt\+IO network device. 
+
+Finds the Virt\+IO network device on the PCI bus, reads its IRQ, sets the interrupt handler, unmasks the IRQ, and performs negotiation and initialization. 
+
+Definition at line \mbox{\hyperlink{virtio_8c_source_l00176}{176}} of file \mbox{\hyperlink{virtio_8c_source}{virtio.\+c}}.
+

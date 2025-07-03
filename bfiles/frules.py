@@ -1,3 +1,20 @@
+##
+# @file frules.py
+# @brief Build system utility rules for formatting, Git, run, and header validation.
+#
+# This file defines helper routines used during the build pipeline:
+# - Code formatting with `clang-format`
+# - Auto-committing via Git
+# - Running the kernel in QEMU
+# - Validating the ELF binary with `grub-file` for multiboot support
+#
+# These functions are imported into `build.py` and called based on CLI arguments.
+# @author Will
+# @date 2025
+# @version 1.0
+#
+# @note This file is part of a larger modular build system.
+
 import subprocess
 from bfiles.files import *
 import os

@@ -1,0 +1,684 @@
+\doxysection{src/fileio/fileio.h File Reference}
+\hypertarget{fileio_8h}{}\label{fileio_8h}\index{src/fileio/fileio.h@{src/fileio/fileio.h}}
+
+
+Definitions and declarations for FAT16 filesystem and ATA I/O.  
+
+
+{\ttfamily \#include $<$global.\+h$>$}\newline
+{\ttfamily \#include $<$types/nums.\+h$>$}\newline
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_fa_t16_bpb}{Fa\+T16\+Bpb}}
+\begin{DoxyCompactList}\small\item\em FAT16 BIOS Parameter Block (BPB) structure — describes volume layout. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_fa_t16_info}{Fa\+T16\+Info}}
+\begin{DoxyCompactList}\small\item\em Parsed FAT16 filesystem layout and parameters. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{fileio_8h_a7fad301214cc3b41f0dd60aaaaf9f3fc}{ATA\+\_\+\+IO\+\_\+\+BASE}}~0x1\+F0
+\begin{DoxyCompactList}\small\item\em ATA IO Base port for primary IDE channel. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{fileio_8h_a53e44ff7073c479a20fc321cb6147a32}{ATA\+\_\+\+CTRL}}~0x3\+F6
+\begin{DoxyCompactList}\small\item\em ATA Control port. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{fileio_8h_a82b0c03860f06049d58daf210f368156}{ATA\+\_\+\+STATUS}}~(\mbox{\hyperlink{fileio_8h_a7fad301214cc3b41f0dd60aaaaf9f3fc}{ATA\+\_\+\+IO\+\_\+\+BASE}} + 7)
+\begin{DoxyCompactList}\small\item\em ATA Status port (read) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{fileio_8h_a7762d2c130e593e92b3c3b521e5779f2}{ATA\+\_\+\+COMMAND}}~(\mbox{\hyperlink{fileio_8h_a7fad301214cc3b41f0dd60aaaaf9f3fc}{ATA\+\_\+\+IO\+\_\+\+BASE}} + 7)
+\begin{DoxyCompactList}\small\item\em ATA Command port (write) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{fileio_8h_aa9ede1f736f86805a4aa00df9543b32f}{ATA\+\_\+\+DRIVE}}~(\mbox{\hyperlink{fileio_8h_a7fad301214cc3b41f0dd60aaaaf9f3fc}{ATA\+\_\+\+IO\+\_\+\+BASE}} + 6)
+\begin{DoxyCompactList}\small\item\em ATA Drive/head select port. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{fileio_8h_ac8d77dce295ef928eca4dfedb5fb7d36}{ATA\+\_\+\+ERROR}}~(\mbox{\hyperlink{fileio_8h_a7fad301214cc3b41f0dd60aaaaf9f3fc}{ATA\+\_\+\+IO\+\_\+\+BASE}} + 1)
+\begin{DoxyCompactList}\small\item\em ATA Error register port (read) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{fileio_8h_a115159b2812d6643bbb67dc53b54f668}{ATA\+\_\+\+SECCNT}}~(\mbox{\hyperlink{fileio_8h_a7fad301214cc3b41f0dd60aaaaf9f3fc}{ATA\+\_\+\+IO\+\_\+\+BASE}} + 2)
+\begin{DoxyCompactList}\small\item\em ATA Sector count register port. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{fileio_8h_a69742c7774d4d316420ea9505c7956cb}{ATA\+\_\+\+LBA\+\_\+\+LOW}}~(\mbox{\hyperlink{fileio_8h_a7fad301214cc3b41f0dd60aaaaf9f3fc}{ATA\+\_\+\+IO\+\_\+\+BASE}} + 3)
+\begin{DoxyCompactList}\small\item\em ATA LBA low byte port. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{fileio_8h_a9fb63653dd2f522e806f711034a5b11f}{ATA\+\_\+\+LBA\+\_\+\+MID}}~(\mbox{\hyperlink{fileio_8h_a7fad301214cc3b41f0dd60aaaaf9f3fc}{ATA\+\_\+\+IO\+\_\+\+BASE}} + 4)
+\begin{DoxyCompactList}\small\item\em ATA LBA mid byte port. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{fileio_8h_ad7d110cd7a30fd360237bee7c8104712}{ATA\+\_\+\+LBA\+\_\+\+HI}}~(\mbox{\hyperlink{fileio_8h_a7fad301214cc3b41f0dd60aaaaf9f3fc}{ATA\+\_\+\+IO\+\_\+\+BASE}} + 5)
+\begin{DoxyCompactList}\small\item\em ATA LBA high byte port. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{fileio_8h_a10441946900b59df8e0c67d69a1379f0}{ATA\+\_\+\+DATA}}~(\mbox{\hyperlink{fileio_8h_a7fad301214cc3b41f0dd60aaaaf9f3fc}{ATA\+\_\+\+IO\+\_\+\+BASE}} + 0)
+\begin{DoxyCompactList}\small\item\em ATA Data port (read/write 16-\/bit) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{fileio_8h_a758719f1c34c94f00f41e5cda9b26564}{ATA\+\_\+\+CMD\+\_\+\+READ\+\_\+\+SECTORS}}~0x20
+\begin{DoxyCompactList}\small\item\em ATA command to read sectors. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{fileio_8h_aed1929007f388cab23229c908be5bbaf}{ATA\+\_\+\+SR\+\_\+\+BSY}}~0x80
+\begin{DoxyCompactList}\small\item\em ATA status register BSY (busy) bit. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{fileio_8h_a27e6aaa78aaaa205a7dadf56b48d0bf6}{ATA\+\_\+\+SR\+\_\+\+DRQ}}~0x08
+\begin{DoxyCompactList}\small\item\em ATA status register DRQ (data request) bit. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{fileio_8h_a8a2cf843df1ae63d4d16748dfe72a592}{ATA\+\_\+\+SR\+\_\+\+ERR}}~0x01
+\begin{DoxyCompactList}\small\item\em ATA status register ERR (error) bit. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{fileio_8h_ae1b5097423101f551088fac3ea671aec}{ATA\+\_\+\+WRITE\+\_\+\+CMD}}~0x30
+\begin{DoxyCompactList}\small\item\em ATA command to write sectors. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{fileio_8h_a6c22a78fa6a488041bb15afa10a26137}{Ata\+Read\+Sector}} (\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} lba, \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} \texorpdfstring{$\ast$}{*}buffer)
+\begin{DoxyCompactList}\small\item\em Reads a 512-\/byte sector from ATA disk into buffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{fileio_8h_a42403de508595b74b8ce384c2026a1d5}{Ata\+Write\+Sector}} (\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} lba, const \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} \texorpdfstring{$\ast$}{*}buffer)
+\begin{DoxyCompactList}\small\item\em Writes a 512-\/byte sector to ATA disk from buffer. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} \mbox{\hyperlink{fileio_8h_a83c6766aaf545016943897b8f8902a98}{Find\+Fat16\+Partition}} (void)
+\begin{DoxyCompactList}\small\item\em Finds the FAT16 partition on disk. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{fileio_8h_a25e15562fb1b780e6316940a4bd2fde9}{Writefile}} (const char \texorpdfstring{$\ast$}{*}filename, const char \texorpdfstring{$\ast$}{*}ext, const char \texorpdfstring{$\ast$}{*}data, \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} size)
+\begin{DoxyCompactList}\small\item\em Writes data to a FAT16 file, replacing its contents. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{fileio_8h_a443f1dfce17aeb3b8110961d034d77bc}{Fat16\+Ls}} (void)
+\begin{DoxyCompactList}\small\item\em Lists files in the FAT16 root directory. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} \mbox{\hyperlink{fileio_8h_acf67e9fa4293c49faae3ee63c1f307fe}{Fat16\+Mount}} (\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} partition\+\_\+lba)
+\begin{DoxyCompactList}\small\item\em Mounts FAT16 partition and reads filesystem info. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{fileio_8h_a08e4988eb7beeffb9188674f29a975f6}{Fileconts}} (const char \texorpdfstring{$\ast$}{*}filename, const char \texorpdfstring{$\ast$}{*}ext)
+\begin{DoxyCompactList}\small\item\em Prints contents of a FAT16 file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{fileio_8h_a0955c984a7b27de3da315eefeb4db734}{Mkfile}} (const char \texorpdfstring{$\ast$}{*}filename, const char \texorpdfstring{$\ast$}{*}ext)
+\begin{DoxyCompactList}\small\item\em Creates a new empty file in the FAT16 root directory. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{fileio_8h_a6339a034411051b10653a617583e1ddf}{Fat16\+Remove\+File}} (const char \texorpdfstring{$\ast$}{*}filename, const char \texorpdfstring{$\ast$}{*}ext)
+\begin{DoxyCompactList}\small\item\em Removes a file from the FAT16 root directory and frees clusters. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_fa_t16_info}{Fa\+T16\+Info}} \mbox{\hyperlink{fileio_8h_a666a93dce54663bac1b67500b58cbb48}{fat16}}
+\begin{DoxyCompactList}\small\item\em Global FAT16 filesystem info struct. \end{DoxyCompactList}\item 
+volatile \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} \mbox{\hyperlink{fileio_8h_a5373399b54661f02f43e4bb33da332f8}{irq14stat}}
+\begin{DoxyCompactList}\small\item\em IRQ status flags for IRQ14 and IRQ15 (primary and secondary IDE interrupts) \end{DoxyCompactList}\item 
+volatile \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} \mbox{\hyperlink{fileio_8h_aececdae3bdd58be3f5913bf7b2fd510d}{irq15stat}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Definitions and declarations for FAT16 filesystem and ATA I/O. 
+
+
+
+Definition in file \mbox{\hyperlink{fileio_8h_source}{fileio.\+h}}.
+
+
+
+\label{doc-define-members}
+\Hypertarget{fileio_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{fileio_8h_a758719f1c34c94f00f41e5cda9b26564}\index{fileio.h@{fileio.h}!ATA\_CMD\_READ\_SECTORS@{ATA\_CMD\_READ\_SECTORS}}
+\index{ATA\_CMD\_READ\_SECTORS@{ATA\_CMD\_READ\_SECTORS}!fileio.h@{fileio.h}}
+\doxysubsubsection{\texorpdfstring{ATA\_CMD\_READ\_SECTORS}{ATA\_CMD\_READ\_SECTORS}}
+{\footnotesize\ttfamily \label{fileio_8h_a758719f1c34c94f00f41e5cda9b26564} 
+\#define ATA\+\_\+\+CMD\+\_\+\+READ\+\_\+\+SECTORS~0x20}
+
+
+
+ATA command to read sectors. 
+
+
+
+Definition at line \mbox{\hyperlink{fileio_8h_source_l00061}{61}} of file \mbox{\hyperlink{fileio_8h_source}{fileio.\+h}}.
+
+\Hypertarget{fileio_8h_a7762d2c130e593e92b3c3b521e5779f2}\index{fileio.h@{fileio.h}!ATA\_COMMAND@{ATA\_COMMAND}}
+\index{ATA\_COMMAND@{ATA\_COMMAND}!fileio.h@{fileio.h}}
+\doxysubsubsection{\texorpdfstring{ATA\_COMMAND}{ATA\_COMMAND}}
+{\footnotesize\ttfamily \label{fileio_8h_a7762d2c130e593e92b3c3b521e5779f2} 
+\#define ATA\+\_\+\+COMMAND~(\mbox{\hyperlink{fileio_8h_a7fad301214cc3b41f0dd60aaaaf9f3fc}{ATA\+\_\+\+IO\+\_\+\+BASE}} + 7)}
+
+
+
+ATA Command port (write) 
+
+
+
+Definition at line \mbox{\hyperlink{fileio_8h_source_l00037}{37}} of file \mbox{\hyperlink{fileio_8h_source}{fileio.\+h}}.
+
+\Hypertarget{fileio_8h_a53e44ff7073c479a20fc321cb6147a32}\index{fileio.h@{fileio.h}!ATA\_CTRL@{ATA\_CTRL}}
+\index{ATA\_CTRL@{ATA\_CTRL}!fileio.h@{fileio.h}}
+\doxysubsubsection{\texorpdfstring{ATA\_CTRL}{ATA\_CTRL}}
+{\footnotesize\ttfamily \label{fileio_8h_a53e44ff7073c479a20fc321cb6147a32} 
+\#define ATA\+\_\+\+CTRL~0x3\+F6}
+
+
+
+ATA Control port. 
+
+
+
+Definition at line \mbox{\hyperlink{fileio_8h_source_l00031}{31}} of file \mbox{\hyperlink{fileio_8h_source}{fileio.\+h}}.
+
+\Hypertarget{fileio_8h_a10441946900b59df8e0c67d69a1379f0}\index{fileio.h@{fileio.h}!ATA\_DATA@{ATA\_DATA}}
+\index{ATA\_DATA@{ATA\_DATA}!fileio.h@{fileio.h}}
+\doxysubsubsection{\texorpdfstring{ATA\_DATA}{ATA\_DATA}}
+{\footnotesize\ttfamily \label{fileio_8h_a10441946900b59df8e0c67d69a1379f0} 
+\#define ATA\+\_\+\+DATA~(\mbox{\hyperlink{fileio_8h_a7fad301214cc3b41f0dd60aaaaf9f3fc}{ATA\+\_\+\+IO\+\_\+\+BASE}} + 0)}
+
+
+
+ATA Data port (read/write 16-\/bit) 
+
+
+
+Definition at line \mbox{\hyperlink{fileio_8h_source_l00058}{58}} of file \mbox{\hyperlink{fileio_8h_source}{fileio.\+h}}.
+
+\Hypertarget{fileio_8h_aa9ede1f736f86805a4aa00df9543b32f}\index{fileio.h@{fileio.h}!ATA\_DRIVE@{ATA\_DRIVE}}
+\index{ATA\_DRIVE@{ATA\_DRIVE}!fileio.h@{fileio.h}}
+\doxysubsubsection{\texorpdfstring{ATA\_DRIVE}{ATA\_DRIVE}}
+{\footnotesize\ttfamily \label{fileio_8h_aa9ede1f736f86805a4aa00df9543b32f} 
+\#define ATA\+\_\+\+DRIVE~(\mbox{\hyperlink{fileio_8h_a7fad301214cc3b41f0dd60aaaaf9f3fc}{ATA\+\_\+\+IO\+\_\+\+BASE}} + 6)}
+
+
+
+ATA Drive/head select port. 
+
+
+
+Definition at line \mbox{\hyperlink{fileio_8h_source_l00040}{40}} of file \mbox{\hyperlink{fileio_8h_source}{fileio.\+h}}.
+
+\Hypertarget{fileio_8h_ac8d77dce295ef928eca4dfedb5fb7d36}\index{fileio.h@{fileio.h}!ATA\_ERROR@{ATA\_ERROR}}
+\index{ATA\_ERROR@{ATA\_ERROR}!fileio.h@{fileio.h}}
+\doxysubsubsection{\texorpdfstring{ATA\_ERROR}{ATA\_ERROR}}
+{\footnotesize\ttfamily \label{fileio_8h_ac8d77dce295ef928eca4dfedb5fb7d36} 
+\#define ATA\+\_\+\+ERROR~(\mbox{\hyperlink{fileio_8h_a7fad301214cc3b41f0dd60aaaaf9f3fc}{ATA\+\_\+\+IO\+\_\+\+BASE}} + 1)}
+
+
+
+ATA Error register port (read) 
+
+
+
+Definition at line \mbox{\hyperlink{fileio_8h_source_l00043}{43}} of file \mbox{\hyperlink{fileio_8h_source}{fileio.\+h}}.
+
+\Hypertarget{fileio_8h_a7fad301214cc3b41f0dd60aaaaf9f3fc}\index{fileio.h@{fileio.h}!ATA\_IO\_BASE@{ATA\_IO\_BASE}}
+\index{ATA\_IO\_BASE@{ATA\_IO\_BASE}!fileio.h@{fileio.h}}
+\doxysubsubsection{\texorpdfstring{ATA\_IO\_BASE}{ATA\_IO\_BASE}}
+{\footnotesize\ttfamily \label{fileio_8h_a7fad301214cc3b41f0dd60aaaaf9f3fc} 
+\#define ATA\+\_\+\+IO\+\_\+\+BASE~0x1\+F0}
+
+
+
+ATA IO Base port for primary IDE channel. 
+
+
+
+Definition at line \mbox{\hyperlink{fileio_8h_source_l00028}{28}} of file \mbox{\hyperlink{fileio_8h_source}{fileio.\+h}}.
+
+\Hypertarget{fileio_8h_ad7d110cd7a30fd360237bee7c8104712}\index{fileio.h@{fileio.h}!ATA\_LBA\_HI@{ATA\_LBA\_HI}}
+\index{ATA\_LBA\_HI@{ATA\_LBA\_HI}!fileio.h@{fileio.h}}
+\doxysubsubsection{\texorpdfstring{ATA\_LBA\_HI}{ATA\_LBA\_HI}}
+{\footnotesize\ttfamily \label{fileio_8h_ad7d110cd7a30fd360237bee7c8104712} 
+\#define ATA\+\_\+\+LBA\+\_\+\+HI~(\mbox{\hyperlink{fileio_8h_a7fad301214cc3b41f0dd60aaaaf9f3fc}{ATA\+\_\+\+IO\+\_\+\+BASE}} + 5)}
+
+
+
+ATA LBA high byte port. 
+
+
+
+Definition at line \mbox{\hyperlink{fileio_8h_source_l00055}{55}} of file \mbox{\hyperlink{fileio_8h_source}{fileio.\+h}}.
+
+\Hypertarget{fileio_8h_a69742c7774d4d316420ea9505c7956cb}\index{fileio.h@{fileio.h}!ATA\_LBA\_LOW@{ATA\_LBA\_LOW}}
+\index{ATA\_LBA\_LOW@{ATA\_LBA\_LOW}!fileio.h@{fileio.h}}
+\doxysubsubsection{\texorpdfstring{ATA\_LBA\_LOW}{ATA\_LBA\_LOW}}
+{\footnotesize\ttfamily \label{fileio_8h_a69742c7774d4d316420ea9505c7956cb} 
+\#define ATA\+\_\+\+LBA\+\_\+\+LOW~(\mbox{\hyperlink{fileio_8h_a7fad301214cc3b41f0dd60aaaaf9f3fc}{ATA\+\_\+\+IO\+\_\+\+BASE}} + 3)}
+
+
+
+ATA LBA low byte port. 
+
+
+
+Definition at line \mbox{\hyperlink{fileio_8h_source_l00049}{49}} of file \mbox{\hyperlink{fileio_8h_source}{fileio.\+h}}.
+
+\Hypertarget{fileio_8h_a9fb63653dd2f522e806f711034a5b11f}\index{fileio.h@{fileio.h}!ATA\_LBA\_MID@{ATA\_LBA\_MID}}
+\index{ATA\_LBA\_MID@{ATA\_LBA\_MID}!fileio.h@{fileio.h}}
+\doxysubsubsection{\texorpdfstring{ATA\_LBA\_MID}{ATA\_LBA\_MID}}
+{\footnotesize\ttfamily \label{fileio_8h_a9fb63653dd2f522e806f711034a5b11f} 
+\#define ATA\+\_\+\+LBA\+\_\+\+MID~(\mbox{\hyperlink{fileio_8h_a7fad301214cc3b41f0dd60aaaaf9f3fc}{ATA\+\_\+\+IO\+\_\+\+BASE}} + 4)}
+
+
+
+ATA LBA mid byte port. 
+
+
+
+Definition at line \mbox{\hyperlink{fileio_8h_source_l00052}{52}} of file \mbox{\hyperlink{fileio_8h_source}{fileio.\+h}}.
+
+\Hypertarget{fileio_8h_a115159b2812d6643bbb67dc53b54f668}\index{fileio.h@{fileio.h}!ATA\_SECCNT@{ATA\_SECCNT}}
+\index{ATA\_SECCNT@{ATA\_SECCNT}!fileio.h@{fileio.h}}
+\doxysubsubsection{\texorpdfstring{ATA\_SECCNT}{ATA\_SECCNT}}
+{\footnotesize\ttfamily \label{fileio_8h_a115159b2812d6643bbb67dc53b54f668} 
+\#define ATA\+\_\+\+SECCNT~(\mbox{\hyperlink{fileio_8h_a7fad301214cc3b41f0dd60aaaaf9f3fc}{ATA\+\_\+\+IO\+\_\+\+BASE}} + 2)}
+
+
+
+ATA Sector count register port. 
+
+
+
+Definition at line \mbox{\hyperlink{fileio_8h_source_l00046}{46}} of file \mbox{\hyperlink{fileio_8h_source}{fileio.\+h}}.
+
+\Hypertarget{fileio_8h_aed1929007f388cab23229c908be5bbaf}\index{fileio.h@{fileio.h}!ATA\_SR\_BSY@{ATA\_SR\_BSY}}
+\index{ATA\_SR\_BSY@{ATA\_SR\_BSY}!fileio.h@{fileio.h}}
+\doxysubsubsection{\texorpdfstring{ATA\_SR\_BSY}{ATA\_SR\_BSY}}
+{\footnotesize\ttfamily \label{fileio_8h_aed1929007f388cab23229c908be5bbaf} 
+\#define ATA\+\_\+\+SR\+\_\+\+BSY~0x80}
+
+
+
+ATA status register BSY (busy) bit. 
+
+
+
+Definition at line \mbox{\hyperlink{fileio_8h_source_l00064}{64}} of file \mbox{\hyperlink{fileio_8h_source}{fileio.\+h}}.
+
+\Hypertarget{fileio_8h_a27e6aaa78aaaa205a7dadf56b48d0bf6}\index{fileio.h@{fileio.h}!ATA\_SR\_DRQ@{ATA\_SR\_DRQ}}
+\index{ATA\_SR\_DRQ@{ATA\_SR\_DRQ}!fileio.h@{fileio.h}}
+\doxysubsubsection{\texorpdfstring{ATA\_SR\_DRQ}{ATA\_SR\_DRQ}}
+{\footnotesize\ttfamily \label{fileio_8h_a27e6aaa78aaaa205a7dadf56b48d0bf6} 
+\#define ATA\+\_\+\+SR\+\_\+\+DRQ~0x08}
+
+
+
+ATA status register DRQ (data request) bit. 
+
+
+
+Definition at line \mbox{\hyperlink{fileio_8h_source_l00067}{67}} of file \mbox{\hyperlink{fileio_8h_source}{fileio.\+h}}.
+
+\Hypertarget{fileio_8h_a8a2cf843df1ae63d4d16748dfe72a592}\index{fileio.h@{fileio.h}!ATA\_SR\_ERR@{ATA\_SR\_ERR}}
+\index{ATA\_SR\_ERR@{ATA\_SR\_ERR}!fileio.h@{fileio.h}}
+\doxysubsubsection{\texorpdfstring{ATA\_SR\_ERR}{ATA\_SR\_ERR}}
+{\footnotesize\ttfamily \label{fileio_8h_a8a2cf843df1ae63d4d16748dfe72a592} 
+\#define ATA\+\_\+\+SR\+\_\+\+ERR~0x01}
+
+
+
+ATA status register ERR (error) bit. 
+
+
+
+Definition at line \mbox{\hyperlink{fileio_8h_source_l00070}{70}} of file \mbox{\hyperlink{fileio_8h_source}{fileio.\+h}}.
+
+\Hypertarget{fileio_8h_a82b0c03860f06049d58daf210f368156}\index{fileio.h@{fileio.h}!ATA\_STATUS@{ATA\_STATUS}}
+\index{ATA\_STATUS@{ATA\_STATUS}!fileio.h@{fileio.h}}
+\doxysubsubsection{\texorpdfstring{ATA\_STATUS}{ATA\_STATUS}}
+{\footnotesize\ttfamily \label{fileio_8h_a82b0c03860f06049d58daf210f368156} 
+\#define ATA\+\_\+\+STATUS~(\mbox{\hyperlink{fileio_8h_a7fad301214cc3b41f0dd60aaaaf9f3fc}{ATA\+\_\+\+IO\+\_\+\+BASE}} + 7)}
+
+
+
+ATA Status port (read) 
+
+
+
+Definition at line \mbox{\hyperlink{fileio_8h_source_l00034}{34}} of file \mbox{\hyperlink{fileio_8h_source}{fileio.\+h}}.
+
+\Hypertarget{fileio_8h_ae1b5097423101f551088fac3ea671aec}\index{fileio.h@{fileio.h}!ATA\_WRITE\_CMD@{ATA\_WRITE\_CMD}}
+\index{ATA\_WRITE\_CMD@{ATA\_WRITE\_CMD}!fileio.h@{fileio.h}}
+\doxysubsubsection{\texorpdfstring{ATA\_WRITE\_CMD}{ATA\_WRITE\_CMD}}
+{\footnotesize\ttfamily \label{fileio_8h_ae1b5097423101f551088fac3ea671aec} 
+\#define ATA\+\_\+\+WRITE\+\_\+\+CMD~0x30}
+
+
+
+ATA command to write sectors. 
+
+
+
+Definition at line \mbox{\hyperlink{fileio_8h_source_l00073}{73}} of file \mbox{\hyperlink{fileio_8h_source}{fileio.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{fileio_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{fileio_8h_a6c22a78fa6a488041bb15afa10a26137}\index{fileio.h@{fileio.h}!AtaReadSector@{AtaReadSector}}
+\index{AtaReadSector@{AtaReadSector}!fileio.h@{fileio.h}}
+\doxysubsubsection{\texorpdfstring{AtaReadSector()}{AtaReadSector()}}
+{\footnotesize\ttfamily \label{fileio_8h_a6c22a78fa6a488041bb15afa10a26137} 
+void Ata\+Read\+Sector (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}}]{lba}{, }\item[{\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} \texorpdfstring{$\ast$}{*}}]{buffer}{}\end{DoxyParamCaption})}
+
+
+
+Reads a 512-\/byte sector from ATA disk into buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lba} & Logical block address of sector. \\
+\hline
+{\em buffer} & Pointer to buffer to store sector data (must be \texorpdfstring{$>$}{>}= 512 bytes).\\
+\hline
+\end{DoxyParams}
+Reads a 512-\/byte sector from ATA disk into buffer.
+
+Sends commands to the ATA device to read one sector specified by the logical block address (LBA). The read sector data is stored in the provided buffer.
+
+
+\begin{DoxyParams}{Parameters}
+{\em lba} & The logical block address of the sector to read. \\
+\hline
+{\em buffer} & Pointer to a 512-\/byte buffer where the read data will be stored.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Assumes the buffer is valid and large enough for one sector. 
+
+Interrupts and device control signals are managed internally. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{_a_t_a_8c_source_l00063}{63}} of file \mbox{\hyperlink{_a_t_a_8c_source}{ATA.\+c}}.
+
+\Hypertarget{fileio_8h_a42403de508595b74b8ce384c2026a1d5}\index{fileio.h@{fileio.h}!AtaWriteSector@{AtaWriteSector}}
+\index{AtaWriteSector@{AtaWriteSector}!fileio.h@{fileio.h}}
+\doxysubsubsection{\texorpdfstring{AtaWriteSector()}{AtaWriteSector()}}
+{\footnotesize\ttfamily \label{fileio_8h_a42403de508595b74b8ce384c2026a1d5} 
+void Ata\+Write\+Sector (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}}]{lba}{, }\item[{const \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} \texorpdfstring{$\ast$}{*}}]{buffer}{}\end{DoxyParamCaption})}
+
+
+
+Writes a 512-\/byte sector to ATA disk from buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lba} & Logical block address of sector. \\
+\hline
+{\em buffer} & Pointer to buffer containing data to write (must be \texorpdfstring{$>$}{>}= 512 bytes).\\
+\hline
+\end{DoxyParams}
+Writes a 512-\/byte sector to ATA disk from buffer.
+
+Sends commands to the ATA device to write one sector specified by the logical block address (LBA). The data to write is taken from the provided buffer.
+
+
+\begin{DoxyParams}{Parameters}
+{\em lba} & The logical block address of the sector to write. \\
+\hline
+{\em buffer} & Pointer to a 512-\/byte buffer containing the data to write.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Assumes the buffer is valid and contains at least one sector of data. 
+
+This function blocks until the write completes and the cache is flushed. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{_a_t_a_8c_source_l00097}{97}} of file \mbox{\hyperlink{_a_t_a_8c_source}{ATA.\+c}}.
+
+\Hypertarget{fileio_8h_a443f1dfce17aeb3b8110961d034d77bc}\index{fileio.h@{fileio.h}!Fat16Ls@{Fat16Ls}}
+\index{Fat16Ls@{Fat16Ls}!fileio.h@{fileio.h}}
+\doxysubsubsection{\texorpdfstring{Fat16Ls()}{Fat16Ls()}}
+{\footnotesize\ttfamily \label{fileio_8h_a443f1dfce17aeb3b8110961d034d77bc} 
+void Fat16\+Ls (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Lists files in the FAT16 root directory. 
+
+Lists files in the FAT16 root directory.
+
+Reads the root directory sectors of the FAT16 filesystem and prints the file names, their starting cluster numbers, and file sizes.
+
+It handles\+:
+\begin{DoxyItemize}
+\item End of directory detection
+\item Skipping deleted entries
+\item Decoding little-\/endian cluster and size fields
+\end{DoxyItemize}
+
+Output format per file\+: File\+: \mbox{[}filename\mbox{]}.\mbox{[}ext\mbox{]} \texorpdfstring{$\vert$}{|} Cluster\+: \mbox{[}cluster\mbox{]} \texorpdfstring{$\vert$}{|} Size\+: \mbox{[}size in bytes\mbox{]} 
+
+Definition at line \mbox{\hyperlink{ls_8c_source_l00037}{37}} of file \mbox{\hyperlink{ls_8c_source}{ls.\+c}}.
+
+\Hypertarget{fileio_8h_acf67e9fa4293c49faae3ee63c1f307fe}\index{fileio.h@{fileio.h}!Fat16Mount@{Fat16Mount}}
+\index{Fat16Mount@{Fat16Mount}!fileio.h@{fileio.h}}
+\doxysubsubsection{\texorpdfstring{Fat16Mount()}{Fat16Mount()}}
+{\footnotesize\ttfamily \label{fileio_8h_acf67e9fa4293c49faae3ee63c1f307fe} 
+\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} Fat16\+Mount (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}}]{partition\+\_\+lba}{}\end{DoxyParamCaption})}
+
+
+
+Mounts FAT16 partition and reads filesystem info. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em partition\+\_\+lba} & LBA address of FAT16 partition start. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 on success, 0 on failure.
+\end{DoxyReturn}
+Mounts FAT16 partition and reads filesystem info.
+
+Reads the boot sector, validates the FAT16 signature, and initializes the FAT16 info struct with important filesystem layout details.
+
+
+\begin{DoxyParams}{Parameters}
+{\em partition\+\_\+lba} & Logical block address of the FAT16 partition. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 on success, 0 on failure (invalid boot sector signature).
+\end{DoxyReturn}
+Prints mount status and key filesystem layout info via Kprintf. 
+
+Definition at line \mbox{\hyperlink{fat16__mnt_8c_source_l00067}{67}} of file \mbox{\hyperlink{fat16__mnt_8c_source}{fat16\+\_\+mnt.\+c}}.
+
+\Hypertarget{fileio_8h_a6339a034411051b10653a617583e1ddf}\index{fileio.h@{fileio.h}!Fat16RemoveFile@{Fat16RemoveFile}}
+\index{Fat16RemoveFile@{Fat16RemoveFile}!fileio.h@{fileio.h}}
+\doxysubsubsection{\texorpdfstring{Fat16RemoveFile()}{Fat16RemoveFile()}}
+{\footnotesize\ttfamily \label{fileio_8h_a6339a034411051b10653a617583e1ddf} 
+void Fat16\+Remove\+File (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{filename}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{ext}{}\end{DoxyParamCaption})}
+
+
+
+Removes a file from the FAT16 root directory and frees clusters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & File name (8 chars). \\
+\hline
+{\em ext} & File extension (3 chars).\\
+\hline
+\end{DoxyParams}
+Removes a file from the FAT16 root directory and frees clusters.
+
+This function searches the FAT16 root directory for a file matching the specified filename and extension. If found, it marks the directory entry as deleted and frees all associated FAT clusters by clearing their entries in the FAT table.
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The 8-\/character filename (without extension). \\
+\hline
+{\em ext} & The 3-\/character file extension.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+The function assumes the FAT16 filesystem structure is accessible through the global {\ttfamily fat16} variable. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{rmfile_8c_source_l00038}{38}} of file \mbox{\hyperlink{rmfile_8c_source}{rmfile.\+c}}.
+
+\Hypertarget{fileio_8h_a08e4988eb7beeffb9188674f29a975f6}\index{fileio.h@{fileio.h}!Fileconts@{Fileconts}}
+\index{Fileconts@{Fileconts}!fileio.h@{fileio.h}}
+\doxysubsubsection{\texorpdfstring{Fileconts()}{Fileconts()}}
+{\footnotesize\ttfamily \label{fileio_8h_a08e4988eb7beeffb9188674f29a975f6} 
+void Fileconts (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{filename}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{ext}{}\end{DoxyParamCaption})}
+
+
+
+Prints contents of a FAT16 file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Name of the file (8 chars). \\
+\hline
+{\em ext} & File extension (3 chars).\\
+\hline
+\end{DoxyParams}
+Prints contents of a FAT16 file.
+
+This function searches the FAT16 root directory for a file matching the specified filename and extension. If found, it reads the first data cluster of the file and prints its contents as ASCII characters to the console. Non-\/printable characters are displayed as dots (\textquotesingle{}.\textquotesingle{}). The reading stops either at the end of the cluster or when a FAT16 EOF marker (0x1A) is found.
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The 8-\/character filename (without extension). \\
+\hline
+{\em ext} & The 3-\/character file extension.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+The function assumes the FAT16 filesystem structure is accessible through the global {\ttfamily fat16} variable. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{printconts_8c_source_l00041}{41}} of file \mbox{\hyperlink{printconts_8c_source}{printconts.\+c}}.
+
+\Hypertarget{fileio_8h_a83c6766aaf545016943897b8f8902a98}\index{fileio.h@{fileio.h}!FindFat16Partition@{FindFat16Partition}}
+\index{FindFat16Partition@{FindFat16Partition}!fileio.h@{fileio.h}}
+\doxysubsubsection{\texorpdfstring{FindFat16Partition()}{FindFat16Partition()}}
+{\footnotesize\ttfamily \label{fileio_8h_a83c6766aaf545016943897b8f8902a98} 
+\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} Find\+Fat16\+Partition (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Finds the FAT16 partition on disk. 
+
+\begin{DoxyReturn}{Returns}
+LBA of FAT16 partition start.
+\end{DoxyReturn}
+Finds the FAT16 partition on disk.
+
+Reads the \doxylink{struct_m_b_r}{MBR} sector, verifies the signature, then scans all partitions for a FAT16 type (0x04 or 0x06). ~\newline
+
+
+Prints debug info about partitions to kernel log.
+
+\begin{DoxyReturn}{Returns}
+LBA of the FAT16 partition start or 0 if none found or invalid \doxylink{struct_m_b_r}{MBR}. 
+\end{DoxyReturn}
+\texorpdfstring{$<$}{<} Invalid \doxylink{struct_m_b_r}{MBR} signature
+
+\texorpdfstring{$<$}{<} Return FAT16 partition start LBA
+
+\texorpdfstring{$<$}{<} No FAT16 partition found
+
+Definition at line \mbox{\hyperlink{_m_b_r_8c_source_l00069}{69}} of file \mbox{\hyperlink{_m_b_r_8c_source}{MBR.\+c}}.
+
+\Hypertarget{fileio_8h_a0955c984a7b27de3da315eefeb4db734}\index{fileio.h@{fileio.h}!Mkfile@{Mkfile}}
+\index{Mkfile@{Mkfile}!fileio.h@{fileio.h}}
+\doxysubsubsection{\texorpdfstring{Mkfile()}{Mkfile()}}
+{\footnotesize\ttfamily \label{fileio_8h_a0955c984a7b27de3da315eefeb4db734} 
+void Mkfile (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{filename}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{ext}{}\end{DoxyParamCaption})}
+
+
+
+Creates a new empty file in the FAT16 root directory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & File name (8 chars). \\
+\hline
+{\em ext} & File extension (3 chars).\\
+\hline
+\end{DoxyParams}
+Creates a new empty file in the FAT16 root directory.
+
+This function searches for a free root directory entry and a free cluster, then creates a new directory entry for the specified filename and extension. It initializes the directory entry with default attributes and zero file size.
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The 8-\/character filename (without extension). \\
+\hline
+{\em ext} & The 3-\/character file extension.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+The function assumes FAT16 filesystem data is accessible through the global {\ttfamily fat16} structure.
+\end{DoxyNote}
+\begin{DoxyWarning}{Warning}
+If no free directory entry or cluster is available, the function prints an error message and returns without creating the file. 
+\end{DoxyWarning}
+
+
+Definition at line \mbox{\hyperlink{mkfile_8c_source_l00040}{40}} of file \mbox{\hyperlink{mkfile_8c_source}{mkfile.\+c}}.
+
+\Hypertarget{fileio_8h_a25e15562fb1b780e6316940a4bd2fde9}\index{fileio.h@{fileio.h}!Writefile@{Writefile}}
+\index{Writefile@{Writefile}!fileio.h@{fileio.h}}
+\doxysubsubsection{\texorpdfstring{Writefile()}{Writefile()}}
+{\footnotesize\ttfamily \label{fileio_8h_a25e15562fb1b780e6316940a4bd2fde9} 
+void Writefile (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{filename}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{ext}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{data}{, }\item[{\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}}]{size}{}\end{DoxyParamCaption})}
+
+
+
+Writes data to a FAT16 file, replacing its contents. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & 8.\+3 filename (name only). \\
+\hline
+{\em ext} & File extension (3 chars). \\
+\hline
+{\em data} & Pointer to data buffer to write. \\
+\hline
+{\em size} & Size of data to write in bytes.\\
+\hline
+\end{DoxyParams}
+Writes data to a FAT16 file, replacing its contents.
+
+Searches for the file specified by filename and extension in the FAT16 root directory. If found, writes up to 512 bytes of data to the file\textquotesingle{}s first cluster sector and updates the file size in the directory entry.
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The 8-\/character filename (without extension). \\
+\hline
+{\em ext} & The 3-\/character file extension. \\
+\hline
+{\em data} & Pointer to the data buffer to write. \\
+\hline
+{\em size} & Number of bytes to write from the data buffer (max 512 bytes).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+This function only writes to the first cluster of the file. Writing beyond the first cluster or appending is not handled. 
+
+Assumes the global {\ttfamily fat16} structure is properly initialized and accessible. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{write_8c_source_l00040}{40}} of file \mbox{\hyperlink{write_8c_source}{write.\+c}}.
+
+
+
+\label{doc-var-members}
+\Hypertarget{fileio_8h_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{fileio_8h_a666a93dce54663bac1b67500b58cbb48}\index{fileio.h@{fileio.h}!fat16@{fat16}}
+\index{fat16@{fat16}!fileio.h@{fileio.h}}
+\doxysubsubsection{\texorpdfstring{fat16}{fat16}}
+{\footnotesize\ttfamily \label{fileio_8h_a666a93dce54663bac1b67500b58cbb48} 
+struct \mbox{\hyperlink{struct_fa_t16_info}{Fa\+T16\+Info}} fat16\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Global FAT16 filesystem info struct. 
+
+Global FAT16 filesystem info struct. 
+
+Definition at line \mbox{\hyperlink{fat16__mnt_8c_source_l00025}{25}} of file \mbox{\hyperlink{fat16__mnt_8c_source}{fat16\+\_\+mnt.\+c}}.
+
+\Hypertarget{fileio_8h_a5373399b54661f02f43e4bb33da332f8}\index{fileio.h@{fileio.h}!irq14stat@{irq14stat}}
+\index{irq14stat@{irq14stat}!fileio.h@{fileio.h}}
+\doxysubsubsection{\texorpdfstring{irq14stat}{irq14stat}}
+{\footnotesize\ttfamily \label{fileio_8h_a5373399b54661f02f43e4bb33da332f8} 
+volatile \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} irq14stat\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+IRQ status flags for IRQ14 and IRQ15 (primary and secondary IDE interrupts) 
+
+
+
+Definition at line \mbox{\hyperlink{irqflags_8c_source_l00022}{22}} of file \mbox{\hyperlink{irqflags_8c_source}{irqflags.\+c}}.
+
+\Hypertarget{fileio_8h_aececdae3bdd58be3f5913bf7b2fd510d}\index{fileio.h@{fileio.h}!irq15stat@{irq15stat}}
+\index{irq15stat@{irq15stat}!fileio.h@{fileio.h}}
+\doxysubsubsection{\texorpdfstring{irq15stat}{irq15stat}}
+{\footnotesize\ttfamily \label{fileio_8h_aececdae3bdd58be3f5913bf7b2fd510d} 
+volatile \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} irq15stat\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{irqflags_8c_source_l00023}{23}} of file \mbox{\hyperlink{irqflags_8c_source}{irqflags.\+c}}.
+

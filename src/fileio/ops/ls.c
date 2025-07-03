@@ -19,6 +19,21 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include <fileio/fileio.h>
 #include <io/kio.h>
 #include <types/nums.h>
+
+/**
+ * @brief List files in the FAT16 root directory.
+ *
+ * Reads the root directory sectors of the FAT16 filesystem and prints
+ * the file names, their starting cluster numbers, and file sizes.
+ *
+ * It handles:
+ * - End of directory detection
+ * - Skipping deleted entries
+ * - Decoding little-endian cluster and size fields
+ *
+ * Output format per file:
+ *   File: [filename].[ext] | Cluster: [cluster] | Size: [size in bytes]
+ */
 void Fat16Ls() {
     u32 entries_per_sector = fat16.bytes_per_sector / 32;
     u32 root_dir_sectors =
@@ -54,7 +69,7 @@ void Fat16Ls() {
             Kprintf("File: ");
             for (int i = 0; i < 8; i++) {
                 Kputchar(entry[i]);
-                if (entry[i] == ' ' || !entry[i] || i >= 0x5B && i <= 0x40) {
+                if (entry[i] == ' ' || !entry[i] || (i >= 0x5B && i <= 0x40)) {
                     break;
                 }
             }
@@ -62,7 +77,7 @@ void Fat16Ls() {
             Kputchar(' ');
             for (int i = 0; i < 3; i++) {
                 Kputchar(entry[8 + i]);
-                if (entry[i] == ' ' || !entry[i] || i >= 0x5B && i <= 0x40) {
+                if (entry[i] == ' ' || !entry[i] || (i >= 0x5B && i <= 0x40)) {
                     break;
                 }
             }

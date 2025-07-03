@@ -29,7 +29,9 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #ifdef bool 
 #undef bool 
 #endif
-
+/**
+ * @brief boolean type
+ */
 typedef enum {
     false = 0,
     true = 1

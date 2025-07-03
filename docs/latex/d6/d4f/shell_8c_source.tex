@@ -1,0 +1,134 @@
+\doxysection{shell.\+c}
+\hypertarget{shell_8c_source}{}\label{shell_8c_source}\index{src/KShell/shell.c@{src/KShell/shell.c}}
+\mbox{\hyperlink{shell_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00002}00002\ \textcolor{comment}{WKern\ -\/\ A\ Bare\ Metal\ OS\ /\ Kernel\ I\ am\ maKing\ (For\ Fun)}}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00003}00003\ \textcolor{comment}{Copyright\ (C)\ 2025\ \ Wdboyes13}}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00004}00004\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00005}00005\ \textcolor{comment}{This\ program\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00006}00006\ \textcolor{comment}{it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00007}00007\ \textcolor{comment}{the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00008}00008\ \textcolor{comment}{any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00009}00009\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00010}00010\ \textcolor{comment}{This\ program\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00011}00011\ \textcolor{comment}{but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00012}00012\ \textcolor{comment}{MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00013}00013\ \textcolor{comment}{GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00014}00014\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00015}00015\ \textcolor{comment}{You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00016}00016\ \textcolor{comment}{along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00017}00017\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00019}00019\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{filecmds_8h}{KShell/filecmds.h}}>}}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00020}00020\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{shell_8h}{KShell/shell.h}}>}}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00021}00021\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{fileio_8h}{fileio/fileio.h}}>}}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00022}00022\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{global_8h}{global.h}}>}}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00023}00023\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{kio_8h}{io/kio.h}}>}}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00024}00024\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{kmem_8h}{mem/kmem.h}}>}}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00025}00025\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{virtnet_8h}{net/virtnet.h}}>}}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00026}00026\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{util_8h}{utils/util.h}}>}}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00027}00027\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{stdwex_8h}{wex/stdwex.h}}>}}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00038}\mbox{\hyperlink{shell_8c_a9c3168e996139d653e670508257c5b12}{00038}}\ \textcolor{keyword}{typedef}\ void\ (*\mbox{\hyperlink{shell_8c_a9c3168e996139d653e670508257c5b12}{CommandFunc}})(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *argv[],\ \textcolor{keywordtype}{int}\ argc);}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00044}\mbox{\hyperlink{struct_command_entry}{00044}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00045}\mbox{\hyperlink{struct_command_entry_a4f1897b38353624016edd80996ae9e80}{00045}}\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{struct_command_entry_a4f1897b38353624016edd80996ae9e80}{name}};}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00046}\mbox{\hyperlink{struct_command_entry_acf5139fb2d3a4411b88d6c330fd9f4ca}{00046}}\ \ \ \ \ \mbox{\hyperlink{shell_8c_a9c3168e996139d653e670508257c5b12}{CommandFunc}}\ \mbox{\hyperlink{struct_command_entry_acf5139fb2d3a4411b88d6c330fd9f4ca}{func}};}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00047}00047\ \}\ \mbox{\hyperlink{struct_command_entry}{CommandEntry}};}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00052}\mbox{\hyperlink{shell_8c_a83e8306cf0aa99336523b09834fff2e5}{00052}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{shell_8c_a83e8306cf0aa99336523b09834fff2e5}{CmdCmp}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *argv[],\ \textcolor{keywordtype}{int}\ argc)\ \{\ \mbox{\hyperlink{strings_8c_a7e0fb67a75f4e208ee6c20c17f3aa80f}{Kshcmp}}();\ \}}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00054}\mbox{\hyperlink{shell_8c_a462d5686f6fae915b93af968d3564dbe}{00054}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{shell_8c_a462d5686f6fae915b93af968d3564dbe}{CmdHelp}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *argv[],\ \textcolor{keywordtype}{int}\ argc)\ \{\ \mbox{\hyperlink{shell_8h_a54d17a6d0bb758f26b9dda4c6d8e8da8}{Help}}();\ \}}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00058}\mbox{\hyperlink{shell_8c_aa60515d6b09ce7959b0747527e8b6755}{00058}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{shell_8c_aa60515d6b09ce7959b0747527e8b6755}{CmdTst}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *argv[],\ \textcolor{keywordtype}{int}\ argc)\ \{\ \mbox{\hyperlink{stdwex_8h_a3b9a19febd250f2acf9d382f635b8fc2}{Runwex}}(\mbox{\hyperlink{stdwex_8h_af3fc9610c4455b3f2f675e055c98066e}{Execr}}());\ \}}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00063}\mbox{\hyperlink{shell_8c_a8e9c098f31a27147ca911b46bf24a370}{00063}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{shell_8c_a8e9c098f31a27147ca911b46bf24a370}{CmdClear}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *argv[],\ \textcolor{keywordtype}{int}\ argc)\ \{\ \mbox{\hyperlink{kio_8h_ab5b1620493cead3b15794c38e08b6cbb}{Kcfp}}();\ \}}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00067}\mbox{\hyperlink{shell_8c_a83d8f2c4595e2201479ac48298509708}{00067}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{shell_8c_a83d8f2c4595e2201479ac48298509708}{CmdLs}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *argv[],\ \textcolor{keywordtype}{int}\ argc)\ \{\ \mbox{\hyperlink{fileio_8h_a443f1dfce17aeb3b8110961d034d77bc}{Fat16Ls}}();\ \}}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00072}\mbox{\hyperlink{shell_8c_a4d1a1f2e252b875250698d87f2224ce2}{00072}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{shell_8c_a4d1a1f2e252b875250698d87f2224ce2}{CmdUser}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *argv[],\ \textcolor{keywordtype}{int}\ argc)\ \{\ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{stringliteral}{"{}\(\backslash\)nUsername:\ \%s"{}},\ \mbox{\hyperlink{global_8h_a5ac083a645d964373f022d03df4849c8}{name}});\ \}}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00076}\mbox{\hyperlink{shell_8c_af0ef7fc69201acb8660588ac0741b2d4}{00076}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{shell_8c_af0ef7fc69201acb8660588ac0741b2d4}{CmdRegex}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *argv[],\ \textcolor{keywordtype}{int}\ argc)\ \{\ \mbox{\hyperlink{regexcmd_8c_ac01d2ca072ff1771f9562ec56acbf9a7}{Regexc}}();\ \}}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00080}\mbox{\hyperlink{shell_8c_a399a8cfdd8c16a23dda9c9ae1c44b4df}{00080}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{shell_8c_a399a8cfdd8c16a23dda9c9ae1c44b4df}{CmdRecvPack}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *argv[],\ \textcolor{keywordtype}{int}\ argc)\ \{}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00081}00081\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ Key\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00082}00082\ \ \ \ \ \textcolor{keywordflow}{while}\ (!(Key\ =\ \mbox{\hyperlink{keyin_8c_a169aeac886fd610ab102b51736c1e9e8}{Kgetkey}}())\ \&\&\ Key\ ==\ \textcolor{charliteral}{'a'})\ \{}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00083}00083\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{virtio_8c_a6b1c9baee3d5fa757db9be26bfe34eae}{NetStq}}(\mbox{\hyperlink{global_8h_a1948e96711d16f6cd2d551c5c3b121c5}{iob}});}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00084}00084\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00085}00085\ \}}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00089}\mbox{\hyperlink{shell_8c_a4bc1c0b726585db50aabb3052ed83723}{00089}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{shell_8c_a4bc1c0b726585db50aabb3052ed83723}{CmdShutdown}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *argv[],\ \textcolor{keywordtype}{int}\ argc)\ \{}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00090}00090\ \textcolor{preprocessor}{\#ifdef\ VMQEMU}}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00091}00091\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{shutdown_8h}{qemu/shutdown.h}}>}}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00092}00092\ \ \ \ \ \mbox{\hyperlink{shutdown_8h_a8df0577f8714f20955ff485b4274dc93}{QemuShutdown}}();}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00093}00093\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00094}00094\ \}}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00103}\mbox{\hyperlink{shell_8c_adaa0331d6c7cedebb57c86a5ab332c1c}{00103}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{shell_8c_adaa0331d6c7cedebb57c86a5ab332c1c}{CmdSetName}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *argv[],\ \textcolor{keywordtype}{int}\ argc)\ \{}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00104}00104\ \ \ \ \ \textcolor{keywordflow}{if}\ (argc\ <\ 2)\ \{}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00105}00105\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{stringliteral}{"{}Not\ enough\ args\(\backslash\)nUsage:\ setname\ [New\ Name]"{}});}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00106}00106\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00107}00107\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00108}00108\ \ \ \ \ \mbox{\hyperlink{global_8h_a5ac083a645d964373f022d03df4849c8}{name}}\ =\ argv[1];}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00109}00109\ \}}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00110}00110\ }
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00115}\mbox{\hyperlink{shell_8c_a38b3c25ddd58335401386043634f2ac4}{00115}}\ \mbox{\hyperlink{struct_command_entry}{CommandEntry}}\ \mbox{\hyperlink{shell_8c_a38b3c25ddd58335401386043634f2ac4}{commands}}[]\ =\ \{}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00116}00116\ \ \ \ \ \{\ \textcolor{stringliteral}{"{}cmp"{}},\ \ \ \ \ \mbox{\hyperlink{shell_8c_a83e8306cf0aa99336523b09834fff2e5}{CmdCmp}}\ \},}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00117}00117\ \ \ \ \ \{\ \textcolor{stringliteral}{"{}help"{}},\ \ \ \ \mbox{\hyperlink{shell_8c_a462d5686f6fae915b93af968d3564dbe}{CmdHelp}}\ \},}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00118}00118\ \ \ \ \ \{\ \textcolor{stringliteral}{"{}tst"{}},\ \ \ \ \ \mbox{\hyperlink{shell_8c_aa60515d6b09ce7959b0747527e8b6755}{CmdTst}}\ \},}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00119}00119\ \ \ \ \ \{\ \textcolor{stringliteral}{"{}clear"{}},\ \ \ \mbox{\hyperlink{shell_8c_a8e9c098f31a27147ca911b46bf24a370}{CmdClear}}\ \},}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00120}00120\ \ \ \ \ \{\ \textcolor{stringliteral}{"{}ls"{}},\ \ \ \ \ \ \mbox{\hyperlink{shell_8c_a83d8f2c4595e2201479ac48298509708}{CmdLs}}\ \},}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00121}00121\ \ \ \ \ \{\ \textcolor{stringliteral}{"{}read"{}},\ \ \ \ \mbox{\hyperlink{filecmds_8c_a3b19414bd63d5dbc8eead87028b78f36}{Readf}}\ \},}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00122}00122\ \ \ \ \ \{\ \textcolor{stringliteral}{"{}user"{}},\ \ \ \ \mbox{\hyperlink{shell_8c_a4d1a1f2e252b875250698d87f2224ce2}{CmdUser}}\ \},}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00123}00123\ \ \ \ \ \{\ \textcolor{stringliteral}{"{}mKfile"{}},\ \ \mbox{\hyperlink{filecmds_8c_af4df3f791bebb47781781cf5193d2af2}{Mkf}}\ \},}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00124}00124\ \ \ \ \ \{\ \textcolor{stringliteral}{"{}rm"{}},\ \ \ \ \ \ \mbox{\hyperlink{filecmds_8c_a65d79836362fd0249f051610e90601a9}{Rm}}\ \},}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00125}00125\ \ \ \ \ \{\ \textcolor{stringliteral}{"{}write"{}},\ \ \ \mbox{\hyperlink{filecmds_8c_a7c98338b2ececdd028b380c175219f1b}{Writef}}\ \},}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00126}00126\ \ \ \ \ \{\ \textcolor{stringliteral}{"{}regex"{}},\ \ \ \mbox{\hyperlink{shell_8c_af0ef7fc69201acb8660588ac0741b2d4}{CmdRegex}}\ \},}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00127}00127\ \ \ \ \ \{\ \textcolor{stringliteral}{"{}recvpacK"{}},\mbox{\hyperlink{shell_8c_a399a8cfdd8c16a23dda9c9ae1c44b4df}{CmdRecvPack}}\ \},}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00128}00128\ \ \ \ \ \{\ \textcolor{stringliteral}{"{}shutdown"{}},\mbox{\hyperlink{shell_8c_a4bc1c0b726585db50aabb3052ed83723}{CmdShutdown}}\ \},}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00129}00129\ \ \ \ \ \{\ \textcolor{stringliteral}{"{}setname"{}},\ \mbox{\hyperlink{shell_8c_adaa0331d6c7cedebb57c86a5ab332c1c}{CmdSetName}}\ \},}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00130}00130\ \};}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00131}00131\ }
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00132}00132\ }
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00136}\mbox{\hyperlink{shell_8c_adef3034178d2e2de064a8709350e8f01}{00136}}\ \textcolor{preprocessor}{\#define\ NUM\_COMMANDS\ (sizeof(commands)\ /\ sizeof(CommandEntry))}}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00137}00137\ }
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00151}\mbox{\hyperlink{shell_8c_a80c98222810cc4d771ea5f99e1fb2d04}{00151}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{shell_8c_a80c98222810cc4d771ea5f99e1fb2d04}{Sh}}()\ \{}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00152}00152\ \ \ \ \ \textcolor{keywordflow}{while}\ (1)\ \{}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00153}00153\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *cmd\ =\ (\textcolor{keywordtype}{char}\ *)\mbox{\hyperlink{alloc_8c_a4744507132bfe63d677abecc60769ca0}{Kmalloc}}(128,\ 8);}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00154}00154\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!cmd)\ \{}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{stringliteral}{"{}Malloc\ Failed"{}});}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{alloc_8c_a51de4a944081d3a40379dafdc8cc8ba5}{Kfree}}(cmd);}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00158}00158\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00159}00159\ }
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00160}00160\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{stringliteral}{"{}\(\backslash\)nSH>\ "{}});}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00161}00161\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{keyin_8c_a31cf36db330251ce379e7dc5dc735ee0}{Kgetstr}}(cmd,\ 127);}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00162}00162\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{keyin_8c_ac16b0ca4ec58cb9f895ab94a07a6bcee}{Kflush}}();}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00163}00163\ }
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00164}00164\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *argv[8];}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00165}00165\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ argc\ =\ \mbox{\hyperlink{strings_8c_a33913a7d36d6e95f7762d86dc03f4c10}{Split}}(cmd,\ argv,\ 8);}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00166}00166\ }
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00167}00167\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (argc\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00168}00168\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{alloc_8c_a51de4a944081d3a40379dafdc8cc8ba5}{Kfree}}(cmd);}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00169}00169\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00170}00170\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00171}00171\ }
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00172}00172\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ found\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00173}00173\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{shell_8c_adef3034178d2e2de064a8709350e8f01}{NUM\_COMMANDS}};\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00174}00174\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{strings_8c_acc439d817730f3d3edbf4f977787b18c}{Kstrcmp}}(argv[0],\ \mbox{\hyperlink{shell_8c_a38b3c25ddd58335401386043634f2ac4}{commands}}[i].\mbox{\hyperlink{global_8h_a5ac083a645d964373f022d03df4849c8}{name}})\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00175}00175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{shell_8c_a38b3c25ddd58335401386043634f2ac4}{commands}}[i].func((\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ **)argv,\ argc);}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00176}00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ found\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00177}00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00178}00178\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00179}00179\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00180}00180\ }
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00181}00181\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!found)\ \{}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00182}00182\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kio_8h_a556dbaca28768fd91dacd53422223230}{Kprintf}}(\textcolor{stringliteral}{"{}\(\backslash\)nUnKnown\ Command\ -\/\ Try\ \`{}help`\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00183}00183\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00184}00184\ }
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00185}00185\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{alloc_8c_a51de4a944081d3a40379dafdc8cc8ba5}{Kfree}}(cmd);}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00186}00186\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{shell_8c_source_l00187}00187\ \}}
+
+\end{DoxyCode}

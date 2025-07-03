@@ -1,0 +1,40 @@
+\doxysection{src/fileio/ops/ls.c File Reference}
+\hypertarget{ls_8c}{}\label{ls_8c}\index{src/fileio/ops/ls.c@{src/fileio/ops/ls.c}}
+{\ttfamily \#include $<$fileio/fileio.\+h$>$}\newline
+{\ttfamily \#include $<$io/kio.\+h$>$}\newline
+{\ttfamily \#include $<$types/nums.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{ls_8c_a1bf0d0539f912b4aa308301246f0fc85}{Fat16\+Ls}} ()
+\begin{DoxyCompactList}\small\item\em List files in the FAT16 root directory. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{ls_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{ls_8c_a1bf0d0539f912b4aa308301246f0fc85}\index{ls.c@{ls.c}!Fat16Ls@{Fat16Ls}}
+\index{Fat16Ls@{Fat16Ls}!ls.c@{ls.c}}
+\doxysubsubsection{\texorpdfstring{Fat16Ls()}{Fat16Ls()}}
+{\footnotesize\ttfamily \label{ls_8c_a1bf0d0539f912b4aa308301246f0fc85} 
+void Fat16\+Ls (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+List files in the FAT16 root directory. 
+
+Lists files in the FAT16 root directory.
+
+Reads the root directory sectors of the FAT16 filesystem and prints the file names, their starting cluster numbers, and file sizes.
+
+It handles\+:
+\begin{DoxyItemize}
+\item End of directory detection
+\item Skipping deleted entries
+\item Decoding little-\/endian cluster and size fields
+\end{DoxyItemize}
+
+Output format per file\+: File\+: \mbox{[}filename\mbox{]}.\mbox{[}ext\mbox{]} \texorpdfstring{$\vert$}{|} Cluster\+: \mbox{[}cluster\mbox{]} \texorpdfstring{$\vert$}{|} Size\+: \mbox{[}size in bytes\mbox{]} 
+
+Definition at line \mbox{\hyperlink{ls_8c_source_l00037}{37}} of file \mbox{\hyperlink{ls_8c_source}{ls.\+c}}.
+

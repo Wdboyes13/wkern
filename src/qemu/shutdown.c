@@ -19,6 +19,11 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include <err/kerror.h>
 #include <io/kio.h>
 #include <utils/util.h>
+/**
+ * @brief Shutdown QEMU VM Using ACPI Port
+ * - Attempts to shutdown QEMU VM
+ * - If fails, force a triple fault
+ */
 __attribute__((noreturn)) void QemuShutdown() {
     Kprintf("\nShutting Down...\n");
     ZZZ(20);

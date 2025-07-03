@@ -1,0 +1,63 @@
+\doxysection{MBR Struct Reference}
+\hypertarget{struct_m_b_r}{}\label{struct_m_b_r}\index{MBR@{MBR}}
+
+
+Master Boot Record structure layout.  
+
+
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} \mbox{\hyperlink{struct_m_b_r_af09cbcfefd6e4dbb9cf53b48f96f5f72}{bootstrap}} \mbox{[}446\mbox{]}
+\item 
+struct \mbox{\hyperlink{struct_partition_entry}{Partition\+Entry}} \mbox{\hyperlink{struct_m_b_r_a259c5eea62328410a413ec1929356163}{partitions}} \mbox{[}4\mbox{]}
+\item 
+\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}} \mbox{\hyperlink{struct_m_b_r_a1a8e5ce3031355c8a44cbe9186397d18}{signature}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Master Boot Record structure layout. 
+
+Definition at line \mbox{\hyperlink{_m_b_r_8c_source_l00050}{50}} of file \mbox{\hyperlink{_m_b_r_8c_source}{MBR.\+c}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{struct_m_b_r_doc-variable-members}
+\doxysubsection{Field Documentation}
+\Hypertarget{struct_m_b_r_af09cbcfefd6e4dbb9cf53b48f96f5f72}\index{MBR@{MBR}!bootstrap@{bootstrap}}
+\index{bootstrap@{bootstrap}!MBR@{MBR}}
+\doxysubsubsection{\texorpdfstring{bootstrap}{bootstrap}}
+{\footnotesize\ttfamily \label{struct_m_b_r_af09cbcfefd6e4dbb9cf53b48f96f5f72} 
+\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} MBR\+::bootstrap\mbox{[}446\mbox{]}}
+
+Bootstrap code area 
+
+Definition at line \mbox{\hyperlink{_m_b_r_8c_source_l00051}{51}} of file \mbox{\hyperlink{_m_b_r_8c_source}{MBR.\+c}}.
+
+\Hypertarget{struct_m_b_r_a259c5eea62328410a413ec1929356163}\index{MBR@{MBR}!partitions@{partitions}}
+\index{partitions@{partitions}!MBR@{MBR}}
+\doxysubsubsection{\texorpdfstring{partitions}{partitions}}
+{\footnotesize\ttfamily \label{struct_m_b_r_a259c5eea62328410a413ec1929356163} 
+struct \mbox{\hyperlink{struct_partition_entry}{Partition\+Entry}} MBR\+::partitions\mbox{[}4\mbox{]}}
+
+Partition table entries 
+
+Definition at line \mbox{\hyperlink{_m_b_r_8c_source_l00052}{52}} of file \mbox{\hyperlink{_m_b_r_8c_source}{MBR.\+c}}.
+
+\Hypertarget{struct_m_b_r_a1a8e5ce3031355c8a44cbe9186397d18}\index{MBR@{MBR}!signature@{signature}}
+\index{signature@{signature}!MBR@{MBR}}
+\doxysubsubsection{\texorpdfstring{signature}{signature}}
+{\footnotesize\ttfamily \label{struct_m_b_r_a1a8e5ce3031355c8a44cbe9186397d18} 
+\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}} MBR\+::signature}
+
+Signature bytes, must be 0x\+AA55 
+
+Definition at line \mbox{\hyperlink{_m_b_r_8c_source_l00053}{53}} of file \mbox{\hyperlink{_m_b_r_8c_source}{MBR.\+c}}.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/fileio/\mbox{\hyperlink{_m_b_r_8c}{MBR.\+c}}\end{DoxyCompactItemize}

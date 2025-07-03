@@ -1,0 +1,69 @@
+\doxysection{wexent.\+c}
+\hypertarget{wexent_8c_source}{}\label{wexent_8c_source}\index{src/wex/wexent.c@{src/wex/wexent.c}}
+\mbox{\hyperlink{wexent_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00002}00002\ \textcolor{comment}{WKern\ -\/\ A\ Bare\ Metal\ OS\ /\ Kernel\ I\ am\ maKing\ (For\ Fun)}}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00003}00003\ \textcolor{comment}{Copyright\ (C)\ 2025\ \ Wdboyes13}}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00004}00004\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00005}00005\ \textcolor{comment}{This\ program\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify}}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00006}00006\ \textcolor{comment}{it\ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00007}00007\ \textcolor{comment}{the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the\ License,\ or}}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00008}00008\ \textcolor{comment}{any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00009}00009\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00010}00010\ \textcolor{comment}{This\ program\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00011}00011\ \textcolor{comment}{but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00012}00012\ \textcolor{comment}{MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00013}00013\ \textcolor{comment}{GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00014}00014\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00015}00015\ \textcolor{comment}{You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00016}00016\ \textcolor{comment}{along\ with\ this\ program.\ \ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00017}00017\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00019}00019\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{kio_8h}{io/kio.h}}>}}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00020}00020\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{stdwex_8h}{wex/stdwex.h}}>}}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00022}00022\ \textcolor{comment}{//\ Read\ First\ Values}}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00023}00023\ \textcolor{comment}{//\ Reads\ 0x00\ -\/\ 0x09}}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00029}\mbox{\hyperlink{wexent_8c_af38e9ba38e713a6cca62d43f00e53358}{00029}}\ \textcolor{keywordtype}{int}\ *\mbox{\hyperlink{wexent_8c_af38e9ba38e713a6cca62d43f00e53358}{read\_vals}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *exec)\ \{}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00030}00030\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ epa;}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00031}00031\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ sts;}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00032}00032\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ fvals[2];}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00034}00034\ \ \ \ \ epa\ =\ exec[0];}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00035}00035\ \ \ \ \ sts\ =\ exec[1];}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00036}00036\ \ \ \ \ fvals[0]\ =\ epa;}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00037}00037\ \ \ \ \ fvals[1]\ =\ sts;}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00039}00039\ \ \ \ \ \textcolor{keywordflow}{return}\ fvals;}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00040}00040\ \}}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00050}\mbox{\hyperlink{wexent_8c_a3b403bcf289074dcba2e6c6249697db0}{00050}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{wexent_8c_a3b403bcf289074dcba2e6c6249697db0}{chKwex}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *smt,\ \textcolor{keywordtype}{int}\ smt\_len,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *st,}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ st\_len)\ \{}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00052}00052\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ smt\_len;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00053}00053\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ valid\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00054}00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ st\_len;\ j++)\ \{}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (smt[i]\ ==\ st[j])\ \{}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ valid\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00059}00059\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00060}00060\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!valid)\ \{}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;\ \textcolor{comment}{//\ Invalid\ symbol\ found}}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00062}00062\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00063}00063\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00064}00064\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;\ \textcolor{comment}{//\ All\ symbols\ valid}}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00065}00065\ \}}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00072}\mbox{\hyperlink{stdwex_8h_a3b9a19febd250f2acf9d382f635b8fc2}{00072}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{wexent_8c_a3b9a19febd250f2acf9d382f635b8fc2}{Runwex}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *wexexecu)\ \{}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00073}00073\ \ \ \ \ \textcolor{keywordtype}{int}\ *fvals\ =\ \mbox{\hyperlink{wexent_8c_af38e9ba38e713a6cca62d43f00e53358}{read\_vals}}(wexexecu);}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00074}00074\ \ \ \ \ \textcolor{keywordtype}{int}\ sts\ =\ fvals[1];}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00075}00075\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ st[sts];}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00076}00076\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ sts;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00077}00077\ \ \ \ \ \ \ \ \ st[i]\ =\ wexexecu[i\ +\ 2];}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00078}00078\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00079}00079\ \ \ \ \ \mbox{\hyperlink{wexent_8c_a3b403bcf289074dcba2e6c6249697db0}{chKwex}}(st,\ sts,\ smt,\ 5);}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00080}00080\ \ \ \ \ \mbox{\hyperlink{stdwex_8h_a184a248ba7a02430f4ee68bfbc5cd48a}{Exec}}(wexexecu);}
+\DoxyCodeLine{\Hypertarget{wexent_8c_source_l00081}00081\ \}}
+
+\end{DoxyCode}

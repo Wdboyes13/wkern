@@ -1,4 +1,10 @@
 #include <types/nums.h>
+/**
+ * @brief Network Device typedef
+ * @var IP Addresss, 4 Byte Hex Number
+ * @var Netmask, 4 Byte Hex Number
+ * @var Gateway Address, 4 Byte Hex Number
+ */
 typedef struct {
     u8 ip[4];
     u8 netmasK[4];

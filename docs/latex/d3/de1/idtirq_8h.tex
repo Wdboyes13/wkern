@@ -1,0 +1,405 @@
+\doxysection{src/idt/idtirq.h File Reference}
+\hypertarget{idtirq_8h}{}\label{idtirq_8h}\index{src/idt/idtirq.h@{src/idt/idtirq.h}}
+{\ttfamily \#include $<$global.\+h$>$}\newline
+{\ttfamily \#include $<$types/nums.\+h$>$}\newline
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_idt_entry}{Idt\+Entry}}
+\item 
+struct \mbox{\hyperlink{struct_gdt_entry}{Gdt\+Entry}}
+\item 
+struct \mbox{\hyperlink{struct_gdt_ptr}{Gdt\+Ptr}}
+\item 
+struct \mbox{\hyperlink{struct_idt_ptr}{Idt\+Ptr}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{idtirq_8h_a6e6d7d33347e967d8e08331768d7613d}{KERNEL\+\_\+\+CODE\+\_\+\+SEGMENT}}~0x08
+\item 
+\#define \mbox{\hyperlink{idtirq_8h_a2a59a505aa55f15c152f30f811fbd310}{IDT\+\_\+\+ENTRIES}}~256
+\item 
+\#define \mbox{\hyperlink{idtirq_8h_aaad9208d1f30cc40267fdeb44f593a35}{PIT\+\_\+\+FREQ}}~119
+\item 
+\#define \mbox{\hyperlink{idtirq_8h_a752a45c7e0bffa22a9761b00da4bc929}{Send\+EOI}}~\mbox{\hyperlink{asm_8c_a05cb092cfc45a43dd91cff50d681af1a}{Outb}}(0x20, 0x20)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{idtirq_8h_aacc38a6b3280096e8274488aac111311}{Setup\+Idt}} (void)
+\item 
+void \mbox{\hyperlink{idtirq_8h_a230fd9bd9c907c980e928c1cf450fab5}{Idt\+Init}} (void)
+\item 
+void \mbox{\hyperlink{idtirq_8h_af6395787910fc416ceb5c2a7cfe468c6}{Idt\+Set\+Gate}} (\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} num, \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} base, \mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}} sel, \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} flags)
+\begin{DoxyCompactList}\small\item\em Set an IDT gate (entry) at given index. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{idtirq_8h_afff6913ea38ded1a054003f46bb86ad3}{Mask\+All\+Irqs}} (void)
+\begin{DoxyCompactList}\small\item\em Mask all IRQs. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{idtirq_8h_ae24aa8904e3388dccde357778b5e7e53}{Unmask\+Irq}} (\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} irq)
+\begin{DoxyCompactList}\small\item\em Unmask an IRQ. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{idtirq_8h_a59acdfe8af072c5f4539c03ca149b1d5}{Debug\+Print\+Idt\+Entry}} (int i)
+\item 
+void \mbox{\hyperlink{idtirq_8h_afc934f0079b12ec1cac0f6f49df28ca0}{All\+Idt}} ()
+\begin{DoxyCompactList}\small\item\em Initialize and load the Interrupt Descriptor Table (IDT) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{idtirq_8h_a49265dc90c23565b2cb010eb6594f431}{\+\_\+picr}} (void)
+\item 
+void \mbox{\hyperlink{idtirq_8h_a3abe176f346ee3b5fd6172998f5b94c1}{Gdt\+Install}} ()
+\begin{DoxyCompactList}\small\item\em Initialize and load the Global Descriptor Table (GDT) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{idtirq_8h_a354f952034d77fd685e49944e8fb35d3}{Gdt\+Flush}} (\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}})
+\item 
+void \mbox{\hyperlink{idtirq_8h_a129616f1ac7ecde95a1b9eab46bcf66d}{Gdt\+Set\+Gate}} (int num, \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} base, \mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} limit, \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} access, \mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}} gran)
+\begin{DoxyCompactList}\small\item\em Set a GDT entry (descriptor) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{idtirq_8h_ae909df77f28489ccfa376a7b89c25b25}{Ms\+Sleep}} (unsigned int milliseconds)
+\item 
+void \mbox{\hyperlink{idtirq_8h_afead828821eca13b3f89e621010367c2}{Pit\+Init}} (\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}} freq)
+\item 
+void \mbox{\hyperlink{idtirq_8h_af7e8d856a8a363049d76852fad30afab}{Irq0\+HandlerC}} (void)
+\item 
+void \mbox{\hyperlink{idtirq_8h_acf36338205273bd62f1ad2119cf51e04}{Irq0\+Handler}} (void)
+\item 
+void \mbox{\hyperlink{idtirq_8h_a8895548da393631c30c2a31b2cdcab84}{Good\+Handler}} (void)
+\item 
+void \mbox{\hyperlink{idtirq_8h_af74f3e6073767539ca97270776fc7291}{Irq1\+Handler}} (void)
+\item 
+void \mbox{\hyperlink{idtirq_8h_ad44e84f7c89e4ca9de4106f02453b2b9}{Virtnet\+Irq\+Handler}} ()
+\item 
+void \mbox{\hyperlink{idtirq_8h_a741ac1273347b066512660b46102ff9c}{Virtnet\+Handler}} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_idt_entry}{Idt\+Entry}} \mbox{\hyperlink{idtirq_8h_a49f62b08b10c70ccf16f10ae9cd4add6}{PKG}}
+\item 
+struct \mbox{\hyperlink{struct_idt_ptr}{Idt\+Ptr}} \mbox{\hyperlink{idtirq_8h_a8a950b7284d7f2582cc4356eb67334ce}{idt\+\_\+ptrn}}
+\item 
+struct \mbox{\hyperlink{struct_idt_entry}{Idt\+Entry}} \mbox{\hyperlink{idtirq_8h_a36cdbd0f8a3dc9a90160b2039db7ffb0}{idt}} \mbox{[}\mbox{\hyperlink{idtirq_8h_a2a59a505aa55f15c152f30f811fbd310}{IDT\+\_\+\+ENTRIES}}\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\Hypertarget{idtirq_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{idtirq_8h_a2a59a505aa55f15c152f30f811fbd310}\index{idtirq.h@{idtirq.h}!IDT\_ENTRIES@{IDT\_ENTRIES}}
+\index{IDT\_ENTRIES@{IDT\_ENTRIES}!idtirq.h@{idtirq.h}}
+\doxysubsubsection{\texorpdfstring{IDT\_ENTRIES}{IDT\_ENTRIES}}
+{\footnotesize\ttfamily \label{idtirq_8h_a2a59a505aa55f15c152f30f811fbd310} 
+\#define IDT\+\_\+\+ENTRIES~256}
+
+
+
+Definition at line \mbox{\hyperlink{idtirq_8h_source_l00092}{92}} of file \mbox{\hyperlink{idtirq_8h_source}{idtirq.\+h}}.
+
+\Hypertarget{idtirq_8h_a6e6d7d33347e967d8e08331768d7613d}\index{idtirq.h@{idtirq.h}!KERNEL\_CODE\_SEGMENT@{KERNEL\_CODE\_SEGMENT}}
+\index{KERNEL\_CODE\_SEGMENT@{KERNEL\_CODE\_SEGMENT}!idtirq.h@{idtirq.h}}
+\doxysubsubsection{\texorpdfstring{KERNEL\_CODE\_SEGMENT}{KERNEL\_CODE\_SEGMENT}}
+{\footnotesize\ttfamily \label{idtirq_8h_a6e6d7d33347e967d8e08331768d7613d} 
+\#define KERNEL\+\_\+\+CODE\+\_\+\+SEGMENT~0x08}
+
+
+
+Definition at line \mbox{\hyperlink{idtirq_8h_source_l00024}{24}} of file \mbox{\hyperlink{idtirq_8h_source}{idtirq.\+h}}.
+
+\Hypertarget{idtirq_8h_aaad9208d1f30cc40267fdeb44f593a35}\index{idtirq.h@{idtirq.h}!PIT\_FREQ@{PIT\_FREQ}}
+\index{PIT\_FREQ@{PIT\_FREQ}!idtirq.h@{idtirq.h}}
+\doxysubsubsection{\texorpdfstring{PIT\_FREQ}{PIT\_FREQ}}
+{\footnotesize\ttfamily \label{idtirq_8h_aaad9208d1f30cc40267fdeb44f593a35} 
+\#define PIT\+\_\+\+FREQ~119}
+
+
+
+Definition at line \mbox{\hyperlink{idtirq_8h_source_l00107}{107}} of file \mbox{\hyperlink{idtirq_8h_source}{idtirq.\+h}}.
+
+\Hypertarget{idtirq_8h_a752a45c7e0bffa22a9761b00da4bc929}\index{idtirq.h@{idtirq.h}!SendEOI@{SendEOI}}
+\index{SendEOI@{SendEOI}!idtirq.h@{idtirq.h}}
+\doxysubsubsection{\texorpdfstring{SendEOI}{SendEOI}}
+{\footnotesize\ttfamily \label{idtirq_8h_a752a45c7e0bffa22a9761b00da4bc929} 
+\#define Send\+EOI~\mbox{\hyperlink{asm_8c_a05cb092cfc45a43dd91cff50d681af1a}{Outb}}(0x20, 0x20)}
+
+
+
+Definition at line \mbox{\hyperlink{idtirq_8h_source_l00108}{108}} of file \mbox{\hyperlink{idtirq_8h_source}{idtirq.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{idtirq_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{idtirq_8h_a49265dc90c23565b2cb010eb6594f431}\index{idtirq.h@{idtirq.h}!\_picr@{\_picr}}
+\index{\_picr@{\_picr}!idtirq.h@{idtirq.h}}
+\doxysubsubsection{\texorpdfstring{\_picr()}{\_picr()}}
+{\footnotesize\ttfamily \label{idtirq_8h_a49265dc90c23565b2cb010eb6594f431} 
+void \+\_\+picr (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+\Hypertarget{idtirq_8h_afc934f0079b12ec1cac0f6f49df28ca0}\index{idtirq.h@{idtirq.h}!AllIdt@{AllIdt}}
+\index{AllIdt@{AllIdt}!idtirq.h@{idtirq.h}}
+\doxysubsubsection{\texorpdfstring{AllIdt()}{AllIdt()}}
+{\footnotesize\ttfamily \label{idtirq_8h_afc934f0079b12ec1cac0f6f49df28ca0} 
+void All\+Idt (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Initialize and load the Interrupt Descriptor Table (IDT) 
+
+
+\begin{DoxyItemize}
+\item Installs GDT
+\item Remaps PIC interrupts
+\item Masks all IRQs, then unmasks IRQ 0 and 1
+\item Sets IDT gates for IRQ0 and IRQ1 handlers
+\item Loads the IDT and enables interrupts
+\item Starts the PIT timer at a base frequency 
+\end{DoxyItemize}\texorpdfstring{$<$}{<} Install the Global Descriptor Table (GDT)
+
+\texorpdfstring{$<$}{<} Remap the PIC (Programmable Interrupt Controller)
+
+\texorpdfstring{$<$}{<} Mask all IRQs for safety
+
+\texorpdfstring{$<$}{<} Unmask IRQ1 (keyboard)
+
+\texorpdfstring{$<$}{<} Unmask IRQ0 (timer)
+
+\texorpdfstring{$<$}{<} Clear the IDT entries
+
+\texorpdfstring{$<$}{<} Set IDT limit
+
+\texorpdfstring{$<$}{<} Set IDT base address
+
+\texorpdfstring{$<$}{<} Set IRQ0 handler
+
+\texorpdfstring{$<$}{<} Set IRQ1 handler
+
+\texorpdfstring{$<$}{<} Disable CPU interrupts during setup
+
+\texorpdfstring{$<$}{<} Reload the GDT
+
+\texorpdfstring{$<$}{<} Load the new IDT
+
+\texorpdfstring{$<$}{<} Re-\/enable CPU interrupts
+
+\texorpdfstring{$<$}{<} Initialize PIT with base frequency (e.\+g., 1193182 Hz)
+
+Definition at line \mbox{\hyperlink{idt_8c_source_l00073}{73}} of file \mbox{\hyperlink{idt_8c_source}{idt.\+c}}.
+
+\Hypertarget{idtirq_8h_a59acdfe8af072c5f4539c03ca149b1d5}\index{idtirq.h@{idtirq.h}!DebugPrintIdtEntry@{DebugPrintIdtEntry}}
+\index{DebugPrintIdtEntry@{DebugPrintIdtEntry}!idtirq.h@{idtirq.h}}
+\doxysubsubsection{\texorpdfstring{DebugPrintIdtEntry()}{DebugPrintIdtEntry()}}
+{\footnotesize\ttfamily \label{idtirq_8h_a59acdfe8af072c5f4539c03ca149b1d5} 
+void Debug\+Print\+Idt\+Entry (\begin{DoxyParamCaption}\item[{int}]{i}{}\end{DoxyParamCaption})}
+
+\Hypertarget{idtirq_8h_a354f952034d77fd685e49944e8fb35d3}\index{idtirq.h@{idtirq.h}!GdtFlush@{GdtFlush}}
+\index{GdtFlush@{GdtFlush}!idtirq.h@{idtirq.h}}
+\doxysubsubsection{\texorpdfstring{GdtFlush()}{GdtFlush()}}
+{\footnotesize\ttfamily \label{idtirq_8h_a354f952034d77fd685e49944e8fb35d3} 
+void Gdt\+Flush (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+\Hypertarget{idtirq_8h_a3abe176f346ee3b5fd6172998f5b94c1}\index{idtirq.h@{idtirq.h}!GdtInstall@{GdtInstall}}
+\index{GdtInstall@{GdtInstall}!idtirq.h@{idtirq.h}}
+\doxysubsubsection{\texorpdfstring{GdtInstall()}{GdtInstall()}}
+{\footnotesize\ttfamily \label{idtirq_8h_a3abe176f346ee3b5fd6172998f5b94c1} 
+void Gdt\+Install (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Initialize and load the Global Descriptor Table (GDT) 
+
+
+\begin{DoxyItemize}
+\item Sets up three GDT entries\+:
+\begin{DoxyItemize}
+\item Null segment
+\item Code segment (executable, readable)
+\item Data segment (read/write)
+\end{DoxyItemize}
+\item Loads the GDT register with the new table 
+\end{DoxyItemize}
+
+Definition at line \mbox{\hyperlink{gdt_8c_source_l00056}{56}} of file \mbox{\hyperlink{gdt_8c_source}{gdt.\+c}}.
+
+\Hypertarget{idtirq_8h_a129616f1ac7ecde95a1b9eab46bcf66d}\index{idtirq.h@{idtirq.h}!GdtSetGate@{GdtSetGate}}
+\index{GdtSetGate@{GdtSetGate}!idtirq.h@{idtirq.h}}
+\doxysubsubsection{\texorpdfstring{GdtSetGate()}{GdtSetGate()}}
+{\footnotesize\ttfamily \label{idtirq_8h_a129616f1ac7ecde95a1b9eab46bcf66d} 
+void Gdt\+Set\+Gate (\begin{DoxyParamCaption}\item[{int}]{num}{, }\item[{\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}}]{base}{, }\item[{\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}}]{limit}{, }\item[{\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}}]{access}{, }\item[{\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}}]{gran}{}\end{DoxyParamCaption})}
+
+
+
+Set a GDT entry (descriptor) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em num} & Index of the GDT entry to set \\
+\hline
+{\em base} & Base address for the segment \\
+\hline
+{\em limit} & Limit of the segment \\
+\hline
+{\em access} & Access flags (e.\+g., executable, readable) \\
+\hline
+{\em gran} & Granularity and size flags \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{gdt_8c_source_l00035}{35}} of file \mbox{\hyperlink{gdt_8c_source}{gdt.\+c}}.
+
+\Hypertarget{idtirq_8h_a8895548da393631c30c2a31b2cdcab84}\index{idtirq.h@{idtirq.h}!GoodHandler@{GoodHandler}}
+\index{GoodHandler@{GoodHandler}!idtirq.h@{idtirq.h}}
+\doxysubsubsection{\texorpdfstring{GoodHandler()}{GoodHandler()}}
+{\footnotesize\ttfamily \label{idtirq_8h_a8895548da393631c30c2a31b2cdcab84} 
+void Good\+Handler (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+\Hypertarget{idtirq_8h_a230fd9bd9c907c980e928c1cf450fab5}\index{idtirq.h@{idtirq.h}!IdtInit@{IdtInit}}
+\index{IdtInit@{IdtInit}!idtirq.h@{idtirq.h}}
+\doxysubsubsection{\texorpdfstring{IdtInit()}{IdtInit()}}
+{\footnotesize\ttfamily \label{idtirq_8h_a230fd9bd9c907c980e928c1cf450fab5} 
+void Idt\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{idtirq_8h_af6395787910fc416ceb5c2a7cfe468c6}\index{idtirq.h@{idtirq.h}!IdtSetGate@{IdtSetGate}}
+\index{IdtSetGate@{IdtSetGate}!idtirq.h@{idtirq.h}}
+\doxysubsubsection{\texorpdfstring{IdtSetGate()}{IdtSetGate()}}
+{\footnotesize\ttfamily \label{idtirq_8h_af6395787910fc416ceb5c2a7cfe468c6} 
+void Idt\+Set\+Gate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}}]{num}{, }\item[{\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}}]{base}{, }\item[{\mbox{\hyperlink{nums_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}}]{sel}{, }\item[{\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}}]{flags}{}\end{DoxyParamCaption})}
+
+
+
+Set an IDT gate (entry) at given index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em num} & Index of the IDT entry to set \\
+\hline
+{\em base} & Address of the interrupt handler function \\
+\hline
+{\em sel} & Code segment selector in GDT \\
+\hline
+{\em flags} & Flags controlling gate type and privileges \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{idt_8c_source_l00040}{40}} of file \mbox{\hyperlink{idt_8c_source}{idt.\+c}}.
+
+\Hypertarget{idtirq_8h_acf36338205273bd62f1ad2119cf51e04}\index{idtirq.h@{idtirq.h}!Irq0Handler@{Irq0Handler}}
+\index{Irq0Handler@{Irq0Handler}!idtirq.h@{idtirq.h}}
+\doxysubsubsection{\texorpdfstring{Irq0Handler()}{Irq0Handler()}}
+{\footnotesize\ttfamily \label{idtirq_8h_acf36338205273bd62f1ad2119cf51e04} 
+void Irq0\+Handler (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+\Hypertarget{idtirq_8h_af7e8d856a8a363049d76852fad30afab}\index{idtirq.h@{idtirq.h}!Irq0HandlerC@{Irq0HandlerC}}
+\index{Irq0HandlerC@{Irq0HandlerC}!idtirq.h@{idtirq.h}}
+\doxysubsubsection{\texorpdfstring{Irq0HandlerC()}{Irq0HandlerC()}}
+{\footnotesize\ttfamily \label{idtirq_8h_af7e8d856a8a363049d76852fad30afab} 
+void Irq0\+HandlerC (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{irq0_8c_source_l00024}{24}} of file \mbox{\hyperlink{irq0_8c_source}{irq0.\+c}}.
+
+\Hypertarget{idtirq_8h_af74f3e6073767539ca97270776fc7291}\index{idtirq.h@{idtirq.h}!Irq1Handler@{Irq1Handler}}
+\index{Irq1Handler@{Irq1Handler}!idtirq.h@{idtirq.h}}
+\doxysubsubsection{\texorpdfstring{Irq1Handler()}{Irq1Handler()}}
+{\footnotesize\ttfamily \label{idtirq_8h_af74f3e6073767539ca97270776fc7291} 
+void Irq1\+Handler (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+\Hypertarget{idtirq_8h_afff6913ea38ded1a054003f46bb86ad3}\index{idtirq.h@{idtirq.h}!MaskAllIrqs@{MaskAllIrqs}}
+\index{MaskAllIrqs@{MaskAllIrqs}!idtirq.h@{idtirq.h}}
+\doxysubsubsection{\texorpdfstring{MaskAllIrqs()}{MaskAllIrqs()}}
+{\footnotesize\ttfamily \label{idtirq_8h_afff6913ea38ded1a054003f46bb86ad3} 
+void Mask\+All\+Irqs (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Mask all IRQs. 
+
+
+
+Definition at line \mbox{\hyperlink{masker_8c_source_l00026}{26}} of file \mbox{\hyperlink{masker_8c_source}{masker.\+c}}.
+
+\Hypertarget{idtirq_8h_ae909df77f28489ccfa376a7b89c25b25}\index{idtirq.h@{idtirq.h}!MsSleep@{MsSleep}}
+\index{MsSleep@{MsSleep}!idtirq.h@{idtirq.h}}
+\doxysubsubsection{\texorpdfstring{MsSleep()}{MsSleep()}}
+{\footnotesize\ttfamily \label{idtirq_8h_ae909df77f28489ccfa376a7b89c25b25} 
+void Ms\+Sleep (\begin{DoxyParamCaption}\item[{unsigned int}]{milliseconds}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{irq0_8c_source_l00029}{29}} of file \mbox{\hyperlink{irq0_8c_source}{irq0.\+c}}.
+
+\Hypertarget{idtirq_8h_afead828821eca13b3f89e621010367c2}\index{idtirq.h@{idtirq.h}!PitInit@{PitInit}}
+\index{PitInit@{PitInit}!idtirq.h@{idtirq.h}}
+\doxysubsubsection{\texorpdfstring{PitInit()}{PitInit()}}
+{\footnotesize\ttfamily \label{idtirq_8h_afead828821eca13b3f89e621010367c2} 
+void Pit\+Init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nums_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}}]{freq}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{pit_8c_source_l00032}{32}} of file \mbox{\hyperlink{pit_8c_source}{pit.\+c}}.
+
+\Hypertarget{idtirq_8h_aacc38a6b3280096e8274488aac111311}\index{idtirq.h@{idtirq.h}!SetupIdt@{SetupIdt}}
+\index{SetupIdt@{SetupIdt}!idtirq.h@{idtirq.h}}
+\doxysubsubsection{\texorpdfstring{SetupIdt()}{SetupIdt()}}
+{\footnotesize\ttfamily \label{idtirq_8h_aacc38a6b3280096e8274488aac111311} 
+void Setup\+Idt (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{idtirq_8h_ae24aa8904e3388dccde357778b5e7e53}\index{idtirq.h@{idtirq.h}!UnmaskIrq@{UnmaskIrq}}
+\index{UnmaskIrq@{UnmaskIrq}!idtirq.h@{idtirq.h}}
+\doxysubsubsection{\texorpdfstring{UnmaskIrq()}{UnmaskIrq()}}
+{\footnotesize\ttfamily \label{idtirq_8h_ae24aa8904e3388dccde357778b5e7e53} 
+void Unmask\+Irq (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nums_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}}]{irq}{}\end{DoxyParamCaption})}
+
+
+
+Unmask an IRQ. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em irq} & -\/ IRQ NUmber to Unmask \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{masker_8c_source_l00034}{34}} of file \mbox{\hyperlink{masker_8c_source}{masker.\+c}}.
+
+\Hypertarget{idtirq_8h_a741ac1273347b066512660b46102ff9c}\index{idtirq.h@{idtirq.h}!VirtnetHandler@{VirtnetHandler}}
+\index{VirtnetHandler@{VirtnetHandler}!idtirq.h@{idtirq.h}}
+\doxysubsubsection{\texorpdfstring{VirtnetHandler()}{VirtnetHandler()}}
+{\footnotesize\ttfamily \label{idtirq_8h_a741ac1273347b066512660b46102ff9c} 
+void Virtnet\+Handler (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+\Hypertarget{idtirq_8h_ad44e84f7c89e4ca9de4106f02453b2b9}\index{idtirq.h@{idtirq.h}!VirtnetIrqHandler@{VirtnetIrqHandler}}
+\index{VirtnetIrqHandler@{VirtnetIrqHandler}!idtirq.h@{idtirq.h}}
+\doxysubsubsection{\texorpdfstring{VirtnetIrqHandler()}{VirtnetIrqHandler()}}
+{\footnotesize\ttfamily \label{idtirq_8h_ad44e84f7c89e4ca9de4106f02453b2b9} 
+void Virtnet\+Irq\+Handler (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{virtnetirq_8c_source_l00011}{11}} of file \mbox{\hyperlink{virtnetirq_8c_source}{virtnetirq.\+c}}.
+
+
+
+\label{doc-var-members}
+\Hypertarget{idtirq_8h_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{idtirq_8h_a36cdbd0f8a3dc9a90160b2039db7ffb0}\index{idtirq.h@{idtirq.h}!idt@{idt}}
+\index{idt@{idt}!idtirq.h@{idtirq.h}}
+\doxysubsubsection{\texorpdfstring{idt}{idt}}
+{\footnotesize\ttfamily \label{idtirq_8h_a36cdbd0f8a3dc9a90160b2039db7ffb0} 
+struct \mbox{\hyperlink{struct_idt_entry}{Idt\+Entry}} idt\mbox{[}\mbox{\hyperlink{idtirq_8h_a2a59a505aa55f15c152f30f811fbd310}{IDT\+\_\+\+ENTRIES}}\mbox{]}\hspace{0.3cm}{\ttfamily [extern]}}
+
+Interrupt Descriptor Table entries 
+
+Definition at line \mbox{\hyperlink{idt_8c_source_l00027}{27}} of file \mbox{\hyperlink{idt_8c_source}{idt.\+c}}.
+
+\Hypertarget{idtirq_8h_a8a950b7284d7f2582cc4356eb67334ce}\index{idtirq.h@{idtirq.h}!idt\_ptrn@{idt\_ptrn}}
+\index{idt\_ptrn@{idt\_ptrn}!idtirq.h@{idtirq.h}}
+\doxysubsubsection{\texorpdfstring{idt\_ptrn}{idt\_ptrn}}
+{\footnotesize\ttfamily \label{idtirq_8h_a8a950b7284d7f2582cc4356eb67334ce} 
+struct \mbox{\hyperlink{struct_idt_ptr}{Idt\+Ptr}} idt\+\_\+ptrn\hspace{0.3cm}{\ttfamily [extern]}}
+
+\Hypertarget{idtirq_8h_a49f62b08b10c70ccf16f10ae9cd4add6}\index{idtirq.h@{idtirq.h}!PKG@{PKG}}
+\index{PKG@{PKG}!idtirq.h@{idtirq.h}}
+\doxysubsubsection{\texorpdfstring{PKG}{PKG}}
+{\footnotesize\ttfamily \label{idtirq_8h_a49f62b08b10c70ccf16f10ae9cd4add6} 
+struct \mbox{\hyperlink{struct_gdt_ptr}{Gdt\+Ptr}} PKG}
+
