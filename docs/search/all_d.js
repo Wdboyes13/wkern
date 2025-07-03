@@ -16,6 +16,6 @@ var searchData=
   ['mkfile_13',['Mkfile',['../dc/d74/fileio_8h.html#a0955c984a7b27de3da315eefeb4db734',1,'Mkfile(const char *filename, const char *ext):&#160;mkfile.c'],['../d6/d1f/mkfile_8c.html#a0955c984a7b27de3da315eefeb4db734',1,'Mkfile(const char *filename, const char *ext):&#160;mkfile.c']]],
   ['mkfile_2ec_14',['mkfile.c',['../d6/d1f/mkfile_8c.html',1,'']]],
   ['modules_15',['MODULES',['../d6/d04/namespacefiles.html#a5223102f497874187d1dfe8a32def4a2',1,'files']]],
-  ['more_20info_20see_20license_16',['For more info, see &lt;a href=&quot;https://github.com/Wdboyes13/wkern/blob/main/LICENSE&quot;&gt;&lt;span class=&quot;tt&quot;&gt;LICENSE&lt;/span&gt;&lt;/a&gt;',['../index.html#autotoc_md5',1,'']]],
+  ['more_20info_20see_20license_16',['For more info, see &lt;a href=&quot;https://github.com/Wdboyes13/wkern/blob/main/LICENSE&quot;&gt;&lt;span class=&quot;tt&quot;&gt;LICENSE&lt;/span&gt;&lt;/a&gt;',['../index.html#autotoc_md6',1,'']]],
   ['mssleep_17',['MsSleep',['../df/d5b/irq0_8c.html#ae909df77f28489ccfa376a7b89c25b25',1,'MsSleep(unsigned int milliseconds):&#160;irq0.c'],['../d3/de1/idtirq_8h.html#ae909df77f28489ccfa376a7b89c25b25',1,'MsSleep(unsigned int milliseconds):&#160;irq0.c']]]
 ];

@@ -13,9 +13,9 @@ var searchData=
   ['idtsetgate_10',['IdtSetGate',['../d5/d05/idt_8c.html#af6395787910fc416ceb5c2a7cfe468c6',1,'IdtSetGate(u8 num, u32 base, u16 sel, u8 flags):&#160;idt.c'],['../d3/de1/idtirq_8h.html#af6395787910fc416ceb5c2a7cfe468c6',1,'IdtSetGate(u8 num, u32 base, u16 sel, u8 flags):&#160;idt.c']]],
   ['idx_11',['idx',['../d2/dc9/struct_virtq_avail.html#a410f842577761e07b8c034e387b75741',1,'VirtqAvail::idx'],['../da/d71/struct_virtq_used.html#a3f5fb08a932c9b9c861cedade7500a97',1,'VirtqUsed::idx']]],
   ['img_2ec_12',['img.c',['../d1/d3e/img_8c.html',1,'']]],
-  ['in_20canada_20🇨🇦_13',['Developed with ❤️ in Canada 🇨🇦',['../index.html',1,'']]],
+  ['in_20canada_20🇨🇦_13',['Developed with ❤️ in Canada 🇨🇦',['../index.html#autotoc_md2',1,'']]],
   ['inb_14',['Inb',['../d3/d33/asm_8c.html#a6ab29a59b425f205c9da3550dcc76605',1,'Inb(u16 port):&#160;asm.c'],['../d5/ddb/kio_8h.html#a6ab29a59b425f205c9da3550dcc76605',1,'Inb(u16 port):&#160;asm.c']]],
-  ['info_20see_20license_15',['For more info, see &lt;a href=&quot;https://github.com/Wdboyes13/wkern/blob/main/LICENSE&quot;&gt;&lt;span class=&quot;tt&quot;&gt;LICENSE&lt;/span&gt;&lt;/a&gt;',['../index.html#autotoc_md5',1,'']]],
+  ['info_20see_20license_15',['For more info, see &lt;a href=&quot;https://github.com/Wdboyes13/wkern/blob/main/LICENSE&quot;&gt;&lt;span class=&quot;tt&quot;&gt;LICENSE&lt;/span&gt;&lt;/a&gt;',['../index.html#autotoc_md6',1,'']]],
   ['inl_16',['Inl',['../d3/d33/asm_8c.html#a4701486394643faf28232bc4aa510bd3',1,'Inl(u16 port):&#160;asm.c'],['../d5/ddb/kio_8h.html#a4701486394643faf28232bc4aa510bd3',1,'Inl(u16 port):&#160;asm.c']]],
   ['inw_17',['Inw',['../d3/d33/asm_8c.html#a6b6b4e5a56d03f0833e7cc9bb922bf52',1,'Inw(u16 port):&#160;asm.c'],['../d5/ddb/kio_8h.html#a6b6b4e5a56d03f0833e7cc9bb922bf52',1,'Inw(u16 port):&#160;asm.c']]],
   ['iob_18',['iob',['../d2/d49/global_8h.html#a1948e96711d16f6cd2d551c5c3b121c5',1,'iob:&#160;main.c'],['../d0/d29/main_8c.html#a1948e96711d16f6cd2d551c5c3b121c5',1,'iob:&#160;main.c']]],
@@ -28,7 +28,7 @@ var searchData=
   ['irq1handler_25',['Irq1Handler',['../d3/de1/idtirq_8h.html#af74f3e6073767539ca97270776fc7291',1,'idtirq.h']]],
   ['irq1handlerc_26',['Irq1HandlerC',['../d9/d38/keyin_8c.html#ad34c46028a6847c3eec4ff1a810f52c6',1,'keyin.c']]],
   ['irqflags_2ec_27',['irqflags.c',['../df/dca/irqflags_8c.html',1,'']]],
-  ['is_20licensed_20under_20the_20gnu_20general_20public_20license_20v3_28',['This project is licensed under the GNU General Public License v3',['../index.html#autotoc_md4',1,'']]],
+  ['is_20licensed_20under_20the_20gnu_20general_20public_20license_20v3_28',['This project is licensed under the GNU General Public License v3',['../index.html#autotoc_md5',1,'']]],
   ['iso_29',['ISO',['../d6/d04/namespacefiles.html#a3968652418e61b8e68470b0509b582e9',1,'files']]],
   ['iso_30',['iso',['../d2/d76/namespacebrules.html#afad7dbdba4ec9134f6b8fe475f9d6eda',1,'brules']]]
 ];

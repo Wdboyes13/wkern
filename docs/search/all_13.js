@@ -8,7 +8,7 @@ var searchData=
   ['sectors_5fper_5fcluster_5',['sectors_per_cluster',['../d0/db2/struct_fa_t16_bpb.html#a8f0aed19aa3d3181cd6860053ea1497c',1,'FaT16Bpb::sectors_per_cluster'],['../d2/d9d/struct_fa_t16_info.html#ad208778e43141eca7fa4e9785395b4bb',1,'FaT16Info::sectors_per_cluster']]],
   ['sectors_5fper_5ffat_6',['sectors_per_fat',['../d0/db2/struct_fa_t16_bpb.html#a875e00f22bb8d3ee384357aee87d8a2d',1,'FaT16Bpb::sectors_per_fat'],['../d2/d9d/struct_fa_t16_info.html#a5cb16e3d2b7e78537e05135f1740e405',1,'FaT16Info::sectors_per_fat']]],
   ['sectors_5fper_5ftrack_7',['sectors_per_track',['../d0/db2/struct_fa_t16_bpb.html#a7c8e271731ffd2ec55cf4173c2f35e0b',1,'FaT16Bpb']]],
-  ['see_20license_8',['For more info, see &lt;a href=&quot;https://github.com/Wdboyes13/wkern/blob/main/LICENSE&quot;&gt;&lt;span class=&quot;tt&quot;&gt;LICENSE&lt;/span&gt;&lt;/a&gt;',['../index.html#autotoc_md5',1,'']]],
+  ['see_20license_8',['For more info, see &lt;a href=&quot;https://github.com/Wdboyes13/wkern/blob/main/LICENSE&quot;&gt;&lt;span class=&quot;tt&quot;&gt;LICENSE&lt;/span&gt;&lt;/a&gt;',['../index.html#autotoc_md6',1,'']]],
   ['sel_9',['sel',['../d0/d94/struct_idt_entry.html#a0433fa09c19748c4ad49e7074d8f013c',1,'IdtEntry']]],
   ['sendeoi_10',['SendEOI',['../d3/de1/idtirq_8h.html#a752a45c7e0bffa22a9761b00da4bc929',1,'idtirq.h']]],
   ['setupidt_11',['SetupIdt',['../d3/de1/idtirq_8h.html#aacc38a6b3280096e8274488aac111311',1,'idtirq.h']]],

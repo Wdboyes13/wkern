@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['canada_20🇨🇦_0',['Developed with ❤️ in Canada 🇨🇦',['../index.html',1,'']]],
+  ['canada_20🇨🇦_0',['Developed with ❤️ in Canada 🇨🇦',['../index.html#autotoc_md2',1,'']]],
   ['capson_1',['capson',['../d2/d49/global_8h.html#a2b30266941861e389096f125809faf0d',1,'capson:&#160;main.c'],['../d0/d29/main_8c.html#a2b30266941861e389096f125809faf0d',1,'capson:&#160;main.c']]],
   ['cc_2',['CC',['../d4/d2a/namespacetoolsflags.html#a924087f4f05668f6514ad10edbfa87bb',1,'toolsflags']]],
   ['cc_5fflags_3',['cc_flags',['../dc/d9d/namespaceconfigure.html#aec1ff7e59ed0001b005e1606c2eb8511',1,'configure']]],
