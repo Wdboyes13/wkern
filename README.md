@@ -2,7 +2,7 @@
 ## Developed with ❤️ in Canada 🇨🇦
 **This is a kernel/OS I'm working on**  
 **For Current Lines GO TO [loc.md](/loc.md)**  
-__Full Documentation at [weelam.ca/wkern](https://weelam.ca/wkern)
+__Full Documentation at [weelam.ca/wkern](https://weelam.ca/wkern)__
 __The specs of the machine are very important__  
 __Since I dont have the energy to port it to working on other machines__  
   
