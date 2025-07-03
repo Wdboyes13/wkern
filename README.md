@@ -10,7 +10,7 @@ __THIS WILL ONLY WORK IN THE PRESET QEMU VM CONFIG RUN WITH `make test`__
 
 ## Tools
 __Make sure to run the script to check these with `./configure.sh`__  
-__For Platform-Specific Info on installing these go to [docs/platform/](/docs/platform/) And Select your OS__   
+__For Platform-Specific Info on installing these go to [docs2/platform/](/docs/platform/) And Select your OS__   
 __For the new list of requirements, check [RequiredTools.txt](/RequiredTools.txt)__  
 
 ## To Run
