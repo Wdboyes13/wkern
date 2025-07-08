@@ -25,6 +25,8 @@
 #       is added to the project.
 
 import glob
+import build
+import os
 
 SRCS = [
     "src/fileio/irqflags.c",
@@ -71,14 +73,26 @@ SRCS = [
     "src/slre/slre.c",
 ]
 
-NASMSRCS = [
-    "src/boot.asm",
-    "src/idt/handlers/gdtf.asm",
-    "src/idt/handlers/irq0a.asm",
-    "src/idt/handlers/irq1a.asm",
-    "src/idt/handlers/virtirq.asm",
-    "src/idt/picr.asm"
-]
+if build.ARCH == "X86":
+    NASMSRCS = [
+        "src/boot.asm",
+        "src/idt/handlers/gdtf.asm",
+        "src/idt/handlers/irq0a.asm",
+        "src/idt/handlers/irq1a.asm",
+        "src/idt/handlers/virtirq.asm",
+        "src/idt/picr.asm"
+    ]
+elif build.ARCH == "X64":
+    NASMSRCS = [
+        "src/boot64.asm",
+        "src/idt/handlers/gdtf64.asm",
+        "src/idt/handlers/irq0a64.asm",
+        "src/idt/handlers/irq1a64.asm",
+        "src/idt/picr.asm"
+    ]
+else: 
+    print("Unsupported Arch")
+    os.exit(1)
 
 # Most are grouped into 1 except for larger systems
 MODULES = {
@@ -135,8 +149,12 @@ OUT = "kernel.elf"
 OUTARG = "iso/boot/" + OUT
 ISO = "mykern.iso"
 
-GRUBCFG = "grub/grub.cfg"
-GRUBCFGTARG = "iso/boot/" + GRUBCFG
+if build.ARCH == "X86":
+    GRUBCFG = "grub/grub.cfg"
+    GRUBCFGTARG = "iso/boot/" + GRUBCFG
+elif build.ARCH == "X64":
+    GRUBCFG = "grub/64/grub.cfg"
+    GRUBCFGTARG = "iso/boot/grub/grub.cfg"
 
 HEADS = ["src/types/nums.h", "src/fileio/fileio.h",
 			   "src/global.h", "src/err/kerror.h",

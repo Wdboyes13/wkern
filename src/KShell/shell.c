@@ -45,35 +45,65 @@ typedef struct {
 } CommandEntry;
 
 /// @brief Compares two strings using the internal shell comparison function.
-void CmdCmp(const char *argv[], int argc) { Kshcmp(); }
+void CmdCmp(const char *argv[], int argc) {
+    (void)argc;
+    (void)argv;
+    Kshcmp();
+}
 /// @brief Displays built-in help information.
-void CmdHelp(const char *argv[], int argc) { Help(); }
+void CmdHelp(const char *argv[], int argc) {
+    (void)argc;
+    (void)argv;
+    Help();
+}
 /**
  * @brief Executes a test WEX executable.
  */
-void CmdTst(const char *argv[], int argc) { Runwex(Execr()); }
+void CmdTst(const char *argv[], int argc) {
+    (void)argc;
+    (void)argv;
+    Runwex(Execr());
+}
 
 /**
  * @brief Clears the shell screen.
  */
-void CmdClear(const char *argv[], int argc) { Kcfp(); }
+void CmdClear(const char *argv[], int argc) {
+    (void)argc;
+    (void)argv;
+    Kcfp();
+}
 /**
  * @brief Lists FAT16 filesystem contents.
  */
-void CmdLs(const char *argv[], int argc) { Fat16Ls(); }
+void CmdLs(const char *argv[], int argc) {
+    (void)argc;
+    (void)argv;
+    Fat16Ls();
+}
 
 /**
  * @brief Prints the current username.
  */
-void CmdUser(const char *argv[], int argc) { Kprintf("\nUsername: %s", name); }
+void CmdUser(const char *argv[], int argc) {
+    (void)argc;
+    (void)argv;
+    Kprintf("\nUsername: %s", name);
+}
 /**
  * @brief Runs the regex test utility.
  */
-void CmdRegex(const char *argv[], int argc) { Regexc(); }
+void CmdRegex(const char *argv[], int argc) {
+    (void)argc;
+    (void)argv;
+    Regexc();
+}
 /**
  * @brief Receives network packets from VirtNet (on keypress).
  */
 void CmdRecvPack(const char *argv[], int argc) {
+    (void)argc;
+    (void)argv;
     unsigned char Key = 0;
     while (!(Key = Kgetkey()) && Key == 'a') {
         NetStq(iob);
@@ -83,6 +113,8 @@ void CmdRecvPack(const char *argv[], int argc) {
  * @brief Sends shutdown signal when running under QEMU.
  */
 void CmdShutdown(const char *argv[], int argc) {
+    (void)argc;
+    (void)argv;
 #ifdef VMQEMU
 #include <qemu/shutdown.h>
     QemuShutdown();
@@ -100,7 +132,7 @@ void CmdSetName(const char *argv[], int argc) {
         Kprintf("Not enough args\nUsage: setname [New Name]");
         return;
     }
-    name = argv[1];
+    name = (char *)argv[1];
 }
 
 /**
@@ -163,7 +195,7 @@ void Sh() {
         }
 
         int found = 0;
-        for (int i = 0; i < NUM_COMMANDS; i++) {
+        for (int i = 0; i < (int)NUM_COMMANDS; i++) {
             if (Kstrcmp(argv[0], commands[i].name) == 0) {
                 commands[i].func((const char **)argv, argc);
                 found = 1;

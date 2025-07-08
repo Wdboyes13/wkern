@@ -16,13 +16,15 @@
 # @note This file is part of a larger modular build system.
 
 import subprocess
-from bfiles.files import *
+import bfiles
 import os
 from pathlib import Path
 from datetime import datetime
 from bfiles.toolsflags import *
 def fmt():
     os.chdir(Path(__file__).resolve().parents[1])
+    from bfiles.files import SRCS, HEADS
+    print(dir(bfiles.files))
     subprocess.run(["clang-format", "-i", *SRCS, *HEADS])
 
 def git():

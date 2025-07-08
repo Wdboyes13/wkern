@@ -17,6 +17,7 @@
 # - `./build.py -mkd` : Create and format a blank FAT16 disk image
 ##
 
+ARCH = "X86"
 import sys
 import os
 from bfiles.brules import *
@@ -92,6 +93,16 @@ def main():
             git()
     elif (sys.argv[1] == "-run"):
             run()
+    elif (sys.argv[1] == "-run64"):
+            ARCH = "X64"
+            run()
+    elif (sys.argv[1] == "-64"):
+        ARCH = "X64"
+        if os.path.isfile('./didconf'):
+            build()
+        else:
+            subprocess.run(["./configure.py"])
+            build()
     elif (sys.argv[1] == "-test"):
         try:
           subprocess.run(["./configure.py"], check=True)

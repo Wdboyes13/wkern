@@ -45,6 +45,25 @@ void IdtSetGate(u8 num, u32 base, u16 sel, u8 flags) {
     idt[num].base_hi = (base >> 16) & 0xFFFF;
 }
 
+/**
+ * @brief Set an IDT gate (entry) at given index - 64-Bit
+ *
+ * @param num Index of the IDT entry to set
+ * @param base Address of the interrupt handler function
+ * @param sel Code segment selector in GDT
+ * @param flags Flags controlling gate type and privileges
+ */
+void IdtSetGate64(u8 num, u64 handler, u16 sel, u8 flags) {
+    IDTEntry64 *cidt = (IDTEntry64 *)(uptr)idt_ptrn.base;
+    cidt[num].offset_low = (u16)(handler & 0xFFFF);
+    cidt[num].selector = sel;
+    cidt[num].ist = 0;           // Interrupt Stack Table index (usually 0)
+    cidt[num].type_attr = flags; // e.g. 0x8E
+    cidt[num].offset_mid = (u16)((handler >> 16) & 0xFFFF);
+    cidt[num].offset_high = (u32)((handler >> 32) & 0xFFFFFFFF);
+    cidt[num].zero = 0;
+}
+
 /** External assembly function to load the IDT */
 extern void IdtLoad(void);
 
@@ -71,8 +90,11 @@ void debug_print_idt_entry(int i) {
  * - Starts the PIT timer at a base frequency
  */
 void AllIdt() {
-
+#ifdef ARCH_X86
     GdtInstall(); /**< Install the Global Descriptor Table (GDT) */
+#elif defined(ARCH_X64)
+    GdtInstall64();
+#endif
 
     Kprintf("Calling PIC Remap\n");
     _picr(); /**< Remap the PIC (Programmable Interrupt Controller) */
@@ -92,6 +114,7 @@ void AllIdt() {
         (sizeof(struct IdtEntry) * IDT_ENTRIES) - 1; /**< Set IDT limit */
     idt_ptrn.base = (uptr)idt; /**< Set IDT base address */
 
+#ifdef ARCH_X86
     Kprintf("Setting up IDT gate 32 (IRQ0)\n");
     IdtSetGate(32, (uptr)Irq0Handler, KERNEL_CODE_SEGMENT,
                0x8E); /**< Set IRQ0 handler */
@@ -101,19 +124,38 @@ void AllIdt() {
     IdtSetGate(33, (uptr)Irq1Handler, KERNEL_CODE_SEGMENT,
                0x8E); /**< Set IRQ1 handler */
     debug_print_idt_entry(33);
+#elif defined(ARCH_X64)
+    Kprintf("Setting up IDT gate 32 (IRQ0) - x86_64\n");
+    IdtSetGate64(32, (u64)Irq0Handler, KERNEL_CODE_SEGMENT, 0x8E);
+    debug_print_idt_entry(32);
+
+    Kprintf("Setting up IDT gate 33 (IRQ1) - x86_64\n");
+    IdtSetGate64(33, (u64)Irq1Handler, KERNEL_CODE_SEGMENT, 0x8E);
+    debug_print_idt_entry(33);
+#endif
 
     Kprintf("Disabling interrupts\n");
     __asm__ volatile("cli"); /**< Disable CPU interrupts during setup */
 
+#ifdef ARCH_X86
     struct {
         u16 limit;
         u32 base;
     } PKG gdtr;
-
     __asm__ volatile("sgdt %0" : "=m"(gdtr)); /**< Reload the GDT */
-
     Kprintf("GDT base = %x, limit = %x\n", gdtr.base, gdtr.limit);
     Kprintf("IDT base = %x, limit = %x\n", idt_ptrn.base, idt_ptrn.limit);
+#elif defined(ARCH_X64)
+    struct {
+        u16 limit;
+        u64 base;
+    } PKG gdtr;
+    __asm__ volatile("sgdt %0" : "=m"(gdtr)); /**< Reload the GDT */
+    Kprintf("GDT base = %x, limit = %x\n", gdtr.base, gdtr.limit);
+    Kprintf("IDT base = %x, limit = %x\n", idt_ptrn.base, idt_ptrn.limit);
+#else
+    triple_fault();
+#endif
 
     Kprintf("Loading IDT\n");
     __asm__ volatile("lidt %[idt]" ::[idt] "m"(idt_ptrn)

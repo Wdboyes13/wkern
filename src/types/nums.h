@@ -30,7 +30,8 @@ typedef unsigned int size_t;
 typedef unsigned int u32;
 /// @brief 8-Bit Unsigned Int
 typedef unsigned char u8;
-/// @brief Long Unsigned Int
+/// @brief 64-bit Unsigned Int
 typedef unsigned long uptr;
+typedef unsigned long u64;
 /// @brief 16-Bit Unsigned Int
 typedef unsigned short u16;

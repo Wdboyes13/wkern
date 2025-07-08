@@ -55,6 +55,16 @@ struct IdtEntry {
     u16 base_hi;
 } PKG;
 
+typedef struct {
+    u16 offset_low;  // bits 0-15 of handler addr
+    u16 selector;    // GDT code segment selector
+    u8 ist;          // Interrupt Stack Table offset (0 usually)
+    u8 type_attr;    // flags: P, DPL, type (0x8E for interrupt gate)
+    u16 offset_mid;  // bits 16-31 of handler addr
+    u32 offset_high; // bits 32-63 of handler addr
+    u32 zero;        // reserved
+} PKG IDTEntry64;
+
 struct GdtEntry {
     u16 limit_low;  // Lower 16 bits of limit
     u16 base_low;   // Lower 16 bits of base
@@ -62,6 +72,15 @@ struct GdtEntry {
     u8 access;      // Access flags
     u8 granularity; // Granularity flags + upper 4 bits of limit
     u8 base_high;   // Last 8 bits of base
+} PKG;
+
+struct GdtEntry64 {
+    u16 limit_low;  // bits 0-15 of limit
+    u16 base_low;   // bits 0-15 of base
+    u8 base_middle; // bits 16-23 of base
+    u8 access;      // access byte
+    u8 granularity; // flags and limit bits 16-19
+    u8 base_high;   // bits 24-31 of base
 } PKG;
 
 struct GdtPtr {
@@ -80,8 +99,10 @@ struct PKG IdtPtr {
 ===================
 */
 void GdtInstall();
+void GdtInstall64();
 extern void GdtFlush(u32);
 void GdtSetGate(int num, u32 base, u32 limit, u8 access, u8 gran);
+void GdtSetGate64(int num, u32 base, u32 limit, u8 access, u8 gran);
 
 /*
 ============
@@ -106,3 +127,12 @@ extern void VirtnetHandler(void);
 // MACROS
 #define PIT_FREQ 119
 #define SendEOI Outb(0x20, 0x20)
+#define GDT_ACCESS_CODE64                                                      \
+    0x9A // 1 00 1 1 0 1 0: Present, Ring 0, Code segment, Executable, Readable
+#define GDT_ACCESS_DATA64                                                      \
+    0x92 // 1 00 1 0 0 1 0: Present, Ring 0, Data segment, Writable
+
+#define GDT_GRANULARITY64                                                      \
+    0xA0 // 1010 0000: Long mode bit (L-bit) set, 4K granularity off for code
+#define GDT_GRANULARITY_DATA64                                                 \
+    0xC0 // 1100 0000: Granularity set, default operation size (32-bit) for data

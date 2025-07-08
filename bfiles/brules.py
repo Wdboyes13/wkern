@@ -108,7 +108,7 @@ def partial_link():
 
         print(f"Linking module: {modname}")
         try:
-            subprocess.run(["i686-elf-ld", "-r", "-o", output, *obj_files], check=True)
+            subprocess.run([LD, "-r", "-o", output, *obj_files], check=True)
         except subprocess.CalledProcessError as e:
             print(f"Error linking module {modname}: {e}", file=sys.stderr)
             sys.exit(1)
@@ -130,7 +130,7 @@ def link():
 
     print("Linking kernel")
     try:
-        subprocess.run(["i686-elf-ld", *LDFLAGS, "-T", "link.ld", "-o", OUT, *OBJS], check=True)
+        subprocess.run([LD, *LDFLAGS, "-T", "link.ld", "-o", OUT, *OBJS], check=True)
     except subprocess.CalledProcessError as e:
         print(f"Final link failed: {e}", file=sys.stderr)
         sys.exit(1)
